@@ -1,0 +1,22 @@
+name: build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  # The matching compiler cannot be downloaded in CI, so CI keeps the sources building with a modern one
+  # (clang-cl + lld-link, 32-bit Windows target) and checks that no original content slipped into the tree.
+  hook-dll:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install clang and lld
+        run: |
+          sudo apt-get update -q && sudo apt-get install -y -q clang lld
+          ls -d /usr/lib/llvm-*/bin | sort -V | tail -1 >> "$GITHUB_PATH"  # clang-cl and lld-link live here
+      - name: Build
+        run: tools/build.sh --clang
+      - name: No original content
+        run: tools/check-content.sh
