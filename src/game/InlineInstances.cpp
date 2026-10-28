@@ -15,3 +15,10 @@ void UseInlineInstances(const char* text, uint32_t length, const cIGZString& str
     cRZString copy(rzString);
     copy = rzString;
 }
+
+// The game deletes arrays of strings, so the string's vtable holds a vector deleting destructor (0x0044bf10).
+void UseStringArrays(uint32_t count)
+{
+    cRZString* strings = new cRZString[count];
+    delete[] strings;
+}

@@ -22,6 +22,9 @@
 # The program's own memory management (its global new/delete take a lock and pool small blocks)
 0x005e55e0 ??2@YAPAXI@Z
 0x005e5620 ??3@YAXPAX@Z
+# The array forms: the vector deleting destructors call the same address, so they were folded with these
+0x005e55e0 ??_U@YAPAXI@Z
+0x005e5620 ??_V@YAXPAX@Z
 
 # STLport as the program built it: out-of-line __stl_new/__stl_delete routed to the program's allocator, and the
 # throw helpers of its library part
@@ -35,3 +38,8 @@
 0x00911358 ?RZEncodingToString@@YAIPBXIHAAVcIGZString@@@Z
 0x009106a9 ?RZCharacterSize@@YAHPBDHH@Z
 0x009107d8 ?RZCharacterCount@@YAHPBDHH@Z
+
+# cUnk0090da1e: slots whose bodies the linker folded with identical ones elsewhere
+0x009457c6 ?QueryInterface@cUnk0090da1e@@UAE_NIPAPAX@Z
+0x00968b60 ?AddRef@cUnk0090da1e@@UAEIXZ
+0x009d7e63 ?RefCount@cUnk0090da1e@@UAEIXZ

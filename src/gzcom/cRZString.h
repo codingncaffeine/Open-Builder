@@ -8,6 +8,8 @@
 
 #include "gzcom/cIGZString.h"
 
+// VTABLE: 0x00a80810
+// SIZE 0x14
 // The string is a base, not a member: the original stores the vtable after the string is built, which is where a
 // constructor stores it after its bases and before its members.
 class cRZString : public cIGZString, public std::string {
@@ -82,6 +84,9 @@ public:
 protected:
     uint32_t mnRefCount;  // +0x10
 };
+
+// SYNTHETIC: 0x0044bf10
+// cRZString::`vector deleting dtor'
 
 // A UTF-16 code unit. The original's is unsigned short (the 2003 compiler has no char16_t); today's standard
 // libraries define char_traits only for the standard character types.
