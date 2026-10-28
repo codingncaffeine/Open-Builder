@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
-# Runs the original game from the local test bed, headless: its own Wine prefix, its own X server (Xvfb),
-# an isolated session bus, nothing on the user's desktop. Captures the screen after --shot-after seconds.
+# Runs the original program from the local test bed, headless but GPU-accelerated: a private nested KWin with
+# Xwayland (tools/nested.sh), the test bed's own Wine prefix and HOME, sound made impossible (the audio wall is
+# proven before every start), nothing on the user's desktop. Reports how long the game lived; captures the screen.
 #
-#   tools/run-original.sh [--driver OpenGL|DirectX|Software] [--seconds N] [--shot-after N] [--out PNG] [--size WxH] [-- extra game args]
+#   tools/run-original.sh [--plain | --driver OpenGL|DirectX|Software] [--seconds N] [--shot-after N] [--out PNG]
+#                         [--size WxH] [-- extra game args]
 #
-# The test bed lives in scratch/testbed/ (gitignored): game/ is a copy of the install, prefix/ the Wine prefix.
+# --plain passes exactly the store launcher's windowed arguments. OB_PROBE_DIR=dir adds the window list and a
+# screenshot every 15 s. OB_WINEDBG_SCRIPT=file runs the game under winedbg with that command file (a Windows
+# path, e.g. Z:\...\cmds.txt). The test bed lives in scratch/testbed/ (gitignored): game/ is a copy of the install,
+# prefix/ the Wine prefix, home/ the private HOME, logs/ the output.
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 bed="$root/scratch/testbed"
-seconds=60 shot_after=0 out="" size=1280x720 driver=OpenGL
+seconds=60 shot_after=0 out="" size=1280x720 driver=OpenGL plain=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --seconds) seconds="$2"; shift 2 ;;
@@ -16,65 +21,46 @@ while [[ $# -gt 0 ]]; do
     --out) out="$2"; shift 2 ;;
     --size) size="$2"; shift 2 ;;
     --driver) driver="$2"; shift 2 ;;
+    --plain) plain=1; shift ;;
     --) shift; break ;;
     *) echo "unknown option: $1" >&2; exit 2 ;;
   esac
 done
-[[ -x "$bed/game/Apps/SimCity 4.exe" || -f "$bed/game/Apps/SimCity 4.exe" ]] || { echo "no test bed at $bed/game" >&2; exit 1; }
-
-export WINEPREFIX="$bed/prefix" WINEARCH=win64 WINEDEBUG="${WINEDEBUG:--all}"
-# No desktop menu entries, file associations, Mono or Gecko prompts from this prefix.
-export WINEDLLOVERRIDES="winemenubuilder.exe=d;mscoree=d;mshtml=d${WINEDLLOVERRIDES:+;$WINEDLLOVERRIDES}"
-# A private HOME: Wine links the prefix's Documents/Desktop/... to $HOME's folders, and the game writes its
-# user folder into Documents. With the real HOME that lands in the user's own Documents (it did, 2026-10-28).
-export HOME="$bed/home"
-export XDG_CONFIG_HOME="$bed/xdg/config" XDG_DATA_HOME="$bed/xdg/data" XDG_CACHE_HOME="$bed/xdg/cache"
-mkdir -p "$HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_CACHE_HOME" "$bed/logs"
-unset WAYLAND_DISPLAY
-
-# Refuses to run while any user folder of the prefix points outside the test bed.
-check_prefix_contained() {
-  local link target
-  [[ -d "$WINEPREFIX/drive_c/users" ]] || return 0
-  while IFS= read -r -d '' link; do
-    target="$(readlink -f "$link")"
-    [[ "$target" == "$bed"/* ]] || { echo "prefix link escapes the test bed: $link -> $target" >&2; return 1; }
-  done < <(find "$WINEPREFIX/drive_c/users" -mindepth 2 -maxdepth 2 -type l -print0)
-}
-export -f check_prefix_contained
+[[ -f "$bed/game/Apps/SimCity 4.exe" ]] || { echo "no test bed at $bed/game" >&2; exit 1; }
 
 w="${size%x*}" h="${size#*x}"
-args=(-w "-d:$driver" -Intro:off -CPUCount:1 -CustomResolution:enabled "-r${w}x${h}x32" "$@")
+if [[ -n "$plain" ]]; then
+  args=(-CPUCount:1 -w "$@")   # exactly the store launcher's windowed task
+else
+  args=(-w "-d:$driver" -Intro:off -CPUCount:1 -CustomResolution:enabled "-r${w}x${h}x32" "$@")
+fi
 
-session() {
-  set -euo pipefail
-  [[ -d "$WINEPREFIX/drive_c" ]] || wineboot -i >/dev/null 2>&1
-  check_prefix_contained
-  cd "$bed/game/Apps"
-  wine "SimCity 4.exe" "${args[@]}" >"$bed/logs/game.out" 2>&1 &
-  pid=$!
-  # OB_PROBE_DIR: every 15 s, the X window tree and a screenshot, until the run ends.
-  if [[ -n "${OB_PROBE_DIR:-}" ]]; then
-    mkdir -p "$OB_PROBE_DIR"
-    ( t=0; while kill -0 "$pid" 2>/dev/null && (( t < seconds )); do
-        sleep 15; t=$(( t + 15 ))
-        xwininfo -root -tree >"$OB_PROBE_DIR/tree-$t.txt" 2>&1
-        import -window root "$OB_PROBE_DIR/shot-$t.png" 2>/dev/null
-      done ) &
-  fi
-  if [[ -n "$out" && "$shot_after" -gt 0 ]]; then
-    sleep "$shot_after"
-    import -window root "$out" 2>/dev/null || echo "screen capture failed" >&2
-  fi
-  local left=$(( seconds - shot_after ))
-  (( left > 0 )) && timeout "$left" tail --pid="$pid" -f /dev/null || true
-  wineserver -k 2>/dev/null || true
-  wait "$pid" 2>/dev/null || true
-}
-export -f session
-export bed out shot_after seconds
-export args_str="$(printf '%q ' "${args[@]}")"
-xvfb-run -a -s "-screen 0 ${w}x${h}x24" \
-  dbus-run-session --config-file="$root/tools/isolated-bus.conf" \
-  bash -c 'eval "args=($args_str)"; session'
+# A private HOME: Wine links the prefix's Documents/Desktop/... to $HOME's folders, and the game writes its user
+# folder into Documents. With the real HOME that lands in the user's own Documents (it did, 2026-10-28).
+mkdir -p "$bed/home" "$bed/logs"
+export HOME="$bed/home" WINEPREFIX="$bed/prefix" WINEDEBUG="${WINEDEBUG:--all}"
+# No desktop entries, no Mono/Gecko prompts. Audio: silence is guaranteed by tools/nested.sh (no sound devices or
+# audio servers exist inside it); the game still gets a sound device, ALSA's null PCM (tools/silent-alsa.conf),
+# because it quits without one. Only Wine's ALSA driver is left enabled, so that is the device it finds.
+export WINEDLLOVERRIDES="winemenubuilder.exe=d;mscoree=d;mshtml=d;winepulse.drv=d;wineoss.drv=d${WINEDLLOVERRIDES:+;$WINEDLLOVERRIDES}"
+# ALSA splits ALSA_CONFIG_PATH on spaces, and this folder's name has one: hand it a copy at a space-free path.
+ALSA_CONFIG_PATH="/tmp/openbuilder-$(id -u)-silent-alsa.conf"
+cp "$root/tools/silent-alsa.conf" "$ALSA_CONFIG_PATH"
+export ALSA_CONFIG_PATH
+[[ -d "$WINEPREFIX/drive_c" ]] || DISPLAY= wineboot -i >/dev/null 2>&1
+# On a machine with an NVIDIA card and an integrated GPU, the nested session's GL otherwise lands on the
+# integrated one, whose driver rejects the game's command streams; PRIME offload sends the game to the NVIDIA card.
+if [[ -e /dev/nvidia0 && -z "${OB_NO_PRIME:-}" ]]; then
+  export __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only
+fi
+
+# Never start the game until the audio wall is proven, this run, with its control.
+"$root/tools/check-silence.sh" >"$bed/logs/silence-check.txt" 2>&1 || {
+  echo "audio wall check FAILED, not starting the game:" >&2; cat "$bed/logs/silence-check.txt" >&2; exit 1; }
+
+export bed seconds out shot_after OB_PROBE_DIR="${OB_PROBE_DIR:-}" OB_WINEDBG_SCRIPT="${OB_WINEDBG_SCRIPT:-}"
+export OB_ARGS="$(printf '%q ' "${args[@]}")" OB_WIDTH="$w" OB_HEIGHT="$h"
+rm -f "$bed/logs/lifetime.txt"
+"$root/tools/nested.sh" "$root/scratch/nested" $(( seconds + 120 )) "$root/tools/original-session.sh" | grep -v '^nested: compositor exit 0$' || true
+cat "$bed/logs/lifetime.txt" 2>/dev/null || echo "no lifetime recorded (see scratch/nested/kwin/kwin.txt)"
 echo "log: $bed/logs/game.out"
