@@ -8,7 +8,8 @@ root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
 if [[ "${1:-}" == --clang ]]; then
   out=build/clang sep=/
-  cl() { clang-cl --target=i686-pc-windows-msvc -fms-compatibility-version=13.10 "$@"; }
+  # /GS- and freestanding: the 2003 compiler has neither stack cookies nor implied memset calls, and there is no CRT
+  cl() { clang-cl --target=i686-pc-windows-msvc -fms-compatibility-version=13.10 /GS- /clang:-ffreestanding "$@"; }
   link() { lld-link "$@"; }
 else
   out=build/vc71 sep='\'  # the toolkit runs under Wine, where an output folder needs a backslash
