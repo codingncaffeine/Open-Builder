@@ -1,0 +1,17 @@
+# What obclass must recover from classes.cpp built with /O1 /GX-, written from the source (sizeof on 32-bit) and the
+# linker map (which functions survive inlining, /OPT:REF and /OPT:ICF, by the compiler's own names), never from
+# obclass output. Columns: primary vtable, size, layout, bases, members, constructors, destructors, deleting
+# destructors. A function shared by two classes (folded) carries the alphabetically first of its names. Interfaces
+# without vtables leave no trace in the code, so they are not bases. Last column: virtual bases (offset in the
+# complete object, from the constructors' code: cVMid = vbptr, mid, vtordisp, cVBase at c; cVLeaf = vfptr, cVMid at 4,
+# leaf, vtordisp, cVBase at 14).
+cCounter	8	0:cCounter	-	-	-	-	??_EcCounter@@UAEPAXI@Z	-
+cLeaf	10	0:cLeaf	0:cNode	8:cCounter	??0cLeaf@@QAE@XZ	??1cLeaf@@UAE@XZ	??_EcLeaf@@UAEPAXI@Z	-
+cNode	8	0:cNode	-	-	-	??1cNode@@UAE@XZ	??_EcNode@@UAEPAXI@Z	-
+cRightTriangle/IShape	1c	0:cRightTriangle/IShape,4:cRightTriangle/INamed	0:cTriangle/IShape	14:cCounter	??0cRightTriangle@@QAE@HH@Z	??1cRightTriangle@@UAE@XZ	??_EcRightTriangle@@UAEPAXI@Z	-
+cShapeBase/IShape	-	0:cShapeBase/IShape,4:cShapeBase/INamed	-	-	-	-	??_EcShapeBase@@UAEPAXI@Z	-
+cSquare/IShape	14	0:cSquare/IShape,4:cSquare/INamed,8:cSquare/ISerial	-	-	??0cSquare@@QAE@H@Z	??1cSquare@@UAE@XZ	??_EcSquare@@UAEPAXI@Z	-
+cTriangle/IShape	14	0:cTriangle/IShape,4:cTriangle/INamed	0:cShapeBase/IShape	-	??0cTriangle@@QAE@HH@Z	-	??_EcShapeBase@@UAEPAXI@Z	-
+cVBase	-	0:cVBase	-	-	-	-	??_EcVBase@@UAEPAXI@Z	-
+cVLeaf	1c	0:cVLeaf,14:cVLeaf/cVMid	4:cVMid	-	??0cVLeaf@@QAE@XZ	-	??_EcVLeaf@@UAEPAXI@Z	14:cVBase
+cVMid	14	c:cVMid	-	-	??0cVMid@@QAE@XZ	-	??_EcVMid@@UAEPAXI@Z	c:cVBase

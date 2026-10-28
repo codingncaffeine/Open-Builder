@@ -25,6 +25,7 @@ struct Section {
     uint32_t vsize;
     uint32_t raw;
     uint32_t rawSize;
+    uint32_t flags;  // IMAGE_SCN_* characteristics
 };
 
 struct Image {
@@ -45,6 +46,18 @@ struct Image {
         return nullptr;
     }
     bool contains(uint64_t va) const { return va >= base && va < uint64_t(base) + size; }
+    // A dword of initialised data no code can change (a read-only, non-executable section).
+    bool readConst(uint32_t va, uint32_t& out) const {
+        if (va < base) return false;
+        for (const Section& s : sections) {
+            if ((s.flags & 0xe0000000u) != 0x40000000u) continue;  // readable, not writable, not executable
+            if (va - base >= s.va && va - base + 4 <= s.va + std::min(s.vsize ? s.vsize : s.rawSize, s.rawSize)) {
+                std::memcpy(&out, file.data() + s.raw + (va - base - s.va), 4);
+                return true;
+            }
+        }
+        return false;
+    }
 };
 
 inline uint32_t rd32(const std::vector<uint8_t>& b, size_t o) {
@@ -77,7 +90,7 @@ inline bool loadImage(const std::string& path, Image& img) {
     size_t sh = opt + optSize;
     for (uint16_t i = 0; i < nsect; ++i, sh += 40) {
         if (sh + 40 > b.size()) return false;
-        img.sections.push_back({rd32(b, sh + 12), rd32(b, sh + 8), rd32(b, sh + 20), rd32(b, sh + 16)});
+        img.sections.push_back({rd32(b, sh + 12), rd32(b, sh + 8), rd32(b, sh + 20), rd32(b, sh + 16), rd32(b, sh + 36)});
     }
     return true;
 }
