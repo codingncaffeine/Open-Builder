@@ -32,6 +32,7 @@ void InstallHooks()
         thunk[1] = 0x05;
         *reinterpret_cast<volatile long**>(thunk + 2) = &g_counts[i];
         WriteJump(thunk + 6, g_hooks[i].replacement);
+        if (!g_hooks[i].hook) continue;
 
         unsigned char* original = reinterpret_cast<unsigned char*>(g_hooks[i].original);
         DWORD old;

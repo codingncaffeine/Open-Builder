@@ -28,7 +28,10 @@ cl /nologo /c /O2 /Isdk "/Fo$out/sdk$sep" sdk/kernel32_stub.cpp 2>&1 | quiet
 link /nologo /dll /noentry /nodefaultlib /def:sdk/kernel32.def "/out:$out/sdk/kernel32.dll" \
   "/implib:$out/sdk/kernel32.lib" "$out/sdk/kernel32_stub.obj" 2>&1 | quiet
 
+# The hook table comes from the FUNCTION annotations in src/ (tools/gen-hooks.sh).
+"$root/tools/gen-hooks.sh" "$out/hooks.gen.cpp"
 mapfile -t sources < <(find src hook -name '*.cpp' | sort)
+sources+=("$out/hooks.gen.cpp")
 cl /nologo /c /O2 /GX- /W3 /Isdk /Isrc /Ihook "/Fo$out/obj$sep" "${sources[@]}" 2>&1 | quiet
 objs=()
 for s in "${sources[@]}"; do objs+=("$out/obj/$(basename "${s%.cpp}").obj"); done
