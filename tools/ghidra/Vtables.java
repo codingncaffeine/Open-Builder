@@ -10,6 +10,7 @@
 
 import ghidra.app.script.GhidraScript;
 import ghidra.program.model.address.Address;
+import ghidra.program.model.address.AddressRange;
 import ghidra.program.model.listing.Function;
 import ghidra.program.model.listing.Instruction;
 import ghidra.program.model.listing.InstructionIterator;
@@ -63,7 +64,12 @@ public class Vtables extends GhidraScript {
                     if (at != null) {
                         Address t;
                         try { t = toAddr(mem.getInt(at) & 0xffffffffL); } catch (Exception e) { t = null; }
-                        if (t != null && getFunctionAt(t) != null) target = t.getOffset();
+                        // A function, or code outside the first piece of every function: the pure-virtual stub is reached
+                        // only through vtables and is no function to the analyser, and functions it merged into another's
+                        // body as a later piece are functions of their own. A pointer into a function's first piece is no
+                        // slot.
+                        if (t != null && (getFunctionAt(t) != null || (isCode(mem, t) && !inFirstPiece(t))))
+                            target = t.getOffset();
                     }
                     if (target >= 0) { run.add(new long[] {at.getOffset(), target}); continue; }
                     // the run ended: cut it at every address code loads
@@ -85,5 +91,17 @@ public class Vtables extends GhidraScript {
             }
         }
         println("found " + vtables + " vtables, " + slots + " slots");
+    }
+
+    private boolean inFirstPiece(Address a) {
+        Function f = getFunctionContaining(a);
+        if (f == null) return false;
+        AddressRange first = f.getBody().getRangeContaining(f.getEntryPoint());
+        return first != null && first.contains(a);
+    }
+
+    private static boolean isCode(Memory mem, Address a) {
+        MemoryBlock b = mem.getBlock(a);
+        return b != null && b.isExecute() && b.isInitialized();
     }
 }
