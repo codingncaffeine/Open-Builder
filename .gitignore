@@ -3,6 +3,7 @@
 /scratch/
 /snapshots/
 /re/
+/build/
 
 # Never commit original game content or anything derived from the executable
 *.dat

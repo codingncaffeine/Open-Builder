@@ -1,0 +1,14 @@
+LIBRARY kernel32.dll
+EXPORTS
+  VirtualProtect
+  VirtualAlloc
+  GetCurrentProcess
+  FlushInstructionCache
+  LoadLibraryA
+  GetProcAddress
+  GetSystemDirectoryA
+  CreateFileA
+  WriteFile
+  CloseHandle
+  CreateThread
+  Sleep

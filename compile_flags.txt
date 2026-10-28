@@ -1,0 +1,9 @@
+-xc++
+--target=i686-pc-windows-msvc
+-fms-extensions
+-fms-compatibility
+-fms-compatibility-version=13.10
+-std=c++98
+-Isdk
+-Isrc
+-Ihook
