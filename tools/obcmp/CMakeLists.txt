@@ -12,3 +12,7 @@ find_package(zydis REQUIRED)
 add_executable(obcmp obcmp.cpp)
 target_link_libraries(obcmp PRIVATE Zydis::Zydis)
 target_compile_options(obcmp PRIVATE -Wall -Wextra -Wpedantic)
+
+add_executable(obsig obsig.cpp)
+target_link_libraries(obsig PRIVATE Zydis::Zydis)
+target_compile_options(obsig PRIVATE -Wall -Wextra -Wpedantic)
