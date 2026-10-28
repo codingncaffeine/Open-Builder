@@ -1,0 +1,2 @@
+# The game's own sources: full optimisation with intrinsics (strlen inline), function-level linking (16-aligned).
+/O2 /GX- /W3

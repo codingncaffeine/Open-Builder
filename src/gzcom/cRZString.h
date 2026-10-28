@@ -13,7 +13,10 @@
 class cRZString : public cIGZString, public std::string {
 public:
     cRZString(const char* source);
-    virtual ~cRZString();
+    cRZString(const char* source, size_t length);
+    cRZString(const cIGZString& source);
+    cRZString(const cRZString& source, size_t position, size_t count = npos);
+    virtual ~cRZString() {}
 
     bool QueryInterface(uint32_t riid, void** ppvObj);
     uint32_t AddRef();
@@ -45,8 +48,39 @@ public:
     int32_t RFind(const cIGZString& other, uint32_t position, bool caseSensitive) const;
     cIGZString* Sprintf(const char* format, ...);
 
+    // Not in the interface: in place, ASCII through the C library, anything else through UTF-16.
+    void MakeLower();
+    void MakeUpper();
+
 protected:
     uint32_t mnRefCount;  // +0x10
 };
+
+// The constructors are inline: the original has each one out of line once, from the first of its game sources that
+// used it (built with the game's flags, see src/game/FLAGS), and the framework calls those.
+
+// FUNCTION: 0x00408480
+inline cRZString::cRZString(const char* source)
+    : std::string(source), mnRefCount(0)
+{
+}
+
+// FUNCTION: 0x0044abe0
+inline cRZString::cRZString(const char* source, size_t length)
+    : std::string(source, length), mnRefCount(0)
+{
+}
+
+// FUNCTION: 0x0040ae00
+inline cRZString::cRZString(const cIGZString& source)
+    : std::string(source.Data(), source.Strlen()), mnRefCount(0)
+{
+}
+
+// FUNCTION: 0x00408be0
+inline cRZString::cRZString(const cRZString& source, size_t position, size_t count)
+    : std::string(source, position, count), mnRefCount(0)
+{
+}
 
 #endif

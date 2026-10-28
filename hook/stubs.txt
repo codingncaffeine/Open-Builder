@@ -3,11 +3,19 @@
 
 # C runtime (the original links it statically)
 0x009f17e0 _strlen
+0x009f1120 _strncmp
+0x009f18f0 _memcmp
 0x009f066e _malloc
 0x009f015b _free
 0x009f19b0 _memcpy
 0x009eeb70 _memmove
 0x009f1870 _memset
+0x009ef5a9 _isupper
+0x009ef5e3 _islower
+0x009f0543 _tolower
+0x009f0cb6 _toupper
+0x009f4c35 _towlower
+0x009f4ce1 _towupper
 
 # The program's own memory management (its global new/delete take a lock and pool small blocks)
 0x005e55e0 ??2@YAPAXI@Z
@@ -19,3 +27,10 @@
 0x0090cf63 ?__stl_delete@_STL@@YAXPAX@Z
 0x009dd1d0 ?__stl_throw_length_error@_STL@@YAXPBD@Z
 0x009dd0a0 ?__stl_throw_out_of_range@_STL@@YAXPBD@Z
+
+# The framework's text conversion (src/gzcom/RZTextEncoding.h)
+0x009113ef ?RZStringToEncoding@@YAIABVcIGZString@@PAXAAIH@Z
+0x00911358 ?RZEncodingToString@@YAIPBXIHAAVcIGZString@@@Z
+
+# The framework's string (src/gzcom/cRZString.cpp)
+0x0090f574 ?Sprintf@cRZString@@UAAPAVcIGZString@@PBDZZ

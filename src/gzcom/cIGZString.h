@@ -10,6 +10,9 @@ static const uint32_t GZIID_cIGZString = 0x089b7dc8;
 
 class OB_NOVTABLE cIGZString : public cIGZUnknown {
 public:
+    // A length argument of this value means the text is null-terminated and its length is to be measured.
+    static const uint32_t kUnknownLength = 0xffffffff;
+
     virtual void FromChar(const char* source) = 0;
     virtual void FromChar(const char* source, uint32_t length) = 0;
     virtual const char* ToChar() const = 0;
