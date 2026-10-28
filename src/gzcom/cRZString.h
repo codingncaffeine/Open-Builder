@@ -16,6 +16,7 @@ public:
     cRZString(const char* source);
     cRZString(const char* source, size_t length);
     cRZString(const cIGZString& source);
+    cRZString(const std::string& source);
     // The copy constructor, and a substring of another string.
     cRZString(const cRZString& source, size_t position = 0, size_t count = npos);
     virtual ~cRZString() {}
@@ -49,6 +50,9 @@ public:
     int32_t RFind(const char* other, uint32_t position, bool caseSensitive) const;
     int32_t RFind(const cIGZString& other, uint32_t position, bool caseSensitive) const;
     cIGZString* Sprintf(const char* format, ...);
+
+    // The copy assignment takes the text only; the reference count stays.
+    cRZString& operator=(const cRZString& other);
 
     // Not in the interface: in place, ASCII through the C library, anything else through UTF-16.
     void MakeLower();
@@ -91,6 +95,8 @@ typedef std::basic_string<RZUnicodeChar> RZUnicodeString;
 // ASCII only: other characters become '?' one way and are sign-extended the other.
 void RZUnicodeToString(const RZUnicodeString& source, cRZString& dest);
 void RZStringToUnicode(const cRZString& source, RZUnicodeString& dest);
+// Replaces dest's text with source's.
+void RZStringFromStd(const std::string& source, cRZString& dest);
 
 // The constructors are inline: the original has each one out of line once, from the first of its game sources that
 // used it (built with the game's flags, see src/game/FLAGS), and the framework calls those.
@@ -119,10 +125,23 @@ inline cRZString::cRZString(const cIGZString& source)
 {
 }
 
+// FUNCTION: 0x00408b90
+inline cRZString::cRZString(const std::string& source)
+    : std::string(source), mnRefCount(0)
+{
+}
+
 // FUNCTION: 0x00408be0
 inline cRZString::cRZString(const cRZString& source, size_t position, size_t count)
     : std::string(source, position, count), mnRefCount(0)
 {
+}
+
+// FUNCTION: 0x00424380
+inline cRZString& cRZString::operator=(const cRZString& other)
+{
+    std::string::operator=(other);
+    return *this;
 }
 
 #endif

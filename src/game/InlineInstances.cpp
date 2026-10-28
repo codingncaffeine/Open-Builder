@@ -4,11 +4,14 @@
 // an entry leaves when the game source that first used it is decompiled.
 #include "gzcom/cRZString.h"
 
-void UseInlineInstances(const char* text, uint32_t length, const cIGZString& string, const cRZString& rzString)
+void UseInlineInstances(const char* text, uint32_t length, const cIGZString& string, const cRZString& rzString,
+                        const std::string& stdString)
 {
     cRZString empty;
     cRZString fromText(text);
     cRZString fromRange(text, length);
     cRZString fromString(string);
+    cRZString fromStdString(stdString);
     cRZString copy(rzString);
+    copy = rzString;
 }

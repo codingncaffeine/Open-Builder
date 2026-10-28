@@ -10,6 +10,8 @@
 0x009f19b0 _memcpy
 0x009eeb70 _memmove
 0x009f1870 _memset
+0x009f06b2 _sprintf
+0x009f2108 __snprintf
 0x009ef5a9 _isupper
 0x009ef5e3 _islower
 0x009f0543 _tolower
@@ -31,6 +33,5 @@
 # The framework's text conversion (src/gzcom/RZTextEncoding.h)
 0x009113ef ?RZStringToEncoding@@YAIABVcIGZString@@PAXAAIH@Z
 0x00911358 ?RZEncodingToString@@YAIPBXIHAAVcIGZString@@@Z
-
-# The framework's string (src/gzcom/cRZString.cpp)
-0x0090f574 ?Sprintf@cRZString@@UAAPAVcIGZString@@PBDZZ
+0x009106a9 ?RZCharacterSize@@YAHPBDHH@Z
+0x009107d8 ?RZCharacterCount@@YAHPBDHH@Z

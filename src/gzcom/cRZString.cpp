@@ -1,12 +1,15 @@
 #include "gzcom/cRZString.h"
 
 #include <ctype.h>
+#include <stdarg.h>
+#include <stdio.h>
 #include <string.h>
 #include <wctype.h>
 
 #include <algorithm>
 #include <vector>
 
+#include "common/crt.h"
 #include "gzcom/RZTextEncoding.h"
 
 // FUNCTION: 0x0090e1d1
@@ -533,4 +536,429 @@ void RZStringToUnicode(const cRZString& source, RZUnicodeString& dest)
     for (; i < length; i++) {
         dest.push_back(source[i]);
     }
+}
+
+// FUNCTION: 0x0090fbe5
+void RZStringFromStd(const std::string& source, cRZString& dest)
+{
+    dest = source;
+}
+
+// The text Sprintf builds: in the object (on the stack) while it fits, on the heap after. Names assumed.
+class cRZCharBuffer {
+public:
+    char* Begin() const { return mpBegin; }
+    char* End() const { return mpEnd; }
+    uint32_t Size() const { return static_cast<uint32_t>(mpEnd - mpBegin); }
+    uint32_t Capacity() const { return static_cast<uint32_t>(mpCapacityEnd - mpBegin); }
+
+    void Reserve(uint32_t capacity);
+    void Resize(uint32_t size);
+    void PushBack(const char& c);
+    void Append(const char* text, uint32_t length);
+    void Append(uint32_t count, char c);
+
+protected:
+    char* mpBegin;
+    char* mpEnd;
+    char* mpCapacityEnd;
+    char* mpHeap;
+};
+
+template <uint32_t N>
+class cRZLocalCharBuffer : public cRZCharBuffer {
+public:
+    cRZLocalCharBuffer()
+    {
+        mpHeap = NULL;
+        mpBegin = mLocal;
+        mpEnd = mLocal;
+        mpCapacityEnd = mLocal + N;
+    }
+    ~cRZLocalCharBuffer() { operator delete(mpHeap); }
+
+private:
+    char mLocal[N];
+};
+
+// FUNCTION: 0x0090e25c
+void cRZCharBuffer::Reserve(uint32_t capacity)
+{
+    if (capacity >= Capacity()) {
+        char* buffer = static_cast<char*>(operator new(capacity));
+        uint32_t size = Size();
+        memcpy(buffer, mpBegin, size);
+        operator delete(mpHeap);
+        mpHeap = buffer;
+        mpBegin = buffer;
+        mpEnd = buffer + size;
+        mpCapacityEnd = buffer + capacity;
+    }
+}
+
+// FUNCTION: 0x0090e2c8
+void cRZCharBuffer::Resize(uint32_t size)
+{
+    if (size > Size()) {
+        Reserve(size);
+    }
+    mpEnd = mpBegin + size;
+}
+
+// FUNCTION: 0x0090e2eb
+void cRZCharBuffer::PushBack(const char& c)
+{
+    if (mpEnd == mpCapacityEnd) {
+        Reserve(Capacity() * 2);
+    }
+    *mpEnd = c;
+    mpEnd++;
+}
+
+// FUNCTION: 0x0090e312
+void cRZCharBuffer::Append(const char* text, uint32_t length)
+{
+    if (static_cast<uint32_t>(mpCapacityEnd - mpEnd) < length) {
+        Reserve(std::max(Capacity() * 2, Size() + length));
+    }
+    memcpy(mpEnd, text, length);
+    mpEnd += length;
+}
+
+// FUNCTION: 0x0090e366
+void cRZCharBuffer::Append(uint32_t count, char c)
+{
+    if (static_cast<uint32_t>(mpCapacityEnd - mpEnd) < count) {
+        Reserve(std::max(Capacity() * 2, Size() + count));
+    }
+    std::fill(mpEnd, mpEnd + count, c);
+    mpEnd += count;
+}
+
+// FUNCTION: 0x0090e247
+bool RZIsDigit(char c)
+{
+    return c >= '0' && c <= '9';
+}
+
+// FUNCTION: 0x0090f574
+cIGZString* cRZString::Sprintf(const char* format, ...)
+{
+    va_list args;
+    va_start(args, format);
+    cRZLocalCharBuffer<64> number;
+    cRZLocalCharBuffer<1024> text;
+
+    for (;;) {
+        char next = *format++;
+        if (next == '\0') {
+            break;
+        }
+        if (next == '%') {
+            bool leftAlign = false;
+            bool plus = false;
+            bool space = false;
+            bool zeroPad = false;
+            bool alternate = false;
+            char c;
+            for (;;) {
+                c = *format++;
+                if (c == '-') {
+                    leftAlign = true;
+                } else if (c == '+') {
+                    plus = true;
+                } else if (c == ' ') {
+                    space = true;
+                } else if (c == '0') {
+                    zeroPad = true;
+                } else if (c == '#') {
+                    alternate = true;
+                } else {
+                    break;
+                }
+            }
+            if (c == '%') {
+                text.PushBack(c);
+                continue;
+            }
+            if (leftAlign) {
+                zeroPad = false;
+            }
+            if (plus) {
+                space = false;
+            }
+
+            int width = -1;
+            if (c == '*') {
+                width = va_arg(args, int);
+                c = *format++;
+            } else if (RZIsDigit(c)) {
+                width = 0;
+                do {
+                    width = width * 10 + c - '0';
+                    c = *format++;
+                } while (RZIsDigit(c));
+            }
+            int precision = -1;
+            if (c == '.') {
+                c = *format++;
+                if (c == '*') {
+                    precision = va_arg(args, int);
+                    c = *format++;
+                } else if (RZIsDigit(c)) {
+                    precision = 0;
+                    do {
+                        precision = precision * 10 + c - '0';
+                        c = *format++;
+                    } while (RZIsDigit(c));
+                }
+            }
+            // h, none, l, then ll or I64
+            int modifier = 1;
+            switch (c) {
+            case 'I':
+                if (format[0] == '6' && format[1] == '4') {
+                    format += 2;
+                    c = *format++;
+                    modifier = 3;
+                }
+                break;
+            case 'h':
+                c = *format++;
+                modifier = 0;
+                break;
+            case 'l':
+                c = *format++;
+                modifier = 2;
+                if (c == 'l') {
+                    c = *format++;
+                    modifier = 3;
+                }
+                break;
+            }
+
+            // The conversion, into the number buffer (or pointing at the argument for %s).
+            const char* output = number.Begin();
+            const char* end = output;
+            bool isInteger = false;
+            bool isSigned = false;
+            bool isNegative = false;
+            char spec[32];
+            switch (c) {
+            case 'd':
+            case 'i':
+                isSigned = true;
+                // fall through
+            case 'o':
+            case 'u':
+            case 'x':
+            case 'X':
+                isInteger = true;
+                spec[0] = '%';
+                switch (modifier) {
+                case 0: {
+                    short value = static_cast<short>(va_arg(args, int));
+                    if (value < 0 && isSigned) {
+                        isNegative = true;
+                        value = static_cast<short>(-value);
+                        c = 'u';
+                    }
+                    spec[1] = 'h';
+                    spec[2] = c;
+                    spec[3] = '\0';
+                    end = output + sprintf(number.Begin(), spec, value);
+                    break;
+                }
+                case 1: {
+                    int value = va_arg(args, int);
+                    if (value < 0 && isSigned) {
+                        isNegative = true;
+                        value = -value;
+                        c = 'u';
+                    }
+                    spec[1] = c;
+                    spec[2] = '\0';
+                    end = output + sprintf(number.Begin(), spec, value);
+                    break;
+                }
+                case 2: {
+                    long value = va_arg(args, long);
+                    if (value < 0 && isSigned) {
+                        isNegative = true;
+                        value = -value;
+                        c = 'u';
+                    }
+                    spec[1] = 'l';
+                    spec[2] = c;
+                    spec[3] = '\0';
+                    end = output + sprintf(number.Begin(), spec, value);
+                    break;
+                }
+                case 3: {
+                    // The 2003 runtime's spelling; the native port needs "ll" here.
+                    int64_t value = va_arg(args, int64_t);
+                    if (value < 0 && isSigned) {
+                        isNegative = true;
+                        value = -value;
+                        c = 'u';
+                    }
+                    spec[1] = 'I';
+                    spec[2] = '6';
+                    spec[3] = '4';
+                    spec[4] = c;
+                    spec[5] = '\0';
+                    end = output + sprintf(number.Begin(), spec, value);
+                    break;
+                }
+                }
+                break;
+            case 'c':
+                *number.Begin() = static_cast<char>(va_arg(args, int));
+                end = output + 1;
+                break;
+            case 'e':
+            case 'f':
+            case 'g':
+            case 'E':
+            case 'G': {
+                spec[0] = '%';
+                char* p = spec + 1;
+                if (alternate) {
+                    *p++ = '#';
+                }
+                if (precision >= 0) {
+                    *p++ = '.';
+                    p += sprintf(p, "%d", precision);
+                }
+                double value = va_arg(args, double);
+                p[0] = c;
+                p[1] = '\0';
+                isSigned = true;
+                if (value < 0.0) {
+                    isNegative = true;
+                    value = -value;
+                }
+                int length;
+                while ((length = OB_SNPRINTF(number.Begin(), number.Size(), spec, value)) < 0) {
+                    number.Resize(number.Capacity() * 2);
+                }
+                output = number.Begin();
+                end = output + length;
+                break;
+            }
+            case 's': {
+                output = va_arg(args, const char*);
+                int length = static_cast<int>(strlen(output));
+                if (precision >= 0) {
+                    // the precision counts characters, not bytes
+                    int bytes = length;
+                    length = 0;
+                    for (int characters = 0; length < bytes && characters < precision; characters++) {
+                        int characterSize = RZCharacterSize(output + length, bytes - length, kRZEncodingString);
+                        if (characterSize == 0) {
+                            break;
+                        }
+                        length += characterSize;
+                    }
+                }
+                end = output + length;
+                break;
+            }
+            case 'p':
+                end = output + sprintf(number.Begin(), "%p", va_arg(args, void*));
+                break;
+            case 'n':
+                *va_arg(args, int*) = static_cast<int>(size());
+                continue;
+            case 'C':
+            case 'S':
+                // wide characters and strings are not supported
+                format--;
+                break;
+            default:
+                format--;
+                break;
+            }
+
+            // Padding, sign and prefix around the conversion; widths count characters.
+            int length = static_cast<int>(end - output);
+            int characters = RZCharacterCount(output, length, kRZEncodingString);
+            int zeros = 0;
+            int padding = 0;
+            char sign = '\0';
+            const char* prefix = NULL;
+            int prefixLength;
+            if (isInteger) {
+                if (precision > characters) {
+                    zeros = precision - characters;
+                }
+                if (alternate) {
+                    switch (c) {
+                    case 'X':
+                        prefix = "0X";
+                        prefixLength = 2;
+                        characters += 2;
+                        break;
+                    case 'o':
+                        prefix = "0";
+                        prefixLength = 1;
+                        characters++;
+                        break;
+                    case 'x':
+                        prefix = "0x";
+                        prefixLength = 2;
+                        characters += 2;
+                        break;
+                    }
+                }
+            }
+            if (isSigned) {
+                if (isNegative) {
+                    sign = '-';
+                } else {
+                    if (space) {
+                        sign = ' ';
+                    }
+                    if (plus) {
+                        sign = '+';
+                    }
+                }
+                if (sign != '\0') {
+                    characters++;
+                    if (zeroPad) {
+                        text.PushBack(sign);
+                    }
+                }
+            }
+            if (width > 0) {
+                padding = width - zeros - characters;
+                if (padding > 0 && !leftAlign) {
+                    text.Append(padding, zeroPad ? '0' : ' ');
+                }
+            }
+            if (sign != '\0' && !zeroPad) {
+                text.PushBack(sign);
+            }
+            if (prefix != NULL) {
+                text.Append(prefix, prefixLength);
+            }
+            if (zeros > 0) {
+                text.Append(zeros, '0');
+            }
+            text.Append(output, length);
+            if (padding > 0 && leftAlign) {
+                text.Append(padding, ' ');
+            }
+        } else {
+            const char* run = format - 1;
+            while (*format != '\0' && *format != '%') {
+                format++;
+            }
+            text.Append(run, static_cast<uint32_t>(format - run));
+        }
+    }
+    va_end(args);
+
+    assign(static_cast<const char*>(text.Begin()), static_cast<const char*>(text.End()));
+    return this;
 }

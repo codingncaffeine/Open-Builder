@@ -6,6 +6,10 @@
 #include "win32.h"
 #include "hooks.h"
 
+// Code that uses floating point refers to the C runtime's _fltused. This DLL has no runtime of its own (decompiled
+// code calls the original's), so it defines the marker itself.
+extern "C" int _fltused = 0x9875;
+
 namespace {
 
 const unsigned kThunkSize = 11;  // inc dword [count] (6 bytes) + jmp rel32 (5 bytes)
