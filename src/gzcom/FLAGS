@@ -1,0 +1,2 @@
+# The framework library: no intrinsics (strlen is a call), no function-level linking (functions packed).
+/O1 /GX- /W3

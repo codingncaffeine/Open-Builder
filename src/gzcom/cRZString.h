@@ -1,0 +1,52 @@
+// The component model's string: cIGZString over an STLport string, reference counted. Name assumed (the binary keeps
+// none; RZ is the framework's prefix for concrete classes). Layout: vtable, the string's three pointers at +0x04,
+// the reference count at +0x10. Vtable 0x00a80810.
+#ifndef OB_GZCOM_CRZSTRING_H
+#define OB_GZCOM_CRZSTRING_H
+
+#include <string>
+
+#include "gzcom/cIGZString.h"
+
+// The string is a base, not a member: the original stores the vtable after the string is built, which is where a
+// constructor stores it after its bases and before its members.
+class cRZString : public cIGZString, public _STL::string {
+public:
+    cRZString(const char* source);
+    virtual ~cRZString();
+
+    bool QueryInterface(uint32_t riid, void** ppvObj);
+    uint32_t AddRef();
+    uint32_t Release();
+
+    void FromChar(const char* source);
+    void FromChar(const char* source, uint32_t length);
+    const char* ToChar() const;
+    const char* Data() const;
+    uint32_t Strlen() const;
+    bool IsEqual(const cIGZString* other, bool caseSensitive) const;
+    bool IsEqual(const cIGZString& other, bool caseSensitive) const;
+    bool IsEqual(const char* other, uint32_t length, bool caseSensitive) const;
+    int32_t CompareTo(const cIGZString& other, bool caseSensitive) const;
+    int32_t CompareTo(const char* other, uint32_t length, bool caseSensitive) const;
+    cIGZString& operator=(const cIGZString& other);
+    void Copy(const cIGZString& other);
+    void Resize(uint32_t newSize);
+    cIGZString* Append(const char* other, uint32_t length);
+    cIGZString* Append(const cIGZString& other);
+    cIGZString* Insert(uint32_t position, const char* other, uint32_t length);
+    cIGZString* Insert(uint32_t position, const cIGZString& other);
+    cIGZString* Replace(uint32_t start, const char* other, uint32_t length);
+    cIGZString* Replace(uint32_t start, const cIGZString& other);
+    cIGZString* Erase(uint32_t start, uint32_t end);
+    int32_t Find(const char* other, uint32_t position, bool caseSensitive) const;
+    int32_t Find(const cIGZString& other, uint32_t position, bool caseSensitive) const;
+    int32_t RFind(const char* other, uint32_t position, bool caseSensitive) const;
+    int32_t RFind(const cIGZString& other, uint32_t position, bool caseSensitive) const;
+    cIGZString* Sprintf(const char* format, ...);
+
+protected:
+    uint32_t mnRefCount;  // +0x10
+};
+
+#endif
