@@ -14,7 +14,7 @@ link() { "$root/tools/vc71.sh" link "$@"; }
 hook_flags="/O2 /GX- /W3"
 # STLport configured as the original had it: plain new-allocator, __stl_new/__stl_delete out of line (stubs).
 common=(/nologo /c /Isdk /Isrc /Ihook /Ithird_party/stlport-4.6/stlport /D_STLP_DONT_FORCE_MSVC_LIB_NAME
-  /D_STLP_USE_NEWALLOC /D_STLP_OUT_OF_LINE_STL_NEW)
+  /D_STLP_USE_NEWALLOC /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE)
 rm -rf "$out"
 mkdir -p "$out/sdk" "$out/obj"
 
@@ -41,7 +41,9 @@ flags_for() {  # the FLAGS file nearest above a source under src/, else the hook
 
 # One compiler run per distinct flag set.
 declare -A groups=()
-mapfile -t sources < <(find src hook -name '*.cpp' | sort)
+# The game's sources link first, as in the original: of the copies of an inline function the objects carry, the
+# linker keeps the first, and the original kept the game's (src/game/InlineInstances.cpp).
+mapfile -t sources < <(find src/game -name '*.cpp' | sort; find src hook -name '*.cpp' -not -path 'src/game/*' | sort)
 sources+=("$out/stubs.gen.cpp")
 for s in "${sources[@]}"; do
   f="$(flags_for "$s")"

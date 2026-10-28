@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# Writes the hook table from the "// FUNCTION: 0x<address>" annotations in src/, after the sources are compiled: each
-# annotation names the original address of the function defined right after it, and that function is found among
-# its object file's symbols by qualified name and parameter types (llvm-undname), so virtual, overloaded and
-# variadic functions all resolve to the function itself. The table refers to each one through /alternatename.
+# Writes the hook table from the "// FUNCTION: 0x<address>" annotations in src/ (sources and headers), after the
+# sources are compiled: each annotation names the original address of the function defined right after it, and that
+# function is found among the compiled objects' symbols by qualified name and parameter types (llvm-undname), so
+# virtual, overloaded, variadic and inline functions all resolve to the function itself. The table refers to each one
+# through /alternatename.
 #   tools/gen-hooks.sh <out.cpp> <object dir>
 # "// FUNCTION: 0x<address> nohook" matches the function without hooking it (one too small for a 5-byte jump, or a
 # body the linker folded into one shared by another entry).
@@ -50,22 +51,26 @@ BEGIN {
 
 entries="$(mktemp)" symbols="$(mktemp)"
 trap 'rm -f "$entries" "$symbols" "$symbols.raw"' EXIT
-for src in $(find src -name '*.cpp' | sort); do
-  obj="$objdir/$(basename "${src%.cpp}").obj"
-  [[ -f "$obj" ]] || { echo "gen-hooks: no object for $src" >&2; exit 1; }
-  # Defined functions of the object: "<key> <decorated>".
-  objdump -t "$obj" | awk '/\(ty +20\)\(scl +2\)/ && $0 !~ /\(sec +0\)/ {print $NF}' | sort -u >"$symbols.raw"
-  # llvm-undname echoes each name, then prints the result and a blank line: keep the results
-  paste "$symbols.raw" <(llvm-undname <"$symbols.raw" | awk 'NR % 3 == 2') | awk -F'\t' "$canon"'
-    {
-      d = $2; isconst = (d ~ /\) const$/); sub(/\) const$/, ")", d)
-      open = index(d, "("); head = substr(d, 1, open - 1); params = substr(d, open + 1); sub(/\)$/, "", params)
-      n = split(head, w, " "); qualified = w[n]
-      print key(qualified, params, isconst) "\t" $1
-    }' >"$symbols"
+# Defined C++ functions of every object: "<key> <decorated>". One table for all of them, because a function defined in
+# a header (an inline one) is compiled into whichever objects use it, and the linker keeps one of those copies.
+for obj in "$objdir"/*.obj; do
+  objdump -t "$obj" | awk '/\(ty +20\)\(scl +2\)/ && $0 !~ /\(sec +0\)/ && $NF ~ /^\?/ {print $NF}'
+done | sort -u >"$symbols.raw"
+# llvm-undname echoes each name, then prints the result and a blank line: keep the results
+paste "$symbols.raw" <(llvm-undname <"$symbols.raw" | awk 'NR % 3 == 2') | awk -F'\t' "$canon"'
+  {
+    d = $2; isconst = (d ~ /\) const$/); sub(/\) const$/, ")", d)
+    open = index(d, "("); head = substr(d, 1, open - 1); params = substr(d, open + 1); sub(/\)$/, "", params)
+    n = split(head, w, " "); qualified = w[n]
+    print key(qualified, params, isconst) "\t" $1
+  }' >"$symbols"
+for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
   # Annotated definitions in this source, joined to their symbols.
   awk -v src="$src" "$canon"'
-    FILENAME != src { sym[$1] = $2; next }
+    FILENAME != src {
+      if (($1 in sym) && sym[$1] != $2) { ambiguous[$1] = sym[$1] " and " $2 }
+      sym[$1] = $2; next
+    }
     /\/\/ FUNCTION: 0x[0-9a-fA-F]+/ {
       match($0, /0x[0-9a-fA-F]+/); address = substr($0, RSTART, RLENGTH); hook = ($0 !~ /nohook/); text = ""; pending = 1; next
     }
@@ -80,6 +85,7 @@ for src in $(find src -name '*.cpp' | sort); do
       n = split(trim(head), w, " "); qualified = w[n]; sub(/^[*&]+/, "", qualified)
       k = key(qualified, params, isconst)
       if (!(k in sym)) { printf "gen-hooks: %s: no compiled function for %s (%s)\n", src, k, address > "/dev/stderr"; exit 1 }
+      if (k in ambiguous) { printf "gen-hooks: %s: %s (%s) is %s\n", src, k, address, ambiguous[k] > "/dev/stderr"; exit 1 }
       print address "\t" sym[k] "\t" qualified "\t" hook
     }' FS='\t' "$symbols" FS=' ' "$src" >>"$entries"
 done

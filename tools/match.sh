@@ -10,7 +10,7 @@ cd "$root"
 exe="scratch/testbed/game/Apps/SimCity 4.exe"
 obcmp="scratch/build/obcmp/obcmp"
 [[ -f re/map/functions.tsv && -f "$exe" && -x "$obcmp" ]] || { echo "needs re/map/functions.tsv, the test bed and obcmp" >&2; exit 2; }
-tools/build.sh >/dev/null
+log=$(tools/build.sh 2>&1) || { printf '%s\n' "$log" >&2; exit 2; }
 out=build/vc71
 dll=$out/version.dll map=$out/version.map
 
