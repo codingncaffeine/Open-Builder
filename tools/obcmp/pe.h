@@ -178,6 +178,11 @@ inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t
     return out;
 }
 
+// Drops the int3 / nop padding a function's extent may end with (up to the next symbol, the alignment fill).
+inline void trimPadding(std::vector<std::string>& tokens) {
+    while (!tokens.empty() && (tokens.back() == "int3" || tokens.back().rfind("nop", 0) == 0)) tokens.pop_back();
+}
+
 inline size_t lcs(const std::vector<std::string>& a, const std::vector<std::string>& b) {
     std::vector<size_t> prev(b.size() + 1, 0), cur(b.size() + 1, 0);
     for (size_t i = 1; i <= a.size(); ++i) {

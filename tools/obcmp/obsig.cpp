@@ -80,11 +80,11 @@ void applyMap(const std::string& path, std::vector<Function>& fns) {
     }
 }
 
-// Tokens without the int3/nop padding a function's extent may end with.
+// A function's tokens, padding trimmed, as one string.
 std::string signature(const Image& img, const std::map<uint32_t, std::string>& names, const Function& fn,
                       size_t& count) {
     auto tokens = tokenize({&img, &names}, fn.va, fn.size);
-    while (!tokens.empty() && (tokens.back() == "int3" || tokens.back().rfind("nop", 0) == 0)) tokens.pop_back();
+    trimPadding(tokens);
     count = tokens.size();
     std::string s;
     for (const auto& t : tokens) s += t, s += '\n';
@@ -275,8 +275,8 @@ int main(int argc, char** argv) {
         if (fn.match >= 0) {
             auto x = tokenize({&orig, &namesA}, a[fn.match].va, a[fn.match].size);
             auto y = tokenize({&lib, &namesB}, fn.va, fn.size);
-            for (auto* t : {&x, &y})
-                while (!t->empty() && (t->back() == "int3" || t->back().rfind("nop", 0) == 0)) t->pop_back();
+            trimPadding(x);
+            trimPadding(y);
             same = x == y;
             size_t longest = std::max(x.size(), y.size());
             score = longest ? 100.0 * double(lcs(x, y)) / double(longest) : 0;

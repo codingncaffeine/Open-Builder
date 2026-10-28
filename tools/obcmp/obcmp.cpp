@@ -73,6 +73,8 @@ int main(int argc, char** argv) {
     for (const Pair& p : pairs) {
         auto a = tokenize({&orig, &origNames}, p.origVa, p.origSize);
         auto b = tokenize({&rebuilt, &newNames}, p.newVa, p.newSize);
+        trimPadding(a);
+        trimPadding(b);
         size_t longest = std::max(a.size(), b.size());
         double score = longest ? 100.0 * double(lcs(a, b)) / double(longest) : 0.0;
         bool same = !a.empty() && a == b;
