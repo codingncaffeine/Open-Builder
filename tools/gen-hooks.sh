@@ -35,6 +35,9 @@ function canontype(t,   n, w, i, j, k, out, keep, tmp) {
 function key(qualified, params, isconst,   n, p, i, out) {
   params = trim(params)
   if (params == "void") params = ""
+  # the demangler spells standard library types out, in the STLport namespace (before the split at commas)
+  gsub(/class _STL::basic_string<char, class _STL::char_traits<char>, class _STL::allocator<char>>/, "std::string", params)
+  gsub(/_STL::/, "std::", params)
   gsub(/=[^,]*/, "", params)
   n = params == "" ? 0 : split(params, p, ",")
   out = qualified "("
