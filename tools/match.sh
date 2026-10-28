@@ -38,4 +38,6 @@ awk -v textend="$textend" '
     if (!(o in size)) { print "# no size for " o > "/dev/stderr"; next }
     printf "%s %s %x %x %s\n", o, size[o], r, rs, nm
   }' re/map/functions.tsv "$map" "$out/hook-pairs.txt" >"$out/pairs.tsv"
-"$obcmp" "$exe" "$dll" "$out/pairs.tsv" "$@"
+# The stubs that lead to functions not decompiled yet name their original, so calls to them compare by target.
+awk '$1 ~ /^0001:/ && $2 ~ /^_ob_stub_[0-9a-f]{8}$/ { print substr($2, 10), $3, "stub_" substr($2, 10) }' "$map" >"$out/names.tsv"
+"$obcmp" "$exe" "$dll" "$out/pairs.tsv" --names "$out/names.tsv" "$@"

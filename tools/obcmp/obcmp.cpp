@@ -1,6 +1,6 @@
 // obcmp — compares functions of a rebuilt binary against the original program, instruction by instruction.
 //
-//   obcmp <original.exe> <rebuilt.exe|dll> <pairs.tsv> [--verbose]
+//   obcmp <original.exe> <rebuilt.exe|dll> <pairs.tsv> [--verbose] [--names names.tsv]
 //
 // pairs.tsv: one function per line, "orig_va  orig_size  rebuilt_va  rebuilt_size  name" (hex VAs and sizes,
 // tab- or space-separated, '#' starts a comment). For every pair it prints the match score (0-100) and a total.
@@ -9,6 +9,9 @@
 // replaced by what they refer to where that is known (a paired function), otherwise by "addr", so two builds placed
 // at different addresses still compare equal. Branch targets inside the function become offsets from its start in
 // instructions. The score is the longest common subsequence of the two token lists over the longer list.
+//
+// names.tsv: more address pairs that only name ("orig_va rebuilt_va name"), not scored: the stubs that stand in for
+// functions not decompiled yet, so a call to the wrong one of them is a difference instead of "addr" on both sides.
 #include "pe.h"
 
 #include <algorithm>
@@ -51,10 +54,16 @@ bool parsePairs(const std::string& path, std::vector<Pair>& pairs) {
 
 int main(int argc, char** argv) {
     if (argc < 4) {
-        std::fprintf(stderr, "usage: obcmp <original.exe> <rebuilt.exe|dll> <pairs.tsv> [--verbose]\n");
+        std::fprintf(stderr, "usage: obcmp <original.exe> <rebuilt.exe|dll> <pairs.tsv> [--verbose] [--names names.tsv]\n");
         return 2;
     }
-    bool verbose = argc > 4 && std::strcmp(argv[4], "--verbose") == 0;
+    bool verbose = false;
+    std::string namesPath;
+    for (int i = 4; i < argc; ++i) {
+        if (std::strcmp(argv[i], "--verbose") == 0) verbose = true;
+        else if (std::strcmp(argv[i], "--names") == 0 && i + 1 < argc) namesPath = argv[++i];
+        else { std::fprintf(stderr, "unknown argument %s\n", argv[i]); return 2; }
+    }
     Image orig, rebuilt;
     if (!loadImage(argv[1], orig)) { std::fprintf(stderr, "cannot read PE32 image %s\n", argv[1]); return 2; }
     if (!loadImage(argv[2], rebuilt)) { std::fprintf(stderr, "cannot read PE32 image %s\n", argv[2]); return 2; }
@@ -66,6 +75,16 @@ int main(int argc, char** argv) {
     for (const Pair& p : pairs) {
         origNames[p.origVa] = p.name;
         newNames[p.newVa] = p.name;
+    }
+    if (!namesPath.empty()) {
+        std::ifstream f(namesPath);
+        if (!f) { std::fprintf(stderr, "cannot read %s\n", namesPath.c_str()); return 2; }
+        std::string a, b, name;
+        while (f >> a >> b >> name) {
+            uint32_t o = uint32_t(std::stoul(a, nullptr, 16)), n = uint32_t(std::stoul(b, nullptr, 16));
+            origNames.emplace(o, name);  // a paired function keeps its pair's name
+            newNames.emplace(n, origNames[o]);
+        }
     }
 
     double weighted = 0;
