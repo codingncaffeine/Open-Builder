@@ -1,6 +1,6 @@
-// The component model's string: cIGZString over an STLport string, reference counted. Name assumed (the binary keeps
-// none; RZ is the framework's prefix for concrete classes). Layout: vtable, the string's three pointers at +0x04,
-// the reference count at +0x10. Vtable 0x00a80810.
+// The component model's string: cIGZString over a standard string (STLport 4.6 in the original), reference
+// counted. Name assumed (the binary keeps none; RZ is the framework's prefix for concrete classes). Layout in the
+// original: vtable, the string's three pointers at +0x04, the reference count at +0x10. Vtable 0x00a80810.
 #ifndef OB_GZCOM_CRZSTRING_H
 #define OB_GZCOM_CRZSTRING_H
 
@@ -10,7 +10,7 @@
 
 // The string is a base, not a member: the original stores the vtable after the string is built, which is where a
 // constructor stores it after its bases and before its members.
-class cRZString : public cIGZString, public _STL::string {
+class cRZString : public cIGZString, public std::string {
 public:
     cRZString(const char* source);
     virtual ~cRZString();

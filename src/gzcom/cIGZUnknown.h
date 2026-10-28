@@ -3,11 +3,12 @@
 #ifndef OB_GZCOM_CIGZUNKNOWN_H
 #define OB_GZCOM_CIGZUNKNOWN_H
 
+#include "common/compiler.h"
 #include "common/types.h"
 
 static const uint32_t GZIID_cIGZUnknown = 0x00000001;
 
-class __declspec(novtable) cIGZUnknown {
+class OB_NOVTABLE cIGZUnknown {
 public:
     virtual bool QueryInterface(uint32_t riid, void** ppvObj) = 0;
     virtual uint32_t AddRef() = 0;

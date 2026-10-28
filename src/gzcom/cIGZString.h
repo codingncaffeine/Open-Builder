@@ -8,7 +8,7 @@
 
 static const uint32_t GZIID_cIGZString = 0x089b7dc8;
 
-class __declspec(novtable) cIGZString : public cIGZUnknown {
+class OB_NOVTABLE cIGZString : public cIGZUnknown {
 public:
     virtual void FromChar(const char* source) = 0;
     virtual void FromChar(const char* source, uint32_t length) = 0;

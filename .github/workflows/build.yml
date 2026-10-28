@@ -6,8 +6,8 @@ on:
 
 jobs:
   # The hook DLL builds only with the 2003 compiler toolkit, which CI cannot download, so it is built and matched
-  # locally (tools/build.sh, tools/match.sh). CI checks that no original content slipped into the tree and builds
-  # the host tools.
+  # locally (tools/build.sh, tools/match.sh). CI checks that no original content slipped into the tree, that the
+  # decompiled sources compile as portable C++ with today's compilers and standard libraries, and builds the tools.
   checks:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -15,6 +15,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: No original content
         run: tools/check-content.sh
+      - name: Sources compile with modern compilers
+        run: tools/check-portable.sh g++ clang++
       - name: Install the tools' dependencies
         run: sudo apt-get update -q && sudo apt-get install -y -q cmake ninja-build libzydis-dev
       - name: Build obcmp and obsig
