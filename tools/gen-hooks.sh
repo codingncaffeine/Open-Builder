@@ -2,7 +2,8 @@
 # Writes the hook table from the "// FUNCTION: 0x<address>" annotations in src/ (sources and headers), after the
 # sources are compiled: each annotation names the original address of the function defined right after it, and that
 # function is found among the compiled objects' symbols by qualified name and parameter types (llvm-undname), so
-# virtual, overloaded, variadic and inline functions all resolve to the function itself. The table refers to each one
+# virtual, overloaded, variadic and inline functions all resolve to the function itself (a name only one function
+# has resolves by the name alone, so a parameter type may be a typedef). The table refers to each one
 # through /alternatename.
 #   tools/gen-hooks.sh <out.cpp> <object dir>
 # "// FUNCTION: 0x<address> nohook" matches the function without hooking it (one too small for a 5-byte jump, or a
@@ -69,7 +70,11 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
   awk -v src="$src" "$canon"'
     FILENAME != src {
       if (($1 in sym) && sym[$1] != $2) { ambiguous[$1] = sym[$1] " and " $2 }
-      sym[$1] = $2; next
+      sym[$1] = $2
+      # by name alone too, for parameter types written through a typedef this script cannot see through
+      name = substr($1, 1, index($1, "(") - 1)
+      if (!(name SUBSEP $2 in seen)) { seen[name, $2] = 1; named[name]++; byname[name] = $2 }
+      next
     }
     /\/\/ FUNCTION: 0x[0-9a-fA-F]+/ {
       match($0, /0x[0-9a-fA-F]+/); address = substr($0, RSTART, RLENGTH); hook = ($0 !~ /nohook/); text = ""; pending = 1; next
@@ -84,6 +89,7 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       isconst = (substr(text, rparen + 1) ~ /^[ \t]*const/)
       n = split(trim(head), w, " "); qualified = w[n]; sub(/^[*&]+/, "", qualified)
       k = key(qualified, params, isconst)
+      if (!(k in sym) && named[qualified] == 1) sym[k] = byname[qualified]
       if (!(k in sym)) { printf "gen-hooks: %s: no compiled function for %s (%s)\n", src, k, address > "/dev/stderr"; exit 1 }
       if (k in ambiguous) { printf "gen-hooks: %s: %s (%s) is %s\n", src, k, address, ambiguous[k] > "/dev/stderr"; exit 1 }
       print address "\t" sym[k] "\t" qualified "\t" hook
