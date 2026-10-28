@@ -6,6 +6,8 @@
 # has resolves by the name alone, so a parameter type may be a typedef). The table refers to each one
 # through /alternatename.
 #   tools/gen-hooks.sh <out.cpp> <object dir>
+# "// SYNTHETIC: 0x<address>" with the next line "// <the compiler's name for it>" (llvm-undname's spelling, e.g.
+# "cFoo::`scalar deleting dtor'" or "cFoo::Release`adjustor{4}'") matches a function the compiler generated, never hooked.
 # "// FUNCTION: 0x<address> nohook" matches the function without hooking it (one too small for a 5-byte jump, or a
 # body the linker folded into one shared by another entry).
 set -euo pipefail
@@ -63,7 +65,16 @@ done | sort -u >"$symbols.raw"
 # llvm-undname echoes each name, then prints the result and a blank line: keep the results
 paste "$symbols.raw" <(llvm-undname <"$symbols.raw" | awk 'NR % 3 == 2') | awk -F'\t' "$canon"'
   {
-    d = $2; isconst = (d ~ /\) const$/); sub(/\) const$/, ")", d)
+    d = $2
+    # What the compiler generates (deleting destructors, thunks) by the name it gives it, without the parameters,
+    # as the SYNTHETIC annotations spell it (see the top of this script)
+    if (d ~ /`/ && (t = index(d, "__thiscall ")) > 0) {
+      rest = substr(d, t + 11); last = 0
+      for (i = length(rest); i > 0; i--) if (substr(rest, i, 1) == "(") { last = i; break }
+      print "SYNTHETIC:" substr(rest, 1, last - 1) "\t" $1
+      next
+    }
+    isconst = (d ~ /\) const$/); sub(/\) const$/, ")", d)
     open = index(d, "("); head = substr(d, 1, open - 1); params = substr(d, open + 1); sub(/\)$/, "", params)
     n = split(head, w, " "); qualified = w[n]
     print key(qualified, params, isconst) "\t" $1
@@ -78,6 +89,15 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       name = substr($1, 1, index($1, "(") - 1)
       if (!(name SUBSEP $2 in seen)) { seen[name, $2] = 1; named[name]++; byname[name] = $2 }
       next
+    }
+    synthetic {
+      synthetic = 0; name = $0; sub(/^[ \t]*\/\/[ \t]*/, "", name); name = trim(name)
+      if (!(("SYNTHETIC:" name) in sym)) { printf "gen-hooks: %s: no compiled %s (%s)\n", src, name, address > "/dev/stderr"; exit 1 }
+      print address "\t" sym["SYNTHETIC:" name] "\t" name "\t0"
+      next
+    }
+    /\/\/ SYNTHETIC: 0x[0-9a-fA-F]+/ {
+      match($0, /0x[0-9a-fA-F]+/); address = substr($0, RSTART, RLENGTH); synthetic = 1; next
     }
     /\/\/ FUNCTION: 0x[0-9a-fA-F]+/ {
       match($0, /0x[0-9a-fA-F]+/); address = substr($0, RSTART, RLENGTH); hook = ($0 !~ /nohook/); text = ""; pending = 1; next

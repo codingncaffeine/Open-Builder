@@ -10,7 +10,7 @@ cd "$(dirname "$0")/.."
 # The image library's code, built with the Intel C++ compiler 6.0 (its build strings name jpeg, png, zlib and its
 # own common code): the 2003 compiler cannot match it, so it is counted apart.
 intel_lo=0xa053a0 intel_hi=0xa640c0
-grep -rhoE '// FUNCTION: 0x[0-9a-fA-F]+' src | awk '{print tolower(substr($3, 3))}' | sort -u >"${TMPDIR:-/tmp}/ob-done.$$"
+grep -rhoE '// (FUNCTION|SYNTHETIC): 0x[0-9a-fA-F]+' src | awk '{print tolower(substr($3, 3))}' | sort -u >"${TMPDIR:-/tmp}/ob-done.$$"
 trap 'rm -f "${TMPDIR:-/tmp}/ob-done.$$"' EXIT
 awk -v lo=$((intel_lo)) -v hi=$((intel_hi)) '
   FILENAME ~ /ob-done/ { done[sprintf("%x", strtonum("0x" $1))] = 1; next }

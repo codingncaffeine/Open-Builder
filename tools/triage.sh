@@ -19,7 +19,7 @@ fi
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
 
-grep -rhoE '// FUNCTION: 0x[0-9a-fA-F]+' src | awk '{print tolower(substr($3, 3))}' | sort -u >"$work/done"
+grep -rhoE '// (FUNCTION|SYNTHETIC): 0x[0-9a-fA-F]+' src | awk '{print tolower(substr($3, 3))}' | sort -u >"$work/done"
 # The functions to do, in address order: "<va hex> <size dec>". The image library (other compiler) is left out.
 awk 'FILENAME ~ /done$/ { done[sprintf("%08x", strtonum("0x" $1))] = 1; next }
      FILENAME ~ /libraries/ { lib[sprintf("%08x", strtonum("0x" $1))] = 1; next }

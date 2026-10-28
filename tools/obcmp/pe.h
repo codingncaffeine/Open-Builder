@@ -46,6 +46,12 @@ struct Image {
         return nullptr;
     }
     bool contains(uint64_t va) const { return va >= base && va < uint64_t(base) + size; }
+    // Inside an executable section.
+    bool isCode(uint32_t va) const {
+        for (const Section& s : sections)
+            if ((s.flags & 0x20000000u) && va >= base + s.va && va < base + s.va + s.vsize) return true;
+        return false;
+    }
     // A dword of initialised data no code can change (a read-only, non-executable section).
     bool readConst(uint32_t va, uint32_t& out) const {
         if (va < base) return false;

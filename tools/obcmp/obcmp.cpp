@@ -1,6 +1,6 @@
 // obcmp — compares functions of a rebuilt binary against the original program, instruction by instruction.
 //
-//   obcmp <original.exe> <rebuilt.exe|dll> <pairs.tsv> [--verbose] [--names names.tsv]
+//   obcmp <original.exe> <rebuilt.exe|dll> <pairs.tsv> [--verbose] [--names names.tsv] [--vtables vtables.tsv]
 //
 // pairs.tsv: one function per line, "orig_va  orig_size  rebuilt_va  rebuilt_size  name" (hex VAs and sizes,
 // tab- or space-separated, '#' starts a comment). For every pair it prints the match score (0-100) and a total.
@@ -10,6 +10,8 @@
 // at different addresses still compare equal. Branch targets inside the function become offsets from its start in
 // instructions. The score is the longest common subsequence of the two token lists over the longer list.
 //
+// vtables.tsv: "orig_va rebuilt_va orig_slots rebuilt_slots name": vtables compared slot by slot, each slot's function
+// by name (paired or named functions), and their addresses named for the code that stores them.
 // names.tsv: more address pairs that only name ("orig_va rebuilt_va name"), not scored: the stubs that stand in for
 // functions not decompiled yet, so a call to the wrong one of them is a difference instead of "addr" on both sides.
 #include "pe.h"
@@ -54,14 +56,15 @@ bool parsePairs(const std::string& path, std::vector<Pair>& pairs) {
 
 int main(int argc, char** argv) {
     if (argc < 4) {
-        std::fprintf(stderr, "usage: obcmp <original.exe> <rebuilt.exe|dll> <pairs.tsv> [--verbose] [--names names.tsv]\n");
+        std::fprintf(stderr, "usage: obcmp <original.exe> <rebuilt.exe|dll> <pairs.tsv> [--verbose] [--names names.tsv] [--vtables vtables.tsv]\n");
         return 2;
     }
     bool verbose = false;
-    std::string namesPath;
+    std::string namesPath, vtablesPath;
     for (int i = 4; i < argc; ++i) {
         if (std::strcmp(argv[i], "--verbose") == 0) verbose = true;
         else if (std::strcmp(argv[i], "--names") == 0 && i + 1 < argc) namesPath = argv[++i];
+        else if (std::strcmp(argv[i], "--vtables") == 0 && i + 1 < argc) vtablesPath = argv[++i];
         else { std::fprintf(stderr, "unknown argument %s\n", argv[i]); return 2; }
     }
     Image orig, rebuilt;
@@ -84,6 +87,22 @@ int main(int argc, char** argv) {
             uint32_t o = uint32_t(std::stoul(a, nullptr, 16)), n = uint32_t(std::stoul(b, nullptr, 16));
             origNames.emplace(o, name);  // a paired function keeps its pair's name
             newNames.emplace(n, origNames[o]);
+        }
+    }
+    struct Vtable {
+        uint32_t origVa, newVa, slots, newSlots;
+        std::string name;
+    };
+    std::vector<Vtable> vtables;
+    if (!vtablesPath.empty()) {
+        std::ifstream f(vtablesPath);
+        if (!f) { std::fprintf(stderr, "cannot read %s\n", vtablesPath.c_str()); return 2; }
+        std::string a, b, n, m, name;
+        while (f >> a >> b >> n >> m >> name) {
+            Vtable v{uint32_t(std::stoul(a, nullptr, 16)), uint32_t(std::stoul(b, nullptr, 16)),
+                     uint32_t(std::stoul(n)), uint32_t(std::stoul(m)), name};
+            origNames[v.origVa] = newNames[v.newVa] = name;  // a store of the vtable compares by it
+            vtables.push_back(v);
         }
     }
 
@@ -112,5 +131,44 @@ int main(int argc, char** argv) {
     }
     std::printf("total: %zu/%zu functions identical, %.2f%% of instructions matched\n", exact, pairs.size(),
                 total ? weighted / double(total) : 0.0);
-    return exact == pairs.size() ? 0 : 1;
+
+    // Vtables: slot by slot, each slot's function by its name on both sides (a function neither paired nor stubbed
+    // is its address, so it differs).
+    size_t vexact = 0;
+    for (Vtable& v : vtables) {
+        auto slot = [](const Image& img, const std::map<uint32_t, std::string>& names, uint32_t va, uint32_t i) {
+            const uint8_t* b = img.at(va + 4 * i, 4);
+            if (!b) return std::string("?");
+            uint32_t t;
+            std::memcpy(&t, b, 4);
+            auto it = names.find(t);
+            return it != names.end() ? it->second : hex(t);
+        };
+        size_t same = 0;
+        std::vector<std::string> lines;
+        for (uint32_t i = 0; i < v.slots; ++i) {
+            std::string x = slot(orig, origNames, v.origVa, i), y = slot(rebuilt, newNames, v.newVa, i);
+            same += x == y;
+            lines.push_back((x == y ? "      " : "    ! ") + std::to_string(i) + " " + x + " | " + y);
+        }
+        // Our vtable ends at the next symbol or at the first word that is no code address, whichever is first.
+        uint32_t ours = 0;
+        for (; ours < v.newSlots; ++ours) {
+            const uint8_t* b = rebuilt.at(v.newVa + 4 * ours, 4);
+            uint32_t t = 0;
+            if (b) std::memcpy(&t, b, 4);
+            if (!b || !rebuilt.isCode(t)) break;
+        }
+        v.newSlots = ours;
+        bool identical = same == v.slots && ours == v.slots;
+        vexact += identical;
+        std::printf("%6.2f%%  %s  %s (vtable, %u slots)\n", identical ? 100.0 : 100.0 * double(same) / v.slots,
+                    hex(v.origVa).c_str(), v.name.c_str(), v.slots);
+        if (verbose && !identical) {
+            for (auto& l : lines) std::printf("%s\n", l.c_str());
+            if (v.newSlots != v.slots) std::printf("    ! ours has %u slots\n", v.newSlots);
+        }
+    }
+    if (!vtables.empty()) std::printf("total: %zu/%zu vtables identical\n", vexact, vtables.size());
+    return exact == pairs.size() && vexact == vtables.size() ? 0 : 1;
 }
