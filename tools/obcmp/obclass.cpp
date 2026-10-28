@@ -3,7 +3,7 @@
 // deleting destructors).
 //
 //   obclass <program> <functions.tsv> <vtables.tsv> --new ADDR[,ADDR...] --delete ADDR[,ADDR...]
-//           [--classes out.tsv] [--slots out.tsv]
+//           [--classes out.tsv] [--slots out.tsv] [--deleting out.tsv]
 //
 // functions.tsv: "entry size ..." (hex, tools/ghidra/ExportFunctions.java). vtables.tsv: "vtable slots ..." (hex
 // address, decimal slot count; tools/ghidra/Vtables.java). --new and --delete name the allocator's operator new and
@@ -28,6 +28,9 @@
 //   primary  size  layout(offset:vtable,...)  bases(offset:primary,...)  members(offset:primary,...)
 //   constructors  destructors  deleting-destructors  sites(functions building it inline)  flags
 //   virtual-bases(offset:primary,...)
+// deleting.tsv, one line per deleting destructor: address, shape (call: it calls the destructor out of line; stores:
+// the destructor inlined is only vtable stores; other), the destructor it calls, O1 or O2 (how it pops operator
+// delete's argument: pop ecx, or add esp).
 // slots.tsv, one line per vtable slot of every placed vtable:
 //   vtable  index  target  kind  detail
 // kind: own (declared or overridden by the class), inherited (same as the base's at that position, detail = base
@@ -61,7 +64,7 @@ struct Value {
 };
 
 struct Event {
-    enum Type { Write, Call } type;
+    enum Type { Write, Call, VbTable } type;  // VbTable: a vbtable pointer stored (a = the vbtable)
     int32_t off;
     uint32_t a;  // Write: vtable; Call: callee (0 = indirect)
     bool virt = false;  // Write: at an offset found through a vbtable (a virtual base)
@@ -83,6 +86,9 @@ struct FunctionInfo {
     bool testsDeleteFlag = false;
     bool deletesThis = false;
     int32_t deleteOff = 0;  // what it deletes, from this: 0, -4 (an array's count), -N (this is a virtual base)
+    int instructions = 0;
+    bool popEcx = false;  // pops operator delete's argument with pop ecx (/O1) rather than add esp (/O2)
+    bool afterDelete = false;
 };
 
 enum class Role { Ctor, Dtor };
@@ -165,6 +171,13 @@ FunctionInfo analyse(const Program& p, uint32_t va, uint32_t size) {
     bool tableSeen = false, terminal = false;
 
     auto vtableValue = [&](const Value& v) { return v.kind == Value::Const && p.vtables.count(v.c); };
+    // A vbtable: read-only data whose first entry is the vbptr's offset back to its subobject (0 or a small negative)
+    // and whose next is a plausible offset to a virtual base; never a vtable.
+    auto isVbtable = [&](uint32_t a) {
+        uint32_t first, second;
+        if (p.vtables.count(a) || !p.img.readConst(a, first) || !p.img.readConst(a + 4, second)) return false;
+        return int32_t(first) <= 0 && int32_t(first) > -0x1000 && int32_t(second) > 0 && second < 0x10000 && second % 4 == 0;
+    };
     // A memory operand's address: base + index*scale + disp, an object offset or a constant when what it adds up
     // is (an object plus constants, or constants only).
     auto address = [&](const ZydisDecodedOperand& o) {
@@ -193,6 +206,7 @@ FunctionInfo analyse(const Program& p, uint32_t va, uint32_t size) {
             pushes.back().root == 0 && pushes.back().off <= 0) {
             fi.deletesThis = true;
             fi.deleteOff = pushes.back().off;
+            fi.afterDelete = true;
         }
         Value result;
         if (p.newFns.count(target)) {
@@ -218,12 +232,18 @@ FunctionInfo analyse(const Program& p, uint32_t va, uint32_t size) {
         }
         terminal = false;
         if (ZYAN_FAILED(ZydisDecoderDecodeFull(&dec, code + off, size - off, &ins, ops))) break;
+        ++fi.instructions;
         uint32_t next = va + off + ins.length;
         off += ins.length;
         const ZydisDecodedOperand& o0 = ops[0];
         const ZydisDecodedOperand& o1 = ops[1];
         int d = o0.type == ZYDIS_OPERAND_TYPE_REGISTER ? regIndex(o0.reg.value) : -1;
         bool full = d >= 0 && reg32(o0.reg.value) == o0.reg.value;  // the whole 32-bit register
+        if (fi.afterDelete) {
+            fi.popEcx = ins.mnemonic == ZYDIS_MNEMONIC_POP && o0.type == ZYDIS_OPERAND_TYPE_REGISTER &&
+                        o0.reg.value == ZYDIS_REGISTER_ECX;
+            fi.afterDelete = false;
+        }
 
         auto relTarget = [&](const ZydisDecodedOperand& o) {
             return uint32_t(uint64_t(next) + uint64_t(int64_t(o.imm.value.s)));
@@ -254,6 +274,7 @@ FunctionInfo analyse(const Program& p, uint32_t va, uint32_t size) {
                     v = regs[regIndex(o1.reg.value)];
                 if (base.kind == Value::Obj) {
                     if (vtableValue(v)) record(base, 0, Event::Write, v.c);
+                    else if (v.kind == Value::Const && isVbtable(v.c)) record(base, 0, Event::VbTable, v.c);
                     if (v.kind == Value::Const) fi.roots[base.root].fields[base.off] = v;
                     else fi.roots[base.root].fields.erase(base.off);
                 }
@@ -397,7 +418,7 @@ bool readTable(const std::string& path, std::vector<std::vector<std::string>>& r
 
 int main(int argc, char** argv) {
     std::vector<std::string> pos;
-    std::string classesOut, slotsOut, newArg, deleteArg;
+    std::string classesOut, slotsOut, deletingOut, newArg, deleteArg;
     for (int i = 1; i < argc; ++i) {
         std::string a = argv[i];
         auto value = [&]() -> std::string {
@@ -406,13 +427,14 @@ int main(int argc, char** argv) {
         };
         if (a == "--classes") classesOut = value();
         else if (a == "--slots") slotsOut = value();
+        else if (a == "--deleting") deletingOut = value();
         else if (a == "--new") newArg = value();
         else if (a == "--delete") deleteArg = value();
         else pos.push_back(a);
     }
     if (pos.size() != 3 || newArg.empty() || deleteArg.empty()) {
         std::fprintf(stderr, "usage: obclass <program> <functions.tsv> <vtables.tsv> --new ADDR[,..] --delete ADDR[,..] "
-                             "[--classes out.tsv] [--slots out.tsv]\n");
+                             "[--classes out.tsv] [--slots out.tsv] [--deleting out.tsv]\n");
         return 2;
     }
     Program p;
@@ -442,6 +464,15 @@ int main(int argc, char** argv) {
     std::map<uint32_t, FunctionInfo> fns;
     std::set<uint32_t> deletingFns;
     std::map<uint32_t, uint32_t> dtorOf;  // deleting destructor -> the class's destructor
+    // The deleting destructors whose code follows from the class's declaration alone: "call" (the destructor called
+    // out of line, then operator delete) or "stores" (an inline destructor that only stores vtables); "other" has
+    // more in it.
+    struct DeletingShape {
+        std::string shape = "other";
+        uint32_t dtor = 0;
+        bool popEcx = false;
+    };
+    std::map<uint32_t, DeletingShape> deletingShape;
     auto writes = [](const Root& r) {
         for (auto& e : r.ev)
             if (e.type == Event::Write) return true;
@@ -457,6 +488,21 @@ int main(int argc, char** argv) {
                         dtorOf[va] = e.a;
                         break;
                     }
+            DeletingShape ds;
+            ds.popEcx = fi.popEcx;
+            int stores = 0, calls = 0;
+            for (auto& e : fi.roots[0].ev) {
+                if (e.type == Event::Write) ++stores;
+                else if (!p.deleteFns.count(e.a)) ++calls;
+            }
+            // push esi; mov esi,ecx; [call dtor | stores]; test; je; push esi; call delete; pop/add; mov; pop; ret
+            if (calls == 1 && stores == 0 && dtorOf.count(va) && fi.instructions == 11 && fi.deleteOff == 0) {
+                ds.shape = "call";
+                ds.dtor = dtorOf[va];
+            } else if (calls == 0 && stores > 0 && fi.instructions == 10 + stores && fi.deleteOff == 0) {
+                ds.shape = "stores";
+            }
+            deletingShape[va] = ds;
         }
         bool any = false;
         for (auto& r : fi.roots) any |= !r.ev.empty();
@@ -494,6 +540,15 @@ int main(int argc, char** argv) {
                 if (e.type != Event::Write) continue;
                 s.chain[e.off].push_back(e.a);
                 if (e.virt) s.virtOffsets.insert(e.off);
+            }
+            // A vbtable pointer at +k: the virtual bases sit at k plus its entries, wherever the constructor stored them.
+            for (auto& e : s.ev) {
+                if (e.type != Event::VbTable) continue;
+                for (uint32_t i = 1; i < 16; ++i) {
+                    uint32_t entry;
+                    if (!p.img.readConst(e.a + 4 * i, entry) || int32_t(entry) <= 0 || entry >= 0x10000 || entry % 4) break;
+                    if (s.chain.count(e.off + int32_t(entry))) s.virtOffsets.insert(e.off + int32_t(entry));
+                }
             }
             // An object with nothing stored at 0 is a class only when it has virtual bases (a vbtable pointer is at
             // 0, its first vtable is a virtual base's); otherwise it is a member built in place.
@@ -700,35 +755,58 @@ int main(int argc, char** argv) {
             cls.bases.insert(b);
             if (b.first == 0) base0[c] = b.second;
         }
-        for (auto& a : ancestors[c])
-            if (a.first != 0 && !directBases[c].count(a)) cls.bases.insert(a);
-        if (base0.count(c)) continue;
-        std::set<uint32_t> anc;
-        for (auto& [o, a] : ancestors[c])
-            if (o == 0) anc.insert(a);
-        if (anc.empty()) continue;
-        const auto& cs = slotsOf(c);
-        uint32_t best = 0;
-        size_t bestScore = 0;
-        for (auto& [x, xc] : classes) {
-            if (x == c || descendsFrom(x, c)) continue;
-            bool under = false;
-            for (uint32_t a : anc) under |= descendsFrom(x, a);
-            if (!under) continue;
-            const auto& xs = slotsOf(x);
-            if (xs.size() > cs.size()) continue;
-            if (sizeOf(x) && sizeOf(c) && sizeOf(x) > sizeOf(c)) continue;
-            size_t score = 0;
-            for (size_t i = 0; i < xs.size(); ++i) score += xs[i] == cs[i];
-            bool better = !best || score > bestScore ||
-                          (score == bestScore && (xs.size() > slotsOf(best).size() ||
-                                                  (xs.size() == slotsOf(best).size() && sizeOf(x) > sizeOf(best))));
-            if (better) { best = x; bestScore = score; }
+        // One direct base per offset: at each offset with ancestors and no base constructor call, the ancestor or a
+        // class below it whose primary vtable shares the most slots with the class's vtable there.
+        std::map<int32_t, std::set<uint32_t>> ancAt;
+        for (auto& [o, a] : ancestors[c]) ancAt[o].insert(a);
+        for (auto& [o, anc] : ancAt) {
+            bool direct = false;
+            for (auto& b : directBases[c]) direct |= b.first == o;
+            if (direct) continue;
+            // An ancestor inside a base already chosen at a lower offset is that base's own ancestor.
+            bool inside = false;
+            for (auto& [bo, b] : cls.bases) {
+                if (bo >= o) continue;
+                auto bit = classes.find(b);
+                if (bit == classes.end()) continue;
+                inside |= bit->second.layout.count(o - bo) > 0 || (sizeOf(b) && uint32_t(o - bo) < sizeOf(b));
+            }
+            if (inside) continue;
+            auto lit = cls.layout.find(o);
+            const auto& cs = lit != cls.layout.end() ? slotsOf(lit->second) : slotsOf(c);
+            uint32_t best = 0;
+            size_t bestScore = 0;
+            for (auto& [x, xc] : classes) {
+                if (x == c || descendsFrom(x, c)) continue;
+                bool under = false;
+                for (uint32_t a : anc) under |= descendsFrom(x, a);
+                if (!under) continue;
+                const auto& xs = slotsOf(x);
+                if (xs.size() > cs.size()) continue;
+                // every vtable of the candidate must land on one of the class's
+                bool fits = true;
+                for (auto& [q, qv] : xc.layout) fits &= cls.layout.count(o + q) > 0;
+                if (!fits) continue;
+                // a base of known size ends where the class's next subobject starts (polymorphic bases are adjacent)
+                if (sizeOf(x)) {
+                    int32_t last = o;
+                    for (auto& [q, qv] : xc.layout) last = std::max(last, o + q);
+                    auto nx = cls.layout.upper_bound(last);
+                    if (nx != cls.layout.end() && int32_t(sizeOf(x)) != nx->first - o) continue;
+                }
+                if (o == 0 && sizeOf(x) && sizeOf(c) && sizeOf(x) > sizeOf(c)) continue;
+                size_t score = 0;
+                for (size_t i = 0; i < xs.size(); ++i) score += xs[i] == cs[i];
+                bool better = !best || score > bestScore ||
+                              (score == bestScore && (xs.size() > slotsOf(best).size() ||
+                                                      (xs.size() == slotsOf(best).size() && sizeOf(x) > sizeOf(best))));
+                if (better) { best = x; bestScore = score; }
+            }
+            if (!best) continue;
+            cls.bases.insert({o, best});
+            if (o == 0) base0[c] = best;
+            if (!anc.count(best)) cls.flags.insert("base-by-slots");
         }
-        if (!best) continue;
-        cls.bases.insert({0, best});
-        base0[c] = best;
-        if (!anc.count(best)) cls.flags.insert("base-by-slots");
     }
 
     // 7. Slots.
@@ -765,6 +843,12 @@ int main(int argc, char** argv) {
                     ++nInherited;
                 } else if (thunk) {
                     kind = vd ? "thunk-vtordisp" : "thunk";
+                    // add ecx,-N where the compiler writes sub ecx,N: the same adjustment, not the compiler's thunk
+                    const uint8_t* tb = p.img.at(t, 1);
+                    if (!vd && tb && (tb[0] == 0x83 || tb[0] == 0x81) && adj > 0) {
+                        const uint8_t* mb = p.img.at(t + 1, 1);
+                        if (mb && mb[0] == 0xc1) kind = "thunk-add";
+                    }
                     detail = hex(thunk).substr(2) + "," + hex(uint32_t(adj)).substr(2);
                     if (vd) detail += "," + hex(uint32_t(vd)).substr(2);
                     ++nThunks;
@@ -783,6 +867,12 @@ int main(int argc, char** argv) {
         }
     }
 
+    if (!deletingOut.empty()) {
+        std::ofstream f(deletingOut);
+        for (auto& [va, ds] : deletingShape)
+            f << hex(va).substr(2) << '\t' << ds.shape << '\t' << (ds.dtor ? hex(ds.dtor).substr(2) : "-") << '\t'
+              << (ds.popEcx ? "O1" : "O2") << '\n';
+    }
     if (!classesOut.empty()) {
         std::ofstream f(classesOut);
         for (auto& [primary, c] : classes) {
