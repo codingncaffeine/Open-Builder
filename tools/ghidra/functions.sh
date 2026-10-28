@@ -7,8 +7,9 @@ root="$(cd "$(dirname "$0")/../.." && pwd)"
 bin="$(realpath "$1")" out="$(realpath -m "$2")"
 seed=()
 [[ -n "${3:-}" ]] && seed=(-preScript SeedFunctions.java "$(realpath "$3")")
-proj="$root/scratch/ghidra-tmp/$(basename "$out" .tsv)"
-rm -rf "$proj"; mkdir -p "$proj"
+mkdir -p "$root/scratch/ghidra-tmp"
+proj="$(mktemp -d "$root/scratch/ghidra-tmp/project.XXXXXX")"  # one per run, so runs can overlap
+
 /opt/ghidra/support/analyzeHeadless "$proj" tmp -import "$bin" -scriptPath "$root/tools/ghidra" "${seed[@]}" \
   -postScript ExportFunctions.java "$out" -deleteProject -log "$proj/ghidra.log" >/dev/null 2>&1 \
   || { echo "ghidra failed, see $proj/ghidra.log" >&2; exit 1; }
