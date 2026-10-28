@@ -17,7 +17,8 @@ tool="$1"; shift
 
 export HOME="$tc/home" XDG_CONFIG_HOME="$tc/xdg/config" XDG_DATA_HOME="$tc/xdg/data" XDG_CACHE_HOME="$tc/xdg/cache"
 export WINEPREFIX="$tc/prefix" WINEDEBUG="${WINEDEBUG:--all}"
-export WINEDLLOVERRIDES="winemenubuilder.exe=d;mscoree=d;mshtml=d"
+# No display drivers: a compiler needs no window, and without them Wine never probes the GPU (Mesa warnings).
+export WINEDLLOVERRIDES="winemenubuilder.exe=d;mscoree=d;mshtml=d;winex11.drv=d;winewayland.drv=d"
 unset DISPLAY WAYLAND_DISPLAY
 
 winpath() { printf 'Z:%s' "${1//\//\\}"; }
