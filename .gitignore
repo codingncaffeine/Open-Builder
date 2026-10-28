@@ -1,0 +1,18 @@
+# Local only: plans, notes, reverse-engineering material, scratch
+/local-notes/
+/scratch/
+/snapshots/
+/re/
+
+# Never commit original game content or anything derived from the executable
+*.dat
+*.DAT
+*.sc4
+*.exe
+*.dll
+*.gpr
+*.rep
+*.fsh
+*.s3d
+*.dis
+*.trace
