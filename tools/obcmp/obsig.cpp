@@ -12,7 +12,8 @@
 // (default 3) are never matched on their own: too many of them look alike by chance.
 //
 // Pairs are rescored at the end with every name known: identical, or "near" with a score (a position pair
-// can differ). --list names every near and missing function; --diff prints one side by side.
+// can differ). A function no pair refers to is "absent" (most likely never linked into the original) rather
+// than missing. --list names every near, missing and absent function; --diff prints one side by side.
 //
 // matches.tsv is in obcmp's pairs format ("orig_va orig_size lib_va lib_size name"), so obcmp can rescore it.
 
@@ -67,7 +68,7 @@ void applyMap(const std::string& path, std::vector<Function>& fns) {
         if (!(ss >> addr >> name >> va >> kind)) continue;
         if (kind != "f" || addr.rfind("0001:", 0) != 0) continue;
         ss >> object;
-        if (object == "f") ss >> object;  // " f i " marks inline-expanded functions
+        if (object == "i") ss >> object;  // "f i" marks an inline function's out-of-line copy
         publics[uint32_t(std::stoul(va, nullptr, 16))] = {name, object};
     }
     for (Function& fn : fns) {
@@ -90,31 +91,64 @@ std::string signature(const Image& img, const std::map<uint32_t, std::string>& n
     return s;
 }
 
-// Pairs through references: in two identical functions the k-th outside address each refers to is the same thing on
-// both sides, so where both are unmatched function starts they are a match. A function claimed by two different
-// partners is left alone.
+// What identical pairs refer to, side by side: in two identical functions the k-th outside address each refers to
+// is the same thing on both sides. Where that is data (a registration table, a vtable), the two tables are walked in
+// step and the pointers at equal offsets pair up too, until their layouts part or two zero words end the table.
+std::vector<std::pair<uint32_t, uint32_t>> pairedReferences(const Image& orig, const Image& lib,
+                                                            const std::vector<Function>& a,
+                                                            const std::vector<Function>& b,
+                                                            const std::map<uint32_t, std::string>& namesA,
+                                                            const std::map<uint32_t, std::string>& namesB,
+                                                            const std::set<uint32_t>& codeB) {
+    std::vector<std::pair<uint32_t, uint32_t>> out;
+    std::set<std::pair<uint32_t, uint32_t>> tables;
+    for (const Function& y : b) {
+        if (y.match < 0) continue;
+        const Function& x = a[y.match];
+        std::vector<uint32_t> refsA, refsB;
+        auto tx = tokenize({&orig, &namesA}, x.va, x.size, &refsA);
+        auto ty = tokenize({&lib, &namesB}, y.va, y.size, &refsB);
+        if (tx != ty || refsA.size() != refsB.size()) continue;
+        for (size_t k = 0; k < refsA.size(); ++k) {
+            out.push_back({refsA[k], refsB[k]});
+            if (!codeB.count(refsB[k])) tables.insert({refsA[k], refsB[k]});
+        }
+    }
+    for (const auto& [ta, tb] : tables) {
+        bool zero = false;
+        for (uint32_t off = 0; off < 1024; off += 4) {
+            const uint8_t* pa = orig.at(ta + off, 4);
+            const uint8_t* pb = lib.at(tb + off, 4);
+            if (!pa || !pb) break;
+            uint32_t va, vb;
+            std::memcpy(&va, pa, 4);
+            std::memcpy(&vb, pb, 4);
+            if (orig.contains(va) != lib.contains(vb)) break;  // the layouts part
+            if (vb == 0 && zero) break;
+            zero = vb == 0;
+            if (lib.contains(vb)) out.push_back({va, vb});
+        }
+    }
+    return out;
+}
+
+// Pairs every unmatched function start the two sides refer to in the same place (pairedReferences). A function
+// claimed by two different partners is left alone.
 int pairByReference(const Image& orig, const Image& lib, std::vector<Function>& a, std::vector<Function>& b,
                     std::map<uint32_t, std::string>& namesA, std::map<uint32_t, std::string>& namesB) {
     std::map<uint32_t, int> startA, startB;
+    std::set<uint32_t> codeB;
     for (int i = 0; i < int(a.size()); ++i) startA[a[i].va] = i;
-    for (int j = 0; j < int(b.size()); ++j) startB[b[j].va] = j;
+    for (int j = 0; j < int(b.size()); ++j) startB[b[j].va] = j, codeB.insert(b[j].va);
     std::map<int, std::set<int>> claims;  // library index -> original indexes
     std::map<int, std::set<int>> claimedBy;
-    for (int j = 0; j < int(b.size()); ++j) {
-        if (b[j].match < 0) continue;
-        const Function& x = a[b[j].match];
-        std::vector<uint32_t> refsA, refsB;
-        auto tx = tokenize({&orig, &namesA}, x.va, x.size, &refsA);
-        auto ty = tokenize({&lib, &namesB}, b[j].va, b[j].size, &refsB);
-        if (tx != ty || refsA.size() != refsB.size()) continue;
-        for (size_t k = 0; k < refsA.size(); ++k) {
-            auto ia = startA.find(refsA[k]);
-            auto jb = startB.find(refsB[k]);
-            if (ia == startA.end() || jb == startB.end()) continue;
-            if (a[ia->second].match >= 0 || b[jb->second].match >= 0) continue;
-            claims[jb->second].insert(ia->second);
-            claimedBy[ia->second].insert(jb->second);
-        }
+    for (const auto& [ra, rb] : pairedReferences(orig, lib, a, b, namesA, namesB, codeB)) {
+        auto ia = startA.find(ra);
+        auto jb = startB.find(rb);
+        if (ia == startA.end() || jb == startB.end()) continue;
+        if (a[ia->second].match >= 0 || b[jb->second].match >= 0) continue;
+        claims[jb->second].insert(ia->second);
+        claimedBy[ia->second].insert(jb->second);
     }
     int found = 0;
     for (const auto& [j, is] : claims) {
@@ -223,22 +257,15 @@ int main(int argc, char** argv) {
         if (!found) break;
     }
 
-    // Library functions nothing else in the library build refers to, from code or from a pointer in any section.
-    // The original's linker (/OPT:REF) drops those, and an inlined static leaves such a copy behind, so a missing
-    // one of these is expected; the report keeps them apart from the missing functions that matter.
-    std::set<uint32_t> referenced;
-    for (const Function& fn : b) {
-        std::vector<uint32_t> refs;
-        tokenize({&lib, &namesB}, fn.va, fn.size, &refs);
-        for (uint32_t r : refs)
-            if (r != fn.va) referenced.insert(r);
-    }
-    for (const Section& s : lib.sections)
-        for (uint32_t off = 0; off + 4 <= std::min(s.vsize, s.rawSize); off += 4)
-            referenced.insert(rd32(lib.file, s.raw + off));
+    // A missing library function matters when a matched function, or a table one refers to, refers to it: the
+    // original has something in that place we failed to pair. The rest were most likely never linked into the
+    // original (its linker drops what nothing uses, and an inlined static leaves an unused copy in our build).
+    std::set<uint32_t> codeB, referenced;
+    for (const Function& fn : b) codeB.insert(fn.va);
+    for (const auto& r : pairedReferences(orig, lib, a, b, namesA, namesB, codeB)) referenced.insert(r.second);
 
     // Every pair rescored with all names known: identical, or how close (a position pair can differ).
-    struct Tally { int fns = 0, same = 0, near = 0, unused = 0; uint64_t bytes = 0, sameBytes = 0; };
+    struct Tally { int fns = 0, same = 0, near = 0, absent = 0; uint64_t bytes = 0, sameBytes = 0; };
     std::map<std::string, Tally> perObject;
     Tally all;
     std::vector<std::string> nearLines;
@@ -273,22 +300,23 @@ int main(int argc, char** argv) {
             x->bytes += fn.size;
             if (same) ++x->same, x->sameBytes += fn.size;
             else if (fn.match >= 0) ++x->near;
-            else if (!referenced.count(fn.va)) ++x->unused, x->bytes -= fn.size;
+            else if (!referenced.count(fn.va)) ++x->absent, x->bytes -= fn.size;
         }
     }
     for (const auto& [object, t] : perObject)
-        std::printf("%-24s %4d identical %4d near %4d missing %4d unused  of %4d  (%5.1f%% of used bytes identical)\n",
-                    object.c_str(), t.same, t.near, t.fns - t.same - t.near - t.unused, t.unused, t.fns,
+        std::printf("%-24s %4d identical %4d near %4d missing %4d absent  of %4d  (%5.1f%% of needed bytes "
+                    "identical)\n",
+                    object.c_str(), t.same, t.near, t.fns - t.same - t.near - t.absent, t.absent, t.fns,
                     t.bytes ? 100.0 * double(t.sameBytes) / double(t.bytes) : 0.0);
     if (listNear)
         for (const auto& l : nearLines) std::printf("%s\n", l.c_str());
     for (const Function& fn : b)
         if (listNear && fn.match < 0)
-            std::printf("  %-14s %s (%s)\n", referenced.count(fn.va) ? "missing" : "unused", fn.name.c_str(),
+            std::printf("  %-14s %s (%s)\n", referenced.count(fn.va) ? "missing" : "absent", fn.name.c_str(),
                         fn.object.c_str());
-    std::printf("total: %d identical, %d near, %d missing, %d unused of %d library functions (%.1f%% of used bytes "
+    std::printf("total: %d identical, %d near, %d missing, %d absent of %d library functions (%.1f%% of needed bytes "
                 "identical)\n",
-                all.same, all.near, all.fns - all.same - all.near - all.unused, all.unused, all.fns,
+                all.same, all.near, all.fns - all.same - all.near - all.absent, all.absent, all.fns,
                 all.bytes ? 100.0 * double(all.sameBytes) / double(all.bytes) : 0.0);
 
     if (!outPath.empty()) {
