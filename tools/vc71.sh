@@ -8,10 +8,14 @@
 #
 # The toolkit is unpacked (not installed) into scratch/toolchain/vc71: tools/isx-unpack.pl takes the MSI out of
 # the setup stream, Wine's msidb exports its tables, cabextract + tools/msi-layout.pl lay out the files.
+# The Platform SDK unpacks the same way into scratch/toolchain/psdk (CoreSDK-x86.msi and the cabinets of its Media
+# table).
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 tc="$root/scratch/toolchain"
 vc="$tc/vc71/Microsoft Visual C++ Toolkit 2003"
+# The Feb 2003 Platform SDK (headers and import libraries), as Visual Studio .NET 2003 shipped beside its compiler.
+sdk="$tc/psdk/Microsoft SDK"
 [[ -f "$vc/bin/cl.exe" ]] || { echo "no toolkit at $vc" >&2; exit 1; }
 tool="$1"; shift
 
@@ -22,7 +26,7 @@ export WINEDLLOVERRIDES="winemenubuilder.exe=d;mscoree=d;mshtml=d;winex11.drv=d;
 unset DISPLAY WAYLAND_DISPLAY
 
 winpath() { printf 'Z:%s' "${1//\//\\}"; }
-export INCLUDE="$(winpath "$vc/include")${OB_INCLUDE:+;$OB_INCLUDE}"
-export LIB="$(winpath "$vc/lib")${OB_LIB:+;$OB_LIB}"
+export INCLUDE="$(winpath "$vc/include");$(winpath "$sdk/include")${OB_INCLUDE:+;$OB_INCLUDE}"
+export LIB="$(winpath "$vc/lib");$(winpath "$sdk/Lib")${OB_LIB:+;$OB_LIB}"
 export WINEPATH="$(winpath "$vc/bin")"
 exec wine "$vc/bin/$tool.exe" "$@"
