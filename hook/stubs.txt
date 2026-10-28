@@ -2,6 +2,7 @@
 # the original's code (tools/gen-stubs.sh). "0x<address> <decorated symbol>"; addresses from the function map.
 
 # C runtime (the original links it statically)
+0x005d4a10 __purecall
 0x009f17e0 _strlen
 0x009f1120 _strncmp
 0x009f18f0 _memcmp

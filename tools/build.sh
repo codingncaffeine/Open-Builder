@@ -41,9 +41,16 @@ flags_for() {  # the FLAGS file nearest above a source under src/, else the hook
 
 # One compiler run per distinct flag set.
 declare -A groups=()
-# The game's sources link first, as in the original: of the copies of an inline function the objects carry, the
-# linker keeps the first, and the original kept the game's (src/game/InlineInstances.cpp).
-mapfile -t sources < <(find src/game -name '*.cpp' | sort; find src hook -name '*.cpp' -not -path 'src/game/*' | sort)
+# Link order decides which copy of an inline function (or compiler-generated one) the linker keeps: the first.
+# The game's sources link first, as in the original, which kept the game's copies of the framework's inline
+# functions (src/game/InlineInstances.cpp); then the instantiations of the framework's generated classes
+# (tools/obcmp/obdecl), so their deleting destructors come out with the framework's flags; the instantiations of
+# the game's generated classes last, so they never displace another folder's copy.
+mapfile -t sources < <(
+  find src/game -name '*.cpp' -not -name 'GeneratedClasses_*' | sort
+  find src -name 'GeneratedClasses_*.cpp' -not -path 'src/game/*' | sort
+  find src hook -name '*.cpp' -not -path 'src/game/*' -not -name 'GeneratedClasses_*' | sort
+  find src/game -name 'GeneratedClasses_*.cpp' | sort)
 sources+=("$out/stubs.gen.cpp")
 for s in "${sources[@]}"; do
   f="$(flags_for "$s")"

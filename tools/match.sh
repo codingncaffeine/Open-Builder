@@ -21,7 +21,9 @@ offset=$(objdump -h "$dll" | awk -v va=$((16#$table)) '$1 ~ /^[0-9]+$/ {
   vma = strtonum("0x" $4); size = strtonum("0x" $3); file = strtonum("0x" $6)
   if (va >= vma && va < vma + size) print va - vma + file }')
 # Entries of 16 bytes ({original, replacement, name, hook}) up to the all-zero sentinel.
-od -An -v -tx4 -j "$offset" -w16 "$dll" | awk '$1 == "00000000" && $2 == "00000000" {exit} {print $1, $2}' >"$out/hook-pairs.txt"
+# (through a file: awk stops at the sentinel, which would end od with SIGPIPE under pipefail)
+od -An -v -tx4 -j "$offset" -w16 "$dll" >"$out/hook-table.txt"
+awk '$1 == "00000000" && $2 == "00000000" {exit} {print $1, $2}' "$out/hook-table.txt" >"$out/hook-pairs.txt"
 
 textend=$(objdump -h "$dll" | awk '$2 == ".text" {print strtonum("0x" $4) + strtonum("0x" $3)}')
 awk -v textend="$textend" '
@@ -40,24 +42,37 @@ awk -v textend="$textend" '
   }' re/map/functions.tsv "$map" "$out/hook-pairs.txt" >"$out/pairs.tsv"
 # The stubs that lead to functions not decompiled yet name their original, so calls to them compare by target.
 awk '$1 ~ /^0001:/ && $2 ~ /^_ob_stub_[0-9a-f]{8}$/ { print substr($2, 10), $3, "stub_" substr($2, 10) }' "$map" >"$out/names.tsv"
-# Vtables: "// VTABLE: 0x<address> [base]" above a class pairs the original's with ours, ??_7Class@@6B@ (or the one
-# for that base, ??_7Class@@6BBase@@@); our slot count runs to the next symbol in the map.
-grep -rh -A10 -E '// VTABLE: 0x[0-9a-fA-F]+' src | awk '
-  /\/\/ VTABLE: 0x/ { match($0, /0x[0-9a-fA-F]+/); va = substr($0, RSTART + 2, RLENGTH - 2); base = $0
-                      sub(/.*VTABLE: 0x[0-9a-fA-F]+[ \t]*/, "", base); pending = 1; next }
-  pending && match($0, /(class|struct)[ \t]+(OB_NOVTABLE[ \t]+)?[A-Za-z_][A-Za-z0-9_]*/) {
-    s = substr($0, RSTART, RLENGTH); n = split(s, w, /[ \t]+/)
-    print va, "??_7" w[n] "@@6B" (base == "" ? "@" : base "@@@"); pending = 0 }' >"$out/vtable-annotations.txt"
-awk 'FILENAME ~ /vtables.tsv$/ { slots[sprintf("%x", strtonum("0x" $1))] = $2; next }
+# Vtables: "// VTABLE: 0x<address> [base]" above a class pairs the original's with ours (tools/vtable-annotations.sh);
+# our slot count runs to the next symbol in the map at most.
+tools/vtable-annotations.sh >"$out/vtable-annotations.txt"
+# The generated classes' vtables (src/classes, tools/obcmp/obdecl) are reported, not required: their slots often hold
+# functions nothing declares yet. Hand-written ones must be identical.
+find src/classes -name '*.h' -printf '%f\n' 2>/dev/null | sed 's/\.h$//' >"$out/generated-classes.txt"
+awk 'FILENAME ~ /generated-classes.txt$/ { generated[$1] = 1; next }
+     FILENAME ~ /vtables.tsv$/ { slots[sprintf("%x", strtonum("0x" $1))] = $2; next }
      FILENAME ~ /version.map$/ {
        if ($1 ~ /^000[0-9]:/ && $3 ~ /^[0-9a-f]{8}$/) { n++; va[n] = strtonum("0x" $3); at[$2] = n }
        next }
-     {
-       o = sprintf("%x", strtonum("0x" $1))
-       if (!($2 in at)) { print "match: no " $2 " in the map (vtable 0x" o ")" > "/dev/stderr"; bad = 1; next }
-       i = at[$2]; next_va = 0
-       for (j = 1; j <= n; j++) if (va[j] > va[i] && (next_va == 0 || va[j] < next_va)) next_va = va[j]
-       printf "%s %x %d %d vtable_%s\n", o, va[i], slots[o], (next_va - va[i]) / 4, o
-     }
-     END { exit bad }' re/map/vtables.tsv "$map" "$out/vtable-annotations.txt" >"$out/vtables.tsv"
+     { want[++w] = $2; orig[w] = sprintf("%x", strtonum("0x" $1)); if ($2 in at) claimed[$2] = 1 }
+     END {
+       for (k = 1; k <= w; k++) {
+         sym = want[k]; o = orig[k]; cls = sym; sub(/^\?\?_7/, "", cls); sub(/@@.*/, "", cls)
+         if (!(sym in at) && (cls in generated)) {
+           # A generated class whose vtable the compiler named otherwise: its one unclaimed vtable, if just one (the
+           # slot by slot comparison then says whether it is the one).
+           found = ""; count = 0
+           for (s in at) if (index(s, "??_7" cls "@@6B") == 1 && !(s in claimed)) { found = s; count++ }
+           if (count == 1) { sym = found; claimed[found] = 1 }
+         }
+         if (!(sym in at)) {
+           print "match: no " sym " in the map (vtable 0x" o ")" > "/dev/stderr"
+           if (!(cls in generated)) bad = 1
+           continue
+         }
+         i = at[sym]; next_va = 0
+         for (j = 1; j <= n; j++) if (va[j] > va[i] && (next_va == 0 || va[j] < next_va)) next_va = va[j]
+         printf "%s %x %d %d vtable_%s %s\n", o, va[i], slots[o], (next_va - va[i]) / 4, o, (cls in generated) ? "report" : "strict"
+       }
+       exit bad
+     }' "$out/generated-classes.txt" re/map/vtables.tsv "$map" "$out/vtable-annotations.txt" >"$out/vtables.tsv"
 "$obcmp" "$exe" "$dll" "$out/pairs.tsv" --names "$out/names.tsv" --vtables "$out/vtables.tsv" "$@"

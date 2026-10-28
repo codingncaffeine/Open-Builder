@@ -10,7 +10,8 @@
 // at different addresses still compare equal. Branch targets inside the function become offsets from its start in
 // instructions. The score is the longest common subsequence of the two token lists over the longer list.
 //
-// vtables.tsv: "orig_va rebuilt_va orig_slots rebuilt_slots name": vtables compared slot by slot, each slot's function
+// vtables.tsv: "orig_va rebuilt_va orig_slots rebuilt_slots name [strict|report]": vtables compared slot by slot (a
+// "report" one does not fail the run), each slot's function
 // by name (paired or named functions), and their addresses named for the code that stores them.
 // names.tsv: more address pairs that only name ("orig_va rebuilt_va name"), not scored: the stubs that stand in for
 // functions not decompiled yet, so a call to the wrong one of them is a difference instead of "addr" on both sides.
@@ -92,15 +93,20 @@ int main(int argc, char** argv) {
     struct Vtable {
         uint32_t origVa, newVa, slots, newSlots;
         std::string name;
+        bool strict;  // must be identical (else only reported)
     };
     std::vector<Vtable> vtables;
     if (!vtablesPath.empty()) {
         std::ifstream f(vtablesPath);
         if (!f) { std::fprintf(stderr, "cannot read %s\n", vtablesPath.c_str()); return 2; }
-        std::string a, b, n, m, name;
-        while (f >> a >> b >> n >> m >> name) {
+        std::string line;
+        while (std::getline(f, line)) {
+            std::istringstream ss(line);
+            std::string a, b, n, m, name, mode;
+            if (!(ss >> a >> b >> n >> m >> name)) continue;
+            ss >> mode;
             Vtable v{uint32_t(std::stoul(a, nullptr, 16)), uint32_t(std::stoul(b, nullptr, 16)),
-                     uint32_t(std::stoul(n)), uint32_t(std::stoul(m)), name};
+                     uint32_t(std::stoul(n)), uint32_t(std::stoul(m)), name, mode != "report"};
             origNames[v.origVa] = newNames[v.newVa] = name;  // a store of the vtable compares by it
             vtables.push_back(v);
         }
@@ -134,7 +140,7 @@ int main(int argc, char** argv) {
 
     // Vtables: slot by slot, each slot's function by its name on both sides (a function neither paired nor stubbed
     // is its address, so it differs).
-    size_t vexact = 0;
+    size_t vexact = 0, vstrictBad = 0;
     for (Vtable& v : vtables) {
         auto slot = [](const Image& img, const std::map<uint32_t, std::string>& names, uint32_t va, uint32_t i) {
             const uint8_t* b = img.at(va + 4 * i, 4);
@@ -162,6 +168,7 @@ int main(int argc, char** argv) {
         v.newSlots = ours;
         bool identical = same == v.slots && ours == v.slots;
         vexact += identical;
+        vstrictBad += !identical && v.strict;
         std::printf("%6.2f%%  %s  %s (vtable, %u slots)\n", identical ? 100.0 : 100.0 * double(same) / v.slots,
                     hex(v.origVa).c_str(), v.name.c_str(), v.slots);
         if (verbose && !identical) {
@@ -169,6 +176,7 @@ int main(int argc, char** argv) {
             if (v.newSlots != v.slots) std::printf("    ! ours has %u slots\n", v.newSlots);
         }
     }
-    if (!vtables.empty()) std::printf("total: %zu/%zu vtables identical\n", vexact, vtables.size());
-    return exact == pairs.size() && vexact == vtables.size() ? 0 : 1;
+    if (!vtables.empty())
+        std::printf("total: %zu/%zu vtables identical (%zu required ones differ)\n", vexact, vtables.size(), vstrictBad);
+    return exact == pairs.size() && vstrictBad == 0 ? 0 : 1;
 }
