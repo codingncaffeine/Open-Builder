@@ -1,0 +1,21 @@
+# Functions of the original that decompiled code calls before they are decompiled themselves: each call lands in
+# the original's code (tools/gen-stubs.sh). "0x<address> <decorated symbol>"; addresses from the function map.
+
+# C runtime (the original links it statically)
+0x009f17e0 _strlen
+0x009f066e _malloc
+0x009f015b _free
+0x009f19b0 _memcpy
+0x009eeb70 _memmove
+0x009f1870 _memset
+
+# The program's own memory management (its global new/delete take a lock and pool small blocks)
+0x005e55e0 ??2@YAPAXI@Z
+0x005e5620 ??3@YAXPAX@Z
+
+# STLport as the program built it: out-of-line __stl_new/__stl_delete routed to the program's allocator, and the
+# throw helpers of its library part
+0x0090cf54 ?__stl_new@_STL@@YAPAXI@Z
+0x0090cf63 ?__stl_delete@_STL@@YAXPAX@Z
+0x009dd1d0 ?__stl_throw_length_error@_STL@@YAXPBD@Z
+0x009dd0a0 ?__stl_throw_out_of_range@_STL@@YAXPBD@Z

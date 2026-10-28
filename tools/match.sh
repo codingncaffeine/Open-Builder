@@ -33,7 +33,7 @@ awk -v textend="$textend" '
   {
     o = sprintf("%x", strtonum("0x" $1)); r = strtonum("0x" $2)
     rs = 0; nm = ""
-    for (i = 1; i <= n; i++) if (symva[i] == r) { nm = symname[i]; for (j = 1; j <= n; j++) if (symva[j] > r && (rs == 0 || symva[j] - r < rs)) rs = symva[j] - r }
+    for (i = 1; i <= n; i++) if (symva[i] == r && (nm == "" || nm ~ /^_obhook_/)) { nm = symname[i]; for (j = 1; j <= n; j++) if (symva[j] > r && (rs == 0 || symva[j] - r < rs)) rs = symva[j] - r }
     if (rs == 0) rs = textend - r  # the last function runs to the end of .text
     if (!(o in size)) { print "# no size for " o > "/dev/stderr"; next }
     printf "%s %s %x %x %s\n", o, size[o], r, rs, nm

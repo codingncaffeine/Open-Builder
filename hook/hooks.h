@@ -11,15 +11,6 @@ struct HookEntry {
     int hook;                // 0: matched but never patched in (too small for the jump)
 };
 
-// Address of any function, member functions included (a non-virtual member function pointer of a class with
-// single inheritance is a plain code address in this compiler).
-template <class T> void* FunctionAddress(T function)
-{
-    union { T function; void* address; } u;
-    u.function = function;
-    return u.address;
-}
-
 extern const HookEntry g_hooks[];
 extern const unsigned g_hookCount;
 
