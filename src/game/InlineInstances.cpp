@@ -6,8 +6,9 @@
 
 void UseInlineInstances(const char* text, uint32_t length, const cIGZString& string, const cRZString& rzString)
 {
+    cRZString empty;
     cRZString fromText(text);
     cRZString fromRange(text, length);
     cRZString fromString(string);
-    cRZString fromPart(rzString, 0);
+    cRZString copy(rzString);
 }
