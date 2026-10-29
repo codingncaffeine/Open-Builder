@@ -126,6 +126,7 @@ struct Decl {
     std::string owner;  // the class, or one of its synthesized subobjects or intermediates
     int ident;
     uint32_t function;
+    int32_t thisOff = 0;  // where the function's this points in the owner (a slot of a non-primary base)
 };
 
 struct Sub {
@@ -161,6 +162,7 @@ struct Model {
 struct Shape {
     uint32_t room = 0xffffffffu;      // bytes up to the next function
     std::string pops, kind;           // pops: decimal, "?" or "x"
+    char returns = '?';               // D, B, F, V or ? (obshape)
     std::vector<std::string> detail;  // after the kind
 };
 
@@ -308,11 +310,12 @@ int main(int argc, char** argv) {
     std::map<uint32_t, Shape> shapes;
     if (!shapesPath.empty())
         for (auto& r : readTsv(shapesPath)) {
-            if (r.size() < 4) continue;
+            if (r.size() < 5) continue;
             Shape s;
             if (r[1] != "-") s.room = uint32_t(std::stoul(r[1]));
             s.pops = r[2];
-            s.detail = split(r[3], ' ');
+            s.returns = r[3][0];
+            s.detail = split(r[4], ' ');
             s.kind = s.detail.front();
             s.detail.erase(s.detail.begin());
             shapes[parseHex(r[0])] = s;
@@ -640,7 +643,15 @@ int main(int argc, char** argv) {
                     Sub* at = nullptr;
                     for (auto& sub : m.subs)
                         if (sub.base && sub.off == k) at = &sub;
-                    if (!at || j >= inherited) return fail("own function in a secondary vtable without a thunk");
+                    if (j >= inherited) return fail("own function in a secondary vtable without a thunk");
+                    if (!at) {
+                        // the vtable of a base's own base: the class overrides that slot itself, and the compiler
+                        // passes the function that subobject as this (no thunk)
+                        declare(m.name, ids[j], s.target, false);
+                        m.decls.back().thisOff = k;
+                        own[j] = m.name;
+                        continue;
+                    }
                     at->intermediate = true;
                     std::string in = m.name + "_" + hexn(uint32_t(k));
                     declare(in, ids[j], s.target, false);
@@ -671,6 +682,41 @@ int main(int argc, char** argv) {
     };
 
     for (auto& [p, r] : recs) model(p);
+
+    // Intermediates the class can do without: a class overriding a method introduced in a non-primary base gets that
+    // base subobject as this already (no thunk), so the overrides go into the class itself, unless one of their names
+    // is also one the class overrides with another function (one class cannot hold both: then the intermediate stays).
+    std::map<std::string, std::string> foldedInto, foldedRoot;  // intermediate -> its class; -> its base (vtable name)
+    for (auto& [p, m] : models) {
+        if (!m.ok || m.hand) continue;
+        std::map<std::string, std::map<std::string, uint32_t>> named;  // owner -> name -> function
+        for (auto& d : m.decls) named[d.owner][idents[find(d.ident)].name] = d.function;
+        for (auto& s : m.subs) {
+            if (!s.base || !s.intermediate) continue;
+            std::string in = m.name + "_" + hexn(uint32_t(s.off));
+            bool clash = false;
+            for (auto& [n, fn] : named[in]) {
+                auto it = named[m.name].find(n);
+                clash |= it != named[m.name].end() && it->second != fn;
+            }
+            if (clash) continue;
+            for (auto& d : m.decls)
+                if (d.owner == in) { d.owner = m.name; d.thisOff = s.off; }
+            for (auto& [n, fn] : named[in]) named[m.name][n] = fn;
+            s.intermediate = false;
+            foldedInto[in] = m.name;
+            foldedRoot[in] = models[s.base].name;
+            if (models[s.base].layout.size() == 1) m.root[s.off] = models[s.base].name;
+        }
+    }
+    // the final overriders and vtable names derived classes copied from their bases
+    for (auto& [p, m] : models) {
+        for (auto& [o, own] : m.owner)
+            for (auto& x : own)
+                if (foldedInto.count(x)) x = foldedInto[x];
+        for (auto& [o, rn] : m.root)
+            if (foldedRoot.count(rn)) rn = foldedRoot[rn];
+    }
 
     // Names: every identity takes its root's; a root merged from two different fixed names cannot be declared.
     auto nameOf = [&](int id) -> const Ident& { return idents[find(id)]; };
@@ -743,6 +789,7 @@ int main(int argc, char** argv) {
     struct Family {
         std::set<std::string> pops;
         std::set<char> ret;
+        std::set<char> code;  // what real-code members return (obshape), when no one-line member says
         std::map<size_t, std::set<char>> args;  // what a setter stores the argument as
     };
     struct Sig {
@@ -770,6 +817,7 @@ int main(int argc, char** argv) {
             Family& f = families[root];
             if (s.pops != "?") f.pops.insert(s.pops);
             if (char r = retOf(s)) f.ret.insert(r);
+            else if (s.returns == 'D' || s.returns == 'B' || s.returns == 'F') f.code.insert(s.returns);
             if (s.kind == "set" || s.kind == "setconst") f.args[std::stoul(s.detail[2])].insert(s.detail[0][0]);
         }
     auto retType = [](char c) -> std::pair<std::string, std::string> {  // C++ and decorated
@@ -797,6 +845,7 @@ int main(int argc, char** argv) {
         s.args.assign(n / 4, 'd');
         std::set<char> r = f.ret;
         if (r == std::set<char>{'D', 'P'}) r = {'D'};  // an integer or a null pointer: both are eax
+        if (r.empty() && f.code.size() == 1) r = f.code;
         if (r.size() == 1) s.ret = *r.begin();
         else if (r.size() > 1) s.bodies = false;
         for (auto& [i, ts] : f.args) {
@@ -820,6 +869,59 @@ int main(int argc, char** argv) {
         id.decl = retType(s.ret).first + " " + id.name + "(" + params + ")";
         id.tail = "UAE" + retType(s.ret).second + (s.args.empty() ? "X" : mangled + "@") + "Z";
         sigs[root] = s;
+    }
+
+    // Signatures corrected by hand (src/classes/ext/<class>.tsv): "slot <name> <return type> [<argument type> ...]",
+    // for a slot whose evidence is missing or misleading (a function that ends in a jump pops nothing it can show).
+    // The whole identity changes, in every class that declares it. Types from a fixed list, so the decoration is known.
+    {
+        static const std::map<std::string, std::string> code = {
+            {"void", "X"}, {"bool", "_N"}, {"uint32_t", "I"}, {"int32_t", "H"}, {"uint16_t", "G"}, {"int16_t", "F"},
+            {"uint8_t", "E"}, {"int8_t", "C"}, {"float", "M"}, {"double", "N"}, {"void*", "PAX"},
+            {"const void*", "PBX"}, {"char*", "PAD"}, {"const char*", "PBD"}};
+        std::map<std::string, int> byName;
+        for (size_t i = 0; i < idents.size(); ++i)
+            if (find(int(i)) == int(i)) byName[idents[i].name] = int(i);
+        std::error_code ec;
+        for (auto& e : fs::directory_iterator(outDir + "/ext", ec)) {
+            std::ifstream f(e.path());
+            std::string line;
+            for (int ln = 1; std::getline(f, line); ++ln) {
+                std::istringstream ss(line);
+                std::string kw, name, t;
+                if (!(ss >> kw) || kw != "slot") continue;
+                ss >> name;
+                std::vector<std::string> types;
+                while (ss >> t) {
+                    if (t == "const" && ss >> t) t = "const " + t;  // "const char*"
+                    types.push_back(t);
+                }
+                auto bad = [&](const std::string& why) {
+                    std::fprintf(stderr, "obdecl: %s:%d: %s\n", e.path().string().c_str(), ln, why.c_str());
+                };
+                if (!byName.count(name)) { bad("no slot named " + name); continue; }
+                if (types.empty()) { bad("slot needs a return type"); continue; }
+                bool known = true;
+                for (auto& x : types) known &= code.count(x) > 0;
+                if (!known) { bad("a type not in the list (void bool uint32_t int32_t uint16_t int16_t uint8_t int8_t float double void* const void* char* const char*)"); continue; }
+                Ident& id = idents[byName[name]];
+                std::string params, mangled;
+                std::vector<std::string> seen;
+                for (size_t i = 1; i < types.size(); ++i) {
+                    params += (i > 1 ? ", " : "") + types[i];
+                    const std::string& c = code.at(types[i]);
+                    if (c.size() > 1) {
+                        auto at = std::find(seen.begin(), seen.end(), c);
+                        if (at != seen.end()) { mangled += char('0' + (at - seen.begin())); continue; }
+                        if (seen.size() < 10) seen.push_back(c);
+                    }
+                    mangled += c;
+                }
+                id.decl = types[0] + " " + id.name + "(" + params + ")";
+                id.tail = "UAE" + code.at(types[0]) + (types.size() == 1 ? "X" : mangled + "@") + "Z";
+                sigs[byName[name]].bodies = false;  // its one-line bodies were written for the inferred signature
+            }
+        }
     }
 
     // One-line bodies and the fields they use. Where a member at an offset from an owner's this lives: the class or
@@ -935,7 +1037,7 @@ int main(int argc, char** argv) {
             }
             if (!bodyTaken.insert({d.owner, root}).second) continue;
             if (char use = useOf(s)) {
-                if (!place(p, d.owner, parseHex(s.detail[1]), b.holder, b.off)) continue;
+                if (!place(p, d.owner, uint32_t(d.thisOff) + parseHex(s.detail[1]), b.holder, b.off)) continue;
                 regions[b.holder].uses[b.off].insert(use);
             }
             bodies.push_back(b);

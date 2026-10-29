@@ -23,7 +23,7 @@ mkdir -p "$work"
 [[ -d build/vc71/obj ]] || tools/build.sh >/dev/null 2>&1 || true
 tools/known-slots.sh "$work/known.tsv"
 # What each function pops and, for the one-line ones, does: signatures, fields and bodies.
-"$bin/obshape" "$exe" re/map/functions.tsv --out "$work/shapes.tsv" 2>/dev/null
+"$bin/obshape" "$exe" re/map/functions.tsv --out "$work/shapes.tsv" --sizes "$work/sizes.tsv" 2>/dev/null
 : >"$work/exclude.txt"
 for round in 1 2 3 4 5 6; do
   # only what obdecl wrote: headers it marked GENERATED (an edited header and src/classes/ext/ are kept)
