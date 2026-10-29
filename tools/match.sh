@@ -2,14 +2,18 @@
 # Builds the hook DLL with the 2003 compiler and scores every decompiled function against the original (obcmp).
 #   tools/match.sh [--verbose]
 # The pairs come from the built DLL itself: the hook table (g_hooks, located through the map) holds each original
-# address and our function's. Original sizes come from re/map/functions.tsv, ours from the map (up to the next
-# symbol or the end of .text; obcmp trims the padding). Exits non-zero unless every function is identical.
+# address and our function's. Original sizes come from scratch/classes/sizes.tsv (tools/obcmp/obshape --sizes, by
+# tools/gen-classes.sh: the function list corrected where it ends a function early), else re/map/functions.tsv; ours
+# from the map (up to the next symbol or the end of .text; obcmp trims the padding).
+# Exits non-zero unless every function is identical.
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
 exe="scratch/testbed/game/Apps/SimCity 4.exe"
 obcmp="scratch/build/obcmp/obcmp"
 [[ -f re/map/functions.tsv && -f "$exe" && -x "$obcmp" ]] || { echo "needs re/map/functions.tsv, the test bed and obcmp" >&2; exit 2; }
+sizes=re/map/functions.tsv
+[[ -f scratch/classes/sizes.tsv ]] && sizes=scratch/classes/sizes.tsv
 log=$(tools/build.sh 2>&1) || { printf '%s\n' "$log" >&2; exit 2; }
 out=build/vc71
 dll=$out/version.dll map=$out/version.map
@@ -26,8 +30,8 @@ od -An -v -tx4 -j "$offset" -w16 "$dll" >"$out/hook-table.txt"
 awk '$1 == "00000000" && $2 == "00000000" {exit} {print $1, $2}' "$out/hook-table.txt" >"$out/hook-pairs.txt"
 
 textend=$(objdump -h "$dll" | awk '$2 == ".text" {print strtonum("0x" $4) + strtonum("0x" $3)}')
-awk -v textend="$textend" '
-  FILENAME ~ /functions.tsv$/ { size[sprintf("%x", strtonum("0x" $1))] = $2; next }
+awk -v textend="$textend" -v sizes="$sizes" '
+  FILENAME == sizes { size[sprintf("%x", strtonum("0x" $1))] = $2; next }
   FILENAME ~ /version.map$/ {
     if ($1 ~ /^0001:/ && $3 ~ /^[0-9a-f]{8}$/) { n++; symva[n] = strtonum("0x" $3); symname[n] = $2 }
     next
@@ -39,7 +43,7 @@ awk -v textend="$textend" '
     if (rs == 0) rs = textend - r  # the last function runs to the end of .text
     if (!(o in size)) { print "# no size for " o > "/dev/stderr"; next }
     printf "%s %s %x %x %s\n", o, size[o], r, rs, nm
-  }' re/map/functions.tsv "$map" "$out/hook-pairs.txt" >"$out/pairs.tsv"
+  }' "$sizes" "$map" "$out/hook-pairs.txt" >"$out/pairs.tsv"
 # The stubs that lead to functions not decompiled yet name their original, so calls to them compare by target.
 awk '$1 ~ /^0001:/ && $2 ~ /^_ob_stub_[0-9a-f]{8}$/ { print substr($2, 10), $3, "stub_" substr($2, 10) }' "$map" >"$out/names.tsv"
 # The original's global variables (GLOBAL annotations) are at the same address on both sides: named alike.

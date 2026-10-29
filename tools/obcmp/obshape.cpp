@@ -197,11 +197,23 @@ std::string returns(const std::vector<Ins>& v) {
 }
 
 // How far a function's code really runs: decoded from its entry, following the branches it takes inside itself (jump
-// tables included), up to the ret or jump that no branch reaches past; never past limit (the next listed function).
-// The function list sometimes ends a function early, which would score a truncated original.
-uint32_t extent(const ZydisDecoder& dec, const Image& img, uint32_t va, uint32_t limit) {
+// tables included), up to the ret or jump that no branch reaches past; never past the next listed function, unless
+// that one is a false start inside this one: this one runs into it, or branches into its listed extent past its entry
+// (a tail call goes to an entry, or past the extent to a function the list misses). Then the limit moves to the entry
+// after it. fns: every listed function (entry, size), sorted. The list sometimes ends a function early, which would
+// score a truncated original.
+uint32_t extent(const ZydisDecoder& dec, const Image& img, const std::vector<std::pair<uint32_t, uint32_t>>& fns,
+                size_t k) {
+    uint32_t va = fns[k].first;
+    size_t following = k + 1;  // the next listed function, where the limit is
+    auto limitOf = [&](size_t f) { return f < fns.size() ? fns[f].first - va : fns.back().first + fns.back().second - va; };
+    uint32_t limit = limitOf(following);
     const uint8_t* code = img.at(va, limit);
     if (!code) return 0;
+    auto skip = [&]() {  // the following function is a false start: the limit moves to the one after it
+        if (following >= fns.size() || limitOf(following + 1) >= 0x10000) return;
+        if (const uint8_t* longer = img.at(va, limitOf(following + 1))) { code = longer; limit = limitOf(++following); }
+    };
     uint32_t reach = 0;  // the furthest branch target seen, from va
     for (uint32_t o = 0; o < limit;) {
         Ins x;
@@ -210,22 +222,41 @@ uint32_t extent(const ZydisDecoder& dec, const Image& img, uint32_t va, uint32_t
         const auto& t = x.o[0];
         bool branch = x.i.meta.category == ZYDIS_CATEGORY_COND_BR || x.i.meta.category == ZYDIS_CATEGORY_UNCOND_BR;
         if (branch && t.type == ZYDIS_OPERAND_TYPE_IMMEDIATE && t.imm.is_relative) {
-            uint64_t target = uint64_t(va) + o + uint64_t(t.imm.value.s);
+            uint64_t target = (uint64_t(va) + o + uint64_t(t.imm.value.s)) & 0xffffffffu;
+            // into the following function's extent, past its entry (checked again after each move)
+            while (following < fns.size() && target > fns[following].first &&
+                   target < uint64_t(fns[following].first) + fns[following].second) {
+                size_t was = following;
+                skip();
+                if (following == was) break;
+            }
             if (target > va && target < uint64_t(va) + limit) reach = std::max(reach, uint32_t(target - va));
         }
-        // jmp [reg*4+table]: every entry inside the function is a target
+        // jmp [reg*4+table]: every entry is a target inside this function (a listed function at or around one is a
+        // case Ghidra cut out), up to the first word that is no address shortly after the entry
         if (x.i.mnemonic == ZYDIS_MNEMONIC_JMP && t.type == ZYDIS_OPERAND_TYPE_MEMORY && t.mem.scale == 4 &&
             t.mem.base == ZYDIS_REGISTER_NONE) {
             for (uint32_t e = uint32_t(t.mem.disp.value), w;; e += 4) {
                 const uint8_t* p = img.at(e, 4);
                 if (!p) break;
                 std::memcpy(&w, p, 4);
-                if (w <= va || w >= va + limit) break;
+                if (w <= va || w >= va + 0x10000) break;
+                while (following < fns.size() && w >= fns[following].first) {
+                    size_t was = following;
+                    skip();
+                    if (following == was) break;
+                }
+                if (w >= va + limit) break;
                 reach = std::max(reach, w - va);
             }
         }
-        bool end = isRet(x) || (x.i.mnemonic == ZYDIS_MNEMONIC_JMP);
-        if (end && o > reach) return o;
+        bool ends = isRet(x) || (x.i.mnemonic == ZYDIS_MNEMONIC_JMP);
+        if (ends && o > reach) return o;
+        // Running into the following function: compiled code never runs into another function (one that does not
+        // return ends in its call; alignment is int3/nop), so that one is a false start inside this one.
+        bool stops = ends || x.i.mnemonic == ZYDIS_MNEMONIC_CALL || x.i.mnemonic == ZYDIS_MNEMONIC_INT3 ||
+                     x.i.mnemonic == ZYDIS_MNEMONIC_NOP;
+        if (o == limit && !stops) skip();
     }
     return limit;
 }
@@ -300,7 +331,7 @@ int main(int argc, char** argv) {
         os << std::hex << va << std::dec << "\t" << room << "\t" << p << "\t" << returns(v) << "\t" << sh << "\n";
         ++count;
         if (sizesOut.is_open()) {
-            uint32_t e = extent(dec, img, va, k + 1 < fns.size() ? fns[k + 1].first - va : size);
+            uint32_t e = extent(dec, img, fns, k);
             if (e > size) ++longer;
             sizesOut << std::hex << va << "\t" << std::max(e, size) << std::dec << "\n";
         }
