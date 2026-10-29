@@ -35,10 +35,22 @@ typedef char ob_size_cUnk00aba68c[sizeof(cUnk00aba68c) == 0x10c ? 1 : -1];
 // SYNTHETIC: 0x007bf590
 // cUnk00aba68c::QueryInterface`adjustor{4}'
 
+// SYNTHETIC: 0x00762970
+// cUnk00aba68c::AddRef`adjustor{4}'
+
+// SYNTHETIC: 0x00762980
+// cUnk00aba68c::Release`adjustor{4}'
+
 // SYNTHETIC: 0x007bf5a0
 // cUnk00aba68c::`vector deleting dtor'`adjustor{4}'
 
 // SYNTHETIC: 0x007bf5b0
 // cUnk00aba68c::QueryInterface`adjustor{220}'
+
+// SYNTHETIC: 0x007bf5c0
+// cUnk00aba68c::AddRef`adjustor{220}'
+
+// SYNTHETIC: 0x007bf5d0
+// cUnk00aba68c::Release`adjustor{220}'
 
 #endif

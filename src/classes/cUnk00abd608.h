@@ -26,6 +26,12 @@ public:
 // SYNTHETIC: 0x00806210
 // cUnk00abd608::QueryInterface`adjustor{4}'
 
+// SYNTHETIC: 0x008089d0
+// cUnk00abd608::AddRef`adjustor{4}'
+
+// SYNTHETIC: 0x008089e0
+// cUnk00abd608::Release`adjustor{4}'
+
 // SYNTHETIC: 0x00806220
 // cUnk00abd608::`vector deleting dtor'`adjustor{4}'
 

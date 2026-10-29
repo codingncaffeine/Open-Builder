@@ -22,8 +22,8 @@ public:
     virtual uint32_t Slot10_a92ec0(uint32_t);
     virtual uint32_t Slot11_a92ec0();
     virtual void Slot12_a92ec0(uint32_t);
-    virtual bool Slot13_a92ec0(uint32_t);
-    virtual void Slot14_a92ec0(uint32_t);
+    virtual bool Slot13_a92ec0(void*);
+    virtual void Slot14_a92ec0(void*);
     virtual ~cUnk00a92ec0();
     // STUB: 0x004de330
     void Fn004de330();
@@ -41,7 +41,7 @@ public:
     int32_t mnCounter;
     bool mbReady;
     char unknown29[0x17];
-    uint32_t* mpList;
+    void** mpList;
     char unknown44[0x44];
 };
 #ifdef _MSC_VER

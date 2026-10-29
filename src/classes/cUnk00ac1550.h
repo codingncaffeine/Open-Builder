@@ -77,7 +77,19 @@ typedef char ob_size_cUnk00ac1550[sizeof(cUnk00ac1550) == 0x4c ? 1 : -1];
 // SYNTHETIC: 0x0082ae90
 // cUnk00ac1550::`vector deleting dtor'`adjustor{4}'
 
+// SYNTHETIC: 0x005be410
+// cUnk00ac1550::Release`adjustor{4}'
+
+// SYNTHETIC: 0x005be420
+// cUnk00ac1550::AddRef`adjustor{4}'
+
 // SYNTHETIC: 0x0082b770
 // cUnk00ac1550::Slot00_ac1338`adjustor{12}'
+
+// SYNTHETIC: 0x00761850
+// cUnk00ac1550::AddRef`adjustor{12}'
+
+// SYNTHETIC: 0x00769d30
+// cUnk00ac1550::Release`adjustor{12}'
 
 #endif

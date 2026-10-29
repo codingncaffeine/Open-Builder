@@ -67,11 +67,17 @@ public:
 // SYNTHETIC: 0x0094c4b8
 // cUnk00ad5360::Slot00_ad5360`adjustor{4}'
 
+// SYNTHETIC: 0x009359bd
+// cUnk00ad5360::Slot01_ad5360`adjustor{4}'
+
 // SYNTHETIC: 0x0094c4c0
 // cUnk00ad5360::Slot02_ad5360`adjustor{4}'
 
 // SYNTHETIC: 0x0094c4c8
 // cUnk00ad5360::Slot00_ad5360`adjustor{8}'
+
+// SYNTHETIC: 0x009359d5
+// cUnk00ad5360::Slot01_ad5360`adjustor{8}'
 
 // SYNTHETIC: 0x0094c4d0
 // cUnk00ad5360::Slot02_ad5360`adjustor{8}'

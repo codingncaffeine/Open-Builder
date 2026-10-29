@@ -29,8 +29,17 @@ typedef char ob_size_cUnk00ab4ab4[sizeof(cUnk00ab4ab4) == 0x14 ? 1 : -1];
 // SYNTHETIC: 0x00769d10
 // cUnk00ab4ab4::`vector deleting dtor'`adjustor{4}'
 
+// SYNTHETIC: 0x005be410
+// cUnk00ab4ab4::Release`adjustor{4}'
+
+// SYNTHETIC: 0x005be420
+// cUnk00ab4ab4::AddRef`adjustor{4}'
+
 // SYNTHETIC: 0x00769d20
 // cUnk00ab4ab4::QueryInterface`adjustor{12}'
+
+// SYNTHETIC: 0x00761850
+// cUnk00ab4ab4::AddRef`adjustor{12}'
 
 // SYNTHETIC: 0x00769d30
 // cUnk00ab4ab4::Release`adjustor{12}'

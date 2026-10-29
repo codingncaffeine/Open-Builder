@@ -84,6 +84,9 @@ public:
 // SYNTHETIC: 0x006a0070
 // cUnk00ab0dc8::Slot00_ab0dc8`adjustor{4}'
 
+// SYNTHETIC: 0x005200d0
+// cUnk00ab0dc8::Slot01_ab0dc8`adjustor{4}'
+
 // SYNTHETIC: 0x006a00a0
 // cUnk00ab0dc8::Slot02_ab0dc8`adjustor{4}'
 

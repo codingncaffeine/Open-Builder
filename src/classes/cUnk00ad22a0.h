@@ -38,4 +38,22 @@ typedef char ob_size_cUnk00ad22a0[sizeof(cUnk00ad22a0) == 0x20 ? 1 : -1];
 // SYNTHETIC: 0x00935d31
 // cUnk00ad22a0::`scalar deleting dtor'
 
+// SYNTHETIC: 0x009359b5
+// cUnk00ad22a0::Slot00_ad22a0`adjustor{4}'
+
+// SYNTHETIC: 0x009359bd
+// cUnk00ad22a0::Slot01_ad22a0`adjustor{4}'
+
+// SYNTHETIC: 0x009359c5
+// cUnk00ad22a0::Slot02_ad22a0`adjustor{4}'
+
+// SYNTHETIC: 0x009359cd
+// cUnk00ad22a0::Slot00_ad22a0`adjustor{8}'
+
+// SYNTHETIC: 0x009359d5
+// cUnk00ad22a0::Slot01_ad22a0`adjustor{8}'
+
+// SYNTHETIC: 0x009359dd
+// cUnk00ad22a0::Slot02_ad22a0`adjustor{8}'
+
 #endif

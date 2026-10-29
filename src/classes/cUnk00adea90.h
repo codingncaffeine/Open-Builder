@@ -65,6 +65,12 @@ typedef char ob_size_cUnk00adea90[sizeof(cUnk00adea90) == 0x254 ? 1 : -1];
 // SYNTHETIC: 0x009ba0af
 // cUnk00adea90::QueryInterface`adjustor{556}'
 
+// SYNTHETIC: 0x009b9ec8
+// cUnk00adea90::AddRef`adjustor{556}'
+
+// SYNTHETIC: 0x009b9ed3
+// cUnk00adea90::Release`adjustor{556}'
+
 // SYNTHETIC: 0x009ba0fc
 // cUnk00adea90::Slot172_ade188`adjustor{556}'
 

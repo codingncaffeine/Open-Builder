@@ -27,4 +27,13 @@ typedef char ob_size_cUnk00a8f328[sizeof(cUnk00a8f328) == 0x154 ? 1 : -1];
 // SYNTHETIC: 0x0049a510
 // cUnk00a8f328::`scalar deleting dtor'
 
+// SYNTHETIC: 0x0047c2c0
+// cUnk00a8f328::QueryInterface`adjustor{216}'
+
+// SYNTHETIC: 0x008b2b80
+// cUnk00a8f328::AddRef`adjustor{216}'
+
+// SYNTHETIC: 0x008b2b90
+// cUnk00a8f328::Release`adjustor{216}'
+
 #endif

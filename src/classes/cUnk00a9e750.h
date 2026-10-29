@@ -35,4 +35,19 @@ typedef char ob_size_cUnk00a9e750[sizeof(cUnk00a9e750) == 0x38 ? 1 : -1];
 // SYNTHETIC: 0x0057d020
 // cUnk00a9e750::`scalar deleting dtor'
 
+// SYNTHETIC: 0x00576260
+// cUnk00a9e750::QueryInterface`adjustor{8}'
+
+// SYNTHETIC: 0x007637a0
+// cUnk00a9e750::AddRef`adjustor{8}'
+
+// SYNTHETIC: 0x007637b0
+// cUnk00a9e750::Release`adjustor{8}'
+
+// SYNTHETIC: 0x00576270
+// cUnk00a9e750::QueryInterface`adjustor{12}'
+
+// SYNTHETIC: 0x007637e0
+// cUnk00a9e750::Release`adjustor{12}'
+
 #endif

@@ -37,8 +37,20 @@ typedef char ob_size_cUnk00a9e1e8[sizeof(cUnk00a9e1e8) == 0x28 ? 1 : -1];
 // SYNTHETIC: 0x00576f80
 // cUnk00a9e1e8::QueryInterface`adjustor{8}'
 
+// SYNTHETIC: 0x00429ce0
+// cUnk00a9e1e8::AddRef`adjustor{8}'
+
+// SYNTHETIC: 0x00429cf0
+// cUnk00a9e1e8::Release`adjustor{8}'
+
 // SYNTHETIC: 0x00576f90
 // cUnk00a9e1e8::QueryInterface`adjustor{12}'
+
+// SYNTHETIC: 0x00429d10
+// cUnk00a9e1e8::AddRef`adjustor{12}'
+
+// SYNTHETIC: 0x00429d20
+// cUnk00a9e1e8::Release`adjustor{12}'
 
 // SYNTHETIC: 0x00576fa0
 // cUnk00a9e1e8::QueryInterface`adjustor{36}'

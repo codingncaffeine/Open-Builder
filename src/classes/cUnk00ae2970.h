@@ -89,4 +89,10 @@ typedef char ob_size_cUnk00ae2970[sizeof(cUnk00ae2970) == 0x13c ? 1 : -1];
 // SYNTHETIC: 0x009cf875
 // cUnk00ae2970::QueryInterface`adjustor{216}'
 
+// SYNTHETIC: 0x0095ba81
+// cUnk00ae2970::AddRef`adjustor{216}'
+
+// SYNTHETIC: 0x0095ba8c
+// cUnk00ae2970::Release`adjustor{216}'
+
 #endif

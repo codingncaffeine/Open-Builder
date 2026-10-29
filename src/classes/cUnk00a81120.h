@@ -20,14 +20,14 @@ public:
     virtual void Slot09_a81120() = 0;
     virtual void* Slot10_a81120() = 0;
     virtual void* Slot11_a81120() = 0;
-    virtual uint32_t Slot12_a81120(uint32_t) = 0;
-    virtual uint32_t Slot13_a81120(uint32_t) = 0;
+    virtual void* Slot12_a81120(uint32_t) = 0;
+    virtual void* Slot13_a81120(uint32_t) = 0;
     virtual bool Slot14_a81120(uint32_t) = 0;
     virtual uint32_t Slot15_a81120(uint32_t) = 0;
     virtual bool Slot16_a81120(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot17_a81120(uint32_t) = 0;
     virtual bool Slot18_a81120(uint32_t, uint32_t) = 0;
-    virtual void Slot19_a81120(uint32_t) = 0;
+    virtual bool Slot19_a81120(uint32_t) = 0;
     virtual bool Slot20_a81120(uint32_t) = 0;
 };
 #ifdef _MSC_VER

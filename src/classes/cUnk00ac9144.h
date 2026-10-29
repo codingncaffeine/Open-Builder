@@ -137,6 +137,12 @@ typedef char ob_size_cUnk00ac9144[sizeof(cUnk00ac9144) == 0x40 ? 1 : -1];
 // SYNTHETIC: 0x008b92c0
 // cUnk00ac9144::QueryInterface`adjustor{8}'
 
+// SYNTHETIC: 0x007637a0
+// cUnk00ac9144::AddRef`adjustor{8}'
+
+// SYNTHETIC: 0x007637b0
+// cUnk00ac9144::Release`adjustor{8}'
+
 // SYNTHETIC: 0x008b92d0
 // cUnk00ac9144::QueryInterface`adjustor{28}'
 

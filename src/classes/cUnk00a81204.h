@@ -35,14 +35,14 @@ public:
     virtual void Slot09_a81120();
     virtual void* Slot10_a81120();
     virtual void* Slot11_a81120();
-    virtual uint32_t Slot12_a81120(uint32_t);
-    virtual uint32_t Slot13_a81120(uint32_t);
+    virtual void* Slot12_a81120(uint32_t);
+    virtual void* Slot13_a81120(uint32_t);
     virtual bool Slot14_a81120(uint32_t);
     virtual uint32_t Slot15_a81120(uint32_t);
     virtual bool Slot16_a81120(uint32_t, uint32_t);
     virtual uint32_t Slot17_a81120(uint32_t);
     virtual bool Slot18_a81120(uint32_t, uint32_t);
-    virtual void Slot19_a81120(uint32_t);
+    virtual bool Slot19_a81120(uint32_t);
     virtual bool Slot20_a81120(uint32_t);
     virtual bool Slot03_aaaa9c(uint32_t);
     // STUB: 0x0040df90
@@ -85,8 +85,20 @@ typedef char ob_size_cUnk00a81204[sizeof(cUnk00a81204) == 0xb8 ? 1 : -1];
 // SYNTHETIC: 0x0040f370
 // cUnk00a81204::QueryInterface`adjustor{8}'
 
+// SYNTHETIC: 0x007637a0
+// cUnk00a81204::AddRef`adjustor{8}'
+
+// SYNTHETIC: 0x007637b0
+// cUnk00a81204::Release`adjustor{8}'
+
 // SYNTHETIC: 0x0040f380
 // cUnk00a81204::QueryInterface`adjustor{12}'
+
+// SYNTHETIC: 0x007637d0
+// cUnk00a81204::AddRef`adjustor{12}'
+
+// SYNTHETIC: 0x007637e0
+// cUnk00a81204::Release`adjustor{12}'
 
 // SYNTHETIC: 0x0040f390
 // cUnk00a81204::QueryInterface`adjustor{16}'

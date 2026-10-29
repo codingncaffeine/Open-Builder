@@ -52,11 +52,17 @@ public:
 // SYNTHETIC: 0x004f8890
 // cUnk00a94428::Slot00_a94428`adjustor{4}'
 
+// SYNTHETIC: 0x0068d230
+// cUnk00a94428::Slot01_a94428`adjustor{4}'
+
 // SYNTHETIC: 0x004f8fd0
 // cUnk00a94428::Slot02_a94428`adjustor{4}'
 
 // SYNTHETIC: 0x004f88a0
 // cUnk00a94428::Slot00_a94428`adjustor{8}'
+
+// SYNTHETIC: 0x0068d250
+// cUnk00a94428::Slot01_a94428`adjustor{8}'
 
 // SYNTHETIC: 0x004f8fe0
 // cUnk00a94428::Slot02_a94428`adjustor{8}'

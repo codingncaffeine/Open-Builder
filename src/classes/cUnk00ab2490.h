@@ -112,13 +112,31 @@ typedef char ob_size_cUnk00ab2490[sizeof(cUnk00ab2490) == 0x168 ? 1 : -1];
 // SYNTHETIC: 0x006e1790
 // cUnk00ab2490::Slot00_ab2348`adjustor{8}'
 
+// SYNTHETIC: 0x006e17a0
+// cUnk00ab2490::Slot01_ab2348`adjustor{8}'
+
+// SYNTHETIC: 0x006e1800
+// cUnk00ab2490::Slot02_ab2348`adjustor{8}'
+
 // SYNTHETIC: 0x006e17b0
 // cUnk00ab2490::`vector deleting dtor'`adjustor{8}'
 
 // SYNTHETIC: 0x006e17c0
 // cUnk00ab2490::Slot00_ab2348`adjustor{12}'
 
+// SYNTHETIC: 0x006e17d0
+// cUnk00ab2490::Slot01_ab2348`adjustor{12}'
+
+// SYNTHETIC: 0x006e1810
+// cUnk00ab2490::Slot02_ab2348`adjustor{12}'
+
 // SYNTHETIC: 0x006e17e0
 // cUnk00ab2490::Slot00_ab2348`adjustor{16}'
+
+// SYNTHETIC: 0x006e17f0
+// cUnk00ab2490::Slot01_ab2348`adjustor{16}'
+
+// SYNTHETIC: 0x006e1820
+// cUnk00ab2490::Slot02_ab2348`adjustor{16}'
 
 #endif

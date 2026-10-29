@@ -18,4 +18,7 @@ public:
 typedef char ob_size_cUnk00ac7630[sizeof(cUnk00ac7630) == 0x364 ? 1 : -1];
 #endif
 
+// SYNTHETIC: 0x008aeb00
+// cUnk00ac7630::`vector deleting dtor'`adjustor{4}'
+
 #endif

@@ -71,6 +71,9 @@ typedef char ob_size_cUnk00ad8468[sizeof(cUnk00ad8468) == 0x10 ? 1 : -1];
 // SYNTHETIC: 0x0096e963
 // cUnk00ad8468::Slot00_ad8468`adjustor{4}'
 
+// SYNTHETIC: 0x00935ead
+// cUnk00ad8468::Slot01_ad8468`adjustor{4}'
+
 // SYNTHETIC: 0x0096eb22
 // cUnk00ad8468::Slot02_ad8468`adjustor{4}'
 

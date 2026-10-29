@@ -30,4 +30,7 @@ typedef char ob_size_cUnk00aa75dc[sizeof(cUnk00aa75dc) == 0x14 ? 1 : -1];
 // SYNTHETIC: 0x005be410
 // cUnk00aa75dc::Release`adjustor{4}'
 
+// SYNTHETIC: 0x005be420
+// cUnk00aa75dc::AddRef`adjustor{4}'
+
 #endif

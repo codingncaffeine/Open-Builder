@@ -56,6 +56,12 @@ public:
 // SYNTHETIC: 0x005bcb50
 // cUnk00abb6c0::QueryInterface`adjustor{4}'
 
+// SYNTHETIC: 0x005be420
+// cUnk00abb6c0::AddRef`adjustor{4}'
+
+// SYNTHETIC: 0x005bcb60
+// cUnk00abb6c0::Release`adjustor{4}'
+
 // SYNTHETIC: 0x007de9f0
 // cUnk00abb6c0::`vector deleting dtor'`adjustor{4}'
 

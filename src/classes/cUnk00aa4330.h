@@ -42,4 +42,13 @@ public:
 typedef char ob_size_cUnk00aa4330[sizeof(cUnk00aa4330) == 0x18 ? 1 : -1];
 #endif
 
+// SYNTHETIC: 0x00424ee0
+// cUnk00aa4330::QueryInterface`adjustor{4}'
+
+// SYNTHETIC: 0x005c0500
+// cUnk00aa4330::AddRef`adjustor{4}'
+
+// SYNTHETIC: 0x00424ef0
+// cUnk00aa4330::Release`adjustor{4}'
+
 #endif

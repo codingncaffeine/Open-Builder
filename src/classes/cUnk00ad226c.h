@@ -41,6 +41,9 @@ typedef char ob_size_cUnk00ad226c[sizeof(cUnk00ad226c) == 0x1c ? 1 : -1];
 // SYNTHETIC: 0x009359b5
 // cUnk00ad226c::Slot00_ad22a0`adjustor{4}'
 
+// SYNTHETIC: 0x009359bd
+// cUnk00ad226c::Slot01_ad22a0`adjustor{4}'
+
 // SYNTHETIC: 0x009359c5
 // cUnk00ad226c::Slot02_ad22a0`adjustor{4}'
 

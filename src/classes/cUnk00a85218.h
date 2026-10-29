@@ -33,7 +33,7 @@ public:
     virtual bool Slot03_a81120(uint32_t);
     virtual bool Slot04_a81120();
     virtual void* Slot08_a81120();
-    virtual void Slot19_a81120(uint32_t);
+    virtual bool Slot19_a81120(uint32_t);
     virtual bool Slot03_aaaa9c(uint32_t);
     virtual void Slot06_a81204();
     virtual void Slot07_a81204();

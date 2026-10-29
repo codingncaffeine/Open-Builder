@@ -26,6 +26,12 @@ typedef char ob_size_cUnk00abd6fc[sizeof(cUnk00abd6fc) == 0x20 ? 1 : -1];
 // SYNTHETIC: 0x008089c0
 // cUnk00abd6fc::QueryInterface`adjustor{4}'
 
+// SYNTHETIC: 0x008089d0
+// cUnk00abd6fc::AddRef`adjustor{4}'
+
+// SYNTHETIC: 0x008089e0
+// cUnk00abd6fc::Release`adjustor{4}'
+
 // SYNTHETIC: 0x008089f0
 // cUnk00abd6fc::`vector deleting dtor'`adjustor{4}'
 

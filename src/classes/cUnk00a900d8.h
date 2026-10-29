@@ -29,4 +29,10 @@ public:
 // SYNTHETIC: 0x00565570
 // cUnk00a900d8::QueryInterface`adjustor{40}'
 
+// SYNTHETIC: 0x00565580
+// cUnk00a900d8::AddRef`adjustor{40}'
+
+// SYNTHETIC: 0x00565590
+// cUnk00a900d8::Release`adjustor{40}'
+
 #endif

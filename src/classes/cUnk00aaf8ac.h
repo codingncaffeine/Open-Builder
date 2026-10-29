@@ -29,4 +29,10 @@ typedef char ob_size_cUnk00aaf8ac[sizeof(cUnk00aaf8ac) == 0x1c ? 1 : -1];
 // SYNTHETIC: 0x006837c0
 // cUnk00aaf8ac::`vector deleting dtor'`adjustor{4}'
 
+// SYNTHETIC: 0x005be410
+// cUnk00aaf8ac::Release`adjustor{4}'
+
+// SYNTHETIC: 0x005be420
+// cUnk00aaf8ac::AddRef`adjustor{4}'
+
 #endif
