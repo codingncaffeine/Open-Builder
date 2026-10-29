@@ -46,8 +46,9 @@ total=0 zero=0 n=0 better=0
 while read -r kind addr; do
   [[ -n "$addr" ]] || continue
   a="$(printf '%08x' "$((16#${addr#0x}))")"
-  s=$(scratch/build/obcmp/obperm "$exe" "$sizes" "$copy" "$a" --obj "$work/t.obj" --work "scratch/perm/$a" 2>&1 |
-    awk '/^start:/ {print $2 " " $4; exit}' || true)
+  out=$(scratch/build/obcmp/obperm "$exe" "$sizes" "$copy" "$a" --obj "$work/t.obj" --work "scratch/perm/$a" 2>&1 || true)
+  s=$(awk '/^start:/ {print $2 " " $4; exit}' <<<"$out")
+  targets=$(sed -n 's/^target: /             /p' <<<"$out")  # identical instructions, a callee or global not the original's
   [[ -n "$s" ]] || { printf '0x%s  %-9s cannot be scored (no symbol, or not in the function list)\n' "$a" "$kind"; continue; }
   read -r score orig <<<"$s"
   o=""
@@ -57,6 +58,7 @@ while read -r kind addr; do
     [[ -n "$so" && "$so" -lt "$score" ]] && { o="  (other flags: $so)"; better=$((better + 1)); }
   fi
   printf '0x%s  %-9s score %-4s (original %s)%s\n' "$a" "$kind" "$score" "$orig" "$o"
+  [[ -z "$targets" ]] || printf '%s\n' "$targets"
   n=$((n + 1)) total=$((total + score))
   [[ "$score" -eq 0 ]] && zero=$((zero + 1))
 done <<<"${addrs//:/}"

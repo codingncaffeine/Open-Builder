@@ -13,7 +13,9 @@
 // above the file (or --flags). Score = tokens in a diff of the two listings (0 = identical), both read by the
 // tokenizer obcmp uses (pe.h): mnemonics and operands, jump targets inside the function as "L<instruction index>",
 // switch tables as "table T<place>" and their entries, addresses outside the function as "addr". Calls are compared by
-// being calls, not by target (tools/match.sh does that).
+// being calls; when the instructions are identical, each address outside the function (a callee, a global) must be
+// the original's where we know what ours stands for (the stub lists, the file's STUB and GLOBAL lines, Fn<address>
+// names), else it scores and work/j0/targets.txt says which.
 // The best spelling is written to --out (default <work>/best.cpp, the whole file with the body replaced); comments
 // inside the body are not kept. Exit 0 when a candidate scores 0, 1 otherwise, 2 on bad input.
 
@@ -706,12 +708,78 @@ void trimFill(std::vector<std::string>& t) {
     while (!t.empty() && (t.back() == "int3" || t.back().rfind("nop", 0) == 0 || std::regex_match(t.back(), longNop))) t.pop_back();
 }
 
+// What a symbol of ours stands for in the original: the stub lists ("0x<address> <decorated>": hook/stubs.txt, the
+// generated classes' src/classes/stubs.txt, and the last build's STUB annotations and GLOBALs), else the address in
+// its name (Fn0045e000, gpB43dc4: the names the agents give unknowns). 0 = not known.
+uint32_t originalOf(const std::string& sym, const std::map<std::string, uint32_t>& stubs) {
+    // first the scored file's own STUB and GLOBAL lines, by symbol prefix (sourceStubs): newer than any build's list
+    for (auto& [prefix, address] : stubs)
+        if (prefix.size() > 2 && prefix.compare(prefix.size() - 2, 2, "@@") == 0 && sym.rfind(prefix, 0) == 0) return address;
+    auto it = stubs.find(sym);
+    if (it != stubs.end()) return it->second;
+    std::string name = sym.substr(sym[0] == '?' ? 1 : 0);
+    name = name.substr(0, name.find('@'));
+    static const std::regex fn("^Fn([0-9a-fA-F]{8})$"), global("^g[a-z]?([0-9A-Fa-f]{6,8})$");
+    std::smatch m;
+    if (std::regex_match(name, m, fn) || std::regex_match(name, m, global)) return uint32_t(std::stoul(m[1], nullptr, 16));
+    return 0;
+}
+
+// The STUB and GLOBAL lines of a source, as the symbol prefix each declaration compiles to ("?Name@@" for a free
+// function or variable, "?Name@Struct@@" for a member, "??0Struct@@" for a constructor) and its original address.
+void sourceStubs(const std::string& src, std::map<std::string, uint32_t>& out) {
+    std::istringstream ss(src);
+    std::string cls, line;
+    uint32_t pending = 0;
+    static const std::regex annotation("^\\s*// (STUB|GLOBAL): 0x([0-9a-fA-F]+)"), open("^(struct|class)\\s+(\\w+)[^;]*$");
+    std::smatch m;
+    while (std::getline(ss, line)) {
+        if (std::regex_search(line, m, annotation)) { pending = uint32_t(std::stoul(m[2], nullptr, 16)); continue; }
+        if (std::regex_search(line, m, open)) cls = m[2];
+        if (line.rfind("};", 0) == 0) cls.clear();
+        if (!pending || line.find_first_not_of(" \t") == std::string::npos) continue;
+        std::string decl = line.substr(0, line.find('('));
+        decl = decl.substr(0, decl.find('['));
+        decl = decl.substr(0, decl.find(';'));
+        static const std::regex last("([~\\w]+(::[~\\w]+)*)\\s*$");
+        if (std::regex_search(decl, m, last)) {
+            std::string name = m[1], scope = line[0] == ' ' || line[0] == '\t' ? cls : "";
+            if (auto c = name.rfind("::"); c != std::string::npos) { scope = name.substr(0, c); name = name.substr(c + 2); }
+            if (name == scope && !scope.empty()) out.emplace("??0" + scope + "@@", pending);
+            else out.emplace("?" + name + "@" + (scope.empty() ? "" : scope + "@") + "@", pending);
+        }
+        pending = 0;
+    }
+}
+
+std::map<std::string, uint32_t> loadStubs() {
+    std::map<std::string, uint32_t> out;
+    for (const char* path : {"hook/stubs.txt", "src/classes/stubs.txt", "build/vc71/stubs.annotated.txt", "build/vc71/globals.txt"}) {
+        std::ifstream f(path);
+        std::string a, s;
+        for (std::string line; std::getline(f, line);) {
+            std::istringstream ss(line);
+            if (line.rfind("0x", 0) == 0 && ss >> a >> s) out.emplace(s, uint32_t(std::stoul(a, nullptr, 16)));
+        }
+    }
+    return out;
+}
+
+// One function of a rebuilt object: its tokens, and every address outside it that it refers to, in order, as the
+// original address it stands for (0 = not known: a constant of ours, a string, a function of this file).
+struct Listing {
+    std::vector<std::string> tokens;
+    std::vector<std::pair<uint32_t, std::string>> refs;
+};
+
 // A rebuilt object's functions, read with the tokenizer the original goes through (pe.h). Each function's section is
 // placed in a stand-in image with the original's base and size, its relocations applied: a target in the same section
-// lands where it sits, any other symbol on its own address in the image away from the function (so it reads as an
-// address, "addr", like the original's globals and callees). Labels ($L...) and switch tables stay inside the function.
-std::map<std::string, std::vector<std::string>> objectListing(const std::string& obj, const ob::Image& orig) {
-    std::map<std::string, std::vector<std::string>> fns;
+// lands where it sits, any other symbol in a 4 KB window of its own in the upper half of the image (so it reads as an
+// address, "addr", like the original's globals and callees, and an offset added to it survives as the remainder).
+// Labels ($L...) and switch tables stay inside the function.
+std::map<std::string, Listing> objectListing(const std::string& obj, const ob::Image& orig,
+                                             const std::map<std::string, uint32_t>& stubs) {
+    std::map<std::string, Listing> fns;
     std::ifstream f(obj, std::ios::binary);
     std::vector<uint8_t> b((std::istreambuf_iterator<char>(f)), {});
     if (b.size() < 20 || ob::rd16(b, 0) != 0x14c) return fns;
@@ -753,7 +821,14 @@ std::map<std::string, std::vector<std::string>> objectListing(const std::string&
         img.size = orig.size;
         img.file.assign(b.begin() + raw, b.begin() + raw + rawSize);
         img.sections.push_back({place - orig.base, rawSize, 0, rawSize, 0x60000020u});
-        auto at = [&](uint32_t s) { return syms[s].section == fn.section ? place + syms[s].value : others + 16 * s; };
+        std::map<uint32_t, uint32_t> window;  // symbol → its window
+        std::vector<uint32_t> windowSym;
+        auto at = [&](uint32_t s) {
+            if (syms[s].section == fn.section) return place + syms[s].value;
+            auto w = window.emplace(s, uint32_t(windowSym.size()));
+            if (w.second) windowSym.push_back(s);
+            return others + 0x1000 * w.first->second;
+        };
         for (uint16_t r = 0; r < nrel; ++r) {
             size_t e = relocs + size_t(r) * 10;
             uint32_t off = ob::rd32(b, e), s = ob::rd32(b, e + 4);
@@ -766,9 +841,16 @@ std::map<std::string, std::vector<std::string>> objectListing(const std::string&
             std::memcpy(img.file.data() + off, &v, 4);
         }
         static const std::map<uint32_t, std::string> noNames;
-        auto tokens = ob::tokenize({&img, &noNames}, place + fn.value, end - fn.value);
-        trimFill(tokens);
-        fns[fn.name] = std::move(tokens);
+        std::vector<uint32_t> refs;
+        Listing& l = fns[fn.name];
+        l.tokens = ob::tokenize({&img, &noNames}, place + fn.value, end - fn.value, &refs);
+        trimFill(l.tokens);
+        for (uint32_t r : refs) {
+            if (r < others || (r - others) / 0x1000 >= windowSym.size()) { l.refs.push_back({r, ""}); continue; }  // a number
+            const std::string& name = syms[windowSym[(r - others) / 0x1000]].name;
+            uint32_t o = originalOf(name, stubs);
+            l.refs.push_back({o ? o + (r - others) % 0x1000 : 0, name});
+        }
     }
     return fns;
 }
@@ -832,7 +914,9 @@ int main(int argc, char** argv) {
     ob::Image orig;
     if (!ob::loadImage(exe, orig)) { std::fprintf(stderr, "cannot read %s\n", exe.c_str()); return 2; }
     static const std::map<uint32_t, std::string> noNames;
-    std::vector<std::string> want = ob::tokenize({&orig, &noNames}, addr, size);
+    std::vector<uint32_t> wantRefs;
+    std::vector<std::string> want = ob::tokenize({&orig, &noNames}, addr, size, &wantRefs);
+    std::map<std::string, uint32_t> stubs = loadStubs();
     trimFill(want);
     if (want.empty()) { std::fprintf(stderr, "no code at 0x%x\n", addr); return 2; }
 
@@ -845,6 +929,7 @@ int main(int argc, char** argv) {
         ss << f.rdbuf();
         src = ss.str();
     }
+    sourceStubs(src, stubs);
     char ann[40];
     std::snprintf(ann, sizeof ann, "// FUNCTION: 0x%08x", addr);
     size_t at = src.find(ann);
@@ -944,13 +1029,35 @@ int main(int argc, char** argv) {
         }
         if (!fs::exists(obj)) return -1;
         long best = -1;
-        for (auto& [name, lines] : objectListing(obj, orig))
+        for (auto& [name, l] : objectListing(obj, orig, stubs))
             if (name.rfind(prefix, 0) == 0) {
-                long s = long(diffScore(want, lines));
+                long s = long(diffScore(want, l.tokens));
+                // Identical instructions: then each address it refers to must be the original's too, where we know
+                // what ours stands for (a call to the wrong function, a global at the wrong address).
+                std::string why;
+                if (s == 0) {
+                    if (l.refs.size() != wantRefs.size()) {
+                        s += long(l.refs.size() > wantRefs.size() ? l.refs.size() - wantRefs.size() : wantRefs.size() - l.refs.size());
+                        why += "the addresses it refers to: " + std::to_string(l.refs.size()) + ", the original's " +
+                               std::to_string(wantRefs.size()) + "\n";
+                    } else {
+                        for (size_t i = 0; i < l.refs.size(); ++i) {
+                            uint32_t ours = l.refs[i].first;
+                            if (!ours || ours == wantRefs[i]) continue;
+                            ++s;
+                            char line[160];
+                            std::snprintf(line, sizeof line, "address %zu: ours 0x%08x, the original's 0x%08x", i + 1, ours,
+                                          wantRefs[i]);
+                            why += line + (l.refs[i].second.empty() ? "" : " (ours is " + l.refs[i].second + ")") + "\n";
+                        }
+                    }
+                }
                 if (best < 0 || s < best) {
                     best = s;
                     std::ofstream o(dir + "/got.txt");  // the listing scored, beside work/want.txt, for a diff
-                    for (auto& l : lines) o << l << "\n";
+                    for (auto& t : l.tokens) o << t << "\n";
+                    std::ofstream w(dir + "/targets.txt");  // why identical instructions still score
+                    w << why;
                 }
             }
         return best;
@@ -965,7 +1072,12 @@ int main(int argc, char** argv) {
         std::fprintf(stderr, "the file does not compile, or no symbol %s... in it\n", prefix.c_str());
         return 2;
     }
-    if (!fixedObj.empty()) { std::printf("start: %ld (original %zu instructions)\n", best, want.size()); return best == 0 ? 0 : 1; }
+    if (!fixedObj.empty()) {
+        std::ifstream w(work + "/j0/targets.txt");
+        for (std::string line; std::getline(w, line);) std::printf("target: %s\n", line.c_str());
+        std::printf("start: %ld (original %zu instructions)\n", best, want.size());
+        return best == 0 ? 0 : 1;
+    }
     if (!quiet) std::printf("start: %ld (original %zu instructions)\n", best, want.size());
     Node bestNode = root, cur = root;
     long curScore = best;
