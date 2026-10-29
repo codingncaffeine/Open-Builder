@@ -4,6 +4,8 @@
 //
 // pairs.tsv: one function per line, "orig_va  orig_size  rebuilt_va  rebuilt_size  name" (hex VAs and sizes,
 // tab- or space-separated, '#' starts a comment). For every pair it prints the match score (0-100) and a total.
+// Several pairs may share an original function: the original's linker folded identical bodies (/OPT:ICF) that are
+// separate functions in the rebuild. All of them take the first pair's name, so each compares equal to it.
 //
 // Each instruction becomes a token: mnemonic plus normalised operands. Absolute addresses inside the image are
 // replaced by what they refer to where that is known (a paired function), otherwise by "addr", so two builds placed
@@ -77,8 +79,8 @@ int main(int argc, char** argv) {
     // Both sides refer to a paired function by the same name, so a call to it compares equal.
     std::map<uint32_t, std::string> origNames, newNames;
     for (const Pair& p : pairs) {
-        origNames[p.origVa] = p.name;
-        newNames[p.newVa] = p.name;
+        origNames.emplace(p.origVa, p.name);  // a folded function: every copy takes the first pair's name
+        newNames[p.newVa] = origNames[p.origVa];
     }
     if (!namesPath.empty()) {
         std::ifstream f(namesPath);
