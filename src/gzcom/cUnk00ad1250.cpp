@@ -267,7 +267,7 @@ bool cUnk00ad1250::Slot14_ad1250(void* pSink)
     case 11:
     case 16:
         {
-            const cRZString& name = *reinterpret_cast<const cRZString*>(mName);
+            const cRZString& name = mName;
             sink->Write_ad1250(name.data(), static_cast<uint32_t>(name.size()));
         }
         return true;
@@ -494,7 +494,7 @@ bool cUnk00ad1250::Slot03_ad1250()
 {
     {
         cRZString text("\xC2\xA0");
-        *reinterpret_cast<cRZString*>(mName) = text;
+        mName = text;
     }
     Fn00923d58();
     return true;

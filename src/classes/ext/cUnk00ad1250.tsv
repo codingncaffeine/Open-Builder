@@ -9,7 +9,7 @@ slot Slot15_ad1250 bool void*
 slot Slot29_ad1250 bool
 slot Slot11_ad1250 bool void*
 field 10 bool mbHasSymbol
-field 14 uint8_t mName[0x14]
+field 14 cRZString mName
 slot Slot20_ad1250 void void* void*
 slot Slot21_ad1250 void void* void*
 slot Slot22_ad1250 int32_t void* void* bool

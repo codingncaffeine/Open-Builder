@@ -4,6 +4,7 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00ad1250
 // SIZE 0x28
@@ -47,7 +48,7 @@ public:
     uint32_t mnSubType;
     bool mbHasSymbol;
     char unknown11[0x3];
-    uint8_t mName[0x14];
+    cRZString mName;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad1250[sizeof(cUnk00ad1250) == 0x28 ? 1 : -1];

@@ -1,0 +1,3 @@
+# Class types an ext "field" line may use: type <name> <size, as the 2003 compiler lays it out> [<header>]
+# (tools/obcmp/obdecl includes the header in every class header with such a field).
+type cRZString 0x14 gzcom/cRZString.h
