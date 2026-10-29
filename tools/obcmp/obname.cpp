@@ -24,6 +24,7 @@
 // printed (a pairing nothing checks is a guess).
 #include <algorithm>
 #include <cmath>
+#include <cstdint>
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
