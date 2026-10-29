@@ -375,6 +375,58 @@ bool declaration(const Toks& a, Toks& type, std::string& name, Toks& init) {
     return !init.empty();
 }
 
+// The local names a statement mentions and those it sets, for the moves that reorder statements: two statements trade
+// places only when neither sets a name the other mentions, and a statement that leaves (return, break, ...) stays.
+// The order of calls and stores needs no guard: a byte-identical candidate makes them in the original's order. What
+// does: a local read before it is set, which the compiler may turn into anything, a match included.
+struct Effects {
+    std::set<std::string> seen, changed;
+    bool jumps = false;
+};
+
+bool isName(const std::string& w) { return !w.empty() && (std::isalpha(static_cast<unsigned char>(w[0])) || w[0] == '_'); }
+
+void effectsOf(const Toks& t, Effects& e) {
+    static const std::set<std::string> assign = {"=", "+=", "-=", "*=", "/=", "%=", "&=", "|=", "^=", "<<=", ">>="};
+    for (size_t i = 0; i < t.size(); ++i) {
+        const std::string& w = t[i];
+        if (isName(w)) e.seen.insert(w);
+        if (w == "return" || w == "break" || w == "continue" || w == "goto") e.jumps = true;
+        // &x hands x to whatever takes it, which may set it
+        bool unaryAmp = w == "&" && (i == 0 || (!isName(t[i - 1]) && t[i - 1] != ")" && t[i - 1] != "]"));
+        if (unaryAmp && i + 1 < t.size() && isName(t[i + 1])) e.changed.insert(t[i + 1]);
+        if (w == "++" || w == "--") {
+            if (i > 0 && isName(t[i - 1])) e.changed.insert(t[i - 1]);
+            else if (i + 1 < t.size() && isName(t[i + 1])) e.changed.insert(t[i + 1]);
+        }
+        if (assign.count(w) && i > 0 && isName(t[i - 1])) e.changed.insert(t[i - 1]);
+    }
+    // a declaration without an initialiser sets its name too ("T x;")
+    if (t.size() >= 3 && t.back() == ";" && isTypeStart(t[0]) && isName(t[t.size() - 2])) e.changed.insert(t[t.size() - 2]);
+}
+
+Effects effects(const Node& n) {
+    Effects e;
+    effectsOf(n.a, e), effectsOf(n.b, e), effectsOf(n.c, e);
+    for (auto& k : n.kids) {
+        Effects f = effects(k);
+        e.seen.insert(f.seen.begin(), f.seen.end());
+        e.changed.insert(f.changed.begin(), f.changed.end());
+        e.jumps |= f.jumps;
+    }
+    return e;
+}
+
+bool independent(const Node& x, const Node& y) {
+    Effects a = effects(x), b = effects(y);
+    if (a.jumps || b.jumps) return false;
+    for (auto& w : a.changed)
+        if (b.seen.count(w)) return false;
+    for (auto& w : b.changed)
+        if (a.seen.count(w)) return false;
+    return true;
+}
+
 // ---- mutations ---------------------------------------------------------------------------------------------------
 
 void collect(Node& n, std::vector<Node*>& all) {
@@ -406,6 +458,7 @@ bool mutate(Node& root, Rng& rng) {
         if (b->kids.size() < 2) return false;
         size_t i = std::uniform_int_distribution<size_t>(0, b->kids.size() - 2)(rng);
         if (b->kids[i].kind == Node::Label || b->kids[i + 1].kind == Node::Label) return false;
+        if (!independent(b->kids[i], b->kids[i + 1])) return false;
         std::swap(b->kids[i], b->kids[i + 1]);
         return true;
     }
@@ -542,6 +595,8 @@ bool mutate(Node& root, Rng& rng) {
                 const std::string& nm = n.a[n.a.size() - 2];
                 for (size_t j = i + 1; j < b->kids.size(); ++j) {
                     Node& s = b->kids[j];
+                    bool sets = s.kind == Node::Simple && s.a.size() >= 4 && s.a[0] == nm && s.a[1] == "=";
+                    if (!sets && effects(s).seen.count(nm)) break;  // used before it is set: that use must stay
                     if (s.kind == Node::Simple && s.a.size() >= 4 && s.a[0] == nm && s.a[1] == "=") {
                         Node d = n;
                         d.a.pop_back();
