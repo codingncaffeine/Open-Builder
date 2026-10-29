@@ -24,6 +24,7 @@
 #include <cstring>
 #include <fstream>
 #include <map>
+#include <set>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -78,9 +79,13 @@ int main(int argc, char** argv) {
 
     // Both sides refer to a paired function by the same name, so a call to it compares equal.
     std::map<uint32_t, std::string> origNames, newNames;
+    // Every original function each of ours stands for: one of ours can be paired with several originals (the
+    // original kept two copies of what our build makes once, e.g. a base's adjustor thunk used by two classes).
+    std::map<uint32_t, std::set<uint32_t>> standsFor;
     for (const Pair& p : pairs) {
         origNames.emplace(p.origVa, p.name);  // a folded function: every copy takes the first pair's name
         newNames[p.newVa] = origNames[p.origVa];
+        standsFor[p.newVa].insert(p.origVa);
     }
     if (!namesPath.empty()) {
         std::ifstream f(namesPath);
@@ -90,6 +95,7 @@ int main(int argc, char** argv) {
             uint32_t o = uint32_t(std::stoul(a, nullptr, 16)), n = uint32_t(std::stoul(b, nullptr, 16));
             origNames.emplace(o, name);  // a paired function keeps its pair's name
             newNames.emplace(n, origNames[o]);
+            standsFor[n].insert(o);
         }
     }
     struct Vtable {
@@ -140,14 +146,15 @@ int main(int argc, char** argv) {
     std::printf("total: %zu/%zu functions identical, %.2f%% of instructions matched\n", exact, pairs.size(),
                 total ? weighted / double(total) : 0.0);
 
-    // Vtables: slot by slot, each slot's function by its name on both sides (a function neither paired nor stubbed
-    // is its address, so it differs).
+    // Vtables: slot by slot, each slot's function by its name on both sides, or ours paired with the original's (a
+    // function neither paired nor stubbed is its address, so it differs).
     size_t vexact = 0, vstrictBad = 0;
     for (Vtable& v : vtables) {
-        auto slot = [](const Image& img, const std::map<uint32_t, std::string>& names, uint32_t va, uint32_t i) {
+        auto slot = [](const Image& img, const std::map<uint32_t, std::string>& names, uint32_t va, uint32_t i,
+                       uint32_t& t) {
             const uint8_t* b = img.at(va + 4 * i, 4);
+            t = 0;
             if (!b) return std::string("?");
-            uint32_t t;
             std::memcpy(&t, b, 4);
             auto it = names.find(t);
             return it != names.end() ? it->second : hex(t);
@@ -155,9 +162,12 @@ int main(int argc, char** argv) {
         size_t same = 0;
         std::vector<std::string> lines;
         for (uint32_t i = 0; i < v.slots; ++i) {
-            std::string x = slot(orig, origNames, v.origVa, i), y = slot(rebuilt, newNames, v.newVa, i);
-            same += x == y;
-            lines.push_back((x == y ? "      " : "    ! ") + std::to_string(i) + " " + x + " | " + y);
+            uint32_t to, tn;
+            std::string x = slot(orig, origNames, v.origVa, i, to), y = slot(rebuilt, newNames, v.newVa, i, tn);
+            auto it = standsFor.find(tn);
+            bool eq = x == y || (it != standsFor.end() && it->second.count(to));
+            same += eq;
+            lines.push_back((eq ? "      " : "    ! ") + std::to_string(i) + " " + x + " | " + y);
         }
         // Our vtable ends at the next symbol or at the first word that is no code address, whichever is first.
         uint32_t ours = 0;
