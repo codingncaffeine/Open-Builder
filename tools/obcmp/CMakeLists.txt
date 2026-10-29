@@ -33,3 +33,10 @@ target_link_libraries(obperm PRIVATE Zydis::Zydis)
 target_compile_options(obperm PRIVATE -Wall -Wextra -Wpedantic)
 find_package(Threads REQUIRED)
 target_link_libraries(obperm PRIVATE Threads::Threads)
+
+add_executable(obfeat obfeat.cpp)
+target_link_libraries(obfeat PRIVATE Zydis::Zydis)
+target_compile_options(obfeat PRIVATE -Wall -Wextra -Wpedantic)
+
+add_executable(obname obname.cpp)
+target_compile_options(obname PRIVATE -Wall -Wextra -Wpedantic)
