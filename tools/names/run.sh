@@ -13,7 +13,10 @@ if [[ "${1:-}" == --tables || ! -s re/names/mac/feat.tsv ]]; then
 fi
 mkdir -p re/names/win
 "$bin/obfeat" "$exe" scratch/classes/sizes.tsv --vtables re/map/vtables.tsv >re/names/win/feat.tsv
+# BSim's nearest reference functions (tools/names/bsim.sh), the call-graph stage's tie-breaker, when made
+bsim=()
+[[ -s re/names/bsim.tsv ]] && bsim=(--bsim re/names/bsim.tsv)
 "$bin/obname" --win-feat re/names/win/feat.tsv --win-slots scratch/classes/slots.tsv \
   --win-shapes scratch/classes/shapes.tsv --win-classes scratch/classes/classes.tsv \
   --mac-feat re/names/mac/feat.tsv --mac-funcs re/names/mac/funcs.tsv --mac-vtables re/names/mac/vtables.tsv \
-  --out re/names --truth-lib re/map/libraries.tsv --truth-known scratch/classes/known.tsv
+  --out re/names --truth-lib re/map/libraries.tsv --truth-known scratch/classes/known.tsv "${bsim[@]}"

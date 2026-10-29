@@ -2,6 +2,7 @@
 // symbols (the Mac reference build), by pairing what both builds share:
 //   1. functions, by the strings and 32-bit IDs they use, when a pair is each other's best and well ahead of the next;
 //   2. the callees and callers of a pair, when each side has exactly one left unpaired;
+//   2b. where several are left, the one BSim ranks near exactly one on the other side (--bsim, tools/names/bsim.sh);
 //   3. vtables, by the votes of the slots already paired (a class's own slots vote, inherited ones barely);
 //   4. every slot of a paired vtable, by aligning the two slot lists: the reference build's compiler gives a virtual
 //      destructor two slots (complete, deleting) where ours has one, puts overrides of a secondary base's functions
@@ -11,17 +12,19 @@
 //
 //   obname --win-feat F --win-slots F --win-shapes F --win-classes F
 //          --mac-feat F --mac-funcs F --mac-vtables F --out DIR
-//          [--truth-lib libraries.tsv] [--truth-known known.tsv]
+//          [--truth-lib libraries.tsv] [--truth-known known.tsv] [--bsim bsim.tsv] [--holdout N]
 //
 // Inputs: obfeat's feat.tsv for our program; scratch/classes/{slots,shapes,classes}.tsv (obclass, obshape);
 // tools/names/mac-features.sh and mac-tables.sh output for the reference build. Writes to DIR:
-//   functions.tsv  addr  name  how  mac-addr      how: F features, G call graph, S vtable slot (s: by position only);
+//   functions.tsv  addr  name  how  mac-addr      how: F features, G call graph, B call graph + BSim, S vtable slot
+//                  (s: by position only);
 //                  mac-addr = the reference function the name comes from
 //   slots.tsv      vtable  index  name  how
 //   classes.tsv    primary-vtable  class  votes  runner-up-votes  slots  named-slots
 //   vtables.tsv    vtable  mac-class  part  votes                 (every paired vtable, secondary ones too)
 // --truth-*: functions/classes whose names are known some other way; the precision of each stage against them is
-// printed (a pairing nothing checks is a guess).
+// printed (a pairing nothing checks is a guess). --holdout N undoes every Nth stage-1 pair and scores what the
+// later stages make of those functions (a control of stages 2, 2b and 4).
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
@@ -248,6 +251,48 @@ int stageGraph() {
         }
         total += n;
         if (!n) break;
+    }
+    return total;
+}
+
+// ---- stage 2b: call graph, BSim as the tie-breaker ----------------------------------------------------------------
+// Where a pair's callees (or callers) leave several unpaired on a side, stage 2 cannot tell which goes with which.
+// BSim's nearest reference functions for each of ours (tools/names/bsim.sh, top 3) can: a pair is made when exactly
+// one of our unpaired neighbours names exactly one of the reference side's unpaired neighbours, the same checks as
+// stage 2 holding. BSim alone is too loose to name anything (about 80% against the other stages); inside a
+// neighbourhood of a few candidates it is a second key.
+std::unordered_map<int, std::vector<int>> bsimTop;  // our function → its nearest reference functions, best first
+
+int stageBSim() {
+    if (bsimTop.empty()) return 0;
+    int total = 0;
+    for (size_t w = 0; w < W.partner.size(); ++w) {
+        int m = W.partner[w];
+        if (m < 0) continue;
+        for (int dir = 0; dir < 2; ++dir) {
+            const auto& lw = dir ? W.callers[w] : W.callees[w];
+            const auto& lm = dir ? M.callers[size_t(m)] : M.callees[size_t(m)];
+            std::set<int> um;
+            for (int x : lm) if (M.partner[size_t(x)] < 0) um.insert(x);
+            if (um.empty()) continue;
+            std::map<int, std::vector<int>> claims;  // reference function → ours that name it
+            for (int x : lw) {
+                if (W.partner[size_t(x)] >= 0) continue;
+                auto it = bsimTop.find(x);
+                if (it == bsimTop.end()) continue;
+                int hit = -1, hits = 0;
+                for (int c : it->second) if (um.count(c)) { hit = c; ++hits; }
+                if (hits == 1) claims[hit].push_back(x);
+            }
+            for (auto& [c, ws] : claims) {
+                if (ws.size() != 1) continue;
+                int x = ws[0];
+                if (W.partner[size_t(x)] >= 0 || M.partner[size_t(c)] >= 0) continue;
+                if (!sizesClose(x, c) || !popsAgree(x, c) || !neighboursAgree(x, c)) continue;
+                pair(x, c, 'B');
+                ++total;
+            }
+        }
     }
     return total;
 }
@@ -543,7 +588,7 @@ int pairVtables() {
             int wi = W.find(s.kind == "thunk" ? s.method : s.target);
             if (wi < 0 || W.partner[wi] < 0 || ownSlots[W.addr[wi]] > 1) continue;
             double v = (s.kind == "own" || s.kind == "deleting-dtor" || s.kind == "thunk") ? 1.0 : 0.25;
-            if (W.how[size_t(wi)] == 'G') v *= 0.5;  // call-graph pairs are the least sure
+            if (W.how[size_t(wi)] == 'G' || W.how[size_t(wi)] == 'B') v *= 0.5;  // call-graph pairs are the least sure
             auto it = mSlotsOf.find(W.partner[wi]);
             if (it == mSlotsOf.end()) continue;
             std::set<std::pair<uint32_t, int>> seen;
@@ -775,13 +820,49 @@ int main(int argc, char** argv) {
         std::fprintf(stderr, "size ratio (reference / ours, median of %zu pairs): %.2f\n", r.size(), sizeRatio);
     }
     std::fprintf(stderr, "stage 1 features: %d pairs\n", f);
+    if (opt.count("--bsim")) {
+        std::ifstream b(opt["--bsim"]);
+        while (std::getline(b, line)) {
+            auto p = split(line);
+            if (p.size() < 6) continue;
+            int w = W.find(hexv(p[0])), m = M.find(hexv(p[5]));
+            if (w >= 0 && m >= 0) bsimTop[w].push_back(m);
+        }
+        std::fprintf(stderr, "BSim candidates for %zu of our functions\n", bsimTop.size());
+    }
+    // --holdout N: a control of the later stages. Every Nth pair stage 1 made is undone and remembered; what the call
+    // graph (G, B) and the slots make of those functions is scored against it at the end.
+    std::map<int, int> heldOut;
+    if (opt.count("--holdout")) {
+        int every = std::max(2, std::atoi(opt["--holdout"].c_str())), k = 0;
+        for (size_t w = 0; w < W.partner.size(); ++w)
+            if (W.partner[w] >= 0 && W.how[w] == 'F' && ++k % every == 0) {
+                heldOut[int(w)] = W.partner[w];
+                M.partner[size_t(W.partner[w])] = -1;
+                W.partner[w] = -1;
+                W.how[w] = 0;
+            }
+        std::fprintf(stderr, "held out %zu stage-1 pairs\n", heldOut.size());
+    }
     for (int round = 1; round <= 12; ++round) {
         int g = stageGraph();
+        int b = stageBSim();
         int v = pairVtables();
         int s = nameSlots();
-        std::fprintf(stderr, "round %d: %d by call graph, %d vtables paired (+%d), %d pairs from slots\n", round, g,
-                     int(vtPairs.size()), v, s);
-        if (!g && !s && !v) break;
+        std::fprintf(stderr, "round %d: %d by call graph, %d by call graph + BSim, %d vtables paired (+%d), %d pairs "
+                     "from slots\n", round, g, b, int(vtPairs.size()), v, s);
+        if (!g && !b && !s && !v) break;
+    }
+    if (!heldOut.empty()) {
+        std::map<char, std::pair<int, int>> r;  // how → (right, wrong)
+        int none = 0;
+        for (auto [w, m] : heldOut) {
+            if (W.partner[size_t(w)] < 0) { ++none; continue; }
+            (W.partner[size_t(w)] == m ? r[W.how[size_t(w)]].first : r[W.how[size_t(w)]].second)++;
+        }
+        std::fprintf(stderr, "held out: %d not paired again;", none);
+        for (auto [h, rw] : r) std::fprintf(stderr, " %c %d right %d wrong;", h ? h : '?', rw.first, rw.second);
+        std::fprintf(stderr, "\n");
     }
 
     // ---- output ---------------------------------------------------------------------------------------------------
