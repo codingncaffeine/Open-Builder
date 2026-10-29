@@ -29,12 +29,16 @@ awk '{printf "0x%08x\t%s\n", strtonum("0x" $1), $3 " (library)"}' re/map/librari
 awk -F'\t' '{ a = sprintf("0x%08x", strtonum($1)); if (!(a in n)) { n[a] = $2; print a "\t" $2 } }' "$work/names" >"$out/names.tsv"
 
 # Candidates: stubbed methods of generated classes whose code is still to do and is real code.
-awk -F'\t' 'FILENAME ~ /triage/ { if ($3 == "code") code[sprintf("%08x", strtonum("0x" $1))] = $2; next }
+# sizes: the function list corrected where it ends a function early (scratch/classes/sizes.tsv, by gen-classes.sh)
+sizes=re/map/functions.tsv
+[[ -f scratch/classes/sizes.tsv ]] && sizes=scratch/classes/sizes.tsv
+awk -F'\t' 'FILENAME ~ /sizes.tsv$|functions.tsv$/ { real[sprintf("%08x", strtonum("0x" $1))] = strtonum("0x" $2); next }
+            FILENAME ~ /triage/ { a = sprintf("%08x", strtonum("0x" $1)); if ($3 == "code") code[a] = (a in real) ? real[a] : $2; next }
             { a = tolower($1); sub(/^0x/, "", a); a = sprintf("%08x", strtonum("0x" a))
               if (!(a in code)) next
               cls = $2; sub(/^\?[^@]*@/, "", cls); sub(/@@.*/, "", cls); sub(/_[0-9a-f]+$/, "", cls)
               if (cls !~ /^cUnk[0-9a-f]{8}$/) next
-              print cls "\t" a "\t" code[a] "\t" $2 }' re/map/triage.tsv "$work/stubs" | sort -u >"$work/candidates"
+              print cls "\t" a "\t" code[a] "\t" $2 }' "$sizes" re/map/triage.tsv "$work/stubs" | sort -u >"$work/candidates"
 
 classes=()
 if [[ "${1:-}" == "--pick" ]]; then
@@ -51,6 +55,7 @@ fi
 for cls in "${classes[@]}"; do
   dir="$out/$cls"
   mkdir -p "$dir"
+  rm -f "$dir"/*.asm "$dir"/*.c  # listings of an earlier packet (its report.md stays)
   folder=game
   grep -qx "    (void)new $cls;" src/gzcom/GeneratedClasses_gzcom.cpp && folder=gzcom
   # one line per function (a function several decorated names share is one function)

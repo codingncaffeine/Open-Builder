@@ -9,5 +9,8 @@ cd "$root"
 addr="${1:?address}" file="${2:?file.cpp}"
 shift 2
 addr="$(printf '%08x' "$((16#${addr#0x}))")"
-exec scratch/build/obcmp/obperm "scratch/testbed/game/Apps/SimCity 4.exe" re/map/functions.tsv "$file" "$addr" \
+# sizes: the function list corrected where it ends a function early (tools/obcmp/obshape --sizes, by gen-classes.sh)
+sizes=re/map/functions.tsv
+[[ -f scratch/classes/sizes.tsv ]] && sizes=scratch/classes/sizes.tsv
+exec scratch/build/obcmp/obperm "scratch/testbed/game/Apps/SimCity 4.exe" "$sizes" "$file" "$addr" \
   --work "scratch/perm/$addr" "$@"
