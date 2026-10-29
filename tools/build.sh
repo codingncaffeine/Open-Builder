@@ -27,7 +27,6 @@ cl /nologo /c /O2 /Isdk "/Fo$out/sdk$sep" sdk/kernel32_stub.cpp 2>&1 | quiet
 link /nologo /dll /noentry /nodefaultlib /def:sdk/kernel32.def "/out:$out/sdk/kernel32.dll" \
   "/implib:$out/sdk/kernel32.lib" "$out/sdk/kernel32_stub.obj" 2>&1 | quiet
 
-"$root/tools/gen-stubs.sh" "$out/stubs.gen.cpp"
 
 flags_for() {  # the FLAGS file nearest above a source under src/, else the hook's flags
   local d
@@ -51,7 +50,6 @@ mapfile -t sources < <(
   find src -name 'GeneratedClasses_*.cpp' -not -path 'src/game/*' | sort
   find src hook -name '*.cpp' -not -path 'src/game/*' -not -name 'GeneratedClasses_*' | sort
   find src/game -name 'GeneratedClasses_*.cpp' | sort)
-sources+=("$out/stubs.gen.cpp")
 for s in "${sources[@]}"; do
   f="$(flags_for "$s")"
   groups["$f"]+="$s"$'\n'
@@ -63,10 +61,12 @@ for f in "${!groups[@]}"; do
 done
 
 # The hook table needs the compiled functions' symbols (tools/gen-hooks.sh).
-"$root/tools/gen-hooks.sh" "$out/hooks.gen.cpp" "$out/obj"
+# and the stubs: the lists, and the STUB annotations of what the objects call (tools/gen-stubs.sh)
+"$root/tools/gen-hooks.sh" "$out/hooks.gen.cpp" "$out/obj" "$out/stubs.annotated.txt"
+"$root/tools/gen-stubs.sh" "$out/stubs.gen.cpp" "$out/stubs.annotated.txt"
 # shellcheck disable=SC2086
-cl "${common[@]}" $hook_flags "/Fo$out/obj$sep" "$out/hooks.gen.cpp" 2>&1 | quiet
-sources+=("$out/hooks.gen.cpp")
+cl "${common[@]}" $hook_flags "/Fo$out/obj$sep" "$out/hooks.gen.cpp" "$out/stubs.gen.cpp" 2>&1 | quiet
+sources+=("$out/hooks.gen.cpp" "$out/stubs.gen.cpp")
 
 objs=()
 for s in "${sources[@]}"; do objs+=("$out/obj/$(basename "${s%.cpp}").obj"); done
