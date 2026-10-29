@@ -14,7 +14,7 @@ class cGZWinKnob : public cUnk00ab4658, public cGZWin {
 public:
     virtual ~cGZWinKnob() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual uint32_t Slot03_ab4658();

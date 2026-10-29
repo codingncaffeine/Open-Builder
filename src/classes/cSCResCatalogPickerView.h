@@ -15,7 +15,7 @@ class cSCResCatalogPickerView : public cUnk00aace34, public cSCResourceCatalogVi
 public:
     virtual ~cSCResCatalogPickerView() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void* Slot03_aace34();
     virtual void Slot04_aace34(uint32_t);

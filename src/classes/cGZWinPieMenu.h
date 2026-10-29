@@ -16,7 +16,7 @@ public:
     virtual void DrawLabelFrame(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void DrawFramedLabel(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual bool GZOnCharacter(uint32_t);

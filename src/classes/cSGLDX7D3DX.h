@@ -13,7 +13,7 @@
 class cSGLDX7D3DX : public cUnk00ac5030, public cUnk00ace624 {
 public:
     virtual ~cSGLDX7D3DX() {}
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot00_ac5030(uint32_t, uint32_t);
     virtual uint32_t Slot03_ac5030();

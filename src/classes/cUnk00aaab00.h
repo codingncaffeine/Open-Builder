@@ -15,7 +15,7 @@
 class cUnk00aaab00 : public cUnk00ace624, public cUnk00aaaaac, public cUnk00aaaa9c {
 public:
     virtual ~cUnk00aaab00();
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     char unknown10[0x8];
 };

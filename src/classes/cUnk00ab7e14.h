@@ -8,12 +8,12 @@
 // SIZE 0x4
 class cUnk00ab7e14 {
 public:
-    virtual void Slot00_ab7e14() = 0;
-    virtual void Slot01_ab7e14() = 0;
-    virtual void Slot02_ab7e14() = 0;
-    virtual void Slot03_ab7e14() = 0;
-    virtual void Slot04_ab7e14() = 0;
-    virtual void Slot05_ab7e14() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual void Slot03_ab7e14(uint32_t) = 0;
+    virtual void Slot04_ab7e14(uint32_t) = 0;
+    virtual void Slot05_ab7e14(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab7e14[sizeof(cUnk00ab7e14) == 0x4 ? 1 : -1];

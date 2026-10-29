@@ -17,7 +17,7 @@ public:
     virtual bool DebugClassTag(uint32_t);
     virtual bool DebugTypeTag(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_ad96ec(uint32_t);
     virtual void Slot04_ad96ec(uint32_t);

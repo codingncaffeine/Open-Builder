@@ -19,7 +19,7 @@ public:
     virtual void IncrementInsertionPositionByComposedCharacter(uint32_t);
     virtual bool PlaySoundA(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual uint32_t Slot68_adc8d8(uint32_t, uint32_t);

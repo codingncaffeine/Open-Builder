@@ -14,7 +14,7 @@ class cGZWinOptGrp : public cGZWin, public cUnk00ae1210 {
 public:
     virtual ~cGZWinOptGrp();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t Slot68_adc8d8(uint32_t, uint32_t);
     virtual bool GZPaint();

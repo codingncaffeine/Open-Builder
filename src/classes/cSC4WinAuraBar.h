@@ -16,7 +16,7 @@ class cSC4WinAuraBar : public cGZWin, public cUnk00ace624, public cUnk00ab6470 {
 public:
     virtual ~cSC4WinAuraBar() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual void Slot03_ab6470(uint32_t);

@@ -14,7 +14,7 @@ class cGZPersistBinaryResource : public cGZPersistResource, public cUnk00ada48c 
 public:
     virtual ~cGZPersistBinaryResource();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_ada48c(uint32_t, uint32_t);
     virtual uint32_t Slot04_ada48c();

@@ -9,7 +9,7 @@
 class cUnk00aaf7d4 {
 public:
     virtual bool Slot00_aaf7d4(uint32_t, uint32_t) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual bool Slot03_aaf7d4(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot04_aaf7d4(uint32_t) = 0;

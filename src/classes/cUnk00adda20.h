@@ -9,7 +9,7 @@
 class cUnk00adda20 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual uint32_t Slot03_adda20() = 0;
     virtual uint32_t Slot04_adda20(uint32_t) = 0;

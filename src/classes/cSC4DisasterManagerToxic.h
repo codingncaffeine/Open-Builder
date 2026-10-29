@@ -17,7 +17,7 @@ public:
     virtual ~cSC4DisasterManagerToxic() {}
     virtual uint32_t GetGZCLSID();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_a9e2f4();
     virtual bool Slot04_a9e2f4();

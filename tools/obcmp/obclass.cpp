@@ -786,6 +786,10 @@ int main(int argc, char** argv) {
                 // every vtable of the candidate must land on one of the class's
                 bool fits = true;
                 for (auto& [q, qv] : xc.layout) fits &= cls.layout.count(o + q) > 0;
+                // ...and none where another base of the class starts (its constructor was called there): a base with
+                // the same slots but more vtables would swallow that base (then its own base is the one)
+                for (auto& [q, qv] : xc.layout)
+                    for (auto& b : directBases[c]) fits &= q == 0 || b.first != o + q;
                 if (!fits) continue;
                 // a base of known size ends where the class's next subobject starts (polymorphic bases are adjacent)
                 if (sizeOf(x)) {

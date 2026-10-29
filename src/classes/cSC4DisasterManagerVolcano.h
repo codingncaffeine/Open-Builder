@@ -16,7 +16,7 @@ class cSC4DisasterManagerVolcano : public cSC4DisasterManager, public cUnk00a9e9
 public:
     virtual ~cSC4DisasterManagerVolcano() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_a9e2f4();
     virtual bool Slot04_a9e2f4();

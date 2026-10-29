@@ -9,8 +9,8 @@
 class cUnk00aaaac4 {
 public:
     virtual ~cUnk00aaaac4() {}
-    virtual void Slot01_aaaac4();
-    virtual void Slot02_aaaac4();
+    virtual void Slot02_ab5314();
+    virtual void Slot01_ab5314();
     virtual uint32_t Slot03_aaaac4();
     virtual uint32_t Slot04_aaaac4();
     uint32_t field4;

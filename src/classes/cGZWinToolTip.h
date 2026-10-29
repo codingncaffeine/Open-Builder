@@ -16,7 +16,7 @@ public:
     virtual bool update_offscreen_buffer();
     virtual void translate_color(uint32_t, uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool IsPointInWindowScreenCoordinates(uint32_t, uint32_t);

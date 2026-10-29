@@ -6,12 +6,16 @@
 #include "common/types.h"
 
 // VTABLE: 0x00aaaa9c
+// SIZE 0x4
 class cUnk00aaaa9c {
 public:
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
 };
+#ifdef _MSC_VER
+typedef char ob_size_cUnk00aaaa9c[sizeof(cUnk00aaaa9c) == 0x4 ? 1 : -1];
+#endif
 
 #endif

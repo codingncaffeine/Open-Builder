@@ -10,7 +10,7 @@
 class cGZPersistResource {
 public:
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void Slot03_ad8bec(uint32_t);
     virtual bool Slot12_aaee5c(uint32_t);

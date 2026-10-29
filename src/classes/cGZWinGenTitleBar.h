@@ -15,7 +15,7 @@ class cGZWinGenTitleBar : public cGZWinFlatRect, public cUnk00adc294 {
 public:
     virtual ~cGZWinGenTitleBar();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);

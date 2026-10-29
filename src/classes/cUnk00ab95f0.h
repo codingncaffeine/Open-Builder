@@ -14,7 +14,7 @@ class cUnk00ab95f0 : public cUnk00a83524, public cUnk00ace624 {
 public:
     virtual ~cUnk00ab95f0() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_a83524(uint32_t, uint32_t);
     char unknownc[0x8];

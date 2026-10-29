@@ -7,9 +7,9 @@
 
 class cUnk00a881c0 {
 public:
-    virtual void Slot00_a881c0() = 0;
-    virtual void Slot01_a881c0() = 0;
-    virtual void Slot02_a881c0() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual bool Slot03_a881c0(uint32_t) = 0;
     virtual bool Slot04_a881c0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
 };

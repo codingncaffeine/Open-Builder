@@ -8,10 +8,10 @@
 // SIZE 0x4
 class cUnk00aa4550 {
 public:
-    virtual void Slot00_aa4550() = 0;
-    virtual void Slot01_aa4550() = 0;
-    virtual void Slot02_aa4550() = 0;
-    virtual void Slot03_aa4550() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual void Slot03_aa54b4() = 0;
     virtual void Slot04_aa4550() = 0;
     virtual void Slot05_aa4550() = 0;
     virtual void Slot06_aa4550() = 0;

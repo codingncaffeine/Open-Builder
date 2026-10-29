@@ -12,7 +12,7 @@ class cUnk00aae630 : public cGZWin {
 public:
     virtual ~cUnk00aae630() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual bool GZOnKeyDown(uint32_t, uint32_t);

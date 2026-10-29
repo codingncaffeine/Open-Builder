@@ -14,7 +14,7 @@ class cGZWinOutline : public cUnk00ae1a28, public cGZWin {
 public:
     virtual ~cGZWinOutline() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool GZPaint();

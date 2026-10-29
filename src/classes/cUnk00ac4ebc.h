@@ -9,7 +9,7 @@
 class cUnk00ac4ebc {
 public:
     virtual bool Slot00_ac4ebc(uint32_t, uint32_t) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual uint32_t Slot03_ac4ebc(uint32_t) = 0;
     virtual uint32_t Slot04_ac4ebc(uint32_t) = 0;

@@ -8,12 +8,12 @@
 // SIZE 0x4
 class cUnk00a93628 {
 public:
-    virtual void Slot00_a93628() = 0;
-    virtual void Slot01_a93628() = 0;
-    virtual void Slot02_a93628() = 0;
-    virtual void Slot03_a93628() = 0;
-    virtual void Slot04_a93628() = 0;
-    virtual void Slot05_a93628() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_a93628(uint32_t) = 0;
+    virtual bool Slot04_a93628(uint32_t) = 0;
+    virtual bool Slot05_a93628(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a93628[sizeof(cUnk00a93628) == 0x4 ? 1 : -1];

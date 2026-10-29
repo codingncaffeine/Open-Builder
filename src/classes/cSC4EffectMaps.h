@@ -16,7 +16,7 @@ public:
     virtual void SetValueAboveTerrain(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void ResetValueToTerrain(uint32_t, uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t Slot03_a9efb4();
     virtual uint32_t Slot04_a9efb4();

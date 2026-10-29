@@ -8,7 +8,7 @@
 class cUnk00ab5568 {
 public:
     virtual bool Slot00_ab5568(uint32_t, uint32_t) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual bool Slot03_ab5568() = 0;
     virtual bool Slot04_ab5568() = 0;

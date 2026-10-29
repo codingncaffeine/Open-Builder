@@ -32,7 +32,7 @@ public:
     virtual void Slot167_ae1780();
     virtual void Slot168_ae1780();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t Slot68_adc8d8(uint32_t, uint32_t);
     virtual bool GZPaint();

@@ -14,7 +14,7 @@ class cGZWinScrollbar2 : public cGZWin, public cUnk00ae4020 {
 public:
     virtual ~cGZWinScrollbar2();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool GZPaint();

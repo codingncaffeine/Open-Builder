@@ -18,7 +18,7 @@ public:
     virtual void Slot07_a9e1e8();
     virtual uint32_t AsISC4DisasterManager();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_a9e2f4();
     virtual bool Slot04_a9e2f4();

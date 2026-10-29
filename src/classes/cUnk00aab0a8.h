@@ -8,7 +8,7 @@
 class cUnk00aab0a8 {
 public:
     virtual void Slot00_aab0a8() = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual uint32_t Slot03_aab0a8(uint32_t, uint32_t) = 0;
 };

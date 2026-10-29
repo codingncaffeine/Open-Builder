@@ -22,7 +22,7 @@ public:
     virtual void* Slot20_a80710();
     virtual uint32_t Slot05_a80784();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t Slot03_a843c8();
     virtual uint32_t Slot04_a843c8();

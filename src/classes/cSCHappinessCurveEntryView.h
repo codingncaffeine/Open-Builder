@@ -19,7 +19,7 @@ public:
     virtual void addPoint(uint32_t, uint32_t);
     virtual void deletePoint(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual bool GZOnCommand(uint32_t, uint32_t);

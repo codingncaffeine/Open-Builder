@@ -35,7 +35,7 @@ public:
     virtual bool IsEdgeScrollingAllowed();
     virtual bool TriggerFire(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void Slot03_a8623c();
     virtual bool Slot04_a8623c();

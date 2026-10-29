@@ -9,7 +9,7 @@
 // The subobject at +0x0 (vtable 0x00abb530): an interface or base the class map has no class for.
 struct OB_NOVTABLE cSC4LightingManager_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual bool GetTimeOfDay() = 0;
     virtual bool Slot04_abb530() = 0;
@@ -47,7 +47,7 @@ class cSC4LightingManager : public cSC4LightingManager_0, public cUnk00aaaa9c {
 public:
     virtual ~cSC4LightingManager();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual bool GetTimeOfDay();

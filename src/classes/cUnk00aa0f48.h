@@ -9,13 +9,13 @@
 class cUnk00aa0f48 {
 public:
     virtual bool Slot00_aa0f48(uint32_t, uint32_t);
-    virtual void Slot01_aa0f48();
-    virtual void Slot02_aa0f48();
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual ~cUnk00aa0f48() {}
-    virtual void Slot04_aa0f48();
+    virtual bool Slot04_aa0f48();
     virtual void Slot05_aa0f48();
     virtual void Slot06_aa0f48();
-    virtual void Slot07_aa0f48();
+    virtual bool Slot05_aa1170();
     virtual bool Slot08_aa0f48(uint32_t, uint32_t);
     virtual bool Slot09_aa0f48();
     virtual void Slot10_aa0f48();

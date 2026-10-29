@@ -13,7 +13,7 @@ class cS3DResModel : public cUnk00abd5d4, public cGZPersistResource {
 public:
     virtual ~cS3DResModel() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void* Slot03_abd5d4();
     virtual bool Slot04_abd5d4(uint32_t, uint32_t);

@@ -15,7 +15,7 @@ class cGZPieGraph : public cGZGraph, public cUnk00addf78 {
 public:
     virtual ~cGZPieGraph();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void Slot12_addff8(uint32_t);
     virtual void Slot14_addff8(uint32_t);

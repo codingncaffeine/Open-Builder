@@ -13,7 +13,7 @@
 class cSCResKeyEnumerator : public cUnk00aaf7d4, public cUnk00ace624 {
 public:
     virtual ~cSCResKeyEnumerator() {}
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot00_aaf7d4(uint32_t, uint32_t);
     virtual bool Slot03_aaf7d4(uint32_t, uint32_t, uint32_t);

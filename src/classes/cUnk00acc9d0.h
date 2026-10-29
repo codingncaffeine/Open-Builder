@@ -8,28 +8,28 @@
 // SIZE 0x4
 class cUnk00acc9d0 {
 public:
-    virtual void Slot00_acc9d0() = 0;
-    virtual void Slot01_acc9d0() = 0;
-    virtual void Slot02_acc9d0() = 0;
-    virtual void Slot03_acc9d0() = 0;
+    virtual bool Slot00_acc9d0(uint32_t, uint32_t) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_acc9d0() = 0;
     virtual void Slot04_acc9d0() = 0;
     virtual void Slot05_acc9d0() = 0;
-    virtual void Slot06_acc9d0() = 0;
-    virtual void Slot07_acc9d0() = 0;
-    virtual void Slot08_acc9d0() = 0;
-    virtual void Slot09_acc9d0() = 0;
-    virtual void Slot10_acc9d0() = 0;
+    virtual bool Slot06_acc9d0() = 0;
+    virtual uint32_t Slot07_acc9d0() = 0;
+    virtual void Slot08_acc9d0(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot09_acc9d0() = 0;
+    virtual uint32_t Slot10_acc9d0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot11_acc9d0() = 0;
     virtual void Slot12_acc9d0() = 0;
-    virtual void Slot13_acc9d0() = 0;
-    virtual void Slot14_acc9d0() = 0;
-    virtual void Slot15_acc9d0() = 0;
+    virtual bool Slot13_acc9d0() = 0;
+    virtual uint32_t Slot14_acc9d0() = 0;
+    virtual bool Slot15_acc9d0(uint32_t) = 0;
     virtual void Slot16_acc9d0() = 0;
-    virtual void Slot17_acc9d0() = 0;
-    virtual void Slot18_acc9d0() = 0;
-    virtual void Slot19_acc9d0() = 0;
-    virtual void Slot20_acc9d0() = 0;
-    virtual void Slot21_acc9d0() = 0;
+    virtual uint32_t Slot17_acc9d0() = 0;
+    virtual void Slot18_acc9d0(uint32_t) = 0;
+    virtual bool Slot19_acc9d0(uint32_t) = 0;
+    virtual bool Slot20_acc9d0() = 0;
+    virtual bool Slot21_acc9d0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot22_acc9d0() = 0;
 };
 #ifdef _MSC_VER

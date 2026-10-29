@@ -23,7 +23,7 @@ public:
     virtual bool Slot04_a80784(void*);
     virtual uint32_t Slot05_a80784();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual bool Slot03_a9e0e4();

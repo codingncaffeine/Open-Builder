@@ -14,7 +14,7 @@ class cGZWinBMP : public cGZWin, public cUnk00adf63c {
 public:
     virtual ~cGZWinBMP();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool IsPointInWindowScreenCoordinates(uint32_t, uint32_t);

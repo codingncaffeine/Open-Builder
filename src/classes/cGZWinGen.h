@@ -15,7 +15,7 @@ public:
     virtual ~cGZWinGen();
     virtual void Slot151_adc678();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool IsPointInWindowScreenCoordinates(uint32_t, uint32_t);

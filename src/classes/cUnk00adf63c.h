@@ -8,7 +8,7 @@
 class cUnk00adf63c {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void* Slot03_adf63c() = 0;
     virtual void Slot04_adf63c(uint32_t) = 0;

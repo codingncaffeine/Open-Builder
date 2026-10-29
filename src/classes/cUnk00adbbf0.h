@@ -19,7 +19,7 @@ public:
     virtual void Slot32_adbbf0(uint32_t);
     virtual void Slot33_adbbf0(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool GZPaint();

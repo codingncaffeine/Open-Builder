@@ -19,7 +19,7 @@ public:
     virtual void Slot07_a9e27c(uint32_t);
     virtual void Slot08_a9e27c();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual bool Slot03_a9e224();

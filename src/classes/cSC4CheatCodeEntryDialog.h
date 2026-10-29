@@ -15,7 +15,7 @@ class cSC4CheatCodeEntryDialog : public cGZWinGenDlg, public cUnk00a86864 {
 public:
     virtual ~cSC4CheatCodeEntryDialog() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_a86864(uint32_t, uint32_t);
     virtual bool DoMessage(uint32_t);

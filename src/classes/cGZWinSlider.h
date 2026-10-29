@@ -20,7 +20,7 @@ public:
     virtual uint32_t GetThumbHeight();
     virtual bool SetPercentage(float);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual bool GZOnKeyDown(uint32_t, uint32_t);

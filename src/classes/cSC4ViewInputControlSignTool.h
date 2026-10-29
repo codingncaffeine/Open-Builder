@@ -14,7 +14,7 @@ class cSC4ViewInputControlSignTool : public cSC4ViewInputControl, public cUnk00a
 public:
     virtual ~cSC4ViewInputControlSignTool();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_a8298c(uint32_t);
     virtual bool Init();

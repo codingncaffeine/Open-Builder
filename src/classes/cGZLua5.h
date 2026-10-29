@@ -16,7 +16,7 @@ class cGZLua5 : public cUnk0090da1e, public cUnk00ac8bf8, public cUnk00ac8d7c {
 public:
     virtual ~cGZLua5();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t Slot03_ac8bf8();
     virtual uint32_t Slot04_ac8bf8();

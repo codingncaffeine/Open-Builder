@@ -15,7 +15,7 @@
 class cGZBufferSimGLCache : public cUnk00adb26c, public cUnk00adb29c, public cUnk00ace624 {
 public:
     virtual ~cGZBufferSimGLCache() {}
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot00_adb26c(uint32_t, uint32_t);
     virtual bool Slot03_adb26c(uint32_t);

@@ -14,7 +14,7 @@ class cGZWinFolders : public cUnk00ae3ab8, public cGZWin {
 public:
     virtual ~cGZWinFolders() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual bool GZOnMouseDownL(uint32_t, uint32_t, uint32_t);

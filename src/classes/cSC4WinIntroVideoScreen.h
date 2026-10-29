@@ -12,7 +12,7 @@ class cSC4WinIntroVideoScreen : public cGZWin {
 public:
     virtual ~cSC4WinIntroVideoScreen() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool GZPaint();

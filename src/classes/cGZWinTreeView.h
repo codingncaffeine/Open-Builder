@@ -14,7 +14,7 @@ class cGZWinTreeView : public cUnk00ae2ef0, public cGZWin {
 public:
     virtual ~cGZWinTreeView() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool GZPaint();

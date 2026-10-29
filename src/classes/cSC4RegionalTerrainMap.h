@@ -13,7 +13,7 @@
 class cSC4RegionalTerrainMap : public cUnk00ab3be8, public cUnk00ace624 {
 public:
     virtual ~cSC4RegionalTerrainMap() {}
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot00_ab3be8(uint32_t, uint32_t);
     virtual void Slot03_ab3be8();

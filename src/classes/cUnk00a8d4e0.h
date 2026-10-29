@@ -13,7 +13,7 @@ class cUnk00a8d4e0 : public cGZWinGen {
 public:
     virtual ~cUnk00a8d4e0();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool Slot04_adb6a8();

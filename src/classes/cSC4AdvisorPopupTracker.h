@@ -9,7 +9,7 @@
 // The subobject at +0x0 (vtable 0x00ab4968): an interface or base the class map has no class for.
 struct OB_NOVTABLE cSC4AdvisorPopupTracker_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual bool DoMessage(uint32_t) = 0;
     virtual ~cSC4AdvisorPopupTracker_0() {}
@@ -24,7 +24,7 @@ class cSC4AdvisorPopupTracker : public cSC4AdvisorPopupTracker_0, public cUnk00a
 public:
     virtual ~cSC4AdvisorPopupTracker() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_a83524(uint32_t, uint32_t);
     virtual bool DoMessage(uint32_t);

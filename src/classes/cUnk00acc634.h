@@ -19,7 +19,7 @@ public:
     virtual ~cUnk00acc634() {}
     virtual bool Slot11_acc634();
     virtual uint32_t Slot12_acc634();
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t Slot03_ac34cc();
     virtual uint32_t Slot04_ac34cc(uint32_t);

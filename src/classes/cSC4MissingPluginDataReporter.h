@@ -14,7 +14,7 @@ class cSC4MissingPluginDataReporter : public cUnk0090da1e, public cUnk00aaaa9c {
 public:
     virtual ~cSC4MissingPluginDataReporter();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     char unknownc[0x8];

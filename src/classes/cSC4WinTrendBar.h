@@ -16,7 +16,7 @@ class cSC4WinTrendBar : public cUnk00aba3f8, public cGZWin, public cUnk00aaaa9c 
 public:
     virtual ~cSC4WinTrendBar() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual bool GZPaint();

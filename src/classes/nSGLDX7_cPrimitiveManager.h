@@ -13,7 +13,7 @@
 class nSGLDX7_cPrimitiveManager : public cUnk00ac4ebc, public cUnk00ace624 {
 public:
     virtual ~nSGLDX7_cPrimitiveManager() {}
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot00_ac4ebc(uint32_t, uint32_t);
     virtual uint32_t Slot03_ac4ebc(uint32_t);

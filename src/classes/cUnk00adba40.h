@@ -18,7 +18,7 @@ public:
     virtual void Slot16_adba40();
     virtual void Slot17_adba40(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual void* Slot03_adb720();

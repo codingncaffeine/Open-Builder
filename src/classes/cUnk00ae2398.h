@@ -14,7 +14,7 @@ class cUnk00ae2398 : public cGZWin, public cUnk00ae2350 {
 public:
     virtual ~cUnk00ae2398();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZOnCharacter(uint32_t);
     virtual bool GZOnKeyDown(uint32_t, uint32_t);

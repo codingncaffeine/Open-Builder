@@ -10,7 +10,7 @@
 // SIZE 0x4
 class cUnk00aaaaac : public cUnk00aa75b0 {
 public:
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot00_aa75b0(uint32_t, uint32_t);
     virtual bool Slot03_aa75b0();

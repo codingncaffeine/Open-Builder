@@ -9,7 +9,7 @@
 // The subobject at +0x0 (vtable 0x00abb6c0): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00abb6c0_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual uint32_t Slot03_abb6c0() = 0;
     virtual uint32_t Slot04_abb6c0() = 0;
@@ -34,7 +34,7 @@ class cUnk00abb6c0 : public cUnk00abb6c0_0, public cUnk0090da1e {
 public:
     virtual ~cUnk00abb6c0() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t Slot03_abb6c0();
     virtual uint32_t Slot04_abb6c0();

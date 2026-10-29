@@ -32,7 +32,7 @@ public:
     virtual bool Slot105_add190();
     virtual bool Slot106_add190();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t Slot03_adcdc8();
     virtual void Slot04_adcdc8(uint32_t);

@@ -14,7 +14,7 @@ class cSCResFilterFixedGroupAndTypeId : public cUnk0090da1e, public cUnk00a873b0
 public:
     virtual ~cSCResFilterFixedGroupAndTypeId() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t Slot03_a873b0(uint32_t);
     char unknownc[0x8];

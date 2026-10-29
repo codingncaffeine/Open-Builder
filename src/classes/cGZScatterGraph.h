@@ -15,7 +15,7 @@ class cGZScatterGraph : public cGZGraph, public cUnk00addef0 {
 public:
     virtual ~cGZScatterGraph();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void Slot14_addff8(uint32_t);
     virtual void LoadDefaultFonts();

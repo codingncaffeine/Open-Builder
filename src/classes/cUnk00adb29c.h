@@ -9,7 +9,7 @@
 class cUnk00adb29c {
 public:
     virtual bool Slot00_adb26c(uint32_t, uint32_t) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_adb29c() = 0;
     virtual void Slot04_adb29c() = 0;

@@ -10,13 +10,13 @@ class cUnk00a9ebe4 {
 public:
     virtual void Slot03_aa1170(uint32_t) = 0;
     virtual void Slot04_aa1170(uint32_t) = 0;
-    virtual void Slot05_aa1170() = 0;
+    virtual bool Slot05_aa1170() = 0;
     virtual void Slot03_a9ebe4(void*, void*) = 0;
     virtual void Slot04_a9ebe4(uint32_t) = 0;
     virtual bool Slot12_aa1170(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot13_aa1170(uint32_t, void*, uint32_t) = 0;
-    virtual uint32_t Slot01_aa1170() = 0;
-    virtual uint32_t Slot02_aa1170() = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9ebe4[sizeof(cUnk00a9ebe4) == 0x4 ? 1 : -1];

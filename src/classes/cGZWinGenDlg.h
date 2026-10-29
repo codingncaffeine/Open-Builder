@@ -14,7 +14,7 @@ class cGZWinGenDlg : public cGZWin, public cUnk00ae0190 {
 public:
     virtual ~cGZWinGenDlg();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual bool GZOnMouseDownL(uint32_t, uint32_t, uint32_t);

@@ -15,7 +15,7 @@
 class cGZDrawContextAsBuffer : public cUnk00ac1338, public cUnk00ace624, public cUnk00ac14e8 {
 public:
     virtual ~cGZDrawContextAsBuffer() {}
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void Slot00_ac1338(uint32_t, uint32_t);
     virtual bool Slot03_ac1338(uint32_t, uint32_t, uint32_t, uint32_t);

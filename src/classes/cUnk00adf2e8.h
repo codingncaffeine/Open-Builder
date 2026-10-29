@@ -15,7 +15,7 @@ class cUnk00adf2e8 : public cGZGraph, public cUnk00ade0f0 {
 public:
     virtual ~cUnk00adf2e8();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void Slot14_addff8(uint32_t);
     virtual bool Slot43_addff8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);

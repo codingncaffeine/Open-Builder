@@ -14,7 +14,7 @@ class cSC4ViewInputControlGameOfLife : public cSC4ViewInputControl, public cUnk0
 public:
     virtual ~cSC4ViewInputControlGameOfLife();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual bool Init();

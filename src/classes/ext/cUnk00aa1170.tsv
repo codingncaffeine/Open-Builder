@@ -17,7 +17,7 @@ field 130 uint16_t* mpIndexEnd
 field 138 uint32_t* mpWordBegin
 field 13c uint32_t* mpWordEnd
 slot Slot11_aa1170 bool uint32_t uint32_t uint32_t
-slot Slot01_aa1170 uint32_t
+slot AddRef uint32_t
 slot Slot07_aa1170 void void*
 slot Slot08_aa1170 void void*
 slot Slot13_aa1170 bool uint32_t void* uint32_t

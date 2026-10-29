@@ -14,7 +14,7 @@ class cUnk00abd388 : public cUnk00abd398, public cGZPersistResource {
 public:
     virtual ~cUnk00abd388() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void* Slot03_abd398();
     char unknown1c[0x14];

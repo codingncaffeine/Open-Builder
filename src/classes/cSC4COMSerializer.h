@@ -14,7 +14,7 @@ class cSC4COMSerializer : public cUnk0090da1e, public cUnk00aa23d4 {
 public:
     virtual ~cSC4COMSerializer();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aa23d4(uint32_t, uint32_t);
     virtual bool Slot04_aa23d4();

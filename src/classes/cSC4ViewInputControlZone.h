@@ -14,7 +14,7 @@ class cSC4ViewInputControlZone : public cSC4ViewInputControl, public cUnk00aaaa9
 public:
     virtual ~cSC4ViewInputControlZone() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual bool Init();

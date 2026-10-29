@@ -9,7 +9,7 @@
 class cUnk00a8298c {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual bool Slot03_a8298c(uint32_t) = 0;
 };

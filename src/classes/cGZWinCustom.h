@@ -14,7 +14,7 @@ class cGZWinCustom : public cGZWin, public cUnk00ad6cfc {
 public:
     virtual ~cGZWinCustom();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool GZPaint();

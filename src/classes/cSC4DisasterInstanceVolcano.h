@@ -10,7 +10,7 @@
 // The subobject at +0x0 (vtable 0x00a9ea60): an interface or base the class map has no class for.
 struct OB_NOVTABLE cSC4DisasterInstanceVolcano_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual bool GetManager() = 0;
     virtual void* GetID() = 0;
@@ -34,7 +34,7 @@ class cSC4DisasterInstanceVolcano : public cSC4DisasterInstanceVolcano_0, public
 public:
     virtual ~cSC4DisasterInstanceVolcano() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual void* Slot03_a9ea08();

@@ -11,7 +11,7 @@
 // The subobject at +0x0 (vtable 0x00a95880): an interface or base the class map has no class for.
 struct OB_NOVTABLE cSC4AutomataManager_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual bool Init() = 0;
     virtual bool Shutdown() = 0;
@@ -91,7 +91,7 @@ public:
     virtual bool Slot04_a80784(void*);
     virtual uint32_t Slot05_a80784();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual bool Slot03_a8298c(uint32_t);

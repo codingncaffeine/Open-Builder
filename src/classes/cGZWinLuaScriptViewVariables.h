@@ -19,7 +19,7 @@ public:
     virtual void DoRequestClose();
     virtual void SetCurrentCallLevel(uint32_t, uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool Slot04_adb6a8();

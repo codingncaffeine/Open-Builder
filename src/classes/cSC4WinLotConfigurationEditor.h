@@ -23,7 +23,7 @@ public:
     virtual void DoEditAreaMenu(uint32_t, uint32_t);
     virtual void Refresh3DView();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_a86864(uint32_t, uint32_t);
     virtual bool DoMessage(uint32_t);

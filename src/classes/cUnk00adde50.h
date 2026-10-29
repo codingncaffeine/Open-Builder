@@ -8,7 +8,7 @@
 class cUnk00adde50 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_adde50(uint32_t) = 0;
     virtual void Slot04_adde50(uint32_t) = 0;

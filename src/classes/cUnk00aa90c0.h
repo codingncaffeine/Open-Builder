@@ -8,23 +8,23 @@
 // SIZE 0x4
 class cUnk00aa90c0 {
 public:
-    virtual void Slot00_aa90c0() = 0;
-    virtual void Slot01_aa90c0() = 0;
-    virtual void Slot02_aa90c0() = 0;
-    virtual void Slot03_aa90c0() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_aa90c0() = 0;
     virtual void Slot04_aa90c0() = 0;
     virtual void Slot05_aa90c0() = 0;
     virtual void Slot06_aa90c0() = 0;
     virtual void Slot07_aa90c0() = 0;
     virtual void Slot08_aa90c0() = 0;
-    virtual void Slot09_aa90c0() = 0;
-    virtual void Slot10_aa90c0() = 0;
-    virtual void Slot11_aa90c0() = 0;
+    virtual bool Slot09_aa90c0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot10_aa90c0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot11_aa90c0(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot12_aa90c0() = 0;
-    virtual void Slot13_aa90c0() = 0;
+    virtual bool Slot13_aa90c0() = 0;
     virtual void Slot14_aa90c0() = 0;
-    virtual void Slot15_aa90c0() = 0;
-    virtual void Slot16_aa90c0() = 0;
+    virtual uint32_t Slot15_aa90c0() = 0;
+    virtual void Slot16_aa90c0(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa90c0[sizeof(cUnk00aa90c0) == 0x4 ? 1 : -1];

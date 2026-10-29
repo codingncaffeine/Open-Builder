@@ -8,7 +8,7 @@
 class cUnk00ae3338 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void* Slot03_ae3338() = 0;
     virtual float Slot04_ae3338() = 0;

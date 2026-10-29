@@ -14,7 +14,7 @@ class cSC4WinAdviceList : public cGZWin, public cUnk00ab5620 {
 public:
     virtual ~cSC4WinAdviceList() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);

@@ -14,7 +14,7 @@ class cSC4DBSegmentOStream : public cUnk0090da1e, public cUnk00aa2478 {
 public:
     virtual ~cSC4DBSegmentOStream() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void Slot03_aa2478();
     virtual void Slot04_aa2478(uint32_t);

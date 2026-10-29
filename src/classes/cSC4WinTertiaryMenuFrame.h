@@ -14,7 +14,7 @@ class cSC4WinTertiaryMenuFrame : public cUnk00ab6a84, public cGZWin {
 public:
     virtual ~cSC4WinTertiaryMenuFrame() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool IsPointInWindowScreenCoordinates(uint32_t, uint32_t);
     virtual bool GZPaint();

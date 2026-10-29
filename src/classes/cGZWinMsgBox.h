@@ -15,7 +15,7 @@ class cGZWinMsgBox : public cUnk00ae2398, public cUnk00ae2360 {
 public:
     virtual ~cGZWinMsgBox();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual bool GZOnKeyDown(uint32_t, uint32_t);

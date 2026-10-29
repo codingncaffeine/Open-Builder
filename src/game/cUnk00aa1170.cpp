@@ -57,7 +57,7 @@ struct cMade_aa1170 {
 };
 
 // FUNCTION: 0x004bdf00
-uint32_t cUnk00aa1170::Slot01_aa1170()
+uint32_t cUnk00aa1170::AddRef()
 {
     return ++mnRefCount;
 }
@@ -70,7 +70,7 @@ void cUnk00aa1170::Slot10_aa1170(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x005be840
-uint32_t cUnk00aa1170::Slot02_aa1170()
+uint32_t cUnk00aa1170::Release()
 {
     int32_t n = mnRefCount - 1;
     mnRefCount = n;
@@ -251,11 +251,11 @@ bool cUnk00aa1170::Slot00_aa1170(uint32_t iid, uint32_t ppv)
     switch (iid) {
     case 1:
         *out = this;
-        Slot01_aa1170();
+        AddRef();
         return true;
     case 0x2c279933:
         *out = static_cast<cUnk00a9ebe4*>(this);
-        Slot01_aa1170();
+        AddRef();
         return true;
     }
     return false;

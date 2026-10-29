@@ -14,7 +14,7 @@ class cRZCursorResource : public cGZPersistResource, public cUnk00ad97fc {
 public:
     virtual ~cRZCursorResource();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_ad97fc(uint32_t);
     virtual void Slot04_ad97fc(uint32_t);

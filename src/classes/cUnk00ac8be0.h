@@ -16,7 +16,7 @@ class cUnk00ac8be0 : public cUnk0090da1e, public cUnk00ac8b80, public cUnk00ac8b
 public:
     virtual ~cUnk00ac8be0();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_ac8b80();
     virtual bool Slot04_ac8b80();

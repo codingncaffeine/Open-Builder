@@ -9,7 +9,7 @@
 // The subobject at +0x0 (vtable 0x00ab29b0): an interface or base the class map has no class for.
 struct OB_NOVTABLE cSC4WealthRequester_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual uint32_t GetRequestedShare(uint32_t) = 0;
     virtual uint32_t GetRequesterSatisfactionId() = 0;
@@ -26,7 +26,7 @@ public:
     virtual bool Slot04_a80784(void*);
     virtual uint32_t Slot05_a80784();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t GetRequestedShare(uint32_t);
     virtual uint32_t GetRequesterSatisfactionId();

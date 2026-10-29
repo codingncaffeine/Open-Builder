@@ -13,7 +13,7 @@
 class cSCResKeyTable : public cUnk00aaf7f0, public cUnk00ace624 {
 public:
     virtual ~cSCResKeyTable() {}
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot00_aaf7f0(uint32_t, uint32_t);
     virtual uint32_t Slot03_aaf7f0(uint32_t);

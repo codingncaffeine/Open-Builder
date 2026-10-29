@@ -22,7 +22,7 @@ class cUnk00ac385c : public cUnk00ac34cc, public cUnk00ac34f8, public cUnk00ac35
 public:
     virtual ~cUnk00ac385c() {}
     virtual uint32_t Slot11_ac385c();
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t Slot03_ac34cc();
     virtual uint32_t Slot04_ac34cc(uint32_t);

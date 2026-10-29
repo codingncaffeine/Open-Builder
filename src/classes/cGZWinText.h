@@ -14,7 +14,7 @@ class cGZWinText : public cGZWin, public cUnk00adfe40 {
 public:
     virtual ~cGZWinText();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool GZPaint();

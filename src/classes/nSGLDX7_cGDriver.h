@@ -21,7 +21,7 @@ public:
     virtual ~nSGLDX7_cGDriver() {}
     virtual uint32_t FinalRelease();
     virtual bool DeleteAllBufferRegions();
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual uint32_t Slot03_ac34cc();
     virtual uint32_t Slot04_ac34cc(uint32_t);

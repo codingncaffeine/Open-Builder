@@ -13,7 +13,7 @@
 class cUnk00ab55a0 : public cUnk00ace624, public cUnk00ab5568 {
 public:
     virtual ~cUnk00ab55a0() {}
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot00_ab5568(uint32_t, uint32_t);
     virtual bool Slot03_ab5568();

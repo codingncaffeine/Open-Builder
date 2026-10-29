@@ -14,7 +14,7 @@ class cSC4ConfigRuleManager : public cUnk00abb004, public cUnk0090da1e {
 public:
     virtual ~cSC4ConfigRuleManager() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void Slot03_abb004(uint32_t);
     virtual void Slot04_abb004();

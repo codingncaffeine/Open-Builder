@@ -16,7 +16,7 @@ public:
     virtual bool Slot51_addd50();
     virtual bool Slot52_addd50();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual uint32_t Slot68_adc8d8(uint32_t, uint32_t);

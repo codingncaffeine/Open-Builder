@@ -14,7 +14,7 @@ class cRZStringResource : public cRZString, public cGZPersistResource {
 public:
     virtual ~cRZStringResource() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     using cRZString::operator=;
 };

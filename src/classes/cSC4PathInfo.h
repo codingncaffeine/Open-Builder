@@ -13,7 +13,7 @@ class cSC4PathInfo : public cUnk00a99d78, public cGZPersistResource {
 public:
     virtual ~cSC4PathInfo() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void Slot03_a99d78(uint32_t, uint32_t);
     virtual void Slot04_a99d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);

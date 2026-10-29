@@ -14,7 +14,7 @@ class cSC4ViewInputControlTorch : public cSC4ViewInputControl, public cUnk00aaaa
 public:
     virtual ~cSC4ViewInputControlTorch() {}
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual bool Init();

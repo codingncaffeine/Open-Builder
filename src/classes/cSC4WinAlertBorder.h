@@ -16,7 +16,7 @@ class cSC4WinAlertBorder : public cGZWin, public cUnk00ace624, public cUnk00ab5b
 public:
     virtual ~cSC4WinAlertBorder();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual void* Slot03_ab5b0c();

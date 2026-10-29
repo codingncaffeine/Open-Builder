@@ -9,7 +9,7 @@
 class cUnk00aace34 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual unsigned int AddRef() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void* Slot03_aace34() = 0;
     virtual void Slot04_aace34(uint32_t) = 0;

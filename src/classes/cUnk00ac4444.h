@@ -18,7 +18,7 @@ class cUnk00ac4444 : public cGZLua5, public cUnk00ac3fe8, public cUnk00ac4120 {
 public:
     virtual ~cUnk00ac4444();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void Slot03_ac3fe8();
     virtual void Slot04_ac3fe8();

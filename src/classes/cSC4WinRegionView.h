@@ -14,7 +14,7 @@ class cSC4WinRegionView : public cGZWin, public cUnk00ab95e0 {
 public:
     virtual ~cSC4WinRegionView();
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual void is_point_transparent(uint32_t, uint32_t);

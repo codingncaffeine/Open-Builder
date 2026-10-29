@@ -41,7 +41,7 @@ public:
     virtual void Slot176_ade188(uint32_t, uint32_t);
     virtual void Slot177_ade188(uint32_t, uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
+    virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual bool GZOnMouseDownL(uint32_t, uint32_t, uint32_t);
