@@ -78,4 +78,10 @@ link /nologo /dll /nodefaultlib /entry:DllMain /def:hook/version.def "/map:$out/
   "/out:$out/version.dll" "${objs[@]}" "$out/sdk/kernel32.lib" OpenGL32.Lib Gdi32.Lib User32.Lib 2>&1 | quiet
 
 [[ -f "$out/version.dll" ]] || { echo "build failed" >&2; exit 1; }
+# The objects of this successful build, kept beside the output (which the next build wipes first): tools/known-slots.sh
+# reads hand-written classes from them, so a later build that fails cannot hand the class generator half a tree.
+rm -rf "$out-good-obj.tmp"
+cp -a "$out/obj" "$out-good-obj.tmp"
+rm -rf "$out-good-obj"
+mv "$out-good-obj.tmp" "$out-good-obj"
 echo "built $out/version.dll ($(stat -c %s "$out/version.dll") bytes, ${#sources[@]} sources)"

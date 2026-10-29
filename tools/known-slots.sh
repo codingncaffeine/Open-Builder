@@ -2,20 +2,22 @@
 # Lists the slots of the vtables our sources declare by hand (the "// VTABLE:" annotations outside src/classes), read
 # from the compiled objects: each vtable's relocations name the function in every slot. tools/obcmp/obdecl reads it
 # to derive generated classes from hand-written ones (their slot names and signatures).
-#   tools/known-slots.sh <out.tsv>      after a build (build/vc71/obj)
+#   tools/known-slots.sh <out.tsv>      after a build: the objects of the last SUCCESSFUL one (build/vc71-good-obj; a
+#                                       failed build leaves out the objects of every source that failed)
 # Writes "<original vtable>\t<slot>\t<decorated>\t<demangled>" per slot.
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
-out="$1" build=build/vc71
-[[ -d "$build/obj" ]] || { echo "build first (tools/build.sh)" >&2; exit 2; }
+out="$1"
+objs=build/vc71-good-obj
+[[ -d "$objs" ]] || { echo "no successful build yet: tools/build.sh on a tree that builds" >&2; exit 2; }
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
 # Hand annotations only: the generated classes (src/classes) are what obdecl writes from this.
 find src/classes -name '*.h' -printf '%f\n' 2>/dev/null | sed 's/\.h$//' >"$work/generated"
 tools/vtable-annotations.sh | awk 'NR == FNR { g[$1] = 1; next }
   { c = $2; sub(/^\?\?_7/, "", c); sub(/@@.*/, "", c); if (!(c in g)) print }' "$work/generated" - >"$work/annotations"
-for obj in "$build"/obj/*.obj; do
+for obj in "$objs"/*.obj; do
   # (the generated instantiations too: an abstract hand class, an interface with a vtable of its own, has its vtable
   # emitted only where a class derived from it is constructed)
   # "(sec N)...??_7Name@@6B@": the section each vtable is in; then every section's relocations, read once.

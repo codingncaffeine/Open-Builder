@@ -20,7 +20,7 @@ mkdir -p "$work"
 # The program's allocator and pure-virtual stub (see hook/stubs.txt).
 "$bin/obclass" "$exe" re/map/functions.tsv re/map/vtables.tsv --new 0x5e55e0 --delete 0x5e5620 \
   --classes "$work/classes.tsv" --slots "$work/slots.tsv" --deleting "$work/deleting.tsv"
-[[ -d build/vc71/obj ]] || tools/build.sh >/dev/null 2>&1 || true
+[[ -d build/vc71-good-obj ]] || tools/build.sh >/dev/null 2>&1 || true
 tools/known-slots.sh "$work/known.tsv"
 # What each function pops and, for the one-line ones, does: signatures, fields and bodies.
 "$bin/obshape" "$exe" re/map/functions.tsv --out "$work/shapes.tsv" --sizes "$work/sizes.tsv" 2>/dev/null
