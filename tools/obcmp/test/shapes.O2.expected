@@ -1,0 +1,29 @@
+# obshape's reading of shapes.cpp built with /O2 (checked against the compiler's listing)
+E	8 empty
+GetA	0 get a 20
+GetB	0 get b c
+GetBS	0 get bs e
+GetBZ	0 get bz d
+GetD	0 get d 8
+GetF	0 get f 14
+GetQ	0 get q 18
+GetUB	0 get b d
+GetW	0 get w 10
+GetWS	0 get ws 12
+GetWZ	0 get wz 10
+K0	0 const d 0 -
+K1	0 const d 1 O2
+K5	4 const d 5 O2
+KF0	0 const f 0 -
+KF	0 const b 0 -
+KF1	0 const f 3f800000 -
+KF2	0 const f 40200000 -
+Km1	0 const d ffffffff -
+KT	0 const b 1 -
+SetB	4 set b c 0
+SetD2	8 set d 8 1
+SetD	4 set d 8 0
+SetDRet	4 setconst d 8 0 b 1
+SetF	4 set d 14 0
+SetW	4 set w 10 0
+This	0 this

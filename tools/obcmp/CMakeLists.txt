@@ -23,3 +23,7 @@ target_compile_options(obclass PRIVATE -Wall -Wextra -Wpedantic)
 
 add_executable(obdecl obdecl.cpp)
 target_compile_options(obdecl PRIVATE -Wall -Wextra -Wpedantic)
+
+add_executable(obshape obshape.cpp)
+target_link_libraries(obshape PRIVATE Zydis::Zydis)
+target_compile_options(obshape PRIVATE -Wall -Wextra -Wpedantic)
