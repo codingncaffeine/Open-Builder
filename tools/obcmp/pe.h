@@ -2,8 +2,9 @@
 //
 // Each instruction becomes a token: mnemonic plus normalised operands. Absolute addresses inside the image are
 // replaced by what they refer to where that is known (a named function), otherwise by "addr", so two builds placed
-// at different addresses still compare equal. Branch targets inside the function become offsets from its start in
-// instructions. lcs() scores two token lists: the longest common subsequence.
+// at different addresses still compare equal; a named address outside the image is named too (the rebuilt DLL refers
+// to the original's global variables at their own addresses). Branch targets inside the function become offsets
+// from its start in instructions. lcs() scores two token lists: the longest common subsequence.
 #pragma once
 
 
@@ -164,7 +165,7 @@ inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t
                     tok += refer(target & 0xffffffffu);
                 } else {
                     uint64_t v = op.imm.value.u & 0xffffffffu;
-                    tok += side.img->contains(v) ? refer(v) : hex(v);
+                    tok += side.img->contains(v) || side.names->count(uint32_t(v)) ? refer(v) : hex(v);
                 }
                 break;
             }
@@ -180,7 +181,7 @@ inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t
                     uint64_t d = uint64_t(op.mem.disp.value) & 0xffffffffu;
                     tok += "+";
                     // An address inside the image is one even with a register added (a table indexed by it).
-                    tok += side.img->contains(d) ? refer(d) : hex(d);
+                    tok += side.img->contains(d) || side.names->count(uint32_t(d)) ? refer(d) : hex(d);
                 }
                 tok += "]";
                 break;

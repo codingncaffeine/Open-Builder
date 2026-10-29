@@ -42,6 +42,8 @@ awk -v textend="$textend" '
   }' re/map/functions.tsv "$map" "$out/hook-pairs.txt" >"$out/pairs.tsv"
 # The stubs that lead to functions not decompiled yet name their original, so calls to them compare by target.
 awk '$1 ~ /^0001:/ && $2 ~ /^_ob_stub_[0-9a-f]{8}$/ { print substr($2, 10), $3, "stub_" substr($2, 10) }' "$map" >"$out/names.tsv"
+# The original's global variables (GLOBAL annotations) are at the same address on both sides: named alike.
+awk '{ a = tolower($1); sub(/^0x/, "", a); print a, a, "data_" a }' "$out/globals.txt" | sort -u >>"$out/names.tsv"
 # Vtables: "// VTABLE: 0x<address> [base]" above a class pairs the original's with ours (tools/vtable-annotations.sh);
 # our slot count runs to the next symbol in the map at most.
 tools/vtable-annotations.sh >"$out/vtable-annotations.txt"

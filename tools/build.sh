@@ -63,14 +63,17 @@ done
 
 # The hook table needs the compiled functions' symbols (tools/gen-hooks.sh).
 # and the stubs: the lists, and the STUB annotations of what the objects call (tools/gen-stubs.sh)
-"$root/tools/gen-hooks.sh" "$out/hooks.gen.cpp" "$out/obj" "$out/stubs.annotated.txt"
+"$root/tools/gen-hooks.sh" "$out/hooks.gen.cpp" "$out/obj" "$out/stubs.annotated.txt" "$out/globals.txt"
 "$root/tools/gen-stubs.sh" "$out/stubs.gen.cpp" "$out/stubs.annotated.txt"
+# and the original's global variables the objects refer to (GLOBAL annotations, tools/gen-globals.sh)
+"$root/tools/gen-globals.sh" "$out/obj/globals.gen.obj" "$out/globals.txt"
 # shellcheck disable=SC2086
 cl "${common[@]}" $hook_flags "/Fo$out/obj$sep" "$out/hooks.gen.cpp" "$out/stubs.gen.cpp" 2>&1 | quiet
 sources+=("$out/hooks.gen.cpp" "$out/stubs.gen.cpp")
 
 objs=()
 for s in "${sources[@]}"; do objs+=("$out/obj/$(basename "${s%.cpp}").obj"); done
+objs+=("$out/obj/globals.gen.obj")
 link /nologo /dll /nodefaultlib /entry:DllMain /def:hook/version.def "/map:$out/version.map" \
   "/out:$out/version.dll" "${objs[@]}" "$out/sdk/kernel32.lib" OpenGL32.Lib 2>&1 | quiet
 

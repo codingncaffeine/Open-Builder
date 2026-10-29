@@ -5,16 +5,19 @@
 # virtual, overloaded, variadic and inline functions all resolve to the function itself (a name only one function
 # has resolves by the name alone, so a parameter type may be a typedef). The table refers to each one
 # through /alternatename.
-#   tools/gen-hooks.sh <out.cpp> <object dir> [stubs.txt]
+#   tools/gen-hooks.sh <out.cpp> <object dir> [stubs.txt] [globals.txt]
 # "// SYNTHETIC: 0x<address>" with the next line "// <the compiler's name for it>" (llvm-undname's spelling, e.g.
 # "cFoo::`scalar deleting dtor'" or "cFoo::Release`adjustor{4}'") matches a function the compiler generated, never hooked.
 # "// FUNCTION: 0x<address> nohook" matches the function without hooking it (one too small for a 5-byte jump, or a
 # body the linker folded into one shared by another entry).
 # "// STUB: 0x<address>" before a declaration of a function not decompiled yet: when the objects call it (an undefined
 # symbol), "0x<address> <decorated>" goes to stubs.txt for tools/gen-stubs.sh, so the call lands in the original.
+# "// GLOBAL: 0x<address>" before an extern declaration of one of the original's global variables (or of a static
+# member): when the objects refer to it, "0x<address> <decorated>" goes to globals.txt for tools/gen-globals.sh, so the
+# reference lands on the original's variable. Our sources must not define it: the game's own code uses the original's.
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
-out="$1" objdir="$2" stubsOut="${3:-/dev/null}"
+out="$1" objdir="$2" stubsOut="${3:-/dev/null}" globalsOut="${4:-/dev/null}"
 cd "$root"
 
 # Signature keys "Class::Name(type;type)const" with types reduced to sorted tokens, typedefs resolved.
@@ -54,23 +57,40 @@ BEGIN {
   typedefs["uint32_t"] = "unsigned int"; typedefs["int32_t"] = "int"; typedefs["size_t"] = "unsigned int"
   typedefs["uint16_t"] = "unsigned short"; typedefs["int16_t"] = "short"; typedefs["uint8_t"] = "unsigned char"
   typedefs["int8_t"] = "signed char"; typedefs["int64_t"] = "__int64"; typedefs["uint64_t"] = "unsigned __int64"
+  # the demangler'"'"'s spelling of an anonymous namespace; sources name what is in one without it
+  anon = "`anonymous namespace" sprintf("%c", 39) "::"
 }
 '
 
 entries="$(mktemp)" symbols="$(mktemp)"
 trap 'rm -f "$entries" "$symbols" "$symbols.raw" "$symbols.kind"' EXIT
 # C++ functions of every object: "<key> <decorated>", defined ones, and "U:<key> <decorated>" for the undefined ones
-# (called, for STUB annotations). One table for all of them, because a function defined in a header (an inline one)
-# is compiled into whichever objects use it, and the linker keeps one of those copies.
+# (called, for STUB annotations); variables: "DATA:<name> <decorated>" and "UDATA:<name> <decorated>" (for GLOBAL
+# annotations). One table for all of them, because a function defined in a header (an inline one) is compiled into
+# whichever objects use it, and the linker keeps one of those copies.
 for obj in "$objdir"/*.obj; do
-  objdump -t "$obj" | awk '/\(ty +20\)\(scl +2\)/ && $NF ~ /^\?/ {print ($0 ~ /\(sec +0\)/ ? "U" : "D") "\t" $NF}'
+  # variables are type 0; the compiler's own data (vtables, string literals) is named "??_"
+  objdump -t "$obj" | awk '$NF ~ /^\?/ && /\(scl +2\)/ {
+    kind = /\(sec +0\)/ ? "U" : "D"
+    if (/\(ty +20\)/) print kind "\t" $NF
+    else if (/\(ty +0\)/ && $NF !~ /^\?\?_/) print kind "D\t" $NF
+  }'
 done | sort -u >"$symbols.kind"
 cut -f2 "$symbols.kind" >"$symbols.raw"
 # llvm-undname echoes each name, then prints the result (nothing for a name it cannot read) and a blank line: one
 # block per name, its result or the name itself
 paste "$symbols.kind" <(llvm-undname <"$symbols.raw" 2>/dev/null | awk 'BEGIN { RS = ""; FS = "\n" } { print ($2 != "" ? $2 : $1) }') | awk -F'\t' "$canon"'
   {
-    undefined = $1 == "U"; $1 = $2; $2 = $3
+    kind = $1; undefined = kind == "U"; $1 = $2; $2 = $3
+    gsub(anon, "", $2)
+    if (kind == "UD" || kind == "DD") {
+      # a variable: its name is the last word, or the one in "(*name)" of a function pointer
+      d = $2
+      if (match(d, /\*[A-Za-z_][A-Za-z0-9_:]*\)/)) name = substr(d, RSTART + 1, RLENGTH - 2)
+      else { n = split(d, w, /[ *&]+/); name = w[n] }
+      print (kind == "UD" ? "UDATA:" : "DATA:") name "\t" $1
+      next
+    }
     if (undefined) {
       d = $2; isconst = (d ~ /\) const$/); sub(/\) const$/, ")", d)
       open = index(d, "("); if (!open) next
@@ -93,9 +113,12 @@ paste "$symbols.kind" <(llvm-undname <"$symbols.raw" 2>/dev/null | awk 'BEGIN { 
     print key(qualified, params, isconst) "\t" $1
   }' >"$symbols"
 : >"$stubsOut"
+: >"$globalsOut"
 for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
   # Annotated definitions in this source, joined to their symbols.
-  awk -v src="$src" -v stubsOut="$stubsOut" "$canon"'
+  awk -v src="$src" -v stubsOut="$stubsOut" -v globalsOut="$globalsOut" "$canon"'
+    FILENAME != src && $1 ~ /^UDATA:/ { udata[substr($1, 7)] = udata[substr($1, 7)] " " $2; next }
+    FILENAME != src && $1 ~ /^DATA:/ { ddata[substr($1, 6)] = $2; next }
     FILENAME != src && $1 ~ /^U:/ {
       k = substr($1, 3); usym[k] = $2
       name = substr(k, 1, index(k, "(") - 1)
@@ -125,8 +148,30 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
     /\/\/ STUB: 0x[0-9a-fA-F]+/ {
       match($0, /0x[0-9a-fA-F]+/); address = substr($0, RSTART, RLENGTH); text = ""; stub = 1; next
     }
-    # the class a member declaration (an indented one) belongs to
-    /^(class|struct)[ \t]/ { c = $0; sub(/^(class|struct)[ \t]+(OB_NOVTABLE[ \t]+)?/, "", c); sub(/[ \t:{;].*/, "", c); cls = c }
+    /\/\/ GLOBAL: 0x[0-9a-fA-F]+/ {
+      match($0, /0x[0-9a-fA-F]+/); address = substr($0, RSTART, RLENGTH); global = 1; next
+    }
+    # the class a member declaration (an indented one) belongs to, up to its closing "};" (not a forward declaration)
+    /^(class|struct)[ \t]/ && !/;[ \t]*$/ { c = $0; sub(/^(class|struct)[ \t]+(OB_NOVTABLE[ \t]+)?/, "", c); sub(/[ \t:{;].*/, "", c); cls = c }
+    /^};/ { cls = "" }
+    global {
+      global = 0; line = $0; sub(/\/\/.*/, "", line)
+      if (line !~ /^[ \t]*extern[ \t]/ && !(line ~ /^[ \t]+static[ \t]/ && cls != "")) {
+        printf "gen-hooks: %s: GLOBAL %s must annotate the extern declaration (or static member) right below it\n", src, address > "/dev/stderr"
+        bad = 1; next
+      }
+      sub(/;.*/, "", line); sub(/\[.*/, "", line); sub(/[ \t]*=.*/, "", line)
+      if (match(line, /\*[ \t]*[A-Za-z_][A-Za-z0-9_]*[ \t]*\)/)) { name = substr(line, RSTART + 1, RLENGTH - 2); gsub(/[ \t]/, "", name) }
+      else { n = split(trim(line), w, /[ \t*&]+/); name = w[n] }
+      if (line ~ /^[ \t]+static[ \t]/) name = cls "::" name
+      if (name in ddata) {
+        printf "gen-hooks: %s: %s (GLOBAL %s) is defined in our sources; the hook build must use the original%cs\n", src, name, address, 39 > "/dev/stderr"
+        bad = 1; next
+      }
+      # not referred to anywhere: nothing to resolve
+      n = split(udata[name], w, " "); for (i = 1; i <= n; i++) print address "\t" w[i] >> globalsOut
+      next
+    }
     stub {
       text = text " " $0
       if (text !~ /\)/) next
