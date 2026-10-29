@@ -56,10 +56,11 @@ for cls in "${classes[@]}"; do
   dir="$out/$cls"
   mkdir -p "$dir"
   rm -f "$dir"/*.asm "$dir"/*.c  # listings of an earlier packet (its report.md stays)
-  folder=game
-  grep -qx "    (void)new $cls;" src/gzcom/GeneratedClasses_gzcom.cpp && folder=gzcom
   # one line per function (a function several decorated names share is one function)
   awk -F'\t' -v c="$cls" '$1 == c && !seen[$2]++' "$work/candidates" >"$work/$cls"
+  # The folder (its flags) from where the original put the functions: the game was built with function-level linking
+  # (every function 16-aligned), the framework packed; most of a class's methods off a 16-byte boundary = framework.
+  folder=$(awk -F'\t' '{ n++; if (strtonum("0x" $2) % 16) u++ } END { print (u * 2 > n ? "gzcom" : "game") }' "$work/$cls")
   paste <(cut -f2 "$work/$cls") <(cut -f3 "$work/$cls") <(cut -f4 "$work/$cls" | llvm-undname 2>/dev/null | awk 'BEGIN { RS = ""; FS = "\n" } { print ($2 != "" ? $2 : $1) }') |
     awk -F'\t' -v f="$folder" '{ print "0x" $1 "\t" $2 "\t" f "\t" $3 }' >"$dir/functions.tsv"
   cut -f2 "$work/$cls" >>"$work/all-addresses"
