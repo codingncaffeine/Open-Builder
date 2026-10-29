@@ -27,7 +27,8 @@ function canontype(t,   n, w, i, j, k, out, keep, tmp) {
   gsub(/\*/, " * ", t); gsub(/&/, " & ", t); gsub(/[ \t]+/, " ", t); t = trim(t)
   n = split(t, w, " ")
   # a trailing identifier after a type is the parameter name
-  if (n > 1 && w[n] ~ /^[A-Za-z_][A-Za-z0-9_]*$/ && !(w[n] in builtin)) n--
+  # (not the name after class/struct/enum, which the demangler writes before a type)
+  if (n > 1 && w[n] ~ /^[A-Za-z_][A-Za-z0-9_]*$/ && !(w[n] in builtin) && w[n - 1] !~ /^(class|struct|enum|union)$/) n--
   k = 0
   for (i = 1; i <= n; i++) {
     if (w[i] == "class" || w[i] == "struct" || w[i] == "enum") continue
