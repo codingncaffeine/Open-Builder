@@ -26,9 +26,9 @@ for flags in "/O1 /GX- /W3" "/O2 /GX- /W3"; do
   end="$(objdump -h "$out/lib.dll" | awk '$2 == ".text" { printf "%08x", strtonum("0x" $4) + strtonum("0x" $3) }')"
   { cat "$out/fnames"; echo "$end end"; } | awk 'NR > 1 { printf "%s %x\n", prev, strtonum("0x" $1) - strtonum("0x" prev) } { prev = $1 }' >"$out/functions.tsv"
   "$obshape" "$out/lib.dll" "$out/functions.tsv" --out "$out/shapes.tsv" 2>/dev/null
-  # "?Name@C@@..." -> "Name"; pops and shape (room depends on where the linker put each function)
+  # "?Name@C@@..." -> "Name"; pops, returns and shape (room depends on where the linker put each function)
   awk 'FILENAME ~ /fnames$/ { n = $2; sub(/^\?/, "", n); sub(/@.*/, "", n); name[sprintf("%x", strtonum("0x" $1))] = n; next }
-       { print name[$1] "\t" $3 " " $4 }' "$out/fnames" FS='\t' "$out/shapes.tsv" | sort >"$out/got.tsv"
+       { print name[$1] "\t" $3 " " $4 " " $5 }' "$out/fnames" FS='\t' "$out/shapes.tsv" | sort >"$out/got.tsv"
   grep -v "^#" "$here/shapes.$opt.expected" | sort >"$out/want.tsv"
   if diff -u "$out/want.tsv" "$out/got.tsv" >"$out/diff.txt"; then
     echo "$flags: identical ($(wc -l <"$out/got.tsv") functions)"

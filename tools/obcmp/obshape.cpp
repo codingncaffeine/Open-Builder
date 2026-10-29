@@ -5,11 +5,12 @@
 //   obshape <program> <functions.tsv> [--out shapes.tsv]
 //
 // functions.tsv: "entry size ..." (hex, tools/ghidra/ExportFunctions.java). shapes.tsv, one line per function:
-//   address  room  pops  shape  [detail...]
+//   address  room  pops  returns  shape  [detail...]
 // room: its own bytes and the padding (int3, nop) after them, up to the next function (decimal): where a hook can
 // write its 5-byte jump.
 // pops: the bytes every ret in it pops (decimal), "?" when it has no ret (it ends in a jump), "x" when its rets
-// disagree. shape and detail (offsets hex, from this; types: d dword, b byte, w word, bz/bs a byte widened with zero
+// disagree. returns: D, B, F (a dword, a byte, a float), V (nothing), ? (unknown), from the instruction before each
+// ret. shape and detail (offsets hex, from this; types: d dword, b byte, w word, bz/bs a byte widened with zero
 // or sign extension, wz/ws the same for a word, f float, q double, a the address of a member):
 //   -                         none of these
 //   empty                     ret
@@ -156,18 +157,94 @@ std::string shapeOf(const std::vector<Ins>& v, const Image& img) {
     return "-";
 }
 
+// What the function returns, from the last instruction before each ret (stack cleanup skipped): D a dword in eax, B a
+// byte in al, F a float on the FPU stack, V nothing written there, ? a call (its result may be passed on) or rets
+// that disagree. A void function leaves eax as scratch, but never writes it last.
+std::string returns(const std::vector<Ins>& v) {
+    std::set<char> seen;
+    for (size_t i = 0; i < v.size(); ++i) {
+        if (!isRet(v[i])) continue;
+        size_t j = i;
+        while (j > 0) {
+            const Ins& p = v[j - 1];
+            auto m = p.i.mnemonic;
+            bool cleanup = m == ZYDIS_MNEMONIC_LEAVE ||
+                           (m == ZYDIS_MNEMONIC_POP && !isReg(p.o[0], ZYDIS_REGISTER_EAX)) ||
+                           ((m == ZYDIS_MNEMONIC_ADD || m == ZYDIS_MNEMONIC_SUB) && isReg(p.o[0], ZYDIS_REGISTER_ESP)) ||
+                           (m == ZYDIS_MNEMONIC_MOV && isReg(p.o[0], ZYDIS_REGISTER_ESP));
+            if (!cleanup) break;
+            --j;
+        }
+        if (j == 0) { seen.insert('V'); continue; }
+        const Ins& p = v[j - 1];
+        auto m = p.i.mnemonic;
+        const auto& d = p.o[0];
+        if (m == ZYDIS_MNEMONIC_CALL) { seen.insert('?'); continue; }
+        if (m == ZYDIS_MNEMONIC_FLD || m == ZYDIS_MNEMONIC_FILD || m == ZYDIS_MNEMONIC_FLDZ || m == ZYDIS_MNEMONIC_FLD1 ||
+            m == ZYDIS_MNEMONIC_FMUL || m == ZYDIS_MNEMONIC_FADD || m == ZYDIS_MNEMONIC_FSUB || m == ZYDIS_MNEMONIC_FDIV ||
+            m == ZYDIS_MNEMONIC_FSUBR || m == ZYDIS_MNEMONIC_FDIVR || m == ZYDIS_MNEMONIC_FCHS || m == ZYDIS_MNEMONIC_FABS) {
+            seen.insert('F');
+            continue;
+        }
+        bool writes = d.type == ZYDIS_OPERAND_TYPE_REGISTER && (d.actions & ZYDIS_OPERAND_ACTION_MASK_WRITE) &&
+                      m != ZYDIS_MNEMONIC_CMP && m != ZYDIS_MNEMONIC_TEST && m != ZYDIS_MNEMONIC_PUSH;
+        if (writes && d.reg.value == ZYDIS_REGISTER_AL) seen.insert('B');
+        else if (writes && (d.reg.value == ZYDIS_REGISTER_EAX || d.reg.value == ZYDIS_REGISTER_AX)) seen.insert('D');
+        else seen.insert('V');
+    }
+    if (seen.size() != 1) return "?";
+    return std::string(1, *seen.begin());
+}
+
+// How far a function's code really runs: decoded from its entry, following the branches it takes inside itself (jump
+// tables included), up to the ret or jump that no branch reaches past; never past limit (the next listed function).
+// The function list sometimes ends a function early, which would score a truncated original.
+uint32_t extent(const ZydisDecoder& dec, const Image& img, uint32_t va, uint32_t limit) {
+    const uint8_t* code = img.at(va, limit);
+    if (!code) return 0;
+    uint32_t reach = 0;  // the furthest branch target seen, from va
+    for (uint32_t o = 0; o < limit;) {
+        Ins x;
+        if (ZYAN_FAILED(ZydisDecoderDecodeFull(&dec, code + o, limit - o, &x.i, x.o))) return o;
+        o += x.i.length;
+        const auto& t = x.o[0];
+        bool branch = x.i.meta.category == ZYDIS_CATEGORY_COND_BR || x.i.meta.category == ZYDIS_CATEGORY_UNCOND_BR;
+        if (branch && t.type == ZYDIS_OPERAND_TYPE_IMMEDIATE && t.imm.is_relative) {
+            uint64_t target = uint64_t(va) + o + uint64_t(t.imm.value.s);
+            if (target > va && target < uint64_t(va) + limit) reach = std::max(reach, uint32_t(target - va));
+        }
+        // jmp [reg*4+table]: every entry inside the function is a target
+        if (x.i.mnemonic == ZYDIS_MNEMONIC_JMP && t.type == ZYDIS_OPERAND_TYPE_MEMORY && t.mem.scale == 4 &&
+            t.mem.base == ZYDIS_REGISTER_NONE) {
+            for (uint32_t e = uint32_t(t.mem.disp.value), w;; e += 4) {
+                const uint8_t* p = img.at(e, 4);
+                if (!p) break;
+                std::memcpy(&w, p, 4);
+                if (w <= va || w >= va + limit) break;
+                reach = std::max(reach, w - va);
+            }
+        }
+        bool end = isRet(x) || (x.i.mnemonic == ZYDIS_MNEMONIC_JMP);
+        if (end && o > reach) return o;
+    }
+    return limit;
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
     std::vector<std::string> pos;
     std::string out;
+    std::ofstream sizesOut;
+    size_t longer = 0;
     for (int i = 1; i < argc; ++i) {
         std::string a = argv[i];
         if (a == "--out" && i + 1 < argc) out = argv[++i];
+        else if (a == "--sizes" && i + 1 < argc) sizesOut.open(argv[++i]);
         else pos.push_back(a);
     }
     if (pos.size() != 2) {
-        std::fprintf(stderr, "usage: obshape <program> <functions.tsv> [--out shapes.tsv]\n");
+        std::fprintf(stderr, "usage: obshape <program> <functions.tsv> [--out shapes.tsv] [--sizes sizes.tsv]\n");
         return 2;
     }
     Image img;
@@ -220,9 +297,15 @@ int main(int argc, char** argv) {
         uint32_t r = own;
         for (const uint8_t* b; r < limit && (b = img.at(va + r, 1)) && (*b == 0xcc || *b == 0x90);) ++r;
         std::string room = std::to_string(std::min(r, limit));
-        os << std::hex << va << std::dec << "\t" << room << "\t" << p << "\t" << sh << "\n";
+        os << std::hex << va << std::dec << "\t" << room << "\t" << p << "\t" << returns(v) << "\t" << sh << "\n";
         ++count;
+        if (sizesOut.is_open()) {
+            uint32_t e = extent(dec, img, va, k + 1 < fns.size() ? fns[k + 1].first - va : size);
+            if (e > size) ++longer;
+            sizesOut << std::hex << va << "\t" << std::max(e, size) << std::dec << "\n";
+        }
     }
+    if (sizesOut.is_open()) std::fprintf(stderr, "%zu functions longer than listed\n", longer);
     std::fprintf(stderr, "%zu functions, %zu one-line shapes\n", count, shaped);
     return 0;
 }
