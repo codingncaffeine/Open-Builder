@@ -1,0 +1,4 @@
+slot Slot03_ac3508 void bool
+slot Slot04_ac3508 void uint32_t bool
+slot Slot05_ac3508 void float float float float
+slot Slot06_ac3508 void uint32_t const void* const void* const void*

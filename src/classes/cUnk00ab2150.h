@@ -8,9 +8,9 @@
 // VTABLE: 0x00ab2150
 class cUnk00ab2150 {
 public:
-    virtual bool Slot00_ab2150(uint32_t, uint32_t);
+    virtual bool Slot00_ab2150(uint32_t, void*);
     virtual void Slot01_ab2150();
-    virtual void Slot02_ab2150();
+    virtual uint32_t Slot02_ab2150();
     virtual bool Slot03_ab2150();
     virtual bool Slot04_ab2150();
     virtual void Slot05_ab2150(uint32_t);
@@ -35,12 +35,12 @@ public:
     virtual uint32_t Slot24_ab2150();
     virtual float Slot25_ab2150();
     virtual float Slot26_ab2150();
-    virtual void Slot27_ab2150(uint32_t, uint32_t);
+    virtual void Slot27_ab2150(void*, void*);
     virtual bool Slot28_ab2150();
     virtual void Slot29_ab2150(uint32_t);
     virtual bool Slot30_ab2150();
     virtual void Slot31_ab2150();
-    virtual void Slot32_ab2150(uint32_t, uint32_t);
+    virtual void Slot32_ab2150(void*, void*);
     virtual ~cUnk00ab2150();
 };
 

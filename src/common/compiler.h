@@ -9,4 +9,11 @@
 #define OB_NOVTABLE
 #endif
 
+// The Windows API's calling convention (callee pops), for the functions the original hands to Windows.
+#ifdef _MSC_VER
+#define OB_STDCALL __stdcall
+#else
+#define OB_STDCALL
+#endif
+
 #endif

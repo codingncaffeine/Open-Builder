@@ -10,6 +10,7 @@ LPVOID __stdcall VirtualAlloc(LPVOID, DWORD, DWORD, DWORD) { return 0; }
 HANDLE __stdcall GetCurrentProcess() { return 0; }
 BOOL __stdcall FlushInstructionCache(HANDLE, LPCVOID, DWORD) { return 0; }
 HMODULE __stdcall LoadLibraryA(LPCSTR) { return 0; }
+int __stdcall CompareStringA(DWORD, DWORD, LPCSTR, int, LPCSTR, int) { return 0; }
 LPVOID __stdcall GetProcAddress(HMODULE, LPCSTR) { return 0; }
 UINT __stdcall GetSystemDirectoryA(char*, UINT) { return 0; }
 HANDLE __stdcall CreateFileA(LPCSTR, DWORD, DWORD, LPVOID, DWORD, DWORD, HANDLE) { return 0; }

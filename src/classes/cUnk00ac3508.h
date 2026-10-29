@@ -11,10 +11,10 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ac3508(uint32_t) = 0;
-    virtual void Slot04_ac3508(uint32_t, uint32_t) = 0;
-    virtual void Slot05_ac3508(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot06_ac3508(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot03_ac3508(bool) = 0;
+    virtual void Slot04_ac3508(uint32_t, bool) = 0;
+    virtual void Slot05_ac3508(float, float, float, float) = 0;
+    virtual void Slot06_ac3508(uint32_t, const void*, const void*, const void*) = 0;
     virtual void Slot07_ac3508(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot08_ac3508(uint32_t, uint32_t) = 0;
     virtual void Slot09_ac3508(uint32_t, uint32_t) = 0;

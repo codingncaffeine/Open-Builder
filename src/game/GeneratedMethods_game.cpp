@@ -338,32 +338,7 @@
 #include "classes/cUnk00aefde0.h"
 
 // FUNCTION: 0x00407990
-void cUnk00a9f7a8::Slot02_a9f7a8()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00aa8748::Slot70_aa8748()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00aefde0::Slot16_aefde0()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00aa6658::Slot24_aa6658()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00a812cc::Slot09_a812cc()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00aa6658::Slot23_aa6658()
+void cUnk00adb418::Slot20_adb310()
 {
 }
 
@@ -373,17 +348,42 @@ void cUnk00aa8748::Slot75_aa8748()
 }
 
 // FUNCTION: 0x00407990 nohook
-void cUnk00aa2758::Slot32_aa2758()
+void cUnk00aa8748::Slot70_aa8748()
 {
 }
 
 // FUNCTION: 0x00407990 nohook
-void cUnk00aefde0::Slot18_aefde0()
+void cUnk00ac7b68::Slot153_ac7e60()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00ac7b68::Slot155_ac7e60()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00a812cc::Slot09_a812cc()
 {
 }
 
 // FUNCTION: 0x00407990 nohook
 void cUnk00aaa950::Slot17_aa8748()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00aefde0::Slot16_aefde0()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00ab2b10::Slot06_ab2b10()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00aefde0::Slot18_aefde0()
 {
 }
 
@@ -398,62 +398,12 @@ void cUnk00a81204::Slot08_a81204()
 }
 
 // FUNCTION: 0x00407990 nohook
-void cUnk00aaaaac::Slot05_aa75b0()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00aa2384::Slot03_aa2478()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
 void cUnk00ac7b68::Slot156_ac7e60()
 {
 }
 
 // FUNCTION: 0x00407990 nohook
-void cUnk00ac7b68::Slot155_ac7e60()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00ab2b10::Slot06_ab2b10()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00ac7b68::Slot153_ac7e60()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00ac17d0::Slot20_ac17d0()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00a9f040::Slot04_a9f040()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00adb418::Slot20_adb310()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00aefde0::Slot20_aefde0()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00ac17d0::Slot16_ac17d0()
-{
-}
-
-// FUNCTION: 0x00407990 nohook
-void cUnk00adb418::Slot27_adb310()
+void cUnk00aa6658::Slot24_aa6658()
 {
 }
 
@@ -463,7 +413,22 @@ void cUnk00a9dbb8::Slot124_a9dbb8()
 }
 
 // FUNCTION: 0x00407990 nohook
-void cUnk00adb418::Slot28_adb310()
+void cUnk00aa6658::Slot23_aa6658()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00aa2758::Slot32_aa2758()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00a9f040::Slot04_a9f040()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00a9f7a8::Slot02_a9f7a8()
 {
 }
 
@@ -473,7 +438,42 @@ void cUnk00adb418::Slot29_adb310()
 }
 
 // FUNCTION: 0x00407990 nohook
+void cUnk00aaaaac::Slot05_aa75b0()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00ac17d0::Slot16_ac17d0()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
 void cUnk00a9dbb8::Slot29_a9dbb8()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00aefde0::Slot20_aefde0()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00ac17d0::Slot20_ac17d0()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00aa2384::Slot03_aa2478()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00adb418::Slot28_adb310()
+{
+}
+
+// FUNCTION: 0x00407990 nohook
+void cUnk00adb418::Slot27_adb310()
 {
 }
 
@@ -490,6 +490,12 @@ uint32_t cUnk00a808b8::Slot06_a80710()
 }
 
 // FUNCTION: 0x00407ab0
+uint32_t cUnk00aa8748::Slot25_aa8748()
+{
+    return field78;
+}
+
+// FUNCTION: 0x00407ab0 nohook
 uint32_t cUnk00a808b8::Slot07_a80710()
 {
     return mn78;
@@ -497,12 +503,6 @@ uint32_t cUnk00a808b8::Slot07_a80710()
 
 // FUNCTION: 0x00407ab0 nohook
 uint32_t cUnk00a862d8::Slot06_a862d8()
-{
-    return field78;
-}
-
-// FUNCTION: 0x00407ab0 nohook
-uint32_t cUnk00aa8748::Slot25_aa8748()
 {
     return field78;
 }
@@ -538,13 +538,13 @@ uint32_t cUnk00a808b8::Slot16_a80710()
 }
 
 // FUNCTION: 0x00407ba0 nohook
-uint32_t cUnk00ab1160::Slot06_ab1068()
+uint32_t cUnk00ab2490::Slot06_ab2348()
 {
     return field7c;
 }
 
 // FUNCTION: 0x00407ba0 nohook
-uint32_t cUnk00ab2490::Slot06_ab2348()
+uint32_t cUnk00ab1160::Slot06_ab1068()
 {
     return field7c;
 }
@@ -574,15 +574,15 @@ bool cUnk00a85218::Slot10_a84c10()
 }
 
 // FUNCTION: 0x0040ce50 nohook
-bool cUnk00adb418::Slot08_adb310()
-{
-    return field50;
-}
-
-// FUNCTION: 0x0040ce50 nohook
 bool cUnk00a810e0::Slot06_a81058()
 {
     return field10;
+}
+
+// FUNCTION: 0x0040ce50 nohook
+bool cUnk00adb418::Slot08_adb310()
+{
+    return field50;
 }
 
 // FUNCTION: 0x0040ce60
@@ -593,6 +593,12 @@ uint32_t cUnk00a810e0::Slot09_a81058()
 
 // FUNCTION: 0x0040ce60 nohook
 uint32_t cUnk00aa7998::Slot04_aa7998()
+{
+    return field10;
+}
+
+// FUNCTION: 0x0040ce60 nohook
+uint32_t cUnk00ac5060::Slot04_ac5030()
 {
     return field10;
 }
@@ -622,19 +628,13 @@ uint32_t cUnk00ac1400::Slot16_ac1400()
 }
 
 // FUNCTION: 0x0040ce60 nohook
-uint32_t cUnk00ac8f54::Slot05_ac8bf8()
-{
-    return field10;
-}
-
-// FUNCTION: 0x0040ce60 nohook
 uint32_t cUnk00ab0eb0::Slot03_ab0eb0()
 {
     return field10;
 }
 
 // FUNCTION: 0x0040ce60 nohook
-uint32_t cUnk00ac5060::Slot04_ac5030()
+uint32_t cUnk00ac8f54::Slot05_ac8bf8()
 {
     return field10;
 }
@@ -646,66 +646,6 @@ uint32_t cUnk00aa22f4::Slot20_aa2400()
 }
 
 // FUNCTION: 0x0040ce70
-uint32_t cUnk00a87b90::Slot05_a87b90()
-{
-    return field14;
-}
-
-// FUNCTION: 0x0040ce70 nohook
-uint32_t cUnk00a87c20::Slot05_a87c20()
-{
-    return field14;
-}
-
-// FUNCTION: 0x0040ce70 nohook
-uint32_t cUnk00a87b00::Slot05_a87b00()
-{
-    return field14;
-}
-
-// FUNCTION: 0x0040ce70 nohook
-uint32_t cUnk00a9e27c::Slot05_a9e224()
-{
-    return field1c;
-}
-
-// FUNCTION: 0x0040ce70 nohook
-uint32_t cUnk00ab8c00::Slot07_ab3be8()
-{
-    return field14;
-}
-
-// FUNCTION: 0x0040ce70 nohook
-uint32_t cUnk00a87a70::Slot05_a87a70()
-{
-    return field14;
-}
-
-// FUNCTION: 0x0040ce70 nohook
-uint32_t cUnk00a87cb0::Slot05_a87cb0()
-{
-    return field14;
-}
-
-// FUNCTION: 0x0040ce70 nohook
-uint32_t cUnk00a87d40::Slot05_a87d40()
-{
-    return field14;
-}
-
-// FUNCTION: 0x0040ce70 nohook
-uint32_t cUnk00a879e0::Slot05_a879e0()
-{
-    return field14;
-}
-
-// FUNCTION: 0x0040ce70 nohook
-uint32_t cUnk00a87dd0::Slot05_a87dd0()
-{
-    return field14;
-}
-
-// FUNCTION: 0x0040ce70 nohook
 uint32_t cUnk00a87950::Slot05_a87950()
 {
     return field14;
@@ -718,7 +658,25 @@ uint32_t cUnk00a878c0::Slot05_a878c0()
 }
 
 // FUNCTION: 0x0040ce70 nohook
-uint32_t cUnk00ac5060::Slot05_ac5030()
+uint32_t cUnk00ab8c00::Slot07_ab3be8()
+{
+    return field14;
+}
+
+// FUNCTION: 0x0040ce70 nohook
+uint32_t cUnk00a879e0::Slot05_a879e0()
+{
+    return field14;
+}
+
+// FUNCTION: 0x0040ce70 nohook
+uint32_t cUnk00a87c20::Slot05_a87c20()
+{
+    return field14;
+}
+
+// FUNCTION: 0x0040ce70 nohook
+uint32_t cUnk00a87a70::Slot05_a87a70()
 {
     return field14;
 }
@@ -730,49 +688,55 @@ uint32_t cUnk00aa6658::Slot07_aa6658()
 }
 
 // FUNCTION: 0x0040ce70 nohook
+uint32_t cUnk00a87b00::Slot05_a87b00()
+{
+    return field14;
+}
+
+// FUNCTION: 0x0040ce70 nohook
+uint32_t cUnk00a87dd0::Slot05_a87dd0()
+{
+    return field14;
+}
+
+// FUNCTION: 0x0040ce70 nohook
+uint32_t cUnk00ac5060::Slot05_ac5030()
+{
+    return field14;
+}
+
+// FUNCTION: 0x0040ce70 nohook
+uint32_t cUnk00a87b90::Slot05_a87b90()
+{
+    return field14;
+}
+
+// FUNCTION: 0x0040ce70 nohook
+uint32_t cUnk00a87d40::Slot05_a87d40()
+{
+    return field14;
+}
+
+// FUNCTION: 0x0040ce70 nohook
+uint32_t cUnk00a87cb0::Slot05_a87cb0()
+{
+    return field14;
+}
+
+// FUNCTION: 0x0040ce70 nohook
 uint32_t cUnk00a810e0::Slot11_a81058()
 {
     return field20;
 }
 
+// FUNCTION: 0x0040ce70 nohook
+uint32_t cUnk00a9e27c::Slot05_a9e224()
+{
+    return field1c;
+}
+
 // FUNCTION: 0x0040ce80
-void cUnk00a87d40::Slot06_a87d40(uint32_t value)
-{
-    field14 = value;
-}
-
-// FUNCTION: 0x0040ce80 nohook
-void cUnk00a879e0::Slot06_a879e0(uint32_t value)
-{
-    field14 = value;
-}
-
-// FUNCTION: 0x0040ce80 nohook
-void cUnk00a87a70::Slot06_a87a70(uint32_t value)
-{
-    field14 = value;
-}
-
-// FUNCTION: 0x0040ce80 nohook
-void cUnk00a87950::Slot06_a87950(uint32_t value)
-{
-    field14 = value;
-}
-
-// FUNCTION: 0x0040ce80 nohook
-void cUnk00a87b00::Slot06_a87b00(uint32_t value)
-{
-    field14 = value;
-}
-
-// FUNCTION: 0x0040ce80 nohook
-void cUnk00a87b90::Slot06_a87b90(uint32_t value)
-{
-    field14 = value;
-}
-
-// FUNCTION: 0x0040ce80 nohook
-void cUnk00a87c20::Slot06_a87c20(uint32_t value)
+void cUnk00a87dd0::Slot06_a87dd0(uint32_t value)
 {
     field14 = value;
 }
@@ -784,13 +748,13 @@ void cUnk00a878c0::Slot06_a878c0(uint32_t value)
 }
 
 // FUNCTION: 0x0040ce80 nohook
-void cUnk00a87cb0::Slot06_a87cb0(uint32_t value)
+void cUnk00a87b90::Slot06_a87b90(uint32_t value)
 {
     field14 = value;
 }
 
 // FUNCTION: 0x0040ce80 nohook
-void cUnk00a87dd0::Slot06_a87dd0(uint32_t value)
+void cUnk00a87cb0::Slot06_a87cb0(uint32_t value)
 {
     field14 = value;
 }
@@ -801,14 +765,44 @@ void cUnk00a810e0::Slot12_a81058(uint32_t value)
     field20 = value;
 }
 
-// FUNCTION: 0x0040cf10
-uint32_t cUnk00a87dd0::Slot10_a87dd0()
+// FUNCTION: 0x0040ce80 nohook
+void cUnk00a87a70::Slot06_a87a70(uint32_t value)
 {
-    return field18;
+    field14 = value;
 }
 
-// FUNCTION: 0x0040cf10 nohook
-uint32_t cUnk00a879e0::Slot10_a879e0()
+// FUNCTION: 0x0040ce80 nohook
+void cUnk00a879e0::Slot06_a879e0(uint32_t value)
+{
+    field14 = value;
+}
+
+// FUNCTION: 0x0040ce80 nohook
+void cUnk00a87b00::Slot06_a87b00(uint32_t value)
+{
+    field14 = value;
+}
+
+// FUNCTION: 0x0040ce80 nohook
+void cUnk00a87950::Slot06_a87950(uint32_t value)
+{
+    field14 = value;
+}
+
+// FUNCTION: 0x0040ce80 nohook
+void cUnk00a87c20::Slot06_a87c20(uint32_t value)
+{
+    field14 = value;
+}
+
+// FUNCTION: 0x0040ce80 nohook
+void cUnk00a87d40::Slot06_a87d40(uint32_t value)
+{
+    field14 = value;
+}
+
+// FUNCTION: 0x0040cf10
+uint32_t cUnk00a87b00::Slot10_a87b00()
 {
     return field18;
 }
@@ -826,31 +820,7 @@ uint32_t cUnk00ab8c00::Slot08_ab3be8()
 }
 
 // FUNCTION: 0x0040cf10 nohook
-uint32_t cUnk00a87950::Slot10_a87950()
-{
-    return field18;
-}
-
-// FUNCTION: 0x0040cf10 nohook
-uint32_t cUnk00a810e0::Slot08_a81058()
-{
-    return field24;
-}
-
-// FUNCTION: 0x0040cf10 nohook
-uint32_t cUnk00a87b00::Slot10_a87b00()
-{
-    return field18;
-}
-
-// FUNCTION: 0x0040cf10 nohook
-uint32_t cUnk00ac5060::Slot06_ac5030()
-{
-    return field18;
-}
-
-// FUNCTION: 0x0040cf10 nohook
-uint32_t cUnk00a87b90::Slot10_a87b90()
+uint32_t cUnk00a87cb0::Slot10_a87cb0()
 {
     return field18;
 }
@@ -862,15 +832,45 @@ uint32_t cUnk00a87d40::Slot10_a87d40()
 }
 
 // FUNCTION: 0x0040cf10 nohook
-uint32_t cUnk00a87cb0::Slot10_a87cb0()
+uint32_t cUnk00a878c0::Slot10_a878c0()
 {
     return field18;
 }
 
 // FUNCTION: 0x0040cf10 nohook
-uint32_t cUnk00a878c0::Slot10_a878c0()
+uint32_t cUnk00a87b90::Slot10_a87b90()
 {
     return field18;
+}
+
+// FUNCTION: 0x0040cf10 nohook
+uint32_t cUnk00ac5060::Slot06_ac5030()
+{
+    return field18;
+}
+
+// FUNCTION: 0x0040cf10 nohook
+uint32_t cUnk00a879e0::Slot10_a879e0()
+{
+    return field18;
+}
+
+// FUNCTION: 0x0040cf10 nohook
+uint32_t cUnk00a87dd0::Slot10_a87dd0()
+{
+    return field18;
+}
+
+// FUNCTION: 0x0040cf10 nohook
+uint32_t cUnk00a87950::Slot10_a87950()
+{
+    return field18;
+}
+
+// FUNCTION: 0x0040cf10 nohook
+uint32_t cUnk00a810e0::Slot08_a81058()
+{
+    return field24;
 }
 
 // FUNCTION: 0x0040cf10 nohook
@@ -886,37 +886,37 @@ uint32_t cUnk00a81204::Slot05_a80784()
 }
 
 // FUNCTION: 0x0040d390
-uint32_t cUnk00a81204::Slot05_a81120()
-{
-    return mn60;
-}
-
-// FUNCTION: 0x0040d390 nohook
 uint32_t cUnk00ab0f58::Slot17_ab0f58()
 {
     return field58;
 }
 
-// FUNCTION: 0x0040d3a0
-void* cUnk00a81204::Slot06_a81120()
+// FUNCTION: 0x0040d390 nohook
+uint32_t cUnk00a81204::Slot05_a81120()
 {
-    return field18;
+    return mn60;
 }
 
-// FUNCTION: 0x0040d3a0 nohook
+// FUNCTION: 0x0040d3a0
 void* cUnk00a85650::Slot05_a855a4()
 {
     return fieldd0;
 }
 
+// FUNCTION: 0x0040d3a0 nohook
+void* cUnk00a81204::Slot06_a81120()
+{
+    return field18;
+}
+
 // FUNCTION: 0x0040d3d0
-void* cUnk00a81204::Slot10_a81120()
+void* cUnk00a81204::Slot11_a81120()
 {
     return field78;
 }
 
 // FUNCTION: 0x0040d3d0 nohook
-void* cUnk00a81204::Slot11_a81120()
+void* cUnk00a81204::Slot10_a81120()
 {
     return field78;
 }
@@ -958,31 +958,7 @@ uint32_t cUnk00a82fec::Slot05_a80784()
 }
 
 // FUNCTION: 0x0041d4c0
-bool cUnk00ab5500::Slot04_ab5500(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0041d4c0 nohook
-bool cUnk00a83524::Slot04_a83524(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0041d4c0 nohook
-bool cUnk00a83548::Slot04_a83548(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0041d4c0 nohook
 bool cUnk00a83ac0::Slot04_a83ac0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0041d4c0 nohook
-bool cUnk00ab55f8::Slot04_ab55f8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -994,7 +970,31 @@ bool cUnk00ab55c0::Slot04_ab55c0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_
 }
 
 // FUNCTION: 0x0041d4c0 nohook
-bool cUnk00ac1550::Slot33_ac1338(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+bool cUnk00ab55f8::Slot04_ab55f8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0041d4c0 nohook
+bool cUnk00a94264::Slot04_a94264(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0041d4c0 nohook
+bool cUnk00a83524::Slot04_a83524(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0041d4c0 nohook
+bool cUnk00ab5500::Slot04_ab5500(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0041d4c0 nohook
+bool cUnk00a83548::Slot04_a83548(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -1013,6 +1013,12 @@ bool cUnk00ab54d8::Slot04_ab54d8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_
 
 // FUNCTION: 0x0041d4c0 nohook
 bool cUnk00ab51e4::Slot04_ab51e4(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0041d4c0 nohook
+bool cUnk00ac1550::Slot33_ac1338(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -1037,12 +1043,6 @@ bool cUnk00ab4afc::Slot04_ab4afc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_
 
 // FUNCTION: 0x0041d4c0 nohook
 bool cUnk00ab4a78::Slot04_ab4a78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0041d4c0 nohook
-bool cUnk00a94264::Slot04_a94264(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -1114,13 +1114,13 @@ float cUnk00a845b8::Slot11_a843c8()
 }
 
 // FUNCTION: 0x00423650
-uint32_t cUnk00a845b8::Slot14_a843c8()
+uint32_t cUnk00ab2490::Slot31_ab2348()
 {
     return fielde0;
 }
 
 // FUNCTION: 0x00423650 nohook
-uint32_t cUnk00ab2490::Slot31_ab2348()
+uint32_t cUnk00a845b8::Slot14_a843c8()
 {
     return fielde0;
 }
@@ -1282,13 +1282,13 @@ uint32_t cUnk00a85ed0::Slot05_a80784()
 }
 
 // FUNCTION: 0x0043d230
-uint32_t cUnk00a845b8::Slot44_a843c8()
+uint32_t cUnk00a85ed0::Slot16_a85218()
 {
     return field150;
 }
 
 // FUNCTION: 0x0043d230 nohook
-uint32_t cUnk00a85ed0::Slot16_a85218()
+uint32_t cUnk00a845b8::Slot44_a843c8()
 {
     return field150;
 }
@@ -1306,13 +1306,13 @@ uint32_t cUnk00a862d8::Slot22_a862d8()
 }
 
 // FUNCTION: 0x0043fd10
-uint32_t cUnk00a862d8::Slot18_a862d8()
+uint32_t cUnk00ab2490::Slot29_ab2348()
 {
     return fieldd8;
 }
 
 // FUNCTION: 0x0043fd10 nohook
-uint32_t cUnk00ab2490::Slot29_ab2348()
+uint32_t cUnk00a862d8::Slot18_a862d8()
 {
     return fieldd8;
 }
@@ -1348,15 +1348,15 @@ uint32_t cUnk00ab2490::Slot09_ab2348()
 }
 
 // FUNCTION: 0x00441090
-uint32_t cUnk00a9e5f4::Slot14_a9e460()
-{
-    return fielddc;
-}
-
-// FUNCTION: 0x00441090 nohook
 uint32_t cUnk00a862d8::Slot24_a862d8()
 {
     return fieldd4;
+}
+
+// FUNCTION: 0x00441090 nohook
+uint32_t cUnk00a9e5f4::Slot14_a9e460()
+{
+    return fielddc;
 }
 
 // FUNCTION: 0x00441a50
@@ -1432,25 +1432,25 @@ uint32_t cUnk00aa2384::Slot24_aa2478()
 }
 
 // FUNCTION: 0x004777e0 nohook
-uint32_t cUnk00ac9144::Slot04_ac8bf8()
-{
-    return field8;
-}
-
-// FUNCTION: 0x004777e0 nohook
-uint32_t cUnk00a87888::Slot05_a87888()
-{
-    return field8;
-}
-
-// FUNCTION: 0x004777e0 nohook
 uint32_t cUnk00aa22f4::Slot24_aa2400()
 {
     return field10;
 }
 
 // FUNCTION: 0x004777e0 nohook
+uint32_t cUnk00ac9144::Slot04_ac8bf8()
+{
+    return field8;
+}
+
+// FUNCTION: 0x004777e0 nohook
 uint32_t cUnk00ac8f54::Slot04_ac8bf8()
+{
+    return field8;
+}
+
+// FUNCTION: 0x004777e0 nohook
+uint32_t cUnk00a87888::Slot05_a87888()
 {
     return field8;
 }
@@ -1468,6 +1468,18 @@ void* cUnk00a8ceb8::Slot06_a8ceb8()
 }
 
 // FUNCTION: 0x00477840
+float cUnk00a87cb0::Slot16_a87cb0()
+{
+    return field30;
+}
+
+// FUNCTION: 0x00477840 nohook
+float cUnk00a87dd0::Slot16_a87dd0()
+{
+    return field30;
+}
+
+// FUNCTION: 0x00477840 nohook
 float cUnk00a87c20::Slot16_a87c20()
 {
     return field30;
@@ -1486,19 +1498,7 @@ float cUnk00a8ceb8::Slot08_a8ceb8()
 }
 
 // FUNCTION: 0x00477840 nohook
-float cUnk00a87dd0::Slot16_a87dd0()
-{
-    return field30;
-}
-
-// FUNCTION: 0x00477840 nohook
-float cUnk00a87b90::Slot16_a87b90()
-{
-    return field30;
-}
-
-// FUNCTION: 0x00477840 nohook
-float cUnk00a87cb0::Slot16_a87cb0()
+float cUnk00a87a70::Slot16_a87a70()
 {
     return field30;
 }
@@ -1510,25 +1510,19 @@ float cUnk00aa2758::Slot15_aa2758()
 }
 
 // FUNCTION: 0x00477840 nohook
-float cUnk00a878c0::Slot16_a878c0()
-{
-    return field30;
-}
-
-// FUNCTION: 0x00477840 nohook
 float cUnk00a879e0::Slot16_a879e0()
 {
     return field30;
 }
 
 // FUNCTION: 0x00477840 nohook
-float cUnk00a87a70::Slot16_a87a70()
+float cUnk00a87b90::Slot16_a87b90()
 {
     return field30;
 }
 
 // FUNCTION: 0x00477840 nohook
-float cUnk00a87b00::Slot16_a87b00()
+float cUnk00a878c0::Slot16_a878c0()
 {
     return field30;
 }
@@ -1539,14 +1533,14 @@ float cUnk00a87950::Slot16_a87950()
     return field30;
 }
 
-// FUNCTION: 0x00477850
-float cUnk00aa2758::Slot12_aa2758()
+// FUNCTION: 0x00477840 nohook
+float cUnk00a87b00::Slot16_a87b00()
 {
-    return field34;
+    return field30;
 }
 
-// FUNCTION: 0x00477850 nohook
-float cUnk00a87cb0::Slot17_a87cb0()
+// FUNCTION: 0x00477850
+float cUnk00a87b00::Slot17_a87b00()
 {
     return field34;
 }
@@ -1558,13 +1552,13 @@ float cUnk00a87a70::Slot17_a87a70()
 }
 
 // FUNCTION: 0x00477850 nohook
-float cUnk00a879e0::Slot17_a879e0()
+float cUnk00a87cb0::Slot17_a87cb0()
 {
     return field34;
 }
 
 // FUNCTION: 0x00477850 nohook
-float cUnk00a87dd0::Slot17_a87dd0()
+float cUnk00a879e0::Slot17_a879e0()
 {
     return field34;
 }
@@ -1576,13 +1570,7 @@ float cUnk00a87d40::Slot17_a87d40()
 }
 
 // FUNCTION: 0x00477850 nohook
-float cUnk00a87c20::Slot17_a87c20()
-{
-    return field34;
-}
-
-// FUNCTION: 0x00477850 nohook
-float cUnk00a87b00::Slot17_a87b00()
+float cUnk00aa2758::Slot12_aa2758()
 {
     return field34;
 }
@@ -1600,7 +1588,19 @@ float cUnk00a878c0::Slot17_a878c0()
 }
 
 // FUNCTION: 0x00477850 nohook
+float cUnk00a87c20::Slot17_a87c20()
+{
+    return field34;
+}
+
+// FUNCTION: 0x00477850 nohook
 float cUnk00a87b90::Slot17_a87b90()
+{
+    return field34;
+}
+
+// FUNCTION: 0x00477850 nohook
+float cUnk00a87dd0::Slot17_a87dd0()
 {
     return field34;
 }
@@ -1642,7 +1642,7 @@ void* cUnk00a8ceb8::Slot23_a8ceb8()
 }
 
 // FUNCTION: 0x004778a0
-void* cUnk00ab2490::Slot19_ab2348()
+void* cUnk00ab1160::Slot20_ab1068()
 {
     return field9c;
 }
@@ -1654,7 +1654,7 @@ void* cUnk00a8ceb8::Slot28_a8ceb8()
 }
 
 // FUNCTION: 0x004778a0 nohook
-void* cUnk00ab1160::Slot20_ab1068()
+void* cUnk00ab2490::Slot19_ab2348()
 {
     return field9c;
 }
@@ -1696,25 +1696,13 @@ uint32_t cUnk00a8edf8::Slot05_a80784()
 }
 
 // FUNCTION: 0x0049c7b0
-bool cUnk00aae270::Slot134_adc8d8(uint32_t, uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0049c7b0 nohook
-bool cUnk00aaf510::Slot134_adc8d8(uint32_t, uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0049c7b0 nohook
-bool cUnk00a8f6d8::Slot20_aa6658(uint32_t, uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0049c7b0 nohook
 bool cUnk00a8f6d8::Slot18_aa6658(uint32_t, uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0049c7b0 nohook
+bool cUnk00aae270::Slot134_adc8d8(uint32_t, uint32_t, uint32_t)
 {
     return true;
 }
@@ -1726,13 +1714,25 @@ bool cUnk00ab83b8::Slot135_adc8d8(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0049c7b0 nohook
-bool cUnk00a8f6d8::Slot16_aa6658(uint32_t, uint32_t, uint32_t)
+bool cUnk00a8f6d8::Slot20_aa6658(uint32_t, uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0049c7b0 nohook
+bool cUnk00aaf510::Slot134_adc8d8(uint32_t, uint32_t, uint32_t)
 {
     return true;
 }
 
 // FUNCTION: 0x0049c7b0 nohook
 bool cUnk00aba770::Slot138_adc8d8(uint32_t, uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0049c7b0 nohook
+bool cUnk00a8f6d8::Slot16_aa6658(uint32_t, uint32_t, uint32_t)
 {
     return true;
 }
@@ -1762,31 +1762,13 @@ uint32_t cUnk00a9f008::Slot05_a9efb4()
 }
 
 // FUNCTION: 0x004e13e0
+uint32_t cUnk00ac1550::Slot13_ac1338()
+{
+    return 0;
+}
+
+// FUNCTION: 0x004e13e0 nohook
 uint32_t cUnk00adb418::Slot16_adb310()
-{
-    return 0;
-}
-
-// FUNCTION: 0x004e13e0 nohook
-uint32_t cUnk00a9ea60::Slot12_a9ea60()
-{
-    return 0;
-}
-
-// FUNCTION: 0x004e13e0 nohook
-uint32_t cUnk00a9e8cc::Slot07_a9e2f4()
-{
-    return 0;
-}
-
-// FUNCTION: 0x004e13e0 nohook
-uint32_t cUnk00a9e838::Slot07_a9e838()
-{
-    return 0;
-}
-
-// FUNCTION: 0x004e13e0 nohook
-uint32_t cUnk00a9e7c8::Slot07_a9e2f4()
 {
     return 0;
 }
@@ -1798,7 +1780,49 @@ uint32_t cUnk00a9e750::Slot07_a9e750()
 }
 
 // FUNCTION: 0x004e13e0 nohook
+uint32_t cUnk00abf478::Slot19_abf478()
+{
+    return 0;
+}
+
+// FUNCTION: 0x004e13e0 nohook
+uint32_t cUnk00a9e7c8::Slot07_a9e2f4()
+{
+    return 0;
+}
+
+// FUNCTION: 0x004e13e0 nohook
+uint32_t cUnk00ab2490::Slot13_ab2b10()
+{
+    return 0;
+}
+
+// FUNCTION: 0x004e13e0 nohook
+uint32_t cUnk00a9e838::Slot07_a9e838()
+{
+    return 0;
+}
+
+// FUNCTION: 0x004e13e0 nohook
+uint32_t cUnk00a9e8cc::Slot07_a9e2f4()
+{
+    return 0;
+}
+
+// FUNCTION: 0x004e13e0 nohook
+uint32_t cUnk00a9ea60::Slot12_a9ea60()
+{
+    return 0;
+}
+
+// FUNCTION: 0x004e13e0 nohook
 uint32_t cUnk00a9e54c::Slot07_a9e2f4()
+{
+    return 0;
+}
+
+// FUNCTION: 0x004e13e0 nohook
+uint32_t cUnk00a90b38::Slot02_a90b38()
 {
     return 0;
 }
@@ -1817,30 +1841,6 @@ uint32_t cUnk00a9e160::Slot07_a9e160()
 
 // FUNCTION: 0x004e13e0 nohook
 uint32_t cUnk00a9e0c0::Slot07_a9e2f4()
-{
-    return 0;
-}
-
-// FUNCTION: 0x004e13e0 nohook
-uint32_t cUnk00ac1550::Slot13_ac1338()
-{
-    return 0;
-}
-
-// FUNCTION: 0x004e13e0 nohook
-uint32_t cUnk00ab2490::Slot13_ab2b10()
-{
-    return 0;
-}
-
-// FUNCTION: 0x004e13e0 nohook
-uint32_t cUnk00abf478::Slot19_abf478()
-{
-    return 0;
-}
-
-// FUNCTION: 0x004e13e0 nohook
-uint32_t cUnk00a90b38::Slot02_a90b38()
 {
     return 0;
 }
@@ -1876,7 +1876,73 @@ uint32_t cUnk00a93e18::Slot13_ace6f8()
 }
 
 // FUNCTION: 0x004ed900
+uint32_t cUnk00a87c20::Slot12_a87c20()
+{
+    return field20;
+}
+
+// FUNCTION: 0x004ed900 nohook
 uint32_t cUnk00a87b00::Slot12_a87b00()
+{
+    return field20;
+}
+
+// FUNCTION: 0x004ed900 nohook
+uint32_t cUnk00a87a70::Slot12_a87a70()
+{
+    return field20;
+}
+
+// FUNCTION: 0x004ed900 nohook
+uint32_t cUnk00a879e0::Slot12_a879e0()
+{
+    return field20;
+}
+
+// FUNCTION: 0x004ed900 nohook
+uint32_t cUnk00a87b90::Slot12_a87b90()
+{
+    return field20;
+}
+
+// FUNCTION: 0x004ed900 nohook
+uint32_t cUnk00ac5060::Slot07_ac5030()
+{
+    return field20;
+}
+
+// FUNCTION: 0x004ed900 nohook
+uint32_t cUnk00aa26b4::Slot05_aa23d4()
+{
+    return field28;
+}
+
+// FUNCTION: 0x004ed900 nohook
+uint32_t cUnk00a9e838::Slot07_a9e0e4()
+{
+    return field28;
+}
+
+// FUNCTION: 0x004ed900 nohook
+uint32_t cUnk00a87cb0::Slot12_a87cb0()
+{
+    return field20;
+}
+
+// FUNCTION: 0x004ed900 nohook
+uint32_t cUnk00ac1400::Slot10_ac1400()
+{
+    return field20;
+}
+
+// FUNCTION: 0x004ed900 nohook
+uint32_t cUnk00ac9144::Slot14_ac8d7c()
+{
+    return field3c;
+}
+
+// FUNCTION: 0x004ed900 nohook
+uint32_t cUnk00a87950::Slot12_a87950()
 {
     return field20;
 }
@@ -1885,6 +1951,12 @@ uint32_t cUnk00a87b00::Slot12_a87b00()
 uint32_t cUnk00a9ea60::Slot07_a9ea08()
 {
     return field24;
+}
+
+// FUNCTION: 0x004ed900 nohook
+uint32_t cUnk00a87d40::Slot12_a87d40()
+{
+    return field20;
 }
 
 // FUNCTION: 0x004ed900 nohook
@@ -1906,85 +1978,13 @@ uint32_t cUnk00a94068::Slot03_a94068()
 }
 
 // FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00aa26b4::Slot05_aa23d4()
-{
-    return field28;
-}
-
-// FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00ac1400::Slot10_ac1400()
-{
-    return field20;
-}
-
-// FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00a9e838::Slot07_a9e0e4()
-{
-    return field28;
-}
-
-// FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00a87a70::Slot12_a87a70()
-{
-    return field20;
-}
-
-// FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00a879e0::Slot12_a879e0()
-{
-    return field20;
-}
-
-// FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00ac9144::Slot14_ac8d7c()
-{
-    return field3c;
-}
-
-// FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00a87cb0::Slot12_a87cb0()
-{
-    return field20;
-}
-
-// FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00a87c20::Slot12_a87c20()
-{
-    return field20;
-}
-
-// FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00a87d40::Slot12_a87d40()
-{
-    return field20;
-}
-
-// FUNCTION: 0x004ed900 nohook
 uint32_t cUnk00a878c0::Slot12_a878c0()
 {
     return field20;
 }
 
 // FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00a87b90::Slot12_a87b90()
-{
-    return field20;
-}
-
-// FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00a87950::Slot12_a87950()
-{
-    return field20;
-}
-
-// FUNCTION: 0x004ed900 nohook
 uint32_t cUnk00a87dd0::Slot12_a87dd0()
-{
-    return field20;
-}
-
-// FUNCTION: 0x004ed900 nohook
-uint32_t cUnk00ac5060::Slot07_ac5030()
 {
     return field20;
 }
@@ -2002,49 +2002,13 @@ uint32_t cUnk00a808b8::Slot13_a80710()
 }
 
 // FUNCTION: 0x004fc900
+bool cUnk00a862d8::Slot13_a862d8(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
 bool cUnk00a9e1e8::Slot06_a9e364(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00a8ec1c::Slot03_a8ec1c(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00adb418::Slot17_adb310(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00a9e54c::Slot06_a9e364(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00ac14bc::Slot03_ac14bc(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00aaa950::Slot69_aa8748(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00ac3f90::Slot04_ace6f8(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00a9e69c::Slot06_a9e364(uint32_t)
 {
     return true;
 }
@@ -2056,79 +2020,7 @@ bool cUnk00a93640::Slot05_a93640(uint32_t)
 }
 
 // FUNCTION: 0x004fc900 nohook
-bool cUnk00a9e7c8::Slot06_a9e364(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00ac0f80::Slot54_ac0f80(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00ab1610::Slot03_ab1610(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00ab35fc::Slot03_ab35fc(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00abf478::Slot18_abf478(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00a95880::Slot51_a95880(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
 bool cUnk00aa4330::Slot05_aa4330(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00a8ceb8::Slot19_a8ceb8(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00ab9bf8::Slot129_adc8d8(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00ac385c::Slot08_ac34cc(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00a95880::Slot52_a95880(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00ab29b0::Slot04_a80784(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x004fc900 nohook
-bool cUnk00ab29b0::Slot03_a80784(uint32_t)
 {
     return true;
 }
@@ -2152,19 +2044,127 @@ bool cUnk00aa42c8::Slot04_aa42c8(uint32_t)
 }
 
 // FUNCTION: 0x004fc900 nohook
-bool cUnk00aaa950::Slot56_aa8748(uint32_t)
+bool cUnk00a9e54c::Slot06_a9e364(uint32_t)
 {
     return true;
 }
 
 // FUNCTION: 0x004fc900 nohook
-bool cUnk00a862d8::Slot13_a862d8(uint32_t)
+bool cUnk00a9e69c::Slot06_a9e364(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00ac3f90::Slot04_ace6f8(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00abf478::Slot18_abf478(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00a9e7c8::Slot06_a9e364(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00aaa950::Slot69_aa8748(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00ac0f80::Slot54_ac0f80(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00ac385c::Slot08_ac34cc(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00ac14bc::Slot03_ac14bc(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00a8ec1c::Slot03_a8ec1c(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00a95880::Slot51_a95880(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00a95880::Slot52_a95880(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00ab29b0::Slot03_a80784(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00ab29b0::Slot04_a80784(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00adb418::Slot17_adb310(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00ab9bf8::Slot129_adc8d8(uint32_t)
 {
     return true;
 }
 
 // FUNCTION: 0x004fc900 nohook
 bool cUnk00a9e0c0::Slot06_a9e364(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00ab1610::Slot03_ab1610(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00aaa950::Slot56_aa8748(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00a8ceb8::Slot19_a8ceb8(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x004fc900 nohook
+bool cUnk00ab35fc::Slot03_ab35fc(uint32_t)
 {
     return true;
 }
@@ -2188,7 +2188,7 @@ uint32_t cUnk00a95880::Slot17_a95880(uint32_t, uint32_t, uint32_t, uint32_t, uin
 }
 
 // FUNCTION: 0x00505aa0
-uint32_t cUnk00adb418::Slot14_adb310(uint32_t)
+uint32_t cUnk00ac4f58::Slot22_ac4f58(uint32_t)
 {
     return 0;
 }
@@ -2200,25 +2200,13 @@ uint32_t cUnk00adb418::Slot13_adb310(uint32_t)
 }
 
 // FUNCTION: 0x00505aa0 nohook
-uint32_t cUnk00ac4f58::Slot05_ac4f58(uint32_t)
+uint32_t cUnk00a9dbb8::Slot123_a9dbb8(uint32_t)
 {
     return 0;
 }
 
 // FUNCTION: 0x00505aa0 nohook
-uint32_t cUnk00ac4f58::Slot22_ac4f58(uint32_t)
-{
-    return 0;
-}
-
-// FUNCTION: 0x00505aa0 nohook
-uint32_t cUnk00ac4f58::Slot06_ac4f58(uint32_t)
-{
-    return 0;
-}
-
-// FUNCTION: 0x00505aa0 nohook
-uint32_t cUnk00ac4f10::Slot03_ac4ebc(uint32_t)
+uint32_t cUnk00adb418::Slot14_adb310(uint32_t)
 {
     return 0;
 }
@@ -2230,31 +2218,37 @@ uint32_t cUnk00ab6d28::Slot05_ab6a28(uint32_t)
 }
 
 // FUNCTION: 0x00505aa0 nohook
-uint32_t cUnk00a9dbb8::Slot123_a9dbb8(uint32_t)
+uint32_t cUnk00ac4f10::Slot03_ac4ebc(uint32_t)
+{
+    return 0;
+}
+
+// FUNCTION: 0x00505aa0 nohook
+uint32_t cUnk00ac4f58::Slot05_ac4f58(uint32_t)
+{
+    return 0;
+}
+
+// FUNCTION: 0x00505aa0 nohook
+uint32_t cUnk00ac4f58::Slot06_ac4f58(uint32_t)
 {
     return 0;
 }
 
 // FUNCTION: 0x00505be0
+bool cUnk00a8d888::Slot131_adc8d8(uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x00505be0 nohook
 bool cUnk00ab8c00::Slot35_ab3be8(uint32_t, uint32_t)
 {
     return true;
 }
 
 // FUNCTION: 0x00505be0 nohook
-bool cUnk00aba770::Slot131_adc8d8(uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x00505be0 nohook
-bool cUnk00a92f28::Slot143_adc8d8(uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x00505be0 nohook
-bool cUnk00a8d888::Slot131_adc8d8(uint32_t, uint32_t)
+bool cUnk00a9dbb8::Slot65_a9dbb8(uint32_t, uint32_t)
 {
     return true;
 }
@@ -2266,7 +2260,13 @@ bool cUnk00ab8c00::Slot36_ab3be8(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x00505be0 nohook
-bool cUnk00a9dbb8::Slot65_a9dbb8(uint32_t, uint32_t)
+bool cUnk00a92f28::Slot143_adc8d8(uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x00505be0 nohook
+bool cUnk00aba770::Slot131_adc8d8(uint32_t, uint32_t)
 {
     return true;
 }
@@ -2290,25 +2290,13 @@ uint32_t cUnk00a95d90::Slot05_a80784()
 }
 
 // FUNCTION: 0x00517f70
-uint32_t cUnk00a87950::Slot05_a80784()
+uint32_t cUnk00a85218::Slot11_a84c10()
 {
-    return field10;
+    return fieldc4;
 }
 
 // FUNCTION: 0x00517f70 nohook
-uint32_t cUnk00a87a70::Slot05_a80784()
-{
-    return field10;
-}
-
-// FUNCTION: 0x00517f70 nohook
-uint32_t cUnk00ac9144::Slot03_ac8bf8()
-{
-    return fieldc;
-}
-
-// FUNCTION: 0x00517f70 nohook
-uint32_t cUnk00a87cb0::Slot05_a80784()
+uint32_t cUnk00a87dd0::Slot05_a80784()
 {
     return field10;
 }
@@ -2320,33 +2308,15 @@ uint32_t cUnk00aa6658::Slot05_aa6658()
 }
 
 // FUNCTION: 0x00517f70 nohook
-uint32_t cUnk00a87b00::Slot05_a80784()
-{
-    return field10;
-}
-
-// FUNCTION: 0x00517f70 nohook
-uint32_t cUnk00a85218::Slot11_a84c10()
-{
-    return fieldc4;
-}
-
-// FUNCTION: 0x00517f70 nohook
 uint32_t cUnk00a87b90::Slot05_a80784()
 {
     return field10;
 }
 
 // FUNCTION: 0x00517f70 nohook
-uint32_t cUnk00a878c0::Slot05_a80784()
+uint32_t cUnk00a87950::Slot05_a80784()
 {
     return field10;
-}
-
-// FUNCTION: 0x00517f70 nohook
-uint32_t cUnk00aa2384::Slot25_aa2478()
-{
-    return field14;
 }
 
 // FUNCTION: 0x00517f70 nohook
@@ -2356,9 +2326,9 @@ uint32_t cUnk00a87c20::Slot05_a80784()
 }
 
 // FUNCTION: 0x00517f70 nohook
-uint32_t cUnk00aa22f4::Slot25_aa2400()
+uint32_t cUnk00a87cb0::Slot05_a80784()
 {
-    return field14;
+    return field10;
 }
 
 // FUNCTION: 0x00517f70 nohook
@@ -2368,7 +2338,13 @@ uint32_t cUnk00a879e0::Slot05_a80784()
 }
 
 // FUNCTION: 0x00517f70 nohook
-uint32_t cUnk00a87dd0::Slot05_a80784()
+uint32_t cUnk00ac8f54::Slot03_ac8bf8()
+{
+    return fieldc;
+}
+
+// FUNCTION: 0x00517f70 nohook
+uint32_t cUnk00a87b00::Slot05_a80784()
 {
     return field10;
 }
@@ -2386,9 +2362,33 @@ uint32_t cUnk00a87d40::Slot05_a80784()
 }
 
 // FUNCTION: 0x00517f70 nohook
-uint32_t cUnk00ac8f54::Slot03_ac8bf8()
+uint32_t cUnk00aa2384::Slot25_aa2478()
+{
+    return field14;
+}
+
+// FUNCTION: 0x00517f70 nohook
+uint32_t cUnk00ac9144::Slot03_ac8bf8()
 {
     return fieldc;
+}
+
+// FUNCTION: 0x00517f70 nohook
+uint32_t cUnk00a878c0::Slot05_a80784()
+{
+    return field10;
+}
+
+// FUNCTION: 0x00517f70 nohook
+uint32_t cUnk00aa22f4::Slot25_aa2400()
+{
+    return field14;
+}
+
+// FUNCTION: 0x00517f70 nohook
+uint32_t cUnk00a87a70::Slot05_a80784()
+{
+    return field10;
 }
 
 // FUNCTION: 0x0051a310
@@ -2416,13 +2416,13 @@ uint32_t cUnk00a9e0c0::Slot08_a9e0c0()
 }
 
 // FUNCTION: 0x00575610
-uint32_t cUnk00a9e160::Slot05_a9e0e4()
+uint32_t cUnk00a9e0c0::Slot05_a9e2f4()
 {
     return 0x42963812;
 }
 
 // FUNCTION: 0x00575610 nohook
-uint32_t cUnk00a9e0c0::Slot05_a9e2f4()
+uint32_t cUnk00a9e160::Slot05_a9e0e4()
 {
     return 0x42963812;
 }
@@ -2440,13 +2440,13 @@ uint32_t cUnk00a9e1e8::Slot05_a9e2f4()
 }
 
 // FUNCTION: 0x00577450
-void* cUnk00a862d8::Slot08_a862d8()
+void* cUnk00a8fa40::Slot03_a8fa40()
 {
     return fieldc;
 }
 
 // FUNCTION: 0x00577450 nohook
-void* cUnk00a8fa40::Slot03_a8fa40()
+void* cUnk00a862d8::Slot08_a862d8()
 {
     return fieldc;
 }
@@ -2470,13 +2470,13 @@ uint32_t cUnk00a9e54c::Slot07_a9e54c()
 }
 
 // FUNCTION: 0x005792a0
-uint32_t cUnk00a9e54c::Slot05_a9e2f4()
+uint32_t cUnk00a9e5f4::Slot05_a9e0e4()
 {
     return 0x621cda33;
 }
 
 // FUNCTION: 0x005792a0 nohook
-uint32_t cUnk00a9e5f4::Slot05_a9e0e4()
+uint32_t cUnk00a9e54c::Slot05_a9e2f4()
 {
     return 0x621cda33;
 }
@@ -2506,13 +2506,13 @@ uint32_t cUnk00a9e7c8::Slot08_a9e7c8()
 }
 
 // FUNCTION: 0x0057d1e0
-uint32_t cUnk00a9e7c8::Slot05_a9e2f4()
+uint32_t cUnk00a9e838::Slot05_a9e0e4()
 {
     return 0xca380b06;
 }
 
 // FUNCTION: 0x0057d1e0 nohook
-uint32_t cUnk00a9e838::Slot05_a9e0e4()
+uint32_t cUnk00a9e7c8::Slot05_a9e2f4()
 {
     return 0xca380b06;
 }
@@ -2566,6 +2566,12 @@ uint32_t cUnk00aa0ac0::Slot08_aa0ac0()
 }
 
 // FUNCTION: 0x005a4de0
+uint32_t cUnk00ab69d0::Slot13_ab6718()
+{
+    return field134;
+}
+
+// FUNCTION: 0x005a4de0 nohook
 uint32_t cUnk00a845b8::Slot38_a843c8()
 {
     return field134;
@@ -2577,20 +2583,14 @@ uint32_t cUnk00aa0ac0::Slot04_aa0a44()
     return field134;
 }
 
-// FUNCTION: 0x005a4de0 nohook
-uint32_t cUnk00ab69d0::Slot13_ab6718()
-{
-    return field134;
-}
-
 // FUNCTION: 0x005be2e0
-bool cUnk00aa6658::Slot17_aa6658(uint32_t, uint32_t, uint32_t)
+bool cUnk00aa6658::Slot16_aa6658(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x005be2e0 nohook
-bool cUnk00aa6658::Slot16_aa6658(uint32_t, uint32_t, uint32_t)
+bool cUnk00aa6658::Slot17_aa6658(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -2602,13 +2602,13 @@ bool cUnk00aa6658::Slot18_aa6658(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x005be2e0 nohook
-bool cUnk00aa6658::Slot19_aa6658(uint32_t, uint32_t, uint32_t)
+bool cUnk00adb418::Slot48_adb418(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x005be2e0 nohook
-bool cUnk00adb418::Slot48_adb418(uint32_t, uint32_t, uint32_t)
+bool cUnk00aa6658::Slot19_aa6658(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -2657,13 +2657,7 @@ bool cUnk00aa2758::Slot07_aa2758(uint32_t value)
 }
 
 // FUNCTION: 0x005deb40
-bool cUnk00a90a18::Slot05_aa42c8(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x005deb40 nohook
-bool cUnk00abf478::Slot03_abf478(uint32_t)
+bool cUnk00ab1374::Slot03_a80784(uint32_t)
 {
     return false;
 }
@@ -2675,49 +2669,7 @@ bool cUnk00abf478::Slot05_abf478(uint32_t)
 }
 
 // FUNCTION: 0x005deb40 nohook
-bool cUnk00abf478::Slot06_abf478(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x005deb40 nohook
-bool cUnk00a909e4::Slot05_aa42c8(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x005deb40 nohook
-bool cUnk00a909b0::Slot05_aa42c8(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x005deb40 nohook
-bool cUnk00ab1374::Slot03_a80784(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x005deb40 nohook
-bool cUnk00a881d4::Slot03_a881c0(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x005deb40 nohook
-bool cUnk00a90a4c::Slot04_aa42c8(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x005deb40 nohook
-bool cUnk00ab8c00::Slot39_ab3be8(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x005deb40 nohook
-bool cUnk00a90a4c::Slot05_aa42c8(uint32_t)
+bool cUnk00aa6658::Slot13_aa6658(uint32_t)
 {
     return false;
 }
@@ -2729,19 +2681,37 @@ bool cUnk00abf478::Slot20_abf478(uint32_t)
 }
 
 // FUNCTION: 0x005deb40 nohook
+bool cUnk00abf478::Slot04_abf478(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x005deb40 nohook
+bool cUnk00abf478::Slot03_abf478(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x005deb40 nohook
+bool cUnk00abf478::Slot06_abf478(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x005deb40 nohook
 bool cUnk00a9dbb8_4::Slot27_a9dbb8_4(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x005deb40 nohook
-bool cUnk00aa6658::Slot13_aa6658(uint32_t)
+bool cUnk00ab8c00::Slot39_ab3be8(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x005deb40 nohook
-bool cUnk00a90b18::Slot05_aa42c8(uint32_t)
+bool cUnk00a881d4::Slot03_a881c0(uint32_t)
 {
     return false;
 }
@@ -2753,19 +2723,49 @@ bool cUnk00a934a8::Slot18_a934a8(uint32_t)
 }
 
 // FUNCTION: 0x005deb40 nohook
-bool cUnk00abf478::Slot04_abf478(uint32_t)
+bool cUnk00a909b0::Slot05_aa42c8(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x005deb40 nohook
+bool cUnk00a90b18::Slot05_aa42c8(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x005deb40 nohook
+bool cUnk00a90a4c::Slot05_aa42c8(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x005deb40 nohook
+bool cUnk00a90a4c::Slot04_aa42c8(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x005deb40 nohook
+bool cUnk00a90a18::Slot05_aa42c8(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x005deb40 nohook
+bool cUnk00a909e4::Slot05_aa42c8(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x005e95b0
-uint32_t cUnk00aa4330::Slot05_a80784()
+uint32_t cUnk00aa42c8::Slot05_a80784()
 {
     return 0xa9c74dc9;
 }
 
 // FUNCTION: 0x005e95b0 nohook
-uint32_t cUnk00aa42c8::Slot05_a80784()
+uint32_t cUnk00aa4330::Slot05_a80784()
 {
     return 0xa9c74dc9;
 }
@@ -2819,6 +2819,12 @@ uint32_t cUnk00ac8f54::Slot10_ac8bf8()
 }
 
 // FUNCTION: 0x0060ce80 nohook
+uint32_t cUnk00aa78e0::Slot03_aa78e0()
+{
+    return field4;
+}
+
+// FUNCTION: 0x0060ce80 nohook
 uint32_t cUnk00a9dbb8_20::Slot04_a9dbb8_20()
 {
     return field4;
@@ -2830,31 +2836,19 @@ uint32_t cUnk00ac9144::Slot10_ac8bf8()
     return field4;
 }
 
-// FUNCTION: 0x0060ce80 nohook
-uint32_t cUnk00aa78e0::Slot03_aa78e0()
-{
-    return field4;
-}
-
 // FUNCTION: 0x0060fb50
-void* cUnk00aa7998::Slot03_aa7998()
-{
-    return field4;
-}
-
-// FUNCTION: 0x0060fb50 nohook
 void* cUnk00ab6fe4::Slot03_ab6fe4()
 {
     return field4;
 }
 
-// FUNCTION: 0x0060fb80
-uint32_t cUnk00ac16c8::Slot18_ac16c8()
+// FUNCTION: 0x0060fb50 nohook
+void* cUnk00aa7998::Slot03_aa7998()
 {
-    return field28;
+    return field4;
 }
 
-// FUNCTION: 0x0060fb80 nohook
+// FUNCTION: 0x0060fb80
 uint32_t cUnk00aa7998::Slot06_aa7998()
 {
     return field28;
@@ -2864,6 +2858,12 @@ uint32_t cUnk00aa7998::Slot06_aa7998()
 uint32_t cUnk00a85218::Slot12_a84c10()
 {
     return fielde0;
+}
+
+// FUNCTION: 0x0060fb80 nohook
+uint32_t cUnk00ac16c8::Slot18_ac16c8()
+{
+    return field28;
 }
 
 // FUNCTION: 0x0060fb80 nohook
@@ -2896,43 +2896,7 @@ void cUnk00aa8748::Slot10_aa8748(uint32_t, uint32_t, uint32_t, uint32_t, uint32_
 }
 
 // FUNCTION: 0x0062c980
-bool cUnk00ab8c00::Slot37_ab3be8(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00abd594::Slot11_ad8c20(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
 bool cUnk00aa8748::Slot53_aa8748(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00a9e160::Slot06_a9e0e4(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00ab9e54::Slot03_ab9e54(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00adaf90::Slot00_adaf90(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00ab30dc::Slot00_ab30dc(uint32_t, uint32_t)
 {
     return false;
 }
@@ -2944,43 +2908,7 @@ bool cUnk00a90b38::Slot00_a90b38(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0062c980 nohook
-bool cUnk00aa6658::Slot14_aa6658(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00aa6658::Slot15_aa6658(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00ab8c00::Slot34_ab3be8(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
 bool cUnk00a99d34::Slot11_ad8c20(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00abf478::Slot11_abf478(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00ab9260::Slot03_a86864(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00ab8c00::Slot38_ab3be8(uint32_t, uint32_t)
 {
     return false;
 }
@@ -2992,7 +2920,103 @@ bool cUnk00a9ea60::Slot06_a9ea60(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0062c980 nohook
-bool cUnk00ab5494::Slot03_ab5494(uint32_t, uint32_t)
+bool cUnk00aa6658::Slot15_aa6658(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00aa6658::Slot14_aa6658(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00a92f28::Slot130_adc8d8(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00a92f28::Slot131_adc8d8(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00a9e160::Slot06_a9e0e4(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00aa2a60::Slot00_aa2a60(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00aa2a3c::Slot00_aa2a3c(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00adaf90::Slot00_adaf90(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00a9e5f4::Slot06_a9e0e4(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00a9e750::Slot06_a9e0e4(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00a9e838::Slot06_a9e0e4(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00a9e940::Slot06_a9e0e4(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00abf478::Slot11_abf478(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00ab8c00::Slot34_ab3be8(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00abd594::Slot11_ad8c20(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00ab8c00::Slot37_ab3be8(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00ab8c00::Slot38_ab3be8(uint32_t, uint32_t)
 {
     return false;
 }
@@ -3004,7 +3028,43 @@ bool cUnk00ab9260::Slot130_adc8d8(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0062c980 nohook
-bool cUnk00a9e838::Slot06_a9e0e4(uint32_t, uint32_t)
+bool cUnk00ab9260::Slot131_adc8d8(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00ab9260::Slot03_a86864(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00ab9e54::Slot03_ab9e54(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00ab5494::Slot03_ab5494(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00a83524::Slot03_a83524(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00ab30dc::Slot00_ab30dc(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0062c980 nohook
+bool cUnk00abd324::Slot11_ad8c20(uint32_t, uint32_t)
 {
     return false;
 }
@@ -3021,66 +3081,6 @@ bool cUnk00abd714::Slot11_ad8c20(uint32_t, uint32_t)
     return false;
 }
 
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00abd324::Slot11_ad8c20(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00a9e750::Slot06_a9e0e4(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00a9e940::Slot06_a9e0e4(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00a83524::Slot03_a83524(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00ab9260::Slot131_adc8d8(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00aa2a60::Slot00_aa2a60(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00a92f28::Slot130_adc8d8(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00aa2a3c::Slot00_aa2a3c(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00a92f28::Slot131_adc8d8(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0062c980 nohook
-bool cUnk00a9e5f4::Slot06_a9e0e4(uint32_t, uint32_t)
-{
-    return false;
-}
-
 // FUNCTION: 0x00644fc0
 bool cUnk00aa1170::Slot06_aa1170()
 {
@@ -3088,43 +3088,7 @@ bool cUnk00aa1170::Slot06_aa1170()
 }
 
 // FUNCTION: 0x00648ef0
-bool cUnk00abf478::Slot08_abf478()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00ac8be0::Slot03_ac8b80()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00a9eb40::Slot12_aa6658()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00aa8748::Slot64_aa8748()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00aaa950::Slot46_aa8748()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00aa6658::Slot11_aa6658()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00aaa950::Slot61_aa8748()
+bool cUnk00ac1550::Slot05_ac1338()
 {
     return false;
 }
@@ -3136,25 +3100,7 @@ bool cUnk00abf478::Slot07_abf478()
 }
 
 // FUNCTION: 0x00648ef0 nohook
-bool cUnk00aa2758::Slot33_aa2758()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00abf478::Slot13_abf478()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00ac1550::Slot05_ac1338()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00aaa950::Slot62_aa8748()
+bool cUnk00a9eb40::Slot12_aa6658()
 {
     return false;
 }
@@ -3166,7 +3112,7 @@ bool cUnk00aa6658::Slot22_aa6658()
 }
 
 // FUNCTION: 0x00648ef0 nohook
-bool cUnk00aaa950::Slot63_aa8748()
+bool cUnk00a85f40::Slot12_aa6658()
 {
     return false;
 }
@@ -3178,31 +3124,7 @@ bool cUnk00ac385c::Slot10_ac34cc()
 }
 
 // FUNCTION: 0x00648ef0 nohook
-bool cUnk00adb418::Slot11_adb310()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00a90268::Slot12_aa6658()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00a85800::Slot12_aa6658()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00a858d0::Slot12_aa6658()
-{
-    return false;
-}
-
-// FUNCTION: 0x00648ef0 nohook
-bool cUnk00a85998::Slot12_aa6658()
+bool cUnk00a90a88::Slot12_aa6658()
 {
     return false;
 }
@@ -3214,7 +3136,55 @@ bool cUnk00a85a20::Slot12_aa6658()
 }
 
 // FUNCTION: 0x00648ef0 nohook
-bool cUnk00a85f40::Slot12_aa6658()
+bool cUnk00a85998::Slot12_aa6658()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00a858d0::Slot12_aa6658()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00a85800::Slot12_aa6658()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00aa2758::Slot33_aa2758()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00aa6658::Slot11_aa6658()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00aaa950::Slot46_aa8748()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00adb418::Slot11_adb310()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00aaa950::Slot63_aa8748()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00aaa950::Slot62_aa8748()
 {
     return false;
 }
@@ -3226,97 +3196,103 @@ bool cUnk00a902e0::Slot12_aa6658()
 }
 
 // FUNCTION: 0x00648ef0 nohook
-bool cUnk00a90a88::Slot12_aa6658()
+bool cUnk00a90268::Slot12_aa6658()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00aaa950::Slot61_aa8748()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00ac8be0::Slot03_ac8b80()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00aa8748::Slot64_aa8748()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00abf478::Slot13_abf478()
+{
+    return false;
+}
+
+// FUNCTION: 0x00648ef0 nohook
+bool cUnk00abf478::Slot08_abf478()
 {
     return false;
 }
 
 // FUNCTION: 0x00648f00
-bool cUnk00a939b0::Slot04_a939b0()
+bool cUnk00a93830::Slot03_a93830()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93968::Slot04_a93968()
+bool cUnk00a93890::Slot04_a93890()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93980::Slot03_a93980()
+bool cUnk00a93818::Slot04_a93818()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93980::Slot04_a93980()
+bool cUnk00a93800::Slot04_a93800()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93998::Slot03_a93998()
+bool cUnk00a93848::Slot03_a93848()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93998::Slot04_a93998()
+bool cUnk00a93830::Slot04_a93830()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a939b0::Slot03_a939b0()
+bool cUnk00a93860::Slot03_a93860()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93950::Slot03_a93950()
+bool cUnk00a93848::Slot04_a93848()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00aa6dfc::Slot04_aa6dfc()
+bool cUnk00a93818::Slot03_a93818()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00aa6dfc::Slot03_aa6dfc()
+bool cUnk00a938d8::Slot03_a938d8()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a939c8::Slot03_a939c8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a939c8::Slot04_a939c8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93968::Slot03_a93968()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93950::Slot04_a93950()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a10::Slot04_a93a10()
+bool cUnk00aad3c8::Slot09_ace69c()
 {
     return true;
 }
@@ -3328,31 +3304,7 @@ bool cUnk00a93938::Slot04_a93938()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00aa8748::Slot46_aa8748()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
 bool cUnk00a93938::Slot03_a93938()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00aa8748::Slot61_aa8748()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00aa8748::Slot62_aa8748()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00aa8748::Slot63_aa8748()
 {
     return true;
 }
@@ -3388,319 +3340,7 @@ bool cUnk00a938f0::Slot04_a938f0()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a70::Slot03_a93a70()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b00::Slot03_a93b00()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93ae8::Slot04_a93ae8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93ae8::Slot03_a93ae8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93ad0::Slot04_a93ad0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93ad0::Slot03_a93ad0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93ab8::Slot04_a93ab8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93ab8::Slot03_a93ab8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93aa0::Slot04_a93aa0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93aa0::Slot03_a93aa0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a88::Slot04_a93a88()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a88::Slot03_a93a88()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a70::Slot04_a93a70()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a939e0::Slot03_a939e0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a58::Slot04_a93a58()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a58::Slot03_a93a58()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00aa6658::Slot12_aa6658()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a40::Slot04_a93a40()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a40::Slot03_a93a40()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a28::Slot04_a93a28()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a28::Slot03_a93a28()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00aaa950::Slot64_aa8748()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93a10::Slot03_a93a10()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a939f8::Slot04_a939f8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a939f8::Slot03_a939f8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a939e0::Slot04_a939e0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00ac47ec::Slot09_ac34cc()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93818::Slot04_a93818()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93818::Slot03_a93818()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93800::Slot04_a93800()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93800::Slot03_a93800()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a937e8::Slot04_a937e8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a937e8::Slot03_a937e8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a937d0::Slot04_a937d0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a937d0::Slot03_a937d0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00adb418::Slot06_adb310()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00ab29b0::Slot05_ab29b0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a90040::Slot11_aa6658()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00ac47ec::Slot10_ac34cc()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93830::Slot03_a93830()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00ac47ec::Slot03_ac34cc()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00ac1550::Slot39_ac1338()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00adb418::Slot22_adb310()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00ac1550::Slot04_ac1338()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a87888::Slot04_a87888()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a862d8::Slot04_a8623c()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a85f40::Slot22_aa6658()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00ab9658::Slot88_adc8d8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00abf478::Slot17_abf478()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00abf478::Slot15_abf478()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00abf478::Slot12_abf478()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00abf478::Slot09_abf478()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00aad3c8::Slot09_ace69c()
+bool cUnk00a938f0::Slot03_a938f0()
 {
     return true;
 }
@@ -3712,7 +3352,7 @@ bool cUnk00a938d8::Slot04_a938d8()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a938d8::Slot03_a938d8()
+bool cUnk00a93860::Slot04_a93860()
 {
     return true;
 }
@@ -3724,13 +3364,13 @@ bool cUnk00a938c0::Slot04_a938c0()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a938c0::Slot03_a938c0()
+bool cUnk00abf478::Slot09_abf478()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93ff4::Slot03_a93ff4()
+bool cUnk00a938c0::Slot03_a938c0()
 {
     return true;
 }
@@ -3743,6 +3383,108 @@ bool cUnk00a938a8::Slot04_a938a8()
 
 // FUNCTION: 0x00648f00 nohook
 bool cUnk00a938a8::Slot03_a938a8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c38::Slot03_a93c38()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93890::Slot03_a93890()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93878::Slot04_a93878()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93878::Slot03_a93878()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00ab0dc8_8::Slot05_ab0dc8_8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00ac47ec::Slot10_ac34cc()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a90040::Slot11_aa6658()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00adb418::Slot22_adb310()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00aa8748::Slot46_aa8748()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00ab29b0::Slot05_ab29b0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00aa8748::Slot61_aa8748()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00aa8748::Slot62_aa8748()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00aa8748::Slot63_aa8748()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00ac47ec::Slot09_ac34cc()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00aaf850::Slot17_aaf7f0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00aaa950::Slot64_aa8748()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00aad3c8::Slot10_ace69c()
 {
     return true;
 }
@@ -3778,265 +3520,115 @@ bool cUnk00aad3c8::Slot08_ace69c()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a938f0::Slot03_a938f0()
+bool cUnk00adb418::Slot06_adb310()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00aad3c8::Slot10_ace69c()
+bool cUnk00abf478::Slot12_abf478()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93890::Slot04_a93890()
+bool cUnk00a937e8::Slot04_a937e8()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93890::Slot03_a93890()
+bool cUnk00a937e8::Slot03_a937e8()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00aaf850::Slot17_aaf7f0()
+bool cUnk00abf478::Slot15_abf478()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93878::Slot04_a93878()
+bool cUnk00a937d0::Slot04_a937d0()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00ab0dc8_8::Slot05_ab0dc8_8()
+bool cUnk00a937d0::Slot03_a937d0()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93878::Slot03_a93878()
+bool cUnk00ab9658::Slot88_adc8d8()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93860::Slot04_a93860()
+bool cUnk00aa6658::Slot12_aa6658()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93860::Slot03_a93860()
+bool cUnk00a93800::Slot03_a93800()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93848::Slot04_a93848()
+bool cUnk00abf478::Slot17_abf478()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93848::Slot03_a93848()
+bool cUnk00ac1550::Slot04_ac1338()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93830::Slot04_a93830()
+bool cUnk00a85f40::Slot22_aa6658()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93db8::Slot03_a93db8()
+bool cUnk00a862d8::Slot04_a8623c()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93f94::Slot04_a93f94()
+bool cUnk00aa6dfc::Slot03_aa6dfc()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93fac::Slot03_a93fac()
+bool cUnk00aa6dfc::Slot04_aa6dfc()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93e74::Slot03_a93e74()
+bool cUnk00a87888::Slot04_a87888()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a95d90::Slot36_a95d90()
+bool cUnk00ac1550::Slot39_ac1338()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93e5c::Slot04_a93e5c()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93fac::Slot04_a93fac()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93fc4::Slot03_a93fc4()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93e5c::Slot03_a93e5c()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93dd0::Slot04_a93dd0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00acc634::Slot10_ac34cc()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93dd0::Slot03_a93dd0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93db8::Slot04_a93db8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93e74::Slot04_a93e74()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93da0::Slot04_a93da0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93da0::Slot03_a93da0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d88::Slot04_a93d88()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d88::Slot03_a93d88()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d70::Slot04_a93d70()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d70::Slot03_a93d70()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d58::Slot04_a93d58()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00acc634::Slot09_ac34cc()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d58::Slot03_a93d58()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d40::Slot04_a93d40()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d40::Slot03_a93d40()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d28::Slot04_a93d28()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d28::Slot03_a93d28()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a95880::Slot24_a95880()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93ff4::Slot04_a93ff4()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93f34::Slot03_a93f34()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93f34::Slot04_a93f34()
+bool cUnk00a93ebc::Slot04_a93ebc()
 {
     return true;
 }
@@ -4078,12 +3670,6 @@ bool cUnk00a93eec::Slot04_a93eec()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93f4c::Slot03_a93f4c()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
 bool cUnk00a93eec::Slot03_a93eec()
 {
     return true;
@@ -4102,13 +3688,7 @@ bool cUnk00a93ed4::Slot03_a93ed4()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b18::Slot03_a93b18()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93ebc::Slot04_a93ebc()
+bool cUnk00a93f34::Slot03_a93f34()
 {
     return true;
 }
@@ -4120,37 +3700,7 @@ bool cUnk00a93ebc::Slot03_a93ebc()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b00::Slot04_a93b00()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93f4c::Slot04_a93f4c()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93f64::Slot03_a93f64()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
 bool cUnk00a93ea4::Slot04_a93ea4()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93f64::Slot04_a93f64()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93f7c::Slot03_a93f7c()
 {
     return true;
 }
@@ -4174,163 +3724,25 @@ bool cUnk00a93e8c::Slot03_a93e8c()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93f7c::Slot04_a93f7c()
+bool cUnk00a93e74::Slot04_a93e74()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93f94::Slot03_a93f94()
+bool cUnk00a93e74::Slot03_a93e74()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93bd8::Slot03_a93bd8()
+bool cUnk00a93e5c::Slot04_a93e5c()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b60::Slot03_a93b60()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b60::Slot04_a93b60()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b78::Slot03_a93b78()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c80::Slot03_a93c80()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b78::Slot04_a93b78()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b90::Slot03_a93b90()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b90::Slot04_a93b90()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93ba8::Slot03_a93ba8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93ba8::Slot04_a93ba8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93bc0::Slot03_a93bc0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93bc0::Slot04_a93bc0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c68::Slot04_a93c68()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c80::Slot04_a93c80()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93bd8::Slot04_a93bd8()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c68::Slot03_a93c68()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93bf0::Slot03_a93bf0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c50::Slot04_a93c50()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c50::Slot03_a93c50()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c38::Slot04_a93c38()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c38::Slot03_a93c38()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c20::Slot04_a93c20()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93bf0::Slot04_a93bf0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c08::Slot03_a93c08()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c20::Slot03_a93c20()
+bool cUnk00a93f94::Slot04_a93f94()
 {
     return true;
 }
@@ -4342,13 +3754,109 @@ bool cUnk00a93c08::Slot04_a93c08()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b18::Slot04_a93b18()
+bool cUnk00a93ff4::Slot04_a93ff4()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d10::Slot03_a93d10()
+bool cUnk00a93ff4::Slot03_a93ff4()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93fdc::Slot04_a93fdc()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93fdc::Slot03_a93fdc()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93fc4::Slot04_a93fc4()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93fc4::Slot03_a93fc4()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93fac::Slot04_a93fac()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93fac::Slot03_a93fac()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93e5c::Slot03_a93e5c()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93f94::Slot03_a93f94()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93f7c::Slot04_a93f7c()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93f7c::Slot03_a93f7c()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93f64::Slot04_a93f64()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93f64::Slot03_a93f64()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93f4c::Slot04_a93f4c()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93f4c::Slot03_a93f4c()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93f34::Slot04_a93f34()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c98::Slot03_a93c98()
 {
     return true;
 }
@@ -4366,49 +3874,13 @@ bool cUnk00a93cf8::Slot03_a93cf8()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93fdc::Slot03_a93fdc()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
 bool cUnk00a93ce0::Slot04_a93ce0()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a95880::Slot58_a95880()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
 bool cUnk00a93ce0::Slot03_a93ce0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b30::Slot03_a93b30()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b30::Slot04_a93b30()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93fc4::Slot04_a93fc4()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
-bool cUnk00a93b48::Slot03_a93b48()
 {
     return true;
 }
@@ -4432,12 +3904,6 @@ bool cUnk00a93cb0::Slot04_a93cb0()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00acc634::Slot03_ac34cc()
-{
-    return true;
-}
-
-// FUNCTION: 0x00648f00 nohook
 bool cUnk00a93cb0::Slot03_a93cb0()
 {
     return true;
@@ -4450,7 +3916,499 @@ bool cUnk00a93c98::Slot04_a93c98()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93c98::Slot03_a93c98()
+bool cUnk00a93d10::Slot03_a93d10()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c80::Slot04_a93c80()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c80::Slot03_a93c80()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c68::Slot04_a93c68()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c68::Slot03_a93c68()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c50::Slot04_a93c50()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c50::Slot03_a93c50()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c38::Slot04_a93c38()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c20::Slot04_a93c20()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93d70::Slot04_a93d70()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c20::Slot03_a93c20()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93dd0::Slot04_a93dd0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93dd0::Slot03_a93dd0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93db8::Slot04_a93db8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93db8::Slot03_a93db8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93da0::Slot04_a93da0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93da0::Slot03_a93da0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93d88::Slot04_a93d88()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93d88::Slot03_a93d88()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93950::Slot04_a93950()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93d70::Slot03_a93d70()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93d58::Slot04_a93d58()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93d58::Slot03_a93d58()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93d40::Slot04_a93d40()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93d40::Slot03_a93d40()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93d28::Slot04_a93d28()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93d28::Slot03_a93d28()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93d10::Slot04_a93d10()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93ad0::Slot03_a93ad0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b00::Slot03_a93b00()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93a10::Slot03_a93a10()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93968::Slot03_a93968()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93a10::Slot04_a93a10()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93a28::Slot03_a93a28()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93ad0::Slot04_a93ad0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93a28::Slot04_a93a28()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93a40::Slot03_a93a40()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a939f8::Slot04_a939f8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b00::Slot04_a93b00()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b18::Slot03_a93b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b18::Slot04_a93b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b30::Slot03_a93b30()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93a40::Slot04_a93a40()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b30::Slot04_a93b30()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93a58::Slot03_a93a58()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b48::Slot03_a93b48()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00acc634::Slot09_ac34cc()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a939f8::Slot03_a939f8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a939e0::Slot04_a939e0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a939e0::Slot03_a939e0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93968::Slot04_a93968()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a939c8::Slot04_a939c8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a939c8::Slot03_a939c8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a939b0::Slot04_a939b0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a939b0::Slot03_a939b0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93ae8::Slot04_a93ae8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93998::Slot04_a93998()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93980::Slot03_a93980()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93998::Slot03_a93998()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93980::Slot04_a93980()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93ae8::Slot03_a93ae8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93bc0::Slot03_a93bc0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b90::Slot03_a93b90()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00acc634::Slot10_ac34cc()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93aa0::Slot03_a93aa0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93950::Slot03_a93950()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b90::Slot04_a93b90()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93ba8::Slot03_a93ba8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93ba8::Slot04_a93ba8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a95880::Slot58_a95880()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a95d90::Slot36_a95d90()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93bc0::Slot04_a93bc0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a95880::Slot24_a95880()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93bd8::Slot03_a93bd8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93bd8::Slot04_a93bd8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93bf0::Slot03_a93bf0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93bf0::Slot04_a93bf0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93c08::Slot03_a93c08()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b60::Slot03_a93b60()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93ab8::Slot04_a93ab8()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93a58::Slot04_a93a58()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93a70::Slot03_a93a70()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93ab8::Slot03_a93ab8()
 {
     return true;
 }
@@ -4462,18 +4420,53 @@ bool cUnk00a93b48::Slot04_a93b48()
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93fdc::Slot04_a93fdc()
+bool cUnk00a93aa0::Slot04_a93aa0()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f00 nohook
-bool cUnk00a93d10::Slot04_a93d10()
+bool cUnk00a93a88::Slot04_a93a88()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b60::Slot04_a93b60()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b78::Slot03_a93b78()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93b78::Slot04_a93b78()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93a70::Slot04_a93a70()
+{
+    return true;
+}
+
+// FUNCTION: 0x00648f00 nohook
+bool cUnk00a93a88::Slot03_a93a88()
 {
     return true;
 }
 
 // FUNCTION: 0x00648f10
+void cUnk00aefde0::Slot11_aefde0(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
 void cUnk00ac17d0::Slot11_ac17d0(uint32_t)
 {
 }
@@ -4484,82 +4477,7 @@ void cUnk00aa2758::Slot31_aa2758(uint32_t)
 }
 
 // FUNCTION: 0x00648f10 nohook
-void cUnk00aefde0::Slot11_aefde0(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00a9dbb8_4::Slot28_a9dbb8_4(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
 void cUnk00adb418::Slot47_adb418(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aa8eb4::Slot00_aa8c58(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00a9dbb8::Slot25_a9dbb8(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aaa950::Slot57_aa8748(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aa8748::Slot79_aa8748(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aa8748::Slot78_aa8748(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aaa950::Slot77_aa8748(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aab558::Slot08_aace34(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aad0d8::Slot04_aace34(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aad0d8::Slot08_aace34(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aae9e4::Slot04_aae9e4(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aa8748::Slot12_aa8748(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aafb58::Slot04_aace34(uint32_t)
-{
-}
-
-// FUNCTION: 0x00648f10 nohook
-void cUnk00aafb58::Slot08_aace34(uint32_t)
 {
 }
 
@@ -4569,7 +4487,42 @@ void cUnk00a9ee78::Slot04_a9ee78(uint32_t)
 }
 
 // FUNCTION: 0x00648f10 nohook
-void cUnk00a9dbb8::Slot24_a9dbb8(uint32_t)
+void cUnk00aa8748::Slot12_aa8748(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00aa8748::Slot78_aa8748(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00a9dbb8_4::Slot28_a9dbb8_4(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00aad0d8::Slot08_aace34(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00aad0d8::Slot04_aace34(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00aae9e4::Slot04_aae9e4(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00aab558::Slot08_aace34(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00aafb58::Slot04_aace34(uint32_t)
 {
 }
 
@@ -4578,13 +4531,48 @@ void cUnk00aafb58::Slot05_aace34(uint32_t)
 {
 }
 
+// FUNCTION: 0x00648f10 nohook
+void cUnk00aafb58::Slot08_aace34(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00aaa950::Slot77_aa8748(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00a9dbb8::Slot25_a9dbb8(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00aa8eb4::Slot00_aa8c58(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00a9dbb8::Slot24_a9dbb8(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00aa8748::Slot79_aa8748(uint32_t)
+{
+}
+
+// FUNCTION: 0x00648f10 nohook
+void cUnk00aaa950::Slot57_aa8748(uint32_t)
+{
+}
+
 // FUNCTION: 0x00657730
-void cUnk00ab2490::Slot16_ab2b10(uint32_t, uint32_t, uint32_t)
+void cUnk00aaa950::Slot68_aa8748(uint32_t, uint32_t, uint32_t)
 {
 }
 
 // FUNCTION: 0x00657730 nohook
-void cUnk00aaa950::Slot68_aa8748(uint32_t, uint32_t, uint32_t)
+void cUnk00ab2490::Slot16_ab2b10(uint32_t, uint32_t, uint32_t)
 {
 }
 
@@ -4636,13 +4624,13 @@ void cUnk00aadab8::Slot151_aadab8(uint32_t value)
 }
 
 // FUNCTION: 0x006692c0
-void cUnk00aafb58::Slot10_aafb58(uint32_t value)
+void cUnk00aadab8::Slot152_aadab8(uint32_t value)
 {
     fieldec = value;
 }
 
 // FUNCTION: 0x006692c0 nohook
-void cUnk00aadab8::Slot152_aadab8(uint32_t value)
+void cUnk00aafb58::Slot10_aafb58(uint32_t value)
 {
     fieldec = value;
 }
@@ -4666,27 +4654,27 @@ uint32_t cUnk00aaf850::Slot05_aaf7f0()
 }
 
 // FUNCTION: 0x00683ea0
-void cUnk00aafb58::Slot04_aaf8d0(uint32_t value)
-{
-    fieldf4 = value;
-}
-
-// FUNCTION: 0x00683ea0 nohook
 void cUnk00a83ac0::Slot07_a83ac0(uint32_t value)
 {
     fieldf0 = value;
 }
 
-// FUNCTION: 0x0068d1b0
-uint32_t cUnk00ac1400::Slot35_ac1400()
+// FUNCTION: 0x00683ea0 nohook
+void cUnk00aafb58::Slot04_aaf8d0(uint32_t value)
 {
-    return field40;
+    fieldf4 = value;
 }
 
-// FUNCTION: 0x0068d1b0 nohook
+// FUNCTION: 0x0068d1b0
 uint32_t cUnk00a85650::Slot11_a855a4()
 {
     return field100;
+}
+
+// FUNCTION: 0x0068d1b0 nohook
+uint32_t cUnk00ac1400::Slot35_ac1400()
+{
+    return field40;
 }
 
 // FUNCTION: 0x0068d1c0
@@ -4738,49 +4726,25 @@ uint32_t cUnk00ab0eb0::Slot05_a80784()
 }
 
 // FUNCTION: 0x006a9750
-void* cUnk00a87c20::Slot25_a87c20()
-{
-    return field38;
-}
-
-// FUNCTION: 0x006a9750 nohook
-void* cUnk00a87b00::Slot25_a87b00()
-{
-    return field38;
-}
-
-// FUNCTION: 0x006a9750 nohook
-void* cUnk00a87c20::Slot24_a87c20()
-{
-    return field38;
-}
-
-// FUNCTION: 0x006a9750 nohook
-void* cUnk00a87b90::Slot25_a87b90()
-{
-    return field38;
-}
-
-// FUNCTION: 0x006a9750 nohook
-void* cUnk00a87b90::Slot24_a87b90()
-{
-    return field38;
-}
-
-// FUNCTION: 0x006a9750 nohook
-void* cUnk00a87b00::Slot24_a87b00()
-{
-    return field38;
-}
-
-// FUNCTION: 0x006a9750 nohook
-void* cUnk00a87a70::Slot25_a87a70()
-{
-    return field38;
-}
-
-// FUNCTION: 0x006a9750 nohook
 void* cUnk00a87a70::Slot24_a87a70()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
+void* cUnk00a878c0::Slot25_a878c0()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
+void* cUnk00ab0eb0::Slot12_ab0eb0()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
+void* cUnk00a87950::Slot24_a87950()
 {
     return field38;
 }
@@ -4798,25 +4762,7 @@ void* cUnk00a879e0::Slot24_a879e0()
 }
 
 // FUNCTION: 0x006a9750 nohook
-void* cUnk00ab0eb0::Slot12_ab0eb0()
-{
-    return field38;
-}
-
-// FUNCTION: 0x006a9750 nohook
 void* cUnk00a87950::Slot25_a87950()
-{
-    return field38;
-}
-
-// FUNCTION: 0x006a9750 nohook
-void* cUnk00a87950::Slot24_a87950()
-{
-    return field38;
-}
-
-// FUNCTION: 0x006a9750 nohook
-void* cUnk00a878c0::Slot25_a878c0()
 {
     return field38;
 }
@@ -4828,13 +4774,67 @@ void* cUnk00a878c0::Slot24_a878c0()
 }
 
 // FUNCTION: 0x006a9750 nohook
+void* cUnk00a87dd0::Slot25_a87dd0()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
+void* cUnk00a87a70::Slot25_a87a70()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
+void* cUnk00a87b00::Slot24_a87b00()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
+void* cUnk00a87b00::Slot25_a87b00()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
+void* cUnk00a87d40::Slot25_a87d40()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
 void* cUnk00a87d40::Slot24_a87d40()
 {
     return field38;
 }
 
 // FUNCTION: 0x006a9750 nohook
+void* cUnk00a87b90::Slot24_a87b90()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
+void* cUnk00a87b90::Slot25_a87b90()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
 void* cUnk00a87dd0::Slot24_a87dd0()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
+void* cUnk00a87c20::Slot24_a87c20()
+{
+    return field38;
+}
+
+// FUNCTION: 0x006a9750 nohook
+void* cUnk00a87c20::Slot25_a87c20()
 {
     return field38;
 }
@@ -4851,18 +4851,6 @@ void* cUnk00a87cb0::Slot25_a87cb0()
     return field38;
 }
 
-// FUNCTION: 0x006a9750 nohook
-void* cUnk00a87dd0::Slot25_a87dd0()
-{
-    return field38;
-}
-
-// FUNCTION: 0x006a9750 nohook
-void* cUnk00a87d40::Slot25_a87d40()
-{
-    return field38;
-}
-
 // FUNCTION: 0x006a97c0
 uint32_t cUnk00ab0f58::Slot05_a80784()
 {
@@ -4870,21 +4858,9 @@ uint32_t cUnk00ab0f58::Slot05_a80784()
 }
 
 // FUNCTION: 0x006aac50
-uint32_t cUnk00aa2a3c::Slot07_aa2a3c()
+uint32_t cUnk00a85650::Slot06_a855a4()
 {
-    return field30;
-}
-
-// FUNCTION: 0x006aac50 nohook
-uint32_t cUnk00ab0eb0::Slot06_ab0eb0()
-{
-    return field30;
-}
-
-// FUNCTION: 0x006aac50 nohook
-uint32_t cUnk00ac1400::Slot36_ac1400()
-{
-    return field30;
+    return fieldf0;
 }
 
 // FUNCTION: 0x006aac50 nohook
@@ -4900,9 +4876,21 @@ uint32_t cUnk00ac1550::Slot34_ac1338()
 }
 
 // FUNCTION: 0x006aac50 nohook
-uint32_t cUnk00a85650::Slot06_a855a4()
+uint32_t cUnk00ab0eb0::Slot06_ab0eb0()
 {
-    return fieldf0;
+    return field30;
+}
+
+// FUNCTION: 0x006aac50 nohook
+uint32_t cUnk00aa2a3c::Slot07_aa2a3c()
+{
+    return field30;
+}
+
+// FUNCTION: 0x006aac50 nohook
+uint32_t cUnk00ac1400::Slot36_ac1400()
+{
+    return field30;
 }
 
 // FUNCTION: 0x006aac60
@@ -4912,13 +4900,13 @@ void cUnk00ab0eb0::Slot07_ab0eb0(uint32_t value)
 }
 
 // FUNCTION: 0x006aac70
-bool cUnk00ac1550::Slot24_ac1338()
+bool cUnk00ab0eb0::Slot08_ab0eb0()
 {
     return field48;
 }
 
 // FUNCTION: 0x006aac70 nohook
-bool cUnk00ab0eb0::Slot08_ab0eb0()
+bool cUnk00ac1550::Slot24_ac1338()
 {
     return field48;
 }
@@ -4930,15 +4918,15 @@ void cUnk00ab0eb0::Slot09_ab0eb0(bool value)
 }
 
 // FUNCTION: 0x006aaeb0
-uint32_t cUnk00ab0f58::Slot03_ab0f58()
-{
-    return field54;
-}
-
-// FUNCTION: 0x006aaeb0 nohook
 uint32_t cUnk00a85218::Slot19_a84c10()
 {
     return field10c;
+}
+
+// FUNCTION: 0x006aaeb0 nohook
+uint32_t cUnk00ab0f58::Slot03_ab0f58()
+{
+    return field54;
 }
 
 // FUNCTION: 0x006aaf40
@@ -4954,54 +4942,6 @@ uint32_t cUnk00ab1160_10::Slot05_ab1160_10()
 }
 
 // FUNCTION: 0x006bdd80
-uint32_t cUnk00a87a70::Slot13_a87a70()
-{
-    return field24;
-}
-
-// FUNCTION: 0x006bdd80 nohook
-uint32_t cUnk00a87cb0::Slot13_a87cb0()
-{
-    return field24;
-}
-
-// FUNCTION: 0x006bdd80 nohook
-uint32_t cUnk00a879e0::Slot13_a879e0()
-{
-    return field24;
-}
-
-// FUNCTION: 0x006bdd80 nohook
-uint32_t cUnk00a87dd0::Slot13_a87dd0()
-{
-    return field24;
-}
-
-// FUNCTION: 0x006bdd80 nohook
-uint32_t cUnk00a87b00::Slot13_a87b00()
-{
-    return field24;
-}
-
-// FUNCTION: 0x006bdd80 nohook
-uint32_t cUnk00a87950::Slot13_a87950()
-{
-    return field24;
-}
-
-// FUNCTION: 0x006bdd80 nohook
-uint32_t cUnk00a87b90::Slot13_a87b90()
-{
-    return field24;
-}
-
-// FUNCTION: 0x006bdd80 nohook
-uint32_t cUnk00a87d40::Slot13_a87d40()
-{
-    return field24;
-}
-
-// FUNCTION: 0x006bdd80 nohook
 uint32_t cUnk00a878c0::Slot13_a878c0()
 {
     return field24;
@@ -5013,20 +4953,56 @@ uint32_t cUnk00a87c20::Slot13_a87c20()
     return field24;
 }
 
+// FUNCTION: 0x006bdd80 nohook
+uint32_t cUnk00a87dd0::Slot13_a87dd0()
+{
+    return field24;
+}
+
+// FUNCTION: 0x006bdd80 nohook
+uint32_t cUnk00a87b90::Slot13_a87b90()
+{
+    return field24;
+}
+
+// FUNCTION: 0x006bdd80 nohook
+uint32_t cUnk00a87b00::Slot13_a87b00()
+{
+    return field24;
+}
+
+// FUNCTION: 0x006bdd80 nohook
+uint32_t cUnk00a87a70::Slot13_a87a70()
+{
+    return field24;
+}
+
+// FUNCTION: 0x006bdd80 nohook
+uint32_t cUnk00a879e0::Slot13_a879e0()
+{
+    return field24;
+}
+
+// FUNCTION: 0x006bdd80 nohook
+uint32_t cUnk00a87cb0::Slot13_a87cb0()
+{
+    return field24;
+}
+
+// FUNCTION: 0x006bdd80 nohook
+uint32_t cUnk00a87d40::Slot13_a87d40()
+{
+    return field24;
+}
+
+// FUNCTION: 0x006bdd80 nohook
+uint32_t cUnk00a87950::Slot13_a87950()
+{
+    return field24;
+}
+
 // FUNCTION: 0x006c2070
 float cUnk00a87950::Slot14_a87950()
-{
-    return field28;
-}
-
-// FUNCTION: 0x006c2070 nohook
-float cUnk00a879e0::Slot14_a879e0()
-{
-    return field28;
-}
-
-// FUNCTION: 0x006c2070 nohook
-float cUnk00a878c0::Slot14_a878c0()
 {
     return field28;
 }
@@ -5038,19 +5014,13 @@ float cUnk00a87cb0::Slot14_a87cb0()
 }
 
 // FUNCTION: 0x006c2070 nohook
-float cUnk00a87dd0::Slot14_a87dd0()
+float cUnk00a87d40::Slot14_a87d40()
 {
     return field28;
 }
 
 // FUNCTION: 0x006c2070 nohook
-float cUnk00a87a70::Slot14_a87a70()
-{
-    return field28;
-}
-
-// FUNCTION: 0x006c2070 nohook
-float cUnk00a87b90::Slot14_a87b90()
+float cUnk00a879e0::Slot14_a879e0()
 {
     return field28;
 }
@@ -5062,13 +5032,31 @@ float cUnk00a87c20::Slot14_a87c20()
 }
 
 // FUNCTION: 0x006c2070 nohook
+float cUnk00a878c0::Slot14_a878c0()
+{
+    return field28;
+}
+
+// FUNCTION: 0x006c2070 nohook
+float cUnk00a87a70::Slot14_a87a70()
+{
+    return field28;
+}
+
+// FUNCTION: 0x006c2070 nohook
+float cUnk00a87dd0::Slot14_a87dd0()
+{
+    return field28;
+}
+
+// FUNCTION: 0x006c2070 nohook
 float cUnk00a87b00::Slot14_a87b00()
 {
     return field28;
 }
 
 // FUNCTION: 0x006c2070 nohook
-float cUnk00a87d40::Slot14_a87d40()
+float cUnk00a87b90::Slot14_a87b90()
 {
     return field28;
 }
@@ -5080,7 +5068,13 @@ float cUnk00a87cb0::Slot15_a87cb0()
 }
 
 // FUNCTION: 0x006c2080 nohook
-float cUnk00aa2758::Slot14_aa2758()
+float cUnk00a87c20::Slot15_a87c20()
+{
+    return field2c;
+}
+
+// FUNCTION: 0x006c2080 nohook
+float cUnk00a87d40::Slot15_a87d40()
 {
     return field2c;
 }
@@ -5098,7 +5092,13 @@ float cUnk00a878c0::Slot15_a878c0()
 }
 
 // FUNCTION: 0x006c2080 nohook
-float cUnk00a87c20::Slot15_a87c20()
+float cUnk00a87a70::Slot15_a87a70()
+{
+    return field2c;
+}
+
+// FUNCTION: 0x006c2080 nohook
+float cUnk00a87dd0::Slot15_a87dd0()
 {
     return field2c;
 }
@@ -5110,31 +5110,19 @@ float cUnk00a879e0::Slot15_a879e0()
 }
 
 // FUNCTION: 0x006c2080 nohook
-float cUnk00a87b00::Slot15_a87b00()
-{
-    return field2c;
-}
-
-// FUNCTION: 0x006c2080 nohook
 float cUnk00a87950::Slot15_a87950()
 {
     return field2c;
 }
 
 // FUNCTION: 0x006c2080 nohook
-float cUnk00a87d40::Slot15_a87d40()
+float cUnk00a87b00::Slot15_a87b00()
 {
     return field2c;
 }
 
 // FUNCTION: 0x006c2080 nohook
-float cUnk00a87a70::Slot15_a87a70()
-{
-    return field2c;
-}
-
-// FUNCTION: 0x006c2080 nohook
-float cUnk00a87dd0::Slot15_a87dd0()
+float cUnk00aa2758::Slot14_aa2758()
 {
     return field2c;
 }
@@ -5170,18 +5158,24 @@ uint32_t cUnk00ab2490_10::Slot05_ab2490_10()
 }
 
 // FUNCTION: 0x006e0120
-bool cUnk00ab1160::Slot11_ab1068()
-{
-    return fielda4;
-}
-
-// FUNCTION: 0x006e0120 nohook
 bool cUnk00ab2490::Slot10_ab2348()
 {
     return fielda4;
 }
 
+// FUNCTION: 0x006e0120 nohook
+bool cUnk00ab1160::Slot11_ab1068()
+{
+    return fielda4;
+}
+
 // FUNCTION: 0x006e0130
+uint32_t cUnk00ab2490::Slot14_ab2348()
+{
+    return fielda8;
+}
+
+// FUNCTION: 0x006e0130 nohook
 uint32_t cUnk00a808b8::Slot26_a80710()
 {
     return fielda8;
@@ -5189,12 +5183,6 @@ uint32_t cUnk00a808b8::Slot26_a80710()
 
 // FUNCTION: 0x006e0130 nohook
 uint32_t cUnk00ab1160::Slot15_ab1068()
-{
-    return fielda8;
-}
-
-// FUNCTION: 0x006e0130 nohook
-uint32_t cUnk00ab2490::Slot14_ab2348()
 {
     return fielda8;
 }
@@ -5218,15 +5206,15 @@ uint32_t cUnk00ab2490::Slot05_ab2348()
 }
 
 // FUNCTION: 0x006efa50 nohook
-uint32_t cUnk00ab1160::Slot05_ab1068()
-{
-    return field80;
-}
-
-// FUNCTION: 0x006efa50 nohook
 uint32_t cUnk00a808b8::Slot17_a80710()
 {
     return mn80;
+}
+
+// FUNCTION: 0x006efa50 nohook
+uint32_t cUnk00ab1160::Slot05_ab1068()
+{
+    return field80;
 }
 
 // FUNCTION: 0x006f0e00
@@ -5248,12 +5236,7 @@ uint32_t cUnk00ab29b0::Slot04_ab29b0()
 }
 
 // FUNCTION: 0x006f7dc0
-void cUnk00ac385c::Slot08_ac3508(uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x006f7dc0 nohook
-void cUnk00ac385c::Slot09_ac3508(uint32_t, uint32_t)
+void cUnk00ac47ec::Slot09_ac3508(uint32_t, uint32_t)
 {
 }
 
@@ -5263,7 +5246,12 @@ void cUnk00ac47ec::Slot08_ac3508(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x006f7dc0 nohook
-void cUnk00ac47ec::Slot09_ac3508(uint32_t, uint32_t)
+void cUnk00ac385c::Slot09_ac3508(uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x006f7dc0 nohook
+void cUnk00ac385c::Slot08_ac3508(uint32_t, uint32_t)
 {
 }
 
@@ -5326,13 +5314,13 @@ uint32_t cUnk00ab3b00::Slot05_a80784()
 }
 
 // FUNCTION: 0x0074c6e0
-uint32_t cUnk00ab2490::Slot34_ab2348()
+uint32_t cUnk00a9e5f4::Slot06_a9e5f4()
 {
     return fielde4;
 }
 
 // FUNCTION: 0x0074c6e0 nohook
-uint32_t cUnk00a9e5f4::Slot06_a9e5f4()
+uint32_t cUnk00ab2490::Slot34_ab2348()
 {
     return fielde4;
 }
@@ -5344,7 +5332,7 @@ uint32_t cUnk00ab4900::Slot15_ab4658()
 }
 
 // FUNCTION: 0x007624d0
-uint32_t cUnk00ab6d28::Slot17_ab6a28()
+uint32_t cUnk00ab4900::Slot07_ab4658()
 {
     return fieldec;
 }
@@ -5356,7 +5344,7 @@ uint32_t cUnk00a862d8::Slot11_a862d8()
 }
 
 // FUNCTION: 0x007624d0 nohook
-uint32_t cUnk00ab4900::Slot07_ab4658()
+uint32_t cUnk00ab6d28::Slot17_ab6a28()
 {
     return fieldec;
 }
@@ -5380,25 +5368,25 @@ float cUnk00ab4900::Slot13_ab4658()
 }
 
 // FUNCTION: 0x00762700
-uint32_t cUnk00ab4900::Slot05_ab4658()
-{
-    return fielddc;
-}
-
-// FUNCTION: 0x00762700 nohook
 uint32_t cUnk00ab2490::Slot30_ab2348()
 {
     return fielddc;
 }
 
+// FUNCTION: 0x00762700 nohook
+uint32_t cUnk00ab4900::Slot05_ab4658()
+{
+    return fielddc;
+}
+
 // FUNCTION: 0x0076b620
-uint32_t cUnk00add578::Slot28_add348()
+uint32_t cUnk00a845b8::Slot42_a843c8()
 {
     return field148;
 }
 
 // FUNCTION: 0x0076b620 nohook
-uint32_t cUnk00a845b8::Slot42_a843c8()
+uint32_t cUnk00add578::Slot28_add348()
 {
     return field148;
 }
@@ -5446,13 +5434,13 @@ uint32_t cUnk00a845b8::Slot37_a843c8()
 }
 
 // FUNCTION: 0x0079b580
-uint32_t cUnk00ab6d28::Slot14_ab6a28()
+uint32_t cUnk00a9e5f4::Slot07_a9e5f4()
 {
     return fielde8;
 }
 
 // FUNCTION: 0x0079b580 nohook
-uint32_t cUnk00a9e5f4::Slot07_a9e5f4()
+uint32_t cUnk00ab6d28::Slot14_ab6a28()
 {
     return fielde8;
 }
@@ -5482,13 +5470,13 @@ void cUnk00ab8884::Slot04_ab889c(uint32_t value)
 }
 
 // FUNCTION: 0x007aa300
-float cUnk00aa2758::Slot11_aa2758()
+float cUnk00ab8c00::Slot06_ab3be8()
 {
     return field20;
 }
 
 // FUNCTION: 0x007aa300 nohook
-float cUnk00ab8c00::Slot06_ab3be8()
+float cUnk00aa2758::Slot11_aa2758()
 {
     return field20;
 }
@@ -5500,13 +5488,13 @@ float cUnk00ab8c00::Slot12_ab3be8(uint32_t)
 }
 
 // FUNCTION: 0x007aa4b0
-float cUnk00ab8c00::Slot14_ab3be8(uint32_t, uint32_t)
+float cUnk00ab8c00::Slot13_ab3be8(uint32_t, uint32_t)
 {
     return fieldc;
 }
 
 // FUNCTION: 0x007aa4b0 nohook
-float cUnk00ab8c00::Slot19_ab3be8(uint32_t, uint32_t)
+float cUnk00ab8c00::Slot14_ab3be8(uint32_t, uint32_t)
 {
     return fieldc;
 }
@@ -5518,19 +5506,19 @@ float cUnk00ab8c00::Slot18_ab3be8(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x007aa4b0 nohook
-float cUnk00ab8c00::Slot13_ab3be8(uint32_t, uint32_t)
+float cUnk00ab8c00::Slot19_ab3be8(uint32_t, uint32_t)
 {
     return fieldc;
 }
 
 // FUNCTION: 0x007aa4c0
-float cUnk00ab8c00::Slot20_ab3be8(uint32_t)
+float cUnk00ab8c00::Slot31_ab3be8(uint32_t)
 {
     return 0.0f;
 }
 
 // FUNCTION: 0x007aa4c0 nohook
-float cUnk00ab8c00::Slot31_ab3be8(uint32_t)
+float cUnk00ab8c00::Slot20_ab3be8(uint32_t)
 {
     return 0.0f;
 }
@@ -5566,13 +5554,13 @@ float cUnk00ab8c00::Slot29_ab3be8()
 }
 
 // FUNCTION: 0x007aa510
-float cUnk00ab8c00::Slot33_ab3be8(uint32_t, uint32_t)
+float cUnk00ab8c00::Slot32_ab3be8(uint32_t, uint32_t)
 {
     return 0.0f;
 }
 
 // FUNCTION: 0x007aa510 nohook
-float cUnk00ab8c00::Slot32_ab3be8(uint32_t, uint32_t)
+float cUnk00ab8c00::Slot33_ab3be8(uint32_t, uint32_t)
 {
     return 0.0f;
 }
@@ -5608,21 +5596,21 @@ uint32_t cUnk00abad18::Slot05_abad18()
 }
 
 // FUNCTION: 0x007d6670
-float cUnk00aa2758::Slot10_aa2758()
-{
-    return field1c;
-}
-
-// FUNCTION: 0x007d6670 nohook
 float cUnk00abb530::Slot05_abb530()
 {
     return field1c;
 }
 
-// FUNCTION: 0x00800640
-void* cUnk00a81204::Slot08_a81120()
+// FUNCTION: 0x007d6670 nohook
+float cUnk00aa2758::Slot10_aa2758()
 {
-    return field38;
+    return field1c;
+}
+
+// FUNCTION: 0x00800640
+void* cUnk00a808b8::Slot18_a80710()
+{
+    return field30;
 }
 
 // FUNCTION: 0x00800640 nohook
@@ -5632,9 +5620,9 @@ void* cUnk00abd388::Slot03_abd398()
 }
 
 // FUNCTION: 0x00800640 nohook
-void* cUnk00a808b8::Slot18_a80710()
+void* cUnk00a81204::Slot08_a81120()
 {
-    return field30;
+    return field38;
 }
 
 // FUNCTION: 0x008085f0
@@ -5644,43 +5632,13 @@ void* cUnk00abd6b4::Slot03_abd744()
 }
 
 // FUNCTION: 0x00808620
-uint32_t cUnk00a87a70::Slot11_a87a70()
-{
-    return field1c;
-}
-
-// FUNCTION: 0x00808620 nohook
-uint32_t cUnk00a878c0::Slot11_a878c0()
-{
-    return field1c;
-}
-
-// FUNCTION: 0x00808620 nohook
-uint32_t cUnk00abd6fc::Slot03_abd758()
-{
-    return field1c;
-}
-
-// FUNCTION: 0x00808620 nohook
-uint32_t cUnk00a87dd0::Slot11_a87dd0()
-{
-    return field1c;
-}
-
-// FUNCTION: 0x00808620 nohook
-uint32_t cUnk00a87d40::Slot11_a87d40()
-{
-    return field1c;
-}
-
-// FUNCTION: 0x00808620 nohook
-uint32_t cUnk00a87cb0::Slot11_a87cb0()
-{
-    return field1c;
-}
-
-// FUNCTION: 0x00808620 nohook
 uint32_t cUnk00a87c20::Slot11_a87c20()
+{
+    return field1c;
+}
+
+// FUNCTION: 0x00808620 nohook
+uint32_t cUnk00a87a70::Slot11_a87a70()
 {
     return field1c;
 }
@@ -5698,7 +5656,13 @@ uint32_t cUnk00a87b00::Slot11_a87b00()
 }
 
 // FUNCTION: 0x00808620 nohook
-uint32_t cUnk00ac1400::Slot09_ac1400()
+uint32_t cUnk00a87cb0::Slot11_a87cb0()
+{
+    return field1c;
+}
+
+// FUNCTION: 0x00808620 nohook
+uint32_t cUnk00a879e0::Slot11_a879e0()
 {
     return field1c;
 }
@@ -5710,7 +5674,31 @@ uint32_t cUnk00a87950::Slot11_a87950()
 }
 
 // FUNCTION: 0x00808620 nohook
-uint32_t cUnk00a879e0::Slot11_a879e0()
+uint32_t cUnk00a87d40::Slot11_a87d40()
+{
+    return field1c;
+}
+
+// FUNCTION: 0x00808620 nohook
+uint32_t cUnk00a87dd0::Slot11_a87dd0()
+{
+    return field1c;
+}
+
+// FUNCTION: 0x00808620 nohook
+uint32_t cUnk00a878c0::Slot11_a878c0()
+{
+    return field1c;
+}
+
+// FUNCTION: 0x00808620 nohook
+uint32_t cUnk00ac1400::Slot09_ac1400()
+{
+    return field1c;
+}
+
+// FUNCTION: 0x00808620 nohook
+uint32_t cUnk00abd6fc::Slot03_abd758()
 {
     return field1c;
 }
@@ -5722,13 +5710,13 @@ uint32_t cUnk00aa8748::Slot27_aa8748()
 }
 
 // FUNCTION: 0x00809250
-uint32_t cUnk00ab0f58::Slot04_ab0f58()
+uint32_t cUnk00adb2e0::Slot11_adb26c()
 {
     return field64;
 }
 
 // FUNCTION: 0x00809250 nohook
-uint32_t cUnk00adb2e0::Slot11_adb26c()
+uint32_t cUnk00ab0f58::Slot04_ab0f58()
 {
     return field64;
 }
@@ -5830,49 +5818,31 @@ uint32_t cUnk00ac4f58::Slot26_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t, uin
 }
 
 // FUNCTION: 0x0088b3c0 nohook
-uint32_t cUnk00ac4f58::Slot30_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
-{
-    return 0;
-}
-
-// FUNCTION: 0x0088b3c0 nohook
 uint32_t cUnk00ac4f58::Slot32_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return 0;
 }
 
-// FUNCTION: 0x0088b3d0
-uint32_t cUnk00ac4f58::Slot37_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t)
+// FUNCTION: 0x0088b3c0 nohook
+uint32_t cUnk00ac4f58::Slot30_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return 0;
 }
 
-// FUNCTION: 0x0088b3d0 nohook
+// FUNCTION: 0x0088b3d0
 uint32_t cUnk00ac1550::Slot32_ac1338(uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return 0;
 }
 
+// FUNCTION: 0x0088b3d0 nohook
+uint32_t cUnk00ac4f58::Slot37_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t)
+{
+    return 0;
+}
+
 // FUNCTION: 0x0088b3e0
-uint32_t cUnk00ac4f58::Slot39_ac4f58(uint32_t, uint32_t)
-{
-    return 0;
-}
-
-// FUNCTION: 0x0088b3e0 nohook
-uint32_t cUnk00ac4f58::Slot38_ac4f58(uint32_t, uint32_t)
-{
-    return 0;
-}
-
-// FUNCTION: 0x0088b3e0 nohook
-uint32_t cUnk00a9e1e8::Slot06_a9e2f4(uint32_t, uint32_t)
-{
-    return 0;
-}
-
-// FUNCTION: 0x0088b3e0 nohook
-uint32_t cUnk00ac4f58::Slot13_ac4f58(uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot07_ac4f58(uint32_t, uint32_t)
 {
     return 0;
 }
@@ -5884,19 +5854,31 @@ uint32_t cUnk00ac4f58::Slot03_ac4f58(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0088b3e0 nohook
-uint32_t cUnk00ac4f58::Slot16_ac4f58(uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot39_ac4f58(uint32_t, uint32_t)
 {
     return 0;
 }
 
 // FUNCTION: 0x0088b3e0 nohook
-uint32_t cUnk00ac4f58::Slot23_ac4f58(uint32_t, uint32_t)
+uint32_t cUnk00a9e1e8::Slot06_a9e2f4(uint32_t, uint32_t)
 {
     return 0;
 }
 
 // FUNCTION: 0x0088b3e0 nohook
-uint32_t cUnk00ac4f58::Slot24_ac4f58(uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot38_ac4f58(uint32_t, uint32_t)
+{
+    return 0;
+}
+
+// FUNCTION: 0x0088b3e0 nohook
+uint32_t cUnk00ac4f58::Slot13_ac4f58(uint32_t, uint32_t)
+{
+    return 0;
+}
+
+// FUNCTION: 0x0088b3e0 nohook
+uint32_t cUnk00ac4f58::Slot09_ac4f58(uint32_t, uint32_t)
 {
     return 0;
 }
@@ -5908,7 +5890,13 @@ uint32_t cUnk00ac4f58::Slot27_ac4f58(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0088b3e0 nohook
-uint32_t cUnk00ac4f58::Slot07_ac4f58(uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot24_ac4f58(uint32_t, uint32_t)
+{
+    return 0;
+}
+
+// FUNCTION: 0x0088b3e0 nohook
+uint32_t cUnk00ac4f58::Slot23_ac4f58(uint32_t, uint32_t)
 {
     return 0;
 }
@@ -5920,19 +5908,19 @@ uint32_t cUnk00ac4f58::Slot15_ac4f58(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0088b3e0 nohook
-uint32_t cUnk00ac4f58::Slot09_ac4f58(uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot16_ac4f58(uint32_t, uint32_t)
 {
     return 0;
 }
 
 // FUNCTION: 0x0088b3f0
-uint32_t cUnk00ac4f58::Slot17_ac4f58(uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot28_ac4f58(uint32_t, uint32_t)
 {
     return 0x80004001;
 }
 
 // FUNCTION: 0x0088b3f0 nohook
-uint32_t cUnk00ac4f58::Slot28_ac4f58(uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot17_ac4f58(uint32_t, uint32_t)
 {
     return 0x80004001;
 }
@@ -5956,7 +5944,7 @@ uint32_t cUnk00ac4f58::Slot43_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t, uin
 }
 
 // FUNCTION: 0x0088b400 nohook
-uint32_t cUnk00ac4f58::Slot25_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot31_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return 0;
 }
@@ -5968,7 +5956,7 @@ uint32_t cUnk00ac4f58::Slot29_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t, uin
 }
 
 // FUNCTION: 0x0088b400 nohook
-uint32_t cUnk00ac4f58::Slot31_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot25_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return 0;
 }
@@ -5980,31 +5968,13 @@ uint32_t cUnk00ac4f58::Slot33_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t, uin
 }
 
 // FUNCTION: 0x0088b410
-uint32_t cUnk00ac4f58::Slot11_ac4f58(uint32_t, uint32_t, uint32_t)
-{
-    return 0;
-}
-
-// FUNCTION: 0x0088b410 nohook
-uint32_t cUnk00ac4f58::Slot08_ac4f58(uint32_t, uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot18_ac4f58(uint32_t, uint32_t, uint32_t)
 {
     return 0;
 }
 
 // FUNCTION: 0x0088b410 nohook
 uint32_t cUnk00ac4f58::Slot14_ac4f58(uint32_t, uint32_t, uint32_t)
-{
-    return 0;
-}
-
-// FUNCTION: 0x0088b410 nohook
-uint32_t cUnk00ac4f58::Slot04_ac4f58(uint32_t, uint32_t, uint32_t)
-{
-    return 0;
-}
-
-// FUNCTION: 0x0088b410 nohook
-uint32_t cUnk00ac4f58::Slot12_ac4f58(uint32_t, uint32_t, uint32_t)
 {
     return 0;
 }
@@ -6022,13 +5992,25 @@ uint32_t cUnk00ac4f58::Slot35_ac4f58(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0088b410 nohook
-uint32_t cUnk00ac4f58::Slot44_ac4f58(uint32_t, uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot12_ac4f58(uint32_t, uint32_t, uint32_t)
 {
     return 0;
 }
 
 // FUNCTION: 0x0088b410 nohook
-uint32_t cUnk00ac4f58::Slot45_ac4f58(uint32_t, uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot04_ac4f58(uint32_t, uint32_t, uint32_t)
+{
+    return 0;
+}
+
+// FUNCTION: 0x0088b410 nohook
+uint32_t cUnk00ac4f58::Slot08_ac4f58(uint32_t, uint32_t, uint32_t)
+{
+    return 0;
+}
+
+// FUNCTION: 0x0088b410 nohook
+uint32_t cUnk00ac4f58::Slot11_ac4f58(uint32_t, uint32_t, uint32_t)
 {
     return 0;
 }
@@ -6040,25 +6022,25 @@ uint32_t cUnk00ac4f58::Slot46_ac4f58(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0088b410 nohook
-uint32_t cUnk00ac4f58::Slot18_ac4f58(uint32_t, uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot45_ac4f58(uint32_t, uint32_t, uint32_t)
+{
+    return 0;
+}
+
+// FUNCTION: 0x0088b410 nohook
+uint32_t cUnk00ac4f58::Slot44_ac4f58(uint32_t, uint32_t, uint32_t)
 {
     return 0;
 }
 
 // FUNCTION: 0x0088b420
-uint32_t cUnk00ac4f58::Slot21_ac4f58(uint32_t, uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot47_ac4f58(uint32_t, uint32_t, uint32_t)
 {
     return 0x80004001;
 }
 
 // FUNCTION: 0x0088b420 nohook
 uint32_t cUnk00ac4f58::Slot42_ac4f58(uint32_t, uint32_t, uint32_t)
-{
-    return 0x80004001;
-}
-
-// FUNCTION: 0x0088b420 nohook
-uint32_t cUnk00ac4f58::Slot47_ac4f58(uint32_t, uint32_t, uint32_t)
 {
     return 0x80004001;
 }
@@ -6075,14 +6057,20 @@ uint32_t cUnk00ac4f58::Slot19_ac4f58(uint32_t, uint32_t, uint32_t)
     return 0x80004001;
 }
 
+// FUNCTION: 0x0088b420 nohook
+uint32_t cUnk00ac4f58::Slot21_ac4f58(uint32_t, uint32_t, uint32_t)
+{
+    return 0x80004001;
+}
+
 // FUNCTION: 0x0088b430
-uint32_t cUnk00ac4f58::Slot48_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot36_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return 0x80004001;
 }
 
 // FUNCTION: 0x0088b430 nohook
-uint32_t cUnk00ac4f58::Slot36_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t)
+uint32_t cUnk00ac4f58::Slot48_ac4f58(uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return 0x80004001;
 }
@@ -6094,6 +6082,12 @@ uint32_t cUnk00ac5548::Slot13_ace6f8()
 }
 
 // FUNCTION: 0x008b6de0
+void cUnk00ac9144::Slot06_ac8bf8(uint32_t value)
+{
+    field10 = value;
+}
+
+// FUNCTION: 0x008b6de0 nohook
 void cUnk00a810e0::Slot10_a81058(uint32_t value)
 {
     field1c = value;
@@ -6105,38 +6099,8 @@ void cUnk00ac8f54::Slot06_ac8bf8(uint32_t value)
     field10 = value;
 }
 
-// FUNCTION: 0x008b6de0 nohook
-void cUnk00ac9144::Slot06_ac8bf8(uint32_t value)
-{
-    field10 = value;
-}
-
 // FUNCTION: 0x008cd450
-uint32_t cUnk00abf478::Slot01_abf478()
-{
-    return 1;
-}
-
-// FUNCTION: 0x008cd450 nohook
-uint32_t cUnk00a90b38::Slot01_a90b38()
-{
-    return 1;
-}
-
-// FUNCTION: 0x008cd450 nohook
 uint32_t cUnk00a9e160::Slot07_a9e0e4()
-{
-    return 1;
-}
-
-// FUNCTION: 0x008cd450 nohook
-uint32_t cUnk00adaf90::Slot02_adaf90()
-{
-    return 1;
-}
-
-// FUNCTION: 0x008cd450 nohook
-uint32_t cUnk00adaf90::Slot01_adaf90()
 {
     return 1;
 }
@@ -6154,7 +6118,31 @@ uint32_t cUnk00a9e750::Slot07_a9e0e4()
 }
 
 // FUNCTION: 0x008cd450 nohook
+uint32_t cUnk00a90b38::Slot01_a90b38()
+{
+    return 1;
+}
+
+// FUNCTION: 0x008cd450 nohook
 uint32_t cUnk00a9e27c::Slot07_a9e224()
+{
+    return 1;
+}
+
+// FUNCTION: 0x008cd450 nohook
+uint32_t cUnk00adaf90::Slot01_adaf90()
+{
+    return 1;
+}
+
+// FUNCTION: 0x008cd450 nohook
+uint32_t cUnk00abf478::Slot01_abf478()
+{
+    return 1;
+}
+
+// FUNCTION: 0x008cd450 nohook
+uint32_t cUnk00adaf90::Slot02_adaf90()
 {
     return 1;
 }
@@ -6244,13 +6232,13 @@ bool cUnk00ad87d0::Slot37_ad8488(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093877e
-bool cUnk00ad9838::Slot11_ad8c20(uint32_t, uint32_t)
+bool cUnk00ad95e8::Slot51_ad8d88(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad95e8::Slot51_ad8d88(uint32_t, uint32_t)
+bool cUnk00ad9838::Slot11_ad8c20(uint32_t, uint32_t)
 {
     return false;
 }
@@ -6304,13 +6292,13 @@ bool cUnk00ad7cf0::Slot56_ad8d88(uint32_t)
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cUnk00ad95e8::Slot56_ad8d88(uint32_t)
+bool cUnk00ada5f4::Slot05_ada5f4(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cUnk00ada5f4::Slot05_ada5f4(uint32_t)
+bool cUnk00ad95e8::Slot56_ad8d88(uint32_t)
 {
     return false;
 }
@@ -6373,14 +6361,14 @@ bool cUnk00ad4908::Slot25_ad4908(bool value)
 }
 
 // FUNCTION: 0x00945e70
-bool cUnk00ad48a0::Slot04_ad4830(uint32_t value)
+bool cUnk00ad4908::Slot26_ad4908(uint32_t value)
 {
     field24 = value;
     return true;
 }
 
 // FUNCTION: 0x00945e70 nohook
-bool cUnk00ad4908::Slot26_ad4908(uint32_t value)
+bool cUnk00ad48a0::Slot04_ad4830(uint32_t value)
 {
     field24 = value;
     return true;
@@ -6497,15 +6485,21 @@ bool cUnk00ac2f70::Slot04_ac2f70()
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cUnk00ad93a0::Slot09_ad8ca0()
+bool cUnk00add190::Slot92_add190()
 {
     return true;
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cUnk00add190::Slot92_add190()
+bool cUnk00ad93a0::Slot09_ad8ca0()
 {
     return true;
+}
+
+// FUNCTION: 0x00949b47 nohook
+uint32_t cUnk00ad75a0::Slot10_acec00()
+{
+    return 0;
 }
 
 // FUNCTION: 0x00949b47 nohook
@@ -6526,10 +6520,34 @@ uint32_t cUnk00ad75a0::Slot15_acec00()
     return 0;
 }
 
-// FUNCTION: 0x00949b47 nohook
-uint32_t cUnk00ad75a0::Slot10_acec00()
+// FUNCTION: 0x00949b73 nohook
+void cUnk00ad75a0::Slot22_acec00(uint32_t)
 {
-    return 0;
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cUnk00ad75a0::Slot17_acec00(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cUnk00acd7a0::Slot05_acd504(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cUnk00ad75a0::Slot12_acec00(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cUnk00ad75a0::Slot27_acec00(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cUnk00ad75a0::Slot36_acec00(uint32_t)
+{
 }
 
 // FUNCTION: 0x00949b73 nohook
@@ -6542,44 +6560,8 @@ void cUnk00ad725c::Slot03_ad725c(uint32_t)
 {
 }
 
-// FUNCTION: 0x00949b73 nohook
-void cUnk00ad75a0::Slot36_acec00(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00ad75a0::Slot27_acec00(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00ad75a0::Slot22_acec00(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00ad75a0::Slot17_acec00(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00ad75a0::Slot12_acec00(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00acd7a0::Slot05_acd504(uint32_t)
-{
-}
-
 // FUNCTION: 0x0094a5ea nohook
-bool cUnk00ad7cf0::Slot18_ad1818()
-{
-    return false;
-}
-
-// FUNCTION: 0x0094a5ea nohook
-bool cUnk00ace174::Slot04_ace174()
+bool cUnk00ad75a0::Slot31_acec00()
 {
     return false;
 }
@@ -6591,7 +6573,13 @@ bool cUnk00ad75a0::Slot34_acec00()
 }
 
 // FUNCTION: 0x0094a5ea nohook
-bool cUnk00ad75a0::Slot31_acec00()
+bool cUnk00ace174::Slot04_ace174()
+{
+    return false;
+}
+
+// FUNCTION: 0x0094a5ea nohook
+bool cUnk00ad7cf0::Slot18_ad1818()
 {
     return false;
 }
@@ -6615,13 +6603,13 @@ bool cUnk00ad48a0::Slot19_ad48a0()
 }
 
 // FUNCTION: 0x009683e0
-uint32_t cUnk00add578::Slot14_add348()
+uint32_t cUnk00ae1a78::Slot04_ae1a28()
 {
     return fielddc;
 }
 
 // FUNCTION: 0x009683e0 nohook
-uint32_t cUnk00ae1a78::Slot04_ae1a28()
+uint32_t cUnk00add578::Slot14_add348()
 {
     return fielddc;
 }
@@ -6640,12 +6628,12 @@ void cUnk00ad87d0::Slot15_ad8488(uint32_t value)
 }
 
 // FUNCTION: 0x0096e960 nohook
-void cUnk00a827d8::Slot00_a827d8(uint32_t, uint32_t)
+void cUnk00a827d8::Slot01_a827d8(uint32_t, uint32_t)
 {
 }
 
 // FUNCTION: 0x0096e960 nohook
-void cUnk00a827d8::Slot01_a827d8(uint32_t, uint32_t)
+void cUnk00a827d8::Slot00_a827d8(uint32_t, uint32_t)
 {
 }
 
@@ -6794,13 +6782,13 @@ uint32_t cUnk00ae3af4::Slot08_ae3a84()
 }
 
 // FUNCTION: 0x00995d93 nohook
-uint32_t cUnk00acec00::Slot20_acec00()
+uint32_t cUnk00acec00::Slot19_acec00()
 {
     return field18;
 }
 
 // FUNCTION: 0x00995d93 nohook
-uint32_t cUnk00acec00::Slot19_acec00()
+uint32_t cUnk00acec00::Slot20_acec00()
 {
     return field18;
 }
@@ -6818,25 +6806,25 @@ uint32_t cUnk00ad93a0::Slot14_ad8ca0()
 }
 
 // FUNCTION: 0x00999165 nohook
-uint32_t cUnk00ad93a0::Slot11_ad8fc8()
-{
-    return field38;
-}
-
-// FUNCTION: 0x00999165 nohook
 uint32_t cUnk00ad4908::Slot12_ad4908()
 {
     return field38;
 }
 
+// FUNCTION: 0x00999165 nohook
+uint32_t cUnk00ad93a0::Slot11_ad8fc8()
+{
+    return field38;
+}
+
 // FUNCTION: 0x0099b7ee nohook
-uint32_t cUnk00ad4908::Slot16_ad4908()
+uint32_t cUnk00ad48a0::Slot22_ad48a0()
 {
     return field48;
 }
 
 // FUNCTION: 0x0099b7ee nohook
-uint32_t cUnk00ad48a0::Slot22_ad48a0()
+uint32_t cUnk00ad4908::Slot16_ad4908()
 {
     return field48;
 }
@@ -6848,13 +6836,13 @@ uint32_t cUnk00ad4908::Slot17_ad4908()
 }
 
 // FUNCTION: 0x0099be66 nohook
-uint32_t cUnk00acec00::Slot09_acec00()
+uint32_t cUnk00acec00::Slot10_acec00()
 {
     return field10;
 }
 
 // FUNCTION: 0x0099be66 nohook
-uint32_t cUnk00acec00::Slot10_acec00()
+uint32_t cUnk00acec00::Slot09_acec00()
 {
     return field10;
 }
@@ -6988,13 +6976,13 @@ bool cUnk00addd50::Slot38_adda20(uint32_t value)
 }
 
 // FUNCTION: 0x009c32ac nohook
-uint32_t cUnk00abfed0::Slot26_abfed0()
+uint32_t cUnk00ad4908::Slot03_ad4908()
 {
     return field8;
 }
 
 // FUNCTION: 0x009c32ac nohook
-uint32_t cUnk00ad4908::Slot03_ad4908()
+uint32_t cUnk00abfed0::Slot26_abfed0()
 {
     return field8;
 }
@@ -7043,13 +7031,13 @@ uint32_t cUnk00acec00::Slot04_acec00()
 }
 
 // FUNCTION: 0x009cfbba
-uint32_t cUnk00ae3a44::Slot11_ae37b4()
+uint32_t cUnk00ae3240::Slot14_ae2ef0()
 {
     return field130;
 }
 
 // FUNCTION: 0x009cfbba nohook
-uint32_t cUnk00ae3240::Slot14_ae2ef0()
+uint32_t cUnk00ae3a44::Slot11_ae37b4()
 {
     return field130;
 }
@@ -7079,6 +7067,12 @@ uint32_t cUnk00ad4908::Slot21_ad4908()
 }
 
 // FUNCTION: 0x009d4714 nohook
+uint32_t cUnk00acec00::Slot14_acec00()
+{
+    return field14;
+}
+
+// FUNCTION: 0x009d4714 nohook
 uint32_t cUnk00acec00::Slot15_acec00()
 {
     return field14;
@@ -7088,12 +7082,6 @@ uint32_t cUnk00acec00::Slot15_acec00()
 uint32_t cUnk00ad87d0::Slot14_ad8ca0()
 {
     return field18;
-}
-
-// FUNCTION: 0x009d4714 nohook
-uint32_t cUnk00acec00::Slot14_acec00()
-{
-    return field14;
 }
 
 // FUNCTION: 0x009d65e6
@@ -7127,13 +7115,13 @@ uint32_t cUnk00acec00::Slot32_acec00()
 }
 
 // FUNCTION: 0x009d858f nohook
-uint32_t cUnk00ad4908::Slot06_ad4908()
+uint32_t cUnk00ad48a0::Slot03_ad4830()
 {
     return field24;
 }
 
 // FUNCTION: 0x009d858f nohook
-uint32_t cUnk00ad48a0::Slot03_ad4830()
+uint32_t cUnk00ad4908::Slot06_ad4908()
 {
     return field24;
 }
@@ -7145,13 +7133,13 @@ uint32_t cUnk00ae4628::Slot13_ace6f8()
 }
 
 // FUNCTION: 0x009db37a nohook
-uint32_t cUnk00ad4908::Slot14_ad4908()
+uint32_t cUnk00ad48a0::Slot20_ad48a0()
 {
     return field40;
 }
 
 // FUNCTION: 0x009db37a nohook
-uint32_t cUnk00ad48a0::Slot20_ad48a0()
+uint32_t cUnk00ad4908::Slot14_ad4908()
 {
     return field40;
 }
@@ -7163,12 +7151,12 @@ uint32_t cUnk00ad4908::Slot11_ad4908()
 }
 
 // FUNCTION: 0x009dd6e0
-void cUnk00ae4c30::Slot01_ae4c30()
+void cUnk00ae4c30::Slot02_ae4c30()
 {
 }
 
 // FUNCTION: 0x009dd6e0 nohook
-void cUnk00ae4c30::Slot02_ae4c30()
+void cUnk00ae4c30::Slot01_ae4c30()
 {
 }
 

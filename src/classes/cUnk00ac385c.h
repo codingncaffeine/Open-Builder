@@ -24,7 +24,7 @@ public:
     virtual uint32_t Slot11_ac385c();
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot03_ac34cc();
+    virtual uint32_t Slot03_ac34cc();
     virtual uint32_t Slot04_ac34cc(uint32_t);
     virtual bool Slot05_ac34cc(uint32_t);
     virtual bool Slot06_ac34cc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
@@ -33,10 +33,10 @@ public:
     virtual bool Slot09_ac34cc();
     virtual bool Slot10_ac34cc();
     virtual uint32_t Slot03_ac34f8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot03_ac3508(uint32_t);
-    virtual void Slot04_ac3508(uint32_t, uint32_t);
-    virtual void Slot05_ac3508(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot06_ac3508(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot03_ac3508(bool);
+    virtual void Slot04_ac3508(uint32_t, bool);
+    virtual void Slot05_ac3508(float, float, float, float);
+    virtual void Slot06_ac3508(uint32_t, const void*, const void*, const void*);
     virtual void Slot07_ac3508(uint32_t, uint32_t, uint32_t);
     virtual void Slot08_ac3508(uint32_t, uint32_t);
     virtual void Slot09_ac3508(uint32_t, uint32_t);
@@ -123,11 +123,38 @@ public:
     virtual bool Shutdown();
     virtual bool IsDeviceReady();
     virtual bool Punt(unsigned int, void *);
-    virtual uint32_t Slot03_ac3684(uint32_t);
-    virtual uint32_t Slot04_ac3684(uint32_t);
+    virtual uint32_t Slot03_ac3684(void*);
+    virtual uint32_t Slot04_ac3684(void*);
     virtual bool Slot05_ac3684(uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot06_ac3684();
-    char unknown1c[0x16c];
+    // STUB: 0x0087cc40
+    void Fn0087cc40();
+    // STUB: 0x0087c240
+    void Fn0087c240();
+    // STUB: 0x0087c1b0
+    void Fn0087c1b0(int32_t first, int32_t count);
+    // STUB: 0x0087dca0
+    void Fn0087dca0(int32_t count, uint32_t type, const void* indices);
+    uint32_t mnLastError;
+    bool mbIgnoreGLError;
+    char unknown21[0x3];
+    uint32_t mnStage;
+    char unknown28[0x7c];
+    float mfRedMultiplier;
+    float mfGreenMultiplier;
+    float mfBlueMultiplier;
+    float mfAlphaMultiplier;
+    char unknownb4[0x1c];
+    int32_t mnWidth;
+    int32_t mnHeight;
+    char unknownd8[0x15];
+    bool mbStencil;
+    bool mbDoubleBuffer;
+    char unknownef[0x1];
+    uint32_t mnStageCount;
+    bool mbMultitexture;
+    bool mbCombine;
+    char unknownf6[0x92];
     uint32_t field188;
     char unknown18c[0x18];
 };

@@ -18,7 +18,7 @@ struct OB_NOVTABLE cUnk00ac2f70_0 {
     virtual uint32_t Slot07_ac2f70(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot08_ac2f70(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t Slot09_ac2f70(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot10_ac2f70() = 0;
+    virtual void* Slot10_ac2f70() = 0;
 };
 
 // VTABLE: 0x00ac2f70 cUnk00ac2f70_0
@@ -46,8 +46,12 @@ public:
     virtual uint32_t Slot07_ac2f70(uint32_t, uint32_t, uint32_t);
     virtual void Slot08_ac2f70(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot09_ac2f70(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual uint32_t Slot10_ac2f70();
-    char unknown8[0xc];
+    virtual void* Slot10_ac2f70();
+    // STUB: 0x00878ced
+    uint32_t Fn00878ced(uint32_t);
+    int32_t mnRefCount;
+    float mfValue;
+    void* mpInner;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac2f70[sizeof(cUnk00ac2f70) == 0x14 ? 1 : -1];

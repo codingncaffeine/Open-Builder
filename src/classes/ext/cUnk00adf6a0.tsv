@@ -1,0 +1,7 @@
+field dc cIGZUnknown* mpChild
+field e0 uint8_t mbValueA
+field e4 uint32_t mnValueB
+field e8 int32_t mnRect[4]
+field f8 uint32_t mnFlags
+method 0x009bc447 void Fn009bc447(void*)
+method 0x0099bc31 bool Fn0099bc31()

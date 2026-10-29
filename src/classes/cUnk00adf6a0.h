@@ -36,7 +36,16 @@ public:
     virtual void Slot11_adf63c(uint32_t, uint32_t);
     virtual bool Slot04_adb6a8();
     virtual bool Slot05_adb6a8();
-    char unknowndc[0x20];
+    // STUB: 0x009bc447
+    void Fn009bc447(void*);
+    // STUB: 0x0099bc31
+    bool Fn0099bc31();
+    cIGZUnknown* mpChild;
+    uint8_t mbValueA;
+    char unknowne1[0x3];
+    uint32_t mnValueB;
+    int32_t mnRect[4];
+    uint32_t mnFlags;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adf6a0[sizeof(cUnk00adf6a0) == 0xfc ? 1 : -1];

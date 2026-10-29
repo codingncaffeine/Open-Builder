@@ -5,6 +5,7 @@ EXPORTS
   GetCurrentProcess
   FlushInstructionCache
   LoadLibraryA
+  CompareStringA
   GetProcAddress
   GetSystemDirectoryA
   CreateFileA

@@ -11,8 +11,8 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual uint32_t Slot03_ac3684(uint32_t) = 0;
-    virtual uint32_t Slot04_ac3684(uint32_t) = 0;
+    virtual uint32_t Slot03_ac3684(void*) = 0;
+    virtual uint32_t Slot04_ac3684(void*) = 0;
     virtual bool Slot05_ac3684(uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t Slot06_ac3684() = 0;
 };

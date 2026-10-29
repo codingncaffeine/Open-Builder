@@ -1,0 +1,18 @@
+field ed bool mbStencil
+field 1c uint32_t mnLastError
+field b0 float mfAlphaMultiplier
+method 0x0087cc40 void Fn0087cc40()
+field a4 float mfRedMultiplier
+field a8 float mfGreenMultiplier
+field ac float mfBlueMultiplier
+field d0 int32_t mnWidth
+field d4 int32_t mnHeight
+field ee bool mbDoubleBuffer
+field 20 bool mbIgnoreGLError
+field 24 uint32_t mnStage
+field f0 uint32_t mnStageCount
+field f4 bool mbMultitexture
+field f5 bool mbCombine
+method 0x0087c240 void Fn0087c240()
+method 0x0087c1b0 void Fn0087c1b0(int32_t first, int32_t count)
+method 0x0087dca0 void Fn0087dca0(int32_t count, uint32_t type, const void* indices)

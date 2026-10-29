@@ -23,7 +23,7 @@ public:
     virtual bool Slot12_ac47ec();
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot03_ac34cc();
+    virtual uint32_t Slot03_ac34cc();
     virtual uint32_t Slot04_ac34cc(uint32_t);
     virtual bool Slot05_ac34cc(uint32_t);
     virtual bool Slot06_ac34cc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
@@ -32,10 +32,10 @@ public:
     virtual bool Slot09_ac34cc();
     virtual bool Slot10_ac34cc();
     virtual uint32_t Slot03_ac34f8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot03_ac3508(uint32_t);
-    virtual void Slot04_ac3508(uint32_t, uint32_t);
-    virtual void Slot05_ac3508(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot06_ac3508(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot03_ac3508(bool);
+    virtual void Slot04_ac3508(uint32_t, bool);
+    virtual void Slot05_ac3508(float, float, float, float);
+    virtual void Slot06_ac3508(uint32_t, const void*, const void*, const void*);
     virtual void Slot07_ac3508(uint32_t, uint32_t, uint32_t);
     virtual void Slot08_ac3508(uint32_t, uint32_t);
     virtual void Slot09_ac3508(uint32_t, uint32_t);

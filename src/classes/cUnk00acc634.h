@@ -21,7 +21,7 @@ public:
     virtual uint32_t Slot12_acc634();
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot03_ac34cc();
+    virtual uint32_t Slot03_ac34cc();
     virtual uint32_t Slot04_ac34cc(uint32_t);
     virtual bool Slot05_ac34cc(uint32_t);
     virtual bool Slot06_ac34cc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
