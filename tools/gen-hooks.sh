@@ -66,8 +66,9 @@ for obj in "$objdir"/*.obj; do
   objdump -t "$obj" | awk '/\(ty +20\)\(scl +2\)/ && $NF ~ /^\?/ {print ($0 ~ /\(sec +0\)/ ? "U" : "D") "\t" $NF}'
 done | sort -u >"$symbols.kind"
 cut -f2 "$symbols.kind" >"$symbols.raw"
-# llvm-undname echoes each name, then prints the result and a blank line: keep the results
-paste "$symbols.kind" <(llvm-undname <"$symbols.raw" | awk 'NR % 3 == 2') | awk -F'\t' "$canon"'
+# llvm-undname echoes each name, then prints the result (nothing for a name it cannot read) and a blank line: one
+# block per name, its result or the name itself
+paste "$symbols.kind" <(llvm-undname <"$symbols.raw" 2>/dev/null | awk 'BEGIN { RS = ""; FS = "\n" } { print ($2 != "" ? $2 : $1) }') | awk -F'\t' "$canon"'
   {
     undefined = $1 == "U"; $1 = $2; $2 = $3
     if (undefined) {

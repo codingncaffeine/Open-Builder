@@ -29,5 +29,5 @@ done | sort -u >"$work/raw"
 # The original's address for each of our vtable symbols, then the demangled slot functions.
 awk 'NR == FNR { orig[$2] = $1; next } ($1 in orig) { print orig[$1] "\t" $2 "\t" $3 }' "$work/annotations" "$work/raw" |
   sort -k1,1 -k2,2n >"$work/joined"
-paste "$work/joined" <(cut -f3 "$work/joined" | llvm-undname | awk 'NR % 3 == 2') >"$out"
+paste "$work/joined" <(cut -f3 "$work/joined" | llvm-undname 2>/dev/null | awk 'BEGIN { RS = ""; FS = "\n" } { print ($2 != "" ? $2 : $1) }') >"$out"
 echo "$(wc -l <"$out") slots of $(cut -f1 "$out" | sort -u | wc -l) vtables"
