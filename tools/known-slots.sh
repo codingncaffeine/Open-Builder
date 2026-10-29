@@ -30,6 +30,10 @@ done | sort -u >"$work/raw"
 # A hand class no object holds a vtable of (an interface: its own vtable holds only _purecall, which names no slot):
 # a probe class deriving from it redeclares every pure virtual of it and its bases, so the probe's vtable names each
 # slot's function, compiled (not linked) here; the probe's name in them is put back to the class's.
+# (a vtable holding _purecall names no slot: its rows are dropped, and it is probed like one no object holds)
+awk -F'\t' '$3 == "__purecall" { print $1 }' "$work/raw" | sort -u >"$work/pure"
+awk -F'\t' 'NR == FNR { pure[$1] = 1; next } !($1 in pure)' "$work/pure" "$work/raw" >"$work/raw.named"
+mv "$work/raw.named" "$work/raw"
 probes=scratch/known-probe
 rm -rf "$probes"
 awk 'NR == FNR { have[$1] = 1; next } !($2 in have) && $2 ~ /^\?\?_7[A-Za-z0-9_]+@@6B@$/ { print $2 }' "$work/raw" "$work/annotations" |

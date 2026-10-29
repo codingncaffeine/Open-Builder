@@ -685,19 +685,24 @@ int main(int argc, char** argv) {
 
     // Intermediates the class can do without: a class overriding a method introduced in a non-primary base gets that
     // base subobject as this already (no thunk), so the overrides go into the class itself, unless one of their names
-    // is also one the class overrides with another function (one class cannot hold both: then the intermediate stays).
+    // is also one the class overrides with another function (one class cannot hold both: then the intermediate stays),
+    // or the method is in the primary vtable too (then the compiler takes the class's this and makes a thunk, which
+    // the original does not have: the intermediate stays).
     std::map<std::string, std::string> foldedInto, foldedRoot;  // intermediate -> its class; -> its base (vtable name)
     for (auto& [p, m] : models) {
         if (!m.ok || m.hand) continue;
         std::map<std::string, std::map<std::string, uint32_t>> named;  // owner -> name -> function
         for (auto& d : m.decls) named[d.owner][idents[find(d.ident)].name] = d.function;
+        std::set<std::string> primaryNames;
+        for (int id : m.ids[0])
+            if (id >= 0) primaryNames.insert(idents[find(id)].name);
         for (auto& s : m.subs) {
             if (!s.base || !s.intermediate) continue;
             std::string in = m.name + "_" + hexn(uint32_t(s.off));
             bool clash = false;
             for (auto& [n, fn] : named[in]) {
                 auto it = named[m.name].find(n);
-                clash |= it != named[m.name].end() && it->second != fn;
+                clash |= (it != named[m.name].end() && it->second != fn) || primaryNames.count(n);
             }
             if (clash) continue;
             for (auto& d : m.decls)
@@ -763,7 +768,7 @@ int main(int argc, char** argv) {
         for (auto& d : m.decls) {
             int root = find(d.ident);
             if (conflicted.count(root)) { m.ok = false; m.why = "merged slots of different names: " + idents[root].name; return false; }
-            auto key = std::make_pair(d.owner, idents[root].name);
+            auto key = std::make_pair(d.owner, idents[root].decl);  // overloads are different methods
             auto it = byName.find(key);
             if (it != byName.end() && it->second != d.function) {
                 m.ok = false;
@@ -1079,6 +1084,7 @@ int main(int argc, char** argv) {
                 extMethods[p].push_back({a, decl});
                 continue;
             }
+            if (kw == "slot") continue;  // read with the signatures above
             if (kw != "field") { bad("unknown line"); continue; }
             std::string off, rest;
             ss >> off;
@@ -1145,11 +1151,19 @@ int main(int argc, char** argv) {
     std::set<std::pair<std::string, int>> bodied;  // owner, identity: defined, so no stub
     {
         std::vector<Body> keep;
-        for (auto& b : bodies)
-            if (b.holder.empty() || regions[b.holder].fields.count(b.off)) {
-                keep.push_back(b);
-                bodied.insert({b.owner, b.root});
+        for (auto& b : bodies) {
+            if (!b.holder.empty() && !regions[b.holder].fields.count(b.off)) continue;
+            // a field named by hand as a pointer: the generated getter or setter of an integer would need a cast,
+            // so the method stays the original's (a stub) until its signature says pointer
+            if (!b.holder.empty()) {
+                const Field& fd = regions[b.holder].fields[b.off];
+                bool pointer = !fd.type.empty() && fd.type.back() == '*' && fd.name.find('[') == std::string::npos;
+                bool address = b.shape->kind == "get" && b.shape->detail[0] == "a";
+                if (pointer && !address && (b.shape->kind != "get" || sigs[b.root].ret != 'P')) continue;
             }
+            keep.push_back(b);
+            bodied.insert({b.owner, b.root});
+        }
         bodies.swap(keep);
     }
     // The members of a holder's own data from start to end: its fields, and padding between them.
@@ -1192,7 +1206,7 @@ int main(int argc, char** argv) {
         std::vector<std::pair<uint32_t, std::string>> stubList;
         auto emit = [&](const std::string& owner, int id, uint32_t fn, bool pure) {
             const Ident& n = nameOf(id);
-            if (!seenName[owner].insert(n.name).second) return;
+            if (!seenName[owner].insert(n.decl).second) return;
             body[owner].push_back("virtual " + n.decl + (pure ? " = 0;" : ";"));
             // operator= is ??4Class@@..., every other method ?Name@Class@@...
             std::string head = n.name == "operator=" ? "??4" : "?" + n.name + "@";
@@ -1229,7 +1243,7 @@ int main(int argc, char** argv) {
                 if (it != fnOf.end()) {
                     emit(sn, id, it->second, false);
                     d << "    virtual " << nameOf(id).decl << ";\n";
-                } else if (seenName[sn].insert(nameOf(id).name).second) {
+                } else if (seenName[sn].insert(nameOf(id).decl).second) {
                     d << "    virtual " << nameOf(id).decl << " = 0;\n";
                 }
             }
@@ -1252,7 +1266,7 @@ int main(int argc, char** argv) {
                 }
                 auto it = fnOf.find({m.name, find(ids[j])});
                 if (it != fnOf.end()) emit(m.name, ids[j], it->second, false);
-                else if (seenName[m.name].insert(n.name).second) body[m.name].push_back("virtual " + n.decl + " = 0;");
+                else if (seenName[m.name].insert(n.decl).second) body[m.name].push_back("virtual " + n.decl + " = 0;");
                 if (!body[m.name].empty()) { lines.push_back(body[m.name].back()); body[m.name].pop_back(); }
             }
         }
@@ -1260,7 +1274,7 @@ int main(int argc, char** argv) {
         for (auto& [key, fn] : fnOf)
             if (key.first == m.name) emit(m.name, key.second, fn, false);
         for (int id : m.pureAgain)
-            if (seenName[m.name].insert(nameOf(id).name).second) body[m.name].push_back("virtual " + nameOf(id).decl + " = 0;");
+            if (seenName[m.name].insert(nameOf(id).decl).second) body[m.name].push_back("virtual " + nameOf(id).decl + " = 0;");
         for (auto& line : body[m.name]) lines.push_back(line);
         for (auto& [a, decl] : extMethods[p]) {
             if (a != "-") lines.push_back("// STUB: 0x" + hex8(parseHex(a)));
