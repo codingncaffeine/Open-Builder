@@ -17,7 +17,7 @@ public:
     virtual uint32_t Slot05_a80784();
     virtual bool Slot03_a81120(uint32_t);
     virtual bool Slot04_a81120();
-    virtual bool Slot03_aaaa9c(uint32_t);
+    virtual bool Slot03_aaaa9c(void*);
     virtual void Slot09_a812cc();
     char unknownc0[0x10];
 };

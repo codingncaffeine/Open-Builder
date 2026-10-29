@@ -8,10 +8,10 @@
 
 // The subobject at +0x0 (vtable 0x00ad8468): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad8468_0 {
-    virtual bool Slot00_ad8468(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ad8468(uint32_t, void*) = 0;
     virtual uint32_t Slot01_ad8468() = 0;
-    virtual void Slot02_ad8468() = 0;
-    virtual bool Slot03_ad8468(uint32_t) = 0;
+    virtual uint32_t Slot02_ad8468() = 0;
+    virtual bool Slot03_ad8468(void*) = 0;
     virtual uint32_t Slot04_ad8468() = 0;
     virtual uint32_t Slot05_ad8468() = 0;
     virtual ~cUnk00ad8468_0() {}
@@ -52,14 +52,16 @@ public:
     virtual bool Slot29_abfe50(uint32_t, uint32_t, uint32_t);
     virtual void Slot30_abfe50(uint32_t, uint32_t);
     virtual bool Slot31_abfe50(uint32_t, uint32_t);
-    virtual bool Slot00_ad8468(uint32_t, uint32_t);
+    virtual bool Slot00_ad8468(uint32_t, void*);
     virtual uint32_t Slot01_ad8468();
-    virtual void Slot02_ad8468();
-    virtual bool Slot03_ad8468(uint32_t);
+    virtual uint32_t Slot02_ad8468();
+    virtual bool Slot03_ad8468(void*);
     virtual uint32_t Slot04_ad8468();
     virtual uint32_t Slot05_ad8468();
-    char unknown8[0x4];
-    uint32_t fieldc;
+    // STUB: 0x0096dc6e
+    void Fn0096dc6e();
+    uint32_t mnRefCount;
+    void* mpTarget;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad8468[sizeof(cUnk00ad8468) == 0x10 ? 1 : -1];

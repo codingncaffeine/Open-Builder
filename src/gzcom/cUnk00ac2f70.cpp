@@ -80,6 +80,7 @@ static inline float* FloatOut_ac2f70(uint32_t p)
     return reinterpret_cast<float*>(p);
 }
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x008787d7 score 4 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
 void cUnk00ac2f70::Slot05_ac2f70()
 {
@@ -87,7 +88,9 @@ void cUnk00ac2f70::Slot05_ac2f70()
         Fn00949ade(Inner_ac2f70(mpInner)->Fn17());
     }
 }
+#endif
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x008787ee score 4 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
 void cUnk00ac2f70::Slot06_ac2f70(uint32_t a, uint32_t b, uint32_t c)
 {
@@ -99,6 +102,7 @@ void cUnk00ac2f70::Slot06_ac2f70(uint32_t a, uint32_t b, uint32_t c)
         *FloatOut_ac2f70(c) = v[2];
     }
 }
+#endif
 
 // FUNCTION: 0x00878823
 uint32_t cUnk00ac2f70::Slot07_ac2f70(uint32_t a, uint32_t b, uint32_t c)
@@ -143,6 +147,7 @@ uint32_t cUnk00ac2f70::Slot09_ac2f70(uint32_t a, uint32_t b, uint32_t c, uint32_
     return Inner_ac2f70(mpInner)->Fn13(AsFloat_ac2f70(a), AsFloat_ac2f70(b), AsFloat_ac2f70(c), AsFloat_ac2f70(d), AsFloat_ac2f70(e), AsFloat_ac2f70(f), 1) == 0;
 }
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x00878a74 score 6 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
 void cUnk00ac2f70::Slot07_ac2ad8(uint32_t a)
 {
@@ -152,7 +157,9 @@ void cUnk00ac2f70::Slot07_ac2ad8(uint32_t a)
         *FloatOut_ac2f70(a) = 0.0f;
     }
 }
+#endif
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x00878ae3 score 6 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
 void cUnk00ac2f70::Slot09_ac2ad8(uint32_t a)
 {
@@ -162,7 +169,9 @@ void cUnk00ac2f70::Slot09_ac2ad8(uint32_t a)
         *FloatOut_ac2f70(a) = 0.0f;
     }
 }
+#endif
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x00878a94 score 8 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
 bool cUnk00ac2f70::Slot08_ac2ad8(uint32_t a)
 {
@@ -171,7 +180,9 @@ bool cUnk00ac2f70::Slot08_ac2ad8(uint32_t a)
     }
     return true;
 }
+#endif
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x00878b03 score 8 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
 bool cUnk00ac2f70::Slot10_ac2ad8(uint32_t a)
 {
@@ -180,6 +191,7 @@ bool cUnk00ac2f70::Slot10_ac2ad8(uint32_t a)
     }
     return true;
 }
+#endif
 
 // FUNCTION: 0x00878ab9
 bool cUnk00ac2f70::Slot12_ac2ad8(uint32_t a)
@@ -274,7 +286,7 @@ struct cBaseView_ac2f70 {
     virtual bool Fn12(float value);
 };
 
-static inline cBaseView_ac2f70* ViewOfBase_ac2f70(cUnk00ac2f70* p)
+inline cBaseView_ac2f70* ViewOfBase_ac2f70(cUnk00ac2f70* p)
 {
     return reinterpret_cast<cBaseView_ac2f70*>(reinterpret_cast<char*>(p) + sizeof(cUnk00ac2f70_0));
 }
@@ -295,6 +307,7 @@ struct cHolderB_ac2f70 {
     ~cHolderB_ac2f70();
 };
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x00878d11 score 20
 bool cUnk00ac2f70::Slot03_ac2f70()
 {
@@ -312,3 +325,4 @@ bool cUnk00ac2f70::Slot03_ac2f70()
     }
     return true;
 }
+#endif

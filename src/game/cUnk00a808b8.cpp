@@ -219,10 +219,10 @@ struct ThirdBaseView {
 };
 
 // FUNCTION: 0x004082f0
-bool cUnk00a808b8::Slot04_a80784(uint32_t pStream)
+bool cUnk00a808b8::Slot04_a80784(void* pStream)
 {
     ThirdBaseView* v = reinterpret_cast<ThirdBaseView*>(reinterpret_cast<char*>(this) + 0xc);
-    StreamView* stream = reinterpret_cast<StreamView*>(pStream);
+    StreamView* stream = static_cast<StreamView*>(pStream);
     uint16_t version;
     uint32_t count;
     uint32_t value;
@@ -257,10 +257,10 @@ bool cUnk00a808b8::Slot04_a80784(uint32_t pStream)
 }
 
 // FUNCTION: 0x00408090
-bool cUnk00a808b8::Slot03_a80784(uint32_t pStream)
+bool cUnk00a808b8::Slot03_a80784(void* pStream)
 {
     ThirdBaseView* v = reinterpret_cast<ThirdBaseView*>(reinterpret_cast<char*>(this) + 0xc);
-    StreamWriteView* stream = reinterpret_cast<StreamWriteView*>(pStream);
+    StreamWriteView* stream = static_cast<StreamWriteView*>(pStream);
     std::list<uint32_t>& list = *reinterpret_cast<std::list<uint32_t>*>(&v->mpListNode);
     stream->Write16(4);
     stream->Write32(v->mn7c);
@@ -485,6 +485,7 @@ struct OutOfLineRef {
     RefTarget** operator&();
 };
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x00407c50 score 8 (only the eax/edx choice for the vtable of the call through the third base differs)
 bool cUnk00a808b8::Slot05_a80710(uint32_t pOut)
 {
@@ -528,3 +529,4 @@ bool cUnk00a808b8::Slot05_a80710(uint32_t pOut)
     }
     return false;
 }
+#endif

@@ -17,8 +17,8 @@ public:
     virtual void Slot47_adb418(uint32_t);
     virtual bool Slot48_adb418(uint32_t, uint32_t, uint32_t);
     virtual bool Slot00_ac1400(uint32_t, uint32_t);
-    virtual void Slot01_ac1400();
-    virtual void Slot02_ac1400();
+    virtual uint32_t Slot01_ac1400();
+    virtual uint32_t Slot02_ac1400();
     virtual bool Slot04_ac1400();
     virtual bool Slot05_ac1400();
     virtual bool Slot06_ac1400(uint32_t);
@@ -26,7 +26,7 @@ public:
     virtual void Slot11_ac1400(uint32_t);
     virtual void* Slot12_ac1400();
     virtual bool Slot20_ac1400(uint32_t, uint32_t, uint32_t);
-    virtual void Slot29_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot29_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot39_ac1400();
     virtual void* Slot03_adb310();
     virtual bool Slot04_adb310(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
@@ -52,9 +52,17 @@ public:
     virtual void Slot27_adb310();
     virtual void Slot28_adb310();
     virtual void Slot29_adb310();
+    // STUB: 0x00826640
+    void Fn00826640();
     bool field50;
-    char unknown51[0x13];
-    char field64[0x24];
+    char unknown51[0x3];
+    int32_t mnRectA[4];
+    int32_t mnRectB[4];
+    void* mpUnk74;
+    void* mpSurface78;
+    void* mpUnk7c;
+    uint32_t mn80;
+    void* mpUnk84;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adb418[sizeof(cUnk00adb418) == 0x88 ? 1 : -1];

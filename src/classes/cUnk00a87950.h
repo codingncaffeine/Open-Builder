@@ -11,13 +11,13 @@ struct OB_NOVTABLE cUnk00a87950_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_a87950() = 0;
-    virtual void Slot04_a87950() = 0;
+    virtual bool Slot03_a87950() = 0;
+    virtual bool Slot04_a87950() = 0;
     virtual uint32_t Slot05_a87950() = 0;
     virtual void Slot06_a87950(uint32_t) = 0;
-    virtual bool Slot07_a87950(uint32_t, uint32_t) = 0;
-    virtual void Slot08_a87950(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot09_a87950(uint32_t) = 0;
+    virtual int8_t Slot07_a87950(int32_t, int32_t) = 0;
+    virtual int8_t Slot08_a87950(int32_t, int32_t, int32_t, int32_t) = 0;
+    virtual void Slot09_a87950(int32_t) = 0;
     virtual uint32_t Slot10_a87950() = 0;
     virtual uint32_t Slot11_a87950() = 0;
     virtual uint32_t Slot12_a87950() = 0;
@@ -27,15 +27,15 @@ struct OB_NOVTABLE cUnk00a87950_0 {
     virtual float Slot16_a87950() = 0;
     virtual float Slot17_a87950() = 0;
     virtual uint32_t Slot18_a87950(uint32_t, uint32_t) = 0;
-    virtual void Slot19_a87950(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot20_a87950(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot21_a87950(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual bool Slot22_a87950(uint32_t, uint32_t) = 0;
-    virtual void Slot23_a87950(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot19_a87950(float, float, void*, void*) = 0;
+    virtual void Slot20_a87950(int32_t, int32_t, void*, void*) = 0;
+    virtual void Slot21_a87950(int32_t, int32_t, void*, void*) = 0;
+    virtual int8_t Slot22_a87950(uint32_t, uint32_t) = 0;
+    virtual int8_t Slot23_a87950(int32_t, int32_t, int32_t, int32_t) = 0;
     virtual void* Slot24_a87950() = 0;
     virtual void* Slot25_a87950() = 0;
-    virtual void Slot26_a87950(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot27_a87950() = 0;
+    virtual void Slot26_a87950(uint32_t, uint32_t, int8_t) = 0;
+    virtual void Slot27_a87950(int8_t) = 0;
     virtual ~cUnk00a87950_0() {}
 };
 
@@ -45,19 +45,19 @@ struct OB_NOVTABLE cUnk00a87950_0 {
 class cUnk00a87950 : public cUnk00a87950_0, public cUnk00a80784 {
 public:
     virtual ~cUnk00a87950() {}
-    virtual bool Slot03_a80784(uint32_t);
-    virtual bool Slot04_a80784(uint32_t);
+    virtual bool Slot03_a80784(void*);
+    virtual bool Slot04_a80784(void*);
     virtual uint32_t Slot05_a80784();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_a87950();
-    virtual void Slot04_a87950();
+    virtual bool Slot03_a87950();
+    virtual bool Slot04_a87950();
     virtual uint32_t Slot05_a87950();
     virtual void Slot06_a87950(uint32_t);
-    virtual bool Slot07_a87950(uint32_t, uint32_t);
-    virtual void Slot08_a87950(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot09_a87950(uint32_t);
+    virtual int8_t Slot07_a87950(int32_t, int32_t);
+    virtual int8_t Slot08_a87950(int32_t, int32_t, int32_t, int32_t);
+    virtual void Slot09_a87950(int32_t);
     virtual uint32_t Slot10_a87950();
     virtual uint32_t Slot11_a87950();
     virtual uint32_t Slot12_a87950();
@@ -67,26 +67,30 @@ public:
     virtual float Slot16_a87950();
     virtual float Slot17_a87950();
     virtual uint32_t Slot18_a87950(uint32_t, uint32_t);
-    virtual void Slot19_a87950(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot20_a87950(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot21_a87950(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot22_a87950(uint32_t, uint32_t);
-    virtual void Slot23_a87950(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot19_a87950(float, float, void*, void*);
+    virtual void Slot20_a87950(int32_t, int32_t, void*, void*);
+    virtual void Slot21_a87950(int32_t, int32_t, void*, void*);
+    virtual int8_t Slot22_a87950(uint32_t, uint32_t);
+    virtual int8_t Slot23_a87950(int32_t, int32_t, int32_t, int32_t);
     virtual void* Slot24_a87950();
     virtual void* Slot25_a87950();
-    virtual void Slot26_a87950(uint32_t, uint32_t, uint32_t);
-    virtual void Slot27_a87950();
-    char unknown8[0x8];
-    uint32_t field10;
-    uint32_t field14;
-    uint32_t field18;
-    uint32_t field1c;
-    uint32_t field20;
-    uint32_t field24;
-    float field28;
-    float field2c;
-    float field30;
-    float field34;
+    virtual void Slot26_a87950(uint32_t, uint32_t, int8_t);
+    virtual void Slot27_a87950(int8_t);
+    // STUB: 0x0045f9f0
+    void Fn0045f9f0();
+    bool mbDirty;
+    char unknown9[0x3];
+    int32_t mnRefCount;
+    int32_t mnUnk10;
+    int32_t mnUnk14;
+    int32_t mnCellSize;
+    int32_t mnShift;
+    int32_t mnCols;
+    int32_t mnRows;
+    float mfCellW;
+    float mfCellH;
+    float mfInvW;
+    float mfInvH;
     char field38[0xc];
 };
 #ifdef _MSC_VER

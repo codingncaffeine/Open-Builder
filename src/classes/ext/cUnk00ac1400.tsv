@@ -1,0 +1,3 @@
+slot Slot01_ac1400 uint32_t
+slot Slot02_ac1400 uint32_t
+slot Slot29_ac1400 bool uint32_t uint32_t uint32_t uint32_t

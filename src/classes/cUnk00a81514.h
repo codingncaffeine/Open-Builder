@@ -14,13 +14,13 @@
 class cUnk00a81514 : public cUnk00a812cc {
 public:
     virtual ~cUnk00a81514();
-    virtual bool Slot03_a80784(uint32_t);
-    virtual bool Slot04_a80784(uint32_t);
+    virtual bool Slot03_a80784(void*);
+    virtual bool Slot04_a80784(void*);
     virtual uint32_t Slot05_a80784();
     virtual bool QueryInterface(unsigned int, void **);
     virtual bool Slot03_a81120(uint32_t);
     virtual bool Slot04_a81120();
-    virtual bool Slot03_aaaa9c(uint32_t);
+    virtual bool Slot03_aaaa9c(void*);
     virtual void Slot09_a812cc();
     char unknownc0[0x1c];
 };

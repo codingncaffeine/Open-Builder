@@ -66,12 +66,12 @@ public:
     virtual uint32_t Slot33_ad8ca0(uint32_t);
     virtual bool Slot34_ad8ca0(uint32_t, uint32_t, uint32_t);
     virtual bool Slot35_ad8ca0(uint32_t, uint32_t);
-    virtual bool Slot36_ad8ca0(uint32_t);
-    virtual bool Slot37_ad8ca0(uint32_t);
+    virtual bool Slot36_ad8ca0(void*);
+    virtual bool Slot37_ad8ca0(void*);
     virtual bool Slot38_ad8ca0(uint32_t);
     virtual uint32_t Slot39_ad8ca0(uint32_t, uint32_t, uint32_t);
     virtual bool Slot40_ad8ca0(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot00_ad8fc8(uint32_t, uint32_t);
+    virtual bool Slot00_ad8fc8(uint32_t, void*);
     virtual uint32_t Slot01_ad8fc8();
     virtual uint32_t Slot02_ad8fc8();
     virtual bool Slot04_ad8fc8(uint32_t, uint32_t, uint32_t);

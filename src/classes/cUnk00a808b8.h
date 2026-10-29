@@ -43,8 +43,8 @@ public:
     virtual uint32_t Slot26_a80710();
     virtual uint32_t Slot27_a80710();
     virtual void Slot28_a80710();
-    virtual bool Slot03_a80784(uint32_t);
-    virtual bool Slot04_a80784(uint32_t);
+    virtual bool Slot03_a80784(void*);
+    virtual bool Slot04_a80784(void*);
     virtual uint32_t Slot05_a80784();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();

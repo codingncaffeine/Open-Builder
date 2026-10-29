@@ -2,6 +2,7 @@
 # Scores every function of one source file against the original in one compile: each "// FUNCTION: 0x..." and each
 # "// CLOSE: 0x... score N" draft, one line each, then the totals. Also compiles the file with the other folder's
 # flags (/O1 vs /O2) and says when those match better (a class in the wrong folder).
+# Drafts sit inside #ifdef OB_DRAFTS (tools/wrap-drafts.sh); this defines it.
 #   tools/score.sh <file.cpp> [--flags "..."]      exit 0 = every function scores 0
 # Listings per function as with permute.sh: scratch/perm/<address>/want.txt (original) vs j0/got.txt (ours).
 set -euo pipefail
@@ -35,7 +36,7 @@ common=(/nologo /c /Isdk /Isrc /Ihook /Ithird_party/stlport-4.6/stlport /D_STLP_
   /D_STLP_USE_NEWALLOC /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE "/I$(dirname "$file")")
 compile() {  # flags, object
   # shellcheck disable=SC2086
-  timeout -k 5 120 tools/vc71.sh cl "${common[@]}" $1 "/Fo$2" "$copy" >"$2.log" 2>&1 || true
+  timeout -k 5 120 tools/vc71.sh cl "${common[@]}" /DOB_DRAFTS $1 "/Fo$2" "$copy" >"$2.log" 2>&1 || true
   [[ -f "$2" ]]
 }
 compile "$flags" "$work/t.obj" || { grep -E 'error|fatal' "$work/t.obj.log" | head -20; echo "does not compile"; exit 2; }

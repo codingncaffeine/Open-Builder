@@ -24,8 +24,8 @@ public:
     virtual void Slot14_a85218(uint32_t);
     virtual void Slot15_a85218(uint32_t, uint32_t);
     virtual uint32_t Slot16_a85218();
-    virtual bool Slot03_a80784(uint32_t);
-    virtual bool Slot04_a80784(uint32_t);
+    virtual bool Slot03_a80784(void*);
+    virtual bool Slot04_a80784(void*);
     virtual uint32_t Slot05_a80784();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
@@ -34,7 +34,7 @@ public:
     virtual bool Slot04_a81120();
     virtual void* Slot08_a81120();
     virtual bool Slot19_a81120(uint32_t);
-    virtual bool Slot03_aaaa9c(uint32_t);
+    virtual bool Slot03_aaaa9c(void*);
     virtual void Slot06_a81204();
     virtual void Slot07_a81204();
     virtual void Slot08_a81204();

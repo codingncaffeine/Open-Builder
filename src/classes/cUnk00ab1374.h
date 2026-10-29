@@ -12,7 +12,7 @@
 class cUnk00ab1374 : public cUnk00aa42c8 {
 public:
     virtual ~cUnk00ab1374();
-    virtual bool Slot03_a80784(uint32_t);
+    virtual bool Slot03_a80784(void*);
     virtual void Slot03_aa42c8(uint32_t);
 };
 #ifdef _MSC_VER

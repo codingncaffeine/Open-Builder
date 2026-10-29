@@ -8,7 +8,7 @@
 // SIZE 0x10
 class cUnk00ad8ca0 {
 public:
-    virtual bool Slot00_ad8fc8(uint32_t, uint32_t);
+    virtual bool Slot00_ad8fc8(uint32_t, void*);
     virtual uint32_t Slot01_ad8fc8();
     virtual uint32_t Slot02_ad8fc8();
     virtual bool Slot04_ad8fc8(uint32_t, uint32_t, uint32_t) = 0;
@@ -31,10 +31,10 @@ public:
     virtual uint32_t Slot20_ad8ca0(uint32_t);
     virtual bool Slot21_ad8ca0(uint32_t, uint32_t, uint32_t);
     virtual bool Slot22_ad8ca0(uint32_t, uint32_t);
-    virtual bool Slot23_ad8ca0(uint32_t);
-    virtual bool Slot24_ad8ca0(uint32_t);
-    virtual bool Slot25_ad8ca0(uint32_t);
-    virtual bool Slot26_ad8ca0(uint32_t);
+    virtual bool Slot23_ad8ca0(void*);
+    virtual bool Slot24_ad8ca0(void*);
+    virtual bool Slot25_ad8ca0(void*);
+    virtual bool Slot26_ad8ca0(void*);
     virtual bool Slot27_ad8ca0(uint32_t);
     virtual uint32_t Slot28_ad8ca0(uint32_t, uint32_t, uint32_t);
     virtual bool Slot29_ad8ca0(uint32_t, uint32_t, uint32_t);
@@ -44,12 +44,13 @@ public:
     virtual uint32_t Slot33_ad8ca0(uint32_t) = 0;
     virtual bool Slot34_ad8ca0(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot35_ad8ca0(uint32_t, uint32_t) = 0;
-    virtual bool Slot36_ad8ca0(uint32_t) = 0;
-    virtual bool Slot37_ad8ca0(uint32_t) = 0;
+    virtual bool Slot36_ad8ca0(void*) = 0;
+    virtual bool Slot37_ad8ca0(void*) = 0;
     virtual bool Slot38_ad8ca0(uint32_t) = 0;
     virtual uint32_t Slot39_ad8ca0(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot40_ad8ca0(uint32_t, uint32_t, uint32_t) = 0;
-    char unknown4[0xc];
+    uint32_t mnRefCount;
+    uint32_t mLock[2];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad8ca0[sizeof(cUnk00ad8ca0) == 0x10 ? 1 : -1];

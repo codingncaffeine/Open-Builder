@@ -22,8 +22,8 @@ struct OB_NOVTABLE cUnk00ab29b0_0 {
 // SIZE 0xc
 class cUnk00ab29b0 : public cUnk00ab29b0_0, public cUnk00a80784 {
 public:
-    virtual bool Slot03_a80784(uint32_t);
-    virtual bool Slot04_a80784(uint32_t);
+    virtual bool Slot03_a80784(void*);
+    virtual bool Slot04_a80784(void*);
     virtual uint32_t Slot05_a80784();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();

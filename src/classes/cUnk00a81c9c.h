@@ -19,7 +19,7 @@ public:
     virtual bool Slot03_a81120(uint32_t);
     virtual bool Slot04_a81120();
     virtual bool Slot20_a81120(uint32_t);
-    virtual bool Slot03_aaaa9c(uint32_t);
+    virtual bool Slot03_aaaa9c(void*);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a81c9c[sizeof(cUnk00a81c9c) == 0xc0 ? 1 : -1];

@@ -37,8 +37,8 @@ public:
     virtual bool Slot89_a9bd88(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot90_a9bd88(uint32_t, uint32_t);
     virtual uint32_t Slot91_a9bd88(uint32_t, uint32_t);
-    virtual bool Slot03_a80784(uint32_t);
-    virtual bool Slot04_a80784(uint32_t);
+    virtual bool Slot03_a80784(void*);
+    virtual bool Slot04_a80784(void*);
     virtual bool Slot03_a95880();
     virtual bool Slot04_a95880();
     virtual bool Slot08_a95880(uint32_t, uint32_t);

@@ -8,8 +8,8 @@
 class cUnk00adb310 {
 public:
     virtual bool Slot00_ac1400(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ac1400() = 0;
-    virtual void Slot02_ac1400() = 0;
+    virtual uint32_t Slot01_ac1400() = 0;
+    virtual uint32_t Slot02_ac1400() = 0;
     virtual void* Slot03_adb310() = 0;
     virtual bool Slot04_adb310(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot04_ac1400() = 0;

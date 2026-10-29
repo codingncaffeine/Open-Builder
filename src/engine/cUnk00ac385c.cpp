@@ -499,6 +499,7 @@ struct sWindowCreate_ac385c {
     const char* mpszClass;
 };
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x0087f0e0 score 6 (the original reads, ors and writes the style through a register; ours ors in memory)
 uint32_t cUnk00ac385c::Slot03_ac3684(void* create)
 {
@@ -510,6 +511,7 @@ uint32_t cUnk00ac385c::Slot03_ac3684(void* create)
     gpOpenGLDriver = this;
     return 1;
 }
+#endif
 
 // FUNCTION: 0x0087c330
 void cUnk00ac385c::DrawArrays(unsigned int primitive, int first, int count)
@@ -540,6 +542,7 @@ void cUnk00ac385c::TexStageCombine(eGDTextureStageCombineMode mode, eGDTextureSt
 }
 
 // The viewport as its corners: left, top, right, bottom.
+#ifdef OB_DRAFTS
 // CLOSE: 0x0087dab0 score 27 (the original keeps the pointer in ebx and computes both sums before storing)
 void cUnk00ac385c::GetViewport(int* corners)
 {
@@ -554,6 +557,7 @@ void cUnk00ac385c::GetViewport(int* corners)
     corners[2] = right;
     corners[3] = bottom;
 }
+#endif
 
 // FUNCTION: 0x0087d170
 void cUnk00ac385c::TexStageCombine(eGDTextureStageCombineSource source, eGDTextureStageCombineValue value)

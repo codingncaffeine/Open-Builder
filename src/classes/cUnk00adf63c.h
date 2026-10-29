@@ -17,7 +17,7 @@ public:
     virtual void Slot07_adf63c(uint32_t, uint32_t) = 0;
     virtual void Slot08_adf63c(uint32_t) = 0;
     virtual void Slot09_adf63c(uint32_t) = 0;
-    virtual uint32_t Slot10_adf63c(uint32_t) = 0;
+    virtual bool Slot10_adf63c(uint32_t) = 0;
     virtual void Slot11_adf63c(uint32_t, uint32_t) = 0;
 };
 

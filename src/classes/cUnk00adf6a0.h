@@ -32,7 +32,7 @@ public:
     virtual void Slot07_adf63c(uint32_t, uint32_t);
     virtual void Slot08_adf63c(uint32_t);
     virtual void Slot09_adf63c(uint32_t);
-    virtual uint32_t Slot10_adf63c(uint32_t);
+    virtual bool Slot10_adf63c(uint32_t);
     virtual void Slot11_adf63c(uint32_t, uint32_t);
     virtual bool Slot04_adb6a8();
     virtual bool Slot05_adb6a8();

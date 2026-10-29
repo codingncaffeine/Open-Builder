@@ -316,6 +316,7 @@ struct Made_aa1170 {
 void Fn005bff50(Made_aa1170* out, uint32_t b, uint32_t c, uint32_t* p);
 
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x005c05e0 score 71 (this/a swap ebp/edi)
 bool cUnk00aa1170::Slot12_aa1170(uint32_t a, uint32_t b, uint32_t c)
 {
@@ -357,6 +358,7 @@ bool cUnk00aa1170::Slot12_aa1170(uint32_t a, uint32_t b, uint32_t c)
     }
     return r;
 }
+#endif
 
 struct RecF_aa1170 {
     uint8_t mnCount;
@@ -417,6 +419,7 @@ struct cHolder_aa1170 {
 // STUB: 0x005e5620
 void FnDelete(void* p);
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x005bfac0 score 53 (the original keeps the target in memory and reloads it; the null-lookup return sits out of line)
 bool cUnk00aa1170::Slot09_aa1170(uint32_t a)
 {
@@ -465,3 +468,4 @@ bool cUnk00aa1170::Slot09_aa1170(uint32_t a)
     look->Release();
     return true;
 }
+#endif

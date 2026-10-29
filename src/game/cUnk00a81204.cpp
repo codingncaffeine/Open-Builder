@@ -411,6 +411,7 @@ struct ObMap {
     void Fn0040e050(ObMapNode* node);
 };
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x0040ed30 score 116 (the callee 0x40da10 takes ecx = object and the caller pops its stack arguments: a static helper
 // with a custom convention the compiler cannot be asked for from outside; the rest of the body is untuned)
 bool cUnk00a81204::Slot04_a81120()
@@ -460,6 +461,7 @@ bool cUnk00a81204::Slot04_a81120()
     }
     return true;
 }
+#endif
 
 // The stream the object is saved to: only the slots used here are named.
 struct ObStream {
@@ -488,9 +490,9 @@ struct ObStream {
 void Fn005d99a0(ObStream* stream, void* object);   // writes a component by reference
 
 // FUNCTION: 0x0040e2e0
-bool cUnk00a81204::Slot03_a80784(uint32_t a)
+bool cUnk00a81204::Slot03_a80784(void* a)
 {
-    ObStream* stream = reinterpret_cast<ObStream*>(a);
+    ObStream* stream = static_cast<ObStream*>(a);
     stream->WriteHeader(3);
     stream->Write32(mnType);
     stream->WriteBlock(field18);

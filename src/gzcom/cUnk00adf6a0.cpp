@@ -105,7 +105,7 @@ void cUnk00adf6a0::Slot09_adf63c(uint32_t a)
 }
 
 // FUNCTION: 0x009bc171
-uint32_t cUnk00adf6a0::Slot10_adf63c(uint32_t a)
+bool cUnk00adf6a0::Slot10_adf63c(uint32_t a)
 {
     return (mnFlags & a) != 0;
 }
@@ -278,16 +278,17 @@ struct cRenderer_adf6a0 {
 // STUB: 0x008d8800
 void Fn008d8800(cRenderer_adf6a0* r, cIGZUnknown* c, const int32_t* src, const int32_t* dst, uint32_t v);
 
-static inline cRenderer_adf6a0*& Rd_adf6a0(uint32_t& f)
+inline cRenderer_adf6a0*& Rd_adf6a0(uint32_t& f)
 {
     return *reinterpret_cast<cRenderer_adf6a0**>(&f);
 }
 
-static inline int32_t* Pos_adf6a0(char* f)
+inline int32_t* Pos_adf6a0(char* f)
 {
     return reinterpret_cast<int32_t*>(f);
 }
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x009bc325 score 64 (stack slots of the two rects swapped, the copy source is held in eax first)
 bool cUnk00adf6a0::Slot88_adc8d8()
 {
@@ -326,3 +327,4 @@ bool cUnk00adf6a0::Slot88_adc8d8()
     }
     return true;
 }
+#endif

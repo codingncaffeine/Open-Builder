@@ -1,0 +1,25 @@
+field 8 bool mbDirty
+field c int32_t mnRefCount
+field 10 int32_t mnUnk10
+field 14 int32_t mnUnk14
+field 18 int32_t mnCellSize
+field 1c int32_t mnShift
+field 20 int32_t mnCols
+field 24 int32_t mnRows
+field 28 float mfCellW
+field 2c float mfCellH
+field 30 float mfInvW
+field 34 float mfInvH
+method 0x0045f9f0 void Fn0045f9f0()
+slot Slot03_a878c0 bool
+slot Slot04_a878c0 bool
+slot Slot07_a878c0 uint8_t int32_t int32_t
+slot Slot08_a878c0 uint8_t int32_t int32_t int32_t int32_t
+slot Slot09_a878c0 void int32_t
+slot Slot19_a878c0 void float float void* void*
+slot Slot20_a878c0 void int32_t int32_t void* void*
+slot Slot21_a878c0 void int32_t int32_t void* void*
+slot Slot22_a878c0 uint8_t uint32_t uint32_t
+slot Slot23_a878c0 uint8_t int32_t int32_t int32_t int32_t
+slot Slot26_a878c0 void uint32_t uint32_t uint8_t
+slot Slot27_a878c0 void uint8_t

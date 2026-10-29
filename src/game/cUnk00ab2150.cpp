@@ -204,17 +204,21 @@ void cUnk00ab2150::Slot15_ab2150()
     d->mnMaskA = 0;
 }
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x006d6e10 score 9 (the original adds 0x18 to ecx once and stores through [ecx+n]; the compiler folds the offset into every store)
 void cUnk00ab2150::Slot19_ab2150(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
 {
     Of_ab2150(this)->mVecA.Set(a, b, c, d);
 }
+#endif
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x006d6e40 score 9 (same as 0x006d6e10, offset 0x28)
 void cUnk00ab2150::Slot20_ab2150(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
 {
     Of_ab2150(this)->mVecB.Set(a, b, c, d);
 }
+#endif
 
 // FUNCTION: 0x006d6e80
 void cUnk00ab2150::Slot22_ab2150()
@@ -393,6 +397,7 @@ bool cUnk00ab2150::Slot03_ab2150()
     return false;
 }
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x006d61e0 score 204 (register allocation: the original keeps node/next in esi/edi and y, ny, dir, width on the stack)
 bool cUnk00ab2150::Slot30_ab2150()
 {
@@ -448,3 +453,4 @@ bool cUnk00ab2150::Slot30_ab2150()
     }
     return true;
 }
+#endif

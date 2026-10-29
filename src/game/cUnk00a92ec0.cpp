@@ -42,6 +42,7 @@ uint32_t cUnk00a92ec0::Slot01_a92ec0()
     return n;
 }
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x004de4e0 score 2
 uint32_t cUnk00a92ec0::Slot02_a92ec0()
 {
@@ -58,6 +59,7 @@ uint32_t cUnk00a92ec0::Slot02_a92ec0()
     delete this;
     return 0;
 }
+#endif
 
 // FUNCTION: 0x004de530
 bool cUnk00a92ec0::Slot06_a92ec0()
@@ -131,6 +133,7 @@ struct cGameNotify {
 // GLOBAL: 0x00b43c94
 extern cGameNotify* gpNotify;
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x004de600 score 10
 void cUnk00a92ec0::Slot09_a92ec0(uint32_t flag)
 {
@@ -138,6 +141,7 @@ void cUnk00a92ec0::Slot09_a92ec0(uint32_t flag)
     gpSettings->mbFlag = on;
     gpNotify->Refresh();
 }
+#endif
 
 // FUNCTION: 0x004def60
 void cUnk00a92ec0::Slot14_a92ec0(void* other)
@@ -237,6 +241,7 @@ struct cLockScope {
 };
 
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x004def90 score 51 (scored against the whole function, size 0x10b; the map cuts it at 0x18; the original keeps a zero in ebx)
 bool cUnk00a92ec0::Slot08_a92ec0()
 {
@@ -271,6 +276,8 @@ bool cUnk00a92ec0::Slot08_a92ec0()
     }
     return ok;
 }
+#endif
+#ifdef OB_DRAFTS
 // CLOSE: 0x004dedf0 score 16 (the std::string temporary of dir + name must outlive the copy)
 bool cUnk00a92ec0::Slot13_a92ec0(void* out)
 {
@@ -289,3 +296,4 @@ bool cUnk00a92ec0::Slot13_a92ec0(void* out)
     *dest = StrAt(this, 0x2c);
     return true;
 }
+#endif

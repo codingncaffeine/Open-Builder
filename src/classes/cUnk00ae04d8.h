@@ -13,12 +13,12 @@
 class cUnk00ae04d8 : public cUnk00adc8d8, public cUnk00ae074c {
 public:
     virtual ~cUnk00ae04d8();
-    virtual bool Slot151_ae04d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot151_ae04d8(void*, uint32_t, uint32_t);
     virtual void Slot152_ae04d8();
     virtual void Slot153_ae04d8();
     virtual uint32_t Slot154_ae04d8();
     virtual uint32_t Slot155_ae04d8();
-    virtual bool Slot156_ae04d8(uint32_t);
+    virtual bool Slot156_ae04d8(float);
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
@@ -42,10 +42,34 @@ public:
     virtual void Slot11_ae074c(uint32_t);
     virtual bool Slot12_ae074c(uint32_t, uint32_t);
     virtual bool Slot13_ae074c(uint32_t, uint32_t);
-    uint32_t fielddc;
-    uint32_t fielde0;
-    uint32_t fielde4;
-    char unknowne8[0x3c];
+    // STUB: 0x0099bc31
+    bool Fn0099bc31();
+    // STUB: 0x0099bdfe
+    bool Fn0099bdfe();
+    // STUB: 0x0099be0a
+    bool Fn0099be0a();
+    // STUB: 0x0099be1e
+    void Fn0099be1e();
+    // STUB: 0x009c3381
+    void Fn009c3381();
+    // STUB: 0x009c34a3
+    void Fn009c34a3();
+    uint32_t mnMode;
+    int32_t mnMin;
+    int32_t mnMax;
+    float mfRatio;
+    int32_t mnEC;
+    int32_t mnF0;
+    int32_t mnF4;
+    int32_t mnF8;
+    int32_t mnFC;
+    int32_t mn100;
+    int32_t mn104;
+    int32_t mn108;
+    bool mbBusy;
+    char unknown10d[0x3];
+    void* mpChild;
+    int32_t mnRect[4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae04d8[sizeof(cUnk00ae04d8) == 0x124 ? 1 : -1];

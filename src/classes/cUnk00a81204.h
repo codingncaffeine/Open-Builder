@@ -20,8 +20,8 @@ public:
     virtual void Slot06_a81204();
     virtual void Slot07_a81204();
     virtual void Slot08_a81204();
-    virtual bool Slot03_a80784(uint32_t);
-    virtual bool Slot04_a80784(uint32_t);
+    virtual bool Slot03_a80784(void*);
+    virtual bool Slot04_a80784(void*);
     virtual uint32_t Slot05_a80784();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
@@ -44,7 +44,7 @@ public:
     virtual bool Slot18_a81120(uint32_t, uint32_t);
     virtual bool Slot19_a81120(uint32_t);
     virtual bool Slot20_a81120(uint32_t);
-    virtual bool Slot03_aaaa9c(uint32_t);
+    virtual bool Slot03_aaaa9c(void*);
     // STUB: 0x0040df90
     void Fn0040df90(void* entry);
     uint32_t mnType;

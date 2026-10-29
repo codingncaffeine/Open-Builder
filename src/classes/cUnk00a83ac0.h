@@ -33,7 +33,7 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot03_aaaa9c(uint32_t);
+    virtual bool Slot03_aaaa9c(void*);
     virtual void Slot03_a83ac0(uint32_t, uint32_t);
     virtual bool Slot04_a83ac0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot06_a83ac0(uint32_t);

@@ -9,8 +9,8 @@
 // The subobject at +0x0 (vtable 0x00ac1400): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ac1400_0 {
     virtual bool Slot00_ac1400(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ac1400() = 0;
-    virtual void Slot02_ac1400() = 0;
+    virtual uint32_t Slot01_ac1400() = 0;
+    virtual uint32_t Slot02_ac1400() = 0;
     virtual void Slot03_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot04_ac1400() = 0;
     virtual bool Slot05_ac1400() = 0;
@@ -37,7 +37,7 @@ struct OB_NOVTABLE cUnk00ac1400_0 {
     virtual bool Slot26_ac1400(uint32_t) = 0;
     virtual void Slot27_ac1400() = 0;
     virtual bool Slot28_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot29_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot29_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t Slot30_ac1400(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot31_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t Slot32_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
@@ -66,8 +66,8 @@ public:
     virtual bool Slot03_ac13d8(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot04_ac13d8(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot00_ac1400(uint32_t, uint32_t);
-    virtual void Slot01_ac1400();
-    virtual void Slot02_ac1400();
+    virtual uint32_t Slot01_ac1400();
+    virtual uint32_t Slot02_ac1400();
     virtual void Slot03_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot04_ac1400();
     virtual bool Slot05_ac1400();
@@ -94,7 +94,7 @@ public:
     virtual bool Slot26_ac1400(uint32_t);
     virtual void Slot27_ac1400();
     virtual bool Slot28_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot29_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot29_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot30_ac1400(uint32_t, uint32_t, uint32_t);
     virtual bool Slot31_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot32_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);

@@ -1,0 +1,21 @@
+field 1c uint32_t mnRefCount
+field 54 uint32_t mn54
+field 6c uint32_t mn6c
+field b8 void* mpB8
+field c8 void** mpEntryBegin
+field cc void** mpEntryEnd
+field e8 uint32_t mnE8
+field 194 uint32_t mn194
+field 1a8 uint32_t mnValues[7]
+method 0x008fe7b8 void Fn008fe7b8()
+method 0x008ffac2 void Fn008ffac2()
+method 0x00905cf0 void Fn00905cf0(uint32_t)
+method 0x009080a2 bool Fn009080a2()
+slot Slot05_acd938 void void*
+slot Slot06_acd938 uint32_t void* int32_t
+slot Slot07_acd938 void void* int32_t
+slot Slot08_acd938 void void*
+slot Slot13_acd938 void* uint32_t
+slot Slot21_acd938 bool void*
+slot Slot22_acd938 void void* void*
+slot Slot23_acd938 void void* void*

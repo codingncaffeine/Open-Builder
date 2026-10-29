@@ -18,7 +18,7 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot03_aaaa9c(uint32_t);
+    virtual bool Slot03_aaaa9c(void*);
     virtual bool Slot88_adc8d8();
     virtual uint32_t Slot03_ab889c();
     virtual void Slot04_ab889c(uint32_t);

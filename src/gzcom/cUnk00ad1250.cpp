@@ -346,6 +346,7 @@ bool cUnk00ad1250::Slot29_ad1250()
     return t == 0xf || t == 0x11 || t == 0x12 || t == 0x14 || t == 0x13;
 }
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x0092580a score 119 (the original shares one "sete al" tail between the compare cases)
 bool cUnk00ad1250::Slot24_ad1250(uint32_t id)
 {
@@ -392,6 +393,7 @@ bool cUnk00ad1250::Slot24_ad1250(uint32_t id)
     }
     return false;
 }
+#endif
 
 // FUNCTION: 0x009279b0
 bool cUnk00ad1250::Slot11_ad1250(void* pSink)
@@ -475,6 +477,7 @@ bool cUnk00ad1250::Slot11_ad1250(void* pSink)
     return ok;
 }
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x00927bee score 7 (the original leaves the argument cleanup of the first call to the caller and loads the target vtable first)
 bool cUnk00ad1250::Slot19_ad1250(double value, void* pTarget, void* pSource)
 {
@@ -483,7 +486,9 @@ bool cUnk00ad1250::Slot19_ad1250(double value, void* pTarget, void* pSource)
     target->Set_ad1250(source->Get_ad1250(value));
     return true;
 }
+#endif
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x00928fdd score 7 (the original keeps this in esi and bumps it with add where this spelling uses lea)
 bool cUnk00ad1250::Slot03_ad1250()
 {
@@ -494,6 +499,7 @@ bool cUnk00ad1250::Slot03_ad1250()
     Fn00923d58();
     return true;
 }
+#endif
 
 // FUNCTION: 0x00927e7e
 void cUnk00ad1250::Slot20_ad1250(void* pSource, void* pText)
@@ -531,6 +537,7 @@ int32_t cUnk00ad1250::Slot22_ad1250(void* pFirst, void* pSecond, bool caseSensit
     return result;
 }
 
+#ifdef OB_DRAFTS
 // CLOSE: 0x009284ba score unknown (the tool cannot score jump-table functions; this spelling makes the table but starts it at 1 where the original compares 1 and 0x2a first and tables 2..0x2c)
 bool cUnk00ad1250::Slot09_ad1250(int32_t hour, int32_t minute, int32_t second, void* pSink)
 {
@@ -645,3 +652,4 @@ bool cUnk00ad1250::Slot09_ad1250(int32_t hour, int32_t minute, int32_t second, v
     static_cast<Sink_ad1250*>(pSink)->Put_ad1250(text.ToChar());
     return true;
 }
+#endif

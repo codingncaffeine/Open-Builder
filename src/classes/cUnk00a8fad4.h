@@ -11,8 +11,8 @@
 // SIZE 0x10
 class cUnk00a8fad4 : public cUnk00a84b44 {
 public:
-    virtual bool Slot03_a80784(uint32_t);
-    virtual bool Slot04_a80784(uint32_t);
+    virtual bool Slot03_a80784(void*);
+    virtual bool Slot04_a80784(void*);
     virtual uint32_t Slot05_a80784();
     virtual void Slot03_aa42c8(uint32_t);
 };

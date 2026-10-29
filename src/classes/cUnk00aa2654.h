@@ -34,7 +34,7 @@ public:
     virtual bool Slot06_ad8ca0(uint32_t, uint32_t);
     virtual bool Slot07_ad8ca0();
     virtual bool Slot08_ad8ca0();
-    virtual bool Slot00_ad8fc8(uint32_t, uint32_t);
+    virtual bool Slot00_ad8fc8(uint32_t, void*);
     virtual uint32_t Slot01_ad8fc8();
     virtual uint32_t Slot02_ad8fc8();
     virtual bool Slot05_ad8fc8();

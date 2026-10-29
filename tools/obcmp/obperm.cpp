@@ -918,7 +918,7 @@ int main(int argc, char** argv) {
         }
         if (flags.empty()) flags = "/O2 /GX- /W3";
     }
-    std::string common = "/nologo /c /Isdk /Isrc /Ihook /Ithird_party/stlport-4.6/stlport /D_STLP_DONT_FORCE_MSVC_LIB_NAME "
+    std::string common = "/nologo /c /DOB_DRAFTS /Isdk /Isrc /Ihook /Ithird_party/stlport-4.6/stlport /D_STLP_DONT_FORCE_MSVC_LIB_NAME "
                          "/D_STLP_USE_NEWALLOC /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE /I" +
                          quote(fs::path(file).parent_path().string());
 
