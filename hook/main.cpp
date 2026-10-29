@@ -65,13 +65,21 @@ char* AppendNumber(char* out, unsigned long value, unsigned base, int width)
 }
 
 // Rewrites ob-hooks.txt every two seconds: "<original address> <calls> <name>" per hooked function.
+// Only the hooked ones: the others are never reached through a counter. The buffer holds every line.
 DWORD __stdcall Report(LPVOID)
 {
-    static char text[64 * 1024];
+    unsigned long size = 1;
+    for (unsigned i = 0; i < g_hookCount; ++i) {
+        size += 32;  // "0x" + 8 digits + " " + up to 10 digits + " " + "\r\n"
+        for (const char* c = g_hooks[i].name; *c; ++c) ++size;
+    }
+    char* text = static_cast<char*>(VirtualAlloc(0, size, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE));
+    if (!text) return 0;
     for (;;) {
         Sleep(2000);
         char* out = text;
-        for (unsigned i = 0; i < g_hookCount && out < text + sizeof text - 256; ++i) {
+        for (unsigned i = 0; i < g_hookCount; ++i) {
+            if (!g_hooks[i].hook) continue;
             out = Append(out, "0x");
             out = AppendNumber(out, g_hooks[i].original, 16, 8);
             out = Append(out, " ");

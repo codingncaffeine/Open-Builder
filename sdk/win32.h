@@ -14,6 +14,7 @@ typedef unsigned int UINT;
 typedef DWORD (__stdcall* LPTHREAD_START_ROUTINE)(LPVOID);
 
 #define DLL_PROCESS_ATTACH 1
+#define PAGE_READWRITE 0x04
 #define PAGE_EXECUTE_READWRITE 0x40
 #define MEM_COMMIT 0x1000
 #define MEM_RESERVE 0x2000
