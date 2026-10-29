@@ -167,6 +167,12 @@ inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t
     std::map<uint32_t, size_t> index;
     uint32_t codeEnd = size;
     uint64_t firstTable = ~uint64_t(0);  // the lowest table address past the code, inside the extent or just after it
+    // The tables' contents compare too (which case goes where). Entries: the bound of the `cmp r,N; ja default` before
+    // the indexing instruction (N + 1); a jump table indexed through a byte table has (largest byte + 1) entries.
+    struct Table { uint64_t at; bool bytes; long count; };  // count -1: from the byte table before it; 0: unknown
+    std::vector<Table> tables;
+    long lastCmp = -1;
+    bool afterBytes = false;
     for (uint32_t off = 0; off < codeEnd;) {
         ZydisDecodedInstruction ins;
         ZydisDecodedOperand tops[ZYDIS_MAX_OPERAND_COUNT];
@@ -174,15 +180,28 @@ inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t
         index[off] = starts.size();
         starts.push_back(off);
         off += ins.length;
+        bool tableHere = false;
         for (uint8_t i = 0; i < ins.operand_count_visible; ++i) {
             const ZydisDecodedOperand& op = tops[i];
             if (op.type != ZYDIS_OPERAND_TYPE_MEMORY || !op.mem.disp.has_displacement) continue;
             bool scaled = op.mem.base == ZYDIS_REGISTER_NONE && op.mem.index != ZYDIS_REGISTER_NONE;
             if (!scaled && ins.mnemonic != ZYDIS_MNEMONIC_MOVZX) continue;  // jmp [r*4+table], movzx r,[r+bytes]
             uint64_t at = uint64_t(op.mem.disp.value) & 0xffffffffu;
-            if (at >= uint64_t(va) + off && at < uint64_t(va) + size + 0x400) firstTable = std::min(firstTable, at);
+            if (at >= uint64_t(va) + off && at < uint64_t(va) + size + 0x400) {
+                firstTable = std::min(firstTable, at);
+                bool bytes = ins.mnemonic == ZYDIS_MNEMONIC_MOVZX;
+                long count = bytes || !afterBytes ? (lastCmp >= 0 ? lastCmp + 1 : 0) : -1;
+                if (std::none_of(tables.begin(), tables.end(), [&](const Table& t) { return t.at == at; }))
+                    tables.push_back({at, bytes, count});
+                tableHere = true;
+                afterBytes = bytes;
+            }
             if (at >= uint64_t(va) + off && at < uint64_t(va) + codeEnd) codeEnd = uint32_t(at - va);
         }
+        if (!tableHere) afterBytes = false;
+        if (ins.mnemonic == ZYDIS_MNEMONIC_CMP && ins.operand_count_visible == 2 &&
+            tops[1].type == ZYDIS_OPERAND_TYPE_IMMEDIATE)
+            lastCmp = long(tops[1].imm.value.u & 0xffffffffu);
     }
 
     auto refer = [&](uint64_t target) -> std::string {
@@ -246,6 +265,29 @@ inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t
             }
         }
         out.push_back(std::move(tok));
+    }
+
+    // The tables after the code: "table T<place>", then one token per entry ("L<n>" for a jump, "b<n>" for an index).
+    if (!tables.empty()) {
+        while (!out.empty() && (out.back() == "int3" || out.back().rfind("nop", 0) == 0)) out.pop_back();  // alignment
+        std::sort(tables.begin(), tables.end(), [](const Table& a, const Table& b) { return a.at < b.at; });
+        long largestByte = -1;
+        for (const Table& t : tables) {
+            out.push_back("table T" + std::to_string(t.at - firstTable));
+            long count = t.count < 0 ? largestByte + 1 : t.count;
+            const uint8_t* p = count > 0 && count <= 1024 ? side.img->at(uint32_t(t.at), uint32_t(count) * (t.bytes ? 1 : 4)) : nullptr;
+            if (!p) { out.push_back("entries ?"); continue; }
+            for (long i = 0; i < count; ++i) {
+                if (t.bytes) {
+                    largestByte = std::max<long>(largestByte, p[i]);
+                    out.push_back("b" + std::to_string(p[i]));
+                } else {
+                    uint32_t e;
+                    std::memcpy(&e, p + 4 * i, 4);
+                    out.push_back(refer(e));
+                }
+            }
+        }
     }
     return out;
 }

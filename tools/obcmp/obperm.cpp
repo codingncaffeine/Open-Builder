@@ -9,9 +9,10 @@
 //
 // The function is the definition right after "// FUNCTION: 0x<address>" in file.cpp; the rest of the file is compiled
 // as it is, from the project root (run it there), with build.sh's options and the flags of the nearest FLAGS file
-// above the file (or --flags). Score = instructions in a diff of the two listings (0 = identical): mnemonics and
-// operands, jump targets inside the function as offsets from its start, addresses (the original's in the image, the
-// rebuild's relocated ones) as "A". Calls are compared by being calls, not by target (tools/match.sh does that).
+// above the file (or --flags). Score = tokens in a diff of the two listings (0 = identical), both read by the
+// tokenizer obcmp uses (pe.h): mnemonics and operands, jump targets inside the function as "L<instruction index>",
+// switch tables as "table T<place>" and their entries, addresses outside the function as "addr". Calls are compared by
+// being calls, not by target (tools/match.sh does that).
 // The best spelling is written to --out (default <work>/best.cpp, the whole file with the body replaced); comments
 // inside the body are not kept. Exit 0 when a candidate scores 0, 1 otherwise, 2 on bad input.
 
@@ -31,6 +32,8 @@
 #include <string>
 #include <thread>
 #include <vector>
+
+#include "pe.h"
 
 namespace fs = std::filesystem;
 
@@ -696,76 +699,75 @@ std::string quote(const std::string& s) {
     return q + "'";
 }
 
-// One instruction line of objdump: "mnemonic operands", jump targets in [start, end) as "L<offset>", absolute
-// addresses as "A". relocs: how many relocations the instruction has (a rebuilt object's are 0x0 in the listing).
-std::string normalise(std::string ins, uint64_t start, uint64_t end, int relocs, bool image) {
-    static const std::regex sym(" *<[^>]*>"), spaces(" +"), hexnum("0x[0-9a-f]+");
-    ins = std::regex_replace(ins, sym, "");
-    ins = std::regex_replace(ins, spaces, " ");
-    while (!ins.empty() && ins.back() == ' ') ins.pop_back();
-    std::string mn = ins.substr(0, ins.find(' '));
-    bool branch = mn[0] == 'j' || mn == "call" || mn.rfind("loop", 0) == 0;
-    if (branch && ins.find(' ') != std::string::npos) {
-        std::string op = ins.substr(ins.find(' ') + 1);
-        if (std::regex_match(op, std::regex("(0x)?[0-9a-f]+"))) {
-            uint64_t t = std::stoull(op, nullptr, 16);
-            bool inside = t >= start && t < end && mn != "call" && relocs == 0;  // a relocated target is another function
-            return mn + " " + (inside ? "L" + std::to_string(t - start) : "A");
-        }
-    }
-    // The numbers that are addresses: in the original, those inside the image; in an object, one per relocation:
-    // zeros first (an unlinked address field reads 0), then memory operands (ds:N, a displacement), then from the last.
-    struct Num { size_t pos, len; bool memory, addr; };
-    std::vector<Num> nums;
-    for (auto it = std::sregex_iterator(ins.begin(), ins.end(), hexnum); it != std::sregex_iterator(); ++it) {
-        size_t p = size_t(it->position());
-        size_t lb = ins.rfind('[', p), rb = ins.rfind(']', p);
-        bool memory = (lb != std::string::npos && (rb == std::string::npos || rb < lb)) || (p >= 3 && ins.compare(p - 3, 3, "ds:") == 0);
-        uint64_t v = std::stoull(it->str(), nullptr, 16);
-        nums.push_back({p, size_t(it->length()), memory, image && v >= 0x400000 && v < 0xc00000});
-    }
-    if (!image) {
-        int left = relocs;
-        for (auto& n : nums)
-            if (left > 0 && ins.compare(n.pos, n.len, "0x0") == 0 && n.len == 3) { n.addr = true; --left; }
-        for (auto& n : nums)
-            if (left > 0 && n.memory && !n.addr) { n.addr = true; --left; }
-        for (size_t i = nums.size(); i-- > 0 && left > 0;)
-            if (!nums[i].addr) { nums[i].addr = true; --left; }
-    }
-    std::string out;
-    size_t last = 0;
-    for (auto& n : nums) {
-        out += ins.substr(last, n.pos - last) + (n.addr ? "A" : ins.substr(n.pos, n.len));
-        last = n.pos + n.len;
-    }
-    out += ins.substr(last);
-    return out;
+// The fill after a function: int3, nops, and lea r,[r+0] (a long nop).
+void trimFill(std::vector<std::string>& t) {
+    static const std::regex longNop("lea (\\w+),\\[\\1\\+0x0\\]");
+    while (!t.empty() && (t.back() == "int3" || t.back().rfind("nop", 0) == 0 || std::regex_match(t.back(), longNop))) t.pop_back();
 }
 
-// objdump -dr of an object: every function symbol's instructions, normalised.
-std::map<std::string, std::vector<std::string>> objectListing(const std::string& obj) {
+// A rebuilt object's functions, read with the tokenizer the original goes through (pe.h). Each function's section is
+// placed in a stand-in image with the original's base and size, its relocations applied: a target in the same section
+// lands where it sits, any other symbol on its own address in the image away from the function (so it reads as an
+// address, "addr", like the original's globals and callees). Labels ($L...) and switch tables stay inside the function.
+std::map<std::string, std::vector<std::string>> objectListing(const std::string& obj, const ob::Image& orig) {
     std::map<std::string, std::vector<std::string>> fns;
-    std::string text = run("objdump -dr -M intel --no-show-raw-insn " + quote(obj) + " 2>/dev/null");
-    std::istringstream ss(text);
-    std::string line, cur;
-    struct Ins { std::string text; uint64_t at; int relocs; };
-    std::map<std::string, std::vector<Ins>> raw;
-    std::map<std::string, uint64_t> base;
-    static const std::regex head("^([0-9a-f]+) <(.*)>:$"), insn("^ *([0-9a-f]+):\t(.*)$"), rel("^\t+[0-9a-f]+: [A-Za-z0-9_]+\t.*");
-    std::smatch m;
-    while (std::getline(ss, line)) {
-        if (std::regex_match(line, m, head)) { cur = m[2]; base[cur] = std::stoull(m[1], nullptr, 16); continue; }
-        if (cur.empty()) continue;
-        if (std::regex_match(line, m, insn)) { raw[cur].push_back({m[2], std::stoull(m[1], nullptr, 16), 0}); continue; }
-        if (std::regex_match(line, rel) && !raw[cur].empty()) ++raw[cur].back().relocs;
+    std::ifstream f(obj, std::ios::binary);
+    std::vector<uint8_t> b((std::istreambuf_iterator<char>(f)), {});
+    if (b.size() < 20 || ob::rd16(b, 0) != 0x14c) return fns;
+    uint16_t nsect = ob::rd16(b, 2), optSize = ob::rd16(b, 16);
+    uint32_t symtab = ob::rd32(b, 8), nsyms = ob::rd32(b, 12);
+    if (symtab + uint64_t(nsyms) * 18 > b.size()) return fns;
+    size_t strtab = symtab + size_t(nsyms) * 18;
+    auto symName = [&](uint32_t i) {
+        size_t s = symtab + size_t(i) * 18;
+        if (ob::rd32(b, s) == 0) {
+            size_t o = strtab + ob::rd32(b, s + 4);
+            return o < b.size() ? std::string(reinterpret_cast<const char*>(b.data() + o)) : std::string();
+        }
+        return std::string(reinterpret_cast<const char*>(b.data() + s), strnlen(reinterpret_cast<const char*>(b.data() + s), 8));
+    };
+    struct Sym { std::string name; uint32_t value; int16_t section; bool function; };
+    std::vector<Sym> syms(nsyms);
+    for (uint32_t i = 0; i < nsyms; ++i) {
+        size_t s = symtab + size_t(i) * 18;
+        int16_t sec;
+        std::memcpy(&sec, b.data() + s + 12, 2);
+        syms[i] = {symName(i), ob::rd32(b, s + 8), sec, ob::rd16(b, s + 14) == 0x20};
+        i += b[s + 17];  // auxiliary records
     }
-    for (auto& [name, v] : raw) {
-        uint64_t s = base[name], e = v.empty() ? s : v.back().at + 16;
-        for (auto& i : v)
-            if (i.text.rfind("(bad)", 0) != 0) fns[name].push_back(normalise(i.text, s, e, i.relocs, false));
-        auto& f = fns[name];  // padding after the last ret is not the function
-        while (!f.empty() && (f.back() == "int3" || f.back() == "nop" || f.back().rfind("lea esi", 0) == 0)) f.pop_back();
+    const uint32_t place = orig.base + 0x1000, others = orig.base + orig.size / 2;
+    for (uint32_t i = 0; i < nsyms; ++i) {
+        const Sym& fn = syms[i];
+        if (!fn.function || fn.section <= 0 || fn.section > nsect || fn.name.empty()) continue;
+        size_t sh = 20 + optSize + size_t(fn.section - 1) * 40;
+        uint32_t rawSize = ob::rd32(b, sh + 16), raw = ob::rd32(b, sh + 20), relocs = ob::rd32(b, sh + 24);
+        uint16_t nrel = ob::rd16(b, sh + 32);
+        if (uint64_t(raw) + rawSize > b.size() || uint64_t(relocs) + nrel * 10ull > b.size()) continue;
+        // the function runs to the next function in its section, or the section's end
+        uint32_t end = rawSize;
+        for (uint32_t j = 0; j < nsyms; ++j)
+            if (syms[j].function && syms[j].section == fn.section && syms[j].value > fn.value) end = std::min(end, syms[j].value);
+        ob::Image img;
+        img.base = orig.base;
+        img.size = orig.size;
+        img.file.assign(b.begin() + raw, b.begin() + raw + rawSize);
+        img.sections.push_back({place - orig.base, rawSize, 0, rawSize, 0x60000020u});
+        auto at = [&](uint32_t s) { return syms[s].section == fn.section ? place + syms[s].value : others + 16 * s; };
+        for (uint16_t r = 0; r < nrel; ++r) {
+            size_t e = relocs + size_t(r) * 10;
+            uint32_t off = ob::rd32(b, e), s = ob::rd32(b, e + 4);
+            uint16_t type = ob::rd16(b, e + 8);
+            if (s >= nsyms || off + 4 > rawSize) continue;
+            uint32_t v = ob::rd32(img.file, off);
+            if (type == 6) v += at(s);                          // DIR32
+            else if (type == 0x14) v += at(s) - (place + off + 4);  // REL32
+            else continue;
+            std::memcpy(img.file.data() + off, &v, 4);
+        }
+        static const std::map<uint32_t, std::string> noNames;
+        auto tokens = ob::tokenize({&img, &noNames}, place + fn.value, end - fn.value);
+        trimFill(tokens);
+        fns[fn.name] = std::move(tokens);
     }
     return fns;
 }
@@ -824,19 +826,11 @@ int main(int argc, char** argv) {
         }
     }
     if (!size) { std::fprintf(stderr, "0x%x is not in %s\n", addr, pos[1].c_str()); return 2; }
-    std::vector<std::string> want;
-    {
-        char range[96];
-        std::snprintf(range, sizeof range, " --start-address=0x%x --stop-address=0x%x ", addr, addr + size);
-        std::string text = run("objdump -d -M intel --no-show-raw-insn" + std::string(range) + quote(exe));
-        std::istringstream ss(text);
-        std::string line;
-        static const std::regex insn("^ *([0-9a-f]+):\t(.*)$");
-        std::smatch m;
-        while (std::getline(ss, line))
-            if (std::regex_match(line, m, insn)) want.push_back(normalise(m[2], addr, addr + size, 0, true));
-        while (!want.empty() && (want.back() == "int3" || want.back() == "nop" || want.back().rfind("lea esi", 0) == 0)) want.pop_back();
-    }
+    ob::Image orig;
+    if (!ob::loadImage(exe, orig)) { std::fprintf(stderr, "cannot read %s\n", exe.c_str()); return 2; }
+    static const std::map<uint32_t, std::string> noNames;
+    std::vector<std::string> want = ob::tokenize({&orig, &noNames}, addr, size);
+    trimFill(want);
     if (want.empty()) { std::fprintf(stderr, "no code at 0x%x\n", addr); return 2; }
 
     // The source: the body after the annotation.
@@ -941,7 +935,7 @@ int main(int argc, char** argv) {
         run("timeout -k 5 60 tools/vc71.sh cl " + common + " " + flags + " /Fo" + quote(obj) + " " + quote(cpp) + " >/dev/null 2>&1");
         if (!fs::exists(obj)) return -1;
         long best = -1;
-        for (auto& [name, lines] : objectListing(obj))
+        for (auto& [name, lines] : objectListing(obj, orig))
             if (name.rfind(prefix, 0) == 0) {
                 long s = long(diffScore(want, lines));
                 if (best < 0 || s < best) {

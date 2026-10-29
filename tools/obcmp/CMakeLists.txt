@@ -29,6 +29,7 @@ target_link_libraries(obshape PRIVATE Zydis::Zydis)
 target_compile_options(obshape PRIVATE -Wall -Wextra -Wpedantic)
 
 add_executable(obperm obperm.cpp)
+target_link_libraries(obperm PRIVATE Zydis::Zydis)
 target_compile_options(obperm PRIVATE -Wall -Wextra -Wpedantic)
 find_package(Threads REQUIRED)
 target_link_libraries(obperm PRIVATE Threads::Threads)
