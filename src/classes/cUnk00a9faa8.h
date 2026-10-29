@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a9fab8.h"
+#include "classes/cParticleLifeCommand.h"
 
 // VTABLE: 0x00a9faa8
 // SIZE 0x4
-class cUnk00a9faa8 : public cUnk00a9fab8 {
+class cUnk00a9faa8 : public cParticleLifeCommand {
 public:
     virtual void Slot03_abbf94(uint32_t, uint32_t);
 };

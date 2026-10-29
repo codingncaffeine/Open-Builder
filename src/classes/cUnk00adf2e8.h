@@ -4,14 +4,14 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "classes/cGZGraph.h"
 #include "classes/cUnk00ade0f0.h"
-#include "classes/cUnk00ade188.h"
 
-// VTABLE: 0x00adf2e8 cUnk00adc8d8
+// VTABLE: 0x00adf2e8 cGZWin
 // VTABLE: 0x00adf208 cUnk00addff8
 // VTABLE: 0x00adf5b0 cUnk00ade0f0
 // SIZE 0x260
-class cUnk00adf2e8 : public cUnk00ade188, public cUnk00ade0f0 {
+class cUnk00adf2e8 : public cGZGraph, public cUnk00ade0f0 {
 public:
     virtual ~cUnk00adf2e8();
     virtual bool QueryInterface(unsigned int, void **);
@@ -20,10 +20,10 @@ public:
     virtual void Slot14_addff8(uint32_t);
     virtual bool Slot43_addff8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void* Slot54_addff8();
-    virtual void Slot151_ade188();
+    virtual void LoadDefaultFonts();
     virtual void Slot155_ade188(uint32_t, uint32_t);
     virtual void Slot156_ade188(uint32_t, uint32_t);
-    virtual void Slot157_ade188(uint32_t);
+    virtual void DrawGraphData(uint32_t);
     virtual float Slot164_ade188(uint32_t);
     virtual float Slot165_ade188(uint32_t);
     virtual void Slot03_ade0f0(uint32_t);
@@ -91,9 +91,9 @@ typedef char ob_size_cUnk00adf2e8[sizeof(cUnk00adf2e8) == 0x260 ? 1 : -1];
 // cUnk00adf2e8::Slot165_ade188`adjustor{556}'
 
 // SYNTHETIC: 0x0076b720
-// cUnk00adf2e8::Slot157_ade188`adjustor{556}'
+// cUnk00adf2e8::DrawGraphData`adjustor{556}'
 
 // SYNTHETIC: 0x0076b730
-// cUnk00adf2e8::Slot151_ade188`adjustor{556}'
+// cUnk00adf2e8::LoadDefaultFonts`adjustor{556}'
 
 #endif

@@ -7,13 +7,13 @@
 #include "classes/cUnk00add578.h"
 
 // VTABLE: 0x00aa5b80 cUnk00add348
-// VTABLE: 0x00aa5920 cUnk00adc8d8
+// VTABLE: 0x00aa5920 cGZWin
 // SIZE 0x2e8
 class cUnk00aa5b80 : public cUnk00add578 {
 public:
     virtual ~cUnk00aa5b80() {}
-    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnKeyDown(uint32_t, uint32_t);
+    virtual bool GZOnMouseUpL(uint32_t, uint32_t, uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa5b80[sizeof(cUnk00aa5b80) == 0x2e8 ? 1 : -1];

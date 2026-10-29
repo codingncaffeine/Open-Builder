@@ -1,4 +1,4 @@
-#include "classes/cUnk00aa4468.h"
+#include "classes/cSC43DPlaceableObject.h"
 #include <vector>
 
 // The object's data, seen from outside: the class map knows only the vtable pointer, the rest sits at these offsets.
@@ -125,65 +125,65 @@ struct Bits_aa4468 {
     uint32_t mnValueB : 4;
 };
 
-inline Bits_aa4468* Bits(cUnk00aa4468* p)
+inline Bits_aa4468* Bits(cSC43DPlaceableObject* p)
 {
     return reinterpret_cast<Bits_aa4468*>(p);
 }
 
-static inline Data_aa4468* Data(cUnk00aa4468* p)
+static inline Data_aa4468* Data(cSC43DPlaceableObject* p)
 {
     return reinterpret_cast<Data_aa4468*>(p);
 }
 
 // FUNCTION: 0x005ebc50
-bool cUnk00aa4468::Slot10_aa4468()
+bool cSC43DPlaceableObject::IsVisible()
 {
     return (Data(this)->mnFlags >> 1) & 1;
 }
 
 // FUNCTION: 0x005ebcc0
-uint32_t cUnk00aa4468::Slot01_aa4468()
+uint32_t cSC43DPlaceableObject::AddRef()
 {
     return ++Data(this)->mnRefCount;
 }
 
 // FUNCTION: 0x005ebd20
-bool cUnk00aa4468::Slot00_aa4468(uint32_t iid, void* ppv)
+bool cSC43DPlaceableObject::QueryInterface(uint32_t iid, void* ppv)
 {
     if (iid == 1 || iid == 0xc6bb5efa) {
-        *static_cast<cUnk00aa4468**>(ppv) = this;
-        Slot01_aa4468();
+        *static_cast<cSC43DPlaceableObject**>(ppv) = this;
+        AddRef();
         return true;
     }
     return false;
 }
 
 // FUNCTION: 0x005ebd50
-uint32_t cUnk00aa4468::Slot12_aa4468()
+uint32_t cSC43DPlaceableObject::GetZoomLevelsCreatedFor()
 {
     return (Data(this)->mnFlags >> 2) & 0x1f;
 }
 
 // FUNCTION: 0x005ebd60
-void cUnk00aa4468::Slot13_aa4468(uint32_t v)
+void cSC43DPlaceableObject::SetZoomLevelsCreatedFor(uint32_t v)
 {
     Data(this)->mnFlags = (Data(this)->mnFlags & ~0x7cu) | (v << 2);
 }
 
 // FUNCTION: 0x005ebd80
-uint32_t cUnk00aa4468::Slot14_aa4468()
+uint32_t cSC43DPlaceableObject::GetRotationsCreatedFor()
 {
     return (Data(this)->mnFlags >> 7) & 0xf;
 }
 
 // FUNCTION: 0x005ebd90
-void cUnk00aa4468::Slot15_aa4468(uint32_t v)
+void cSC43DPlaceableObject::SetRotationsCreatedFor(uint32_t v)
 {
     Data(this)->mnFlags = (Data(this)->mnFlags & ~0x780u) | (v << 7);
 }
 
 // FUNCTION: 0x005ec0a0
-uint32_t cUnk00aa4468::Slot02_aa4468()
+uint32_t cSC43DPlaceableObject::Release()
 {
     Data_aa4468* d = Data(this);
     if (d->mnRefCount > 1) {
@@ -195,7 +195,7 @@ uint32_t cUnk00aa4468::Slot02_aa4468()
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x005ebc00 score 2 (the original reloads *pn in the empty case, ours folds it to xor eax,eax)
-uint32_t cUnk00aa4468::Slot04_aa4468(void* pOut, void* pCount)
+uint32_t cSC43DPlaceableObject::GetModels(void* pOut, void* pCount)
 {
     Data_aa4468* d = Data(this);
     void** out = static_cast<void**>(pOut);
@@ -217,7 +217,7 @@ uint32_t cUnk00aa4468::Slot04_aa4468(void* pOut, void* pCount)
 #endif
 
 // FUNCTION: 0x005ebe20
-bool cUnk00aa4468::Slot05_aa4468(void* p)
+bool cSC43DPlaceableObject::AddModel(void* p)
 {
     Data_aa4468* d = Data(this);
     Item_aa4468* item = static_cast<Item_aa4468*>(p);
@@ -238,7 +238,7 @@ bool cUnk00aa4468::Slot05_aa4468(void* p)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x005ebe80 score 119 (the original keeps the constant 2 in ebx for the flag test and the count==2 compare, shifting every register; permuter found nothing honest)
-bool cUnk00aa4468::Slot06_aa4468(void* p)
+bool cSC43DPlaceableObject::RemoveModel(void* p)
 {
     Data_aa4468* d = Data(this);
     Item_aa4468* item = static_cast<Item_aa4468*>(p);
@@ -296,10 +296,10 @@ bool cUnk00aa4468::Slot06_aa4468(void* p)
 #endif
 
 // FUNCTION: 0x005ec0c0
-void cUnk00aa4468::Slot08_aa4468(uint8_t v)
+void cSC43DPlaceableObject::SetVisibility(uint8_t v)
 {
     Data_aa4468* d = Data(this);
-    if (v != Slot10_aa4468()) {
+    if (v != IsVisible()) {
         bool on = (v != 0);
         d->mnFlags = (static_cast<uint32_t>(on) << 1) | (d->mnFlags & ~2u);
         Fn005ebf80();
@@ -312,20 +312,20 @@ void cUnk00aa4468::Slot08_aa4468(uint8_t v)
 }
 
 // FUNCTION: 0x005ec110
-void cUnk00aa4468::Slot09_aa4468(uint8_t v)
+void cSC43DPlaceableObject::SetOverlaysVisible(uint8_t v)
 {
     Data_aa4468* d = Data(this);
     if ((*reinterpret_cast<uint8_t*>(&d->mnFlags) & 1) != v) {
         bool on = (v != 0);
         d->mnFlags = static_cast<uint32_t>(on) | (d->mnFlags & ~1u);
-        if (Slot10_aa4468()) {
+        if (IsVisible()) {
             Fn005ebf80();
         }
     }
 }
 
 // FUNCTION: 0x005ec190
-bool cUnk00aa4468::Slot07_aa4468(void* p)
+bool cSC43DPlaceableObject::AddOverlay(void* p)
 {
     Data_aa4468* d = Data(this);
     d->mVec.push_back(p);
@@ -342,13 +342,13 @@ bool cUnk00aa4468::Slot07_aa4468(void* p)
             }
         }
     }
-    d->mpOwner->Slot16(p, (d->mnFlags & 1) && Slot10_aa4468());
+    d->mpOwner->Slot16(p, (d->mnFlags & 1) && IsVisible());
     return true;
 }
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x005ec240 score 2 (xor edi,edi sits one instruction later than in the original)
-void cUnk00aa4468::Slot11_aa4468()
+void cSC43DPlaceableObject::Slot11_aa4468()
 {
     Data_aa4468* d = Data(this);
     if (d->mnFlags & 2) {
@@ -373,7 +373,7 @@ void cUnk00aa4468::Slot11_aa4468()
         }
         d->mVec.clear();
     }
-    Slot13_aa4468(0);
-    Slot15_aa4468(0);
+    SetZoomLevelsCreatedFor(0);
+    SetRotationsCreatedFor(0);
 }
 #endif

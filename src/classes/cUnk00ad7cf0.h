@@ -4,12 +4,12 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00ad1818.h"
+#include "classes/cGZPersistDBSerialRecord.h"
 #include "classes/cUnk00ad1878.h"
 #include "classes/cUnk00ad8d48.h"
 #include "classes/cUnk00ad8d88.h"
 
-class cUnk00ad7cf0 : public cUnk00ad8d88, public cUnk00ad8d48, public cUnk00ad1818, public cUnk00ad1878 {
+class cUnk00ad7cf0 : public cUnk00ad8d88, public cUnk00ad8d48, public cGZPersistDBSerialRecord, public cUnk00ad1878 {
 public:
     virtual ~cUnk00ad7cf0() {}
     virtual void Slot57_ad7cf0(uint32_t, uint32_t, uint32_t);
@@ -18,8 +18,8 @@ public:
     virtual uint32_t Slot60_ad7cf0(uint32_t);
     virtual uint32_t Slot61_ad7cf0(uint32_t);
     virtual void Slot03_ad1818();
-    virtual bool Slot14_ad1818(uint32_t);
-    virtual bool Slot15_ad1818(uint32_t);
+    virtual bool GetFieldFloat64_2(uint32_t);
+    virtual bool GetFieldResKey(uint32_t);
     virtual bool Slot17_ad1818(uint32_t, uint32_t);
     virtual bool Slot18_ad1818();
     virtual bool Slot03_ad1878(uint32_t);

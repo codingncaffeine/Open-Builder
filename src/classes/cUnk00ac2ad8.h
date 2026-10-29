@@ -8,9 +8,9 @@
 // SIZE 0x4
 class cUnk00ac2ad8 {
 public:
-    virtual bool Slot00_ac2f70(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ac2f70() = 0;
-    virtual uint32_t Slot02_ac2f70() = 0;
+    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
+    virtual uint32_t Init() = 0;
+    virtual uint32_t Shutdown() = 0;
     virtual void Slot03_ac2ad8(uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t Slot04_ac2ad8(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot05_ac2ad8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;

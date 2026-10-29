@@ -4,21 +4,21 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00adc8d8.h"
+#include "classes/cGZWin.h"
 #include "classes/cUnk00ae2350.h"
 
-// VTABLE: 0x00ae2398 cUnk00adc8d8
+// VTABLE: 0x00ae2398 cGZWin
 // VTABLE: 0x00ae25f4 cUnk00ae2350
 // SIZE 0xdc
-class cUnk00ae2398 : public cUnk00adc8d8, public cUnk00ae2350 {
+class cUnk00ae2398 : public cGZWin, public cUnk00ae2350 {
 public:
     virtual ~cUnk00ae2398();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot129_adc8d8(uint32_t);
-    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot131_adc8d8(uint32_t, uint32_t);
+    virtual bool GZOnCharacter(uint32_t);
+    virtual bool GZOnKeyDown(uint32_t, uint32_t);
+    virtual bool GZOnKeyUp(uint32_t, uint32_t);
     virtual void Slot03_ae2350(uint32_t);
 };
 #ifdef _MSC_VER

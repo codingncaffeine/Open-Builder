@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00aae974.h"
+#include "classes/nSCRes_cDefineCommand.h"
 
 // VTABLE: 0x00aae964
 // SIZE 0x4
-class cUnk00aae964 : public cUnk00aae974 {
+class cUnk00aae964 : public nSCRes_cDefineCommand {
 public:
     virtual void Slot03_abbf94(uint32_t, uint32_t);
 };

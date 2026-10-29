@@ -4,13 +4,13 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00adc8d8.h"
+#include "classes/cGZWin.h"
 
 // VTABLE: 0x00adcb38
 // SIZE 0xd8
-class cUnk00adcb38 : public cUnk00adc8d8 {
+class cUnk00adcb38 : public cGZWin {
 public:
-    virtual bool Slot89_adc8d8();
+    virtual bool Plot();
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adcb38[sizeof(cUnk00adcb38) == 0xd8 ? 1 : -1];

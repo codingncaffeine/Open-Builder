@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a9fb88.h"
+#include "classes/cDynamicParticleFrictionCommand.h"
 
 // VTABLE: 0x00a9fb78
 // SIZE 0x4
-class cUnk00a9fb78 : public cUnk00a9fb88 {
+class cUnk00a9fb78 : public cDynamicParticleFrictionCommand {
 public:
     virtual void Slot03_abbf94(uint32_t, uint32_t);
 };

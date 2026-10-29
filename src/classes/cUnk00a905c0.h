@@ -4,19 +4,19 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00aa6658.h"
+#include "classes/cSC4ViewInputControl.h"
 
 // VTABLE: 0x00a905c0
 // SIZE 0x58
-class cUnk00a905c0 : public cUnk00aa6658 {
+class cUnk00a905c0 : public cSC4ViewInputControl {
 public:
     virtual ~cUnk00a905c0();
-    virtual bool Slot03_aa6658();
-    virtual bool Slot04_aa6658();
-    virtual bool Slot14_aa6658(uint32_t, uint32_t);
-    virtual bool Slot16_aa6658(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot18_aa6658(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot20_aa6658(uint32_t, uint32_t, uint32_t);
+    virtual bool Init();
+    virtual bool Shutdown();
+    virtual bool OnKeyDown(uint32_t, uint32_t);
+    virtual bool OnMouseDownL(uint32_t, uint32_t, uint32_t);
+    virtual bool OnMouseUpL(uint32_t, uint32_t, uint32_t);
+    virtual bool OnMouseMove(uint32_t, uint32_t, uint32_t);
     char unknown28[0x30];
 };
 #ifdef _MSC_VER

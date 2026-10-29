@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a9f8d8.h"
+#include "classes/cTestEffectCommand.h"
 
 // VTABLE: 0x00a9f8ac
 // SIZE 0x4
-class cUnk00a9f8ac : public cUnk00a9f8d8 {
+class cUnk00a9f8ac : public cTestEffectCommand {
 public:
     virtual void Slot03_abbf94(uint32_t, uint32_t);
 };

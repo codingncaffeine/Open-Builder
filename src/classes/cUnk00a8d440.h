@@ -10,7 +10,7 @@
 // SIZE 0x10
 class cUnk00a8d440 : public cUnk00a87578 {
 public:
-    virtual bool Slot03_a8738c(uint32_t);
+    virtual bool IsKeyIncluded(uint32_t);
     char unknownc[0x4];
 };
 #ifdef _MSC_VER

@@ -1,6 +1,6 @@
 #include <cstddef>
 
-#include "classes/cUnk00aa2758.h"
+#include "classes/cSC4Demand.h"
 #include "game/Globals.h"
 
 // STUB: 0x009133da
@@ -107,35 +107,35 @@ void Fn005d9fa0(StreamIn_aa2758* stream, bool* pOut);
 void Fn005d9fd0(StreamOut_aa2758* stream, bool value);
 
 // FUNCTION: 0x005d4c60
-bool cUnk00aa2758::Slot16_aa2758(float a)
+bool cSC4Demand::AddToSupplyValue(float a)
 {
     mfDeltaA += a;
     return true;
 }
 
 // FUNCTION: 0x005d4c70
-bool cUnk00aa2758::Slot17_aa2758(float a)
+bool cSC4Demand::AddToDemandValue(float a)
 {
     mfDeltaB += a;
     return true;
 }
 
 // FUNCTION: 0x005d4c80
-bool cUnk00aa2758::Slot18_aa2758(float a)
+bool cSC4Demand::SetSupplyValue(float a)
 {
     mfPos = a;
     return true;
 }
 
 // FUNCTION: 0x005d4c90
-bool cUnk00aa2758::Slot19_aa2758(float a)
+bool cSC4Demand::SetDemandValue(float a)
 {
     mfTarget = a;
     return true;
 }
 
 // FUNCTION: 0x005d4ca0
-void cUnk00aa2758::Slot20_aa2758(float a)
+void cSC4Demand::SetActiveDemandMax(float a)
 {
     mfMax = a;
     if (a < mfMin) {
@@ -144,7 +144,7 @@ void cUnk00aa2758::Slot20_aa2758(float a)
 }
 
 // FUNCTION: 0x005d4cc0
-void cUnk00aa2758::Slot21_aa2758(float a)
+void cSC4Demand::SetActiveDemandMin(float a)
 {
     mfMin = a;
     if (a > mfMax) {
@@ -153,24 +153,24 @@ void cUnk00aa2758::Slot21_aa2758(float a)
 }
 
 // FUNCTION: 0x005d4ce0
-void cUnk00aa2758::Slot27_aa2758(void* p)
+void cSC4Demand::SetDemandCap(void* p)
 {
     mfF44 = *static_cast<float*>(p);
 }
 
 // FUNCTION: 0x005d4d90
-unsigned int cUnk00aa2758::Release()
+unsigned int cSC4Demand::Release()
 {
     if (mnRefCount > 1) {
         return --mnRefCount;
     }
-    Slot04_aa2758();
+    Shutdown();
     delete this;
     return 0;
 }
 
 // FUNCTION: 0x005d4af0
-bool cUnk00aa2758::QueryInterface(unsigned int id, void** ppOut)
+bool cSC4Demand::QueryInterface(unsigned int id, void** ppOut)
 {
     if (id != 1 && id != 0x797a4e8) {
         if (id != 0xe4fda3d4) {
@@ -186,7 +186,7 @@ bool cUnk00aa2758::QueryInterface(unsigned int id, void** ppOut)
 }
 
 // FUNCTION: 0x005d4b50
-bool cUnk00aa2758::Slot04_aa2758()
+bool cSC4Demand::Shutdown()
 {
     if (mbOpen) {
         mbOpen = false;
@@ -205,19 +205,19 @@ bool cUnk00aa2758::Slot04_aa2758()
 }
 
 // FUNCTION: 0x005d4cf0
-bool cUnk00aa2758::Slot30_aa2758()
+bool cSC4Demand::EndOfCycle()
 {
     bool changed = (mfDeltaA != 0.0f || mfDeltaB != 0.0f);
     mfPos = mfDeltaA + mfPos;
     mfDeltaA = 0.0f;
     mfTarget = mfDeltaB + mfTarget;
     mfDeltaB = 0.0f;
-    Slot35_aa2758(false);
+    CalculateActiveDemand(false);
     return changed;
 }
 
 // FUNCTION: 0x005d4dc0
-bool cUnk00aa2758::Slot03_aa2758()
+bool cSC4Demand::Init()
 {
     if (!mbOpen) {
         mbOpen = true;
@@ -261,10 +261,10 @@ bool cUnk00aa2758::Slot03_aa2758()
 }
 
 // FUNCTION: 0x005d4b90
-bool cUnk00aa2758::Slot05_aa2758()
+bool cSC4Demand::SimulationBegin()
 {
     if (!mbLoaded) {
-        Slot35_aa2758(false);
+        CalculateActiveDemand(false);
     }
     int32_t n;
     if (mfValue < 0.0f) {
@@ -283,7 +283,7 @@ bool cUnk00aa2758::Slot05_aa2758()
 }
 
 // FUNCTION: 0x005d5080
-bool cUnk00aa2758::Slot03_a80784(void* pStream)
+bool cSC4Demand::Slot03_a80784(void* pStream)
 {
     StreamOut_aa2758* s = static_cast<StreamOut_aa2758*>(pStream);
     s->Wr07(2);
@@ -306,7 +306,7 @@ bool cUnk00aa2758::Slot03_a80784(void* pStream)
 }
 
 // FUNCTION: 0x005d5150
-bool cUnk00aa2758::Slot04_a80784(void* pStream)
+bool cSC4Demand::Slot04_a80784(void* pStream)
 {
     StreamIn_aa2758* s = static_cast<StreamIn_aa2758*>(pStream);
     uint16_t version;
@@ -348,7 +348,7 @@ union FloatBits_aa2758 {
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x005d4e60 score 22 (identical instructions; the dead-zone branch is laid out differently)
-void cUnk00aa2758::Slot35_aa2758(bool snap)
+void cSC4Demand::CalculateActiveDemand(bool snap)
 {
     float d = mfTarget - mfPos;
     if (d > mfMax) {

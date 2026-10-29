@@ -4,15 +4,15 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "classes/cGZPersistResource.h"
 #include "classes/cUnk00a9f040.h"
 #include "classes/cUnk00aa0a44.h"
-#include "classes/cUnk00ad8bec.h"
 
 // VTABLE: 0x00aa0ac0 cUnk00aa0a44
 // VTABLE: 0x00aa0a60 cUnk00a9f040
-// VTABLE: 0x00aa0ae4 cUnk00ad8bec
+// VTABLE: 0x00aa0ae4 cGZPersistResource
 // SIZE 0x14c
-class cUnk00aa0ac0 : public cUnk00aa0a44, public cUnk00a9f040, public cUnk00ad8bec {
+class cUnk00aa0ac0 : public cUnk00aa0a44, public cUnk00a9f040, public cGZPersistResource {
 public:
     virtual ~cUnk00aa0ac0() {}
     virtual void Slot06_aa0ac0();

@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00ad8bec.h"
+#include "classes/cGZPersistResource.h"
 
 // VTABLE: 0x00aa45b0
 // SIZE 0xb8
-class cUnk00aa45b0 : public cUnk00ad8bec {
+class cUnk00aa45b0 : public cGZPersistResource {
 public:
     virtual ~cUnk00aa45b0();
     char unknown18[0xa0];

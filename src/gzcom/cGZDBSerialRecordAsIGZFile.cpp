@@ -1,4 +1,4 @@
-#include "classes/cUnk00ad8468.h"
+#include "classes/cGZDBSerialRecordAsIGZFile.h"
 
 // The wrapped object at field 0x8. Only the slots this class calls are named by their number;
 // the rest are padding so that the slot numbers line up with the original's vtable.
@@ -68,14 +68,14 @@ static inline cInner_ad8468* Inner_ad8468(void* p)
 }
 
 // FUNCTION: 0x0096e957
-bool cUnk00ad8468::Slot04_abfe50()
+bool cGZDBSerialRecordAsIGZFile::Slot04_abfe50()
 {
     return mpTarget != 0;
 }
 
 
 // FUNCTION: 0x0096dce4
-uint32_t cUnk00ad8468::Slot06_abfe50()
+uint32_t cGZDBSerialRecordAsIGZFile::Slot06_abfe50()
 {
     if (mpTarget) {
         return static_cast<cInner_ad8468*>(mpTarget)->Fn54();
@@ -84,7 +84,7 @@ uint32_t cUnk00ad8468::Slot06_abfe50()
 }
 
 // FUNCTION: 0x0096dd0c
-bool cUnk00ad8468::Slot08_abfe50(uint32_t a)
+bool cGZDBSerialRecordAsIGZFile::Slot08_abfe50(uint32_t a)
 {
     if (mpTarget) {
         return static_cast<cInner_ad8468*>(mpTarget)->Fn53(a);
@@ -93,7 +93,7 @@ bool cUnk00ad8468::Slot08_abfe50(uint32_t a)
 }
 
 // FUNCTION: 0x0096de7e
-bool cUnk00ad8468::Slot16_abfe50(uint32_t a, uint32_t b)
+bool cGZDBSerialRecordAsIGZFile::Slot16_abfe50(uint32_t a, uint32_t b)
 {
     if (mpTarget) {
         return static_cast<cInner_ad8468*>(mpTarget)->Fn51(a, b);
@@ -102,7 +102,7 @@ bool cUnk00ad8468::Slot16_abfe50(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x0096de22
-bool cUnk00ad8468::Slot14_abfe50(uint32_t a, uint32_t b)
+bool cGZDBSerialRecordAsIGZFile::Slot14_abfe50(uint32_t a, uint32_t b)
 {
     if (mpTarget) {
         return static_cast<cInner_ad8468*>(mpTarget)->Fn27(a, b);
@@ -111,7 +111,7 @@ bool cUnk00ad8468::Slot14_abfe50(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x0096dd22
-uint32_t cUnk00ad8468::Slot09_abfe50()
+uint32_t cGZDBSerialRecordAsIGZFile::Slot09_abfe50()
 {
     if (mpTarget && static_cast<cInner_ad8468*>(mpTarget)->Fn55(0)) {
         return 0;
@@ -120,7 +120,7 @@ uint32_t cUnk00ad8468::Slot09_abfe50()
 }
 
 // FUNCTION: 0x0096dda5
-uint32_t cUnk00ad8468::Slot12_abfe50(uint32_t a)
+uint32_t cGZDBSerialRecordAsIGZFile::Slot12_abfe50(uint32_t a)
 {
     if (mpTarget && static_cast<cInner_ad8468*>(mpTarget)->Fn55(a)) {
         return a;
@@ -129,7 +129,7 @@ uint32_t cUnk00ad8468::Slot12_abfe50(uint32_t a)
 }
 
 // FUNCTION: 0x0096dd75
-uint32_t cUnk00ad8468::Slot11_abfe50(uint32_t a)
+uint32_t cGZDBSerialRecordAsIGZFile::Slot11_abfe50(uint32_t a)
 {
     if (mpTarget && static_cast<cInner_ad8468*>(mpTarget)->Fn56(a)) {
         return static_cast<cInner_ad8468*>(mpTarget)->Fn54();
@@ -138,7 +138,7 @@ uint32_t cUnk00ad8468::Slot11_abfe50(uint32_t a)
 }
 
 // FUNCTION: 0x0096dd40
-uint32_t cUnk00ad8468::Slot10_abfe50()
+uint32_t cGZDBSerialRecordAsIGZFile::Slot10_abfe50()
 {
     if (mpTarget) {
         uint32_t n = static_cast<cInner_ad8468*>(mpTarget)->Fn52();
@@ -151,7 +151,7 @@ uint32_t cUnk00ad8468::Slot10_abfe50()
 
 
 // FUNCTION: 0x0096dc93
-bool cUnk00ad8468::Slot03_ad8468(void* p)
+bool cGZDBSerialRecordAsIGZFile::SetDBSerialRecord(void* p)
 {
     if (p) {
         Inner_ad8468(p)->AddRef();
@@ -165,7 +165,7 @@ bool cUnk00ad8468::Slot03_ad8468(void* p)
 
 
 // FUNCTION: 0x0096ddca
-uint32_t cUnk00ad8468::Slot13_abfe50(uint32_t a, uint32_t b)
+uint32_t cGZDBSerialRecordAsIGZFile::Slot13_abfe50(uint32_t a, uint32_t b)
 {
     if (mpTarget) {
         switch (b) {
@@ -185,7 +185,7 @@ uint32_t cUnk00ad8468::Slot13_abfe50(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x0096e96b
-uint32_t cUnk00ad8468::Slot02_ad8468()
+uint32_t cGZDBSerialRecordAsIGZFile::Slot02_ad8468()
 {
     if (mnRefCount > 1) {
         return --mnRefCount;
@@ -195,7 +195,7 @@ uint32_t cUnk00ad8468::Slot02_ad8468()
 }
 
 // FUNCTION: 0x0096dcbc
-bool cUnk00ad8468::Slot05_abfe50()
+bool cGZDBSerialRecordAsIGZFile::Slot05_abfe50()
 {
     bool result = false;
     if (mpTarget) {
@@ -210,7 +210,7 @@ bool cUnk00ad8468::Slot05_abfe50()
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x0096dcf9 score 5
-void cUnk00ad8468::Slot07_abfe50()
+void cGZDBSerialRecordAsIGZFile::Slot07_abfe50()
 {
     if (mpTarget != 0) {
         static_cast<cInner_ad8468*>(mpTarget)->Fn52();
@@ -219,7 +219,7 @@ void cUnk00ad8468::Slot07_abfe50()
 #endif
 
 // FUNCTION: 0x0096dc2d
-bool cUnk00ad8468::Slot00_ad8468(uint32_t riid, void* ppv)
+bool cGZDBSerialRecordAsIGZFile::QueryInterface(uint32_t riid, void* ppv)
 {
     if (riid == 0xe0203645) {
         *static_cast<void**>(ppv) = static_cast<cUnk00abfe50*>(this);

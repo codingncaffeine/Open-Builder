@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a9fe0c.h"
+#include "classes/cGroupAttractorCommand.h"
 
 // VTABLE: 0x00a9fdfc
 // SIZE 0x4
-class cUnk00a9fdfc : public cUnk00a9fe0c {
+class cUnk00a9fdfc : public cGroupAttractorCommand {
 public:
     virtual void Slot03_abbf94(uint32_t, uint32_t);
 };

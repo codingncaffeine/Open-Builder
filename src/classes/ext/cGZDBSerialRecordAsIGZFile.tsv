@@ -1,6 +1,6 @@
 field 8 uint32_t mnRefCount
 field c void* mpTarget
-slot Slot00_ad8468 bool uint32_t void*
-slot Slot03_ad8468 bool void*
+slot QueryInterface bool uint32_t void*
+slot SetDBSerialRecord bool void*
 method 0x0096dc6e void Fn0096dc6e()
 slot Slot02_ad8468 uint32_t

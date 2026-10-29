@@ -7,7 +7,7 @@
 
 class cUnk00ac13d8 {
 public:
-    virtual bool Slot00_ac1400(uint32_t, uint32_t) = 0;
+    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot01_ac1400() = 0;
     virtual uint32_t Slot02_ac1400() = 0;
     virtual bool Slot03_ac13d8(uint32_t, uint32_t, uint32_t, uint32_t) = 0;

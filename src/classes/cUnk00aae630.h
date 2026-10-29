@@ -4,19 +4,19 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00adc8d8.h"
+#include "classes/cGZWin.h"
 
 // VTABLE: 0x00aae630
 // SIZE 0xe4
-class cUnk00aae630 : public cUnk00adc8d8 {
+class cUnk00aae630 : public cGZWin {
 public:
     virtual ~cUnk00aae630() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot88_adc8d8();
-    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot131_adc8d8(uint32_t, uint32_t);
+    virtual bool GZPaint();
+    virtual bool GZOnKeyDown(uint32_t, uint32_t);
+    virtual bool GZOnKeyUp(uint32_t, uint32_t);
     virtual bool Slot04_adb6a8();
     virtual bool Slot05_adb6a8();
     char unknownd8[0xc];

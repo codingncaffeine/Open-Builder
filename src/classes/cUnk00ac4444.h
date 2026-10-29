@@ -4,9 +4,9 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "classes/cGZLua5.h"
 #include "classes/cUnk00ac3fe8.h"
 #include "classes/cUnk00ac4120.h"
-#include "classes/cUnk00ac9144.h"
 
 // VTABLE: 0x00ac4444 cUnk0090da1e
 // VTABLE: 0x00ac42c0 cUnk00ac8bf8
@@ -14,7 +14,7 @@
 // VTABLE: 0x00ac4148 cUnk00ac3fe8
 // VTABLE: 0x00ac4138 cUnk00ac4120
 // SIZE 0x58
-class cUnk00ac4444 : public cUnk00ac9144, public cUnk00ac3fe8, public cUnk00ac4120 {
+class cUnk00ac4444 : public cGZLua5, public cUnk00ac3fe8, public cUnk00ac4120 {
 public:
     virtual ~cUnk00ac4444();
     virtual bool QueryInterface(unsigned int, void **);

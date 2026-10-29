@@ -216,9 +216,59 @@ bool parseDemangled(const std::string& d, std::string& name, std::string& decl, 
 
 }  // namespace
 
+// Names of classes and of the slots they introduce (src/classes/names.tsv, from tools/names/freeze.sh):
+//   class <vtable> <name>
+//   slot <vtable> <index> <name>
+// A class or slot without a line keeps the generated name (cUnk<primary vtable>, SlotNN_<tag>).
+struct Names {
+    std::map<uint32_t, std::string> classes;
+    std::map<std::pair<uint32_t, size_t>, std::string> slots;
+};
+
+bool isIdentifier(const std::string& s) {
+    static const std::set<std::string> keywords = {"and", "asm", "auto", "bool", "break", "case", "catch", "char",
+        "class", "const", "continue", "default", "delete", "do", "double", "else", "enum", "explicit", "export",
+        "extern", "false", "float", "for", "friend", "goto", "if", "inline", "int", "long", "mutable", "namespace",
+        "new", "not", "operator", "or", "private", "protected", "public", "register", "return", "short", "signed",
+        "sizeof", "static", "struct", "switch", "template", "this", "throw", "true", "try", "typedef", "typeid",
+        "typename", "union", "unsigned", "using", "virtual", "void", "volatile", "while", "xor"};
+    if (s.empty() || !(std::isalpha(static_cast<unsigned char>(s[0])) || s[0] == '_') || keywords.count(s)) return false;
+    for (char c : s)
+        if (!(std::isalnum(static_cast<unsigned char>(c)) || c == '_')) return false;
+    return s.rfind("__", 0) != 0;
+}
+
+Names readNames(const std::string& path) {
+    Names n;
+    if (path.empty()) return n;
+    std::ifstream f(path);
+    if (!f) { std::fprintf(stderr, "obdecl: cannot read %s\n", path.c_str()); std::exit(2); }
+    std::string line;
+    for (int ln = 1; std::getline(f, line); ++ln) {
+        std::istringstream ss(line);
+        std::string kw, a, b, c;
+        if (!(ss >> kw) || kw[0] == '#') continue;
+        if (kw == "class" && ss >> a >> b && isIdentifier(b)) n.classes[parseHex(a)] = b;
+        else if (kw == "slot" && ss >> a >> b >> c && isIdentifier(c)) n.slots[{parseHex(a), size_t(std::stoul(b))}] = c;
+        else std::fprintf(stderr, "obdecl: %s:%d: not a name line, skipped\n", path.c_str(), ln);
+    }
+    return n;
+}
+
+std::string className(const Names& n, uint32_t primary) {
+    auto it = n.classes.find(primary);
+    return it == n.classes.end() ? "cUnk" + hex8(primary) : it->second;
+}
+
+std::string methodName(const Names& n, uint32_t vtable, size_t index, const std::string& generated) {
+    auto it = n.slots.find({vtable, index});
+    return it == n.slots.end() ? generated : it->second;
+}
+
 int main(int argc, char** argv) {
     std::vector<std::string> pos;
     std::string srcDir = "src", outDir = "src/classes", reportPath, excludePath, shapesPath, only;
+    std::string namesPath, namesBeforePath, renameMapPath;
     uint32_t purecall = 0;
     for (int i = 1; i < argc; ++i) {
         std::string a = argv[i];
@@ -233,6 +283,9 @@ int main(int argc, char** argv) {
         else if (a == "--exclude") excludePath = value();
         else if (a == "--shapes") shapesPath = value();
         else if (a == "--only") only = value();
+        else if (a == "--names") namesPath = value();
+        else if (a == "--names-before") namesBeforePath = value();
+        else if (a == "--rename-map") renameMapPath = value();
         else pos.push_back(a);
     }
     if (pos.size() != 4) {
@@ -248,6 +301,8 @@ int main(int argc, char** argv) {
         std::string a;
         while (ex >> a) excluded.insert(parseHex(a));
     }
+    Names names = readNames(namesPath), before = readNames(namesBeforePath);
+    std::map<std::string, std::string> renames;  // a name under --names-before → under --names
     std::map<uint32_t, Record> recs;
     std::map<uint32_t, uint32_t> vtableClass;  // vtable -> primary of its class
     for (auto& r : readTsv(pos[0])) {
@@ -431,6 +486,9 @@ int main(int argc, char** argv) {
         if (conflicted.count(b)) conflicted.insert(a);
     };
 
+    std::set<std::string> usedClassNames;  // hand classes' names, then every generated class's
+    for (auto& [p, h] : hands) usedClassNames.insert(h.name);
+    std::map<int, std::string> wasNamed;  // a slot identity's name under --names-before
     std::map<uint32_t, Model> models;
     std::function<Model&(uint32_t)> model = [&](uint32_t primary) -> Model& {
         Model& m = models[primary];
@@ -486,7 +544,13 @@ int main(int argc, char** argv) {
             return m;
         }
 
-        m.name = "cUnk" + hex8(primary);
+        m.name = className(names, primary);
+        if (usedClassNames.count(m.name)) m.name = "cUnk" + hex8(primary);  // a name taken by another class
+        usedClassNames.insert(m.name);
+        {
+            std::string was = className(before, primary);
+            if (was != m.name) renames[was] = m.name;
+        }
         m.header = fs::relative(outDir, srcDir).generic_string() + "/" + m.name + ".h";
         std::string tag = hexn(primary);
         if (r.virtualBases) return fail("virtual bases");
@@ -595,7 +659,9 @@ int main(int argc, char** argv) {
                     char b[48];
                     if (synth && k != 0) std::snprintf(b, sizeof b, "Slot%02zu_%s_%x", j, tag.c_str(), unsigned(k));
                     else std::snprintf(b, sizeof b, "Slot%02zu_%s", j, tag.c_str());
-                    ids[j] = newIdent(isDeleting ? "~" : b, isDeleting);
+                    std::string nm = isDeleting ? "~" : methodName(names, v, j, b);
+                    ids[j] = newIdent(nm, isDeleting);
+                    if (!isDeleting) wasNamed[ids[j]] = methodName(before, v, j, b);
                     own[j].clear();
                 }
                 if (s.kind == "inherited") {
@@ -682,6 +748,64 @@ int main(int argc, char** argv) {
     };
 
     for (auto& [p, r] : recs) model(p);
+
+    // Real names can meet where generated ones never did: two identities of one class (with its bases) named alike
+    // would overload, or override each other, and change the vtable. The later one gets a number.
+    {
+        std::set<std::string> taken;
+        for (auto& id : idents) taken.insert(id.name);
+        for (auto& [p, m] : models) {
+            if (!m.ok) continue;
+            std::map<std::string, int> first;
+            for (auto& [o, ids] : m.ids)
+                for (int id : ids) {
+                    if (id < 0) continue;
+                    int r = find(id);
+                    if (idents[r].dtor) continue;
+                    auto it = first.find(idents[r].name);
+                    if (it == first.end()) { first[idents[r].name] = r; continue; }
+                    if (it->second == r) continue;
+                    int victim = idents[r].fixed ? it->second : r;
+                    if (idents[victim].fixed) continue;
+                    std::string base = idents[victim].name, nn;
+                    for (int n = 2; taken.count(nn = base + "_" + std::to_string(n)); ++n) {}
+                    taken.insert(nn);
+                    idents[victim].name = nn;
+                    idents[victim].decl = "void " + nn + "()";
+                    if (victim == it->second) first[base] = r;
+                    first[nn] = victim;
+                }
+        }
+    }
+    if (!renameMapPath.empty()) {
+        // Only a generated name is unique enough to replace wherever it is written (SlotNN_<tag>); a real method name
+        // that changes (Init → Init_2) is common to many classes: reported, for a hand edit the build will point at.
+        size_t byHand = 0;
+        auto generated = [](const std::string& s) {
+            return s.size() > 7 && s.rfind("Slot", 0) == 0 && std::isdigit(static_cast<unsigned char>(s[4])) &&
+                   s.find('_') != std::string::npos;
+        };
+        for (auto& [id, was] : wasNamed) {
+            const Ident& now = idents[find(id)];
+            const std::string& old = find(id) == id ? was : wasNamed.count(find(id)) ? wasNamed[find(id)] : was;
+            if (old == now.name) continue;
+            if (generated(old)) renames[old] = now.name;
+            else ++byHand;
+        }
+        if (byHand) std::fprintf(stderr, "obdecl: %zu method names changed from real names: not renamed in sources\n", byHand);
+        for (auto& [p, m] : models) {
+            std::string was = className(before, p);
+            if (was == m.name) continue;
+            for (auto& [o, sn] : m.synthName) renames[was + "_" + hexn(uint32_t(o))] = m.name + "_" + hexn(uint32_t(o));
+            for (auto& [o, v] : m.layout)
+                if (o) renames[was + "_" + hexn(uint32_t(o))] = m.name + "_" + hexn(uint32_t(o));
+            for (auto& s : m.subs)
+                if (s.off) renames[was + "_" + hexn(uint32_t(s.off))] = m.name + "_" + hexn(uint32_t(s.off));
+        }
+        std::ofstream rm(renameMapPath);
+        for (auto& [a, b] : renames) rm << a << "\t" << b << "\n";
+        std::fprintf(stderr, "obdecl: %zu renames in %s\n", renames.size(), renameMapPath.c_str());
+    }
 
     // Intermediates the class can do without: a class overriding a method introduced in a non-primary base gets that
     // base subobject as this already (no thunk), so the overrides go into the class itself, unless one of their names
@@ -888,8 +1012,19 @@ int main(int argc, char** argv) {
         for (size_t i = 0; i < idents.size(); ++i)
             if (find(int(i)) == int(i)) byName[idents[i].name] = int(i);
         std::error_code ec;
+        // a slot line names a slot of its own file's class (real names repeat across classes: QueryInterface)
+        std::map<std::string, const Model*> byStem;
+        for (auto& [p, m] : models) {
+            byStem[m.name] = &m;
+            byStem.emplace(className(before, p), &m);
+        }
         for (auto& e : fs::directory_iterator(outDir + "/ext", ec)) {
             std::ifstream f(e.path());
+            std::map<std::string, int> own;
+            if (auto st = byStem.find(e.path().stem().string()); st != byStem.end())
+                for (auto& [o, ids] : st->second->ids)
+                    for (int id : ids)
+                        if (id >= 0) own[idents[find(id)].name] = find(id);
             std::string line;
             for (int ln = 1; std::getline(f, line); ++ln) {
                 std::istringstream ss(line);
@@ -904,12 +1039,13 @@ int main(int argc, char** argv) {
                 auto bad = [&](const std::string& why) {
                     std::fprintf(stderr, "obdecl: %s:%d: %s\n", e.path().string().c_str(), ln, why.c_str());
                 };
-                if (!byName.count(name)) { bad("no slot named " + name); continue; }
+                int target = own.count(name) ? own[name] : byName.count(name) ? byName[name] : -1;
+                if (target < 0) { bad("no slot named " + name); continue; }
                 if (types.empty()) { bad("slot needs a return type"); continue; }
                 bool known = true;
                 for (auto& x : types) known &= code.count(x) > 0;
                 if (!known) { bad("a type not in the list (void bool uint32_t int32_t uint16_t int16_t uint8_t int8_t float double void* const void* char* const char*)"); continue; }
-                Ident& id = idents[byName[name]];
+                Ident& id = idents[size_t(target)];
                 std::string params, mangled;
                 std::vector<std::string> seen;
                 for (size_t i = 1; i < types.size(); ++i) {
@@ -924,7 +1060,7 @@ int main(int argc, char** argv) {
                 }
                 id.decl = types[0] + " " + id.name + "(" + params + ")";
                 id.tail = "UAE" + code.at(types[0]) + (types.size() == 1 ? "X" : mangled + "@") + "Z";
-                sigs[byName[name]].bodies = false;  // its one-line bodies were written for the inferred signature
+                sigs[target].bodies = false;  // its one-line bodies were written for the inferred signature
             }
         }
     }
@@ -1084,7 +1220,9 @@ int main(int argc, char** argv) {
         return it == sizes.end() ? 0 : it->second;
     };
     for (uint32_t p : writes) {
-        std::ifstream f(outDir + "/ext/" + models[p].name + ".tsv");
+        std::string extPath = outDir + "/ext/" + models[p].name + ".tsv";
+        if (!fs::exists(extPath)) extPath = outDir + "/ext/" + className(before, p) + ".tsv";  // not renamed yet
+        std::ifstream f(extPath);
         std::string line;
         for (int ln = 1; std::getline(f, line); ++ln) {
             std::istringstream ss(line);

@@ -1,4 +1,4 @@
-#include "classes/cUnk00a808b8.h"
+#include "classes/cSC4Advice.h"
 #include "game/Globals.h"
 #include <cstring>
 #include <list>
@@ -153,19 +153,19 @@ struct cUnk00602f70 {
 };
 
 // FUNCTION: 0x00407b90
-void cUnk00a808b8::Slot29_a808b8()
+void cSC4Advice::IsCurrent()
 {
     Slot15_a80710(2);
 }
 
 // FUNCTION: 0x00407c30
-void cUnk00a808b8::Slot28_a80710()
+void cSC4Advice::Slot28_a80710()
 {
-    Slot30_a808b8();
+    refresh_text();
 }
 
 // FUNCTION: 0x00407bc0
-bool cUnk00a808b8::QueryInterface(unsigned int iid, void** ppv)
+bool cSC4Advice::QueryInterface(unsigned int iid, void** ppv)
 {
     if (iid != 0x8a09f5f5) {
         if (iid != 0xe4fda3d4) {
@@ -181,7 +181,7 @@ bool cUnk00a808b8::QueryInterface(unsigned int iid, void** ppv)
 }
 
 // FUNCTION: 0x00407f40
-void cUnk00a808b8::Slot23_a80710()
+void cSC4Advice::Slot23_a80710()
 {
     ListNode* head = static_cast<ListNode*>(mpListNode);
     if (head->mpNext != head) {
@@ -219,7 +219,7 @@ struct ThirdBaseView {
 };
 
 // FUNCTION: 0x004082f0
-bool cUnk00a808b8::Slot04_a80784(void* pStream)
+bool cSC4Advice::Slot04_a80784(void* pStream)
 {
     ThirdBaseView* v = reinterpret_cast<ThirdBaseView*>(reinterpret_cast<char*>(this) + 0xc);
     StreamView* stream = static_cast<StreamView*>(pStream);
@@ -257,7 +257,7 @@ bool cUnk00a808b8::Slot04_a80784(void* pStream)
 }
 
 // FUNCTION: 0x00408090
-bool cUnk00a808b8::Slot03_a80784(void* pStream)
+bool cSC4Advice::Slot03_a80784(void* pStream)
 {
     ThirdBaseView* v = reinterpret_cast<ThirdBaseView*>(reinterpret_cast<char*>(this) + 0xc);
     StreamWriteView* stream = static_cast<StreamWriteView*>(pStream);
@@ -285,7 +285,7 @@ bool cUnk00a808b8::Slot03_a80784(void* pStream)
 }
 
 // FUNCTION: 0x00407ae0
-bool cUnk00a808b8::Slot14_a80710(uint32_t mask, uint32_t set)
+bool cSC4Advice::Slot14_a80710(uint32_t mask, uint32_t set)
 {
     uint32_t old = mnFlags;
     bool wasVisible = ((old >> 1) & 1) != 0;
@@ -293,7 +293,7 @@ bool cUnk00a808b8::Slot14_a80710(uint32_t mask, uint32_t set)
         mnFlags = old | mask;
         if (mask & 2) {
             if (reinterpret_cast<Slot15View*>(this)->Test(0x10)) {
-                Slot30_a808b8();
+                refresh_text();
             }
             if (!wasVisible) {
                 Slot23_a80710();
@@ -315,7 +315,7 @@ bool cUnk00a808b8::Slot14_a80710(uint32_t mask, uint32_t set)
 }
 
 // FUNCTION: 0x00407d70
-uint32_t cUnk00a808b8::Slot19_a80710()
+uint32_t cSC4Advice::Slot19_a80710()
 {
     uint32_t v[3] = {0, 0, 0};
     reinterpret_cast<cUnk00602f70*>(&field30)->Fn00602f70(v);
@@ -323,7 +323,7 @@ uint32_t cUnk00a808b8::Slot19_a80710()
 }
 
 // FUNCTION: 0x00407da0
-uint32_t cUnk00a808b8::Slot21_a80710()
+uint32_t cSC4Advice::Slot21_a80710()
 {
     uint32_t v[3] = {0, 0, 0};
     reinterpret_cast<cUnk00602f70*>(&field50)->Fn00602f70(v);
@@ -331,7 +331,7 @@ uint32_t cUnk00a808b8::Slot21_a80710()
 }
 
 // FUNCTION: 0x00407dd0
-bool cUnk00a808b8::Slot24_a80710(uint32_t p)
+bool cSC4Advice::Slot24_a80710(uint32_t p)
 {
     Slot14_a80710(0x10, 1);
     cUnk00a80710* pNew = reinterpret_cast<cUnk00a80710*>(p);
@@ -349,7 +349,7 @@ bool cUnk00a808b8::Slot24_a80710(uint32_t p)
 }
 
 // FUNCTION: 0x00407e90
-bool cUnk00a808b8::Slot04_a80710()
+bool cSC4Advice::Slot04_a80710()
 {
     if (mnB8 != -2 && gpB207c0) {
         cB207c0Item* o = gpB207c0->Fn10();
@@ -362,7 +362,7 @@ bool cUnk00a808b8::Slot04_a80710()
 }
 
 // FUNCTION: 0x00407ed0
-bool cUnk00a808b8::Slot22_a80710(uint32_t p)
+bool cSC4Advice::Slot22_a80710(uint32_t p)
 {
     if (!reinterpret_cast<Slot15View*>(this)->Test(8) && reinterpret_cast<Slot15View*>(this)->Test(2)) {
         cB207c0* g = gpB207c0;
@@ -376,7 +376,7 @@ bool cUnk00a808b8::Slot22_a80710(uint32_t p)
 }
 
 // FUNCTION: 0x00408970
-bool cUnk00a808b8::Slot08_a80710()
+bool cSC4Advice::Slot08_a80710()
 {
     if (reinterpret_cast<Slot15View*>(this)->Test(0x400)) {
         return true;
@@ -389,7 +389,7 @@ bool cUnk00a808b8::Slot08_a80710()
 }
 
 // FUNCTION: 0x00407b70
-uint32_t cUnk00a808b8::Slot15_a80710(uint32_t flags)
+uint32_t cSC4Advice::Slot15_a80710(uint32_t flags)
 {
     return (mnFlags & flags) == flags;
 }
@@ -487,7 +487,7 @@ struct OutOfLineRef {
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00407c50 score 8 (only the eax/edx choice for the vtable of the call through the third base differs)
-bool cUnk00a808b8::Slot05_a80710(uint32_t pOut)
+bool cSC4Advice::Slot05_a80710(uint32_t pOut)
 {
     if (mn88 != 0 && pOut != 0) {
         RefTarget** out = reinterpret_cast<RefTarget**>(pOut);

@@ -4,14 +4,14 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00acec00.h"
+#include "classes/cRZMessage2Standard.h"
 #include "classes/cUnk00ad1590.h"
 
 // VTABLE: 0x00ad1638 cUnk00ad1590
-// VTABLE: 0x00ad15a0 cUnk00acec00
-class cUnk00ad1638 : public cUnk00ad1590, public cUnk00acec00 {
+// VTABLE: 0x00ad15a0 cRZMessage2Standard
+class cUnk00ad1638 : public cUnk00ad1590, public cRZMessage2Standard {
 public:
-    virtual uint32_t Slot37_acec00(uint32_t);
+    virtual uint32_t SetExtra(uint32_t);
     virtual bool Slot00_ad1590(uint32_t, uint32_t);
     virtual uint32_t Slot01_ad1590();
     virtual void Slot02_ad1590();

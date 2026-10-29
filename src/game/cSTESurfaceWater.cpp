@@ -1,4 +1,4 @@
-#include "classes/cUnk00ab3b00.h"
+#include "classes/cSTESurfaceWater.h"
 #include <algorithm>
 #include <new>
 #include "game/Globals.h"
@@ -208,23 +208,23 @@ struct World_ab3b00 {
 // GLOBAL: 0x00b43cec
 extern World_ab3b00* gpB43cec;
 
-static inline Grid_ab3b00* GridOf_ab3b00(cUnk00ab3b00* p)
+static inline Grid_ab3b00* GridOf_ab3b00(cSTESurfaceWater* p)
 {
     return static_cast<Grid_ab3b00*>(p->mpGrid);
 }
 
 // FUNCTION: 0x004f7ba0
-unsigned int cUnk00ab3b00::AddRef()
+unsigned int cSTESurfaceWater::AddRef()
 {
     return ++mnRefCount;
 }
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x0073cd50 score 17 (the original is a three-way switch compiled as cmp max/ja/je/dec/je/sub; every spelling tried gives an ascending compare chain)
-bool cUnk00ab3b00::QueryInterface(unsigned int iid, void** ppv)
+bool cSTESurfaceWater::QueryInterface(unsigned int iid, void** ppv)
 {
     if (iid == 0xab8da759 || iid == 1) {
-        *ppv = static_cast<cUnk00ab3b00_0*>(this);
+        *ppv = static_cast<cSTESurfaceWater_0*>(this);
         AddRef();
         return true;
     }
@@ -238,33 +238,33 @@ bool cUnk00ab3b00::QueryInterface(unsigned int iid, void** ppv)
 #endif
 
 // FUNCTION: 0x0073cdb0
-uint32_t cUnk00ab3b00::Slot13_ab3b00(uint32_t a, uint32_t b)
+uint32_t cSTESurfaceWater::HasDraftClearance(uint32_t a, uint32_t b)
 {
-    if (Slot06_ab3b00(a, b) > 5.0f) {
+    if (GetWaterDepthForCell(a, b) > 5.0f) {
         return 1;
     }
     return 0;
 }
 
 // FUNCTION: 0x0073cec0
-unsigned int cUnk00ab3b00::Release()
+unsigned int cSTESurfaceWater::Release()
 {
     if (mnRefCount > 1) {
         return --mnRefCount;
     }
-    Slot04_ab3b00();
+    Shutdown();
     delete this;
     return 0;
 }
 
 // FUNCTION: 0x0073d200
-float cUnk00ab3b00::Slot05_ab3b00(uint32_t a)
+float cSTESurfaceWater::GetWaterDepthAtVertex(uint32_t a)
 {
     return mpEntries[a * 9];
 }
 
 // FUNCTION: 0x0073d210
-float cUnk00ab3b00::Slot06_ab3b00(uint32_t a, uint32_t b)
+float cSTESurfaceWater::GetWaterDepthForCell(uint32_t a, uint32_t b)
 {
     Grid_ab3b00* g = GridOf_ab3b00(this);
     int32_t cell = g->Cell09(a, b);
@@ -287,14 +287,14 @@ float cUnk00ab3b00::Slot06_ab3b00(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x0073d7c0
-void* cUnk00ab3b00::Slot11_ab3b00(uint32_t a, uint32_t b)
+void* cSTESurfaceWater::GetWaterVelocity(uint32_t a, uint32_t b)
 {
     int32_t cell = GridOf_ab3b00(this)->Cell09(a, b);
     return mpEntries + cell * 9 + 4;
 }
 
 // FUNCTION: 0x0073d7f0
-uint32_t cUnk00ab3b00::Slot12_ab3b00(uint32_t a, uint32_t b)
+uint32_t cSTESurfaceWater::GetWaterType(uint32_t a, uint32_t b)
 {
     int32_t cell = GridOf_ab3b00(this)->Cell09(a, b);
     float v = mpEntries[cell * 9];
@@ -310,12 +310,12 @@ uint32_t cUnk00ab3b00::Slot12_ab3b00(uint32_t a, uint32_t b)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x0073cef0 score 18 (the original keeps one output in a fresh stack slot and the other in the dead first argument slot; here both reuse dead argument slots)
-void cUnk00ab3b00::Slot07_ab3b00(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t e)
+void cSTESurfaceWater::Slot07_ab3b00(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t e)
 {
     uint32_t y;
     uint32_t x;
     gpB43cec->Fn95(a, c, &x, &y);
-    Slot08_ab3b00(x, y, d, e);
+    IsNavigable(x, y, d, e);
 }
 #endif
 
@@ -388,7 +388,7 @@ void Fn005d9730(void* stream, uint32_t id, void** field, uint32_t flag);
 uint32_t Fn0045ba70(void* stream);
 
 // FUNCTION: 0x0073dd40
-bool cUnk00ab3b00::Slot03_a80784(void* pv)
+bool cSTESurfaceWater::Slot03_a80784(void* pv)
 {
     OutStream_ab3b00* p = static_cast<OutStream_ab3b00*>(pv);
     p->Wr07(1);
@@ -405,7 +405,7 @@ bool cUnk00ab3b00::Slot03_a80784(void* pv)
 }
 
 // FUNCTION: 0x00740490
-bool cUnk00ab3b00::Slot04_a80784(void* pv)
+bool cSTESurfaceWater::Slot04_a80784(void* pv)
 {
     InStream_ab3b00* p = static_cast<InStream_ab3b00*>(pv);
     uint16_t v;
@@ -418,7 +418,7 @@ bool cUnk00ab3b00::Slot04_a80784(void* pv)
 }
 
 // FUNCTION: 0x0073d4f0
-float cUnk00ab3b00::Slot10_ab3b00(uint32_t a, uint32_t b)
+float cSTESurfaceWater::AltitudeAtWhichFloodingWillOccur(uint32_t a, uint32_t b)
 {
     int32_t cell = GridOf_ab3b00(this)->Cell09(a, b);
     float limit = GridOf_ab3b00(this)->mfLimit;
@@ -523,7 +523,7 @@ float* Fn0073d010(float* a, float* b, float* c, Alloc_ab3b00* alloc, uint32_t d)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x0073e990 score 9 (store of the new end pointer comes after the grid load here, before it in the original; the not-ready path has its own epilogue there)
-bool cUnk00ab3b00::Slot04_ab3b00()
+bool cSTESurfaceWater::Shutdown()
 {
     if (mbReady) {
         mbReady = 0;
@@ -640,7 +640,7 @@ extern Grid_ab3b00* gpB43cf4;
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x0073fe70 score 36 (register choice for the grid pointers and the order of the rectangle stores)
-bool cUnk00ab3b00::Slot03_ab3b00()
+bool cSTESurfaceWater::Init()
 {
     if (!mbReady) {
         Grid_ab3b00* old = GridOf_ab3b00(this);
@@ -930,7 +930,7 @@ struct SpotRef_ab3b00 {
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00740160 score 180 (the original saves ebx/ebp only inside the cases that need them; here they are saved in the prologue)
-bool cUnk00ab3b00::Slot03_aaaa9c(void* pv)
+bool cSTESurfaceWater::Slot03_aaaa9c(void* pv)
 {
     Message_ab3b00* msg = static_cast<Message_ab3b00*>(pv);
     switch (msg->Fn04()) {
@@ -1010,7 +1010,7 @@ bool cUnk00ab3b00::Slot03_aaaa9c(void* pv)
                 int32_t x;
                 int32_t y;
                 spot.mp->Fn08(&x, &y);
-                if (Slot06_ab3b00(x, y) > 0.0f) {
+                if (GetWaterDepthForCell(x, y) > 0.0f) {
                     mbFlag50 = 1;
                 }
             }
@@ -1154,7 +1154,7 @@ struct Bounds_ab3b00 {
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x0073ebf0 score 215 (frame is 4 bytes smaller and the loop variables are kept in memory here)
-bool cUnk00ab3b00::Slot08_ab3b00(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
+bool cSTESurfaceWater::IsNavigable(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
 {
     Bounds_ab3b00 bounds;
     bounds.Include(0, 0);
@@ -1177,7 +1177,7 @@ bool cUnk00ab3b00::Slot08_ab3b00(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
         if (!gpB43cec->Fn99(x, y)) {
             return false;
         }
-        if (!static_cast<uint8_t>(Slot13_ab3b00(x, y))) {
+        if (!static_cast<uint8_t>(HasDraftClearance(x, y))) {
             return false;
         }
         if (d) {

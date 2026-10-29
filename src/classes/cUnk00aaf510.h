@@ -4,22 +4,22 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00adc8d8.h"
+#include "classes/cGZWin.h"
 
 // VTABLE: 0x00aaf510
 // SIZE 0x118
-class cUnk00aaf510 : public cUnk00adc8d8 {
+class cUnk00aaf510 : public cGZWin {
 public:
     virtual ~cUnk00aaf510() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot03_adc8d8(uint32_t);
-    virtual bool Slot88_adc8d8();
-    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot131_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot143_adc8d8(uint32_t, uint32_t);
+    virtual bool DoMessage(uint32_t);
+    virtual bool GZPaint();
+    virtual bool GZOnKeyDown(uint32_t, uint32_t);
+    virtual bool GZOnKeyUp(uint32_t, uint32_t);
+    virtual bool GZOnMouseDownL(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnCommand(uint32_t, uint32_t);
     virtual bool Slot04_adb6a8();
     virtual bool Slot05_adb6a8();
     char unknownd8[0x40];

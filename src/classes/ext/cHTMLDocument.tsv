@@ -12,10 +12,10 @@ method 0x008ffac2 void Fn008ffac2()
 method 0x00905cf0 void Fn00905cf0(uint32_t)
 method 0x009080a2 bool Fn009080a2()
 slot Slot05_acd938 void void*
-slot Slot06_acd938 uint32_t void* int32_t
-slot Slot07_acd938 void void* int32_t
-slot Slot08_acd938 void void*
-slot Slot13_acd938 void* uint32_t
-slot Slot21_acd938 bool void*
-slot Slot22_acd938 void void* void*
-slot Slot23_acd938 void void* void*
+slot GetFontSizeTable uint32_t void* int32_t
+slot SetFontSizeTable void void* int32_t
+slot ParseSGMLElements void void*
+slot FindAnchor void* uint32_t
+slot GetBaseURL bool void*
+slot GetDefaultVariableWidthFontInfo void void* void*
+slot GetDefaultFixedWidthFontInfo void void* void*

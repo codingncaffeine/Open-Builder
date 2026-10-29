@@ -4,13 +4,13 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00adc8d8.h"
+#include "classes/cGZWin.h"
 #include "classes/cUnk00adcdc8.h"
 
 // VTABLE: 0x00add190 cUnk00adcdc8
-// VTABLE: 0x00adcf30 cUnk00adc8d8
+// VTABLE: 0x00adcf30 cGZWin
 // SIZE 0x364
-class cUnk00add190 : public cUnk00adcdc8, public cUnk00adc8d8 {
+class cUnk00add190 : public cUnk00adcdc8, public cGZWin {
 public:
     virtual ~cUnk00add190() {}
     virtual void Slot89_add190();
@@ -120,9 +120,9 @@ public:
     virtual bool Slot86_adcdc8();
     virtual void Slot87_adcdc8(uint32_t);
     virtual void Slot88_adcdc8();
-    virtual bool Slot03_adc8d8(uint32_t);
+    virtual bool DoMessage(uint32_t);
     virtual uint32_t Slot68_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot88_adc8d8();
+    virtual bool GZPaint();
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot04_adb6a8();
     virtual bool Slot05_adb6a8();

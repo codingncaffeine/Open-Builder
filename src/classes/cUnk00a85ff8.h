@@ -4,13 +4,13 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a808b8.h"
+#include "classes/cSC4Advice.h"
 
 // VTABLE: 0x00a85ff8 cUnk00a80710
 // VTABLE: 0x00a85fe0 cUnk0090da1e
 // VTABLE: 0x00a85fc8 cUnk00a80784
 // SIZE 0xc0
-class cUnk00a85ff8 : public cUnk00a808b8 {
+class cUnk00a85ff8 : public cSC4Advice {
 public:
     virtual bool Slot03_a80710(uint32_t);
     virtual bool Slot08_a80710();

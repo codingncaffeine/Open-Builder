@@ -1,5 +1,5 @@
-slot Slot151_ae04d8 bool void* uint32_t uint32_t
-slot Slot156_ae04d8 bool float
+slot ConvertCursorPositionToPercentage bool void* uint32_t uint32_t
+slot SetPercentage bool float
 field dc uint32_t mnMode
 field e0 int32_t mnMin
 field e4 int32_t mnMax

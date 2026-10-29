@@ -4,17 +4,17 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00ac7e60.h"
+#include "classes/cGZWinLuaScriptViewCallStack.h"
 
-// VTABLE: 0x00ac7b68 cUnk00adc8d8
+// VTABLE: 0x00ac7b68 cGZWin
 // VTABLE: 0x00ac7ae8 cUnk00adc2b0
-class cUnk00ac7b68 : public cUnk00ac7e60 {
+class cUnk00ac7b68 : public cGZWinLuaScriptViewCallStack {
 public:
     virtual ~cUnk00ac7b68();
-    virtual bool Slot03_adc8d8(uint32_t);
-    virtual void Slot153_ac7e60();
-    virtual void Slot155_ac7e60();
-    virtual void Slot156_ac7e60();
+    virtual bool DoMessage(uint32_t);
+    virtual void PostInit();
+    virtual void RefreshView();
+    virtual void DoRequestClose();
 };
 
 // SYNTHETIC: 0x008aff90

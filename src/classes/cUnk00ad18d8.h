@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00ad1818.h"
+#include "classes/cGZPersistDBSerialRecord.h"
 
 // VTABLE: 0x00ad18d8
 // SIZE 0x10
-class cUnk00ad18d8 : public cUnk00ad1818 {
+class cUnk00ad18d8 : public cGZPersistDBSerialRecord {
 public:
     virtual ~cUnk00ad18d8() {}
     virtual void Slot03_ad1818();

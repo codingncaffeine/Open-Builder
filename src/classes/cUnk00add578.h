@@ -4,13 +4,13 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00adc8d8.h"
+#include "classes/cGZWin.h"
 #include "classes/cUnk00add348.h"
 
 // VTABLE: 0x00add578 cUnk00add348
-// VTABLE: 0x00add7b0 cUnk00adc8d8
+// VTABLE: 0x00add7b0 cGZWin
 // SIZE 0x2e8
-class cUnk00add578 : public cUnk00add348, public cUnk00adc8d8 {
+class cUnk00add578 : public cUnk00add348, public cGZWin {
 public:
     virtual ~cUnk00add578() {}
     virtual bool Slot140_add578(uint32_t);
@@ -18,18 +18,18 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot03_adc8d8(uint32_t);
+    virtual bool DoMessage(uint32_t);
     virtual uint32_t Slot68_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot88_adc8d8();
-    virtual bool Slot129_adc8d8(uint32_t);
-    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot131_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot132_adc8d8(uint32_t);
-    virtual bool Slot133_adc8d8(uint32_t);
-    virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot139_adc8d8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool GZPaint();
+    virtual bool GZOnCharacter(uint32_t);
+    virtual bool GZOnKeyDown(uint32_t, uint32_t);
+    virtual bool GZOnKeyUp(uint32_t, uint32_t);
+    virtual bool GZOnSetFocus(uint32_t);
+    virtual bool GZOnKillFocus(uint32_t);
+    virtual bool GZOnMouseDownL(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnMouseUpL(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnMouseMove(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnMouseWheel(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot05_add348();
     virtual bool Slot06_add348();
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);

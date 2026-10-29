@@ -8,7 +8,7 @@
 
 // VTABLE: 0x00ad95e8 cUnk00ad8d88
 // VTABLE: 0x00ad95a8 cUnk00ad8d48
-// VTABLE: 0x00ad9548 cUnk00ad1818
+// VTABLE: 0x00ad9548 cGZPersistDBSerialRecord
 // VTABLE: 0x00ad94e8 cUnk00ad1878
 class cUnk00ad95e8 : public cUnk00ad7cf0 {
 public:

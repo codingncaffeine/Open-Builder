@@ -6,7 +6,7 @@
 #include "common/types.h"
 #include "classes/cUnk00adf2e8.h"
 
-// VTABLE: 0x00ab4d08 cUnk00adc8d8
+// VTABLE: 0x00ab4d08 cGZWin
 // VTABLE: 0x00ab4c28 cUnk00addff8
 // VTABLE: 0x00ab4b98 cUnk00ade0f0
 // SIZE 0x260

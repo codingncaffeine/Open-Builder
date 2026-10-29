@@ -19,7 +19,7 @@ public:
     virtual void Slot09_addf78(uint32_t, uint32_t) = 0;
     virtual void Slot10_addf78(uint32_t, uint32_t) = 0;
     virtual void Slot11_addf78() = 0;
-    virtual void Slot157_ade188(uint32_t) = 0;
+    virtual void DrawGraphData(uint32_t) = 0;
     virtual void Slot13_addf78() = 0;
     virtual void Slot14_addf78(uint32_t) = 0;
     virtual void Slot15_addf78(uint32_t, uint32_t) = 0;

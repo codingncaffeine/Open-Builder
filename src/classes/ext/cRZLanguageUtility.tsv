@@ -1,16 +1,16 @@
 field 4 uint32_t mnRefCount
 field 8 uint32_t mnType
 field c uint32_t mnSubType
-slot Slot00_ad1250 bool uint32_t void*
-slot Slot02_ad1250 uint32_t
-slot Slot19_ad1250 bool double void* void*
-slot Slot14_ad1250 bool void*
-slot Slot15_ad1250 bool void*
-slot Slot29_ad1250 bool
-slot Slot11_ad1250 bool void*
+slot QueryInterface bool uint32_t void*
+slot Release uint32_t
+slot MakeFormattedNumberString bool double void* void*
+slot GetThousandSeparator bool void*
+slot GetDecimalSeparator bool void*
+slot DoesLanguageUseMultiByteCharacters bool
+slot GetCurrencySymbol bool void*
 field 10 bool mbHasSymbol
 field 14 cRZString mName
-slot Slot20_ad1250 void void* void*
-slot Slot21_ad1250 void void* void*
-slot Slot22_ad1250 int32_t void* void* bool
-slot Slot09_ad1250 bool int32_t int32_t int32_t void*
+slot ConvertToLowerCase void void* void*
+slot ConvertToUpperCase void void* void*
+slot CompareStrings int32_t void* void* bool
+slot MakeTimeString bool int32_t int32_t int32_t void*

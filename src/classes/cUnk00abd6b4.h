@@ -4,13 +4,13 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "classes/cGZPersistResource.h"
 #include "classes/cUnk00abd744.h"
-#include "classes/cUnk00ad8bec.h"
 
 // VTABLE: 0x00abd6b4 cUnk00abd744
-// VTABLE: 0x00abd680 cUnk00ad8bec
+// VTABLE: 0x00abd680 cGZPersistResource
 // SIZE 0x5c
-class cUnk00abd6b4 : public cUnk00abd744, public cUnk00ad8bec {
+class cUnk00abd6b4 : public cUnk00abd744, public cGZPersistResource {
 public:
     virtual ~cUnk00abd6b4() {}
     virtual bool QueryInterface(unsigned int, void **);

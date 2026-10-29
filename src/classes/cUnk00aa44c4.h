@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00ad8c20.h"
+#include "classes/cGZPersistResourceFactory.h"
 
 // VTABLE: 0x00aa44c4
 // SIZE 0x10
-class cUnk00aa44c4 : public cUnk00ad8c20 {
+class cUnk00aa44c4 : public cGZPersistResourceFactory {
 public:
     virtual ~cUnk00aa44c4();
     virtual bool Slot09_ad8c20(uint32_t, uint32_t, uint32_t);

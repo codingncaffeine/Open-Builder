@@ -4,14 +4,14 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "classes/cGZWinTextEdit.h"
 #include "classes/cUnk00adb6a8.h"
-#include "classes/cUnk00adfbd0.h"
 
 // VTABLE: 0x00adbbf0 cUnk00adb6a8
-// VTABLE: 0x00adbc78 cUnk00adc8d8
+// VTABLE: 0x00adbc78 cGZWin
 // VTABLE: 0x00adba88 cUnk00adf900
 // SIZE 0x2e8
-class cUnk00adbbf0 : public cUnk00adb6a8, public cUnk00adfbd0 {
+class cUnk00adbbf0 : public cUnk00adb6a8, public cGZWinTextEdit {
 public:
     virtual ~cUnk00adbbf0() {}
     virtual void Slot30_adbbf0();
@@ -21,8 +21,8 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot03_adc8d8(uint32_t);
-    virtual bool Slot88_adc8d8();
+    virtual bool DoMessage(uint32_t);
+    virtual bool GZPaint();
     virtual void* Slot03_adb6a8();
     virtual bool Slot04_adb6a8();
     virtual bool Slot05_adb6a8();

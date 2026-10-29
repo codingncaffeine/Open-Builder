@@ -1,4 +1,4 @@
-slot Slot00_ab2150 bool uint32_t void*
-slot Slot02_ab2150 uint32_t
-slot Slot27_ab2150 void void* void*
-slot Slot32_ab2150 void void* void*
+slot QueryInterface bool uint32_t void*
+slot Release uint32_t
+slot GetEndCell void void* void*
+slot GetCompressedRoute void void* void*

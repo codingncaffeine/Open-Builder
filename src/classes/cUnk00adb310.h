@@ -7,14 +7,14 @@
 
 class cUnk00adb310 {
 public:
-    virtual bool Slot00_ac1400(uint32_t, uint32_t) = 0;
+    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot01_ac1400() = 0;
     virtual uint32_t Slot02_ac1400() = 0;
     virtual void* Slot03_adb310() = 0;
     virtual bool Slot04_adb310(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual bool Slot04_ac1400() = 0;
+    virtual bool Shutdown() = 0;
     virtual bool Slot06_adb310() = 0;
-    virtual bool Slot05_ac1400() = 0;
+    virtual bool Uninitialize() = 0;
     virtual bool Slot08_adb310() = 0;
     virtual void Slot09_adb310(uint32_t) = 0;
     virtual bool Slot10_adb310(uint32_t) = 0;
@@ -28,7 +28,7 @@ public:
     virtual uint32_t Slot18_adb310() = 0;
     virtual uint32_t Slot19_adb310() = 0;
     virtual void Slot20_adb310() = 0;
-    virtual bool Slot39_ac1400() = 0;
+    virtual bool IsReady() = 0;
     virtual bool Slot22_adb310() = 0;
     virtual void Slot23_adb310() = 0;
     virtual void Slot24_adb310() = 0;

@@ -4,13 +4,13 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a827d8.h"
+#include "classes/cGZDate.h"
 #include "classes/cUnk00aceb48.h"
 
-// VTABLE: 0x00aceaf0 cUnk00a827d8
+// VTABLE: 0x00aceaf0 cGZDate
 // VTABLE: 0x00acea38 cUnk00aceb48
 // SIZE 0x10
-class cUnk00aceaf0 : public cUnk00a827d8, public cUnk00aceb48 {
+class cUnk00aceaf0 : public cGZDate, public cUnk00aceb48 {
 public:
     virtual ~cUnk00aceaf0() {}
     virtual uint32_t Slot04_aceaf0(uint32_t, uint32_t);

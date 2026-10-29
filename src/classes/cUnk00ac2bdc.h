@@ -8,7 +8,7 @@
 // SIZE 0x4
 class cUnk00ac2bdc {
 public:
-    virtual bool Slot00_ad4cf4(uint32_t, uint32_t) = 0;
+    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
     virtual bool Slot03_ac2bdc(uint32_t, uint32_t) = 0;

@@ -1,4 +1,4 @@
-#include "classes/cUnk00ab2150.h"
+#include "classes/cSC4PathFinder.h"
 #include "game/Globals.h"
 
 // The class has no known size yet, so its data cannot be declared in the header: this view names what the methods
@@ -64,7 +64,7 @@ struct Data_ab2150 {
     uint32_t mnField315c;         // 0x315c
 };
 
-static inline Data_ab2150* Of_ab2150(cUnk00ab2150* p)
+static inline Data_ab2150* Of_ab2150(cSC4PathFinder* p)
 {
     return reinterpret_cast<Data_ab2150*>(p);
 }
@@ -111,23 +111,23 @@ struct cNode_ab2150 {
 };
 
 // FUNCTION: 0x006d5d20
-bool cUnk00ab2150::Slot00_ab2150(uint32_t id, void* out)
+bool cSC4PathFinder::QueryInterface(uint32_t id, void* out)
 {
     if (id == 1 || id == 0xaa0db766) {
-        *static_cast<cUnk00ab2150**>(out) = this;
-        Slot01_ab2150();
+        *static_cast<cSC4PathFinder**>(out) = this;
+        AddRef();
         return true;
     }
     return false;
 }
 
 // FUNCTION: 0x006d5d50
-bool cUnk00ab2150::Slot04_ab2150()
+bool cSC4PathFinder::Shutdown()
 {
     Data_ab2150* d = Of_ab2150(this);
     if (d->mbActive) {
         d->mbActive = false;
-        Slot31_ab2150();
+        ReleasePathNodes();
         d->mpDataA = 0;
         d->mpDataB = 0;
         return true;
@@ -136,50 +136,50 @@ bool cUnk00ab2150::Slot04_ab2150()
 }
 
 // FUNCTION: 0x006d6030
-float cUnk00ab2150::Slot26_ab2150()
+float cSC4PathFinder::GetTripLengthScaledForDisplay()
 {
     Data_ab2150* d = Of_ab2150(this);
     return static_cast<cMap_ab2150*>(d->mpMap)->Fn15() * d->mfScale;
 }
 
 // FUNCTION: 0x006d6cf0
-void cUnk00ab2150::Slot05_ab2150(uint32_t a)
+void cSC4PathFinder::Slot05_ab2150(uint32_t a)
 {
     Of_ab2150(this)->mnFlags |= a;
 }
 
 // FUNCTION: 0x006d6d00
-void cUnk00ab2150::Slot06_ab2150(uint32_t a)
+void cSC4PathFinder::Slot06_ab2150(uint32_t a)
 {
     Of_ab2150(this)->mnFlags &= ~a;
 }
 
 // FUNCTION: 0x006d6d20
-void cUnk00ab2150::Slot07_ab2150()
+void cSC4PathFinder::ClearAllFlags()
 {
     Of_ab2150(this)->mnFlags = 0;
 }
 
 // FUNCTION: 0x006d6d40
-void cUnk00ab2150::Slot10_ab2150(uint32_t a)
+void cSC4PathFinder::Slot10_ab2150(uint32_t a)
 {
     Of_ab2150(this)->mnFlags8 |= static_cast<uint8_t>(a);
 }
 
 // FUNCTION: 0x006d6d60
-void cUnk00ab2150::Slot11_ab2150(uint32_t a)
+void cSC4PathFinder::Slot11_ab2150(uint32_t a)
 {
     Of_ab2150(this)->mnFlags8 &= static_cast<uint8_t>(~a);
 }
 
 // FUNCTION: 0x006d6d80
-void cUnk00ab2150::Slot12_ab2150()
+void cSC4PathFinder::ClearAllDestinationFlags()
 {
     Of_ab2150(this)->mnFlags8 = 0;
 }
 
 // FUNCTION: 0x006d6d90
-void cUnk00ab2150::Slot13_ab2150(uint32_t a, uint32_t b)
+void cSC4PathFinder::Slot13_ab2150(uint32_t a, uint32_t b)
 {
     Data_ab2150* d = Of_ab2150(this);
     d->mnMaskA |= static_cast<uint16_t>(a);
@@ -189,7 +189,7 @@ void cUnk00ab2150::Slot13_ab2150(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x006d6db0
-void cUnk00ab2150::Slot14_ab2150(uint32_t a)
+void cSC4PathFinder::Slot14_ab2150(uint32_t a)
 {
     Data_ab2150* d = Of_ab2150(this);
     d->mnMaskA &= static_cast<uint16_t>(~a);
@@ -197,7 +197,7 @@ void cUnk00ab2150::Slot14_ab2150(uint32_t a)
 }
 
 // FUNCTION: 0x006d6dd0
-void cUnk00ab2150::Slot15_ab2150()
+void cSC4PathFinder::ClearAllTravelTypeFlags()
 {
     Data_ab2150* d = Of_ab2150(this);
     d->mnMaskB = 0;
@@ -206,7 +206,7 @@ void cUnk00ab2150::Slot15_ab2150()
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x006d6e10 score 9 (the original adds 0x18 to ecx once and stores through [ecx+n]; the compiler folds the offset into every store)
-void cUnk00ab2150::Slot19_ab2150(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
+void cSC4PathFinder::Slot19_ab2150(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
 {
     Of_ab2150(this)->mVecA.Set(a, b, c, d);
 }
@@ -214,20 +214,20 @@ void cUnk00ab2150::Slot19_ab2150(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x006d6e40 score 9 (same as 0x006d6e10, offset 0x28)
-void cUnk00ab2150::Slot20_ab2150(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
+void cSC4PathFinder::Slot20_ab2150(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
 {
     Of_ab2150(this)->mVecB.Set(a, b, c, d);
 }
 #endif
 
 // FUNCTION: 0x006d6e80
-void cUnk00ab2150::Slot22_ab2150()
+void cSC4PathFinder::Reset()
 {
     Of_ab2150(this)->mnByteC4 = 0;
 }
 
 // FUNCTION: 0x006d6ea0
-void cUnk00ab2150::Slot27_ab2150(void* a, void* b)
+void cSC4PathFinder::GetEndCell(void* a, void* b)
 {
     Data_ab2150* d = Of_ab2150(this);
     *static_cast<uint32_t*>(a) = d->mnValueA;
@@ -235,7 +235,7 @@ void cUnk00ab2150::Slot27_ab2150(void* a, void* b)
 }
 
 // FUNCTION: 0x006d6ec0
-bool cUnk00ab2150::Slot28_ab2150()
+bool cSC4PathFinder::GetLastTravelType()
 {
     cNode_ab2150* n = static_cast<cNode_ab2150*>(Of_ab2150(this)->mpPath);
     if (n) {
@@ -245,14 +245,14 @@ bool cUnk00ab2150::Slot28_ab2150()
 }
 
 // FUNCTION: 0x006d61b0
-uint32_t cUnk00ab2150::Slot02_ab2150()
+uint32_t cSC4PathFinder::Release()
 {
     Data_ab2150* d = Of_ab2150(this);
     if (d->mnRefCount > 1) {
         return --d->mnRefCount;
     }
     if (d->mbActive) {
-        Slot04_ab2150();
+        Shutdown();
     }
     delete this;
     return 0;
@@ -262,7 +262,7 @@ uint32_t cUnk00ab2150::Slot02_ab2150()
 void* Fn00910003(void* dst, int value, uint32_t size);
 
 // FUNCTION: 0x006d6730
-void cUnk00ab2150::Slot31_ab2150()
+void cSC4PathFinder::ReleasePathNodes()
 {
     Data_ab2150* d = Of_ab2150(this);
     d->mpBufferBegin = *d->mpBufferOwner;
@@ -379,7 +379,7 @@ struct cB43cec_ab2150 {
 extern cB43cec_ab2150* gpB43cec;
 
 // FUNCTION: 0x006d78b0
-bool cUnk00ab2150::Slot03_ab2150()
+bool cSC4PathFinder::Init()
 {
     Data_ab2150* d = Of_ab2150(this);
     if (!d->mbActive) {
@@ -399,7 +399,7 @@ bool cUnk00ab2150::Slot03_ab2150()
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x006d61e0 score 204 (register allocation: the original keeps node/next in esi/edi and y, ny, dir, width on the stack)
-bool cUnk00ab2150::Slot30_ab2150()
+bool cSC4PathFinder::WasTripReversible()
 {
     cNode_ab2150* node = static_cast<cNode_ab2150*>(Of_ab2150(this)->mpPath);
     if (!node) {

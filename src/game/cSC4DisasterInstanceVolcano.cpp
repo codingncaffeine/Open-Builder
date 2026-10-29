@@ -1,4 +1,4 @@
-#include "classes/cUnk00a9ea60.h"
+#include "classes/cSC4DisasterInstanceVolcano.h"
 #include "game/Globals.h"
 
 // The interface a caller hands to Slot03_aaaa9c (reached through its slot 0 query).
@@ -84,7 +84,7 @@ struct cMetrics_a9ea60 {
     virtual float Fn13(float, float);
 };
 
-// The transform record Slot13_a9ea60 hands to the effect.
+// The transform record CreateParticleEffect hands to the effect.
 struct cXform_a9ea60 {
     uint8_t mnCount;
     uint8_t mnFlags;
@@ -268,16 +268,16 @@ cRegistry_a9ea60* Fn00602600();
 void Fn0057f9f0();
 
 // STUB: 0x0057ffe0
-void Fn0057ffe0(cUnk00a9ea60* p);
+void Fn0057ffe0(cSC4DisasterInstanceVolcano* p);
 
 // FUNCTION: 0x00472e60
-void* cUnk00a9ea60::Slot03_a9ea08()
+void* cSC4DisasterInstanceVolcano::Slot03_a9ea08()
 {
     return this;
 }
 
 // FUNCTION: 0x0057f430
-void* cUnk00a9ea60::Slot04_a9ea60()
+void* cSC4DisasterInstanceVolcano::GetID()
 {
     if (mpHost) {
         return static_cast<uint8_t*>(mpHost) + 8;
@@ -286,7 +286,7 @@ void* cUnk00a9ea60::Slot04_a9ea60()
 }
 
 // FUNCTION: 0x0057f440
-uint32_t cUnk00a9ea60::Slot07_a9ea60()
+uint32_t cSC4DisasterInstanceVolcano::GetPhase()
 {
     uint32_t r = 2;
     switch (mnState) {
@@ -308,7 +308,7 @@ uint32_t cUnk00a9ea60::Slot07_a9ea60()
 }
 
 // FUNCTION: 0x0057f480
-bool cUnk00a9ea60::QueryInterface(unsigned int iid, void** ppv)
+bool cSC4DisasterInstanceVolcano::QueryInterface(unsigned int iid, void** ppv)
 {
     *ppv = 0;
     switch (iid) {
@@ -327,7 +327,7 @@ bool cUnk00a9ea60::QueryInterface(unsigned int iid, void** ppv)
 }
 
 // FUNCTION: 0x0057f4d0
-unsigned int cUnk00a9ea60::Release()
+unsigned int cSC4DisasterInstanceVolcano::Release()
 {
     if (mnRefCount > 1) {
         return --mnRefCount;
@@ -337,27 +337,27 @@ unsigned int cUnk00a9ea60::Release()
 }
 
 // FUNCTION: 0x0057f4f0
-void cUnk00a9ea60::Slot10_a9ea60()
+void cSC4DisasterInstanceVolcano::StartDeformation()
 {
     if (!mbFlag41) {
-        Slot13_a9ea60("volcano_control", &mfSizeX, true, &mpEffect);
+        CreateParticleEffect("volcano_control", &mfSizeX, true, &mpEffect);
         mbFlag41 = true;
     }
 }
 
 // FUNCTION: 0x0057f520
-void cUnk00a9ea60::Slot11_a9ea60()
+void cSC4DisasterInstanceVolcano::EndDeformation()
 {
     if (!mbFlag40) {
         AddRef();
         reinterpret_cast<cHostIf_a9ea60*>(static_cast<uint8_t*>(mpHost) + 8)->Fn09(this);
-        Slot03_a9ea60();
+        GetManager();
         Release();
     }
 }
 
 // FUNCTION: 0x0057f550
-float cUnk00a9ea60::Slot06_a9ea08(uint32_t a, uint32_t b)
+float cSC4DisasterInstanceVolcano::Slot06_a9ea08(uint32_t a, uint32_t b)
 {
     if (!mpCurve) {
         return 0.0f;
@@ -366,13 +366,13 @@ float cUnk00a9ea60::Slot06_a9ea08(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x0057f6c0
-bool cUnk00a9ea60::Slot03_aaaa9c(void* p)
+bool cSC4DisasterInstanceVolcano::Slot03_aaaa9c(void* p)
 {
     cIface_a9ea60* pIface = 0;
     static_cast<cIface_a9ea60*>(p)->QueryInterface(0x65297976, reinterpret_cast<void**>(&pIface));
     switch (pIface->Fn04()) {
     case 0x86ad10ee:
-        Slot14_a9ea60(pIface->Fn14());
+        DoAnimationTick(pIface->Fn14());
         break;
     case 0xca493c1d:
         if (pIface->Fn09() == this) {
@@ -387,7 +387,7 @@ bool cUnk00a9ea60::Slot03_aaaa9c(void* p)
 }
 
 // FUNCTION: 0x0057f7a0
-bool cUnk00a9ea60::Slot05_a9ea08(uint32_t a)
+bool cSC4DisasterInstanceVolcano::Slot05_a9ea08(uint32_t a)
 {
     const int32_t* p = reinterpret_cast<const int32_t*>(a);
     mnPosX = p[0];
@@ -402,7 +402,7 @@ bool cUnk00a9ea60::Slot05_a9ea08(uint32_t a)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x0057f820 score 36
-bool cUnk00a9ea60::Slot08_a9ea08(uint32_t newState)
+bool cSC4DisasterInstanceVolcano::Slot08_a9ea08(uint32_t newState)
 {
     if (newState == mnState) {
         return false;
@@ -410,7 +410,7 @@ bool cUnk00a9ea60::Slot08_a9ea08(uint32_t newState)
     mnState = newState;
     switch (newState) {
     case 3:
-        Slot10_a9ea60();
+        StartDeformation();
         if (gb22bb9 && !mbFlag43 && !mbFlag40) {
             Fn0057f360();
             Slot08_a9ea08(5);
@@ -435,7 +435,7 @@ bool cUnk00a9ea60::Slot08_a9ea08(uint32_t newState)
         if (gb22bb9) {
             Fn0057f740();
         }
-        Slot11_a9ea60();
+        EndDeformation();
         break;
     }
     return true;
@@ -443,7 +443,7 @@ bool cUnk00a9ea60::Slot08_a9ea08(uint32_t newState)
 #endif
 
 // FUNCTION: 0x0057f920
-bool cUnk00a9ea60::Slot03_a9ea60()
+bool cSC4DisasterInstanceVolcano::GetManager()
 {
     if (!mbActive) {
         return false;
@@ -467,7 +467,7 @@ bool cUnk00a9ea60::Slot03_a9ea60()
     if (mbFlag40 || mbFlag44) {
         Fn0057f740();
     }
-    cHostIf_a9ea60* pIf = static_cast<cHostIf_a9ea60*>(Slot04_a9ea60());
+    cHostIf_a9ea60* pIf = static_cast<cHostIf_a9ea60*>(GetID());
     if (pIf) {
         pIf->Fn09(this);
     }
@@ -488,7 +488,7 @@ bool cUnk00a9ea60::Slot03_a9ea60()
 }
 
 // FUNCTION: 0x0057fb90
-void cUnk00a9ea60::Slot14_a9ea60(uint32_t dt)
+void cSC4DisasterInstanceVolcano::DoAnimationTick(uint32_t dt)
 {
     if (gb22bb9 && mbFlag40) {
         mnTimer += dt;
@@ -517,7 +517,7 @@ void cUnk00a9ea60::Slot14_a9ea60(uint32_t dt)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x0057fce0 score 2
-void cUnk00a9ea60::Slot13_a9ea60(const char* name, const void* b, bool c, void* d)
+void cSC4DisasterInstanceVolcano::CreateParticleEffect(const char* name, const void* b, bool c, void* d)
 {
     cEffect_a9ea60** pp = static_cast<cEffect_a9ea60**>(d);
     const float* pos = static_cast<const float*>(b);
@@ -561,7 +561,7 @@ void cUnk00a9ea60::Slot13_a9ea60(const char* name, const void* b, bool c, void* 
 #endif
 
 // FUNCTION: 0x00580070
-bool cUnk00a9ea60::Slot09_a9ea60()
+bool cSC4DisasterInstanceVolcano::Init()
 {
     mbActive = true;
     Fn0057ffe0(this);

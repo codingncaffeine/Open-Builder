@@ -4,14 +4,14 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "classes/cGZWinGen.h"
 #include "classes/cUnk00adb720.h"
-#include "classes/cUnk00adc678.h"
 
 // VTABLE: 0x00adba40 cUnk00adb720
-// VTABLE: 0x00adb7e0 cUnk00adc8d8
+// VTABLE: 0x00adb7e0 cGZWin
 // VTABLE: 0x00adb760 cUnk00adc2b0
 // SIZE 0x154
-class cUnk00adba40 : public cUnk00adb720, public cUnk00adc678 {
+class cUnk00adba40 : public cUnk00adb720, public cGZWinGen {
 public:
     virtual ~cUnk00adba40() {}
     virtual void Slot15_adba40();
@@ -20,7 +20,7 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot03_adc8d8(uint32_t);
+    virtual bool DoMessage(uint32_t);
     virtual void* Slot03_adb720();
     virtual uint32_t Slot06_adb720();
     virtual void Slot07_adb720(uint32_t);

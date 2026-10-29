@@ -11,7 +11,7 @@
 class cUnk00ad8970 : public cUnk00a87578 {
 public:
     virtual ~cUnk00ad8970() {}
-    virtual bool Slot03_a8738c(uint32_t);
+    virtual bool IsKeyIncluded(uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad8970[sizeof(cUnk00ad8970) == 0xc ? 1 : -1];

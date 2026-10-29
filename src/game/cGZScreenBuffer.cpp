@@ -1,4 +1,4 @@
-#include "classes/cUnk00adb418.h"
+#include "classes/cGZScreenBuffer.h"
 
 #include <stddef.h>
 
@@ -10,7 +10,7 @@ struct Rect_adb418 {
     int32_t mnBottom;
 };
 
-// The fields of the primary subobject (cUnk00ac1400 names only some of them), seen from this class.
+// The fields of the primary subobject (cGZBuffer names only some of them), seen from this class.
 struct Primary_adb418 {
     void* mpVtbl0;
     void* mpVtbl1;
@@ -312,26 +312,26 @@ struct Node_adb418 {
     Node_adb418* Fn00991e50();
 };
 
-static inline Primary_adb418* Prim(cUnk00adb418* p)
+static inline Primary_adb418* Prim(cGZScreenBuffer* p)
 {
     return reinterpret_cast<Primary_adb418*>(p);
 }
 
-// 0x00825d60 is the base class's own AddRef (cUnk00ac1400): the original does not override it here (its secondary
-// vtable holds the base's thunk), so it belongs in cUnk00ac1400. This body scores 0 there too.
+// 0x00825d60 is the base class's own AddRef (cGZBuffer): the original does not override it here (its secondary
+// vtable holds the base's thunk), so it belongs in cGZBuffer. This body scores 0 there too.
 #ifdef OB_DRAFTS
-// CLOSE: 0x00825d60 score 0 (belongs to cUnk00ac1400)
-uint32_t cUnk00adb418::Slot01_ac1400()
+// CLOSE: 0x00825d60 score 0 (belongs to cGZBuffer)
+uint32_t cGZScreenBuffer::Slot01_ac1400()
 {
     return ++Prim(this)->mnRef;
 }
 #endif
 
 // FUNCTION: 0x009917b0
-bool cUnk00adb418::Slot00_ac1400(uint32_t iid, uint32_t pOut)
+bool cGZScreenBuffer::QueryInterface(uint32_t iid, uint32_t pOut)
 {
     if (iid != 0xe3094dc8) {
-        return cUnk00ac1400::Slot00_ac1400(iid, pOut);
+        return cGZBuffer::QueryInterface(iid, pOut);
     }
     cUnk00adb310** out = reinterpret_cast<cUnk00adb310**>(static_cast<uintptr_t>(pOut));
     *out = this;
@@ -340,7 +340,7 @@ bool cUnk00adb418::Slot00_ac1400(uint32_t iid, uint32_t pOut)
 }
 
 // FUNCTION: 0x009917f0
-uint32_t cUnk00adb418::Slot02_ac1400()
+uint32_t cGZScreenBuffer::Slot02_ac1400()
 {
     if (Prim(this)->mnRef > 1) {
         return --Prim(this)->mnRef;
@@ -350,7 +350,7 @@ uint32_t cUnk00adb418::Slot02_ac1400()
 }
 
 // FUNCTION: 0x00991810
-bool cUnk00adb418::Slot05_ac1400()
+bool cGZScreenBuffer::Uninitialize()
 {
     if (!field50) {
         return false;
@@ -361,7 +361,7 @@ bool cUnk00adb418::Slot05_ac1400()
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00991830 score 4
-bool cUnk00adb418::Slot06_ac1400(uint32_t flags)
+bool cGZScreenBuffer::Slot06_ac1400(uint32_t flags)
 {
     if (flags & 0xfe0) {
         return false;
@@ -376,36 +376,36 @@ bool cUnk00adb418::Slot06_ac1400(uint32_t flags)
 #endif
 
 // FUNCTION: 0x00991870
-bool cUnk00adb418::Slot07_ac1400(uint32_t flags)
+bool cGZScreenBuffer::Slot07_ac1400(uint32_t flags)
 {
     if (flags & 0xfe0) {
         return false;
     }
-    return cUnk00ac1400::Slot07_ac1400(flags);
+    return cGZBuffer::Slot07_ac1400(flags);
 }
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00991890 score 2
-void cUnk00adb418::Slot23_adb310()
+void cGZScreenBuffer::Slot23_adb310()
 {
-    cUnk00ac1400* p = this;
+    cGZBuffer* p = this;
     reinterpret_cast<PrimaryCalls_adb418*>(p)->Fn6();
 }
 #endif
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x009918a0 score 2
-void cUnk00adb418::Slot24_adb310()
+void cGZScreenBuffer::Slot24_adb310()
 {
-    cUnk00ac1400* p = this;
+    cGZBuffer* p = this;
     reinterpret_cast<PrimaryCalls_adb418*>(p)->Fn7();
 }
 #endif
 
 // FUNCTION: 0x009918b0
-bool cUnk00adb418::Slot12_adb310()
+bool cGZScreenBuffer::Slot12_adb310()
 {
-    if (Slot39_ac1400()) {
+    if (IsReady()) {
         static_cast<Surface_adb418*>(mpSurface78)->Fn13(this, &Prim(this)->mRect14, &Prim(this)->mRect14);
         static_cast<Surface_adb418*>(mpSurface78)->Fn16();
         return true;
@@ -414,7 +414,7 @@ bool cUnk00adb418::Slot12_adb310()
 }
 
 // FUNCTION: 0x00991900
-void cUnk00adb418::Slot25_adb310(uint32_t pRect)
+void cGZScreenBuffer::Slot25_adb310(uint32_t pRect)
 {
     Rect_adb418* r = reinterpret_cast<Rect_adb418*>(static_cast<uintptr_t>(pRect));
     r->mnLeft += mnRectA[0];
@@ -424,7 +424,7 @@ void cUnk00adb418::Slot25_adb310(uint32_t pRect)
 }
 
 // FUNCTION: 0x00991930
-void cUnk00adb418::Slot26_adb310(uint32_t pPoint)
+void cGZScreenBuffer::Slot26_adb310(uint32_t pPoint)
 {
     int32_t* p = reinterpret_cast<int32_t*>(static_cast<uintptr_t>(pPoint));
     p[0] += mnRectA[0];
@@ -432,39 +432,39 @@ void cUnk00adb418::Slot26_adb310(uint32_t pPoint)
 }
 
 // FUNCTION: 0x00991970
-void* cUnk00adb418::Slot03_adb310()
+void* cGZScreenBuffer::Slot03_adb310()
 {
     return this;
 }
 
 // FUNCTION: 0x00991980
-void cUnk00adb418::Slot09_adb310(uint32_t pOut)
+void cGZScreenBuffer::Slot09_adb310(uint32_t pOut)
 {
     Rect_adb418* out = reinterpret_cast<Rect_adb418*>(static_cast<uintptr_t>(pOut));
     *out = *reinterpret_cast<Rect_adb418*>(mnRectA);
 }
 
 // FUNCTION: 0x009919b0
-void cUnk00adb418::Slot11_ac1400(uint32_t pOut)
+void cGZScreenBuffer::GetBufferArea(uint32_t pOut)
 {
     Rect_adb418* out = reinterpret_cast<Rect_adb418*>(static_cast<uintptr_t>(pOut));
     *out = *reinterpret_cast<Rect_adb418*>(mnRectB);
 }
 
 // FUNCTION: 0x00991a40
-uint32_t cUnk00adb418::Slot18_adb310()
+uint32_t cGZScreenBuffer::Slot18_adb310()
 {
     return mnRectA[2] - mnRectA[0];
 }
 
 // FUNCTION: 0x00991a50
-uint32_t cUnk00adb418::Slot19_adb310()
+uint32_t cGZScreenBuffer::Slot19_adb310()
 {
     return mnRectA[3] - mnRectA[1];
 }
 
 // FUNCTION: 0x00991a60
-bool cUnk00adb418::Slot04_ac1400()
+bool cGZScreenBuffer::Shutdown()
 {
     if (mpUnk84 != 0) {
         Ref_adb418* r = static_cast<Ref_adb418*>(mpUnk84);
@@ -491,10 +491,10 @@ bool cUnk00adb418::Slot04_ac1400()
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00991ba0 score 1
-bool cUnk00adb418::Slot29_ac1400(uint32_t a, uint32_t pRect, uint32_t c, uint32_t d)
+bool cGZScreenBuffer::Blt(uint32_t a, uint32_t pRect, uint32_t c, uint32_t d)
 {
     if (Prim(this)->mn3c != 0) {
-        return cUnk00ac1400::Slot29_ac1400(a, pRect, c, d);
+        return cGZBuffer::Blt(a, pRect, c, d);
     }
     Rect_adb418* r = reinterpret_cast<Rect_adb418*>(static_cast<uintptr_t>(pRect));
     if (r->mnRight > r->mnLeft && r->mnBottom > r->mnTop) {
@@ -506,7 +506,7 @@ bool cUnk00adb418::Slot29_ac1400(uint32_t a, uint32_t pRect, uint32_t c, uint32_
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00991b10 score 2
-bool cUnk00adb418::Slot10_adb310(uint32_t pRect)
+bool cGZScreenBuffer::Slot10_adb310(uint32_t pRect)
 {
     Rect_adb418* r = reinterpret_cast<Rect_adb418*>(static_cast<uintptr_t>(pRect));
     *reinterpret_cast<Rect_adb418*>(mnRectA) = *r;
@@ -528,7 +528,7 @@ bool cUnk00adb418::Slot10_adb310(uint32_t pRect)
 #endif
 
 // FUNCTION: 0x00991c00
-bool cUnk00adb418::Slot20_ac1400(uint32_t color, uint32_t pRect, uint32_t flags)
+bool cGZScreenBuffer::Fill_3(uint32_t color, uint32_t pRect, uint32_t flags)
 {
     Rect_adb418* rect = reinterpret_cast<Rect_adb418*>(static_cast<uintptr_t>(pRect));
     Rect_adb418 extent;
@@ -563,7 +563,7 @@ bool cUnk00adb418::Slot20_ac1400(uint32_t color, uint32_t pRect, uint32_t flags)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00991ec0 score 4
-bool cUnk00adb418::Slot04_adb310(uint32_t width, uint32_t height, uint32_t c, uint32_t a4, uint32_t a5)
+bool cGZScreenBuffer::Slot04_adb310(uint32_t width, uint32_t height, uint32_t c, uint32_t a4, uint32_t a5)
 {
     if (field50) {
         return true;

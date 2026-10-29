@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00aae9a4.h"
+#include "classes/nSCRes_cArrayCreateCommand.h"
 
 // VTABLE: 0x00aae994
 // SIZE 0x4
-class cUnk00aae994 : public cUnk00aae9a4 {
+class cUnk00aae994 : public nSCRes_cArrayCreateCommand {
 public:
     virtual void Slot03_abbf94(uint32_t, uint32_t);
 };

@@ -16,8 +16,8 @@ field 43 bool mbFlag43
 field 44 bool mbFlag44
 field 4c void* mpCurve
 field 50 uint32_t mnTimer
-slot Slot04_a9ea60 void*
-slot Slot13_a9ea60 void const char* const void* bool void*
+slot GetID void*
+slot CreateParticleEffect void const char* const void* bool void*
 method 0x0057f360 void Fn0057f360()
 method 0x0057f3d0 void Fn0057f3d0()
 method 0x0057f740 void Fn0057f740()

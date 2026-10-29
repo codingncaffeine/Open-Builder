@@ -7,7 +7,7 @@
 
 class cUnk00ad21ec {
 public:
-    virtual bool Slot00_ad442c(uint32_t, uint32_t) = 0;
+    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot01_ad442c() = 0;
     virtual uint32_t Slot02_ad442c() = 0;
     virtual bool Slot03_ad21ec(uint32_t, uint32_t, uint32_t, uint32_t) = 0;

@@ -1,4 +1,4 @@
-#include "classes/cUnk00ad1250.h"
+#include "classes/cRZLanguageUtility.h"
 #include "common/winapi.h"
 #include "gzcom/cRZString.h"
 
@@ -59,19 +59,19 @@ extern uint32_t g00a99f14;
 extern uint32_t g00aa1b74;
 
 // FUNCTION: 0x00968b60
-uint32_t cUnk00ad1250::Slot01_ad1250()
+uint32_t cRZLanguageUtility::AddRef()
 {
     return ++mnRefCount;
 }
 
 // FUNCTION: 0x00925991
-bool cUnk00ad1250::Slot26_ad1250()
+bool cRZLanguageUtility::GetMeasurementSystem()
 {
     return mnSubType != 0x36;
 }
 
 // FUNCTION: 0x00927c17
-bool cUnk00ad1250::Slot25_ad1250()
+bool cRZLanguageUtility::GetLanguageRoadDrivingSide()
 {
     if (mnType == 2 || mnType == 0xf) {
         return false;
@@ -80,12 +80,12 @@ bool cUnk00ad1250::Slot25_ad1250()
 }
 
 // FUNCTION: 0x00927c2a
-bool cUnk00ad1250::Slot00_ad1250(uint32_t riid, void* ppvObj)
+bool cRZLanguageUtility::QueryInterface(uint32_t riid, void* ppvObj)
 {
     bool found;
     if ((riid != 0x1054b7d5 && riid != 1) == 0) {
-        *static_cast<cUnk00ad1250**>(ppvObj) = this;
-        Slot01_ad1250();
+        *static_cast<cRZLanguageUtility**>(ppvObj) = this;
+        AddRef();
         found = true;
     } else {
         found = false;
@@ -94,7 +94,7 @@ bool cUnk00ad1250::Slot00_ad1250(uint32_t riid, void* ppvObj)
 }
 
 // FUNCTION: 0x00927c4f
-uint32_t cUnk00ad1250::Slot02_ad1250()
+uint32_t cRZLanguageUtility::Release()
 {
     if (mnRefCount > 1) {
         return --mnRefCount;
@@ -104,7 +104,7 @@ uint32_t cUnk00ad1250::Slot02_ad1250()
 }
 
 // FUNCTION: 0x0092599b
-bool cUnk00ad1250::Slot27_ad1250()
+bool cRZLanguageUtility::AreFirstAndLastNamesReversed()
 {
     switch (mnType) {
     case 0xf:
@@ -117,7 +117,7 @@ bool cUnk00ad1250::Slot27_ad1250()
 }
 
 // FUNCTION: 0x009259b8
-uint32_t cUnk00ad1250::Slot28_ad1250()
+uint32_t cRZLanguageUtility::DoesLanguageUseInputMethodEditing()
 {
     if (mnType == 0xf || mnType == 0x11 || mnType == 0x12 || mnType == 0x14) {
         return 1;
@@ -126,7 +126,7 @@ uint32_t cUnk00ad1250::Slot28_ad1250()
 }
 
 // FUNCTION: 0x00927ae3
-bool cUnk00ad1250::Slot12_ad1250()
+bool cRZLanguageUtility::DoesCurrencySymbolPrecedeAmount()
 {
     switch (mnType) {
     case 1:
@@ -165,7 +165,7 @@ bool cUnk00ad1250::Slot12_ad1250()
 }
 
 // FUNCTION: 0x00927b2f
-bool cUnk00ad1250::Slot13_ad1250()
+bool cRZLanguageUtility::IsSpaceBetweenCurrencySymbolAndAmount()
 {
     switch (mnType) {
     case 1:
@@ -197,7 +197,7 @@ bool cUnk00ad1250::Slot13_ad1250()
 }
 
 // FUNCTION: 0x00927b7b
-bool cUnk00ad1250::Slot15_ad1250(void* pSink)
+bool cRZLanguageUtility::GetDecimalSeparator(void* pSink)
 {
     Sink_ad1250* sink = static_cast<Sink_ad1250*>(pSink);
     bool ok;
@@ -236,7 +236,7 @@ bool cUnk00ad1250::Slot15_ad1250(void* pSink)
 }
 
 // FUNCTION: 0x00927c66
-bool cUnk00ad1250::Slot14_ad1250(void* pSink)
+bool cRZLanguageUtility::GetThousandSeparator(void* pSink)
 {
     Sink_ad1250* sink = static_cast<Sink_ad1250*>(pSink);
     bool ok;
@@ -280,51 +280,51 @@ bool cUnk00ad1250::Slot14_ad1250(void* pSink)
 }
 
 // FUNCTION: 0x009256f5
-uint32_t cUnk00ad1250::Slot23_ad1250()
+uint32_t cRZLanguageUtility::GetCharacterSetFromLanguage()
 {
-    if (Slot24_ad1250(0x4e4)) {
+    if (DoesLanguageUseCharacterSet(0x4e4)) {
         return 0x4e4;
     }
-    if (Slot24_ad1250(0x4e2)) {
+    if (DoesLanguageUseCharacterSet(0x4e2)) {
         return 0x4e2;
     }
-    if (Slot24_ad1250(0x36a)) {
+    if (DoesLanguageUseCharacterSet(0x36a)) {
         return 0x36a;
     }
-    if (Slot24_ad1250(0x3a4)) {
+    if (DoesLanguageUseCharacterSet(0x3a4)) {
         return 0x3a4;
     }
-    if (Slot24_ad1250(0x3a8)) {
+    if (DoesLanguageUseCharacterSet(0x3a8)) {
         return 0x3a8;
     }
-    if (Slot24_ad1250(0x3b6)) {
+    if (DoesLanguageUseCharacterSet(0x3b6)) {
         return 0x3b6;
     }
-    if (Slot24_ad1250(0x3b5)) {
+    if (DoesLanguageUseCharacterSet(0x3b5)) {
         return 0x3b5;
     }
-    if (Slot24_ad1250(0x4e3)) {
+    if (DoesLanguageUseCharacterSet(0x4e3)) {
         return 0x4e3;
     }
-    if (Slot24_ad1250(0x4e3)) {
+    if (DoesLanguageUseCharacterSet(0x4e3)) {
         return 0x4e3;
     }
-    if (Slot24_ad1250(0x4e5)) {
+    if (DoesLanguageUseCharacterSet(0x4e5)) {
         return 0x4e5;
     }
-    if (Slot24_ad1250(0x4e6)) {
+    if (DoesLanguageUseCharacterSet(0x4e6)) {
         return 0x4e6;
     }
-    if (Slot24_ad1250(0x4e7)) {
+    if (DoesLanguageUseCharacterSet(0x4e7)) {
         return 0x4e7;
     }
-    if (Slot24_ad1250(0x4e8)) {
+    if (DoesLanguageUseCharacterSet(0x4e8)) {
         return 0x4e8;
     }
-    if (Slot24_ad1250(0x4e9)) {
+    if (DoesLanguageUseCharacterSet(0x4e9)) {
         return 0x4e9;
     }
-    if (Slot24_ad1250(0x4e9)) {
+    if (DoesLanguageUseCharacterSet(0x4e9)) {
         return 0x4e9;
     }
     return 0x4e4;
@@ -332,7 +332,7 @@ uint32_t cUnk00ad1250::Slot23_ad1250()
 
 
 // FUNCTION: 0x009259d6
-bool cUnk00ad1250::Slot29_ad1250()
+bool cRZLanguageUtility::DoesLanguageUseMultiByteCharacters()
 {
     switch (Fn00940da8()) {
     case 0:
@@ -348,7 +348,7 @@ bool cUnk00ad1250::Slot29_ad1250()
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x0092580a score 119 (the original shares one "sete al" tail between the compare cases)
-bool cUnk00ad1250::Slot24_ad1250(uint32_t id)
+bool cRZLanguageUtility::DoesLanguageUseCharacterSet(uint32_t id)
 {
     if (id == 0x4e4) {
         uint32_t t = mnType;
@@ -396,7 +396,7 @@ bool cUnk00ad1250::Slot24_ad1250(uint32_t id)
 #endif
 
 // FUNCTION: 0x009279b0
-bool cUnk00ad1250::Slot11_ad1250(void* pSink)
+bool cRZLanguageUtility::GetCurrencySymbol(void* pSink)
 {
     Sink_ad1250* sink = static_cast<Sink_ad1250*>(pSink);
     bool ok = true;
@@ -479,7 +479,7 @@ bool cUnk00ad1250::Slot11_ad1250(void* pSink)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00927bee score 7 (the original leaves the argument cleanup of the first call to the caller and loads the target vtable first)
-bool cUnk00ad1250::Slot19_ad1250(double value, void* pTarget, void* pSource)
+bool cRZLanguageUtility::MakeFormattedNumberString(double value, void* pTarget, void* pSource)
 {
     Target_ad1250* target = static_cast<Target_ad1250*>(pTarget);
     Source_ad1250* source = static_cast<Source_ad1250*>(pSource);
@@ -490,7 +490,7 @@ bool cUnk00ad1250::Slot19_ad1250(double value, void* pTarget, void* pSource)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00928fdd score 7 (the original keeps this in esi and bumps it with add where this spelling uses lea)
-bool cUnk00ad1250::Slot03_ad1250()
+bool cRZLanguageUtility::Init()
 {
     {
         cRZString text("\xC2\xA0");
@@ -502,7 +502,7 @@ bool cUnk00ad1250::Slot03_ad1250()
 #endif
 
 // FUNCTION: 0x00927e7e
-void cUnk00ad1250::Slot20_ad1250(void* pSource, void* pText)
+void cRZLanguageUtility::ConvertToLowerCase(void* pSource, void* pText)
 {
     cRZString converted;
     Fn0091152f(static_cast<cIGZString*>(pSource), &converted, -1);
@@ -512,7 +512,7 @@ void cUnk00ad1250::Slot20_ad1250(void* pSource, void* pText)
 }
 
 // FUNCTION: 0x00927edf
-void cUnk00ad1250::Slot21_ad1250(void* pSource, void* pText)
+void cRZLanguageUtility::ConvertToUpperCase(void* pSource, void* pText)
 {
     cRZString converted;
     Fn0091152f(static_cast<cIGZString*>(pSource), &converted, -1);
@@ -522,7 +522,7 @@ void cUnk00ad1250::Slot21_ad1250(void* pSource, void* pText)
 }
 
 // FUNCTION: 0x00927f40
-int32_t cUnk00ad1250::Slot22_ad1250(void* pFirst, void* pSecond, bool caseSensitive)
+int32_t cRZLanguageUtility::CompareStrings(void* pFirst, void* pSecond, bool caseSensitive)
 {
     cRZString first;
     cRZString second;
@@ -539,7 +539,7 @@ int32_t cUnk00ad1250::Slot22_ad1250(void* pFirst, void* pSecond, bool caseSensit
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x009284ba score unknown (the tool cannot score jump-table functions; this spelling makes the table but starts it at 1 where the original compares 1 and 0x2a first and tables 2..0x2c)
-bool cUnk00ad1250::Slot09_ad1250(int32_t hour, int32_t minute, int32_t second, void* pSink)
+bool cRZLanguageUtility::MakeTimeString(int32_t hour, int32_t minute, int32_t second, void* pSink)
 {
     cRZString text;
     if (hour >= 24) {

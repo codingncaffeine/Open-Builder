@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a9feac.h"
+#include "classes/cGroupParticlesCommand.h"
 
 // VTABLE: 0x00a9fe9c
 // SIZE 0x4
-class cUnk00a9fe9c : public cUnk00a9feac {
+class cUnk00a9fe9c : public cGroupParticlesCommand {
 public:
     virtual void Slot03_abbf94(uint32_t, uint32_t);
 };

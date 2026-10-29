@@ -12,7 +12,7 @@
 
 // The subobject at +0x0 (vtable 0x00ac2c88): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ac2c88_0 {
-    virtual bool Slot00_ad4cf4(uint32_t, uint32_t) = 0;
+    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
     virtual bool Slot03_ac2c88() = 0;
@@ -134,7 +134,7 @@ public:
     virtual bool Slot49_ac2c88(uint32_t);
     virtual bool Slot50_ac2c88(uint32_t);
     virtual void Slot13_ad3e48(uint32_t);
-    virtual bool Slot00_ad4cf4(uint32_t, uint32_t);
+    virtual bool QueryInterface(uint32_t, uint32_t);
     virtual uint32_t Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
     char unknown18[0x18];
@@ -159,7 +159,7 @@ typedef char ob_size_cUnk00ac2c88[sizeof(cUnk00ac2c88) == 0xd8 ? 1 : -1];
 // cUnk00ac2c88::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0087782a
-// cUnk00ac2c88::Slot00_ad4cf4`adjustor{4}'
+// cUnk00ac2c88::QueryInterface`adjustor{4}'
 
 // SYNTHETIC: 0x00877832
 // cUnk00ac2c88::Slot01_ad4cf4`adjustor{4}'
@@ -168,7 +168,7 @@ typedef char ob_size_cUnk00ac2c88[sizeof(cUnk00ac2c88) == 0xd8 ? 1 : -1];
 // cUnk00ac2c88::Slot02_ad4cf4`adjustor{4}'
 
 // SYNTHETIC: 0x00877842
-// cUnk00ac2c88::Slot00_ad4cf4`adjustor{8}'
+// cUnk00ac2c88::QueryInterface`adjustor{8}'
 
 // SYNTHETIC: 0x0087784a
 // cUnk00ac2c88::Slot01_ad4cf4`adjustor{8}'
@@ -177,7 +177,7 @@ typedef char ob_size_cUnk00ac2c88[sizeof(cUnk00ac2c88) == 0xd8 ? 1 : -1];
 // cUnk00ac2c88::Slot02_ad4cf4`adjustor{8}'
 
 // SYNTHETIC: 0x0087785a
-// cUnk00ac2c88::Slot00_ad4cf4`adjustor{12}'
+// cUnk00ac2c88::QueryInterface`adjustor{12}'
 
 // SYNTHETIC: 0x00877862
 // cUnk00ac2c88::Slot01_ad4cf4`adjustor{12}'
@@ -186,7 +186,7 @@ typedef char ob_size_cUnk00ac2c88[sizeof(cUnk00ac2c88) == 0xd8 ? 1 : -1];
 // cUnk00ac2c88::Slot02_ad4cf4`adjustor{12}'
 
 // SYNTHETIC: 0x00877872
-// cUnk00ac2c88::Slot00_ad4cf4`adjustor{16}'
+// cUnk00ac2c88::QueryInterface`adjustor{16}'
 
 // SYNTHETIC: 0x0087787a
 // cUnk00ac2c88::Slot01_ad4cf4`adjustor{16}'
@@ -195,7 +195,7 @@ typedef char ob_size_cUnk00ac2c88[sizeof(cUnk00ac2c88) == 0xd8 ? 1 : -1];
 // cUnk00ac2c88::Slot02_ad4cf4`adjustor{16}'
 
 // SYNTHETIC: 0x0087788a
-// cUnk00ac2c88::Slot00_ad4cf4`adjustor{20}'
+// cUnk00ac2c88::QueryInterface`adjustor{20}'
 
 // SYNTHETIC: 0x00877892
 // cUnk00ac2c88::Slot01_ad4cf4`adjustor{20}'

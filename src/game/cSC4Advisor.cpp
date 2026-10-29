@@ -1,4 +1,4 @@
-#include "classes/cUnk00a81204.h"
+#include "classes/cSC4Advisor.h"
 #include "game/Globals.h"
 
 #include <new>
@@ -58,19 +58,19 @@ struct ObEntry {
 };
 
 // FUNCTION: 0x0040d3b0
-void cUnk00a81204::Slot07_a81120()
+void cSC4Advisor::Slot07_a81120()
 {
     reinterpret_cast<ObSubObject*>(field18)->Fn14();
 }
 
 // FUNCTION: 0x0040d3c0
-void cUnk00a81204::Slot09_a81120()
+void cSC4Advisor::Slot09_a81120()
 {
     reinterpret_cast<ObSubObject*>(field38)->Fn14();
 }
 
 // FUNCTION: 0x0040d430
-bool cUnk00a81204::QueryInterface(unsigned int riid, void** ppvObj)
+bool cSC4Advisor::QueryInterface(unsigned int riid, void** ppvObj)
 {
     switch (riid) {
     case 0x452294aa:
@@ -91,7 +91,7 @@ bool cUnk00a81204::QueryInterface(unsigned int riid, void** ppvObj)
 
 
 // FUNCTION: 0x0040d870
-uint32_t cUnk00a81204::Slot15_a81120(uint32_t a)
+uint32_t cSC4Advisor::Slot15_a81120(uint32_t a)
 {
     if (static_cast<uint8_t>(a)) {
         return mpListAEnd - mpListABegin;
@@ -100,7 +100,7 @@ uint32_t cUnk00a81204::Slot15_a81120(uint32_t a)
 }
 
 // FUNCTION: 0x0040d3e0
-bool cUnk00a81204::Slot16_a81120(uint32_t a, uint32_t b)
+bool cSC4Advisor::Slot16_a81120(uint32_t a, uint32_t b)
 {
     int32_t index = static_cast<int32_t>(b);
     if (index >= 0) {
@@ -115,7 +115,7 @@ bool cUnk00a81204::Slot16_a81120(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x0040d7a0
-void* cUnk00a81204::Slot12_a81120(uint32_t a)
+void* cSC4Advisor::Slot12_a81120(uint32_t a)
 {
     ObEntry* p = reinterpret_cast<ObEntry*>(mpEntriesBegin);
     if (p != reinterpret_cast<ObEntry*>(mpEntriesEnd)) {
@@ -130,7 +130,7 @@ void* cUnk00a81204::Slot12_a81120(uint32_t a)
 }
 
 // FUNCTION: 0x0040d7e0
-void* cUnk00a81204::Slot13_a81120(uint32_t a)
+void* cSC4Advisor::Slot13_a81120(uint32_t a)
 {
     ObEntry* p = reinterpret_cast<ObEntry*>(mpEntriesBegin);
     if (p != reinterpret_cast<ObEntry*>(mpEntriesEnd)) {
@@ -189,16 +189,16 @@ struct cB43d5c {
 extern cB43d5c* gpB43d5c;
 
 // FUNCTION: 0x0040d820
-bool cUnk00a81204::Slot14_a81120(uint32_t a)
+bool cSC4Advisor::Slot14_a81120(uint32_t a)
 {
     if (a == 0) {
         mnValue5c = gpB43d5c->Fn07()->Fn26();
-        Slot06_a81204();
+        simulate_day();
         return true;
     }
     if (a == 1) {
         ++mnRefA;
-        Slot08_a81204();
+        simulate_month();
     }
     return true;
 }
@@ -246,7 +246,7 @@ struct ObLookup {
 };
 
 // FUNCTION: 0x0040f3a0
-uint32_t cUnk00a81204::Slot17_a81120(uint32_t a)
+uint32_t cSC4Advisor::Slot17_a81120(uint32_t a)
 {
     uint32_t** pList = &mpListABegin;
     if (!mbFlag) {
@@ -289,7 +289,7 @@ struct ObListNode {
 };
 
 // FUNCTION: 0x0040eec0
-bool cUnk00a81204::Slot18_a81120(uint32_t a, uint32_t b)
+bool cSC4Advisor::Slot18_a81120(uint32_t a, uint32_t b)
 {
     cIGZUnknown* object = reinterpret_cast<cIGZUnknown*>(b);
     if (object) {
@@ -334,7 +334,7 @@ struct ObContainer {
 };
 
 // FUNCTION: 0x0040e9b0
-bool cUnk00a81204::Slot20_a81120(uint32_t a)
+bool cSC4Advisor::Slot20_a81120(uint32_t a)
 {
     ObItem* item = reinterpret_cast<ObItem*>(a);
     if (!(item && item->Fn15(2))) {
@@ -355,7 +355,7 @@ bool cUnk00a81204::Slot20_a81120(uint32_t a)
 
 
 // FUNCTION: 0x0040d8a0
-bool cUnk00a81204::Slot19_a81120(uint32_t a)
+bool cSC4Advisor::Slot19_a81120(uint32_t a)
 {
     int32_t count = (reinterpret_cast<ObEntry*>(mpEntriesEnd) - reinterpret_cast<ObEntry*>(mpEntriesBegin));
     if (count != 0) {
@@ -391,7 +391,7 @@ struct ObRecordNode {
 // ecx = the object, three stack arguments the caller pops: no standard convention (VC7.1 gives static functions
 // a custom one under whole-program optimisation, /GL); only a CLOSE attempt calls it
 // STUB: 0x0040da10
-void Fn0040da10(cUnk00a81204* self, ...);
+void Fn0040da10(cSC4Advisor* self, ...);
 
 // STUB: 0x0040daf0
 void* Fn0040daf0(ObRecordInner* inner, void* a, void* b, void* c);
@@ -414,7 +414,7 @@ struct ObMap {
 #ifdef OB_DRAFTS
 // CLOSE: 0x0040ed30 score 116 (the callee 0x40da10 takes ecx = object and the caller pops its stack arguments: a static helper
 // with a custom convention the compiler cannot be asked for from outside; the rest of the body is untuned)
-bool cUnk00a81204::Slot04_a81120()
+bool cSC4Advisor::Slot04_a81120()
 {
     if (mbRegistered) {
         gpB43ccc->Fn06(static_cast<cUnk00aaaa9c*>(this), 0xea917750);
@@ -490,7 +490,7 @@ struct ObStream {
 void Fn005d99a0(ObStream* stream, void* object);   // writes a component by reference
 
 // FUNCTION: 0x0040e2e0
-bool cUnk00a81204::Slot03_a80784(void* a)
+bool cSC4Advisor::Slot03_a80784(void* a)
 {
     ObStream* stream = static_cast<ObStream*>(a);
     stream->WriteHeader(3);

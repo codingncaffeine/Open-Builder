@@ -38,7 +38,7 @@ public:
     virtual bool Slot28_adde50(uint32_t, uint32_t) = 0;
     virtual void Slot29_adde50() = 0;
     virtual void Slot30_adde50() = 0;
-    virtual void Slot157_ade188(uint32_t) = 0;
+    virtual void DrawGraphData(uint32_t) = 0;
     virtual void Slot32_adde50(uint32_t) = 0;
     virtual void Slot33_adde50(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual float Slot164_ade188(uint32_t) = 0;

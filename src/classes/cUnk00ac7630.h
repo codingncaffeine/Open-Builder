@@ -7,12 +7,12 @@
 #include "classes/cUnk00add190.h"
 
 // VTABLE: 0x00ac7630 cUnk00adcdc8
-// VTABLE: 0x00ac73d0 cUnk00adc8d8
+// VTABLE: 0x00ac73d0 cGZWin
 // SIZE 0x364
 class cUnk00ac7630 : public cUnk00add190 {
 public:
     virtual ~cUnk00ac7630() {}
-    virtual bool Slot145_adc8d8(uint32_t, uint32_t);
+    virtual bool SendMsg_2(uint32_t, uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac7630[sizeof(cUnk00ac7630) == 0x364 ? 1 : -1];

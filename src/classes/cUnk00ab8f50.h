@@ -4,14 +4,14 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00adc8d8.h"
+#include "classes/cGZWin.h"
 
 // VTABLE: 0x00ab8f50
 // SIZE 0xdc
-class cUnk00ab8f50 : public cUnk00adc8d8 {
+class cUnk00ab8f50 : public cGZWin {
 public:
     virtual ~cUnk00ab8f50();
-    virtual bool Slot88_adc8d8();
+    virtual bool GZPaint();
     virtual bool Slot04_adb6a8();
     virtual bool Slot05_adb6a8();
     char unknownd8[0x4];

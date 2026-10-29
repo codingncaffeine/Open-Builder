@@ -4,12 +4,12 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a85478.h"
+#include "classes/cTutorialString.h"
 
 // VTABLE: 0x00a812f8
-class cUnk00a812f8 : public cUnk00a85478 {
+class cUnk00a812f8 : public cTutorialString {
 public:
-    using cUnk00a85478::operator=;
+    using cTutorialString::operator=;
 };
 
 #endif

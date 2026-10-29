@@ -4,18 +4,18 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00adc678.h"
+#include "classes/cGZWinGen.h"
 
-// VTABLE: 0x00a8d4e0 cUnk00adc8d8
+// VTABLE: 0x00a8d4e0 cGZWin
 // VTABLE: 0x00a8d460 cUnk00adc2b0
 // SIZE 0x154
-class cUnk00a8d4e0 : public cUnk00adc678 {
+class cUnk00a8d4e0 : public cGZWinGen {
 public:
     virtual ~cUnk00a8d4e0();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot03_adc8d8(uint32_t);
+    virtual bool DoMessage(uint32_t);
     virtual bool Slot04_adb6a8();
     virtual bool Slot05_adb6a8();
     char unknown128[0x2c];

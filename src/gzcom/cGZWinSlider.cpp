@@ -1,5 +1,5 @@
 #include <algorithm>
-#include "classes/cUnk00ae04d8.h"
+#include "classes/cGZWinSlider.h"
 
 // A 16-byte record copied as a whole.
 struct Rect_ae04d8 {
@@ -177,7 +177,7 @@ struct cSelf_ae04d8 {
 };
 
 // FUNCTION: 0x009c2e0e
-bool cUnk00ae04d8::QueryInterface(unsigned int iid, void** ppv)
+bool cGZWinSlider::QueryInterface(unsigned int iid, void** ppv)
 {
     switch (iid) {
     case 0x21325207:
@@ -185,43 +185,43 @@ bool cUnk00ae04d8::QueryInterface(unsigned int iid, void** ppv)
         AddRef();
         return true;
     default:
-        return cUnk00adc8d8::QueryInterface(iid, ppv);
+        return cGZWin::QueryInterface(iid, ppv);
     }
 }
 
 // FUNCTION: 0x009c2e3b
-void cUnk00ae04d8::Slot11_ae074c(uint32_t a)
+void cGZWinSlider::Slot11_ae074c(uint32_t a)
 {
     *reinterpret_cast<uint32_t*>(a) = mnMode;
 }
 
 // FUNCTION: 0x009c2e47
-bool cUnk00ae04d8::Slot04_adb6a8()
+bool cGZWinSlider::Slot04_adb6a8()
 {
     if (!Fn0099bc31()) {
         Slot153_ae04d8();
     }
-    return cUnk00adc8d8::Slot04_adb6a8();
+    return cGZWin::Slot04_adb6a8();
 }
 
 // FUNCTION: 0x009c2e65
-bool cUnk00ae04d8::Slot05_adb6a8()
+bool cGZWinSlider::Slot05_adb6a8()
 {
     cChild_ae04d8** pp = reinterpret_cast<cChild_ae04d8**>(&mpChild);
     if (*pp) {
         (*pp)->Release();
         *pp = 0;
     }
-    return cUnk00adc8d8::Slot05_adb6a8();
+    return cGZWin::Slot05_adb6a8();
 }
 
 // FUNCTION: 0x009c2e86
-bool cUnk00ae04d8::Slot134_adc8d8(uint32_t a, uint32_t b, uint32_t)
+bool cGZWinSlider::GZOnMouseDownL(uint32_t a, uint32_t b, uint32_t)
 {
     if (Fn0099bdfe()) {
         float v;
-        if (Slot151_ae04d8(&v, a, b)) {
-            Slot156_ae04d8(v);
+        if (ConvertCursorPositionToPercentage(&v, a, b)) {
+            SetPercentage(v);
             return true;
         }
     }
@@ -229,13 +229,13 @@ bool cUnk00ae04d8::Slot134_adc8d8(uint32_t a, uint32_t b, uint32_t)
 }
 
 // FUNCTION: 0x009c2ec9
-bool cUnk00ae04d8::Slot136_adc8d8(uint32_t a, uint32_t b, uint32_t)
+bool cGZWinSlider::GZOnMouseUpL(uint32_t a, uint32_t b, uint32_t)
 {
     if (Fn0099be0a()) {
         Fn0099be1e();
         float f;
-        if (Slot151_ae04d8(&f, a, b)) {
-            Slot156_ae04d8(f);
+        if (ConvertCursorPositionToPercentage(&f, a, b)) {
+            SetPercentage(f);
             cSelf_ae04d8* v = reinterpret_cast<cSelf_ae04d8*>(this);
             v->Slot144(field4c, 3, 0x887113a4, v->Slot63(0));
             return true;
@@ -245,12 +245,12 @@ bool cUnk00ae04d8::Slot136_adc8d8(uint32_t a, uint32_t b, uint32_t)
 }
 
 // FUNCTION: 0x009c2f35
-bool cUnk00ae04d8::Slot138_adc8d8(uint32_t a, uint32_t b, uint32_t)
+bool cGZWinSlider::GZOnMouseMove(uint32_t a, uint32_t b, uint32_t)
 {
     if (Fn0099be0a()) {
         float v;
-        if (Slot151_ae04d8(&v, a, b)) {
-            Slot156_ae04d8(v);
+        if (ConvertCursorPositionToPercentage(&v, a, b)) {
+            SetPercentage(v);
             return true;
         }
     }
@@ -259,28 +259,28 @@ bool cUnk00ae04d8::Slot138_adc8d8(uint32_t a, uint32_t b, uint32_t)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x009c2f78 score 23 (register roles: original keeps &mnF8 in edi in one branch only, no address CSE in the other)
-void cUnk00ae04d8::Slot153_ae04d8()
+void cGZWinSlider::Slot153_ae04d8()
 {
     if (mnMode == 1) {
         int32_t* p = &mnF8;
         mnEC = *p;
-        int32_t n = Slot41_adc8d8();
+        int32_t n = GetW();
         n -= *p;
-        mnF4 = n - Slot154_ae04d8();
+        mnF4 = n - GetThumbWidth();
     } else {
-        int32_t n = Slot42_adc8d8();
+        int32_t n = GetH();
         n -= mnF8;
-        n -= Slot155_ae04d8();
+        n -= GetThumbHeight();
         mnEC = n;
         mnF4 = mnF8;
     }
-    Slot152_ae04d8();
-    Slot92_adc8d8();
+    CalculateThumbPosition();
+    InvalidateSelfAndParents();
 }
 #endif
 
 // FUNCTION: 0x009c2ff9
-void cUnk00ae04d8::Slot152_ae04d8()
+void cGZWinSlider::CalculateThumbPosition()
 {
     if (!(mnMax - mnMin)) {
         mnF0 = mnEC;
@@ -294,28 +294,28 @@ void cUnk00ae04d8::Slot152_ae04d8()
     }
     if (mnMode == 1) {
         mnFC = mnF0;
-        mn104 = Slot154_ae04d8() + mnFC;
-        int32_t h = static_cast<int32_t>(Slot155_ae04d8()) / 2;
-        mn100 = static_cast<int32_t>(Slot42_adc8d8()) / 2 - h;
-        mn108 = Slot155_ae04d8() + mn100;
+        mn104 = GetThumbWidth() + mnFC;
+        int32_t h = static_cast<int32_t>(GetThumbHeight()) / 2;
+        mn100 = static_cast<int32_t>(GetH()) / 2 - h;
+        mn108 = GetThumbHeight() + mn100;
     } else {
-        int32_t h = static_cast<int32_t>(Slot154_ae04d8()) / 2;
-        mnFC = static_cast<int32_t>(Slot41_adc8d8()) / 2 - h;
-        mn104 = Slot154_ae04d8() + mnFC;
+        int32_t h = static_cast<int32_t>(GetThumbWidth()) / 2;
+        mnFC = static_cast<int32_t>(GetW()) / 2 - h;
+        mn104 = GetThumbWidth() + mnFC;
         mn100 = mnF0;
-        mn108 = Slot155_ae04d8() + mn100;
+        mn108 = GetThumbHeight() + mn100;
     }
 }
 
 // FUNCTION: 0x009c312d
-uint32_t cUnk00ae04d8::Slot04_ae074c()
+uint32_t cGZWinSlider::Slot04_ae074c()
 {
     int32_t lo = mnMin;
     return lo + static_cast<int32_t>(static_cast<float>(mnMax - lo) * mfRatio + 0.5f);
 }
 
 // FUNCTION: 0x009c3153
-bool cUnk00ae04d8::Slot05_ae074c(uint32_t a)
+bool cGZWinSlider::Slot05_ae074c(uint32_t a)
 {
     if (mbBusy) {
         return false;
@@ -336,17 +336,17 @@ bool cUnk00ae04d8::Slot05_ae074c(uint32_t a)
                 v = lo;
             }
             mfRatio = static_cast<float>(v - lo) / (hi - lo);
-            Slot152_ae04d8();
+            CalculateThumbPosition();
             cSelf_ae04d8* s = reinterpret_cast<cSelf_ae04d8*>(this);
             s->Slot144(field4c, 3, 0x887113a3, s->Slot63(0));
             mbBusy = false;
-            Slot92_adc8d8();
+            InvalidateSelfAndParents();
         return true;
     }
 }
 
 // FUNCTION: 0x009c31e7
-bool cUnk00ae04d8::Slot156_ae04d8(float f)
+bool cGZWinSlider::SetPercentage(float f)
 {
     if (mbBusy) {
         return false;
@@ -364,33 +364,33 @@ bool cUnk00ae04d8::Slot156_ae04d8(float f)
                 f = 1.0f;
             }
             mfRatio = f;
-            Slot152_ae04d8();
+            CalculateThumbPosition();
             cSelf_ae04d8* s = reinterpret_cast<cSelf_ae04d8*>(this);
             s->Slot144(field4c, 3, 0x887113a3, s->Slot63(0));
             mbBusy = false;
-            Slot92_adc8d8();
+            InvalidateSelfAndParents();
         return true;
     }
 }
 
 // FUNCTION: 0x009c3286
-void cUnk00ae04d8::Slot06_ae074c(uint32_t a)
+void cGZWinSlider::Slot06_ae074c(uint32_t a)
 {
     mnMin = static_cast<int32_t>(a);
     Slot153_ae04d8();
-    Slot92_adc8d8();
+    InvalidateSelfAndParents();
 }
 
 // FUNCTION: 0x009c32b0
-void cUnk00ae04d8::Slot08_ae074c(uint32_t a)
+void cGZWinSlider::Slot08_ae074c(uint32_t a)
 {
     mnMax = static_cast<int32_t>(a);
     Slot153_ae04d8();
-    Slot92_adc8d8();
+    InvalidateSelfAndParents();
 }
 
 // FUNCTION: 0x009c32d6
-bool cUnk00ae04d8::Slot13_ae074c(uint32_t a, uint32_t b)
+bool cGZWinSlider::Slot13_ae074c(uint32_t a, uint32_t b)
 {
     *reinterpret_cast<void**>(a) = mpChild;
     *reinterpret_cast<Rect_ae04d8*>(b) = *reinterpret_cast<Rect_ae04d8*>(mnRect);
@@ -398,22 +398,22 @@ bool cUnk00ae04d8::Slot13_ae074c(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x009c331a
-void cUnk00ae04d8::Slot07_add348(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
+void cGZWinSlider::Slot07_add348(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
 {
     if (mpChild) {
         if (mnMode == 2) {
-            cUnk00adc8d8::Slot07_add348(a, b, Width_ae04d8(mnRect) + a, d);
+            cGZWin::Slot07_add348(a, b, Width_ae04d8(mnRect) + a, d);
         } else if (mnMode == 1) {
-            cUnk00adc8d8::Slot07_add348(a, b, c, mnRect[3] - mnRect[1] + b);
+            cGZWin::Slot07_add348(a, b, c, mnRect[3] - mnRect[1] + b);
         }
     } else {
-        cUnk00adc8d8::Slot07_add348(a, b, c, d);
+        cGZWin::Slot07_add348(a, b, c, d);
     }
     Slot153_ae04d8();
 }
 
 // FUNCTION: 0x009c3623
-bool cUnk00ae04d8::Slot88_adc8d8()
+bool cGZWinSlider::GZPaint()
 {
     if (mpChild) {
         Fn009c34a3();
@@ -424,14 +424,14 @@ bool cUnk00ae04d8::Slot88_adc8d8()
 }
 
 // FUNCTION: 0x009c363b
-bool cUnk00ae04d8::Slot151_ae04d8(void* out, uint32_t b, uint32_t c)
+bool cGZWinSlider::ConvertCursorPositionToPercentage(void* out, uint32_t b, uint32_t c)
 {
     int32_t span = mnF4 - mnEC;
     int32_t pos;
     if (mnMode == 1) {
-        pos = static_cast<int32_t>(b) - static_cast<int32_t>(Slot154_ae04d8()) / 2;
+        pos = static_cast<int32_t>(b) - static_cast<int32_t>(GetThumbWidth()) / 2;
     } else {
-        pos = static_cast<int32_t>(c) - static_cast<int32_t>(Slot155_ae04d8()) / 2;
+        pos = static_cast<int32_t>(c) - static_cast<int32_t>(GetThumbHeight()) / 2;
     }
     int32_t r;
     if (span >= 0) {
@@ -444,7 +444,7 @@ bool cUnk00ae04d8::Slot151_ae04d8(void* out, uint32_t b, uint32_t c)
 }
 
 // FUNCTION: 0x009c36e7
-bool cUnk00ae04d8::Slot12_ae074c(uint32_t a, uint32_t b)
+bool cGZWinSlider::Slot12_ae074c(uint32_t a, uint32_t b)
 {
     bool result = false;
     cChild_ae04d8* p = reinterpret_cast<cChild_ae04d8*>(a);
@@ -478,7 +478,7 @@ bool cUnk00ae04d8::Slot12_ae074c(uint32_t a, uint32_t b)
             mnRect[2] = w;
             mnRect[3] = rc.v[3] - t;
         }
-        Slot52_adc8d8(mnRect[3] - mnRect[1]);
+        SetSize(mnRect[3] - mnRect[1]);
         result = true;
         break;
     case 2:
@@ -488,7 +488,7 @@ bool cUnk00ae04d8::Slot12_ae074c(uint32_t a, uint32_t b)
             mnRect[2] = rc.v[2] - rc.v[0];
             mnRect[3] = (rc.v[3] - rc.v[1]) / 4;
         }
-        Slot51_adc8d8(mnRect[2] - mnRect[0]);
+        SetH(mnRect[2] - mnRect[0]);
         result = true;
         break;
     }
@@ -496,25 +496,25 @@ bool cUnk00ae04d8::Slot12_ae074c(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x009c37da
-uint32_t cUnk00ae04d8::Slot154_ae04d8()
+uint32_t cGZWinSlider::GetThumbWidth()
 {
     if (mpChild) {
         return Width_ae04d8(mnRect);
     }
     if (mnMode == 1) {
-        return Slot42_adc8d8();
+        return GetH();
     }
-    return Slot41_adc8d8();
+    return GetW();
 }
 
 // FUNCTION: 0x009c3809
-uint32_t cUnk00ae04d8::Slot155_ae04d8()
+uint32_t cGZWinSlider::GetThumbHeight()
 {
     if (mpChild) {
         return mnRect[3] - mnRect[1];
     }
     if (mnMode == 1) {
-        return Slot42_adc8d8();
+        return GetH();
     }
-    return Slot41_adc8d8();
+    return GetW();
 }

@@ -29,14 +29,14 @@ public:
     virtual void Slot19_addef0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot20_addef0(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot21_addef0(uint32_t, uint32_t) = 0;
-    virtual void Slot172_ade188(uint32_t) = 0;
+    virtual void GetAutomaticGraphAreaRect(uint32_t) = 0;
     virtual void Slot174_ade188(uint32_t, uint32_t) = 0;
     virtual void Slot175_ade188(uint32_t, uint32_t) = 0;
     virtual float Slot164_ade188(uint32_t) = 0;
     virtual float Slot165_ade188(uint32_t) = 0;
     virtual void Slot27_addef0() = 0;
-    virtual void Slot157_ade188(uint32_t) = 0;
-    virtual void Slot151_ade188() = 0;
+    virtual void DrawGraphData(uint32_t) = 0;
+    virtual void LoadDefaultFonts() = 0;
     virtual void Slot30_addef0(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot31_addef0() = 0;
     virtual uint32_t Slot32_addef0() = 0;

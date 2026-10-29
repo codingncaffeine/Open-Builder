@@ -4,13 +4,13 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a8738c.h"
+#include "classes/cGZPersistResourceKeyFilter.h"
 
 // VTABLE: 0x00a87578
 // SIZE 0xc
-class cUnk00a87578 : public cUnk00a8738c {
+class cUnk00a87578 : public cGZPersistResourceKeyFilter {
 public:
-    virtual bool Slot03_a8738c(uint32_t);
+    virtual bool IsKeyIncluded(uint32_t);
     char unknown4[0x8];
 };
 #ifdef _MSC_VER

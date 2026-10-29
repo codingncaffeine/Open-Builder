@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a9fe6c.h"
+#include "classes/cGroupFlashCommand.h"
 
 // VTABLE: 0x00a9fe5c
 // SIZE 0x4
-class cUnk00a9fe5c : public cUnk00a9fe6c {
+class cUnk00a9fe5c : public cGroupFlashCommand {
 public:
     virtual void Slot03_abbf94(uint32_t, uint32_t);
 };

@@ -4,14 +4,14 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a8ec1c.h"
+#include "classes/cSC4LotConfigurationFilter.h"
 
 // VTABLE: 0x00a906d4
 // SIZE 0x10
-class cUnk00a906d4 : public cUnk00a8ec1c {
+class cUnk00a906d4 : public cSC4LotConfigurationFilter {
 public:
     virtual ~cUnk00a906d4();
-    virtual bool Slot03_a8ec1c(uint32_t);
+    virtual bool IsLotConfigurationIncluded(uint32_t);
     char unknown4[0xc];
 };
 #ifdef _MSC_VER

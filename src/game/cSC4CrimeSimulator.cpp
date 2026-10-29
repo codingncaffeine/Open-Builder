@@ -1,4 +1,4 @@
-#include "classes/cUnk00ab0dc8.h"
+#include "classes/cSC4CrimeSimulator.h"
 #include "classes/cUnk00a878c0.h"
 #include "gzcom/cRZString.h"
 
@@ -13,7 +13,7 @@ struct Vec_ab0dc8 {
     void Fn0051ca60(void** pos, void** a, void** b, uint32_t n, uint32_t m);
 };
 
-struct View_ab0dc8 : public cUnk00ab0dc8 {
+struct View_ab0dc8 : public cSC4CrimeSimulator {
     uint8_t mbInitialized;   // 0x10
     uint8_t mbFlag11;        // 0x11
     int32_t mnRefCount;      // 0x14
@@ -55,26 +55,26 @@ struct Item_ab0dc8 {
 };
 
 // FUNCTION: 0x0069f350
-int32_t cUnk00ab0dc8::Slot06_ab0dc8()
+int32_t cSC4CrimeSimulator::Slot06_ab0dc8()
 {
     return static_cast<int32_t>(static_cast<View_ab0dc8*>(this)->mf6c);
 }
 
 // FUNCTION: 0x0069f5d0
-uint32_t cUnk00ab0dc8::Slot02_ab0dc8()
+uint32_t cSC4CrimeSimulator::Slot02_ab0dc8()
 {
     View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
     if (self->mnRefCount > 1) {
         self->mnRefCount = self->mnRefCount - 1;
         return self->mnRefCount;
     }
-    Slot04_ab0dc8();
+    Shutdown();
     delete this;
     return 0;
 }
 
 // FUNCTION: 0x0069f9a0
-bool cUnk00ab0dc8::Slot13_ab0dc8(uint32_t index)
+bool cSC4CrimeSimulator::GetVisualsCreated(uint32_t index)
 {
     View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
     if (index < self->mItems.size()) {
@@ -84,7 +84,7 @@ bool cUnk00ab0dc8::Slot13_ab0dc8(uint32_t index)
 }
 
 // FUNCTION: 0x0069fd40
-bool cUnk00ab0dc8::Slot12_ab0dc8(uint32_t index, uint32_t value)
+bool cSC4CrimeSimulator::SetVisualsCreated(uint32_t index, uint32_t value)
 {
     View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
     if (index < self->mItems.size()) {
@@ -95,7 +95,7 @@ bool cUnk00ab0dc8::Slot12_ab0dc8(uint32_t index, uint32_t value)
 }
 
 // FUNCTION: 0x0069f430
-bool cUnk00ab0dc8::Slot08_ab0dc8(void* a, void* b, void* c)
+bool cSC4CrimeSimulator::GetCrimeHotspot(void* a, void* b, void* c)
 {
     View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
     if (self->mn88 > 0) {
@@ -114,7 +114,7 @@ bool cUnk00ab0dc8::Slot08_ab0dc8(void* a, void* b, void* c)
 }
 
 // FUNCTION: 0x0069f1b0
-bool cUnk00ab0dc8::Slot00_ab0dc8(uint32_t iid, void* out)
+bool cSC4CrimeSimulator::QueryInterface(uint32_t iid, void* out)
 {
     void** pp = static_cast<void**>(out);
     switch (iid) {
@@ -124,15 +124,15 @@ bool cUnk00ab0dc8::Slot00_ab0dc8(uint32_t iid, void* out)
         Slot01_ab0dc8();
         return true;
     case 0x452294aa:
-        *pp = static_cast<cUnk00ab0dc8_4*>(this);
+        *pp = static_cast<cSC4CrimeSimulator_4*>(this);
         Slot01_ab0dc8();
         return true;
     case 0x89c498be:
-        *pp = static_cast<cUnk00ab0dc8_8*>(this);
+        *pp = static_cast<cSC4CrimeSimulator_8*>(this);
         Slot01_ab0dc8();
         return true;
     case 0xe4fda3d4:
-        *pp = static_cast<cUnk00ab0dc8_c*>(this);
+        *pp = static_cast<cSC4CrimeSimulator_c*>(this);
         Slot01_ab0dc8();
         return true;
     }
@@ -274,7 +274,7 @@ struct Jitter_ab0dc8 {
 };
 
 // FUNCTION: 0x0069f710
-uint32_t cUnk00ab0dc8_8::Slot03_ab0dc8_8(void* rect)
+uint32_t cSC4CrimeSimulator_8::GetRequestedShare(void* rect)
 {
     View_ab0dc8& self = *reinterpret_cast<View_ab0dc8*>(reinterpret_cast<char*>(this) - 8);
     const int32_t* r = static_cast<const int32_t*>(rect);
@@ -285,13 +285,13 @@ uint32_t cUnk00ab0dc8_8::Slot03_ab0dc8_8(void* rect)
     return *reinterpret_cast<int32_t*>(&t) - 0x4b400000;
 }
 
-static inline cUnk00ab0dc8* Primary4_ab0dc8(void* sub)
+static inline cSC4CrimeSimulator* Primary4_ab0dc8(void* sub)
 {
-    return reinterpret_cast<cUnk00ab0dc8*>(static_cast<char*>(sub) - 4);
+    return reinterpret_cast<cSC4CrimeSimulator*>(static_cast<char*>(sub) - 4);
 }
 
 // FUNCTION: 0x006a21c0
-bool cUnk00ab0dc8_4::Slot03_ab0dc8_4(void* arg)
+bool cSC4CrimeSimulator_4::Slot03_ab0dc8_4(void* arg)
 {
     Sub4_ab0dc8& self = *reinterpret_cast<Sub4_ab0dc8*>(this);
     Message_ab0dc8* msg = static_cast<Message_ab0dc8*>(arg);
@@ -336,7 +336,7 @@ bool cUnk00ab0dc8_4::Slot03_ab0dc8_4(void* arg)
 }
 
 // FUNCTION: 0x006a1860
-bool cUnk00ab0dc8::Slot04_ab0dc8()
+bool cSC4CrimeSimulator::Shutdown()
 {
     View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
     if (self->mbInitialized) {
@@ -443,7 +443,7 @@ void Fn005dab70(Stream_ab0dc8* stream, void* region);
 void Fn005da0a0(Stream_ab0dc8* stream, void* data);
 
 // FUNCTION: 0x0069f600
-uint32_t cUnk00ab0dc8_c::Slot03_ab0dc8_c(void* arg)
+uint32_t cSC4CrimeSimulator_c::Write(void* arg)
 {
     SubC_ab0dc8* self = reinterpret_cast<SubC_ab0dc8*>(this);
     Stream_ab0dc8* s = static_cast<Stream_ab0dc8*>(arg);
@@ -498,7 +498,7 @@ void* Fn0090cf54(uint32_t size);
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x006a05e0 score 154 (register allocation: the original keeps this in ebp and the new entry in edi)
-bool cUnk00ab0dc8_c::Slot04_ab0dc8_c(void* arg)
+bool cSC4CrimeSimulator_c::Read(void* arg)
 {
     Reader_ab0dc8* s = static_cast<Reader_ab0dc8*>(arg);
     SubC_ab0dc8* self = reinterpret_cast<SubC_ab0dc8*>(this);
@@ -591,7 +591,7 @@ struct Records_ab0dc8 {
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x006a1960 score 6 (only the base/index order of three addresses; the original adds an integer base)
-bool cUnk00ab0dc8::Slot11_ab0dc8(void* arg)
+bool cSC4CrimeSimulator::GetCrimeIncidentArray(void* arg)
 {
     View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
     Records_ab0dc8* out = static_cast<Records_ab0dc8*>(arg);
@@ -754,7 +754,7 @@ struct Region_ab0dc8 {
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x006a15b0 score 139 (needs the inline constructor of cUnk00a878c0; register order of the global loads)
-bool cUnk00ab0dc8::Slot03_ab0dc8()
+bool cSC4CrimeSimulator::Init()
 {
     View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
     if (!self->mbInitialized) {

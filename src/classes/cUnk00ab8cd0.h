@@ -4,17 +4,17 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00adc8d8.h"
+#include "classes/cGZWin.h"
 
 // VTABLE: 0x00ab8cd0
 // SIZE 0x138
-class cUnk00ab8cd0 : public cUnk00adc8d8 {
+class cUnk00ab8cd0 : public cGZWin {
 public:
     virtual ~cUnk00ab8cd0() {}
-    virtual bool Slot88_adc8d8();
-    virtual bool Slot135_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot137_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool GZPaint();
+    virtual bool GZOnMouseDownR(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnMouseUpR(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnMouseMove(uint32_t, uint32_t, uint32_t);
     virtual bool Slot04_adb6a8();
     virtual bool Slot05_adb6a8();
     char unknownd8[0x60];

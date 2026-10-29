@@ -4,14 +4,14 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00ad8c20.h"
+#include "classes/cGZPersistResourceFactory.h"
 
 // VTABLE: 0x00abd324
 // SIZE 0x10
-class cUnk00abd324 : public cUnk00ad8c20 {
+class cUnk00abd324 : public cGZPersistResourceFactory {
 public:
     virtual ~cUnk00abd324() {}
-    virtual bool Slot04_ad8c20(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool CreateInstance_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
     virtual bool Slot10_ad8c20(uint32_t, uint32_t);
     virtual bool Slot11_ad8c20(uint32_t, uint32_t);

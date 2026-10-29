@@ -1,4 +1,4 @@
-#include "classes/cUnk00ac2f70.h"
+#include "classes/cGZSnd3DListener.h"
 
 // STUB: 0x00949ade
 bool Fn00949ade(uint32_t value);
@@ -42,20 +42,20 @@ static inline float GetValue_ac2f70(const float* p)
 }
 
 // FUNCTION: 0x0094c4b1
-uint32_t cUnk00ac2f70::Slot01_ac2f70()
+uint32_t cGZSnd3DListener::Init()
 {
     ++mnRefCount;
     return mnRefCount;
 }
 
 // FUNCTION: 0x009cfa36
-void* cUnk00ac2f70::Slot10_ac2f70()
+void* cGZSnd3DListener::AsIGZSnd3DListenerEx()
 {
     return static_cast<cUnk00ac2ad8*>(this);
 }
 
 // FUNCTION: 0x00878e43
-uint32_t cUnk00ac2f70::Slot02_ac2f70()
+uint32_t cGZSnd3DListener::Shutdown()
 {
     if (--mnRefCount == 0) {
         Fn00878ced(1);
@@ -65,7 +65,7 @@ uint32_t cUnk00ac2f70::Slot02_ac2f70()
 }
 
 // FUNCTION: 0x00878cd9
-void cUnk00ac2f70::Slot11_ac2ad8(uint32_t a)
+void cGZSnd3DListener::Slot11_ac2ad8(uint32_t a)
 {
     *reinterpret_cast<float*>(a) = GetValue_ac2f70(&mfValue);
 }
@@ -82,7 +82,7 @@ static inline float* FloatOut_ac2f70(uint32_t p)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x008787d7 score 4 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
-void cUnk00ac2f70::Slot05_ac2f70()
+void cGZSnd3DListener::Slot05_ac2f70()
 {
     if (mpInner) {
         Fn00949ade(Inner_ac2f70(mpInner)->Fn17());
@@ -92,7 +92,7 @@ void cUnk00ac2f70::Slot05_ac2f70()
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x008787ee score 4 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
-void cUnk00ac2f70::Slot06_ac2f70(uint32_t a, uint32_t b, uint32_t c)
+void cGZSnd3DListener::GetPosition(uint32_t a, uint32_t b, uint32_t c)
 {
     if (mpInner) {
         float v[3];
@@ -105,14 +105,14 @@ void cUnk00ac2f70::Slot06_ac2f70(uint32_t a, uint32_t b, uint32_t c)
 #endif
 
 // FUNCTION: 0x00878823
-uint32_t cUnk00ac2f70::Slot07_ac2f70(uint32_t a, uint32_t b, uint32_t c)
+uint32_t cGZSnd3DListener::SetPosition(uint32_t a, uint32_t b, uint32_t c)
 {
     Inner_ac2f70(mpInner)->Fn14(AsFloat_ac2f70(a), AsFloat_ac2f70(b), AsFloat_ac2f70(c), 0);
     return Inner_ac2f70(mpInner)->Fn17() == 0;
 }
 
 // FUNCTION: 0x0087885d
-void cUnk00ac2f70::Slot03_ac2ad8(uint32_t a, uint32_t b, uint32_t c)
+void cGZSnd3DListener::Slot03_ac2ad8(uint32_t a, uint32_t b, uint32_t c)
 {
     float v[3];
     Inner_ac2f70(mpInner)->Fn09(v);
@@ -122,13 +122,13 @@ void cUnk00ac2f70::Slot03_ac2ad8(uint32_t a, uint32_t b, uint32_t c)
 }
 
 // FUNCTION: 0x0087888c
-uint32_t cUnk00ac2f70::Slot04_ac2ad8(uint32_t a, uint32_t b, uint32_t c)
+uint32_t cGZSnd3DListener::Slot04_ac2ad8(uint32_t a, uint32_t b, uint32_t c)
 {
     return Inner_ac2f70(mpInner)->Fn16(AsFloat_ac2f70(a), AsFloat_ac2f70(b), AsFloat_ac2f70(c), 1) == 0;
 }
 
 // FUNCTION: 0x008788b9
-void cUnk00ac2f70::Slot08_ac2f70(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t e, uint32_t f)
+void cGZSnd3DListener::GetOrientation(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t e, uint32_t f)
 {
     float p[3];
     float q[3];
@@ -142,14 +142,14 @@ void cUnk00ac2f70::Slot08_ac2f70(uint32_t a, uint32_t b, uint32_t c, uint32_t d,
 }
 
 // FUNCTION: 0x00878904
-uint32_t cUnk00ac2f70::Slot09_ac2f70(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t e, uint32_t f)
+uint32_t cGZSnd3DListener::SetOrientation(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t e, uint32_t f)
 {
     return Inner_ac2f70(mpInner)->Fn13(AsFloat_ac2f70(a), AsFloat_ac2f70(b), AsFloat_ac2f70(c), AsFloat_ac2f70(d), AsFloat_ac2f70(e), AsFloat_ac2f70(f), 1) == 0;
 }
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00878a74 score 6 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
-void cUnk00ac2f70::Slot07_ac2ad8(uint32_t a)
+void cGZSnd3DListener::Slot07_ac2ad8(uint32_t a)
 {
     if (mpInner) {
         Inner_ac2f70(mpInner)->Fn05(FloatOut_ac2f70(a));
@@ -161,7 +161,7 @@ void cUnk00ac2f70::Slot07_ac2ad8(uint32_t a)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00878ae3 score 6 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
-void cUnk00ac2f70::Slot09_ac2ad8(uint32_t a)
+void cGZSnd3DListener::Slot09_ac2ad8(uint32_t a)
 {
     if (mpInner) {
         Inner_ac2f70(mpInner)->Fn08(FloatOut_ac2f70(a));
@@ -173,7 +173,7 @@ void cUnk00ac2f70::Slot09_ac2ad8(uint32_t a)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00878a94 score 8 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
-bool cUnk00ac2f70::Slot08_ac2ad8(uint32_t a)
+bool cGZSnd3DListener::Slot08_ac2ad8(uint32_t a)
 {
     if (mpInner) {
         return Inner_ac2f70(mpInner)->Fn12(AsFloat_ac2f70(a), 0) == 0;
@@ -184,7 +184,7 @@ bool cUnk00ac2f70::Slot08_ac2ad8(uint32_t a)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00878b03 score 8 (the original compares the field in memory, then reloads it; the spelling that gets there is not found)
-bool cUnk00ac2f70::Slot10_ac2ad8(uint32_t a)
+bool cGZSnd3DListener::Slot10_ac2ad8(uint32_t a)
 {
     if (mpInner) {
         return Inner_ac2f70(mpInner)->Fn15(AsFloat_ac2f70(a), 0) == 0;
@@ -194,7 +194,7 @@ bool cUnk00ac2f70::Slot10_ac2ad8(uint32_t a)
 #endif
 
 // FUNCTION: 0x00878ab9
-bool cUnk00ac2f70::Slot12_ac2ad8(uint32_t a)
+bool cGZSnd3DListener::Slot12_ac2ad8(uint32_t a)
 {
     mfValue = AsFloat_ac2f70(a);
     cInner_ac2f70* inner = Inner_ac2f70(mpInner);
@@ -205,7 +205,7 @@ bool cUnk00ac2f70::Slot12_ac2ad8(uint32_t a)
 }
 
 // FUNCTION: 0x00878947
-void cUnk00ac2f70::Slot05_ac2ad8(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t e, uint32_t f, uint32_t g, uint32_t h, uint32_t i, uint32_t j, uint32_t k, uint32_t l)
+void cGZSnd3DListener::Slot05_ac2ad8(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t e, uint32_t f, uint32_t g, uint32_t h, uint32_t i, uint32_t j, uint32_t k, uint32_t l)
 {
     float p[3];
     float q[3];
@@ -227,7 +227,7 @@ void cUnk00ac2f70::Slot05_ac2ad8(uint32_t a, uint32_t b, uint32_t c, uint32_t d,
 }
 
 // FUNCTION: 0x008789e0
-uint32_t cUnk00ac2f70::Slot06_ac2ad8(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t e, uint32_t f, uint32_t g, uint32_t h, uint32_t i, uint32_t j, uint32_t k, uint32_t l)
+uint32_t cGZSnd3DListener::Slot06_ac2ad8(uint32_t a, uint32_t b, uint32_t c, uint32_t d, uint32_t e, uint32_t f, uint32_t g, uint32_t h, uint32_t i, uint32_t j, uint32_t k, uint32_t l)
 {
     Inner_ac2f70(mpInner)->Fn14(AsFloat_ac2f70(a), AsFloat_ac2f70(b), AsFloat_ac2f70(c), 1);
     Inner_ac2f70(mpInner)->Fn16(AsFloat_ac2f70(d), AsFloat_ac2f70(e), AsFloat_ac2f70(f), 1);
@@ -236,7 +236,7 @@ uint32_t cUnk00ac2f70::Slot06_ac2ad8(uint32_t a, uint32_t b, uint32_t c, uint32_
 }
 
 // FUNCTION: 0x00878796
-bool cUnk00ac2f70::Slot00_ac2f70(uint32_t iid, uint32_t out)
+bool cGZSnd3DListener::QueryInterface(uint32_t iid, uint32_t out)
 {
     void** pp = reinterpret_cast<void**>(out);
     if (iid == 1) {
@@ -248,7 +248,7 @@ bool cUnk00ac2f70::Slot00_ac2f70(uint32_t iid, uint32_t out)
     } else {
         return false;
     }
-    Slot01_ac2f70();
+    Init();
     return true;
 }
 
@@ -286,9 +286,9 @@ struct cBaseView_ac2f70 {
     virtual bool Fn12(float value);
 };
 
-inline cBaseView_ac2f70* ViewOfBase_ac2f70(cUnk00ac2f70* p)
+inline cBaseView_ac2f70* ViewOfBase_ac2f70(cGZSnd3DListener* p)
 {
-    return reinterpret_cast<cBaseView_ac2f70*>(reinterpret_cast<char*>(p) + sizeof(cUnk00ac2f70_0));
+    return reinterpret_cast<cBaseView_ac2f70*>(reinterpret_cast<char*>(p) + sizeof(cGZSnd3DListener_0));
 }
 
 struct cHolderA_ac2f70 {
@@ -309,7 +309,7 @@ struct cHolderB_ac2f70 {
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00878d11 score 20
-bool cUnk00ac2f70::Slot03_ac2f70()
+bool cGZSnd3DListener::CommitDeferredSettings()
 {
     cHolderA_ac2f70 a;
     if (a.mp) {

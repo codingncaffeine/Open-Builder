@@ -2,4 +2,4 @@ field 8 int32_t mnRefCount
 field c float mfValue
 field 10 void* mpInner
 method 0x00878ced uint32_t Fn00878ced(uint32_t)
-slot Slot10_ac2f70 void*
+slot AsIGZSnd3DListenerEx void*

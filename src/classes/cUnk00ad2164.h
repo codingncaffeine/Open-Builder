@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00ad21b8.h"
+#include "classes/nGZLog_cDefaultOutputBackEnd.h"
 
 // VTABLE: 0x00ad2164
 // SIZE 0x44
-class cUnk00ad2164 : public cUnk00ad21b8 {
+class cUnk00ad2164 : public nGZLog_cDefaultOutputBackEnd {
 public:
     virtual ~cUnk00ad2164() {}
     virtual void Slot07_ad21b8(uint32_t, uint32_t, uint32_t);

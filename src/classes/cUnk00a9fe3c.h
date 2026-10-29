@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a9fe4c.h"
+#include "classes/cGroupSoundCommand.h"
 
 // VTABLE: 0x00a9fe3c
 // SIZE 0x4
-class cUnk00a9fe3c : public cUnk00a9fe4c {
+class cUnk00a9fe3c : public cGroupSoundCommand {
 public:
     virtual void Slot03_abbf94(uint32_t, uint32_t);
 };

@@ -42,7 +42,7 @@ public:
     virtual bool Slot15_ac2d78(bool);
     virtual bool Slot16_ac2d78();
     virtual void* Slot03_ad3e48();
-    virtual bool Slot00_ad4cf4(uint32_t, uint32_t);
+    virtual bool QueryInterface(uint32_t, uint32_t);
     virtual uint32_t Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
     char unknowndc[0x20];
@@ -57,37 +57,37 @@ typedef char ob_size_cUnk00ac2e28[sizeof(cUnk00ac2e28) == 0x100 ? 1 : -1];
 // cUnk00ac2e28::`scalar deleting dtor'
 
 // SYNTHETIC: 0x00878c08
-// cUnk00ac2e28::Slot00_ad4cf4`adjustor{4}'
+// cUnk00ac2e28::QueryInterface`adjustor{4}'
 
 // SYNTHETIC: 0x00878c10
 // cUnk00ac2e28::Slot02_ad4cf4`adjustor{4}'
 
 // SYNTHETIC: 0x00878c18
-// cUnk00ac2e28::Slot00_ad4cf4`adjustor{8}'
+// cUnk00ac2e28::QueryInterface`adjustor{8}'
 
 // SYNTHETIC: 0x00878c20
 // cUnk00ac2e28::Slot02_ad4cf4`adjustor{8}'
 
 // SYNTHETIC: 0x00878c28
-// cUnk00ac2e28::Slot00_ad4cf4`adjustor{12}'
+// cUnk00ac2e28::QueryInterface`adjustor{12}'
 
 // SYNTHETIC: 0x00878c30
 // cUnk00ac2e28::Slot02_ad4cf4`adjustor{12}'
 
 // SYNTHETIC: 0x00878c38
-// cUnk00ac2e28::Slot00_ad4cf4`adjustor{16}'
+// cUnk00ac2e28::QueryInterface`adjustor{16}'
 
 // SYNTHETIC: 0x00878c40
 // cUnk00ac2e28::Slot02_ad4cf4`adjustor{16}'
 
 // SYNTHETIC: 0x00878c48
-// cUnk00ac2e28::Slot00_ad4cf4`adjustor{20}'
+// cUnk00ac2e28::QueryInterface`adjustor{20}'
 
 // SYNTHETIC: 0x00878c50
 // cUnk00ac2e28::Slot02_ad4cf4`adjustor{20}'
 
 // SYNTHETIC: 0x00878c58
-// cUnk00ac2e28::Slot00_ad4cf4`adjustor{216}'
+// cUnk00ac2e28::QueryInterface`adjustor{216}'
 
 // SYNTHETIC: 0x00878c63
 // cUnk00ac2e28::Slot01_ad4cf4`adjustor{216}'

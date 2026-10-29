@@ -12,9 +12,9 @@ public:
     virtual unsigned int Release() = 0;
     virtual void* Slot03_ae2300() = 0;
     virtual void Slot08_ae1a28(uint32_t) = 0;
-    virtual void Slot107_adc8d8(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot103_adc8d8() = 0;
-    virtual void Slot104_adc8d8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void SetFillColor(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void GetFillColor_2() = 0;
+    virtual void GetFillColor_3(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot08_ae2300(uint32_t) = 0;
     virtual void Slot09_ae2300(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot10_ae2300(uint32_t, uint32_t, uint32_t, uint32_t) = 0;

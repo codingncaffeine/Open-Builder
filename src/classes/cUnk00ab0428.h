@@ -4,12 +4,12 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00aab558.h"
+#include "classes/cSCStandardTypeEntryView.h"
 
-// VTABLE: 0x00ab0428 cUnk00adc8d8
+// VTABLE: 0x00ab0428 cGZWin
 // VTABLE: 0x00ab0404 cUnk00aace34
 // SIZE 0x10c
-class cUnk00ab0428 : public cUnk00aab558 {
+class cUnk00ab0428 : public cSCStandardTypeEntryView {
 public:
     virtual ~cUnk00ab0428();
     virtual void Slot07_aace34(uint32_t);

@@ -4,22 +4,22 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "classes/cGZWin.h"
 #include "classes/cUnk00aaaa9c.h"
 #include "classes/cUnk00ab889c.h"
-#include "classes/cUnk00adc8d8.h"
 
 // VTABLE: 0x00ab8884 cUnk00ab889c
-// VTABLE: 0x00ab8628 cUnk00adc8d8
+// VTABLE: 0x00ab8628 cGZWin
 // VTABLE: 0x00ab8614 cUnk00aaaa9c
 // SIZE 0x134
-class cUnk00ab8884 : public cUnk00ab889c, public cUnk00adc8d8, public cUnk00aaaa9c {
+class cUnk00ab8884 : public cUnk00ab889c, public cGZWin, public cUnk00aaaa9c {
 public:
     virtual ~cUnk00ab8884() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
-    virtual bool Slot88_adc8d8();
+    virtual bool GZPaint();
     virtual uint32_t Slot03_ab889c();
     virtual void Slot04_ab889c(uint32_t);
     virtual void Slot05_ab889c(uint32_t, uint32_t);

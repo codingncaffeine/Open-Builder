@@ -35,8 +35,8 @@ public:
     virtual float Slot164_ade188(uint32_t) = 0;
     virtual float Slot165_ade188(uint32_t) = 0;
     virtual void Slot27_ade0f0() = 0;
-    virtual void Slot157_ade188(uint32_t) = 0;
-    virtual void Slot151_ade188() = 0;
+    virtual void DrawGraphData(uint32_t) = 0;
+    virtual void LoadDefaultFonts() = 0;
     virtual uint32_t Slot30_ade0f0(uint32_t) = 0;
     virtual void Slot31_ade0f0(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot32_ade0f0(uint32_t, uint32_t, uint32_t) = 0;

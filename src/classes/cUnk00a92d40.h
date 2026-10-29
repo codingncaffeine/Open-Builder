@@ -4,12 +4,12 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00acec00.h"
+#include "classes/cRZMessage2Standard.h"
 
 // VTABLE: 0x00a92d40
-class cUnk00a92d40 : public cUnk00acec00 {
+class cUnk00a92d40 : public cRZMessage2Standard {
 public:
-    virtual uint32_t Slot37_acec00(uint32_t);
+    virtual uint32_t SetExtra(uint32_t);
 };
 
 #endif

@@ -4,11 +4,11 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00a9fc08.h"
+#include "classes/cDecalSizeCommand.h"
 
 // VTABLE: 0x00a9fbf8
 // SIZE 0x4
-class cUnk00a9fbf8 : public cUnk00a9fc08 {
+class cUnk00a9fbf8 : public cDecalSizeCommand {
 public:
     virtual void Slot03_abbf94(uint32_t, uint32_t);
 };

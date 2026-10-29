@@ -4,13 +4,13 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
-#include "classes/cUnk00adc8d8.h"
+#include "classes/cGZWin.h"
 #include "classes/cUnk00adda20.h"
 
 // VTABLE: 0x00addd50 cUnk00adda20
-// VTABLE: 0x00addaf0 cUnk00adc8d8
+// VTABLE: 0x00addaf0 cGZWin
 // SIZE 0x1b4
-class cUnk00addd50 : public cUnk00adda20, public cUnk00adc8d8 {
+class cUnk00addd50 : public cUnk00adda20, public cGZWin {
 public:
     virtual ~cUnk00addd50() {}
     virtual bool Slot51_addd50();
@@ -18,20 +18,20 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual bool Slot03_adc8d8(uint32_t);
+    virtual bool DoMessage(uint32_t);
     virtual uint32_t Slot68_adc8d8(uint32_t, uint32_t);
-    virtual void Slot79_adc8d8(uint32_t);
-    virtual bool Slot88_adc8d8();
-    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot131_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot135_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot137_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot140_adc8d8(uint32_t, uint32_t);
-    virtual bool Slot141_adc8d8(uint32_t);
-    virtual bool Slot142_adc8d8(uint32_t);
+    virtual void SetKeyEquivalent(uint32_t);
+    virtual bool GZPaint();
+    virtual bool GZOnKeyDown(uint32_t, uint32_t);
+    virtual bool GZOnKeyUp(uint32_t, uint32_t);
+    virtual bool GZOnMouseDownL(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnMouseDownR(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnMouseUpL(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnMouseUpR(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnMouseMove(uint32_t, uint32_t, uint32_t);
+    virtual bool GZOnCaptureChanged(uint32_t, uint32_t);
+    virtual bool GZOnMouseEnter(uint32_t);
+    virtual bool GZOnMouseExit(uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot04_adb6a8();
     virtual bool Slot05_adb6a8();

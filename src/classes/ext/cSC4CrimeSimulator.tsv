@@ -1,11 +1,11 @@
 slot Slot02_ab0dc8 uint32_t
 slot Slot06_ab0dc8 int32_t
-slot Slot00_ab0dc8 bool uint32_t void*
-slot Slot08_ab0dc8 bool void* void* void*
-slot Slot11_ab0dc8 bool void*
-slot Slot03_ab0dc8_8 uint32_t void*
-slot Slot03_ab0dc8_c uint32_t void*
-slot Slot04_ab0dc8_c bool void*
+slot QueryInterface bool uint32_t void*
+slot GetCrimeHotspot bool void* void* void*
+slot GetCrimeIncidentArray bool void*
+slot GetRequestedShare uint32_t void*
+slot Write uint32_t void*
+slot Read bool void*
 method 0x006a1fd0 void Fn006a1fd0(uint32_t)
 method 0x0069f260 void Fn0069f260(void* obj, bool flag)
 method 0x006a07a0 void Fn006a07a0()
