@@ -5,7 +5,8 @@
 // scored against the original, the best kept.
 //
 //   obperm <original.exe> <functions.tsv> <file.cpp> <address> [--tries N] [--jobs N] [--seed N] [--seconds N]
-//          [--flags "..."] [--work DIR] [--out FILE] [--quiet]
+//          [--flags "..."] [--work DIR] [--out FILE] [--quiet] [--obj FILE]
+// --obj scores an object already compiled from file.cpp (tools/score.sh) and searches nothing.
 //
 // The function is the definition right after "// FUNCTION: 0x<address>" in file.cpp; the rest of the file is compiled
 // as it is, from the project root (run it there), with build.sh's options and the flags of the nearest FLAGS file
@@ -790,6 +791,7 @@ int main(int argc, char** argv) {
     int jobs = 8, seed = int(std::random_device{}());
     std::string flags, work = "scratch/perm", outPath;
     bool quiet = false;
+    std::string fixedObj;  // --obj: score this already compiled object, no compile and no search
     for (int i = 1; i < argc; ++i) {
         std::string a = argv[i];
         auto value = [&]() -> std::string {
@@ -804,6 +806,7 @@ int main(int argc, char** argv) {
         else if (a == "--work") work = value();
         else if (a == "--out") outPath = value();
         else if (a == "--quiet") quiet = true;
+        else if (a == "--obj") fixedObj = value();
         else pos.push_back(a);
     }
     if (pos.size() != 4) {
@@ -858,10 +861,13 @@ int main(int argc, char** argv) {
     }
     bool pre;
     Toks bodyToks = tokenize(src.substr(open, close + 1 - open), pre);
-    if (pre) { std::fprintf(stderr, "a preprocessor line inside the body: not permuted\n"); return 2; }
+    if (pre && fixedObj.empty()) { std::fprintf(stderr, "a preprocessor line inside the body: not permuted\n"); return 2; }
     Parser parser(bodyToks);
     Node root = parser.block();
-    if (!parser.ok || parser.p != bodyToks.size()) { std::fprintf(stderr, "cannot read the body's statements\n"); return 2; }
+    if ((!parser.ok || parser.p != bodyToks.size()) && fixedObj.empty()) {
+        std::fprintf(stderr, "cannot read the body's statements\n");
+        return 2;
+    }
 
     // Its symbol: "?Name@Class@@...", "??0Class@@" (constructor) or "??1Class@@" (destructor), from the header.
     std::string prefix;
@@ -927,12 +933,15 @@ int main(int argc, char** argv) {
         text = src.substr(0, open) + b.substr(0, b.size() - 1) + src.substr(close + 1);
         std::string dir = work + "/j" + std::to_string(slot);
         fs::create_directories(dir);
-        std::string cpp = dir + "/t.cpp", obj = dir + "/t.obj";
-        { std::ofstream o(cpp); o << text; }
-        fs::remove(obj);
+        std::string cpp = dir + "/t.cpp", obj = fixedObj.empty() ? dir + "/t.obj" : fixedObj;
+        if (fixedObj.empty()) {
+            { std::ofstream o(cpp); o << text; }
+            fs::remove(obj);
         // a candidate can send the compiler into a loop: no compile runs past a minute (a warm one takes about one
         // second); timeout signals its whole process group, the compiler under Wine included
-        run("timeout -k 5 60 tools/vc71.sh cl " + common + " " + flags + " /Fo" + quote(obj) + " " + quote(cpp) + " >/dev/null 2>&1");
+            run("timeout -k 5 60 tools/vc71.sh cl " + common + " " + flags + " /Fo" + quote(obj) + " " + quote(cpp) + " >" +
+                quote(dir + "/cl.txt") + " 2>&1");
+        }
         if (!fs::exists(obj)) return -1;
         long best = -1;
         for (auto& [name, lines] : objectListing(obj, orig))
@@ -949,7 +958,14 @@ int main(int argc, char** argv) {
 
     std::string bestText;
     long best = build(root, 0, bestText);
-    if (best < 0) { std::fprintf(stderr, "the file does not compile, or no symbol %s... in it\n", prefix.c_str()); return 2; }
+    if (best < 0) {
+        // the compiler's own words (it writes them to stdout): the error lines, so a typo needs no second run
+        std::string errors = run("grep -E 'error|fatal' " + quote(work + "/j0/cl.txt") + " 2>/dev/null | head -20");
+        std::fprintf(stderr, "%s%s", errors.c_str(), errors.empty() ? "" : "\n");
+        std::fprintf(stderr, "the file does not compile, or no symbol %s... in it\n", prefix.c_str());
+        return 2;
+    }
+    if (!fixedObj.empty()) { std::printf("start: %ld (original %zu instructions)\n", best, want.size()); return best == 0 ? 0 : 1; }
     if (!quiet) std::printf("start: %ld (original %zu instructions)\n", best, want.size());
     Node bestNode = root, cur = root;
     long curScore = best;
