@@ -87,6 +87,9 @@ int main(int argc, char** argv) {
         newNames[p.newVa] = origNames[p.origVa];
         standsFor[p.newVa].insert(p.origVa);
     }
+    // Calls through the import tables compare by the function imported.
+    for (auto& [va, name] : importNames(orig)) origNames.emplace(va, name);
+    for (auto& [va, name] : importNames(rebuilt)) newNames.emplace(va, name);
     if (!namesPath.empty()) {
         std::ifstream f(namesPath);
         if (!f) { std::fprintf(stderr, "cannot read %s\n", namesPath.c_str()); return 2; }

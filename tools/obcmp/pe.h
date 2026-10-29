@@ -11,6 +11,7 @@
 #include <Zydis/Zydis.h>
 
 #include <algorithm>
+#include <cctype>
 #include <cstdint>
 #include <cstdio>
 #include <cstring>
@@ -35,6 +36,7 @@ struct Image {
     uint32_t base = 0;
     uint32_t size = 0;
     std::vector<Section> sections;
+    uint32_t importDir = 0;  // RVA of the import descriptors
 
     // Bytes at a virtual address, or nullptr when it is not backed by file data.
     const uint8_t* at(uint32_t va, uint32_t len) const {
@@ -94,6 +96,7 @@ inline bool loadImage(const std::string& path, Image& img) {
     size_t opt = pe + 24;
     img.base = rd32(b, opt + 28);
     img.size = rd32(b, opt + 56);
+    if (optSize >= 112) img.importDir = rd32(b, opt + 104);
     size_t sh = opt + optSize;
     for (uint16_t i = 0; i < nsect; ++i, sh += 40) {
         if (sh + 40 > b.size()) return false;
@@ -107,6 +110,38 @@ struct Side {
     // Function start address → canonical name, for this side's addresses.
     const std::map<uint32_t, std::string>* names;
 };
+
+// The import address table: each slot's address and "imp:<dll>!<function>" (dll in lower case; "#N" for an
+// ordinal), so a call through it compares by what it calls, not where the table sits.
+inline std::map<uint32_t, std::string> importNames(const Image& img) {
+    std::map<uint32_t, std::string> out;
+    if (!img.importDir) return out;
+    for (uint32_t d = img.base + img.importDir;; d += 20) {
+        const uint8_t* desc = img.at(d, 20);
+        if (!desc) break;
+        uint32_t lookup, nameRva, iat;
+        std::memcpy(&lookup, desc, 4);
+        std::memcpy(&nameRva, desc + 12, 4);
+        std::memcpy(&iat, desc + 16, 4);
+        if (!nameRva && !iat) break;
+        std::string dll;
+        for (const uint8_t* c; (c = img.at(img.base + nameRva + uint32_t(dll.size()), 1)) && *c;) dll += char(std::tolower(*c));
+        uint32_t table = lookup ? lookup : iat;
+        for (uint32_t i = 0;; ++i) {
+            const uint8_t* t = img.at(img.base + table + 4 * i, 4);
+            if (!t) break;
+            uint32_t entry;
+            std::memcpy(&entry, t, 4);
+            if (!entry) break;
+            std::string fn;
+            if (entry & 0x80000000u) fn = "#" + std::to_string(entry & 0xffff);
+            else
+                for (const uint8_t* c; (c = img.at(img.base + entry + 2 + uint32_t(fn.size()), 1)) && *c;) fn += char(*c);
+            out[img.base + iat + 4 * i] = "imp:" + dll + "!" + fn;
+        }
+    }
+    return out;
+}
 
 inline std::string hex(uint64_t v) {
     char buf[24];
@@ -125,18 +160,35 @@ inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t
     ZydisDecoder dec;
     ZydisDecoderInit(&dec, ZYDIS_MACHINE_MODE_LEGACY_32, ZYDIS_STACK_WIDTH_32);
 
-    // First pass: instruction start offsets, so in-function branch targets become instruction indexes.
+    // First pass: instruction start offsets, so in-function branch targets become instruction indexes. The code ends
+    // where a table it indexes inside its own extent begins (a switch's jump table and byte index table follow the
+    // code in a packed function), so the tables are not read as instructions.
     std::vector<uint32_t> starts;
     std::map<uint32_t, size_t> index;
-    for (uint32_t off = 0; off < size;) {
+    uint32_t codeEnd = size;
+    uint64_t firstTable = ~uint64_t(0);  // the lowest table address past the code, inside the extent or just after it
+    for (uint32_t off = 0; off < codeEnd;) {
         ZydisDecodedInstruction ins;
-        if (ZYAN_FAILED(ZydisDecoderDecodeInstruction(&dec, nullptr, code + off, size - off, &ins))) break;
+        ZydisDecodedOperand tops[ZYDIS_MAX_OPERAND_COUNT];
+        if (ZYAN_FAILED(ZydisDecoderDecodeFull(&dec, code + off, codeEnd - off, &ins, tops))) break;
         index[off] = starts.size();
         starts.push_back(off);
         off += ins.length;
+        for (uint8_t i = 0; i < ins.operand_count_visible; ++i) {
+            const ZydisDecodedOperand& op = tops[i];
+            if (op.type != ZYDIS_OPERAND_TYPE_MEMORY || !op.mem.disp.has_displacement) continue;
+            bool scaled = op.mem.base == ZYDIS_REGISTER_NONE && op.mem.index != ZYDIS_REGISTER_NONE;
+            if (!scaled && ins.mnemonic != ZYDIS_MNEMONIC_MOVZX) continue;  // jmp [r*4+table], movzx r,[r+bytes]
+            uint64_t at = uint64_t(op.mem.disp.value) & 0xffffffffu;
+            if (at >= uint64_t(va) + off && at < uint64_t(va) + size + 0x400) firstTable = std::min(firstTable, at);
+            if (at >= uint64_t(va) + off && at < uint64_t(va) + codeEnd) codeEnd = uint32_t(at - va);
+        }
     }
 
     auto refer = [&](uint64_t target) -> std::string {
+        // a switch table: by its place among the function's tables (one build packs them inside the extent, the
+        // function list ends the original's before them)
+        if (target >= firstTable && target < firstTable + 0x400) return "T" + std::to_string(target - firstTable);
         if (target >= va && target < uint64_t(va) + size) {
             auto it = index.find(uint32_t(target - va));
             return it != index.end() ? "L" + std::to_string(it->second) : "Lmid";
