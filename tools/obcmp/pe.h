@@ -55,6 +55,16 @@ struct Image {
             if ((s.flags & 0x20000000u) && va >= base + s.va && va < base + s.va + s.vsize) return true;
         return false;
     }
+    // n bytes of initialised data no code can change (a read-only, non-executable section), or nullptr.
+    const uint8_t* constBytes(uint32_t va, uint32_t n) const {
+        if (va < base) return nullptr;
+        for (const Section& s : sections) {
+            if ((s.flags & 0xe0000000u) != 0x40000000u) continue;
+            if (va - base >= s.va && va - base + n <= s.va + std::min(s.vsize ? s.vsize : s.rawSize, s.rawSize))
+                return file.data() + s.raw + (va - base - s.va);
+        }
+        return nullptr;
+    }
     // A dword of initialised data no code can change (a read-only, non-executable section).
     bool readConst(uint32_t va, uint32_t& out) const {
         if (va < base) return false;
@@ -252,7 +262,22 @@ inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t
                     uint64_t d = uint64_t(op.mem.disp.value) & 0xffffffffu;
                     tok += "+";
                     // An address inside the image is one even with a register added (a table indexed by it).
-                    tok += side.img->contains(d) || side.names->count(uint32_t(d)) ? refer(d) : hex(d);
+                    std::string r = side.img->contains(d) || side.names->count(uint32_t(d)) ? refer(d) : hex(d);
+                    tok += r;
+                    // An unnamed constant read straight from read-only data (a float the compiler placed): its value,
+                    // so a wrong constant differs although both read "some address".
+                    uint32_t n = op.size / 8;
+                    const uint8_t* c = r == "addr" && op.mem.base == ZYDIS_REGISTER_NONE &&
+                                       op.mem.index == ZYDIS_REGISTER_NONE && n >= 1 && n <= 10
+                                       ? side.img->constBytes(uint32_t(d), n) : nullptr;
+                    if (c) {
+                        tok += "=";
+                        for (uint32_t k = n; k-- > 0;) {
+                            char h[3];
+                            std::snprintf(h, sizeof h, "%02x", c[k]);
+                            tok += h;
+                        }
+                    }
                 }
                 tok += "]";
                 break;

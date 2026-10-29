@@ -840,10 +840,28 @@ std::map<std::string, Listing> objectListing(const std::string& obj, const ob::I
             else continue;
             std::memcpy(img.file.data() + off, &v, 4);
         }
-        static const std::map<uint32_t, std::string> noNames;
+        // the read-only data it reads (the compiler's float constants) in its window, so its value compares
+        for (uint32_t k = 0; k < windowSym.size(); ++k) {
+            const Sym& d = syms[windowSym[k]];
+            if (d.section <= 0 || d.section > nsect) continue;
+            size_t dh = 20 + optSize + size_t(d.section - 1) * 40;
+            uint32_t dSize = ob::rd32(b, dh + 16), dRaw = ob::rd32(b, dh + 20), dFlags = ob::rd32(b, dh + 36);
+            if ((dFlags & 0xe0000000u) != 0x40000000u || !dRaw || d.value >= dSize || uint64_t(dRaw) + dSize > b.size()) continue;
+            uint32_t len = std::min<uint32_t>(dSize - d.value, 0x1000);
+            img.sections.push_back({others + 0x1000 * k - orig.base, len, uint32_t(img.file.size()), len, 0x40000040u});
+            img.file.insert(img.file.end(), b.begin() + dRaw + d.value, b.begin() + dRaw + d.value + len);
+        }
+        // an imported function by its name, "imp:<function>" (__imp__glEnable@4 → imp:glEnable), as the original's
+        std::map<uint32_t, std::string> imports;
+        for (uint32_t k = 0; k < windowSym.size(); ++k) {
+            const std::string& n = syms[windowSym[k]].name;
+            if (n.rfind("__imp_", 0) != 0) continue;
+            std::string f = n.substr(n.size() > 6 && n[6] == '_' ? 7 : 6);
+            imports[others + 0x1000 * k] = "imp:" + f.substr(0, f.find('@'));
+        }
         std::vector<uint32_t> refs;
         Listing& l = fns[fn.name];
-        l.tokens = ob::tokenize({&img, &noNames}, place + fn.value, end - fn.value, &refs);
+        l.tokens = ob::tokenize({&img, &imports}, place + fn.value, end - fn.value, &refs);
         trimFill(l.tokens);
         for (uint32_t r : refs) {
             if (r < others || (r - others) / 0x1000 >= windowSym.size()) { l.refs.push_back({r, ""}); continue; }  // a number
@@ -913,9 +931,11 @@ int main(int argc, char** argv) {
     if (!size) { std::fprintf(stderr, "0x%x is not in %s\n", addr, pos[1].c_str()); return 2; }
     ob::Image orig;
     if (!ob::loadImage(exe, orig)) { std::fprintf(stderr, "cannot read %s\n", exe.c_str()); return 2; }
-    static const std::map<uint32_t, std::string> noNames;
+    // its imports by function name, as the object names them (objectListing)
+    std::map<uint32_t, std::string> imports;
+    for (auto& [slot, name] : ob::importNames(orig)) imports[slot] = "imp:" + name.substr(name.find('!') + 1);
     std::vector<uint32_t> wantRefs;
-    std::vector<std::string> want = ob::tokenize({&orig, &noNames}, addr, size, &wantRefs);
+    std::vector<std::string> want = ob::tokenize({&orig, &imports}, addr, size, &wantRefs);
     std::map<std::string, uint32_t> stubs = loadStubs();
     trimFill(want);
     if (want.empty()) { std::fprintf(stderr, "no code at 0x%x\n", addr); return 2; }
