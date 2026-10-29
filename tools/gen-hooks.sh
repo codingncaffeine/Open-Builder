@@ -121,7 +121,9 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
     FILENAME != src && $1 ~ /^UDATA:/ { udata[substr($1, 7)] = udata[substr($1, 7)] " " $2; next }
     FILENAME != src && $1 ~ /^DATA:/ { ddata[substr($1, 6)] = $2; next }
     FILENAME != src && $1 ~ /^U:/ {
-      k = substr($1, 3); usym[k] = $2
+      # one key (name and parameters) can stand for several symbols: declarations of one original function that
+      # differ only in the return type (two views of what it returns); each gets the stub
+      k = substr($1, 3); if (!((k, $2) in ukseen)) { ukseen[k, $2] = 1; usym[k] = (k in usym ? usym[k] " " : "") $2 }
       name = substr(k, 1, index(k, "(") - 1)
       if (!(name SUBSEP $2 in useen)) { useen[name, $2] = 1; unamed[name]++; ubyname[name] = $2 }
       next
@@ -185,7 +187,7 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       if (qualified !~ /::/ && text ~ /^ [ \t]/ && cls != "") qualified = cls "::" qualified
       k = key(qualified, params, isconst)
       if (!(k in usym) && unamed[qualified] == 1) usym[k] = ubyname[qualified]
-      if (k in usym) print address "\t" usym[k] >> stubsOut  # not called anywhere: no stub needed
+      if (k in usym) { n = split(usym[k], w, " "); for (i = 1; i <= n; i++) print address "\t" w[i] >> stubsOut }  # not called: no stub
       next
     }
     pending {
