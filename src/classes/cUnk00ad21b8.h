@@ -3,19 +3,20 @@
 #define OB_CLASSES_CUNK00AD21B8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ad21b8 {
 public:
-    virtual void Slot00_ad21b8();
+    virtual void Slot00_ad21b8(uint32_t, uint32_t);
     virtual void Slot01_ad21b8();
     virtual void Slot02_ad21b8();
-    virtual void Slot03_ad21b8();
-    virtual void Slot04_ad21b8();
-    virtual void Slot05_ad21b8();
-    virtual void Slot06_ad21b8();
-    virtual void Slot07_ad21b8() = 0;
-    virtual void Slot08_ad21b8();
-    virtual void Slot09_ad21b8();
+    virtual void Slot03_ad21b8(uint32_t, uint32_t);
+    virtual void Slot04_ad21b8(uint32_t, uint32_t);
+    virtual void Slot05_ad21b8(uint32_t);
+    virtual void Slot06_ad21b8(uint32_t);
+    virtual void Slot07_ad21b8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot08_ad21b8(uint32_t);
+    virtual uint32_t Slot09_ad21b8();
     virtual ~cUnk00ad21b8();
 };
 

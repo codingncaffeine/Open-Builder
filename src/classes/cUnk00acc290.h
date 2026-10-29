@@ -3,39 +3,44 @@
 #define OB_CLASSES_CUNK00ACC290_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00acc290
 // SIZE 0x100
 class cUnk00acc290 {
 public:
-    virtual void Slot00_acc290();
+    virtual void Slot00_acc290(uint32_t, uint32_t);
     virtual void Slot01_acc290();
     virtual void Slot02_acc290();
-    virtual void Slot03_acc290();
-    virtual void Slot04_acc290();
+    virtual bool Slot03_acc290();
+    virtual bool Slot04_acc290();
     virtual void Slot05_acc290();
-    virtual void Slot06_acc290();
+    virtual void Slot06_acc290(uint32_t);
     virtual void Slot07_acc290();
     virtual void Slot08_acc290();
-    virtual void Slot09_acc290();
-    virtual void Slot10_acc290();
-    virtual void Slot11_acc290();
-    virtual void Slot12_acc290();
-    virtual void Slot13_acc290();
-    virtual void Slot14_acc290();
+    virtual void Slot09_acc290(uint32_t);
+    virtual void Slot10_acc290(uint32_t);
+    virtual bool Slot11_acc290();
+    virtual void Slot12_acc290(uint32_t);
+    virtual void Slot13_acc290(uint32_t);
+    virtual void Slot14_acc290(uint32_t);
     virtual ~cUnk00acc290();
     virtual void Slot16_acc290();
-    virtual void Slot17_acc290();
-    virtual void Slot18_acc290();
+    virtual void Slot17_acc290(uint32_t);
+    virtual void Slot18_acc290(uint32_t, uint32_t, uint32_t);
     virtual void Slot19_acc290();
-    virtual void Slot20_acc290();
-    virtual void Slot21_acc290();
+    virtual void Slot20_acc290(uint32_t);
+    virtual void Slot21_acc290(uint32_t);
     virtual void Slot22_acc290();
-    virtual void Slot23_acc290();
+    virtual void Slot23_acc290(uint32_t);
     virtual void Slot24_acc290();
-    virtual void Slot25_acc290();
+    virtual void Slot25_acc290(uint32_t, uint32_t);
     virtual void Slot26_acc290();
-    char unknown4[0xfc];
+    char unknown4[0x4];
+    bool field8;
+    char unknown9[0xef];
+    uint32_t fieldf8;
+    uint32_t fieldfc;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00acc290[sizeof(cUnk00acc290) == 0x100 ? 1 : -1];

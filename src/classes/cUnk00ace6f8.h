@@ -3,58 +3,59 @@
 #define OB_CLASSES_CUNK00ACE6F8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ace69c.h"
 
 // The subobject at +0x0 (vtable 0x00ace6f8): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ace6f8_0 {
-    virtual void Slot00_ace6f8() = 0;
+    virtual void Slot00_ace6f8(uint32_t, uint32_t) = 0;
     virtual void Slot01_ace6f8() = 0;
     virtual void Slot02_ace6f8() = 0;
-    virtual void Slot03_ace6f8() = 0;
-    virtual void Slot04_ace6f8() = 0;
-    virtual void Slot05_ace6f8() = 0;
-    virtual void Slot06_ace6f8() = 0;
+    virtual void Slot03_ace6f8(uint32_t, uint32_t) = 0;
+    virtual bool Slot04_ace6f8(uint32_t) = 0;
+    virtual void Slot05_ace6f8(uint32_t, uint32_t) = 0;
+    virtual void Slot06_ace6f8(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot07_ace6f8() = 0;
-    virtual void Slot08_ace6f8() = 0;
-    virtual void Slot09_ace6f8() = 0;
+    virtual bool Slot08_ace6f8() = 0;
+    virtual uint32_t Slot09_ace6f8() = 0;
     virtual void Slot10_ace6f8() = 0;
-    virtual void Slot11_ace6f8() = 0;
-    virtual void Slot12_ace6f8() = 0;
-    virtual void Slot13_ace6f8() = 0;
-    virtual void Slot14_ace6f8() = 0;
+    virtual uint32_t Slot11_ace6f8() = 0;
+    virtual uint32_t Slot12_ace6f8() = 0;
+    virtual uint32_t Slot13_ace6f8() = 0;
+    virtual void Slot14_ace6f8(uint32_t) = 0;
     virtual void Slot15_ace6f8() = 0;
     virtual ~cUnk00ace6f8_0() {}
 };
 
 // Between cUnk00ace69c and cUnk00ace6f8 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ace6f8_4 : public cUnk00ace69c {
-    virtual void Slot03_ace69c();
-    virtual void Slot04_ace69c();
-    virtual void Slot05_ace69c();
-    virtual void Slot06_ace69c();
-    virtual void Slot07_ace69c();
-    virtual void Slot08_ace69c();
-    virtual void Slot09_ace69c();
-    virtual void Slot10_ace69c();
+    virtual bool Slot03_ace69c();
+    virtual bool Slot04_ace69c();
+    virtual bool Slot05_ace69c();
+    virtual bool Slot06_ace69c();
+    virtual bool Slot07_ace69c();
+    virtual bool Slot08_ace69c();
+    virtual bool Slot09_ace69c();
+    virtual bool Slot10_ace69c();
 };
 
 class cUnk00ace6f8 : public cUnk00ace6f8_0, public cUnk00ace6f8_4 {
 public:
     virtual ~cUnk00ace6f8();
-    virtual void Slot00_ace6f8();
+    virtual void Slot00_ace6f8(uint32_t, uint32_t);
     virtual void Slot01_ace6f8();
     virtual void Slot02_ace6f8();
-    virtual void Slot03_ace6f8();
-    virtual void Slot04_ace6f8();
-    virtual void Slot05_ace6f8();
-    virtual void Slot06_ace6f8();
+    virtual void Slot03_ace6f8(uint32_t, uint32_t);
+    virtual bool Slot04_ace6f8(uint32_t);
+    virtual void Slot05_ace6f8(uint32_t, uint32_t);
+    virtual void Slot06_ace6f8(uint32_t, uint32_t, uint32_t);
     virtual void Slot07_ace6f8();
-    virtual void Slot08_ace6f8();
-    virtual void Slot09_ace6f8();
+    virtual bool Slot08_ace6f8();
+    virtual uint32_t Slot09_ace6f8();
     virtual void Slot10_ace6f8();
-    virtual void Slot11_ace6f8();
-    virtual void Slot12_ace6f8();
-    virtual void Slot14_ace6f8();
+    virtual uint32_t Slot11_ace6f8();
+    virtual uint32_t Slot12_ace6f8();
+    virtual void Slot14_ace6f8(uint32_t);
     virtual void Slot15_ace6f8();
 };
 

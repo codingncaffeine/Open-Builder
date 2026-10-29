@@ -3,13 +3,14 @@
 #define OB_CLASSES_CUNK00AB4AB4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a83524.h"
 #include "classes/cUnk00aaaa9c.h"
 #include "classes/cUnk00ace624.h"
 
 // Between cUnk00aaaa9c and cUnk00ab4ab4 at +0xc: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ab4ab4_c : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00ab4ab4 cUnk00a83524
@@ -22,7 +23,7 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_a83524();
+    virtual bool Slot03_a83524(uint32_t, uint32_t);
     char unknown10[0x4];
 };
 #ifdef _MSC_VER

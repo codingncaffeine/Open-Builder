@@ -3,16 +3,17 @@
 #define OB_CLASSES_CUNK00AD2BFC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ad2bfc {
 public:
-    virtual void Slot00_ad4cf4() = 0;
+    virtual void Slot00_ad4cf4(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
-    virtual void Slot03_ad2bfc() = 0;
-    virtual void Slot04_ad2bfc() = 0;
-    virtual void Slot05_ad2bfc() = 0;
+    virtual void Slot03_ad2bfc(uint32_t) = 0;
+    virtual void Slot04_ad2bfc(uint32_t) = 0;
+    virtual void Slot05_ad2bfc(uint32_t) = 0;
     virtual void Slot06_ad2bfc() = 0;
     virtual void Slot07_ad2bfc() = 0;
 };

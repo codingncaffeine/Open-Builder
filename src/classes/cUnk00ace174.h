@@ -3,15 +3,16 @@
 #define OB_CLASSES_CUNK00ACE174_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ace174
 class cUnk00ace174 {
 public:
-    virtual void Slot00_ace174();
-    virtual void Slot01_ace174();
-    virtual void Slot02_ace174();
-    virtual void Slot03_ace174();
-    virtual void Slot04_ace174();
+    virtual uint32_t Slot00_ace174();
+    virtual void Slot01_ace174(uint32_t, uint32_t);
+    virtual void Slot02_ace174(uint32_t, uint32_t, uint32_t);
+    virtual void Slot03_ace174(uint32_t);
+    virtual bool Slot04_ace174();
 };
 
 #endif

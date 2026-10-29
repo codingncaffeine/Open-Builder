@@ -3,21 +3,22 @@
 #define OB_CLASSES_CUNK00ADF63C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00adf63c {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_adf63c() = 0;
-    virtual void Slot04_adf63c() = 0;
-    virtual void Slot05_adf63c() = 0;
-    virtual void Slot06_adf63c() = 0;
-    virtual void Slot07_adf63c() = 0;
-    virtual void Slot08_adf63c() = 0;
-    virtual void Slot09_adf63c() = 0;
-    virtual void Slot10_adf63c() = 0;
-    virtual void Slot11_adf63c() = 0;
+    virtual void* Slot03_adf63c() = 0;
+    virtual void Slot04_adf63c(uint32_t) = 0;
+    virtual void Slot05_adf63c(uint32_t, uint32_t) = 0;
+    virtual void Slot06_adf63c(uint32_t, uint32_t) = 0;
+    virtual void Slot07_adf63c(uint32_t, uint32_t) = 0;
+    virtual void Slot08_adf63c(uint32_t) = 0;
+    virtual void Slot09_adf63c(uint32_t) = 0;
+    virtual void Slot10_adf63c(uint32_t) = 0;
+    virtual void Slot11_adf63c(uint32_t, uint32_t) = 0;
 };
 
 #endif

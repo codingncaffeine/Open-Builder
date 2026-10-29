@@ -3,16 +3,17 @@
 #define OB_CLASSES_CUNK00AC3004_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ac3004 {
 public:
     virtual void Slot00_ac3090() = 0;
     virtual void Slot01_ac3090() = 0;
     virtual void Slot02_ac3090() = 0;
-    virtual void Slot03_ac3004() = 0;
-    virtual void Slot04_ac3004() = 0;
-    virtual void Slot05_ac3004() = 0;
-    virtual void Slot06_ac3004() = 0;
+    virtual void* Slot03_ac3004() = 0;
+    virtual uint32_t Slot04_ac3004() = 0;
+    virtual uint32_t Slot05_ac3004() = 0;
+    virtual void Slot06_ac3004(uint32_t) = 0;
 };
 
 #endif

@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00AC34F8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ac34f8 {
 public:
-    virtual void Slot00_ac34cc() = 0;
+    virtual void Slot00_ac34cc(uint32_t, uint32_t) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ac34f8() = 0;
+    virtual void Slot03_ac34f8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac34f8[sizeof(cUnk00ac34f8) == 0x4 ? 1 : -1];

@@ -3,34 +3,42 @@
 #define OB_CLASSES_CUNK00AD7B78_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad7b78
 // SIZE 0xfec
 class cUnk00ad7b78 {
 public:
-    virtual void Slot00_ad7b78();
+    virtual void Slot00_ad7b78(uint32_t, uint32_t);
     virtual void Slot01_ad7b78();
     virtual void Slot02_ad7b78();
-    virtual void Slot03_ad7b78();
-    virtual void Slot04_ad7b78();
-    virtual void Slot05_ad7b78();
-    virtual void Slot06_ad7b78();
+    virtual bool Slot03_ad7b78(uint32_t);
+    virtual bool Slot04_ad7b78(uint32_t);
+    virtual void Slot05_ad7b78(uint32_t);
+    virtual void Slot06_ad7b78(uint32_t);
     virtual void Slot07_ad7b78();
     virtual void Slot08_ad7b78();
-    virtual void Slot09_ad7b78();
-    virtual void Slot10_ad7b78();
-    virtual void Slot11_ad7b78();
+    virtual bool Slot09_ad7b78();
+    virtual uint32_t Slot10_ad7b78();
+    virtual void Slot11_ad7b78(uint32_t, uint32_t);
     virtual void Slot12_ad7b78();
     virtual void Slot13_ad7b78();
-    virtual void Slot14_ad7b78();
+    virtual void Slot14_ad7b78(uint32_t, uint32_t);
     virtual void Slot15_ad7b78();
-    virtual void Slot16_ad7b78();
+    virtual void* Slot16_ad7b78();
     virtual void Slot17_ad7b78();
-    virtual void Slot18_ad7b78();
+    virtual void Slot18_ad7b78(uint32_t);
     virtual void Slot19_ad7b78();
-    virtual void Slot20_ad7b78();
+    virtual bool Slot20_ad7b78(uint32_t);
     virtual ~cUnk00ad7b78();
-    char unknown4[0xfe8];
+    char unknown4[0x34];
+    char field38[0x14];
+    bool field4c;
+    char unknown4d[0x3];
+    uint32_t field50;
+    char unknown54[0x1c];
+    uint32_t field70;
+    char unknown74[0xf78];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad7b78[sizeof(cUnk00ad7b78) == 0xfec ? 1 : -1];

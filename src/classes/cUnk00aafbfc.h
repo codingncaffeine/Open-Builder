@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AAFBFC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00aafbfc {
@@ -10,11 +11,11 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_aafbfc() = 0;
-    virtual void Slot04_aafbfc() = 0;
-    virtual void Slot05_aafbfc() = 0;
-    virtual void Slot06_aafbfc() = 0;
-    virtual void Slot07_aafbfc() = 0;
+    virtual void Slot03_aafbfc(bool) = 0;
+    virtual void Slot04_aafbfc(bool) = 0;
+    virtual void Slot05_aafbfc(uint32_t) = 0;
+    virtual void Slot06_aafbfc(uint32_t) = 0;
+    virtual void Slot07_aafbfc(uint32_t) = 0;
     virtual void Slot08_aafbfc() = 0;
 };
 #ifdef _MSC_VER

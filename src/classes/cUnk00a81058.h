@@ -3,23 +3,24 @@
 #define OB_CLASSES_CUNK00A81058_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00a81058 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_a81058() = 0;
+    virtual void Slot03_a81058(uint32_t, uint32_t) = 0;
     virtual void Slot04_a81058() = 0;
     virtual void Slot05_a81058() = 0;
-    virtual void Slot06_a81058() = 0;
-    virtual void Slot07_a81058() = 0;
-    virtual void Slot08_a81058() = 0;
-    virtual void Slot09_a81058() = 0;
-    virtual void Slot10_a81058() = 0;
-    virtual void Slot11_a81058() = 0;
-    virtual void Slot12_a81058() = 0;
-    virtual void Slot13_a81058() = 0;
+    virtual bool Slot06_a81058() = 0;
+    virtual void Slot07_a81058(uint32_t) = 0;
+    virtual uint32_t Slot08_a81058() = 0;
+    virtual uint32_t Slot09_a81058() = 0;
+    virtual void Slot10_a81058(uint32_t) = 0;
+    virtual uint32_t Slot11_a81058() = 0;
+    virtual void Slot12_a81058(uint32_t) = 0;
+    virtual void Slot13_a81058(uint32_t) = 0;
 };
 
 #endif

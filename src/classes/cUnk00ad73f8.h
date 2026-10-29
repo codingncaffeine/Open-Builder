@@ -3,29 +3,30 @@
 #define OB_CLASSES_CUNK00AD73F8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad73f8
 // SIZE 0x18
 class cUnk00ad73f8 {
 public:
-    virtual void Slot00_ad73f8();
+    virtual void Slot00_ad73f8(uint32_t, uint32_t);
     virtual void Slot01_ad73f8();
     virtual void Slot02_ad73f8();
-    virtual void Slot03_ad73f8();
-    virtual void Slot04_ad73f8();
-    virtual void Slot05_ad73f8();
-    virtual void Slot06_ad73f8();
-    virtual void Slot07_ad73f8();
-    virtual void Slot08_ad73f8();
-    virtual void Slot09_ad73f8();
-    virtual void Slot10_ad73f8();
-    virtual void Slot11_ad73f8();
-    virtual void Slot12_ad73f8();
-    virtual void Slot13_ad73f8();
-    virtual void Slot14_ad73f8();
-    virtual void Slot15_ad73f8();
+    virtual void Slot03_ad73f8(uint32_t);
+    virtual void Slot04_ad73f8(uint32_t);
+    virtual void Slot05_ad73f8(uint32_t);
+    virtual void Slot06_ad73f8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_ad73f8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_ad73f8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_ad73f8(uint32_t, uint32_t);
+    virtual void Slot10_ad73f8(uint32_t, uint32_t);
+    virtual void Slot11_ad73f8(uint32_t, uint32_t);
+    virtual void Slot12_ad73f8(uint32_t, uint32_t);
+    virtual void Slot13_ad73f8(uint32_t, uint32_t);
+    virtual void Slot14_ad73f8(uint32_t);
+    virtual void Slot15_ad73f8(uint32_t);
     virtual ~cUnk00ad73f8();
-    virtual void Slot17_ad73f8();
+    virtual void Slot17_ad73f8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     char unknown4[0x14];
 };
 #ifdef _MSC_VER

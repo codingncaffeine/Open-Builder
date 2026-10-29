@@ -3,47 +3,48 @@
 #define OB_CLASSES_CUNK00AC2B18_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ac2b18 {
 public:
-    virtual void Slot00_ad4cf4() = 0;
+    virtual void Slot00_ad4cf4(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
-    virtual void Slot03_ac2b18() = 0;
-    virtual void Slot04_ac2b18() = 0;
-    virtual void Slot05_ac2b18() = 0;
-    virtual void Slot06_ac2b18() = 0;
-    virtual void Slot07_ac2b18() = 0;
-    virtual void Slot08_ac2b18() = 0;
-    virtual void Slot09_ac2b18() = 0;
-    virtual void Slot10_ac2b18() = 0;
-    virtual void Slot11_ac2b18() = 0;
-    virtual void Slot12_ac2b18() = 0;
-    virtual void Slot13_ac2b18() = 0;
-    virtual void Slot14_ac2b18() = 0;
-    virtual void Slot15_ac2b18() = 0;
-    virtual void Slot16_ac2b18() = 0;
-    virtual void Slot17_ac2b18() = 0;
-    virtual void Slot18_ac2b18() = 0;
-    virtual void Slot19_ac2b18() = 0;
-    virtual void Slot20_ac2b18() = 0;
-    virtual void Slot21_ac2b18() = 0;
-    virtual void Slot22_ac2b18() = 0;
-    virtual void Slot23_ac2b18() = 0;
-    virtual void Slot24_ac2b18() = 0;
-    virtual void Slot25_ac2b18() = 0;
-    virtual void Slot26_ac2b18() = 0;
-    virtual void Slot27_ac2b18() = 0;
-    virtual void Slot28_ac2b18() = 0;
-    virtual void Slot29_ac2b18() = 0;
-    virtual void Slot30_ac2b18() = 0;
-    virtual void Slot31_ac2b18() = 0;
-    virtual void Slot32_ac2b18() = 0;
-    virtual void Slot33_ac2b18() = 0;
-    virtual void Slot34_ac2b18() = 0;
-    virtual void Slot35_ac2b18() = 0;
-    virtual void Slot36_ac2b18() = 0;
+    virtual bool Slot03_ac2b18() = 0;
+    virtual bool Slot04_ac2b18() = 0;
+    virtual bool Slot05_ac2b18(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot06_ac2b18(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot07_ac2b18() = 0;
+    virtual bool Slot08_ac2b18() = 0;
+    virtual bool Slot09_ac2b18() = 0;
+    virtual bool Slot10_ac2b18() = 0;
+    virtual uint32_t Slot11_ac2b18() = 0;
+    virtual uint32_t Slot12_ac2b18() = 0;
+    virtual void Slot13_ac2b18(uint32_t) = 0;
+    virtual bool Slot14_ac2b18() = 0;
+    virtual bool Slot15_ac2b18() = 0;
+    virtual bool Slot16_ac2b18() = 0;
+    virtual bool Slot17_ac2b18(uint32_t) = 0;
+    virtual bool Slot18_ac2b18() = 0;
+    virtual bool Slot19_ac2b18() = 0;
+    virtual uint32_t Slot20_ac2b18() = 0;
+    virtual bool Slot21_ac2b18(uint32_t) = 0;
+    virtual bool Slot22_ac2b18(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot23_ac2b18() = 0;
+    virtual uint32_t Slot24_ac2b18() = 0;
+    virtual bool Slot25_ac2b18(uint32_t) = 0;
+    virtual uint32_t Slot26_ac2b18() = 0;
+    virtual bool Slot27_ac2b18(uint32_t) = 0;
+    virtual uint32_t Slot28_ac2b18() = 0;
+    virtual bool Slot29_ac2b18(uint32_t, uint32_t) = 0;
+    virtual bool Slot30_ac2b18(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot31_ac2b18() = 0;
+    virtual void Slot32_ac2b18(uint32_t) = 0;
+    virtual void Slot33_ac2b18(uint32_t) = 0;
+    virtual void Slot34_ac2b18(uint32_t) = 0;
+    virtual bool Slot35_ac2b18(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot36_ac2b18(uint32_t, uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac2b18[sizeof(cUnk00ac2b18) == 0x4 ? 1 : -1];

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ACC1F8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00acc1f8 {

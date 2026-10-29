@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AB8C00_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ab3be8.h"
 #include "classes/cUnk00ace624.h"
 
@@ -14,45 +15,51 @@ public:
     virtual ~cUnk00ab8c00() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_ab3be8();
+    virtual void Slot00_ab3be8(uint32_t, uint32_t);
     virtual void Slot03_ab3be8();
     virtual void Slot04_ab3be8();
     virtual void Slot05_ab3be8();
-    virtual void Slot06_ab3be8();
-    virtual void Slot07_ab3be8();
-    virtual void Slot08_ab3be8();
-    virtual void Slot09_ab3be8();
-    virtual void Slot10_ab3be8();
-    virtual void Slot11_ab3be8();
-    virtual void Slot12_ab3be8();
-    virtual void Slot13_ab3be8();
-    virtual void Slot14_ab3be8();
-    virtual void Slot15_ab3be8();
-    virtual void Slot16_ab3be8();
-    virtual void Slot17_ab3be8();
-    virtual void Slot18_ab3be8();
-    virtual void Slot19_ab3be8();
-    virtual void Slot20_ab3be8();
-    virtual void Slot21_ab3be8();
-    virtual void Slot22_ab3be8();
-    virtual void Slot23_ab3be8();
-    virtual void Slot24_ab3be8();
-    virtual void Slot25_ab3be8();
-    virtual void Slot26_ab3be8();
-    virtual void Slot27_ab3be8();
-    virtual void Slot28_ab3be8();
-    virtual void Slot29_ab3be8();
-    virtual void Slot30_ab3be8();
-    virtual void Slot31_ab3be8();
-    virtual void Slot32_ab3be8();
-    virtual void Slot33_ab3be8();
-    virtual void Slot34_ab3be8();
-    virtual void Slot35_ab3be8();
-    virtual void Slot36_ab3be8();
-    virtual void Slot37_ab3be8();
-    virtual void Slot38_ab3be8();
-    virtual void Slot39_ab3be8();
-    char unknownc[0x1c];
+    virtual float Slot06_ab3be8();
+    virtual uint32_t Slot07_ab3be8();
+    virtual uint32_t Slot08_ab3be8();
+    virtual void Slot09_ab3be8(uint32_t, uint32_t);
+    virtual void Slot10_ab3be8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_ab3be8(uint32_t, uint32_t);
+    virtual float Slot12_ab3be8(uint32_t);
+    virtual float Slot13_ab3be8(uint32_t, uint32_t);
+    virtual float Slot14_ab3be8(uint32_t, uint32_t);
+    virtual void Slot15_ab3be8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot16_ab3be8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_ab3be8(uint32_t, uint32_t, uint32_t);
+    virtual float Slot18_ab3be8(uint32_t, uint32_t);
+    virtual float Slot19_ab3be8(uint32_t, uint32_t);
+    virtual float Slot20_ab3be8(uint32_t);
+    virtual float Slot21_ab3be8();
+    virtual float Slot22_ab3be8();
+    virtual float Slot23_ab3be8();
+    virtual float Slot24_ab3be8();
+    virtual void Slot25_ab3be8(uint32_t, uint32_t);
+    virtual void Slot26_ab3be8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot27_ab3be8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot28_ab3be8(uint32_t, uint32_t, uint32_t);
+    virtual float Slot29_ab3be8();
+    virtual float Slot30_ab3be8(uint32_t, uint32_t);
+    virtual float Slot31_ab3be8(uint32_t);
+    virtual float Slot32_ab3be8(uint32_t, uint32_t);
+    virtual float Slot33_ab3be8(uint32_t, uint32_t);
+    virtual bool Slot34_ab3be8(uint32_t, uint32_t);
+    virtual bool Slot35_ab3be8(uint32_t, uint32_t);
+    virtual bool Slot36_ab3be8(uint32_t, uint32_t);
+    virtual bool Slot37_ab3be8(uint32_t, uint32_t);
+    virtual bool Slot38_ab3be8(uint32_t, uint32_t);
+    virtual bool Slot39_ab3be8(uint32_t);
+    float fieldc;
+    float field10;
+    uint32_t field14;
+    uint32_t field18;
+    char unknown1c[0x4];
+    float field20;
+    char unknown24[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab8c00[sizeof(cUnk00ab8c00) == 0x28 ? 1 : -1];

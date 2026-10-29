@@ -3,11 +3,12 @@
 #define OB_CLASSES_CUNK00AD1590_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ad1590 {
 public:
-    virtual void Slot00_ad1590() = 0;
+    virtual void Slot00_ad1590(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad1590() = 0;
     virtual void Slot02_ad1590() = 0;
 };

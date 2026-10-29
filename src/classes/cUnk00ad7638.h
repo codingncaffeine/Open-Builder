@@ -3,16 +3,17 @@
 #define OB_CLASSES_CUNK00AD7638_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ad7638 {
 public:
-    virtual void Slot00_ad1590() = 0;
+    virtual void Slot00_ad1590(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad1590() = 0;
     virtual void Slot02_ad1590() = 0;
-    virtual void Slot03_ad7638() = 0;
-    virtual void Slot04_ad7638() = 0;
-    virtual void Slot05_ad7638() = 0;
-    virtual void Slot06_ad7638() = 0;
+    virtual bool Slot03_ad7638() = 0;
+    virtual uint32_t Slot04_ad7638() = 0;
+    virtual void Slot05_ad7638(uint32_t) = 0;
+    virtual void* Slot06_ad7638() = 0;
 };
 
 #endif

@@ -3,38 +3,39 @@
 #define OB_CLASSES_CUNK00ADA340_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ada340
 // SIZE 0x30
 class cUnk00ada340 {
 public:
-    virtual void Slot00_ada340();
+    virtual void Slot00_ada340(uint32_t, uint32_t);
     virtual void Slot01_ada340();
     virtual void Slot02_ada340();
-    virtual void Slot03_ada340();
-    virtual void Slot04_ada340();
-    virtual void Slot05_ada340();
-    virtual void Slot06_ada340();
-    virtual void Slot07_ada340();
-    virtual void Slot08_ada340();
-    virtual void Slot09_ada340();
-    virtual void Slot10_ada340();
-    virtual void Slot11_ada340();
-    virtual void Slot12_ada340();
-    virtual void Slot13_ada340();
-    virtual void Slot14_ada340();
-    virtual void Slot15_ada340();
-    virtual void Slot16_ada340();
-    virtual void Slot17_ada340();
-    virtual void Slot18_ada340();
-    virtual void Slot19_ada340();
-    virtual void Slot20_ada340();
-    virtual void Slot21_ada340();
-    virtual void Slot22_ada340();
-    virtual void Slot23_ada340();
-    virtual void Slot24_ada340();
-    virtual void Slot25_ada340();
-    virtual void Slot26_ada340();
+    virtual void Slot03_ada340(uint32_t, uint32_t);
+    virtual void Slot04_ada340(uint32_t);
+    virtual void Slot05_ada340(uint32_t);
+    virtual void Slot06_ada340(uint32_t);
+    virtual void Slot07_ada340(uint32_t);
+    virtual void Slot08_ada340(uint32_t);
+    virtual void Slot09_ada340(uint32_t);
+    virtual void Slot10_ada340(uint32_t);
+    virtual void Slot11_ada340(uint32_t);
+    virtual void Slot12_ada340(uint32_t);
+    virtual void Slot13_ada340(uint32_t, uint32_t, uint32_t);
+    virtual void Slot14_ada340(uint32_t, uint32_t, uint32_t);
+    virtual void Slot15_ada340(uint32_t, uint32_t, uint32_t);
+    virtual void Slot16_ada340(uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_ada340(uint32_t, uint32_t, uint32_t);
+    virtual void Slot18_ada340(uint32_t, uint32_t, uint32_t);
+    virtual void Slot19_ada340(uint32_t, uint32_t, uint32_t);
+    virtual void Slot20_ada340(uint32_t, uint32_t, uint32_t);
+    virtual void Slot21_ada340(uint32_t, uint32_t, uint32_t);
+    virtual void Slot22_ada340(uint32_t, uint32_t);
+    virtual void Slot23_ada340(uint32_t, uint32_t);
+    virtual void Slot24_ada340(uint32_t, uint32_t, uint32_t);
+    virtual void Slot25_ada340(uint32_t, uint32_t, uint32_t);
+    virtual void Slot26_ada340(uint32_t);
     virtual void Slot27_ada340();
     virtual ~cUnk00ada340();
     char unknown4[0x2c];

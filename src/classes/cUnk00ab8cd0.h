@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AB8CD0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00adc8d8.h"
 
 // VTABLE: 0x00ab8cd0
@@ -10,10 +11,10 @@
 class cUnk00ab8cd0 : public cUnk00adc8d8 {
 public:
     virtual ~cUnk00ab8cd0() {}
-    virtual void Slot88_adc8d8();
-    virtual void Slot135_adc8d8();
-    virtual void Slot137_adc8d8();
-    virtual void Slot138_adc8d8();
+    virtual bool Slot88_adc8d8();
+    virtual bool Slot135_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot137_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
     char unknownd8[0x60];

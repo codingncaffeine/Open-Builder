@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A9E460_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00a9e460 {
@@ -13,16 +14,16 @@ public:
     virtual void Slot03_a9e460() = 0;
     virtual void Slot04_a9e460() = 0;
     virtual void Slot05_a9e460() = 0;
-    virtual void Slot06_a9e460() = 0;
-    virtual void Slot07_a9e460() = 0;
-    virtual void Slot08_a9e460() = 0;
-    virtual void Slot09_a9e460() = 0;
-    virtual void Slot10_a9e460() = 0;
-    virtual void Slot11_a9e460() = 0;
-    virtual void Slot12_a9e460() = 0;
-    virtual void Slot13_a9e460() = 0;
-    virtual void Slot14_a9e460() = 0;
-    virtual void Slot15_a9e460() = 0;
+    virtual void Slot06_a9e460(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot07_a9e460(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot08_a9e460(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot09_a9e460(uint32_t, uint32_t) = 0;
+    virtual void Slot10_a9e460(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot11_a9e460(uint32_t) = 0;
+    virtual void Slot12_a9e460(uint32_t) = 0;
+    virtual void Slot13_a9e460(uint32_t) = 0;
+    virtual uint32_t Slot14_a9e460() = 0;
+    virtual void Slot15_a9e460(uint32_t) = 0;
     virtual void Slot16_a9e460() = 0;
 };
 #ifdef _MSC_VER

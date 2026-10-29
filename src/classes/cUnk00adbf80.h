@@ -3,26 +3,32 @@
 #define OB_CLASSES_CUNK00ADBF80_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00adbf80
 // SIZE 0x1c
 class cUnk00adbf80 {
 public:
-    virtual void Slot00_adbf80();
+    virtual void Slot00_adbf80(uint32_t, uint32_t);
     virtual void Slot01_adbf80();
     virtual void Slot02_adbf80();
-    virtual void Slot03_adbf80();
-    virtual void Slot04_adbf80();
-    virtual void Slot05_adbf80();
-    virtual void Slot06_adbf80();
-    virtual void Slot07_adbf80();
-    virtual void Slot08_adbf80();
-    virtual void Slot09_adbf80();
-    virtual void Slot10_adbf80();
-    virtual void Slot11_adbf80();
-    virtual void Slot12_adbf80();
+    virtual bool Slot03_adbf80(uint32_t, uint32_t);
+    virtual uint32_t Slot04_adbf80();
+    virtual void Slot05_adbf80(uint32_t);
+    virtual void Slot06_adbf80(uint32_t);
+    virtual void Slot07_adbf80(uint32_t);
+    virtual void Slot08_adbf80(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot09_adbf80();
+    virtual uint32_t Slot10_adbf80();
+    virtual uint32_t Slot11_adbf80();
+    virtual uint32_t Slot12_adbf80();
     virtual ~cUnk00adbf80() {}
-    char unknown4[0x18];
+    char unknown4[0x4];
+    uint32_t field8;
+    uint32_t fieldc;
+    uint32_t field10;
+    uint32_t field14;
+    uint32_t field18;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adbf80[sizeof(cUnk00adbf80) == 0x1c ? 1 : -1];

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AA9F30_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aa8748.h"
 
 // VTABLE: 0x00aa9f30 cUnk00aa8748_0
@@ -15,11 +16,11 @@ public:
     virtual void Slot82_aa9f30();
     virtual void Slot03_aa8748();
     virtual void Slot04_aa8748();
-    virtual void Slot10_aa8748();
+    virtual void Slot10_aa8748(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot16_aa8748();
     virtual void Slot20_aa8748();
-    virtual void Slot52_aa8748();
-    virtual void Slot53_aa8748();
+    virtual void Slot52_aa8748(uint32_t, uint32_t);
+    virtual bool Slot53_aa8748(uint32_t, uint32_t);
     char unknown368[0x50];
 };
 #ifdef _MSC_VER

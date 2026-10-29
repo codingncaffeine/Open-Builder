@@ -3,24 +3,25 @@
 #define OB_CLASSES_CUNK00AE4D28_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ae4d28
 class cUnk00ae4d28 {
 public:
     virtual ~cUnk00ae4d28();
-    virtual void Slot01_ae4d28();
-    virtual void Slot02_ae4d28();
-    virtual void Slot03_ae4d28();
-    virtual void Slot04_ae4d28();
-    virtual void Slot05_ae4d28();
-    virtual void Slot06_ae4d28();
+    virtual void* Slot01_ae4d28(uint32_t, uint32_t);
+    virtual void Slot02_ae4d28(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot03_ae4d28(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot04_ae4d28();
+    virtual uint32_t Slot05_ae4d28();
+    virtual void Slot06_ae4d28(uint32_t, uint32_t);
     virtual void Slot07_ae4d28();
     virtual void Slot08_ae4d28();
-    virtual void Slot09_ae4d28();
-    virtual void Slot10_ae4d28();
-    virtual void Slot11_ae4d28();
-    virtual void Slot12_ae4d28();
-    virtual void Slot13_ae4d28();
+    virtual void Slot09_ae4d28(uint32_t);
+    virtual void Slot10_ae4d28(uint32_t, uint32_t);
+    virtual void Slot11_ae4d28(uint32_t, uint32_t);
+    virtual void Slot12_ae4d28(uint32_t);
+    virtual void Slot13_ae4d28(uint32_t);
 };
 
 // SYNTHETIC: 0x009e9580

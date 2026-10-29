@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AAA950_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aa8748.h"
 
 class cUnk00aaa950 : public cUnk00aa8748 {
@@ -14,31 +15,31 @@ public:
     virtual void Slot04_aa8748();
     virtual void Slot16_aa8748();
     virtual void Slot17_aa8748();
-    virtual void Slot46_aa8748();
-    virtual void Slot54_aa8748();
-    virtual void Slot55_aa8748();
-    virtual void Slot56_aa8748();
-    virtual void Slot57_aa8748();
-    virtual void Slot58_aa8748();
-    virtual void Slot59_aa8748();
+    virtual bool Slot46_aa8748();
+    virtual void Slot54_aa8748(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot55_aa8748(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot56_aa8748(uint32_t);
+    virtual void Slot57_aa8748(uint32_t);
+    virtual void Slot58_aa8748(uint32_t, uint32_t);
+    virtual void Slot59_aa8748(uint32_t);
     virtual void Slot60_aa8748();
-    virtual void Slot61_aa8748();
-    virtual void Slot62_aa8748();
-    virtual void Slot63_aa8748();
-    virtual void Slot64_aa8748();
-    virtual void Slot65_aa8748();
-    virtual void Slot68_aa8748();
-    virtual void Slot69_aa8748();
+    virtual bool Slot61_aa8748();
+    virtual bool Slot62_aa8748();
+    virtual bool Slot63_aa8748();
+    virtual bool Slot64_aa8748();
+    virtual void Slot65_aa8748(uint32_t, uint32_t);
+    virtual void Slot68_aa8748(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot69_aa8748(uint32_t);
     virtual void Slot70_aa8748();
-    virtual void Slot71_aa8748();
-    virtual void Slot73_aa8748();
-    virtual void Slot74_aa8748();
+    virtual void Slot71_aa8748(uint32_t);
+    virtual void Slot73_aa8748(uint32_t);
+    virtual void Slot74_aa8748(uint32_t);
     virtual void Slot75_aa8748();
-    virtual void Slot76_aa8748();
-    virtual void Slot77_aa8748();
-    virtual void Slot78_aa8748();
-    virtual void Slot79_aa8748();
-    virtual void Slot80_aa8748();
+    virtual void Slot76_aa8748(uint32_t);
+    virtual void Slot77_aa8748(uint32_t);
+    virtual void Slot78_aa8748(uint32_t);
+    virtual void Slot79_aa8748(uint32_t);
+    virtual void Slot80_aa8748(uint32_t, uint32_t);
 };
 
 #endif

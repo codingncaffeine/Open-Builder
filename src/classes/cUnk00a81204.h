@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A81204_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a80784.h"
 #include "classes/cUnk00a81120.h"
 #include "classes/cUnk00aaaa9c.h"
@@ -10,36 +11,36 @@
 
 // Between cUnk00a81120 and cUnk00a81204 at +0x8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a81204_8 : public cUnk00a81120 {
-    virtual void Slot03_a81120();
+    virtual void Slot03_a81120(uint32_t);
     virtual void Slot04_a81120();
-    virtual void Slot05_a81120();
-    virtual void Slot06_a81120();
+    virtual uint32_t Slot05_a81120();
+    virtual void* Slot06_a81120();
     virtual void Slot07_a81120();
-    virtual void Slot08_a81120();
+    virtual void* Slot08_a81120();
     virtual void Slot09_a81120();
-    virtual void Slot10_a81120();
-    virtual void Slot11_a81120();
-    virtual void Slot12_a81120();
-    virtual void Slot13_a81120();
-    virtual void Slot14_a81120();
-    virtual void Slot15_a81120();
-    virtual void Slot16_a81120();
-    virtual void Slot17_a81120();
-    virtual void Slot18_a81120();
+    virtual void* Slot10_a81120();
+    virtual void* Slot11_a81120();
+    virtual void Slot12_a81120(uint32_t);
+    virtual void Slot13_a81120(uint32_t);
+    virtual void Slot14_a81120(uint32_t);
+    virtual void Slot15_a81120(uint32_t);
+    virtual void Slot16_a81120(uint32_t, uint32_t);
+    virtual void Slot17_a81120(uint32_t);
+    virtual void Slot18_a81120(uint32_t, uint32_t);
     virtual void Slot19_a81120();
-    virtual void Slot20_a81120();
+    virtual void Slot20_a81120(uint32_t);
 };
 
 // Between cUnk00a80784 and cUnk00a81204 at +0xc: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a81204_c : public cUnk00a80784 {
-    virtual void Slot03_a80784();
-    virtual void Slot04_a80784();
-    virtual void Slot05_a80784();
+    virtual bool Slot03_a80784(uint32_t);
+    virtual bool Slot04_a80784(uint32_t);
+    virtual uint32_t Slot05_a80784();
 };
 
 // Between cUnk00aaaa9c and cUnk00a81204 at +0x10: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a81204_10 : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00a81204 cUnk0090da1e

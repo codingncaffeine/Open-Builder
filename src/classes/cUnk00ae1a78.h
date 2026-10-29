@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00AE1A78_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00ae1a28.h"
 
 // Between cUnk00adc8d8 and cUnk00ae1a78 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ae1a78_4 : public cUnk00adc8d8 {
-    virtual void Slot03_adc8d8();
-    virtual void Slot88_adc8d8();
-    virtual void Slot07_add348();
+    virtual void Slot03_adc8d8(uint32_t);
+    virtual bool Slot88_adc8d8();
+    virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00ae1a78 cUnk00ae1a28
@@ -22,23 +23,24 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_ae1a28();
-    virtual void Slot04_ae1a28();
-    virtual void Slot05_ae1a28();
-    virtual void Slot06_ae1a28();
+    virtual void Slot03_ae1a28(uint32_t);
+    virtual uint32_t Slot04_ae1a28();
+    virtual void Slot05_ae1a28(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ae1a28(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot07_ae1a28();
-    virtual void Slot08_ae1a28();
-    virtual void Slot09_ae1a28();
+    virtual void Slot08_ae1a28(uint32_t);
+    virtual void Slot09_ae1a28(uint32_t);
     virtual void Slot10_ae1a28();
     virtual void Slot11_ae1a28();
-    virtual void Slot12_ae1a28();
-    virtual void Slot13_ae1a28();
-    virtual void Slot14_ae1a28();
-    virtual void Slot15_ae1a28();
+    virtual void Slot12_ae1a28(uint32_t);
+    virtual void Slot13_ae1a28(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot14_ae1a28(uint32_t);
+    virtual void Slot15_ae1a28(uint32_t);
     virtual void Slot16_ae1a28();
-    virtual void Slot17_ae1a28();
+    virtual void Slot17_ae1a28(uint32_t);
     virtual void Slot18_ae1a28();
-    char unknowndc[0x34];
+    uint32_t fielddc;
+    char unknowne0[0x30];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae1a78[sizeof(cUnk00ae1a78) == 0x110 ? 1 : -1];

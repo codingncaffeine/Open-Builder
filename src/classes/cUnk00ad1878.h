@@ -3,33 +3,34 @@
 #define OB_CLASSES_CUNK00AD1878_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ad1878 {
 public:
-    virtual void Slot00_ad8d88();
+    virtual void Slot00_ad8d88(uint32_t, uint32_t);
     virtual void Slot01_ad8d88();
     virtual void Slot02_ad8d88();
-    virtual void Slot03_ad1878() = 0;
-    virtual void Slot04_ad1878();
-    virtual void Slot05_ad1878();
-    virtual void Slot06_ad1878();
-    virtual void Slot07_ad1878();
-    virtual void Slot08_ad1878();
-    virtual void Slot09_ad1878();
-    virtual void Slot10_ad1878();
-    virtual void Slot11_ad1878();
-    virtual void Slot12_ad1878();
-    virtual void Slot13_ad1878();
-    virtual void Slot14_ad1878();
-    virtual void Slot15_ad1878();
-    virtual void Slot16_ad1878();
-    virtual void Slot17_ad1878() = 0;
-    virtual void Slot18_ad1878() = 0;
+    virtual void Slot03_ad1878(uint32_t) = 0;
+    virtual void Slot04_ad1878(uint32_t);
+    virtual void Slot05_ad1878(uint32_t);
+    virtual void Slot06_ad1878(uint32_t);
+    virtual void Slot07_ad1878(uint32_t);
+    virtual void Slot08_ad1878(uint32_t);
+    virtual void Slot09_ad1878(uint32_t);
+    virtual void Slot10_ad1878(uint32_t);
+    virtual void Slot11_ad1878(uint32_t);
+    virtual void Slot12_ad1878(uint32_t);
+    virtual void Slot13_ad1878(uint32_t);
+    virtual bool Slot14_ad1878(uint32_t, uint32_t);
+    virtual void Slot15_ad1878(uint32_t);
+    virtual void Slot16_ad1878(uint32_t);
+    virtual void Slot17_ad1878(uint32_t, uint32_t) = 0;
+    virtual bool Slot18_ad1878() = 0;
     virtual void Slot19_ad1878();
-    virtual void Slot20_ad1878();
+    virtual uint32_t Slot20_ad1878();
     virtual ~cUnk00ad1878();
-    virtual void Slot22_ad1878();
-    virtual void Slot23_ad1878();
+    virtual bool Slot22_ad1878(bool);
+    virtual bool Slot23_ad1878();
 };
 
 #endif

@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00AD222C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ad222c {
 public:
-    virtual void Slot00_ad22a0() = 0;
+    virtual void Slot00_ad22a0(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad22a0() = 0;
     virtual void Slot02_ad22a0() = 0;
-    virtual void Slot03_ad222c() = 0;
+    virtual void Slot03_ad222c(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad222c[sizeof(cUnk00ad222c) == 0x4 ? 1 : -1];

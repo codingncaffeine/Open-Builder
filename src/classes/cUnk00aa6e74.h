@@ -3,22 +3,23 @@
 #define OB_CLASSES_CUNK00AA6E74_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00aa6e74
 // SIZE 0x1c
 class cUnk00aa6e74 {
 public:
-    virtual void Slot00_aa6e74();
+    virtual void Slot00_aa6e74(uint32_t, uint32_t);
     virtual void Slot01_aa6e74();
     virtual void Slot02_aa6e74();
     virtual void Slot03_aa6e74();
     virtual void Slot04_aa6e74();
-    virtual void Slot05_aa6e74();
-    virtual void Slot06_aa6e74();
-    virtual void Slot07_aa6e74();
-    virtual void Slot08_aa6e74();
-    virtual void Slot09_aa6e74();
-    virtual void Slot10_aa6e74();
+    virtual void Slot05_aa6e74(uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_aa6e74(uint32_t);
+    virtual void Slot07_aa6e74(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_aa6e74(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_aa6e74(uint32_t, uint32_t);
+    virtual void Slot10_aa6e74(uint32_t, uint32_t);
     virtual ~cUnk00aa6e74();
     char unknown4[0x18];
 };

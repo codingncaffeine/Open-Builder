@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A8623C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00a8623c {
@@ -11,8 +12,8 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_a8623c() = 0;
-    virtual void Slot04_a8623c() = 0;
-    virtual void Slot05_a8623c() = 0;
+    virtual bool Slot04_a8623c() = 0;
+    virtual void* Slot05_a8623c() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a8623c[sizeof(cUnk00a8623c) == 0x4 ? 1 : -1];

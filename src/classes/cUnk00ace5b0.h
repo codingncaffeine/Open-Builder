@@ -3,18 +3,19 @@
 #define OB_CLASSES_CUNK00ACE5B0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ace5b0
 class cUnk00ace5b0 {
 public:
-    virtual void Slot00_ace5b0();
+    virtual void Slot00_ace5b0(uint32_t, uint32_t);
     virtual void Slot01_ace5b0();
     virtual void Slot02_ace5b0();
-    virtual void Slot03_ace5b0();
-    virtual void Slot04_ace5b0();
-    virtual void Slot05_ace5b0();
-    virtual void Slot06_ace5b0();
-    virtual void Slot07_ace5b0();
+    virtual void Slot03_ace5b0(uint32_t);
+    virtual void Slot04_ace5b0(uint32_t);
+    virtual void Slot05_ace5b0(uint32_t, uint32_t);
+    virtual void Slot06_ace5b0(uint32_t, uint32_t);
+    virtual void Slot07_ace5b0(uint32_t, uint32_t, uint32_t);
     virtual void Slot08_ace5b0();
     virtual ~cUnk00ace5b0() {}
     virtual void Slot10_ace5b0();

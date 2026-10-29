@@ -3,47 +3,48 @@
 #define OB_CLASSES_CUNK00AE0E80_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ae0e80 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ae0e80() = 0;
-    virtual void Slot04_ae0e80() = 0;
-    virtual void Slot05_ae0e80() = 0;
-    virtual void Slot06_ae0e80() = 0;
-    virtual void Slot07_ae0e80() = 0;
-    virtual void Slot08_ae0e80() = 0;
-    virtual void Slot09_ae0e80() = 0;
-    virtual void Slot10_ae0e80() = 0;
-    virtual void Slot11_ae0e80() = 0;
-    virtual void Slot12_ae0e80() = 0;
-    virtual void Slot13_ae0e80() = 0;
-    virtual void Slot14_ae0e80() = 0;
-    virtual void Slot15_ae0e80() = 0;
-    virtual void Slot16_ae0e80() = 0;
-    virtual void Slot17_ae0e80() = 0;
-    virtual void Slot18_ae0e80() = 0;
-    virtual void Slot19_ae0e80() = 0;
-    virtual void Slot20_ae0e80() = 0;
-    virtual void Slot21_ae0e80() = 0;
-    virtual void Slot22_ae0e80() = 0;
-    virtual void Slot23_ae0e80() = 0;
+    virtual void* Slot03_ae0e80() = 0;
+    virtual void Slot04_ae0e80(uint32_t) = 0;
+    virtual void Slot05_ae0e80(uint32_t, uint32_t) = 0;
+    virtual void Slot06_ae0e80(uint32_t) = 0;
+    virtual void Slot07_ae0e80(uint32_t, uint32_t) = 0;
+    virtual void Slot08_ae0e80(uint32_t) = 0;
+    virtual void Slot09_ae0e80(uint32_t) = 0;
+    virtual bool Slot10_ae0e80() = 0;
+    virtual bool Slot11_ae0e80(uint32_t) = 0;
+    virtual void Slot12_ae0e80(uint32_t) = 0;
+    virtual void Slot13_ae0e80(uint32_t) = 0;
+    virtual void Slot14_ae0e80(uint32_t, uint32_t) = 0;
+    virtual void Slot15_ae0e80(uint32_t, uint32_t) = 0;
+    virtual void Slot16_ae0e80(uint32_t) = 0;
+    virtual void Slot17_ae0e80(uint32_t) = 0;
+    virtual void Slot18_ae0e80(uint32_t) = 0;
+    virtual void Slot19_ae0e80(uint32_t) = 0;
+    virtual void Slot20_ae0e80(uint32_t) = 0;
+    virtual void Slot21_ae0e80(uint32_t) = 0;
+    virtual void Slot22_ae0e80(uint32_t) = 0;
+    virtual void Slot23_ae0e80(uint32_t) = 0;
     virtual void Slot24_ae0e80() = 0;
-    virtual void Slot25_ae0e80() = 0;
-    virtual void Slot26_ae0e80() = 0;
-    virtual void Slot27_ae0e80() = 0;
-    virtual void Slot28_ae0e80() = 0;
-    virtual void Slot29_ae0e80() = 0;
-    virtual void Slot30_ae0e80() = 0;
-    virtual void Slot31_ae0e80() = 0;
-    virtual void Slot32_ae0e80() = 0;
-    virtual void Slot33_ae0e80() = 0;
-    virtual void Slot34_ae0e80() = 0;
-    virtual void Slot35_ae0e80() = 0;
-    virtual void Slot36_ae0e80() = 0;
-    virtual void Slot37_ae0e80() = 0;
+    virtual void Slot25_ae0e80(uint32_t) = 0;
+    virtual void Slot26_ae0e80(uint32_t) = 0;
+    virtual bool Slot27_ae0e80() = 0;
+    virtual void Slot28_ae0e80(uint32_t) = 0;
+    virtual bool Slot29_ae0e80(uint32_t) = 0;
+    virtual void Slot30_ae0e80(uint32_t) = 0;
+    virtual void Slot31_ae0e80(uint32_t, uint32_t) = 0;
+    virtual void Slot32_ae0e80(uint32_t, uint32_t) = 0;
+    virtual void Slot33_ae0e80(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot34_ae0e80(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot35_ae0e80(uint32_t) = 0;
+    virtual void Slot36_ae0e80(uint32_t, uint32_t) = 0;
+    virtual void Slot37_ae0e80(uint32_t) = 0;
 };
 
 #endif

@@ -3,29 +3,30 @@
 #define OB_CLASSES_CUNK00AE2300_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ae2300 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ae2300() = 0;
-    virtual void Slot08_ae1a28() = 0;
-    virtual void Slot107_adc8d8() = 0;
+    virtual void* Slot03_ae2300() = 0;
+    virtual void Slot08_ae1a28(uint32_t) = 0;
+    virtual void Slot107_adc8d8(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot103_adc8d8() = 0;
-    virtual void Slot104_adc8d8() = 0;
-    virtual void Slot08_ae2300() = 0;
-    virtual void Slot09_ae2300() = 0;
-    virtual void Slot10_ae2300() = 0;
-    virtual void Slot11_ae2300() = 0;
-    virtual void Slot12_ae2300() = 0;
-    virtual void Slot13_ae2300() = 0;
-    virtual void Slot14_ae2300() = 0;
-    virtual void Slot15_ae2300() = 0;
-    virtual void Slot16_ae2300() = 0;
-    virtual void Slot17_ae2300() = 0;
-    virtual void Slot18_ae2300() = 0;
-    virtual void Slot19_ae2300() = 0;
+    virtual void Slot104_adc8d8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot08_ae2300(uint32_t) = 0;
+    virtual void Slot09_ae2300(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot10_ae2300(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot11_ae2300(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot12_ae2300(uint32_t) = 0;
+    virtual uint32_t Slot13_ae2300() = 0;
+    virtual void Slot14_ae2300(uint32_t) = 0;
+    virtual void Slot15_ae2300(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot16_ae2300(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot17_ae2300(uint32_t) = 0;
+    virtual bool Slot18_ae2300(bool) = 0;
+    virtual uint32_t Slot19_ae2300() = 0;
 };
 
 #endif

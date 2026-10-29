@@ -3,15 +3,16 @@
 #define OB_CLASSES_CUNK00ACE2EC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ace15c.h"
 
 // VTABLE: 0x00ace2ec
 class cUnk00ace2ec : public cUnk00ace15c {
 public:
-    virtual void Slot00_ace15c();
-    virtual void Slot01_ace15c();
-    virtual void Slot02_ace15c();
-    virtual void Slot03_ace15c();
+    virtual uint32_t Slot00_ace15c();
+    virtual void Slot01_ace15c(uint32_t, uint32_t);
+    virtual void Slot02_ace15c(uint32_t, uint32_t, uint32_t);
+    virtual void Slot03_ace15c(uint32_t);
     virtual void Slot04_ace15c();
 };
 

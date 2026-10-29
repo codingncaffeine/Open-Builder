@@ -3,24 +3,25 @@
 #define OB_CLASSES_CUNK00AE4CE4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ae4ce4
 class cUnk00ae4ce4 {
 public:
     virtual ~cUnk00ae4ce4();
-    virtual void Slot01_ae4ce4();
-    virtual void Slot02_ae4ce4();
-    virtual void Slot03_ae4ce4();
-    virtual void Slot04_ae4ce4();
-    virtual void Slot05_ae4ce4();
-    virtual void Slot06_ae4ce4();
-    virtual void Slot07_ae4ce4();
+    virtual void* Slot01_ae4ce4(uint32_t, uint32_t);
+    virtual void Slot02_ae4ce4(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot03_ae4ce4(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot04_ae4ce4();
+    virtual uint32_t Slot05_ae4ce4();
+    virtual void Slot06_ae4ce4(uint32_t, uint32_t);
+    virtual uint32_t Slot07_ae4ce4();
     virtual void Slot08_ae4ce4();
-    virtual void Slot09_ae4ce4();
-    virtual void Slot10_ae4ce4();
-    virtual void Slot11_ae4ce4();
-    virtual void Slot12_ae4ce4();
-    virtual void Slot13_ae4ce4();
+    virtual uint32_t Slot09_ae4ce4(uint32_t);
+    virtual void Slot10_ae4ce4(uint32_t, uint32_t);
+    virtual void Slot11_ae4ce4(uint32_t, uint32_t);
+    virtual uint32_t Slot12_ae4ce4(uint32_t);
+    virtual void Slot13_ae4ce4(uint32_t);
 };
 
 // SYNTHETIC: 0x0092b4d2

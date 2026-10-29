@@ -3,23 +3,28 @@
 #define OB_CLASSES_CUNK00AD2790_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad2790
 // SIZE 0x38
 class cUnk00ad2790 {
 public:
-    virtual void Slot00_ad2790();
+    virtual void Slot00_ad2790(uint32_t, uint32_t);
     virtual void Slot01_ad2790();
     virtual void Slot02_ad2790();
-    virtual void Slot03_ad2790();
-    virtual void Slot04_ad2790();
-    virtual void Slot05_ad2790();
-    virtual void Slot06_ad2790();
-    virtual void Slot07_ad2790();
-    virtual void Slot08_ad2790();
+    virtual uint32_t Slot03_ad2790();
+    virtual uint32_t Slot04_ad2790();
+    virtual void Slot05_ad2790(uint32_t, uint32_t);
+    virtual void Slot06_ad2790(uint32_t);
+    virtual void Slot07_ad2790(uint32_t, uint32_t);
+    virtual void Slot08_ad2790(uint32_t, uint32_t);
     virtual ~cUnk00ad2790() {}
-    virtual void Slot10_ad2790();
-    char unknown4[0x34];
+    virtual void Slot10_ad2790(uint32_t);
+    char unknown4[0x4];
+    uint32_t field8;
+    char unknownc[0x14];
+    uint32_t field20;
+    char unknown24[0x14];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad2790[sizeof(cUnk00ad2790) == 0x38 ? 1 : -1];

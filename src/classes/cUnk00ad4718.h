@@ -3,28 +3,31 @@
 #define OB_CLASSES_CUNK00AD4718_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad4718
 // SIZE 0x5c
 class cUnk00ad4718 {
 public:
-    virtual void Slot00_ad4718();
+    virtual void Slot00_ad4718(uint32_t, uint32_t);
     virtual void Slot01_ad4718();
     virtual void Slot02_ad4718();
-    virtual void Slot03_ad4718();
-    virtual void Slot04_ad4718();
-    virtual void Slot05_ad4718();
-    virtual void Slot06_ad4718();
-    virtual void Slot07_ad4718();
-    virtual void Slot08_ad4718();
-    virtual void Slot09_ad4718();
+    virtual void Slot03_ad4718(uint32_t);
+    virtual void Slot04_ad4718(uint32_t);
+    virtual uint32_t Slot05_ad4718();
+    virtual void Slot06_ad4718(uint32_t);
+    virtual void Slot07_ad4718(uint32_t);
+    virtual void Slot08_ad4718(uint32_t);
+    virtual void Slot09_ad4718(uint32_t, uint32_t);
     virtual void Slot10_ad4718();
     virtual void Slot11_ad4718();
     virtual void Slot12_ad4718();
-    virtual void Slot13_ad4718();
+    virtual void Slot13_ad4718(uint32_t);
     virtual void Slot14_ad4718();
     virtual ~cUnk00ad4718();
-    char unknown4[0x58];
+    char unknown4[0x1c];
+    uint32_t field20;
+    char unknown24[0x38];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad4718[sizeof(cUnk00ad4718) == 0x5c ? 1 : -1];

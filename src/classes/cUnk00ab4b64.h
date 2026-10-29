@@ -3,17 +3,18 @@
 #define OB_CLASSES_CUNK00AB4B64_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ab4b64
 // SIZE 0x10
 class cUnk00ab4b64 {
 public:
-    virtual void Slot00_ab4b64();
+    virtual void Slot00_ab4b64(uint32_t, uint32_t);
     virtual void Slot01_ab4b64();
     virtual void Slot02_ab4b64();
-    virtual void Slot03_ab4b64();
-    virtual void Slot04_ab4b64();
-    virtual void Slot05_ab4b64();
+    virtual void Slot03_ab4b64(uint32_t, uint32_t);
+    virtual bool Slot04_ab4b64(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_ab4b64(uint32_t);
     virtual void Slot06_ab4b64();
     char unknown4[0xc];
 };

@@ -3,31 +3,32 @@
 #define OB_CLASSES_CUNK00ABF478_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00abf478
 class cUnk00abf478 {
 public:
-    virtual void Slot00_abf478();
-    virtual void Slot01_abf478();
-    virtual void Slot02_abf478();
-    virtual void Slot03_abf478();
-    virtual void Slot04_abf478();
-    virtual void Slot05_abf478();
-    virtual void Slot06_abf478();
-    virtual void Slot07_abf478();
-    virtual void Slot08_abf478();
-    virtual void Slot09_abf478();
+    virtual void Slot00_abf478(uint32_t, uint32_t);
+    virtual uint32_t Slot01_abf478();
+    virtual uint32_t Slot02_abf478();
+    virtual bool Slot03_abf478(uint32_t);
+    virtual bool Slot04_abf478(uint32_t);
+    virtual bool Slot05_abf478(uint32_t);
+    virtual bool Slot06_abf478(uint32_t);
+    virtual bool Slot07_abf478();
+    virtual bool Slot08_abf478();
+    virtual bool Slot09_abf478();
     virtual void Slot10_abf478();
-    virtual void Slot11_abf478();
-    virtual void Slot12_abf478();
-    virtual void Slot13_abf478();
-    virtual void Slot14_abf478();
-    virtual void Slot15_abf478();
+    virtual bool Slot11_abf478(uint32_t, uint32_t);
+    virtual bool Slot12_abf478();
+    virtual bool Slot13_abf478();
+    virtual void Slot14_abf478(uint32_t, uint32_t);
+    virtual bool Slot15_abf478();
     virtual void Slot16_abf478();
-    virtual void Slot17_abf478();
-    virtual void Slot18_abf478();
-    virtual void Slot19_abf478();
-    virtual void Slot20_abf478();
+    virtual bool Slot17_abf478();
+    virtual bool Slot18_abf478(uint32_t);
+    virtual uint32_t Slot19_abf478();
+    virtual bool Slot20_abf478(uint32_t);
 };
 
 #endif

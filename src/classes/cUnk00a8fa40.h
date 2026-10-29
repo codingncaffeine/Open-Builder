@@ -3,38 +3,43 @@
 #define OB_CLASSES_CUNK00A8FA40_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00a8fa40
 // SIZE 0x64
 class cUnk00a8fa40 {
 public:
-    virtual void Slot00_a8fa40();
+    virtual void Slot00_a8fa40(uint32_t, uint32_t);
     virtual void Slot01_a8fa40();
     virtual void Slot02_a8fa40();
-    virtual void Slot03_a8fa40();
+    virtual void* Slot03_a8fa40();
     virtual void Slot04_a8fa40();
-    virtual void Slot05_a8fa40();
+    virtual void* Slot05_a8fa40();
     virtual void Slot06_a8fa40();
     virtual void Slot07_a8fa40();
     virtual void Slot08_a8fa40();
     virtual void Slot09_a8fa40();
     virtual void Slot10_a8fa40();
-    virtual void Slot11_a8fa40();
+    virtual void Slot11_a8fa40(uint32_t, uint32_t);
     virtual void Slot12_a8fa40();
-    virtual void Slot13_a8fa40();
-    virtual void Slot14_a8fa40();
-    virtual void Slot15_a8fa40();
-    virtual void Slot16_a8fa40();
+    virtual void Slot13_a8fa40(uint32_t);
+    virtual void Slot14_a8fa40(uint32_t);
+    virtual void Slot15_a8fa40(uint32_t);
+    virtual void Slot16_a8fa40(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot17_a8fa40();
     virtual void Slot18_a8fa40();
-    virtual void Slot19_a8fa40();
+    virtual void Slot19_a8fa40(uint32_t);
     virtual void Slot20_a8fa40();
-    virtual void Slot21_a8fa40();
-    virtual void Slot22_a8fa40();
-    virtual void Slot23_a8fa40();
-    virtual void Slot24_a8fa40();
+    virtual void Slot21_a8fa40(uint32_t, uint32_t);
+    virtual void Slot22_a8fa40(uint32_t);
+    virtual void Slot23_a8fa40(uint32_t);
+    virtual void Slot24_a8fa40(uint32_t);
     virtual ~cUnk00a8fa40();
-    char unknown4[0x60];
+    char unknown4[0x8];
+    char fieldc[0x14];
+    char field20[0x14];
+    uint32_t field34;
+    char unknown38[0x2c];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a8fa40[sizeof(cUnk00a8fa40) == 0x64 ? 1 : -1];

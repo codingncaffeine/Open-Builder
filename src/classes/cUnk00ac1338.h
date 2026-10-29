@@ -3,50 +3,51 @@
 #define OB_CLASSES_CUNK00AC1338_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ac1338 {
 public:
-    virtual void Slot00_ac1338() = 0;
+    virtual void Slot00_ac1338(uint32_t, uint32_t) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ac1338() = 0;
-    virtual void Slot04_ac1338() = 0;
-    virtual void Slot05_ac1338() = 0;
-    virtual void Slot06_ac1338() = 0;
-    virtual void Slot07_ac1338() = 0;
+    virtual bool Slot03_ac1338(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot04_ac1338() = 0;
+    virtual bool Slot05_ac1338() = 0;
+    virtual void Slot06_ac1338(uint32_t) = 0;
+    virtual void Slot07_ac1338(uint32_t) = 0;
     virtual void Slot08_ac1338() = 0;
     virtual void Slot09_ac1338() = 0;
     virtual void Slot10_ac1338() = 0;
-    virtual void Slot11_ac1338() = 0;
-    virtual void Slot12_ac1338() = 0;
-    virtual void Slot13_ac1338() = 0;
-    virtual void Slot14_ac1338() = 0;
-    virtual void Slot15_ac1338() = 0;
+    virtual void Slot11_ac1338(uint32_t) = 0;
+    virtual void* Slot12_ac1338() = 0;
+    virtual uint32_t Slot13_ac1338() = 0;
+    virtual void Slot14_ac1338(uint32_t) = 0;
+    virtual void Slot15_ac1338(uint32_t) = 0;
     virtual void Slot16_ac1338() = 0;
-    virtual void Slot17_ac1338() = 0;
-    virtual void Slot18_ac1338() = 0;
-    virtual void Slot19_ac1338() = 0;
-    virtual void Slot20_ac1338() = 0;
-    virtual void Slot21_ac1338() = 0;
-    virtual void Slot22_ac1338() = 0;
+    virtual uint32_t Slot17_ac1338() = 0;
+    virtual void Slot18_ac1338(uint32_t, uint32_t) = 0;
+    virtual void Slot19_ac1338(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot20_ac1338(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot21_ac1338(uint32_t, uint32_t) = 0;
+    virtual void Slot22_ac1338(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot23_ac1338() = 0;
-    virtual void Slot24_ac1338() = 0;
-    virtual void Slot25_ac1338() = 0;
+    virtual bool Slot24_ac1338() = 0;
+    virtual void Slot25_ac1338(uint32_t, uint32_t) = 0;
     virtual void Slot26_ac1338() = 0;
     virtual void Slot27_ac1338() = 0;
-    virtual void Slot28_ac1338() = 0;
-    virtual void Slot29_ac1338() = 0;
-    virtual void Slot30_ac1338() = 0;
-    virtual void Slot31_ac1338() = 0;
-    virtual void Slot32_ac1338() = 0;
-    virtual void Slot33_ac1338() = 0;
-    virtual void Slot34_ac1338() = 0;
+    virtual void Slot28_ac1338(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot29_ac1338(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot30_ac1338(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot31_ac1338(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot32_ac1338(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot33_ac1338(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot34_ac1338() = 0;
     virtual void Slot35_ac1338() = 0;
     virtual void Slot36_ac1338() = 0;
     virtual void Slot37_ac1338() = 0;
     virtual void Slot38_ac1338() = 0;
-    virtual void Slot39_ac1338() = 0;
+    virtual bool Slot39_ac1338() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac1338[sizeof(cUnk00ac1338) == 0x4 ? 1 : -1];

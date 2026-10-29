@@ -3,19 +3,21 @@
 #define OB_CLASSES_CUNK00AA78E0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00aa78e0
 // SIZE 0x18
 class cUnk00aa78e0 {
 public:
-    virtual void Slot00_aa78e0();
+    virtual void Slot00_aa78e0(uint32_t, uint32_t);
     virtual void Slot01_aa78e0();
     virtual void Slot02_aa78e0();
-    virtual void Slot03_aa78e0();
+    virtual uint32_t Slot03_aa78e0();
     virtual void Slot04_aa78e0();
     virtual void Slot05_aa78e0();
     virtual ~cUnk00aa78e0() {}
-    char unknown4[0x14];
+    uint32_t field4;
+    char unknown8[0x10];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa78e0[sizeof(cUnk00aa78e0) == 0x18 ? 1 : -1];

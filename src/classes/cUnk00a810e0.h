@@ -3,30 +3,31 @@
 #define OB_CLASSES_CUNK00A810E0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a80784.h"
 #include "classes/cUnk00a81058.h"
 #include "gzcom/cUnk0090da1e.h"
 
 // Between cUnk00a80784 and cUnk00a810e0 at +0x8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a810e0_8 : public cUnk00a80784 {
-    virtual void Slot03_a80784();
-    virtual void Slot04_a80784();
-    virtual void Slot05_a80784();
+    virtual bool Slot03_a80784(uint32_t);
+    virtual bool Slot04_a80784(uint32_t);
+    virtual uint32_t Slot05_a80784();
 };
 
 // Between cUnk00a81058 and cUnk00a810e0 at +0xc: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a810e0_c : public cUnk00a81058 {
-    virtual void Slot03_a81058();
+    virtual void Slot03_a81058(uint32_t, uint32_t);
     virtual void Slot04_a81058();
     virtual void Slot05_a81058();
-    virtual void Slot06_a81058();
-    virtual void Slot07_a81058();
-    virtual void Slot08_a81058();
-    virtual void Slot09_a81058();
-    virtual void Slot10_a81058();
-    virtual void Slot11_a81058();
-    virtual void Slot12_a81058();
-    virtual void Slot13_a81058();
+    virtual bool Slot06_a81058();
+    virtual void Slot07_a81058(uint32_t);
+    virtual uint32_t Slot08_a81058();
+    virtual uint32_t Slot09_a81058();
+    virtual void Slot10_a81058(uint32_t);
+    virtual uint32_t Slot11_a81058();
+    virtual void Slot12_a81058(uint32_t);
+    virtual void Slot13_a81058(uint32_t);
 };
 
 // VTABLE: 0x00a810e0 cUnk0090da1e

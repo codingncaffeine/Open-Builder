@@ -3,22 +3,23 @@
 #define OB_CLASSES_CUNK00AD51F0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ad51f0 {
 public:
-    virtual void Slot00_ad51f0() = 0;
+    virtual void Slot00_ad51f0(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad51f0() = 0;
     virtual void Slot02_ad51f0() = 0;
     virtual void Slot03_ad51f0() = 0;
-    virtual void Slot04_ad51f0() = 0;
-    virtual void Slot05_ad51f0() = 0;
-    virtual void Slot06_ad51f0() = 0;
-    virtual void Slot07_ad51f0() = 0;
-    virtual void Slot08_ad51f0() = 0;
-    virtual void Slot09_ad51f0() = 0;
+    virtual void Slot04_ad51f0(uint32_t) = 0;
+    virtual void Slot05_ad51f0(uint32_t) = 0;
+    virtual void Slot06_ad51f0(uint32_t) = 0;
+    virtual void Slot07_ad51f0(uint32_t) = 0;
+    virtual void Slot08_ad51f0(uint32_t) = 0;
+    virtual void Slot09_ad51f0(uint32_t) = 0;
     virtual void Slot10_ad51f0() = 0;
-    virtual void Slot11_ad51f0() = 0;
+    virtual void Slot11_ad51f0(uint32_t, uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad51f0[sizeof(cUnk00ad51f0) == 0x4 ? 1 : -1];

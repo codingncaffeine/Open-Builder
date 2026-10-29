@@ -3,13 +3,14 @@
 #define OB_CLASSES_CUNK00AE3AF4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00ae3a84.h"
 
 // Between cUnk00adc8d8 and cUnk00ae3af4 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ae3af4_4 : public cUnk00adc8d8 {
-    virtual void Slot88_adc8d8();
-    virtual void Slot134_adc8d8();
+    virtual bool Slot88_adc8d8();
+    virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
 };
@@ -23,17 +24,19 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_ae3a84();
-    virtual void Slot04_ae3a84();
+    virtual void Slot03_ae3a84(uint32_t);
+    virtual void Slot04_ae3a84(uint32_t, uint32_t);
     virtual void Slot05_ae3a84();
-    virtual void Slot06_ae3a84();
+    virtual void Slot06_ae3a84(uint32_t);
     virtual void Slot07_ae3a84();
-    virtual void Slot08_ae3a84();
-    virtual void Slot09_ae3a84();
-    virtual void Slot10_ae3a84();
-    virtual void Slot11_ae3a84();
-    virtual void Slot12_ae3a84();
-    char unknowndc[0x20];
+    virtual uint32_t Slot08_ae3a84();
+    virtual void Slot09_ae3a84(uint32_t);
+    virtual void Slot10_ae3a84(uint32_t);
+    virtual void Slot11_ae3a84(uint32_t);
+    virtual void Slot12_ae3a84(uint32_t);
+    char unknowndc[0x18];
+    uint32_t fieldf4;
+    char unknownf8[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae3af4[sizeof(cUnk00ae3af4) == 0xfc ? 1 : -1];

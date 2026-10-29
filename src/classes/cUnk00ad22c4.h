@@ -3,28 +3,29 @@
 #define OB_CLASSES_CUNK00AD22C4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad221c.h"
 
 // The subobject at +0x0 (vtable 0x00ad22c4): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad22c4_0 {
-    virtual void Slot00_ad22c4() = 0;
+    virtual void Slot00_ad22c4(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad22c4() = 0;
     virtual void Slot02_ad22c4() = 0;
-    virtual void Slot03_ad22c4() = 0;
-    virtual void Slot04_ad22c4() = 0;
-    virtual void Slot05_ad22c4() = 0;
-    virtual void Slot06_ad22c4() = 0;
-    virtual void Slot07_ad22c4() = 0;
-    virtual void Slot08_ad22c4() = 0;
-    virtual void Slot09_ad22c4() = 0;
-    virtual void Slot10_ad22c4() = 0;
-    virtual void Slot11_ad22c4() = 0;
+    virtual void Slot03_ad22c4(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot04_ad22c4(uint32_t) = 0;
+    virtual void Slot05_ad22c4(uint32_t, uint32_t) = 0;
+    virtual bool Slot06_ad22c4() = 0;
+    virtual bool Slot07_ad22c4() = 0;
+    virtual bool Slot08_ad22c4(uint32_t, uint32_t) = 0;
+    virtual bool Slot09_ad22c4(uint32_t) = 0;
+    virtual bool Slot10_ad22c4(uint32_t, uint32_t) = 0;
+    virtual bool Slot11_ad22c4(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual ~cUnk00ad22c4_0() {}
 };
 
 // Between cUnk00ad221c and cUnk00ad22c4 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad22c4_4 : public cUnk00ad221c {
-    virtual void Slot03_ad221c();
+    virtual bool Slot03_ad221c(uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00ad22c4 cUnk00ad22c4_0
@@ -33,18 +34,18 @@ struct OB_NOVTABLE cUnk00ad22c4_4 : public cUnk00ad221c {
 class cUnk00ad22c4 : public cUnk00ad22c4_0, public cUnk00ad22c4_4 {
 public:
     virtual ~cUnk00ad22c4();
-    virtual void Slot00_ad22c4();
+    virtual void Slot00_ad22c4(uint32_t, uint32_t);
     virtual void Slot01_ad22c4();
     virtual void Slot02_ad22c4();
-    virtual void Slot03_ad22c4();
-    virtual void Slot04_ad22c4();
-    virtual void Slot05_ad22c4();
-    virtual void Slot06_ad22c4();
-    virtual void Slot07_ad22c4();
-    virtual void Slot08_ad22c4();
-    virtual void Slot09_ad22c4();
-    virtual void Slot10_ad22c4();
-    virtual void Slot11_ad22c4();
+    virtual void Slot03_ad22c4(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_ad22c4(uint32_t);
+    virtual void Slot05_ad22c4(uint32_t, uint32_t);
+    virtual bool Slot06_ad22c4();
+    virtual bool Slot07_ad22c4();
+    virtual bool Slot08_ad22c4(uint32_t, uint32_t);
+    virtual bool Slot09_ad22c4(uint32_t);
+    virtual bool Slot10_ad22c4(uint32_t, uint32_t);
+    virtual bool Slot11_ad22c4(uint32_t, uint32_t, uint32_t, uint32_t);
     char unknown8[0x28];
 };
 #ifdef _MSC_VER

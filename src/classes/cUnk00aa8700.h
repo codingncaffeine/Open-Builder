@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00AA8700_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00aa8700
 class cUnk00aa8700 {
 public:
-    virtual void Slot00_aa8700();
-    virtual void Slot01_aa8700();
+    virtual void Slot00_aa8700(uint32_t);
+    virtual void Slot01_aa8700(uint32_t, uint32_t);
 };
 
 #endif

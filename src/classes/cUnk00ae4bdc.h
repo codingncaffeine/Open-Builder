@@ -3,15 +3,16 @@
 #define OB_CLASSES_CUNK00AE4BDC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ae5bf4.h"
 
 // VTABLE: 0x00ae4bdc
 class cUnk00ae4bdc : public cUnk00ae5bf4 {
 public:
     virtual ~cUnk00ae4bdc();
-    virtual void Slot10_ae4bdc();
-    virtual void Slot11_ae4bdc();
-    virtual void Slot12_ae4bdc();
+    virtual void Slot10_ae4bdc(uint32_t);
+    virtual void Slot11_ae4bdc(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot12_ae4bdc(uint32_t, uint32_t);
     virtual void Slot01_ae4c8c();
     virtual void Slot02_ae5cd4();
     virtual void Slot03_ae5cd4();

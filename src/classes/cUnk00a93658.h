@@ -3,23 +3,24 @@
 #define OB_CLASSES_CUNK00A93658_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00a93658 {
 public:
-    virtual void Slot00_ac5488() = 0;
+    virtual void Slot00_ac5488(uint32_t, uint32_t) = 0;
     virtual void Slot01_ac5488() = 0;
     virtual void Slot02_ac5488() = 0;
-    virtual void Slot03_a93658() = 0;
-    virtual void Slot04_a93658() = 0;
-    virtual void Slot05_a93658() = 0;
-    virtual void Slot06_a93658() = 0;
-    virtual void Slot07_a93658() = 0;
+    virtual uint32_t Slot03_a93658() = 0;
+    virtual void Slot04_a93658(uint32_t) = 0;
+    virtual uint32_t Slot05_a93658() = 0;
+    virtual bool Slot06_a93658() = 0;
+    virtual void Slot07_a93658(uint32_t) = 0;
     virtual void Slot03_ac5488() = 0;
     virtual void Slot04_ac5488() = 0;
-    virtual void Slot10_a93658() = 0;
-    virtual void Slot11_a93658() = 0;
-    virtual void Slot12_a93658() = 0;
+    virtual bool Slot10_a93658(uint32_t) = 0;
+    virtual bool Slot11_a93658(uint32_t) = 0;
+    virtual uint32_t Slot12_a93658() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a93658[sizeof(cUnk00a93658) == 0x4 ? 1 : -1];

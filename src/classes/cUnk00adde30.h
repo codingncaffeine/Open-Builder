@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00ADDE30_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00adde30
 class cUnk00adde30 {
 public:
     virtual ~cUnk00adde30() {}
-    virtual void Slot01_adde30();
+    virtual void Slot01_adde30(uint32_t, uint32_t);
 };
 
 // SYNTHETIC: 0x009b4023

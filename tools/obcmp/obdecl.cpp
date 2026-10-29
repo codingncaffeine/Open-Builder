@@ -2,7 +2,7 @@
 // for them in the original: their vtables, adjustor thunks and deleting destructors.
 //
 //   obdecl <classes.tsv> <slots.tsv> <deleting.tsv> <known.tsv> [--purecall ADDR] [--src DIR] [--out DIR]
-//          [--report FILE] [--exclude FILE]
+//          [--report FILE] [--exclude FILE] [--shapes shapes.tsv]
 //
 // classes.tsv, slots.tsv, deleting.tsv: obclass output. known.tsv: the slots of the classes declared by hand
 // (tools/known-slots.sh), which generated classes derive from by name; hand classes are found by their
@@ -28,10 +28,22 @@
 // Annotations: VTABLE for every vtable of a concrete class, SYNTHETIC for its own adjustor thunks and for a deleting
 // destructor whose code follows from the declaration (deleting.tsv "call", or "stores" with every base's
 // destructor inline). A class that cannot be declared this way is reported with the reason, not written.
+//
+// With --shapes (tools/obcmp/obshape's reading of the original), the functions of one slot identity tell its
+// signature: the bytes every one of them pops are its arguments (dwords, or what a setter stores one as), and the
+// one-line ones what it returns. A one-line method (a constant, a getter, a setter, an empty body, return this) is
+// then written out, in --src/<folder>/GeneratedMethods_<folder>.cpp with its FUNCTION annotation ("nohook" when the
+// original has no room for the hook's 5-byte jump, or for every copy but the first of a body the original's linker
+// folded for several methods), and the members it reads or writes are declared as fields
+// ("fieldNN" at offset NN) in the class whose own data holds them. Evidence that disagrees (two return types, two
+// argument sizes, two kinds of member at one offset, overlapping members) leaves the identity or field as it was.
 
 #include <algorithm>
+#include <cmath>
 #include <cstdint>
 #include <cstdio>
+#include <cstdlib>
+#include <cstring>
 #include <filesystem>
 #include <fstream>
 #include <functional>
@@ -145,6 +157,24 @@ struct Model {
     std::vector<std::string> includes;
 };
 
+// obshape's reading of one function.
+struct Shape {
+    uint32_t room = 0xffffffffu;      // bytes up to the next function
+    std::string pops, kind;           // pops: decimal, "?" or "x"
+    std::vector<std::string> detail;  // after the kind
+};
+
+// A member a one-line method reads or writes, declared in the class or subobject whose own data holds it.
+struct Field {
+    std::string type;  // "char" for a member whose address is taken: a char array up to the next field
+    uint32_t size = 0;
+};
+struct Region {
+    uint32_t start = 0, end = 0;                  // the holder's own data
+    std::map<uint32_t, std::set<char>> uses;      // offset -> kinds of access
+    std::map<uint32_t, Field> fields;
+};
+
 struct Hand {
     std::string name, header;
     std::string base;  // first base, for the root of its vtable names
@@ -185,7 +215,7 @@ bool parseDemangled(const std::string& d, std::string& name, std::string& decl, 
 
 int main(int argc, char** argv) {
     std::vector<std::string> pos;
-    std::string srcDir = "src", outDir = "src/classes", reportPath, excludePath;
+    std::string srcDir = "src", outDir = "src/classes", reportPath, excludePath, shapesPath;
     uint32_t purecall = 0;
     for (int i = 1; i < argc; ++i) {
         std::string a = argv[i];
@@ -198,6 +228,7 @@ int main(int argc, char** argv) {
         else if (a == "--out") outDir = value();
         else if (a == "--report") reportPath = value();
         else if (a == "--exclude") excludePath = value();
+        else if (a == "--shapes") shapesPath = value();
         else pos.push_back(a);
     }
     if (pos.size() != 4) {
@@ -272,16 +303,30 @@ int main(int argc, char** argv) {
     std::map<uint32_t, std::map<int, std::pair<std::string, std::string>>> known;  // vtable -> slot -> decorated, demangled
     for (auto& r : readTsv(pos[3]))
         if (r.size() >= 4) known[parseHex(r[0])][std::stoi(r[1])] = {r[2], r[3]};
+    std::map<uint32_t, Shape> shapes;
+    if (!shapesPath.empty())
+        for (auto& r : readTsv(shapesPath)) {
+            if (r.size() < 4) continue;
+            Shape s;
+            if (r[1] != "-") s.room = uint32_t(std::stoul(r[1]));
+            s.pops = r[2];
+            s.detail = split(r[3], ' ');
+            s.kind = s.detail.front();
+            s.detail.erase(s.detail.begin());
+            shapes[parseHex(r[0])] = s;
+        }
 
     // Hand-declared classes: their VTABLE annotations, header, first base, size and destructor.
     std::map<uint32_t, Hand> hands;  // by primary
     std::map<std::string, std::string> firstBase;  // class -> first base, over every header
+    std::set<uint32_t> annotated;                  // functions written by hand (FUNCTION, SYNTHETIC)
     for (auto& entry : fs::recursive_directory_iterator(srcDir)) {
         if (!entry.is_regular_file()) continue;
         std::string ext = entry.path().extension().string();
         if (ext != ".h" && ext != ".cpp") continue;
         std::string rel = fs::relative(entry.path(), srcDir).generic_string();
         if (rel.rfind(fs::relative(outDir, srcDir).generic_string() + "/", 0) == 0) continue;  // our own output
+        if (entry.path().filename().string().rfind("GeneratedMethods_", 0) == 0) continue;
         std::ifstream f(entry.path());
         std::string line;
         std::vector<std::pair<uint32_t, std::string>> pending;
@@ -297,6 +342,10 @@ int main(int argc, char** argv) {
                 continue;
             }
             if ((at = line.find("// SIZE 0x")) != std::string::npos) { size = parseHex(line.substr(at + 8)); continue; }
+            if ((at = line.find("// FUNCTION: 0x")) != std::string::npos || (at = line.find("// SYNTHETIC: 0x")) != std::string::npos) {
+                annotated.insert(parseHex(line.substr(line.find("0x", at) + 2)));
+                continue;
+            }
             std::istringstream ss(line);
             std::string kw, name, colon, access, base;
             ss >> kw;
@@ -673,6 +722,276 @@ int main(int argc, char** argv) {
         }
         return true;
     };
+
+    // The classes this run writes: usable, and not edited by hand (a header without the GENERATED mark is kept).
+    auto keptHeader = [&](const Model& m) {
+        std::ifstream in(srcDir + "/" + m.header);
+        std::string first;
+        return in && std::getline(in, first) && first.find("GENERATED") == std::string::npos;
+    };
+    std::set<uint32_t> writes;
+    for (auto& [p, m] : models)
+        if (!m.hand && usable(p) && !keptHeader(m)) writes.insert(p);
+
+    // Signatures (--shapes). V void, D dword, B bool, W word, F float, Q double, P pointer; arguments d, b, w.
+    struct Family {
+        std::set<std::string> pops;
+        std::set<char> ret;
+        std::map<size_t, std::set<char>> args;  // what a setter stores the argument as
+    };
+    struct Sig {
+        bool bodies = true;  // every piece of evidence agrees, so one-line bodies can be written
+        char ret = 'V';
+        std::vector<char> args;
+    };
+    auto retOf = [](const Shape& s) -> char {
+        const std::string t = s.detail.empty() ? "" : s.detail[0];
+        if (s.kind == "empty" || s.kind == "set") return 'V';
+        if (s.kind == "this") return 'P';
+        if (s.kind == "setconst") return s.detail.size() > 3 && s.detail[3] == "b" ? 'B' : 'D';
+        if (s.kind == "const") return t == "b" ? 'B' : t == "f" ? 'F' : 'D';
+        if (s.kind == "get") return t == "b" ? 'B' : t == "w" ? 'W' : t == "f" ? 'F' : t == "q" ? 'Q' : t == "a" ? 'P' : 'D';
+        return 0;
+    };
+    std::map<int, Family> families;
+    for (uint32_t p : writes)
+        for (auto& d : models[p].decls) {
+            int root = find(d.ident);
+            if (idents[root].fixed || idents[root].dtor) continue;
+            auto it = shapes.find(d.function);
+            if (it == shapes.end()) continue;
+            const Shape& s = it->second;
+            Family& f = families[root];
+            if (s.pops != "?") f.pops.insert(s.pops);
+            if (char r = retOf(s)) f.ret.insert(r);
+            if (s.kind == "set" || s.kind == "setconst") f.args[std::stoul(s.detail[2])].insert(s.detail[0][0]);
+        }
+    auto retType = [](char c) -> std::pair<std::string, std::string> {  // C++ and decorated
+        switch (c) {
+        case 'D': return {"uint32_t", "I"};
+        case 'B': return {"bool", "_N"};
+        case 'W': return {"uint16_t", "G"};
+        case 'F': return {"float", "M"};
+        case 'Q': return {"double", "N"};
+        case 'P': return {"void*", "PAX"};
+        }
+        return {"void", "X"};
+    };
+    auto argType = [](char c) -> std::pair<std::string, std::string> {
+        if (c == 'b') return {"bool", "_N"};
+        if (c == 'w') return {"uint16_t", "G"};
+        return {"uint32_t", "I"};
+    };
+    std::map<int, Sig> sigs;
+    for (auto& [root, f] : families) {
+        if (f.pops.size() != 1 || f.pops.begin()->find_first_not_of("0123456789") != std::string::npos) continue;
+        unsigned long n = std::stoul(*f.pops.begin());
+        if (n % 4) continue;
+        Sig s;
+        s.args.assign(n / 4, 'd');
+        std::set<char> r = f.ret;
+        if (r == std::set<char>{'D', 'P'}) r = {'D'};  // an integer or a null pointer: both are eax
+        if (r.size() == 1) s.ret = *r.begin();
+        else if (r.size() > 1) s.bodies = false;
+        for (auto& [i, ts] : f.args) {
+            if (i >= s.args.size() || ts.size() != 1) { s.bodies = false; continue; }
+            s.args[i] = *ts.begin();
+        }
+        // the declaration and its decoration: arguments of more than one character are back-referenced by index
+        Ident& id = idents[root];
+        std::string params, mangled;
+        std::vector<std::string> seen;
+        for (char a : s.args) {
+            auto [text, code] = argType(a);
+            params += (params.empty() ? "" : ", ") + text;
+            if (code.size() > 1) {
+                auto at = std::find(seen.begin(), seen.end(), code);
+                if (at != seen.end()) { mangled += char('0' + (at - seen.begin())); continue; }
+                if (seen.size() < 10) seen.push_back(code);
+            }
+            mangled += code;
+        }
+        id.decl = retType(s.ret).first + " " + id.name + "(" + params + ")";
+        id.tail = "UAE" + retType(s.ret).second + (s.args.empty() ? "X" : mangled + "@") + "Z";
+        sigs[root] = s;
+    }
+
+    // One-line bodies and the fields they use. Where a member at an offset from an owner's this lives: the class or
+    // synthesized subobject whose own data holds it (never a vtable pointer, a hand class or space of unknown size).
+    std::map<std::string, Region> regions;
+    std::function<bool(uint32_t, const std::string&, uint32_t, std::string&, uint32_t&)> place =
+        [&](uint32_t p, const std::string& owner, uint32_t off, std::string& holder, uint32_t& rel) -> bool {
+        if (!writes.count(p)) return false;
+        Model& m = models[p];
+        auto hold = [&](const std::string& h, uint32_t o, uint32_t start, uint32_t end) {
+            if (o < start || o >= end) return false;
+            holder = h, rel = o;
+            regions[h].start = start, regions[h].end = end;
+            return true;
+        };
+        if (owner != m.name) {
+            for (auto& s : m.subs) {
+                if (!s.base && m.synthName[s.off] == owner) return hold(owner, off, 4, s.size);
+                if (s.base && s.intermediate && owner == m.name + "_" + hexn(uint32_t(s.off)))
+                    return place(s.base, models[s.base].name, off, holder, rel);
+            }
+            return false;
+        }
+        for (auto& s : m.subs)
+            if (off >= uint32_t(s.off) && off < uint32_t(s.off) + s.size)
+                return s.base ? place(s.base, models[s.base].name, off - s.off, holder, rel)
+                              : hold(m.synthName[s.off], off - s.off, 4, s.size);
+        if (!m.size || !m.end || m.assumedSize) return false;
+        return hold(m.name, off, m.end, m.size);
+    };
+    // How a shape uses a member: D dword, F float, B bool, U unsigned byte, S signed byte, W word, H signed word,
+    // A its address; 0 = none, '!' = not written (a double: its alignment would move the class's layout).
+    auto useOf = [](const Shape& s) -> char {
+        if (s.kind == "get") {
+            const std::string& t = s.detail[0];
+            if (t == "d" || t == "wz" || t == "ws" || t == "bz" || t == "bs" || t == "b" || t == "w" || t == "f" || t == "a")
+                return t == "d" ? 'D' : t == "f" ? 'F' : t == "b" ? 'B' : t == "bz" ? 'U' : t == "bs" ? 'S'
+                     : t == "ws" ? 'H' : t == "a" ? 'A' : 'W';
+            return '!';
+        }
+        if (s.kind == "set" || s.kind == "setconst") return s.detail[0] == "d" ? 'D' : s.detail[0] == "b" ? 'B' : 'W';
+        return 0;
+    };
+    auto floatLiteral = [](uint32_t bits, std::string& out) {
+        float f;
+        std::memcpy(&f, &bits, 4);
+        if (!std::isfinite(f)) return false;
+        char b[48];
+        for (int prec = 1; prec <= 9; ++prec) {  // the shortest that reads back to the same bits
+            std::snprintf(b, sizeof b, "%.*g", prec, double(f));
+            float back = std::strtof(b, nullptr);
+            if (std::memcmp(&back, &f, 4) == 0) break;
+        }
+        out = b;
+        if (out.find_first_of(".e") == std::string::npos) out += ".0";
+        out += "f";
+        return true;
+    };
+    // The statement a shape returns with, if the family's return type can hold it.
+    auto returnOf = [&](const std::string& t, uint32_t v, char ret, std::string& out) {
+        if (t == "b") {
+            if (ret != 'B' || v > 1) return false;
+            out = v ? "return true;" : "return false;";
+            return true;
+        }
+        if (t == "f") {
+            std::string lit;
+            if (ret != 'F' || !floatLiteral(v, lit)) return false;
+            out = "return " + lit + ";";
+            return true;
+        }
+        if (ret != 'D' && !(ret == 'P' && v == 0)) return false;
+        out = std::string("return ") + (v < 10 ? std::to_string(v) : "0x" + hexn(v)) + ";";
+        return true;
+    };
+    struct Body {
+        uint32_t fn = 0, cls = 0;
+        std::string owner;
+        int root = 0;
+        const Shape* shape = nullptr;
+        std::string holder;  // the field's, if it uses one
+        uint32_t off = 0;
+        std::string ret;     // the return statement, if any
+    };
+    std::vector<Body> bodies;
+    std::set<std::pair<std::string, int>> bodyTaken;
+    for (uint32_t p : writes)
+        for (auto& d : models[p].decls) {
+            int root = find(d.ident);
+            auto sit = sigs.find(root);
+            auto shit = shapes.find(d.function);
+            if (sit == sigs.end() || !sit->second.bodies || shit == shapes.end()) continue;
+            const Sig& sig = sit->second;
+            const Shape& s = shit->second;
+            Body b;
+            b.fn = d.function, b.cls = p, b.owner = d.owner, b.root = root, b.shape = &s;
+            if (s.kind == "empty") {
+                if (sig.ret != 'V') continue;
+            } else if (s.kind == "this") {
+                if (sig.ret != 'P') continue;
+                b.ret = "return this;";
+            } else if (s.kind == "const") {
+                if (!returnOf(s.detail[0], parseHex(s.detail[1]), sig.ret, b.ret)) continue;
+            } else if (s.kind == "get") {
+                char use = useOf(s);
+                if (use == '!' || retOf(s) != sig.ret) continue;
+            } else if (s.kind == "set") {
+                if (sig.ret != 'V') continue;
+            } else if (s.kind == "setconst") {
+                if (!returnOf(s.detail[3], parseHex(s.detail[4]), sig.ret, b.ret)) continue;
+            } else {
+                continue;
+            }
+            if (!bodyTaken.insert({d.owner, root}).second) continue;
+            if (char use = useOf(s)) {
+                if (!place(p, d.owner, parseHex(s.detail[1]), b.holder, b.off)) continue;
+                regions[b.holder].uses[b.off].insert(use);
+            }
+            bodies.push_back(b);
+        }
+    // Fields: one kind of access per offset (a byte read as bool and as unsigned is bool), naturally aligned, inside the
+    // holder's own data and overlapping nothing; an address-taken member runs up to the next field.
+    for (auto& [h, r] : regions) {
+        std::vector<std::pair<uint32_t, Field>> list;
+        for (auto& [off, ks] : r.uses) {
+            bool bytes = ks.count('B') || ks.count('U') || ks.count('S'), words = ks.count('W') || ks.count('H');
+            if (int(bytes) + int(words) + int(ks.count('D')) + int(ks.count('F')) + int(ks.count('A')) != 1) continue;
+            Field f;
+            if (bytes) {
+                if (ks.count('S') && ks.size() > 1) continue;
+                f = {ks.count('S') ? "int8_t" : ks.count('B') ? "bool" : "uint8_t", 1};
+            } else if (words) {
+                f = {ks.count('H') ? "int16_t" : "uint16_t", 2};
+            } else if (ks.count('D')) {
+                f = {"uint32_t", 4};
+            } else if (ks.count('F')) {
+                f = {"float", 4};
+            } else {
+                f = {"char", 1};
+            }
+            if (off % f.size || off + f.size > r.end) continue;
+            list.push_back({off, f});
+        }
+        std::vector<bool> drop(list.size());
+        for (size_t i = 0; i < list.size(); ++i) {
+            uint32_t next = i + 1 < list.size() ? list[i + 1].first : r.end;
+            if (list[i].second.type == "char") list[i].second.size = next - list[i].first;
+            else if (list[i].first + list[i].second.size > next) drop[i] = drop[i + 1] = true;
+        }
+        for (size_t i = 0; i < list.size(); ++i)
+            if (!drop[i]) r.fields[list[i].first] = list[i].second;
+    }
+    std::set<std::pair<std::string, int>> bodied;  // owner, identity: defined, so no stub
+    {
+        std::vector<Body> keep;
+        for (auto& b : bodies)
+            if (b.holder.empty() || regions[b.holder].fields.count(b.off)) {
+                keep.push_back(b);
+                bodied.insert({b.owner, b.root});
+            }
+        bodies.swap(keep);
+    }
+    // The members of a holder's own data from start to end: its fields, and padding between them.
+    auto regionLines = [&](const std::string& holder, uint32_t start, uint32_t end) {
+        std::vector<std::string> out;
+        uint32_t at = start;
+        auto it = regions.find(holder);
+        if (it != regions.end())
+            for (auto& [off, f] : it->second.fields) {
+                if (off > at) out.push_back("char unknown" + hexn(at) + "[0x" + hexn(off - at) + "];");
+                out.push_back(f.type == "char" ? "char field" + hexn(off) + "[0x" + hexn(f.size) + "];"
+                                               : f.type + " field" + hexn(off) + ";");
+                at = off + f.size;
+            }
+        if (end > at) out.push_back("char unknown" + hexn(at) + "[0x" + hexn(end - at) + "];");
+        return out;
+    };
+
     for (auto& [p, m] : models) {
         if (m.hand) continue;
         if (!usable(p)) {
@@ -700,7 +1019,8 @@ int main(int argc, char** argv) {
             body[owner].push_back("virtual " + n.decl + (pure ? " = 0;" : ";"));
             // operator= is ??4Class@@..., every other method ?Name@Class@@...
             std::string head = n.name == "operator=" ? "??4" : "?" + n.name + "@";
-            if (!pure) stubList.push_back({fn, head + owner + "@@" + (n.tail.empty() ? "UAEXXZ" : n.tail)});
+            if (!pure && !bodied.count({owner, find(id)}))
+                stubList.push_back({fn, head + owner + "@@" + (n.tail.empty() ? "UAEXXZ" : n.tail)});
         };
         std::map<std::pair<std::string, int>, uint32_t> fnOf;  // owner, root -> function
         for (auto& d : m.decls) fnOf[{d.owner, find(d.ident)}] = d.function;
@@ -736,7 +1056,7 @@ int main(int argc, char** argv) {
                     d << "    virtual " << nameOf(id).decl << " = 0;\n";
                 }
             }
-            if (s.size > 4) d << "    char unknown04[0x" << hexn(s.size - 4) << "];\n";
+            for (auto& line : regionLines(sn, 4, s.size)) d << "    " << line << "\n";
             d << "};\n";
             synthesized.push_back(d.str());
         }
@@ -773,7 +1093,8 @@ int main(int argc, char** argv) {
                 for (int id : ids) has |= id >= 0 && nameOf(id).name == "operator=";
             if (has) lines.push_back("using " + (s.intermediate ? m.name + "_" + hexn(uint32_t(s.off)) : models[s.base].name) + "::operator=;");
         }
-        if (m.size > m.end && m.end) lines.push_back("char unknown" + hexn(m.end) + "[0x" + hexn(m.size - m.end) + "];");
+        if (m.size > m.end && m.end)
+            for (auto& line : regionLines(m.name, m.end, m.size)) lines.push_back(line);
         if (m.hasDtor && !m.inlineDtor) {
             auto dit = deleting.find(m.ownDeleting);
             if (dit != deleting.end()) stubList.push_back({dit->second.dtor, "??1" + m.name + "@@UAE@XZ"});
@@ -814,7 +1135,7 @@ int main(int argc, char** argv) {
         std::string guard = "OB_CLASSES_" + m.name + "_H";
         for (auto& c : guard) c = char(std::toupper(static_cast<unsigned char>(c)));
         h << "// GENERATED by tools/obcmp/obdecl from the class map; remove this line to keep edits.\n";
-        h << "#ifndef " << guard << "\n#define " << guard << "\n\n#include \"common/compiler.h\"\n";
+        h << "#ifndef " << guard << "\n#define " << guard << "\n\n#include \"common/compiler.h\"\n#include \"common/types.h\"\n";
         std::set<std::string> inc(m.includes.begin(), m.includes.end());
         for (auto& i : inc) h << "#include \"" << i << "\"\n";
         h << "\n";
@@ -856,8 +1177,51 @@ int main(int argc, char** argv) {
         for (auto& e : *list) f << "    (void)new " << e.substr(0, e.find('|')) << ";\n";
         f << "}\n";
     }
-    std::printf("classes written %zu (kept %zu edited), not written %zu; %zu SYNTHETIC, %zu VTABLE annotations\n",
-                written, kept, failed, synthCount, vtCount);
+    // The one-line methods, in the folder whose flags wrote them: a constant the flags spell differently says which,
+    // otherwise the class's.
+    size_t methodCount = 0, fieldCount = 0;
+    for (auto& [h, r] : regions) fieldCount += r.fields.size();
+    std::sort(bodies.begin(), bodies.end(), [](const Body& a, const Body& b) { return a.fn < b.fn; });
+    std::set<uint32_t> fnTaken;
+    for (const char* group : {"game", "gzcom"}) {
+        std::vector<const Body*> list;
+        std::set<std::string> includes;
+        for (auto& b : bodies) {
+            const std::string opt = b.shape->kind == "const" && b.shape->detail.size() > 2 ? b.shape->detail[2] : "-";
+            bool o1 = opt == "O1" || (opt == "-" && models[b.cls].o1);
+            if (o1 != (std::string(group) == "gzcom")) continue;
+            list.push_back(&b);
+            includes.insert(models[b.cls].header);
+        }
+        std::ofstream f(srcDir + "/" + group + "/GeneratedMethods_" + group + ".cpp");
+        f << "// GENERATED by tools/obcmp/obdecl: the one-line methods of the generated classes (constants, getters, setters,\n"
+             "// empty bodies), written from what the original's code does (tools/obcmp/obshape) in the spelling the 2003\n"
+             "// compiler turns back into the same instructions.\n";
+        for (auto& i : includes) f << "#include \"" << i << "\"\n";
+        for (const Body* b : list) {
+            const Ident& id = idents[b->root];
+            const Sig& sig = sigs[b->root];
+            const Shape& s = *b->shape;
+            int value = s.kind == "set" || s.kind == "setconst" ? std::stoi(s.detail[2]) : -1;
+            std::string params, field = b->holder.empty() ? "" : "field" + hexn(b->off);
+            for (size_t i = 0; i < sig.args.size(); ++i)
+                params += (i ? ", " : "") + argType(sig.args[i]).first + (int(i) == value ? " value" : "");
+            f << "\n";
+            // A body the original's linker folded for several methods is one function there and one per method here:
+            // each is annotated (and scored), the first hooked, when the original has room for the jump.
+            bool hook = !annotated.count(b->fn) && fnTaken.insert(b->fn).second && b->shape->room >= 5;
+            f << "// FUNCTION: 0x" << hex8(b->fn) << (hook ? "" : " nohook") << "\n";
+            f << retType(sig.ret).first << " " << b->owner << "::" << id.name << "(" << params << ")\n{\n";
+            if (value >= 0) f << "    " << field << " = value;\n";
+            if (s.kind == "get") f << "    return " << field << ";\n";
+            if (!b->ret.empty()) f << "    " << b->ret << "\n";
+            f << "}\n";
+            ++methodCount;
+        }
+    }
+    std::printf("classes written %zu (kept %zu edited), not written %zu; %zu SYNTHETIC, %zu VTABLE annotations; "
+                "%zu signatures, %zu one-line methods, %zu fields\n",
+                written, kept, failed, synthCount, vtCount, sigs.size(), methodCount, fieldCount);
     std::vector<std::pair<size_t, std::string>> top;
     for (auto& [k, n] : reasons) top.push_back({n, k});
     std::sort(top.rbegin(), top.rend());

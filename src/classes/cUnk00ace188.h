@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00ACE188_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00acd55c.h"
 
 // VTABLE: 0x00ace188
 class cUnk00ace188 : public cUnk00acd55c {
 public:
     virtual ~cUnk00ace188();
-    virtual void Slot03_acd504();
-    virtual void Slot05_acd504();
+    virtual void Slot03_acd504(uint32_t);
+    virtual void Slot05_acd504(uint32_t);
 };
 
 // SYNTHETIC: 0x00908551

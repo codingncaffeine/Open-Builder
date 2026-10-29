@@ -3,25 +3,28 @@
 #define OB_CLASSES_CUNK00AD8D48_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x18
 class cUnk00ad8d48 {
 public:
-    virtual void Slot00_ad8d88();
+    virtual void Slot00_ad8d88(uint32_t, uint32_t);
     virtual void Slot01_ad8d88();
     virtual void Slot02_ad8d88();
-    virtual void Slot03_ad8d48();
-    virtual void Slot04_ad8d48();
+    virtual void Slot03_ad8d48(uint32_t);
+    virtual uint32_t Slot04_ad8d48();
     virtual void Slot05_ad8d48();
-    virtual void Slot27_ad8d88() = 0;
-    virtual void Slot51_ad8d88() = 0;
+    virtual void Slot27_ad8d88(uint32_t, uint32_t) = 0;
+    virtual bool Slot51_ad8d88(uint32_t, uint32_t) = 0;
     virtual void Slot52_ad8d88() = 0;
-    virtual void Slot56_ad8d88() = 0;
-    virtual void Slot54_ad8d88() = 0;
+    virtual bool Slot56_ad8d88(uint32_t) = 0;
+    virtual uint32_t Slot54_ad8d88() = 0;
     virtual ~cUnk00ad8d48();
-    virtual void Slot14_ad8d48();
-    virtual void Slot15_ad8d48();
-    char unknown4[0x14];
+    virtual void Slot14_ad8d48(uint32_t);
+    virtual void Slot15_ad8d48(uint16_t);
+    char unknown4[0x2];
+    uint16_t field6;
+    char unknown8[0x10];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad8d48[sizeof(cUnk00ad8d48) == 0x18 ? 1 : -1];

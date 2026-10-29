@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A85B14_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "gzcom/cUnk0090da1e.h"
 
 // VTABLE: 0x00a85b14
@@ -10,8 +11,8 @@
 class cUnk00a85b14 : public cUnk0090da1e {
 public:
     virtual ~cUnk00a85b14();
-    virtual void Slot06_a85b14();
-    virtual void Slot07_a85b14();
+    virtual void Slot06_a85b14(uint32_t);
+    virtual void Slot07_a85b14(uint32_t);
     virtual void Slot08_a85b14();
     char unknown8[0x24];
 };

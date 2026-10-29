@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00AB69D0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ab6718.h"
 #include "classes/cUnk00adc8d8.h"
 
 // Between cUnk00adc8d8 and cUnk00ab69d0 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ab69d0_4 : public cUnk00adc8d8 {
-    virtual void Slot88_adc8d8();
+    virtual bool Slot88_adc8d8();
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
 };
@@ -23,24 +24,31 @@ public:
     virtual unsigned int AddRef();
     virtual unsigned int Release();
     virtual void Slot03_ab6718();
-    virtual void Slot04_ab6718();
-    virtual void Slot05_ab6718();
-    virtual void Slot06_ab6718();
-    virtual void Slot07_ab6718();
-    virtual void Slot08_ab6718();
-    virtual void Slot09_ab6718();
-    virtual void Slot10_ab6718();
-    virtual void Slot11_ab6718();
-    virtual void Slot12_ab6718();
-    virtual void Slot13_ab6718();
-    virtual void Slot14_ab6718();
-    virtual void Slot15_ab6718();
-    virtual void Slot16_ab6718();
-    virtual void Slot17_ab6718();
-    virtual void Slot18_ab6718();
-    virtual void Slot19_ab6718();
-    virtual void Slot20_ab6718();
-    char unknowndc[0xd8];
+    virtual void Slot04_ab6718(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot05_ab6718();
+    virtual void Slot06_ab6718(uint32_t);
+    virtual void* Slot07_ab6718();
+    virtual void Slot08_ab6718(uint32_t);
+    virtual void* Slot09_ab6718();
+    virtual void Slot10_ab6718(uint32_t);
+    virtual void Slot11_ab6718(uint32_t);
+    virtual void Slot12_ab6718(uint32_t);
+    virtual uint32_t Slot13_ab6718();
+    virtual void Slot14_ab6718(uint32_t, uint32_t, uint32_t);
+    virtual void Slot15_ab6718(uint32_t);
+    virtual void* Slot16_ab6718();
+    virtual void Slot17_ab6718(uint32_t);
+    virtual void* Slot18_ab6718();
+    virtual void Slot19_ab6718(uint32_t);
+    virtual void* Slot20_ab6718();
+    char fielddc[0x10];
+    char fieldec[0x8];
+    char fieldf4[0x14];
+    char field108[0x14];
+    char field11c[0x14];
+    uint32_t field130;
+    uint32_t field134;
+    char unknown138[0x7c];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab69d0[sizeof(cUnk00ab69d0) == 0x1b4 ? 1 : -1];

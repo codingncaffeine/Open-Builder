@@ -3,16 +3,17 @@
 #define OB_CLASSES_CUNK00AB55A0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ab5568.h"
 #include "classes/cUnk00ace624.h"
 
 // Between cUnk00ab5568 and cUnk00ab55a0 at +0x8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ab55a0_8 : public cUnk00ab5568 {
-    virtual void Slot00_ab5568();
+    virtual void Slot00_ab5568(uint32_t, uint32_t);
     virtual void Slot03_ab5568();
     virtual void Slot04_ab5568();
-    virtual void Slot05_ab5568();
-    virtual void Slot06_ab5568();
+    virtual void Slot05_ab5568(uint32_t);
+    virtual void Slot06_ab5568(uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00ab55a0 cUnk00ace624

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AAEF2C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad8c20.h"
 
 // VTABLE: 0x00aaef2c
@@ -10,11 +11,12 @@
 class cUnk00aaef2c : public cUnk00ad8c20 {
 public:
     virtual ~cUnk00aaef2c() {}
-    virtual void Slot12_aaef2c();
-    virtual void Slot09_ad8c20();
-    virtual void Slot10_ad8c20();
-    virtual void Slot11_ad8c20();
-    char unknown10[0x18];
+    virtual void Slot12_aaef2c(bool);
+    virtual void Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ad8c20(uint32_t, uint32_t);
+    virtual bool Slot11_ad8c20(uint32_t, uint32_t);
+    bool field10;
+    char unknown11[0x17];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aaef2c[sizeof(cUnk00aaef2c) == 0x28 ? 1 : -1];

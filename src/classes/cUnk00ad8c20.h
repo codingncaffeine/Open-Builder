@@ -3,22 +3,23 @@
 #define OB_CLASSES_CUNK00AD8C20_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x10
 class cUnk00ad8c20 {
 public:
-    virtual void Slot00_ace4b0();
+    virtual void Slot00_ace4b0(uint32_t, uint32_t);
     virtual void Slot01_ace4b0();
     virtual void Slot02_ace4b0();
-    virtual void Slot03_ad8c20();
-    virtual void Slot04_ad8c20();
-    virtual void Slot05_ad8c20();
-    virtual void Slot06_ad8c20();
+    virtual void Slot03_ad8c20(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_ad8c20(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_ad8c20(uint32_t, uint32_t);
+    virtual void Slot06_ad8c20(uint32_t, uint32_t);
     virtual ~cUnk00ad8c20();
-    virtual void Slot08_ad8c20();
-    virtual void Slot09_ad8c20() = 0;
-    virtual void Slot10_ad8c20() = 0;
-    virtual void Slot11_ad8c20() = 0;
+    virtual void Slot08_ad8c20(uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_ad8c20(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot10_ad8c20(uint32_t, uint32_t) = 0;
+    virtual bool Slot11_ad8c20(uint32_t, uint32_t) = 0;
     char unknown4[0xc];
 };
 #ifdef _MSC_VER

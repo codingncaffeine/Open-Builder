@@ -3,28 +3,31 @@
 #define OB_CLASSES_CUNK00AD16C8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad16c8
 // SIZE 0x28
 class cUnk00ad16c8 {
 public:
-    virtual void Slot00_ad16c8();
+    virtual void Slot00_ad16c8(uint32_t, uint32_t);
     virtual void Slot01_ad16c8();
     virtual void Slot02_ad16c8();
-    virtual void Slot03_ad16c8();
-    virtual void Slot04_ad16c8();
-    virtual void Slot05_ad16c8();
-    virtual void Slot06_ad16c8();
-    virtual void Slot07_ad16c8();
-    virtual void Slot08_ad16c8();
-    virtual void Slot09_ad16c8();
-    virtual void Slot10_ad16c8();
-    virtual void Slot11_ad16c8();
-    virtual void Slot12_ad16c8();
+    virtual uint32_t Slot03_ad16c8();
+    virtual void Slot04_ad16c8(uint32_t);
+    virtual void Slot05_ad16c8(uint32_t);
+    virtual void Slot06_ad16c8(uint32_t);
+    virtual void Slot07_ad16c8(uint32_t, uint32_t);
+    virtual void Slot08_ad16c8(uint32_t);
+    virtual void Slot09_ad16c8(uint32_t);
+    virtual void Slot10_ad16c8(uint32_t);
+    virtual void Slot11_ad16c8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot12_ad16c8(uint32_t, uint32_t);
     virtual void Slot13_ad16c8();
-    virtual void Slot14_ad16c8();
+    virtual void Slot14_ad16c8(uint32_t);
     virtual ~cUnk00ad16c8();
-    char unknown4[0x24];
+    char unknown4[0x8];
+    uint32_t fieldc;
+    char unknown10[0x18];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad16c8[sizeof(cUnk00ad16c8) == 0x28 ? 1 : -1];

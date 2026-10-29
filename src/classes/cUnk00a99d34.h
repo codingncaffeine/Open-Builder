@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A99D34_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad8c20.h"
 
 // VTABLE: 0x00a99d34
@@ -10,9 +11,9 @@
 class cUnk00a99d34 : public cUnk00ad8c20 {
 public:
     virtual ~cUnk00a99d34() {}
-    virtual void Slot09_ad8c20();
-    virtual void Slot10_ad8c20();
-    virtual void Slot11_ad8c20();
+    virtual void Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ad8c20(uint32_t, uint32_t);
+    virtual bool Slot11_ad8c20(uint32_t, uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a99d34[sizeof(cUnk00a99d34) == 0x10 ? 1 : -1];

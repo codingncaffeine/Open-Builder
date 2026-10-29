@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AA6658_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00aa6658
 // SIZE 0x28
@@ -13,32 +14,37 @@ public:
     virtual unsigned int Release();
     virtual void Slot03_aa6658();
     virtual void Slot04_aa6658();
-    virtual void Slot05_aa6658();
-    virtual void Slot06_aa6658();
-    virtual void Slot07_aa6658();
-    virtual void Slot08_aa6658();
-    virtual void Slot09_aa6658();
-    virtual void Slot10_aa6658();
-    virtual void Slot11_aa6658();
-    virtual void Slot12_aa6658();
-    virtual void Slot13_aa6658();
-    virtual void Slot14_aa6658();
-    virtual void Slot15_aa6658();
-    virtual void Slot16_aa6658();
-    virtual void Slot17_aa6658();
-    virtual void Slot18_aa6658();
-    virtual void Slot19_aa6658();
-    virtual void Slot20_aa6658();
-    virtual void Slot21_aa6658();
-    virtual void Slot22_aa6658();
+    virtual uint32_t Slot05_aa6658();
+    virtual void Slot06_aa6658(uint32_t);
+    virtual uint32_t Slot07_aa6658();
+    virtual void Slot08_aa6658(uint32_t);
+    virtual void Slot09_aa6658(uint32_t);
+    virtual void Slot10_aa6658(uint32_t);
+    virtual bool Slot11_aa6658();
+    virtual bool Slot12_aa6658();
+    virtual bool Slot13_aa6658(uint32_t);
+    virtual bool Slot14_aa6658(uint32_t, uint32_t);
+    virtual bool Slot15_aa6658(uint32_t, uint32_t);
+    virtual bool Slot16_aa6658(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot17_aa6658(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot18_aa6658(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot19_aa6658(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot20_aa6658(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot21_aa6658(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot22_aa6658();
     virtual void Slot23_aa6658();
     virtual void Slot24_aa6658();
     virtual void Slot25_aa6658();
     virtual ~cUnk00aa6658() {}
     virtual void Slot27_aa6658();
-    virtual void Slot28_aa6658();
+    virtual void Slot28_aa6658(uint32_t);
     virtual void Slot29_aa6658();
-    char unknown4[0x24];
+    char unknown4[0x8];
+    uint32_t fieldc;
+    char unknown10[0x4];
+    uint32_t field14;
+    uint32_t field18;
+    char unknown1c[0xc];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa6658[sizeof(cUnk00aa6658) == 0x28 ? 1 : -1];

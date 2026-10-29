@@ -3,13 +3,14 @@
 #define OB_CLASSES_CUNK00AD1E58_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00abfed0.h"
 
 // VTABLE: 0x00ad1e58
 class cUnk00ad1e58 : public cUnk00abfed0 {
 public:
     virtual ~cUnk00ad1e58();
-    virtual void Slot03_abfed0();
+    virtual void Slot03_abfed0(uint32_t, uint32_t, uint32_t);
 };
 
 // SYNTHETIC: 0x009307fc

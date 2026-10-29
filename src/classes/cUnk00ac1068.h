@@ -3,27 +3,28 @@
 #define OB_CLASSES_CUNK00AC1068_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ac0f80.h"
 
 // VTABLE: 0x00ac1068
 class cUnk00ac1068 : public cUnk00ac0f80 {
 public:
     virtual void Slot57_ac1068();
-    virtual void Slot58_ac1068();
+    virtual void Slot58_ac1068(uint32_t);
     virtual void Slot59_ac1068();
-    virtual void Slot60_ac1068();
-    virtual void Slot61_ac1068();
-    virtual void Slot62_ac1068();
-    virtual void Slot63_ac1068();
-    virtual void Slot64_ac1068();
-    virtual void Slot65_ac1068();
-    virtual void Slot66_ac1068();
-    virtual void Slot67_ac1068();
-    virtual void Slot68_ac1068();
-    virtual void Slot69_ac1068();
+    virtual void Slot60_ac1068(uint32_t, uint32_t, uint32_t);
+    virtual void Slot61_ac1068(uint32_t, uint32_t);
+    virtual uint32_t Slot62_ac1068();
+    virtual void Slot63_ac1068(uint32_t, uint32_t, uint32_t);
+    virtual void Slot64_ac1068(uint32_t, uint32_t);
+    virtual void Slot65_ac1068(uint32_t, uint32_t);
+    virtual void Slot66_ac1068(uint32_t, uint32_t);
+    virtual void Slot67_ac1068(uint32_t, uint32_t, uint32_t);
+    virtual void Slot68_ac1068(uint32_t, uint32_t);
+    virtual void Slot69_ac1068(uint32_t, uint32_t, uint32_t);
     virtual void Slot03_ac0f80();
-    virtual void Slot04_ac0f80();
-    virtual void Slot54_ac0f80();
+    virtual void Slot04_ac0f80(uint32_t);
+    virtual bool Slot54_ac0f80(uint32_t);
 };
 
 #endif

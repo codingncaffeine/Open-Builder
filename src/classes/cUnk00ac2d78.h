@@ -3,27 +3,28 @@
 #define OB_CLASSES_CUNK00AC2D78_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ac2d78 {
 public:
-    virtual void Slot00_ad4cf4() = 0;
+    virtual void Slot00_ad4cf4(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
-    virtual void Slot03_ad3e48() = 0;
-    virtual void Slot04_ac2d78() = 0;
-    virtual void Slot05_ac2d78() = 0;
-    virtual void Slot06_ac2d78() = 0;
-    virtual void Slot07_ac2d78() = 0;
-    virtual void Slot08_ac2d78() = 0;
-    virtual void Slot09_ac2d78() = 0;
-    virtual void Slot10_ac2d78() = 0;
-    virtual void Slot11_ac2d78() = 0;
-    virtual void Slot12_ac2d78() = 0;
-    virtual void Slot13_ac2d78() = 0;
-    virtual void Slot14_ac2d78() = 0;
-    virtual void Slot15_ac2d78() = 0;
-    virtual void Slot16_ac2d78() = 0;
+    virtual void* Slot03_ad3e48() = 0;
+    virtual void Slot04_ac2d78(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot05_ac2d78(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot06_ac2d78(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot07_ac2d78(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot08_ac2d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot09_ac2d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot10_ac2d78(uint32_t) = 0;
+    virtual void Slot11_ac2d78(uint32_t) = 0;
+    virtual bool Slot12_ac2d78(uint32_t) = 0;
+    virtual void Slot13_ac2d78(uint32_t) = 0;
+    virtual bool Slot14_ac2d78(uint32_t) = 0;
+    virtual bool Slot15_ac2d78(uint32_t) = 0;
+    virtual bool Slot16_ac2d78() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac2d78[sizeof(cUnk00ac2d78) == 0x4 ? 1 : -1];

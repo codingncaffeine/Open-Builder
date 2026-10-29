@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ADC060_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00adc060 {
 public:

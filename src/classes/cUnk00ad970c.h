@@ -3,20 +3,21 @@
 #define OB_CLASSES_CUNK00AD970C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ad970c {
 public:
-    virtual void Slot00_ace4b0() = 0;
+    virtual void Slot00_ace4b0(uint32_t, uint32_t) = 0;
     virtual void Slot01_ace4b0() = 0;
     virtual void Slot02_ace4b0() = 0;
-    virtual void Slot03_ad970c() = 0;
-    virtual void Slot04_ad970c() = 0;
-    virtual void Slot05_ad970c() = 0;
-    virtual void Slot06_ad970c() = 0;
-    virtual void Slot07_ad970c() = 0;
-    virtual void Slot08_ad970c() = 0;
-    virtual void Slot09_ad970c() = 0;
-    virtual void Slot10_ad970c() = 0;
+    virtual void Slot03_ad970c(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot04_ad970c(uint32_t, uint32_t) = 0;
+    virtual void Slot05_ad970c(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot06_ad970c(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot07_ad970c(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot08_ad970c(uint32_t, uint32_t) = 0;
+    virtual void Slot09_ad970c(uint32_t) = 0;
+    virtual void Slot10_ad970c(uint32_t) = 0;
     virtual void Slot11_ad970c() = 0;
     virtual void Slot12_ad970c() = 0;
 };

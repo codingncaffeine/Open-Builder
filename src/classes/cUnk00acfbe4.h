@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ACFBE4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00acfbe4
 class cUnk00acfbe4 {
@@ -13,7 +14,7 @@ public:
     virtual void Slot03_acfbe4();
     virtual void Slot04_acfbe4();
     virtual ~cUnk00acfbe4();
-    virtual void Slot06_acfbe4();
+    virtual void Slot06_acfbe4(uint32_t);
 };
 
 // SYNTHETIC: 0x00920b1d

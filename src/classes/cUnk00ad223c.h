@@ -3,13 +3,14 @@
 #define OB_CLASSES_CUNK00AD223C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ad223c {
 public:
-    virtual void Slot00_ad22a0() = 0;
+    virtual void Slot00_ad22a0(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad22a0() = 0;
     virtual void Slot02_ad22a0() = 0;
-    virtual void Slot03_ad223c() = 0;
+    virtual void Slot03_ad223c(uint32_t) = 0;
 };
 
 #endif

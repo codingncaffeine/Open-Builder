@@ -3,23 +3,24 @@
 #define OB_CLASSES_CUNK00ABA6C0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00aba6c0 {
 public:
-    virtual void Slot00_aba6c0() = 0;
-    virtual void Slot01_aba6c0() = 0;
-    virtual void Slot02_aba6c0() = 0;
-    virtual void Slot03_aba6c0() = 0;
-    virtual void Slot04_aba6c0() = 0;
-    virtual void Slot05_aba6c0() = 0;
-    virtual void Slot06_aba6c0() = 0;
-    virtual void Slot07_aba6c0() = 0;
-    virtual void Slot08_aba6c0() = 0;
-    virtual void Slot09_aba6c0() = 0;
-    virtual void Slot10_aba6c0() = 0;
+    virtual void Slot00_aba6c0(uint32_t) = 0;
+    virtual void Slot01_aba6c0(uint32_t) = 0;
+    virtual void Slot02_aba6c0(uint32_t) = 0;
+    virtual void Slot03_aba6c0(uint32_t, uint32_t) = 0;
+    virtual void Slot04_aba6c0(uint32_t, uint32_t) = 0;
+    virtual void Slot05_aba6c0(uint32_t, uint32_t) = 0;
+    virtual void Slot06_aba6c0(uint32_t, uint32_t) = 0;
+    virtual void Slot07_aba6c0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot08_aba6c0(uint32_t, uint32_t) = 0;
+    virtual void Slot09_aba6c0(uint32_t) = 0;
+    virtual void Slot10_aba6c0(uint32_t) = 0;
     virtual void Slot11_aba6c0() = 0;
-    virtual void Slot12_aba6c0() = 0;
-    virtual void Slot13_aba6c0() = 0;
+    virtual void Slot12_aba6c0(uint32_t) = 0;
+    virtual void Slot13_aba6c0(uint32_t) = 0;
     virtual void Slot14_aba6c0() = 0;
     virtual void Slot15_aba6c0() = 0;
 };

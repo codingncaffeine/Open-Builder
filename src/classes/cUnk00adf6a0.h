@@ -3,20 +3,21 @@
 #define OB_CLASSES_CUNK00ADF6A0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00adf63c.h"
 
 // Between cUnk00adf63c and cUnk00adf6a0 at +0xd8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00adf6a0_d8 : public cUnk00adf63c {
-    virtual void Slot03_adf63c();
-    virtual void Slot04_adf63c();
-    virtual void Slot05_adf63c();
-    virtual void Slot06_adf63c();
-    virtual void Slot07_adf63c();
-    virtual void Slot08_adf63c();
-    virtual void Slot09_adf63c();
-    virtual void Slot10_adf63c();
-    virtual void Slot11_adf63c();
+    virtual void* Slot03_adf63c();
+    virtual void Slot04_adf63c(uint32_t);
+    virtual void Slot05_adf63c(uint32_t, uint32_t);
+    virtual void Slot06_adf63c(uint32_t, uint32_t);
+    virtual void Slot07_adf63c(uint32_t, uint32_t);
+    virtual void Slot08_adf63c(uint32_t);
+    virtual void Slot09_adf63c(uint32_t);
+    virtual void Slot10_adf63c(uint32_t);
+    virtual void Slot11_adf63c(uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00adf6a0 cUnk00adc8d8
@@ -28,15 +29,15 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_adc8d8();
-    virtual void Slot62_adc8d8();
-    virtual void Slot88_adc8d8();
-    virtual void Slot130_adc8d8();
-    virtual void Slot131_adc8d8();
-    virtual void Slot134_adc8d8();
-    virtual void Slot136_adc8d8();
-    virtual void Slot138_adc8d8();
-    virtual void Slot07_add348();
+    virtual void Slot03_adc8d8(uint32_t);
+    virtual bool Slot62_adc8d8(uint32_t, uint32_t);
+    virtual bool Slot88_adc8d8();
+    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
+    virtual bool Slot131_adc8d8(uint32_t, uint32_t);
+    virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
     char unknowndc[0x20];

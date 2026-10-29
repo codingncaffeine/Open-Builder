@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ABB530_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aaaa9c.h"
 
 // The subobject at +0x0 (vtable 0x00abb530): an interface or base the class map has no class for.
@@ -12,36 +13,36 @@ struct OB_NOVTABLE cUnk00abb530_0 {
     virtual unsigned int Release() = 0;
     virtual void Slot03_abb530() = 0;
     virtual void Slot04_abb530() = 0;
-    virtual void Slot05_abb530() = 0;
-    virtual void Slot06_abb530() = 0;
-    virtual void Slot07_abb530() = 0;
+    virtual float Slot05_abb530() = 0;
+    virtual void Slot06_abb530(uint32_t) = 0;
+    virtual void Slot07_abb530(uint32_t, uint32_t) = 0;
     virtual void Slot08_abb530() = 0;
     virtual void Slot09_abb530() = 0;
-    virtual void Slot10_abb530() = 0;
-    virtual void Slot11_abb530() = 0;
-    virtual void Slot12_abb530() = 0;
-    virtual void Slot13_abb530() = 0;
-    virtual void Slot14_abb530() = 0;
-    virtual void Slot15_abb530() = 0;
-    virtual void Slot16_abb530() = 0;
-    virtual void Slot17_abb530() = 0;
+    virtual void Slot10_abb530(uint32_t) = 0;
+    virtual void Slot11_abb530(uint32_t, uint32_t) = 0;
+    virtual void Slot12_abb530(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot13_abb530(uint32_t) = 0;
+    virtual void Slot14_abb530(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot15_abb530(uint32_t) = 0;
+    virtual void Slot16_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot17_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot18_abb530() = 0;
-    virtual void Slot19_abb530() = 0;
-    virtual void Slot20_abb530() = 0;
-    virtual void Slot21_abb530() = 0;
-    virtual void Slot22_abb530() = 0;
-    virtual void Slot23_abb530() = 0;
-    virtual void Slot24_abb530() = 0;
-    virtual void Slot25_abb530() = 0;
-    virtual void Slot26_abb530() = 0;
-    virtual void Slot27_abb530() = 0;
-    virtual void Slot28_abb530() = 0;
+    virtual void Slot19_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot20_abb530(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot21_abb530(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot22_abb530(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot23_abb530(uint32_t, uint32_t) = 0;
+    virtual void Slot24_abb530(uint32_t) = 0;
+    virtual void Slot25_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot26_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot27_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot28_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual ~cUnk00abb530_0() {}
 };
 
 // Between cUnk00aaaa9c and cUnk00abb530 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00abb530_4 : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00abb530 cUnk00abb530_0
@@ -55,31 +56,33 @@ public:
     virtual unsigned int Release();
     virtual void Slot03_abb530();
     virtual void Slot04_abb530();
-    virtual void Slot05_abb530();
-    virtual void Slot06_abb530();
-    virtual void Slot07_abb530();
+    virtual float Slot05_abb530();
+    virtual void Slot06_abb530(uint32_t);
+    virtual void Slot07_abb530(uint32_t, uint32_t);
     virtual void Slot08_abb530();
     virtual void Slot09_abb530();
-    virtual void Slot10_abb530();
-    virtual void Slot11_abb530();
-    virtual void Slot12_abb530();
-    virtual void Slot13_abb530();
-    virtual void Slot14_abb530();
-    virtual void Slot15_abb530();
-    virtual void Slot16_abb530();
-    virtual void Slot17_abb530();
+    virtual void Slot10_abb530(uint32_t);
+    virtual void Slot11_abb530(uint32_t, uint32_t);
+    virtual void Slot12_abb530(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_abb530(uint32_t);
+    virtual void Slot14_abb530(uint32_t, uint32_t, uint32_t);
+    virtual void Slot15_abb530(uint32_t);
+    virtual void Slot16_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot18_abb530();
-    virtual void Slot19_abb530();
-    virtual void Slot20_abb530();
-    virtual void Slot21_abb530();
-    virtual void Slot22_abb530();
-    virtual void Slot23_abb530();
-    virtual void Slot24_abb530();
-    virtual void Slot25_abb530();
-    virtual void Slot26_abb530();
-    virtual void Slot27_abb530();
-    virtual void Slot28_abb530();
-    char unknown8[0x1d0];
+    virtual void Slot19_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot20_abb530(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot21_abb530(uint32_t, uint32_t, uint32_t);
+    virtual void Slot22_abb530(uint32_t, uint32_t, uint32_t);
+    virtual void Slot23_abb530(uint32_t, uint32_t);
+    virtual void Slot24_abb530(uint32_t);
+    virtual void Slot25_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot26_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot27_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot28_abb530(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    char unknown8[0x14];
+    float field1c;
+    char unknown20[0x1b8];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00abb530[sizeof(cUnk00abb530) == 0x1d8 ? 1 : -1];

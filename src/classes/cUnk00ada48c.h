@@ -3,15 +3,16 @@
 #define OB_CLASSES_CUNK00ADA48C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ada48c {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ada48c() = 0;
-    virtual void Slot04_ada48c() = 0;
-    virtual void Slot05_ada48c() = 0;
+    virtual void Slot03_ada48c(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot04_ada48c() = 0;
+    virtual uint32_t Slot05_ada48c() = 0;
 };
 
 #endif

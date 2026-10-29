@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A9E160_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a9e0e4.h"
 #include "classes/cUnk00aaaa9c.h"
 #include "gzcom/cUnk0090da1e.h"
@@ -11,14 +12,14 @@
 struct OB_NOVTABLE cUnk00a9e160_8 : public cUnk00a9e0e4 {
     virtual void Slot03_a9e0e4();
     virtual void Slot04_a9e0e4();
-    virtual void Slot05_a9e0e4();
-    virtual void Slot06_a9e0e4();
-    virtual void Slot07_a9e0e4();
+    virtual uint32_t Slot05_a9e0e4();
+    virtual bool Slot06_a9e0e4(uint32_t, uint32_t);
+    virtual uint32_t Slot07_a9e0e4();
 };
 
 // Between cUnk00aaaa9c and cUnk00a9e160 at +0xc: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a9e160_c : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00a9e160 cUnk0090da1e
@@ -29,7 +30,7 @@ class cUnk00a9e160 : public cUnk0090da1e, public cUnk00a9e160_8, public cUnk00a9
 public:
     virtual ~cUnk00a9e160();
     virtual void Slot06_a9e160();
-    virtual void Slot07_a9e160();
+    virtual uint32_t Slot07_a9e160();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();

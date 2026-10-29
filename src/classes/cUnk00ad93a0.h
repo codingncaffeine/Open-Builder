@@ -3,29 +3,30 @@
 #define OB_CLASSES_CUNK00AD93A0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad8ca0.h"
 #include "classes/cUnk00ad8fc8.h"
 
 // Between cUnk00ad8ca0 and cUnk00ad93a0 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad93a0_4 : public cUnk00ad8ca0 {
-    virtual void Slot06_ad8ca0();
-    virtual void Slot07_ad8ca0();
+    virtual void Slot06_ad8ca0(uint32_t, uint32_t);
+    virtual bool Slot07_ad8ca0();
     virtual void Slot08_ad8ca0();
-    virtual void Slot09_ad8ca0();
-    virtual void Slot14_ad8ca0();
-    virtual void Slot15_ad8ca0();
-    virtual void Slot16_ad8ca0();
-    virtual void Slot18_ad8ca0();
+    virtual bool Slot09_ad8ca0();
+    virtual uint32_t Slot14_ad8ca0();
+    virtual void Slot15_ad8ca0(uint32_t);
+    virtual uint32_t Slot16_ad8ca0(uint32_t);
+    virtual uint32_t Slot18_ad8ca0(uint32_t, uint32_t);
     virtual void Slot31_ad8ca0();
-    virtual void Slot32_ad8ca0();
-    virtual void Slot33_ad8ca0();
-    virtual void Slot34_ad8ca0();
-    virtual void Slot35_ad8ca0();
-    virtual void Slot36_ad8ca0();
-    virtual void Slot37_ad8ca0();
-    virtual void Slot38_ad8ca0();
-    virtual void Slot39_ad8ca0();
-    virtual void Slot40_ad8ca0();
+    virtual void Slot32_ad8ca0(uint32_t);
+    virtual void Slot33_ad8ca0(uint32_t);
+    virtual void Slot34_ad8ca0(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot35_ad8ca0(uint32_t, uint32_t);
+    virtual void Slot36_ad8ca0(uint32_t);
+    virtual void Slot37_ad8ca0(uint32_t);
+    virtual bool Slot38_ad8ca0(uint32_t);
+    virtual void Slot39_ad8ca0(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot40_ad8ca0(uint32_t, uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00ad93a0 cUnk00ad8fc8
@@ -34,39 +35,47 @@ struct OB_NOVTABLE cUnk00ad93a0_4 : public cUnk00ad8ca0 {
 class cUnk00ad93a0 : public cUnk00ad8fc8, public cUnk00ad93a0_4 {
 public:
     virtual ~cUnk00ad93a0() {}
-    virtual void Slot26_ad93a0();
-    virtual void Slot27_ad93a0();
+    virtual void Slot26_ad93a0(uint32_t, uint32_t);
+    virtual void Slot27_ad93a0(uint32_t, uint32_t, uint32_t);
     virtual void Slot28_ad93a0();
-    virtual void Slot29_ad93a0();
-    virtual void Slot30_ad93a0();
+    virtual void Slot29_ad93a0(uint32_t, uint32_t);
+    virtual void Slot30_ad93a0(uint32_t, uint32_t, uint32_t);
     virtual void Slot31_ad93a0();
-    virtual void Slot00_ad8fc8();
+    virtual void Slot00_ad8fc8(uint32_t, uint32_t);
     virtual void Slot01_ad8fc8();
     virtual void Slot02_ad8fc8();
     virtual void Slot03_ad8fc8();
-    virtual void Slot04_ad8fc8();
+    virtual void Slot04_ad8fc8(uint32_t, uint32_t, uint32_t);
     virtual void Slot05_ad8fc8();
     virtual void Slot06_ad8fc8();
-    virtual void Slot07_ad8fc8();
-    virtual void Slot08_ad8fc8();
-    virtual void Slot09_ad8fc8();
-    virtual void Slot10_ad8fc8();
-    virtual void Slot11_ad8fc8();
-    virtual void Slot12_ad8fc8();
-    virtual void Slot13_ad8fc8();
+    virtual void* Slot07_ad8fc8();
+    virtual void Slot08_ad8fc8(uint32_t);
+    virtual void Slot09_ad8fc8(uint32_t);
+    virtual void Slot10_ad8fc8(uint32_t);
+    virtual uint32_t Slot11_ad8fc8();
+    virtual void* Slot12_ad8fc8();
+    virtual void Slot13_ad8fc8(uint32_t);
     virtual void Slot14_ad8fc8();
-    virtual void Slot15_ad8fc8();
-    virtual void Slot16_ad8fc8();
-    virtual void Slot17_ad8fc8();
-    virtual void Slot18_ad8fc8();
-    virtual void Slot19_ad8fc8();
-    virtual void Slot20_ad8fc8();
-    virtual void Slot21_ad8fc8();
-    virtual void Slot22_ad8fc8();
-    virtual void Slot23_ad8fc8();
-    virtual void Slot24_ad8fc8();
+    virtual void Slot15_ad8fc8(uint32_t, uint32_t);
+    virtual void Slot16_ad8fc8(bool);
+    virtual void Slot17_ad8fc8(uint32_t, uint32_t);
+    virtual void Slot18_ad8fc8(uint32_t, uint32_t);
+    virtual void Slot19_ad8fc8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot20_ad8fc8(uint32_t);
+    virtual void Slot21_ad8fc8(uint32_t, uint32_t);
+    virtual void Slot22_ad8fc8(uint32_t, uint32_t);
+    virtual bool Slot23_ad8fc8();
+    virtual void Slot24_ad8fc8(uint32_t, uint32_t);
     virtual void Slot25_ad8fc8();
-    char unknown14[0x9c];
+    char unknown14[0xc];
+    char field20[0x18];
+    uint32_t field38;
+    char unknown3c[0x6];
+    bool field42;
+    char unknown43[0x1];
+    char field44[0x20];
+    bool field64;
+    char unknown65[0x4b];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad93a0[sizeof(cUnk00ad93a0) == 0xb0 ? 1 : -1];

@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00A881C0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00a881c0 {
 public:
     virtual void Slot00_a881c0() = 0;
     virtual void Slot01_a881c0() = 0;
     virtual void Slot02_a881c0() = 0;
-    virtual void Slot03_a881c0() = 0;
-    virtual void Slot04_a881c0() = 0;
+    virtual bool Slot03_a881c0(uint32_t) = 0;
+    virtual bool Slot04_a881c0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
 };
 
 #endif

@@ -3,54 +3,55 @@
 #define OB_CLASSES_CUNK00AB0DC8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // The subobject at +0x0 (vtable 0x00ab0dc8): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ab0dc8_0 {
-    virtual void Slot00_ab0dc8() = 0;
+    virtual void Slot00_ab0dc8(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab0dc8() = 0;
     virtual void Slot02_ab0dc8() = 0;
     virtual void Slot03_ab0dc8() = 0;
     virtual void Slot04_ab0dc8() = 0;
-    virtual void Slot05_ab0dc8() = 0;
+    virtual uint32_t Slot05_ab0dc8() = 0;
     virtual void Slot06_ab0dc8() = 0;
-    virtual void Slot07_ab0dc8() = 0;
-    virtual void Slot08_ab0dc8() = 0;
-    virtual void Slot09_ab0dc8() = 0;
-    virtual void Slot10_ab0dc8() = 0;
-    virtual void Slot11_ab0dc8() = 0;
-    virtual void Slot12_ab0dc8() = 0;
-    virtual void Slot13_ab0dc8() = 0;
+    virtual uint32_t Slot07_ab0dc8() = 0;
+    virtual void Slot08_ab0dc8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot09_ab0dc8(uint32_t, uint32_t) = 0;
+    virtual void Slot10_ab0dc8(uint32_t, uint32_t) = 0;
+    virtual void Slot11_ab0dc8(uint32_t) = 0;
+    virtual void Slot12_ab0dc8(uint32_t, uint32_t) = 0;
+    virtual void Slot13_ab0dc8(uint32_t) = 0;
     virtual ~cUnk00ab0dc8_0() {}
-    virtual void Slot15_ab0dc8() = 0;
+    virtual uint32_t Slot15_ab0dc8() = 0;
 };
 
 // The subobject at +0x4 (vtable 0x00ab0db8): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ab0dc8_4 {
-    virtual void Slot00_ab0dc8() = 0;
+    virtual void Slot00_ab0dc8(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab0dc8() = 0;
     virtual void Slot02_ab0dc8() = 0;
-    virtual void Slot03_ab0dc8_4();
+    virtual void Slot03_ab0dc8_4(uint32_t);
 };
 
 // The subobject at +0x8 (vtable 0x00ab0d9c): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ab0dc8_8 {
-    virtual void Slot00_ab0dc8() = 0;
+    virtual void Slot00_ab0dc8(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab0dc8() = 0;
     virtual void Slot02_ab0dc8() = 0;
-    virtual void Slot03_ab0dc8_8();
-    virtual void Slot04_ab0dc8_8();
-    virtual void Slot05_ab0dc8_8();
-    virtual void Slot06_ab0dc8_8();
+    virtual void Slot03_ab0dc8_8(uint32_t);
+    virtual uint32_t Slot04_ab0dc8_8();
+    virtual bool Slot05_ab0dc8_8();
+    virtual void Slot06_ab0dc8_8(uint32_t, uint32_t, uint32_t);
 };
 
 // The subobject at +0xc (vtable 0x00ab0d84): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ab0dc8_c {
-    virtual void Slot00_ab0dc8() = 0;
+    virtual void Slot00_ab0dc8(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab0dc8() = 0;
     virtual void Slot02_ab0dc8() = 0;
-    virtual void Slot03_ab0dc8_c();
-    virtual void Slot04_ab0dc8_c();
-    virtual void Slot05_ab0dc8_c();
+    virtual void Slot03_ab0dc8_c(uint32_t);
+    virtual void Slot04_ab0dc8_c(uint32_t);
+    virtual uint32_t Slot05_ab0dc8_c();
 };
 
 // VTABLE: 0x00ab0dc8 cUnk00ab0dc8_0
@@ -60,21 +61,21 @@ struct OB_NOVTABLE cUnk00ab0dc8_c {
 class cUnk00ab0dc8 : public cUnk00ab0dc8_0, public cUnk00ab0dc8_4, public cUnk00ab0dc8_8, public cUnk00ab0dc8_c {
 public:
     virtual ~cUnk00ab0dc8();
-    virtual void Slot00_ab0dc8();
+    virtual void Slot00_ab0dc8(uint32_t, uint32_t);
     virtual void Slot01_ab0dc8();
     virtual void Slot02_ab0dc8();
     virtual void Slot03_ab0dc8();
     virtual void Slot04_ab0dc8();
-    virtual void Slot05_ab0dc8();
+    virtual uint32_t Slot05_ab0dc8();
     virtual void Slot06_ab0dc8();
-    virtual void Slot07_ab0dc8();
-    virtual void Slot08_ab0dc8();
-    virtual void Slot09_ab0dc8();
-    virtual void Slot10_ab0dc8();
-    virtual void Slot11_ab0dc8();
-    virtual void Slot12_ab0dc8();
-    virtual void Slot13_ab0dc8();
-    virtual void Slot15_ab0dc8();
+    virtual uint32_t Slot07_ab0dc8();
+    virtual void Slot08_ab0dc8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_ab0dc8(uint32_t, uint32_t);
+    virtual void Slot10_ab0dc8(uint32_t, uint32_t);
+    virtual void Slot11_ab0dc8(uint32_t);
+    virtual void Slot12_ab0dc8(uint32_t, uint32_t);
+    virtual void Slot13_ab0dc8(uint32_t);
+    virtual uint32_t Slot15_ab0dc8();
 };
 
 // SYNTHETIC: 0x006a05a0

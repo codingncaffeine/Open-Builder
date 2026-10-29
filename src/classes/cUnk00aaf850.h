@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AAF850_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aaf7f0.h"
 #include "classes/cUnk00ace624.h"
 
@@ -14,22 +15,22 @@ public:
     virtual ~cUnk00aaf850() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_aaf7f0();
-    virtual void Slot03_aaf7f0();
-    virtual void Slot04_aaf7f0();
-    virtual void Slot05_aaf7f0();
-    virtual void Slot06_aaf7f0();
-    virtual void Slot07_aaf7f0();
-    virtual void Slot08_aaf7f0();
-    virtual void Slot09_aaf7f0();
-    virtual void Slot10_aaf7f0();
-    virtual void Slot11_aaf7f0();
-    virtual void Slot12_aaf7f0();
-    virtual void Slot13_aaf7f0();
+    virtual void Slot00_aaf7f0(uint32_t, uint32_t);
+    virtual void Slot03_aaf7f0(uint32_t);
+    virtual void Slot04_aaf7f0(uint32_t);
+    virtual uint32_t Slot05_aaf7f0();
+    virtual void Slot06_aaf7f0(uint32_t, uint32_t);
+    virtual void Slot07_aaf7f0(uint32_t, uint32_t);
+    virtual void Slot08_aaf7f0(uint32_t);
+    virtual void Slot09_aaf7f0(uint32_t);
+    virtual void Slot10_aaf7f0(uint32_t);
+    virtual void Slot11_aaf7f0(uint32_t);
+    virtual void Slot12_aaf7f0(uint32_t, uint32_t);
+    virtual void Slot13_aaf7f0(uint32_t);
     virtual void Slot14_aaf7f0();
-    virtual void Slot15_aaf7f0();
+    virtual void Slot15_aaf7f0(uint32_t);
     virtual void Slot16_aaf7f0();
-    virtual void Slot17_aaf7f0();
+    virtual bool Slot17_aaf7f0();
     char unknownc[0xc];
 };
 #ifdef _MSC_VER

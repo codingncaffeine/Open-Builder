@@ -3,11 +3,12 @@
 #define OB_CLASSES_CUNK00AA0F48_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00aa0f48
 class cUnk00aa0f48 {
 public:
-    virtual void Slot00_aa0f48();
+    virtual void Slot00_aa0f48(uint32_t, uint32_t);
     virtual void Slot01_aa0f48();
     virtual void Slot02_aa0f48();
     virtual ~cUnk00aa0f48() {}
@@ -15,15 +16,15 @@ public:
     virtual void Slot05_aa0f48();
     virtual void Slot06_aa0f48();
     virtual void Slot07_aa0f48();
-    virtual void Slot08_aa0f48();
-    virtual void Slot09_aa0f48();
+    virtual void Slot08_aa0f48(uint32_t, uint32_t);
+    virtual bool Slot09_aa0f48();
     virtual void Slot10_aa0f48();
-    virtual void Slot11_aa0f48();
-    virtual void Slot12_aa0f48();
-    virtual void Slot13_aa0f48();
-    virtual void Slot14_aa0f48();
+    virtual void Slot11_aa0f48(uint32_t);
+    virtual void Slot12_aa0f48(uint32_t);
+    virtual void* Slot13_aa0f48();
+    virtual uint32_t Slot14_aa0f48();
     virtual void Slot15_aa0f48();
-    virtual void Slot16_aa0f48();
+    virtual void Slot16_aa0f48(uint32_t);
 };
 
 #endif

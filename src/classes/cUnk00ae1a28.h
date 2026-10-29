@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AE1A28_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ae1a28 {
@@ -10,21 +11,21 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ae1a28() = 0;
-    virtual void Slot04_ae1a28() = 0;
-    virtual void Slot05_ae1a28() = 0;
-    virtual void Slot06_ae1a28() = 0;
+    virtual void Slot03_ae1a28(uint32_t) = 0;
+    virtual uint32_t Slot04_ae1a28() = 0;
+    virtual void Slot05_ae1a28(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot06_ae1a28(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot07_ae1a28() = 0;
-    virtual void Slot08_ae1a28() = 0;
-    virtual void Slot09_ae1a28() = 0;
+    virtual void Slot08_ae1a28(uint32_t) = 0;
+    virtual void Slot09_ae1a28(uint32_t) = 0;
     virtual void Slot10_ae1a28() = 0;
     virtual void Slot11_ae1a28() = 0;
-    virtual void Slot12_ae1a28() = 0;
-    virtual void Slot13_ae1a28() = 0;
-    virtual void Slot14_ae1a28() = 0;
-    virtual void Slot15_ae1a28() = 0;
+    virtual void Slot12_ae1a28(uint32_t) = 0;
+    virtual void Slot13_ae1a28(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot14_ae1a28(uint32_t) = 0;
+    virtual void Slot15_ae1a28(uint32_t) = 0;
     virtual void Slot16_ae1a28() = 0;
-    virtual void Slot17_ae1a28() = 0;
+    virtual void Slot17_ae1a28(uint32_t) = 0;
     virtual void Slot18_ae1a28() = 0;
 };
 #ifdef _MSC_VER

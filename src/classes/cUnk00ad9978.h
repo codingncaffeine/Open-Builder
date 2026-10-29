@@ -3,37 +3,38 @@
 #define OB_CLASSES_CUNK00AD9978_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad9978
 class cUnk00ad9978 {
 public:
     virtual ~cUnk00ad9978() {}
-    virtual void Slot01_ad9978();
-    virtual void Slot02_ad9978();
-    virtual void Slot03_ad9978();
-    virtual void Slot04_ad9978();
-    virtual void Slot05_ad9978();
-    virtual void Slot06_ad9978();
-    virtual void Slot07_ad9978();
-    virtual void Slot08_ad9978();
-    virtual void Slot09_ad9978();
-    virtual void Slot10_ad9978();
-    virtual void Slot11_ad9978();
-    virtual void Slot12_ad9978();
-    virtual void Slot13_ad9978();
-    virtual void Slot14_ad9978();
-    virtual void Slot15_ad9978();
-    virtual void Slot16_ad9978();
-    virtual void Slot17_ad9978();
-    virtual void Slot18_ad9978();
-    virtual void Slot19_ad9978();
-    virtual void Slot20_ad9978();
-    virtual void Slot21_ad9978();
-    virtual void Slot22_ad9978();
-    virtual void Slot23_ad9978();
-    virtual void Slot24_ad9978();
-    virtual void Slot25_ad9978();
-    virtual void Slot26_ad9978();
+    virtual void Slot01_ad9978(uint32_t);
+    virtual void Slot02_ad9978(uint32_t);
+    virtual void Slot03_ad9978(uint32_t);
+    virtual void Slot04_ad9978(uint32_t);
+    virtual void Slot05_ad9978(uint32_t);
+    virtual void Slot06_ad9978(uint32_t);
+    virtual void Slot07_ad9978(uint32_t);
+    virtual void Slot08_ad9978(uint32_t);
+    virtual void Slot09_ad9978(uint32_t);
+    virtual void Slot10_ad9978(uint32_t);
+    virtual void Slot11_ad9978(uint32_t);
+    virtual void Slot12_ad9978(uint32_t);
+    virtual void Slot13_ad9978(uint32_t);
+    virtual void Slot14_ad9978(uint32_t, uint32_t);
+    virtual void Slot15_ad9978(uint32_t);
+    virtual void Slot16_ad9978(uint32_t);
+    virtual void Slot17_ad9978(uint32_t);
+    virtual void Slot18_ad9978(uint32_t);
+    virtual void Slot19_ad9978(uint32_t);
+    virtual void Slot20_ad9978(uint32_t);
+    virtual void Slot21_ad9978(uint32_t);
+    virtual void Slot22_ad9978(uint32_t);
+    virtual void Slot23_ad9978(uint32_t);
+    virtual void Slot24_ad9978(uint32_t);
+    virtual void Slot25_ad9978(uint32_t);
+    virtual void Slot26_ad9978(uint32_t);
 };
 
 // SYNTHETIC: 0x0097ee67

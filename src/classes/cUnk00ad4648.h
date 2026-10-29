@@ -3,33 +3,35 @@
 #define OB_CLASSES_CUNK00AD4648_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad4648
 // SIZE 0x18
 class cUnk00ad4648 {
 public:
-    virtual void Slot00_ad4cf4();
+    virtual void Slot00_ad4cf4(uint32_t, uint32_t);
     virtual void Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
-    virtual void Slot03_ad4648();
-    virtual void Slot04_ad4648();
-    virtual void Slot05_ad4648();
+    virtual bool Slot03_ad4648(uint32_t);
+    virtual void Slot04_ad4648(uint32_t);
+    virtual void Slot05_ad4648(uint32_t);
     virtual void Slot06_ad4648();
-    virtual void Slot07_ad4648();
+    virtual void Slot07_ad4648(uint32_t);
     virtual void Slot08_ad4648();
     virtual void Slot09_ad4648();
-    virtual void Slot10_ad4648();
-    virtual void Slot11_ad4648();
-    virtual void Slot12_ad4648();
-    virtual void Slot13_ad4648();
-    virtual void Slot14_ad4648();
-    virtual void Slot15_ad4648();
-    virtual void Slot16_ad4648();
+    virtual bool Slot10_ad4648(uint32_t, uint32_t);
+    virtual void Slot11_ad4648(uint32_t, uint32_t);
+    virtual bool Slot12_ad4648(uint32_t, uint32_t);
+    virtual bool Slot13_ad4648(uint32_t, uint32_t);
+    virtual void Slot14_ad4648(uint32_t, uint32_t);
+    virtual bool Slot15_ad4648(uint32_t, uint32_t);
+    virtual void Slot16_ad4648(uint32_t);
     virtual ~cUnk00ad4648();
-    virtual void Slot18_ad4648();
-    virtual void Slot19_ad4648();
-    virtual void Slot20_ad4648();
-    char unknown4[0x14];
+    virtual uint32_t Slot18_ad4648();
+    virtual bool Slot19_ad4648(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot20_ad4648(uint32_t, uint32_t, uint32_t);
+    uint32_t field4;
+    char unknown8[0x10];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad4648[sizeof(cUnk00ad4648) == 0x18 ? 1 : -1];

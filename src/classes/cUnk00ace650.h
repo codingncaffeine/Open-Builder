@@ -3,29 +3,30 @@
 #define OB_CLASSES_CUNK00ACE650_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ace650
 // SIZE 0xc
 class cUnk00ace650 {
 public:
-    virtual void Slot00_ace650();
+    virtual void Slot00_ace650(uint32_t, uint32_t);
     virtual void Slot01_ace650();
     virtual void Slot02_ace650();
     virtual void Slot03_ace650();
-    virtual void Slot04_ace650();
-    virtual void Slot05_ace650();
-    virtual void Slot06_ace650();
-    virtual void Slot07_ace650();
-    virtual void Slot08_ace650();
-    virtual void Slot09_ace650();
-    virtual void Slot10_ace650();
-    virtual void Slot11_ace650();
-    virtual void Slot12_ace650();
-    virtual void Slot13_ace650();
+    virtual void Slot04_ace650(uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_ace650(uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ace650(uint32_t);
+    virtual void Slot07_ace650(uint32_t);
+    virtual void Slot08_ace650(uint32_t);
+    virtual void Slot09_ace650(uint32_t);
+    virtual void Slot10_ace650(uint32_t, uint32_t);
+    virtual void Slot11_ace650(uint32_t, uint32_t);
+    virtual void Slot12_ace650(uint32_t, uint32_t);
+    virtual void Slot13_ace650(uint32_t, uint32_t);
     virtual void Slot14_ace650();
-    virtual void Slot15_ace650();
-    virtual void Slot16_ace650();
-    virtual void Slot17_ace650();
+    virtual void Slot15_ace650(uint32_t);
+    virtual void Slot16_ace650(uint32_t);
+    virtual void Slot17_ace650(uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ace650();
     char unknown4[0x8];
 };

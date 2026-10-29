@@ -3,40 +3,41 @@
 #define OB_CLASSES_CUNK00AEFDE0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00aefde0 {
 public:
-    virtual void Slot00_aefde0();
+    virtual void Slot00_aefde0(uint32_t, uint32_t);
     virtual void Slot01_aefde0();
     virtual void Slot02_aefde0();
-    virtual void Slot03_aefde0();
+    virtual void Slot03_aefde0(uint32_t);
     virtual void Slot04_aefde0();
     virtual void Slot05_aefde0();
-    virtual void Slot06_aefde0();
-    virtual void Slot07_aefde0();
-    virtual void Slot08_aefde0();
-    virtual void Slot09_aefde0();
-    virtual void Slot10_aefde0();
-    virtual void Slot11_aefde0();
-    virtual void Slot12_aefde0();
-    virtual void Slot13_aefde0();
+    virtual void Slot06_aefde0(uint32_t);
+    virtual void Slot07_aefde0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_aefde0(uint32_t);
+    virtual void Slot09_aefde0(uint32_t);
+    virtual void Slot10_aefde0(bool);
+    virtual void Slot11_aefde0(uint32_t);
+    virtual void Slot12_aefde0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_aefde0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot14_aefde0();
-    virtual void Slot15_aefde0();
+    virtual void Slot15_aefde0(uint32_t);
     virtual void Slot16_aefde0();
     virtual void Slot17_aefde0();
     virtual void Slot18_aefde0();
-    virtual void Slot19_aefde0();
+    virtual bool Slot19_aefde0(uint32_t, uint32_t);
     virtual void Slot20_aefde0();
-    virtual void Slot21_aefde0();
-    virtual void Slot22_aefde0();
+    virtual void Slot21_aefde0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot22_aefde0(uint32_t, uint32_t);
     virtual ~cUnk00aefde0();
     virtual void Slot24_aefde0() = 0;
     virtual void Slot25_aefde0() = 0;
     virtual void Slot26_aefde0() = 0;
-    virtual void Slot27_aefde0() = 0;
+    virtual void Slot27_aefde0(uint32_t) = 0;
     virtual void Slot28_aefde0() = 0;
-    virtual void Slot29_aefde0() = 0;
-    virtual void Slot30_aefde0() = 0;
+    virtual void Slot29_aefde0(uint32_t) = 0;
+    virtual void Slot30_aefde0(uint32_t, uint32_t) = 0;
     virtual void Slot31_aefde0() = 0;
     virtual void Slot32_aefde0() = 0;
     virtual void Slot33_aefde0() = 0;

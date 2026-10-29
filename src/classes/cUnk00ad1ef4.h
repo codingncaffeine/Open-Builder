@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AD1EF4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad1ef4
 // SIZE 0x8
@@ -12,10 +13,10 @@ public:
     virtual void Slot01_ad1ef4();
     virtual void Slot02_ad1ef4();
     virtual void Slot03_ad1ef4();
-    virtual void Slot04_ad1ef4();
+    virtual uint32_t Slot04_ad1ef4();
     virtual void Slot05_ad1ef4();
     virtual ~cUnk00ad1ef4();
-    virtual void Slot07_ad1ef4();
+    virtual void Slot07_ad1ef4(uint32_t);
     char unknown4[0x4];
 };
 #ifdef _MSC_VER

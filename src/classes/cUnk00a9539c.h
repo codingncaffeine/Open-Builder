@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00A9539C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00a9539c
 // SIZE 0x2c
 class cUnk00a9539c {
 public:
-    virtual void Slot00_a9539c();
-    virtual void Slot01_a9539c();
-    virtual void Slot02_a9539c();
+    virtual void Slot00_a9539c(uint32_t);
+    virtual void Slot01_a9539c(uint32_t);
+    virtual void Slot02_a9539c(uint32_t);
     char unknown4[0x28];
 };
 #ifdef _MSC_VER

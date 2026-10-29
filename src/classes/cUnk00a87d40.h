@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A87D40_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a80784.h"
 
 // The subobject at +0x0 (vtable 0x00a87d40): an interface or base the class map has no class for.
@@ -12,37 +13,37 @@ struct OB_NOVTABLE cUnk00a87d40_0 {
     virtual unsigned int Release() = 0;
     virtual void Slot03_a87d40() = 0;
     virtual void Slot04_a87d40() = 0;
-    virtual void Slot05_a87d40() = 0;
-    virtual void Slot06_a87d40() = 0;
-    virtual void Slot07_a87d40() = 0;
-    virtual void Slot08_a87d40() = 0;
-    virtual void Slot09_a87d40() = 0;
-    virtual void Slot10_a87d40() = 0;
-    virtual void Slot11_a87d40() = 0;
-    virtual void Slot12_a87d40() = 0;
-    virtual void Slot13_a87d40() = 0;
-    virtual void Slot14_a87d40() = 0;
-    virtual void Slot15_a87d40() = 0;
-    virtual void Slot16_a87d40() = 0;
-    virtual void Slot17_a87d40() = 0;
-    virtual void Slot18_a87d40() = 0;
-    virtual void Slot19_a87d40() = 0;
-    virtual void Slot20_a87d40() = 0;
-    virtual void Slot21_a87d40() = 0;
-    virtual void Slot22_a87d40() = 0;
-    virtual void Slot23_a87d40() = 0;
-    virtual void Slot24_a87d40() = 0;
-    virtual void Slot25_a87d40() = 0;
-    virtual void Slot26_a87d40() = 0;
-    virtual void Slot27_a87d40() = 0;
+    virtual uint32_t Slot05_a87d40() = 0;
+    virtual void Slot06_a87d40(uint32_t) = 0;
+    virtual void Slot07_a87d40(uint32_t, uint32_t) = 0;
+    virtual void Slot08_a87d40(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot09_a87d40(uint32_t) = 0;
+    virtual uint32_t Slot10_a87d40() = 0;
+    virtual uint32_t Slot11_a87d40() = 0;
+    virtual uint32_t Slot12_a87d40() = 0;
+    virtual uint32_t Slot13_a87d40() = 0;
+    virtual float Slot14_a87d40() = 0;
+    virtual float Slot15_a87d40() = 0;
+    virtual float Slot16_a87d40() = 0;
+    virtual float Slot17_a87d40() = 0;
+    virtual void Slot18_a87d40(uint32_t, uint32_t) = 0;
+    virtual void Slot19_a87d40(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot20_a87d40(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot21_a87d40(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot22_a87d40(uint32_t, uint32_t) = 0;
+    virtual void Slot23_a87d40(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void* Slot24_a87d40() = 0;
+    virtual void* Slot25_a87d40() = 0;
+    virtual void Slot26_a87d40(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot27_a87d40(uint32_t) = 0;
     virtual ~cUnk00a87d40_0() {}
 };
 
 // Between cUnk00a80784 and cUnk00a87d40 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a87d40_4 : public cUnk00a80784 {
-    virtual void Slot03_a80784();
-    virtual void Slot04_a80784();
-    virtual void Slot05_a80784();
+    virtual bool Slot03_a80784(uint32_t);
+    virtual bool Slot04_a80784(uint32_t);
+    virtual uint32_t Slot05_a80784();
 };
 
 // VTABLE: 0x00a87d40 cUnk00a87d40_0
@@ -56,30 +57,40 @@ public:
     virtual unsigned int Release();
     virtual void Slot03_a87d40();
     virtual void Slot04_a87d40();
-    virtual void Slot05_a87d40();
-    virtual void Slot06_a87d40();
-    virtual void Slot07_a87d40();
-    virtual void Slot08_a87d40();
-    virtual void Slot09_a87d40();
-    virtual void Slot10_a87d40();
-    virtual void Slot11_a87d40();
-    virtual void Slot12_a87d40();
-    virtual void Slot13_a87d40();
-    virtual void Slot14_a87d40();
-    virtual void Slot15_a87d40();
-    virtual void Slot16_a87d40();
-    virtual void Slot17_a87d40();
-    virtual void Slot18_a87d40();
-    virtual void Slot19_a87d40();
-    virtual void Slot20_a87d40();
-    virtual void Slot21_a87d40();
-    virtual void Slot22_a87d40();
-    virtual void Slot23_a87d40();
-    virtual void Slot24_a87d40();
-    virtual void Slot25_a87d40();
-    virtual void Slot26_a87d40();
-    virtual void Slot27_a87d40();
-    char unknown8[0x3c];
+    virtual uint32_t Slot05_a87d40();
+    virtual void Slot06_a87d40(uint32_t);
+    virtual void Slot07_a87d40(uint32_t, uint32_t);
+    virtual void Slot08_a87d40(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_a87d40(uint32_t);
+    virtual uint32_t Slot10_a87d40();
+    virtual uint32_t Slot11_a87d40();
+    virtual uint32_t Slot12_a87d40();
+    virtual uint32_t Slot13_a87d40();
+    virtual float Slot14_a87d40();
+    virtual float Slot15_a87d40();
+    virtual float Slot16_a87d40();
+    virtual float Slot17_a87d40();
+    virtual void Slot18_a87d40(uint32_t, uint32_t);
+    virtual void Slot19_a87d40(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot20_a87d40(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot21_a87d40(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot22_a87d40(uint32_t, uint32_t);
+    virtual void Slot23_a87d40(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void* Slot24_a87d40();
+    virtual void* Slot25_a87d40();
+    virtual void Slot26_a87d40(uint32_t, uint32_t, uint32_t);
+    virtual void Slot27_a87d40(uint32_t);
+    char unknown8[0xc];
+    uint32_t field14;
+    uint32_t field18;
+    uint32_t field1c;
+    uint32_t field20;
+    uint32_t field24;
+    float field28;
+    float field2c;
+    float field30;
+    float field34;
+    char field38[0xc];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a87d40[sizeof(cUnk00a87d40) == 0x44 ? 1 : -1];

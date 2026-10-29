@@ -3,20 +3,21 @@
 #define OB_CLASSES_CUNK00B00A5C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00b00a5c
 // SIZE 0xc
 class cUnk00b00a5c {
 public:
-    virtual void Slot00_b00a5c();
+    virtual void Slot00_b00a5c(uint32_t, uint32_t);
     virtual void Slot01_b00a5c();
     virtual void Slot02_b00a5c();
     virtual void Slot03_b00a5c();
     virtual void Slot04_b00a5c();
-    virtual void Slot05_b00a5c();
+    virtual void Slot05_b00a5c(uint32_t);
     virtual void Slot06_b00a5c();
     virtual void Slot07_b00a5c();
-    virtual void Slot08_b00a5c();
+    virtual void Slot08_b00a5c(uint32_t);
     virtual ~cUnk00b00a5c() {}
     char unknown4[0x8];
 };

@@ -3,30 +3,31 @@
 #define OB_CLASSES_CUNK00AE0240_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00ae0190.h"
 
 // Between cUnk00ae0190 and cUnk00ae0240 at +0xd8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ae0240_d8 : public cUnk00ae0190 {
-    virtual void Slot03_ae0190();
-    virtual void Slot04_ae0190();
-    virtual void Slot05_ae0190();
-    virtual void Slot06_ae0190();
-    virtual void Slot07_ae0190();
-    virtual void Slot08_ae0190();
-    virtual void Slot09_ae0190();
-    virtual void Slot10_ae0190();
-    virtual void Slot11_ae0190();
-    virtual void Slot12_ae0190();
-    virtual void Slot13_ae0190();
-    virtual void Slot14_ae0190();
-    virtual void Slot15_ae0190();
-    virtual void Slot16_ae0190();
-    virtual void Slot17_ae0190();
-    virtual void Slot18_ae0190();
-    virtual void Slot19_ae0190();
-    virtual void Slot20_ae0190();
-    virtual void Slot21_ae0190();
+    virtual void Slot03_ae0190(uint32_t);
+    virtual void Slot04_ae0190(uint32_t);
+    virtual void Slot05_ae0190(uint32_t, uint32_t);
+    virtual void Slot06_ae0190(uint32_t, uint32_t);
+    virtual void Slot07_ae0190(uint32_t, uint32_t);
+    virtual void Slot08_ae0190(uint32_t);
+    virtual void Slot09_ae0190(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ae0190(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_ae0190(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot12_ae0190(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_ae0190(uint32_t, uint32_t);
+    virtual void Slot14_ae0190(uint32_t, uint32_t);
+    virtual void Slot15_ae0190(uint32_t, uint32_t);
+    virtual void Slot16_ae0190(uint32_t);
+    virtual void Slot17_ae0190(uint32_t);
+    virtual void Slot18_ae0190(uint32_t);
+    virtual void Slot19_ae0190(uint32_t);
+    virtual uint32_t Slot20_ae0190();
+    virtual void Slot21_ae0190(uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00ae0240 cUnk00adc8d8
@@ -38,11 +39,11 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot88_adc8d8();
-    virtual void Slot134_adc8d8();
-    virtual void Slot136_adc8d8();
-    virtual void Slot138_adc8d8();
-    virtual void Slot143_adc8d8();
+    virtual bool Slot88_adc8d8();
+    virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot143_adc8d8(uint32_t, uint32_t);
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
     char unknowndc[0x30];

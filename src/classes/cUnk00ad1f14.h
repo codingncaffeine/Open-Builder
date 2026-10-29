@@ -3,25 +3,30 @@
 #define OB_CLASSES_CUNK00AD1F14_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad1f14
 // SIZE 0x28
 class cUnk00ad1f14 {
 public:
     virtual ~cUnk00ad1f14();
-    virtual void Slot01_ad1f14();
-    virtual void Slot02_ad1f14();
-    virtual void Slot03_ad1f14();
-    virtual void Slot04_ad1f14();
-    virtual void Slot05_ad1f14();
-    virtual void Slot06_ad1f14();
+    virtual void Slot01_ad1f14(uint32_t);
+    virtual void Slot02_ad1f14(uint32_t);
+    virtual void Slot03_ad1f14(uint32_t);
+    virtual void Slot04_ad1f14(uint32_t);
+    virtual void Slot05_ad1f14(uint32_t, uint32_t);
+    virtual void Slot06_ad1f14(uint32_t, uint32_t);
     virtual void Slot07_ad1f14();
-    virtual void Slot08_ad1f14();
-    virtual void Slot09_ad1f14();
-    virtual void Slot10_ad1f14();
-    virtual void Slot11_ad1f14();
-    virtual void Slot12_ad1f14();
-    char unknown4[0x24];
+    virtual bool Slot08_ad1f14();
+    virtual void Slot09_ad1f14(uint32_t, uint32_t);
+    virtual void Slot10_ad1f14(uint32_t, uint32_t);
+    virtual void Slot11_ad1f14(uint32_t);
+    virtual uint32_t Slot12_ad1f14();
+    char unknown4[0x14];
+    bool field18;
+    char unknown19[0x7];
+    uint32_t field20;
+    char unknown24[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad1f14[sizeof(cUnk00ad1f14) == 0x28 ? 1 : -1];

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AB95F0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a83524.h"
 #include "classes/cUnk00ace624.h"
 
@@ -15,7 +16,7 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_a83524();
+    virtual bool Slot03_a83524(uint32_t, uint32_t);
     char unknownc[0x8];
 };
 #ifdef _MSC_VER

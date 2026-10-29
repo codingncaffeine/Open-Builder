@@ -3,11 +3,12 @@
 #define OB_CLASSES_CUNK00ABAAE0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00abaae0
 class cUnk00abaae0 {
 public:
-    virtual void Slot00_abaae0();
+    virtual void Slot00_abaae0(uint32_t);
 };
 
 #endif

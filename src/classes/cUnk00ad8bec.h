@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AD8BEC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad8bec
 // SIZE 0x18
@@ -11,17 +12,21 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_ad8bec();
-    virtual void Slot12_aaee5c();
-    virtual void Slot05_ad8bec();
-    virtual void Slot06_ad8bec();
-    virtual void Slot07_ad8bec();
-    virtual void Slot08_ad8bec();
-    virtual void Slot09_ad8bec();
-    virtual void Slot10_ad8bec();
-    virtual void Slot11_ad8bec();
+    virtual void Slot03_ad8bec(uint32_t);
+    virtual void Slot12_aaee5c(uint32_t);
+    virtual uint32_t Slot05_ad8bec();
+    virtual uint32_t Slot06_ad8bec();
+    virtual uint32_t Slot07_ad8bec();
+    virtual bool Slot08_ad8bec(uint32_t);
+    virtual bool Slot09_ad8bec(uint32_t);
+    virtual bool Slot10_ad8bec(uint32_t);
+    virtual uint32_t Slot11_ad8bec();
     virtual ~cUnk00ad8bec() {}
-    char unknown4[0x14];
+    uint32_t field4;
+    char unknown8[0x4];
+    uint32_t fieldc;
+    uint32_t field10;
+    uint32_t field14;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad8bec[sizeof(cUnk00ad8bec) == 0x18 ? 1 : -1];

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AB4658_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ab4658 {
@@ -11,20 +12,20 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_ab4658() = 0;
-    virtual void Slot04_ab4658() = 0;
-    virtual void Slot05_ab4658() = 0;
-    virtual void Slot06_ab4658() = 0;
-    virtual void Slot07_ab4658() = 0;
-    virtual void Slot08_ab4658() = 0;
-    virtual void Slot09_ab4658() = 0;
-    virtual void Slot10_ab4658() = 0;
-    virtual void Slot11_ab4658() = 0;
-    virtual void Slot12_ab4658() = 0;
-    virtual void Slot13_ab4658() = 0;
-    virtual void Slot14_ab4658() = 0;
-    virtual void Slot15_ab4658() = 0;
-    virtual void Slot16_ab4658() = 0;
-    virtual void Slot17_ab4658() = 0;
+    virtual void Slot04_ab4658(uint32_t) = 0;
+    virtual uint32_t Slot05_ab4658() = 0;
+    virtual void Slot06_ab4658(uint32_t) = 0;
+    virtual uint32_t Slot07_ab4658() = 0;
+    virtual void Slot08_ab4658(uint32_t) = 0;
+    virtual float Slot09_ab4658() = 0;
+    virtual void Slot10_ab4658(uint32_t) = 0;
+    virtual float Slot11_ab4658() = 0;
+    virtual void Slot12_ab4658(uint32_t) = 0;
+    virtual float Slot13_ab4658() = 0;
+    virtual void Slot14_ab4658(uint32_t) = 0;
+    virtual uint32_t Slot15_ab4658() = 0;
+    virtual void Slot16_ab4658(uint32_t, uint32_t) = 0;
+    virtual void Slot17_ab4658(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab4658[sizeof(cUnk00ab4658) == 0x4 ? 1 : -1];

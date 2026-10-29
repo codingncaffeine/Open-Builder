@@ -3,29 +3,31 @@
 #define OB_CLASSES_CUNK00AC5290_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ac5290
 // SIZE 0x44
 class cUnk00ac5290 {
 public:
-    virtual void Slot00_ac5290();
+    virtual void Slot00_ac5290(uint32_t, uint32_t);
     virtual void Slot01_ac5290();
     virtual void Slot02_ac5290();
     virtual void Slot03_ac5290();
     virtual void Slot04_ac5290();
-    virtual void Slot05_ac5290();
-    virtual void Slot06_ac5290();
-    virtual void Slot07_ac5290();
-    virtual void Slot08_ac5290();
-    virtual void Slot09_ac5290();
-    virtual void Slot10_ac5290();
-    virtual void Slot11_ac5290();
-    virtual void Slot12_ac5290();
+    virtual void Slot05_ac5290(uint32_t, uint32_t);
+    virtual void Slot06_ac5290(uint32_t, uint32_t);
+    virtual void Slot07_ac5290(uint32_t);
+    virtual uint32_t Slot08_ac5290();
+    virtual void Slot09_ac5290(uint32_t);
+    virtual void Slot10_ac5290(uint32_t);
+    virtual void Slot11_ac5290(uint32_t);
+    virtual void Slot12_ac5290(uint32_t);
     virtual void Slot13_ac5290();
     virtual void Slot14_ac5290();
     virtual void Slot15_ac5290();
     virtual ~cUnk00ac5290();
-    char unknown4[0x40];
+    char unknown4[0x3c];
+    uint32_t field40;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac5290[sizeof(cUnk00ac5290) == 0x44 ? 1 : -1];

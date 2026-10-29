@@ -3,64 +3,65 @@
 #define OB_CLASSES_CUNK00AE3508_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00ae3338.h"
 
 // Between cUnk00ae3338 and cUnk00ae3508 at +0xd8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ae3508_d8 : public cUnk00ae3338 {
-    virtual void Slot03_ae3338();
-    virtual void Slot04_ae3338();
+    virtual void* Slot03_ae3338();
+    virtual float Slot04_ae3338();
     virtual void Slot05_ae3338();
-    virtual void Slot06_ae3338();
-    virtual void Slot07_ae3338();
-    virtual void Slot08_ae3338();
+    virtual void Slot06_ae3338(uint32_t, uint32_t);
+    virtual void Slot07_ae3338(uint32_t, uint32_t);
+    virtual uint32_t Slot08_ae3338();
     virtual void Slot09_ae3338();
     virtual void Slot10_ae3338();
     virtual void Slot11_ae3338();
-    virtual void Slot12_ae3338();
-    virtual void Slot13_ae3338();
-    virtual void Slot14_ae3338();
-    virtual void Slot15_ae3338();
-    virtual void Slot16_ae3338();
-    virtual void Slot17_ae3338();
-    virtual void Slot18_ae3338();
-    virtual void Slot19_ae3338();
-    virtual void Slot20_ae3338();
-    virtual void Slot21_ae3338();
-    virtual void Slot22_ae3338();
-    virtual void Slot23_ae3338();
-    virtual void Slot24_ae3338();
-    virtual void Slot25_ae3338();
+    virtual void Slot12_ae3338(uint32_t, uint32_t);
+    virtual void Slot13_ae3338(uint32_t, uint32_t);
+    virtual float Slot14_ae3338();
+    virtual float Slot15_ae3338();
+    virtual uint32_t Slot16_ae3338();
+    virtual void Slot17_ae3338(uint32_t);
+    virtual uint32_t Slot18_ae3338();
+    virtual uint32_t Slot19_ae3338();
+    virtual void Slot20_ae3338(uint32_t);
+    virtual uint32_t Slot21_ae3338();
+    virtual void Slot22_ae3338(uint32_t);
+    virtual bool Slot23_ae3338();
+    virtual uint32_t Slot24_ae3338();
+    virtual uint32_t Slot25_ae3338();
     virtual void Slot26_ae3338();
-    virtual void Slot27_ae3338();
-    virtual void Slot28_ae3338();
-    virtual void Slot29_ae3338();
+    virtual uint32_t Slot27_ae3338();
+    virtual uint32_t Slot28_ae3338();
+    virtual uint32_t Slot29_ae3338();
     virtual void Slot30_ae3338();
     virtual void Slot31_ae3338();
     virtual void Slot32_ae3338();
-    virtual void Slot33_ae3338();
+    virtual void Slot33_ae3338(uint32_t);
     virtual void Slot34_ae3338();
     virtual void Slot35_ae3338();
-    virtual void Slot36_ae3338();
-    virtual void Slot37_ae3338();
-    virtual void Slot38_ae3338();
-    virtual void Slot39_ae3338();
-    virtual void Slot40_ae3338();
-    virtual void Slot41_ae3338();
-    virtual void Slot42_ae3338();
-    virtual void Slot43_ae3338();
-    virtual void Slot44_ae3338();
-    virtual void Slot45_ae3338();
-    virtual void Slot47_ae3338();
-    virtual void Slot48_ae3338();
+    virtual uint32_t Slot36_ae3338();
+    virtual void Slot37_ae3338(uint32_t, uint32_t, uint32_t);
+    virtual void Slot38_ae3338(uint32_t);
+    virtual void Slot39_ae3338(uint32_t, uint32_t, uint32_t);
+    virtual void Slot40_ae3338(uint32_t);
+    virtual void Slot41_ae3338(uint32_t, uint32_t, uint32_t);
+    virtual void Slot42_ae3338(uint32_t);
+    virtual void Slot43_ae3338(uint32_t);
+    virtual void Slot44_ae3338(uint32_t);
+    virtual void Slot45_ae3338(uint32_t);
+    virtual void Slot47_ae3338(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot48_ae3338(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot49_ae3338();
     virtual void Slot50_ae3338();
-    virtual void Slot51_ae3338();
+    virtual void Slot51_ae3338(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot52_ae3338();
-    virtual void Slot53_ae3338();
-    virtual void Slot54_ae3338();
+    virtual void Slot53_ae3338(uint32_t, uint32_t);
+    virtual void Slot54_ae3338(uint32_t);
     virtual void Slot55_ae3338();
-    virtual void Slot56_ae3338();
+    virtual void Slot56_ae3338(uint32_t);
 };
 
 // VTABLE: 0x00ae3508 cUnk00adc8d8
@@ -69,20 +70,20 @@ struct OB_NOVTABLE cUnk00ae3508_d8 : public cUnk00ae3338 {
 class cUnk00ae3508 : public cUnk00adc8d8, public cUnk00ae3508_d8 {
 public:
     virtual ~cUnk00ae3508();
-    virtual void Slot151_ae3508();
-    virtual void Slot152_ae3508();
+    virtual void Slot151_ae3508(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot152_ae3508(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot88_adc8d8();
-    virtual void Slot129_adc8d8();
-    virtual void Slot130_adc8d8();
-    virtual void Slot134_adc8d8();
-    virtual void Slot135_adc8d8();
-    virtual void Slot136_adc8d8();
-    virtual void Slot137_adc8d8();
-    virtual void Slot138_adc8d8();
-    virtual void Slot07_add348();
+    virtual bool Slot88_adc8d8();
+    virtual bool Slot129_adc8d8(uint32_t);
+    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
+    virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot135_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot137_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
     char unknowndc[0xbc];

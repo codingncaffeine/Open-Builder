@@ -3,20 +3,21 @@
 #define OB_CLASSES_CUNK00AD43D8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad251c.h"
 
 // VTABLE: 0x00ad43d8
 class cUnk00ad43d8 : public cUnk00ad251c {
 public:
     virtual ~cUnk00ad43d8();
-    virtual void Slot01_ad251c();
-    virtual void Slot02_ad251c();
-    virtual void Slot03_ad251c();
-    virtual void Slot04_ad251c();
-    virtual void Slot05_ad251c();
+    virtual void Slot01_ad251c(uint32_t);
+    virtual void Slot02_ad251c(uint32_t);
+    virtual void Slot03_ad251c(uint32_t);
+    virtual uint32_t Slot04_ad251c();
+    virtual uint32_t Slot05_ad251c();
     virtual void Slot06_ad251c();
-    virtual void Slot07_ad251c();
-    virtual void Slot08_ad251c();
+    virtual void Slot07_ad251c(uint32_t);
+    virtual void Slot08_ad251c(uint32_t);
 };
 
 // SYNTHETIC: 0x0094065e

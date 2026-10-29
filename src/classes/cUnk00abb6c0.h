@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ABB6C0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "gzcom/cUnk0090da1e.h"
 
 // The subobject at +0x0 (vtable 0x00abb6c0): an interface or base the class map has no class for.
@@ -13,18 +14,18 @@ struct OB_NOVTABLE cUnk00abb6c0_0 {
     virtual void Slot03_abb6c0() = 0;
     virtual void Slot04_abb6c0() = 0;
     virtual void Slot05_abb6c0() = 0;
-    virtual void Slot06_abb6c0() = 0;
-    virtual void Slot07_abb6c0() = 0;
-    virtual void Slot08_abb6c0() = 0;
-    virtual void Slot09_abb6c0() = 0;
-    virtual void Slot10_abb6c0() = 0;
-    virtual void Slot11_abb6c0() = 0;
-    virtual void Slot12_abb6c0() = 0;
-    virtual void Slot13_abb6c0() = 0;
-    virtual void Slot14_abb6c0() = 0;
-    virtual void Slot15_abb6c0() = 0;
-    virtual void Slot16_abb6c0() = 0;
-    virtual void Slot17_abb6c0() = 0;
+    virtual void Slot06_abb6c0(uint32_t) = 0;
+    virtual void Slot07_abb6c0(uint32_t) = 0;
+    virtual void Slot08_abb6c0(uint32_t) = 0;
+    virtual void Slot09_abb6c0(uint32_t, uint32_t) = 0;
+    virtual void Slot10_abb6c0(uint32_t, uint32_t) = 0;
+    virtual void Slot11_abb6c0(uint32_t, uint32_t) = 0;
+    virtual void Slot12_abb6c0(uint32_t) = 0;
+    virtual void Slot13_abb6c0(uint32_t) = 0;
+    virtual void Slot14_abb6c0(uint32_t) = 0;
+    virtual void Slot15_abb6c0(uint32_t) = 0;
+    virtual void Slot16_abb6c0(uint32_t) = 0;
+    virtual void Slot17_abb6c0(uint32_t) = 0;
 };
 
 // VTABLE: 0x00abb6c0 cUnk00abb6c0_0
@@ -38,18 +39,18 @@ public:
     virtual void Slot03_abb6c0();
     virtual void Slot04_abb6c0();
     virtual void Slot05_abb6c0();
-    virtual void Slot06_abb6c0();
-    virtual void Slot07_abb6c0();
-    virtual void Slot08_abb6c0();
-    virtual void Slot09_abb6c0();
-    virtual void Slot10_abb6c0();
-    virtual void Slot11_abb6c0();
-    virtual void Slot12_abb6c0();
-    virtual void Slot13_abb6c0();
-    virtual void Slot14_abb6c0();
-    virtual void Slot15_abb6c0();
-    virtual void Slot16_abb6c0();
-    virtual void Slot17_abb6c0();
+    virtual void Slot06_abb6c0(uint32_t);
+    virtual void Slot07_abb6c0(uint32_t);
+    virtual void Slot08_abb6c0(uint32_t);
+    virtual void Slot09_abb6c0(uint32_t, uint32_t);
+    virtual void Slot10_abb6c0(uint32_t, uint32_t);
+    virtual void Slot11_abb6c0(uint32_t, uint32_t);
+    virtual void Slot12_abb6c0(uint32_t);
+    virtual void Slot13_abb6c0(uint32_t);
+    virtual void Slot14_abb6c0(uint32_t);
+    virtual void Slot15_abb6c0(uint32_t);
+    virtual void Slot16_abb6c0(uint32_t);
+    virtual void Slot17_abb6c0(uint32_t);
 };
 
 // SYNTHETIC: 0x005bcb50

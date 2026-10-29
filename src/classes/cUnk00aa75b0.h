@@ -3,10 +3,11 @@
 #define OB_CLASSES_CUNK00AA75B0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00aa75b0 {
 public:
-    virtual void Slot00_aa75b0() = 0;
+    virtual void Slot00_aa75b0(uint32_t, uint32_t) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_aa75b0() = 0;

@@ -3,13 +3,14 @@
 #define OB_CLASSES_CUNK00AC0548_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ac0548
 class cUnk00ac0548 {
 public:
-    virtual void Slot00_ac0548();
-    virtual void Slot01_ac0548();
-    virtual void Slot02_ac0548();
+    virtual void Slot00_ac0548(uint32_t);
+    virtual uint32_t Slot01_ac0548();
+    virtual void Slot02_ac0548(uint32_t);
 };
 
 #endif

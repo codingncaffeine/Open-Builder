@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A9E2A8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00a9e2a8 {
@@ -12,20 +13,20 @@ public:
     virtual unsigned int Release() = 0;
     virtual void Slot03_a9e2a8() = 0;
     virtual void Slot04_a9e2a8() = 0;
-    virtual void Slot05_a9e2a8() = 0;
+    virtual void Slot05_a9e2a8(uint32_t) = 0;
     virtual void Slot06_a9e2a8() = 0;
-    virtual void Slot07_a9e2a8() = 0;
-    virtual void Slot08_a9e2a8() = 0;
+    virtual void Slot07_a9e2a8(uint32_t) = 0;
+    virtual void Slot08_a9e2a8(uint32_t) = 0;
     virtual void Slot09_a9e2a8() = 0;
     virtual void Slot10_a9e2a8() = 0;
     virtual void Slot11_a9e2a8() = 0;
-    virtual void Slot12_a9e2a8() = 0;
-    virtual void Slot13_a9e2a8() = 0;
-    virtual void Slot14_a9e2a8() = 0;
-    virtual void Slot15_a9e2a8() = 0;
+    virtual void Slot12_a9e2a8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot13_a9e2a8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot14_a9e2a8(uint32_t) = 0;
+    virtual void Slot15_a9e2a8(uint32_t, uint32_t) = 0;
     virtual void Slot16_a9e2a8() = 0;
-    virtual void Slot17_a9e2a8() = 0;
-    virtual void Slot18_a9e2a8() = 0;
+    virtual void Slot17_a9e2a8(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void* Slot18_a9e2a8() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9e2a8[sizeof(cUnk00a9e2a8) == 0x4 ? 1 : -1];

@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00AD5398_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad5398
 // SIZE 0x10
 class cUnk00ad5398 {
 public:
-    virtual void Slot00_ad5398();
+    virtual void Slot00_ad5398(uint32_t, uint32_t);
     virtual void Slot01_ad5398();
     virtual void Slot02_ad5398();
     char unknown4[0xc];

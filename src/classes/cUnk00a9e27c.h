@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A9E27C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a9e224.h"
 #include "classes/cUnk00aaaa9c.h"
 #include "gzcom/cUnk0090da1e.h"
@@ -11,15 +12,15 @@
 struct OB_NOVTABLE cUnk00a9e27c_8 : public cUnk00a9e224 {
     virtual void Slot03_a9e224();
     virtual void Slot04_a9e224();
-    virtual void Slot05_a9e224();
-    virtual void Slot06_a9e224();
-    virtual void Slot07_a9e224();
+    virtual uint32_t Slot05_a9e224();
+    virtual void Slot06_a9e224(uint32_t, uint32_t);
+    virtual uint32_t Slot07_a9e224();
     virtual void Slot08_a9e224();
 };
 
 // Between cUnk00aaaa9c and cUnk00a9e27c at +0xc: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a9e27c_c : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00a9e27c cUnk0090da1e
@@ -30,7 +31,7 @@ class cUnk00a9e27c : public cUnk0090da1e, public cUnk00a9e27c_8, public cUnk00a9
 public:
     virtual ~cUnk00a9e27c() {}
     virtual void Slot06_a9e27c();
-    virtual void Slot07_a9e27c();
+    virtual void Slot07_a9e27c(uint32_t);
     virtual void Slot08_a9e27c();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();

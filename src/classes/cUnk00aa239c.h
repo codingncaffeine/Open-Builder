@@ -3,11 +3,12 @@
 #define OB_CLASSES_CUNK00AA239C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00aa239c {
 public:
-    virtual void Slot00_ad8fc8() = 0;
+    virtual void Slot00_ad8fc8(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad8fc8() = 0;
     virtual void Slot02_ad8fc8() = 0;
     virtual void Slot03_aa239c() = 0;

@@ -3,17 +3,18 @@
 #define OB_CLASSES_CUNK00ABAD18_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00abad18
 // SIZE 0x160
 class cUnk00abad18 {
 public:
-    virtual void Slot00_abad18();
+    virtual void Slot00_abad18(uint32_t, uint32_t);
     virtual void Slot01_abad18();
     virtual void Slot02_abad18();
-    virtual void Slot03_abad18();
-    virtual void Slot04_abad18();
-    virtual void Slot05_abad18();
+    virtual void Slot03_abad18(uint32_t);
+    virtual void Slot04_abad18(uint32_t);
+    virtual uint32_t Slot05_abad18();
     virtual ~cUnk00abad18() {}
     char unknown4[0x15c];
 };

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AE4DA8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ae4d28.h"
 
 // VTABLE: 0x00ae4da8
@@ -10,15 +11,15 @@
 class cUnk00ae4da8 : public cUnk00ae4d28 {
 public:
     virtual ~cUnk00ae4da8();
-    virtual void Slot01_ae4d28();
-    virtual void Slot02_ae4d28();
-    virtual void Slot03_ae4d28();
-    virtual void Slot04_ae4d28();
-    virtual void Slot05_ae4d28();
+    virtual void* Slot01_ae4d28(uint32_t, uint32_t);
+    virtual void Slot02_ae4d28(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot03_ae4d28(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot04_ae4d28();
+    virtual uint32_t Slot05_ae4d28();
     virtual void Slot07_ae4d28();
-    virtual void Slot09_ae4d28();
-    virtual void Slot12_ae4d28();
-    virtual void Slot13_ae4d28();
+    virtual void Slot09_ae4d28(uint32_t);
+    virtual void Slot12_ae4d28(uint32_t);
+    virtual void Slot13_ae4d28(uint32_t);
     char unknown4[0x88];
 };
 #ifdef _MSC_VER

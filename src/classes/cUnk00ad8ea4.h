@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AD8EA4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ad8ea4 {
 public:
@@ -10,8 +11,8 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_ad8ea4() = 0;
-    virtual void Slot04_ad8ea4() = 0;
-    virtual void Slot05_ad8ea4() = 0;
+    virtual void Slot04_ad8ea4(uint32_t, uint32_t) = 0;
+    virtual void Slot05_ad8ea4(uint32_t) = 0;
 };
 
 #endif

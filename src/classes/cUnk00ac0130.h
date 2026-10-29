@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AC0130_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aaaa9c.h"
 
 // The subobject at +0x0 (vtable 0x00ac0130): an interface or base the class map has no class for.
@@ -18,7 +19,7 @@ struct OB_NOVTABLE cUnk00ac0130_0 {
 
 // Between cUnk00aaaa9c and cUnk00ac0130 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ac0130_4 : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00ac0130 cUnk00ac0130_0

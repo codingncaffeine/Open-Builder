@@ -3,22 +3,23 @@
 #define OB_CLASSES_CUNK00AD4268_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad2620.h"
 #include "classes/cUnk00ad3e48.h"
 
 // Between cUnk00ad2620 and cUnk00ad4268 at +0x104: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad4268_104 : public cUnk00ad2620 {
-    virtual void Slot03_ad2620();
-    virtual void Slot04_ad2620();
-    virtual void Slot06_ad2620();
-    virtual void Slot07_ad2620();
-    virtual void Slot08_ad2620();
-    virtual void Slot09_ad2620();
-    virtual void Slot10_ad2620();
-    virtual void Slot14_ad2620();
-    virtual void Slot18_ad4648();
-    virtual void Slot19_ad4648();
-    virtual void Slot20_ad4648();
+    virtual void Slot03_ad2620(uint32_t);
+    virtual void Slot04_ad2620(uint32_t);
+    virtual uint32_t Slot06_ad2620();
+    virtual uint32_t Slot07_ad2620();
+    virtual bool Slot08_ad2620(uint32_t);
+    virtual bool Slot09_ad2620(uint32_t);
+    virtual bool Slot10_ad2620(uint32_t);
+    virtual void Slot14_ad2620(uint32_t, uint32_t);
+    virtual uint32_t Slot18_ad4648();
+    virtual bool Slot19_ad4648(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot20_ad4648(uint32_t, uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00ad4268 cUnk00ad3e48_0
@@ -34,11 +35,11 @@ struct OB_NOVTABLE cUnk00ad4268_104 : public cUnk00ad2620 {
 class cUnk00ad4268 : public cUnk00ad3e48, public cUnk00ad4268_104 {
 public:
     virtual ~cUnk00ad4268();
-    virtual void Slot34_ad4268();
-    virtual void Slot35_ad4268();
-    virtual void Slot36_ad4268();
-    virtual void Slot18_ad4648();
-    virtual void Slot00_ad4cf4();
+    virtual bool Slot34_ad4268(uint32_t);
+    virtual bool Slot35_ad4268(uint32_t);
+    virtual bool Slot36_ad4268(uint32_t);
+    virtual uint32_t Slot18_ad4648();
+    virtual void Slot00_ad4cf4(uint32_t, uint32_t);
     virtual void Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
     char unknown108[0xc];

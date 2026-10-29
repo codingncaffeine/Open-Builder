@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AD2164_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad21b8.h"
 
 // VTABLE: 0x00ad2164
@@ -10,7 +11,7 @@
 class cUnk00ad2164 : public cUnk00ad21b8 {
 public:
     virtual ~cUnk00ad2164() {}
-    virtual void Slot07_ad21b8();
+    virtual void Slot07_ad21b8(uint32_t, uint32_t, uint32_t);
     char unknown4[0x40];
 };
 #ifdef _MSC_VER

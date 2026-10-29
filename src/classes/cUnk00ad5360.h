@@ -3,43 +3,44 @@
 #define OB_CLASSES_CUNK00AD5360_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // The subobject at +0x0 (vtable 0x00ad5360): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad5360_0 {
-    virtual void Slot00_ad5360() = 0;
+    virtual void Slot00_ad5360(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad5360() = 0;
     virtual void Slot02_ad5360() = 0;
-    virtual void Slot03_ad5360() = 0;
+    virtual void Slot03_ad5360(uint32_t) = 0;
     virtual void Slot04_ad5360() = 0;
     virtual void Slot05_ad5360() = 0;
-    virtual void Slot06_ad5360() = 0;
-    virtual void Slot07_ad5360() = 0;
-    virtual void Slot08_ad5360() = 0;
-    virtual void Slot09_ad5360() = 0;
+    virtual void Slot06_ad5360(uint32_t) = 0;
+    virtual void Slot07_ad5360(bool) = 0;
+    virtual bool Slot08_ad5360(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot09_ad5360(uint32_t) = 0;
     virtual ~cUnk00ad5360_0() {}
 };
 
 // The subobject at +0x4 (vtable 0x00ad5344): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad5360_4 {
-    virtual void Slot00_ad5360() = 0;
+    virtual void Slot00_ad5360(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad5360() = 0;
     virtual void Slot02_ad5360() = 0;
-    virtual void Slot03_ad5360_4();
-    virtual void Slot04_ad5360_4();
-    virtual void Slot05_ad5360_4();
-    virtual void Slot06_ad5360_4();
+    virtual bool Slot03_ad5360_4(uint32_t);
+    virtual void Slot04_ad5360_4(uint32_t);
+    virtual void Slot05_ad5360_4(uint32_t);
+    virtual bool Slot06_ad5360_4(uint32_t, uint32_t);
 };
 
 // The subobject at +0x8 (vtable 0x00ad5324): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad5360_8 {
-    virtual void Slot00_ad5360() = 0;
+    virtual void Slot00_ad5360(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad5360() = 0;
     virtual void Slot02_ad5360() = 0;
-    virtual void Slot03_ad5360_8();
-    virtual void Slot07_ad5360() = 0;
-    virtual void Slot05_ad5360_8();
-    virtual void Slot06_ad5360_8();
-    virtual void Slot07_ad5360_8();
+    virtual uint32_t Slot03_ad5360_8();
+    virtual void Slot07_ad5360(bool) = 0;
+    virtual void Slot05_ad5360_8(uint32_t);
+    virtual void Slot06_ad5360_8(uint32_t);
+    virtual void Slot07_ad5360_8(uint32_t);
 };
 
 // VTABLE: 0x00ad5360 cUnk00ad5360_0
@@ -48,16 +49,16 @@ struct OB_NOVTABLE cUnk00ad5360_8 {
 class cUnk00ad5360 : public cUnk00ad5360_0, public cUnk00ad5360_4, public cUnk00ad5360_8 {
 public:
     virtual ~cUnk00ad5360();
-    virtual void Slot00_ad5360();
+    virtual void Slot00_ad5360(uint32_t, uint32_t);
     virtual void Slot01_ad5360();
     virtual void Slot02_ad5360();
-    virtual void Slot03_ad5360();
+    virtual void Slot03_ad5360(uint32_t);
     virtual void Slot04_ad5360();
     virtual void Slot05_ad5360();
-    virtual void Slot06_ad5360();
-    virtual void Slot07_ad5360();
-    virtual void Slot08_ad5360();
-    virtual void Slot09_ad5360();
+    virtual void Slot06_ad5360(uint32_t);
+    virtual void Slot07_ad5360(bool);
+    virtual bool Slot08_ad5360(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_ad5360(uint32_t);
 };
 
 // SYNTHETIC: 0x0094c761

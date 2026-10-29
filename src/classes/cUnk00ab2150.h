@@ -3,43 +3,44 @@
 #define OB_CLASSES_CUNK00AB2150_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ab2150
 class cUnk00ab2150 {
 public:
-    virtual void Slot00_ab2150();
+    virtual void Slot00_ab2150(uint32_t, uint32_t);
     virtual void Slot01_ab2150();
     virtual void Slot02_ab2150();
     virtual void Slot03_ab2150();
     virtual void Slot04_ab2150();
-    virtual void Slot05_ab2150();
-    virtual void Slot06_ab2150();
+    virtual void Slot05_ab2150(uint32_t);
+    virtual void Slot06_ab2150(uint32_t);
     virtual void Slot07_ab2150();
-    virtual void Slot08_ab2150();
-    virtual void Slot09_ab2150();
-    virtual void Slot10_ab2150();
-    virtual void Slot11_ab2150();
+    virtual void Slot08_ab2150(uint32_t);
+    virtual void Slot09_ab2150(uint32_t);
+    virtual void Slot10_ab2150(uint32_t);
+    virtual void Slot11_ab2150(uint32_t);
     virtual void Slot12_ab2150();
-    virtual void Slot13_ab2150();
-    virtual void Slot14_ab2150();
+    virtual void Slot13_ab2150(uint32_t, uint32_t);
+    virtual void Slot14_ab2150(uint32_t);
     virtual void Slot15_ab2150();
-    virtual void Slot16_ab2150();
-    virtual void Slot17_ab2150();
-    virtual void Slot18_ab2150();
-    virtual void Slot19_ab2150();
-    virtual void Slot20_ab2150();
-    virtual void Slot21_ab2150();
+    virtual void Slot16_ab2150(uint32_t);
+    virtual void Slot17_ab2150(uint32_t);
+    virtual void Slot18_ab2150(uint32_t);
+    virtual void Slot19_ab2150(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot20_ab2150(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot21_ab2150(uint32_t);
     virtual void Slot22_ab2150();
     virtual void Slot23_ab2150();
-    virtual void Slot24_ab2150();
-    virtual void Slot25_ab2150();
+    virtual uint32_t Slot24_ab2150();
+    virtual float Slot25_ab2150();
     virtual void Slot26_ab2150();
-    virtual void Slot27_ab2150();
+    virtual void Slot27_ab2150(uint32_t, uint32_t);
     virtual void Slot28_ab2150();
-    virtual void Slot29_ab2150();
+    virtual void Slot29_ab2150(uint32_t);
     virtual void Slot30_ab2150();
     virtual void Slot31_ab2150();
-    virtual void Slot32_ab2150();
+    virtual void Slot32_ab2150(uint32_t, uint32_t);
     virtual ~cUnk00ab2150();
 };
 

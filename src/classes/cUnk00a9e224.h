@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A9E224_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00a9e224 {
@@ -12,9 +13,9 @@ public:
     virtual unsigned int Release() = 0;
     virtual void Slot03_a9e224() = 0;
     virtual void Slot04_a9e224() = 0;
-    virtual void Slot05_a9e224() = 0;
-    virtual void Slot06_a9e224() = 0;
-    virtual void Slot07_a9e224() = 0;
+    virtual uint32_t Slot05_a9e224() = 0;
+    virtual void Slot06_a9e224(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot07_a9e224() = 0;
     virtual void Slot08_a9e224() = 0;
 };
 #ifdef _MSC_VER

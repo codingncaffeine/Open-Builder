@@ -3,35 +3,36 @@
 #define OB_CLASSES_CUNK00AD8FC8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ad8fc8 {
 public:
-    virtual void Slot00_ad8fc8() = 0;
+    virtual void Slot00_ad8fc8(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad8fc8() = 0;
     virtual void Slot02_ad8fc8() = 0;
     virtual void Slot03_ad8fc8() = 0;
-    virtual void Slot04_ad8fc8() = 0;
+    virtual void Slot04_ad8fc8(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot05_ad8fc8() = 0;
     virtual void Slot06_ad8fc8() = 0;
-    virtual void Slot07_ad8fc8() = 0;
-    virtual void Slot08_ad8fc8() = 0;
-    virtual void Slot09_ad8fc8() = 0;
-    virtual void Slot10_ad8fc8() = 0;
-    virtual void Slot11_ad8fc8() = 0;
-    virtual void Slot12_ad8fc8() = 0;
-    virtual void Slot13_ad8fc8() = 0;
+    virtual void* Slot07_ad8fc8() = 0;
+    virtual void Slot08_ad8fc8(uint32_t) = 0;
+    virtual void Slot09_ad8fc8(uint32_t) = 0;
+    virtual void Slot10_ad8fc8(uint32_t) = 0;
+    virtual uint32_t Slot11_ad8fc8() = 0;
+    virtual void* Slot12_ad8fc8() = 0;
+    virtual void Slot13_ad8fc8(uint32_t) = 0;
     virtual void Slot14_ad8fc8() = 0;
-    virtual void Slot15_ad8fc8() = 0;
-    virtual void Slot16_ad8fc8() = 0;
-    virtual void Slot17_ad8fc8() = 0;
-    virtual void Slot18_ad8fc8() = 0;
-    virtual void Slot19_ad8fc8() = 0;
-    virtual void Slot20_ad8fc8() = 0;
-    virtual void Slot21_ad8fc8() = 0;
-    virtual void Slot22_ad8fc8() = 0;
-    virtual void Slot23_ad8fc8() = 0;
-    virtual void Slot24_ad8fc8() = 0;
+    virtual void Slot15_ad8fc8(uint32_t, uint32_t) = 0;
+    virtual void Slot16_ad8fc8(bool) = 0;
+    virtual void Slot17_ad8fc8(uint32_t, uint32_t) = 0;
+    virtual void Slot18_ad8fc8(uint32_t, uint32_t) = 0;
+    virtual void Slot19_ad8fc8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot20_ad8fc8(uint32_t) = 0;
+    virtual void Slot21_ad8fc8(uint32_t, uint32_t) = 0;
+    virtual void Slot22_ad8fc8(uint32_t, uint32_t) = 0;
+    virtual bool Slot23_ad8fc8() = 0;
+    virtual void Slot24_ad8fc8(uint32_t, uint32_t) = 0;
     virtual void Slot25_ad8fc8() = 0;
 };
 #ifdef _MSC_VER

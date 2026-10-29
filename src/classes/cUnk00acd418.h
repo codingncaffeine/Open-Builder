@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ACD418_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00acd418
 // SIZE 0x5c
@@ -13,30 +14,34 @@ public:
     virtual void Slot02_acd418();
     virtual void Slot03_acd418();
     virtual void Slot04_acd418();
-    virtual void Slot05_acd418();
-    virtual void Slot06_acd418();
-    virtual void Slot07_acd418();
-    virtual void Slot08_acd418();
-    virtual void Slot09_acd418();
-    virtual void Slot10_acd418();
-    virtual void Slot11_acd418();
-    virtual void Slot12_acd418();
-    virtual void Slot13_acd418();
-    virtual void Slot14_acd418();
-    virtual void Slot15_acd418();
-    virtual void Slot16_acd418();
-    virtual void Slot17_acd418();
-    virtual void Slot18_acd418();
-    virtual void Slot19_acd418();
-    virtual void Slot20_acd418();
-    virtual void Slot21_acd418();
+    virtual void Slot05_acd418(uint32_t);
+    virtual void Slot06_acd418(uint32_t);
+    virtual void Slot07_acd418(uint32_t);
+    virtual void Slot08_acd418(uint32_t);
+    virtual bool Slot09_acd418(uint32_t);
+    virtual bool Slot10_acd418(uint32_t);
+    virtual bool Slot11_acd418(uint32_t);
+    virtual void Slot12_acd418(uint32_t);
+    virtual void Slot13_acd418(uint32_t);
+    virtual void Slot14_acd418(uint32_t);
+    virtual void Slot15_acd418(uint32_t, uint32_t);
+    virtual void Slot16_acd418(uint32_t, uint32_t);
+    virtual void Slot17_acd418(uint32_t, uint32_t);
+    virtual void Slot18_acd418(uint32_t, uint32_t);
+    virtual void Slot19_acd418(uint32_t);
+    virtual void Slot20_acd418(uint32_t);
+    virtual void Slot21_acd418(uint32_t);
     virtual void Slot22_acd418();
-    virtual void Slot23_acd418();
-    virtual void Slot24_acd418();
-    virtual void Slot25_acd418();
-    virtual void Slot26_acd418();
-    virtual void Slot27_acd418();
-    char unknown4[0x58];
+    virtual void Slot23_acd418(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot24_acd418(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot25_acd418(uint32_t);
+    virtual void Slot26_acd418(uint32_t, uint32_t);
+    virtual void Slot27_acd418(uint32_t, uint32_t, uint32_t);
+    char unknown4[0x44];
+    uint32_t field48;
+    uint32_t field4c;
+    uint32_t field50;
+    char unknown54[0x8];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00acd418[sizeof(cUnk00acd418) == 0x5c ? 1 : -1];

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AB8318_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ab8318 {
@@ -10,12 +11,12 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ab8318() = 0;
-    virtual void Slot04_ab8318() = 0;
-    virtual void Slot05_ab8318() = 0;
+    virtual void* Slot03_ab8318() = 0;
+    virtual void Slot04_ab8318(uint32_t) = 0;
+    virtual void Slot05_ab8318(uint32_t) = 0;
     virtual void Slot06_ab8318() = 0;
-    virtual void Slot07_ab8318() = 0;
-    virtual void Slot08_ab8318() = 0;
+    virtual void Slot07_ab8318(uint32_t, uint32_t) = 0;
+    virtual void Slot08_ab8318(uint32_t, uint32_t) = 0;
     virtual void Slot09_ab8318() = 0;
 };
 #ifdef _MSC_VER

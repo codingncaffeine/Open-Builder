@@ -3,19 +3,20 @@
 #define OB_CLASSES_CUNK00AA1344_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00aa1344
 // SIZE 0x10
 class cUnk00aa1344 {
 public:
-    virtual void Slot00_aa1344();
+    virtual void Slot00_aa1344(uint32_t, uint32_t);
     virtual void Slot01_aa1344();
     virtual void Slot02_aa1344();
-    virtual void Slot03_aa1344();
-    virtual void Slot04_aa1344();
-    virtual void Slot05_aa1344();
-    virtual void Slot06_aa1344();
-    virtual void Slot07_aa1344();
+    virtual void Slot03_aa1344(uint32_t, uint32_t);
+    virtual void Slot04_aa1344(uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_aa1344(uint32_t);
+    virtual void Slot06_aa1344(uint32_t);
+    virtual void Slot07_aa1344(uint32_t);
     virtual ~cUnk00aa1344() {}
     char unknown4[0xc];
 };

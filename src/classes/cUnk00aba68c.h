@@ -3,20 +3,21 @@
 #define OB_CLASSES_CUNK00ABA68C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aaaa9c.h"
 #include "classes/cUnk00aba3f8.h"
 #include "classes/cUnk00adc8d8.h"
 
 // Between cUnk00adc8d8 and cUnk00aba68c at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00aba68c_4 : public cUnk00adc8d8 {
-    virtual void Slot88_adc8d8();
+    virtual bool Slot88_adc8d8();
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
 };
 
 // Between cUnk00aaaa9c and cUnk00aba68c at +0xdc: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00aba68c_dc : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00aba68c cUnk00aba3f8
@@ -30,9 +31,9 @@ public:
     virtual unsigned int AddRef();
     virtual unsigned int Release();
     virtual void Slot03_aba3f8();
-    virtual void Slot04_aba3f8();
-    virtual void Slot05_aba3f8();
-    virtual void Slot06_aba3f8();
+    virtual void Slot04_aba3f8(uint32_t, uint32_t);
+    virtual void Slot05_aba3f8(uint32_t, uint32_t);
+    virtual void Slot06_aba3f8(uint32_t, uint32_t, uint32_t);
     char unknowne0[0x2c];
 };
 #ifdef _MSC_VER

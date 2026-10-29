@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00A8EC1C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00a8ec1c
 class cUnk00a8ec1c {
 public:
-    virtual void Slot00_a8ec1c();
+    virtual void Slot00_a8ec1c(uint32_t, uint32_t);
     virtual void Slot01_a8ec1c();
     virtual void Slot02_a8ec1c();
-    virtual void Slot03_a8ec1c();
+    virtual bool Slot03_a8ec1c(uint32_t);
     virtual ~cUnk00a8ec1c() {}
 };
 

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A97D94_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aa42c8.h"
 
 // VTABLE: 0x00a97d94 cUnk00aa42c8_0
@@ -11,7 +12,7 @@
 class cUnk00a97d94 : public cUnk00aa42c8 {
 public:
     virtual ~cUnk00a97d94();
-    virtual void Slot03_aa42c8();
+    virtual void Slot03_aa42c8(uint32_t);
     char unknownc[0x14];
 };
 #ifdef _MSC_VER

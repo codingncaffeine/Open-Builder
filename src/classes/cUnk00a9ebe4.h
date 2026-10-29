@@ -3,17 +3,18 @@
 #define OB_CLASSES_CUNK00A9EBE4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00a9ebe4 {
 public:
-    virtual void Slot03_aa1170() = 0;
-    virtual void Slot04_aa1170() = 0;
+    virtual void Slot03_aa1170(uint32_t) = 0;
+    virtual void Slot04_aa1170(uint32_t) = 0;
     virtual void Slot05_aa1170() = 0;
-    virtual void Slot03_a9ebe4() = 0;
-    virtual void Slot04_a9ebe4() = 0;
-    virtual void Slot12_aa1170() = 0;
-    virtual void Slot13_aa1170() = 0;
+    virtual void Slot03_a9ebe4(uint32_t, uint32_t) = 0;
+    virtual void Slot04_a9ebe4(uint32_t) = 0;
+    virtual void Slot12_aa1170(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot13_aa1170(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot01_aa1170() = 0;
     virtual void Slot02_aa1170() = 0;
 };

@@ -3,41 +3,47 @@
 #define OB_CLASSES_CUNK00A934A8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00a934a8
 // SIZE 0x25c
 class cUnk00a934a8 {
 public:
-    virtual void Slot00_a934a8();
+    virtual void Slot00_a934a8(uint32_t, uint32_t);
     virtual void Slot01_a934a8();
     virtual void Slot02_a934a8();
-    virtual void Slot03_a934a8();
+    virtual void Slot03_a934a8(uint32_t);
     virtual void Slot04_a934a8();
     virtual void Slot05_a934a8();
-    virtual void Slot06_a934a8();
-    virtual void Slot07_a934a8();
-    virtual void Slot08_a934a8();
-    virtual void Slot09_a934a8();
-    virtual void Slot10_a934a8();
-    virtual void Slot11_a934a8();
-    virtual void Slot12_a934a8();
-    virtual void Slot13_a934a8();
+    virtual void* Slot06_a934a8();
+    virtual void Slot07_a934a8(uint32_t);
+    virtual void Slot08_a934a8(uint32_t);
+    virtual uint32_t Slot09_a934a8();
+    virtual void Slot10_a934a8(uint32_t);
+    virtual void Slot11_a934a8(bool);
+    virtual void Slot12_a934a8(uint32_t);
+    virtual void Slot13_a934a8(uint32_t);
     virtual void Slot14_a934a8();
     virtual void Slot15_a934a8();
-    virtual void Slot16_a934a8();
+    virtual void Slot16_a934a8(uint32_t);
     virtual void Slot17_a934a8();
-    virtual void Slot18_a934a8();
+    virtual bool Slot18_a934a8(uint32_t);
     virtual void Slot19_a934a8();
     virtual void Slot20_a934a8();
     virtual void Slot21_a934a8();
-    virtual void Slot22_a934a8();
-    virtual void Slot23_a934a8();
-    virtual void Slot24_a934a8();
+    virtual void Slot22_a934a8(uint32_t);
+    virtual void Slot23_a934a8(uint32_t);
+    virtual void Slot24_a934a8(uint32_t);
     virtual void Slot25_a934a8();
     virtual void Slot26_a934a8();
     virtual void Slot27_a934a8();
-    virtual void Slot28_a934a8();
-    char unknown4[0x258];
+    virtual void Slot28_a934a8(uint32_t);
+    char unknown4[0x8];
+    bool fieldc;
+    char unknownd[0x17b];
+    char field188[0x74];
+    uint32_t field1fc;
+    char unknown200[0x5c];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a934a8[sizeof(cUnk00a934a8) == 0x25c ? 1 : -1];

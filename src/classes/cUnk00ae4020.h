@@ -3,35 +3,36 @@
 #define OB_CLASSES_CUNK00AE4020_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ae4020 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ae4020() = 0;
-    virtual void Slot04_ae4020() = 0;
-    virtual void Slot05_ae4020() = 0;
-    virtual void Slot06_ae4020() = 0;
-    virtual void Slot07_ae4020() = 0;
-    virtual void Slot08_ae4020() = 0;
-    virtual void Slot09_ae4020() = 0;
-    virtual void Slot10_ae4020() = 0;
-    virtual void Slot11_ae4020() = 0;
-    virtual void Slot12_ae4020() = 0;
-    virtual void Slot13_ae4020() = 0;
-    virtual void Slot14_ae4020() = 0;
-    virtual void Slot15_ae4020() = 0;
-    virtual void Slot16_ae4020() = 0;
-    virtual void Slot17_ae4020() = 0;
-    virtual void Slot18_ae4020() = 0;
-    virtual void Slot19_ae4020() = 0;
-    virtual void Slot20_ae4020() = 0;
-    virtual void Slot21_ae4020() = 0;
-    virtual void Slot22_ae4020() = 0;
-    virtual void Slot23_ae4020() = 0;
-    virtual void Slot24_ae4020() = 0;
-    virtual void Slot25_ae4020() = 0;
+    virtual void* Slot03_ae4020() = 0;
+    virtual void Slot04_ae4020(uint32_t) = 0;
+    virtual void Slot05_ae4020(uint32_t) = 0;
+    virtual void Slot06_ae4020(uint32_t, uint32_t) = 0;
+    virtual void Slot07_ae4020(uint32_t) = 0;
+    virtual uint32_t Slot08_ae4020() = 0;
+    virtual void Slot09_ae4020(uint32_t) = 0;
+    virtual void Slot10_ae4020(uint32_t) = 0;
+    virtual void Slot11_ae4020(uint32_t) = 0;
+    virtual void Slot12_ae4020(uint32_t) = 0;
+    virtual void Slot13_ae4020(uint32_t) = 0;
+    virtual void Slot14_ae4020(uint32_t) = 0;
+    virtual void Slot15_ae4020(uint32_t) = 0;
+    virtual void Slot16_ae4020(uint32_t) = 0;
+    virtual void Slot17_ae4020(uint32_t) = 0;
+    virtual void Slot18_ae4020(uint32_t) = 0;
+    virtual void Slot19_ae4020(uint32_t) = 0;
+    virtual uint32_t Slot20_ae4020() = 0;
+    virtual void Slot21_ae4020(uint32_t) = 0;
+    virtual uint32_t Slot22_ae4020() = 0;
+    virtual void Slot23_ae4020(uint32_t) = 0;
+    virtual uint32_t Slot24_ae4020() = 0;
+    virtual void Slot25_ae4020(uint32_t) = 0;
 };
 
 #endif

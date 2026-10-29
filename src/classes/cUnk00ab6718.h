@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AB6718_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ab6718 {
@@ -11,23 +12,23 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_ab6718() = 0;
-    virtual void Slot04_ab6718() = 0;
-    virtual void Slot05_ab6718() = 0;
-    virtual void Slot06_ab6718() = 0;
-    virtual void Slot07_ab6718() = 0;
-    virtual void Slot08_ab6718() = 0;
-    virtual void Slot09_ab6718() = 0;
-    virtual void Slot10_ab6718() = 0;
-    virtual void Slot11_ab6718() = 0;
-    virtual void Slot12_ab6718() = 0;
-    virtual void Slot13_ab6718() = 0;
-    virtual void Slot14_ab6718() = 0;
-    virtual void Slot15_ab6718() = 0;
-    virtual void Slot16_ab6718() = 0;
-    virtual void Slot17_ab6718() = 0;
-    virtual void Slot18_ab6718() = 0;
-    virtual void Slot19_ab6718() = 0;
-    virtual void Slot20_ab6718() = 0;
+    virtual void Slot04_ab6718(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot05_ab6718() = 0;
+    virtual void Slot06_ab6718(uint32_t) = 0;
+    virtual void* Slot07_ab6718() = 0;
+    virtual void Slot08_ab6718(uint32_t) = 0;
+    virtual void* Slot09_ab6718() = 0;
+    virtual void Slot10_ab6718(uint32_t) = 0;
+    virtual void Slot11_ab6718(uint32_t) = 0;
+    virtual void Slot12_ab6718(uint32_t) = 0;
+    virtual uint32_t Slot13_ab6718() = 0;
+    virtual void Slot14_ab6718(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot15_ab6718(uint32_t) = 0;
+    virtual void* Slot16_ab6718() = 0;
+    virtual void Slot17_ab6718(uint32_t) = 0;
+    virtual void* Slot18_ab6718() = 0;
+    virtual void Slot19_ab6718(uint32_t) = 0;
+    virtual void* Slot20_ab6718() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab6718[sizeof(cUnk00ab6718) == 0x4 ? 1 : -1];

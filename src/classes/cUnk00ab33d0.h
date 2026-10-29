@@ -3,53 +3,54 @@
 #define OB_CLASSES_CUNK00AB33D0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ab33d0
 class cUnk00ab33d0 {
 public:
-    virtual void Slot00_ab33d0();
+    virtual void Slot00_ab33d0(uint32_t, uint32_t);
     virtual void Slot01_ab33d0();
     virtual void Slot02_ab33d0();
     virtual void Slot03_ab33d0();
     virtual void Slot04_ab33d0();
-    virtual void Slot05_ab33d0();
+    virtual uint32_t Slot05_ab33d0();
     virtual void Slot06_ab33d0();
-    virtual void Slot07_ab33d0();
-    virtual void Slot08_ab33d0();
-    virtual void Slot09_ab33d0();
-    virtual void Slot10_ab33d0();
-    virtual void Slot11_ab33d0();
-    virtual void Slot12_ab33d0();
-    virtual void Slot13_ab33d0();
-    virtual void Slot14_ab33d0();
-    virtual void Slot15_ab33d0();
-    virtual void Slot16_ab33d0();
-    virtual void Slot17_ab33d0();
-    virtual void Slot18_ab33d0();
-    virtual void Slot19_ab33d0();
-    virtual void Slot20_ab33d0();
-    virtual void Slot21_ab33d0();
+    virtual void Slot07_ab33d0(uint32_t, uint32_t);
+    virtual uint32_t Slot08_ab33d0();
+    virtual uint32_t Slot09_ab33d0();
+    virtual uint32_t Slot10_ab33d0();
+    virtual void Slot11_ab33d0(uint32_t, uint32_t);
+    virtual void Slot12_ab33d0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot13_ab33d0();
+    virtual float Slot14_ab33d0();
+    virtual float Slot15_ab33d0();
+    virtual void Slot16_ab33d0(uint32_t, uint32_t);
+    virtual void Slot17_ab33d0(uint32_t, uint32_t);
+    virtual float Slot18_ab33d0();
+    virtual void Slot19_ab33d0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot20_ab33d0(uint32_t, uint32_t);
+    virtual void Slot21_ab33d0(uint32_t, uint32_t);
     virtual void Slot22_ab33d0();
-    virtual void Slot23_ab33d0();
+    virtual void Slot23_ab33d0(uint32_t, uint32_t, uint32_t);
     virtual void Slot24_ab33d0();
-    virtual void Slot25_ab33d0();
-    virtual void Slot26_ab33d0();
-    virtual void Slot27_ab33d0();
-    virtual void Slot28_ab33d0();
-    virtual void Slot29_ab33d0();
-    virtual void Slot30_ab33d0();
+    virtual void Slot25_ab33d0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot26_ab33d0(uint32_t, uint32_t);
+    virtual float Slot27_ab33d0();
+    virtual void Slot28_ab33d0(uint32_t);
+    virtual void Slot29_ab33d0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot30_ab33d0(uint32_t);
     virtual void Slot31_ab33d0();
-    virtual void Slot32_ab33d0();
-    virtual void Slot33_ab33d0();
-    virtual void Slot34_ab33d0();
-    virtual void Slot35_ab33d0();
-    virtual void Slot36_ab33d0();
-    virtual void Slot37_ab33d0();
-    virtual void Slot38_ab33d0();
-    virtual void Slot39_ab33d0();
+    virtual void Slot32_ab33d0(uint32_t);
+    virtual void Slot33_ab33d0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void* Slot34_ab33d0();
+    virtual void Slot35_ab33d0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot36_ab33d0(uint32_t, uint32_t);
+    virtual void Slot37_ab33d0(uint32_t, uint32_t);
+    virtual void Slot38_ab33d0(uint32_t, uint32_t);
+    virtual void Slot39_ab33d0(uint32_t, uint32_t);
     virtual void Slot40_ab33d0();
     virtual void Slot41_ab33d0();
-    virtual void Slot42_ab33d0();
+    virtual void Slot42_ab33d0(uint32_t, uint32_t);
     virtual ~cUnk00ab33d0();
 };
 

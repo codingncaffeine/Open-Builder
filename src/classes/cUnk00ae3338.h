@@ -3,66 +3,67 @@
 #define OB_CLASSES_CUNK00AE3338_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ae3338 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ae3338() = 0;
-    virtual void Slot04_ae3338() = 0;
+    virtual void* Slot03_ae3338() = 0;
+    virtual float Slot04_ae3338() = 0;
     virtual void Slot05_ae3338() = 0;
-    virtual void Slot06_ae3338() = 0;
-    virtual void Slot07_ae3338() = 0;
-    virtual void Slot08_ae3338() = 0;
+    virtual void Slot06_ae3338(uint32_t, uint32_t) = 0;
+    virtual void Slot07_ae3338(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot08_ae3338() = 0;
     virtual void Slot09_ae3338() = 0;
     virtual void Slot10_ae3338() = 0;
     virtual void Slot11_ae3338() = 0;
-    virtual void Slot12_ae3338() = 0;
-    virtual void Slot13_ae3338() = 0;
-    virtual void Slot14_ae3338() = 0;
-    virtual void Slot15_ae3338() = 0;
-    virtual void Slot16_ae3338() = 0;
-    virtual void Slot17_ae3338() = 0;
-    virtual void Slot18_ae3338() = 0;
-    virtual void Slot19_ae3338() = 0;
-    virtual void Slot20_ae3338() = 0;
-    virtual void Slot21_ae3338() = 0;
-    virtual void Slot22_ae3338() = 0;
-    virtual void Slot23_ae3338() = 0;
-    virtual void Slot24_ae3338() = 0;
-    virtual void Slot25_ae3338() = 0;
+    virtual void Slot12_ae3338(uint32_t, uint32_t) = 0;
+    virtual void Slot13_ae3338(uint32_t, uint32_t) = 0;
+    virtual float Slot14_ae3338() = 0;
+    virtual float Slot15_ae3338() = 0;
+    virtual uint32_t Slot16_ae3338() = 0;
+    virtual void Slot17_ae3338(uint32_t) = 0;
+    virtual uint32_t Slot18_ae3338() = 0;
+    virtual uint32_t Slot19_ae3338() = 0;
+    virtual void Slot20_ae3338(uint32_t) = 0;
+    virtual uint32_t Slot21_ae3338() = 0;
+    virtual void Slot22_ae3338(uint32_t) = 0;
+    virtual bool Slot23_ae3338() = 0;
+    virtual uint32_t Slot24_ae3338() = 0;
+    virtual uint32_t Slot25_ae3338() = 0;
     virtual void Slot26_ae3338() = 0;
-    virtual void Slot27_ae3338() = 0;
-    virtual void Slot28_ae3338() = 0;
-    virtual void Slot29_ae3338() = 0;
+    virtual uint32_t Slot27_ae3338() = 0;
+    virtual uint32_t Slot28_ae3338() = 0;
+    virtual uint32_t Slot29_ae3338() = 0;
     virtual void Slot30_ae3338() = 0;
     virtual void Slot31_ae3338() = 0;
     virtual void Slot32_ae3338() = 0;
-    virtual void Slot33_ae3338() = 0;
+    virtual void Slot33_ae3338(uint32_t) = 0;
     virtual void Slot34_ae3338() = 0;
     virtual void Slot35_ae3338() = 0;
-    virtual void Slot36_ae3338() = 0;
-    virtual void Slot37_ae3338() = 0;
-    virtual void Slot38_ae3338() = 0;
-    virtual void Slot39_ae3338() = 0;
-    virtual void Slot40_ae3338() = 0;
-    virtual void Slot41_ae3338() = 0;
-    virtual void Slot42_ae3338() = 0;
-    virtual void Slot43_ae3338() = 0;
-    virtual void Slot44_ae3338() = 0;
-    virtual void Slot45_ae3338() = 0;
-    virtual void Slot07_add348() = 0;
-    virtual void Slot47_ae3338() = 0;
-    virtual void Slot48_ae3338() = 0;
+    virtual uint32_t Slot36_ae3338() = 0;
+    virtual void Slot37_ae3338(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot38_ae3338(uint32_t) = 0;
+    virtual void Slot39_ae3338(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot40_ae3338(uint32_t) = 0;
+    virtual void Slot41_ae3338(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot42_ae3338(uint32_t) = 0;
+    virtual void Slot43_ae3338(uint32_t) = 0;
+    virtual void Slot44_ae3338(uint32_t) = 0;
+    virtual void Slot45_ae3338(uint32_t) = 0;
+    virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot47_ae3338(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot48_ae3338(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot49_ae3338() = 0;
     virtual void Slot50_ae3338() = 0;
-    virtual void Slot51_ae3338() = 0;
+    virtual void Slot51_ae3338(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot52_ae3338() = 0;
-    virtual void Slot53_ae3338() = 0;
-    virtual void Slot54_ae3338() = 0;
+    virtual void Slot53_ae3338(uint32_t, uint32_t) = 0;
+    virtual void Slot54_ae3338(uint32_t) = 0;
     virtual void Slot55_ae3338() = 0;
-    virtual void Slot56_ae3338() = 0;
+    virtual void Slot56_ae3338(uint32_t) = 0;
 };
 
 #endif

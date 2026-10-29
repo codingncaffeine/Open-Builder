@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AAAB00_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aaaa9c.h"
 #include "classes/cUnk00aaaaac.h"
 #include "classes/cUnk00ace624.h"

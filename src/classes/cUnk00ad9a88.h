@@ -3,49 +3,52 @@
 #define OB_CLASSES_CUNK00AD9A88_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad9a88
 // SIZE 0x20
 class cUnk00ad9a88 {
 public:
-    virtual void Slot00_ad9a88();
+    virtual void Slot00_ad9a88(uint32_t, uint32_t);
     virtual void Slot01_ad9a88();
     virtual void Slot02_ad9a88();
-    virtual void Slot03_ad9a88();
-    virtual void Slot04_ad9a88();
-    virtual void Slot05_ad9a88();
-    virtual void Slot06_ad9a88();
-    virtual void Slot07_ad9a88();
+    virtual void Slot03_ad9a88(uint32_t);
+    virtual void Slot04_ad9a88(uint32_t, uint32_t);
+    virtual void Slot05_ad9a88(uint32_t);
+    virtual void Slot06_ad9a88(uint32_t);
+    virtual void Slot07_ad9a88(uint32_t);
     virtual void Slot08_ad9a88();
-    virtual void Slot09_ad9a88();
-    virtual void Slot10_ad9a88();
-    virtual void Slot11_ad9a88();
-    virtual void Slot12_ad9a88();
-    virtual void Slot13_ad9a88();
-    virtual void Slot14_ad9a88();
-    virtual void Slot15_ad9a88();
-    virtual void Slot16_ad9a88();
-    virtual void Slot17_ad9a88();
-    virtual void Slot18_ad9a88();
-    virtual void Slot19_ad9a88();
-    virtual void Slot20_ad9a88();
-    virtual void Slot21_ad9a88();
-    virtual void Slot22_ad9a88();
-    virtual void Slot23_ad9a88();
-    virtual void Slot24_ad9a88();
-    virtual void Slot25_ad9a88();
-    virtual void Slot26_ad9a88();
-    virtual void Slot27_ad9a88();
-    virtual void Slot28_ad9a88();
-    virtual void Slot29_ad9a88();
-    virtual void Slot30_ad9a88();
-    virtual void Slot31_ad9a88();
-    virtual void Slot32_ad9a88();
-    virtual void Slot33_ad9a88();
-    virtual void Slot34_ad9a88();
-    virtual void Slot35_ad9a88();
+    virtual bool Slot09_ad9a88();
+    virtual void Slot10_ad9a88(uint32_t);
+    virtual void Slot11_ad9a88(uint32_t, uint32_t);
+    virtual void Slot12_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot14_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot15_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot16_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot18_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot19_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot20_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot21_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot22_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot23_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot24_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot25_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot26_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot27_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot28_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot29_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot30_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot31_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot32_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot33_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot34_ad9a88(uint32_t, uint32_t, uint32_t);
+    virtual void Slot35_ad9a88(uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ad9a88();
-    char unknown4[0x1c];
+    char unknown4[0xd];
+    bool field11;
+    char unknown12[0xe];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad9a88[sizeof(cUnk00ad9a88) == 0x20 ? 1 : -1];

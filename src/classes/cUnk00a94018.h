@@ -3,10 +3,11 @@
 #define OB_CLASSES_CUNK00A94018_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00a94018 {
 public:
-    virtual void Slot00_a940e4() = 0;
+    virtual void Slot00_a940e4(uint32_t, uint32_t) = 0;
     virtual void Slot01_a940e4() = 0;
     virtual void Slot02_a940e4() = 0;
     virtual void Slot03_a94018() = 0;

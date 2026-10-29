@@ -3,19 +3,22 @@
 #define OB_CLASSES_CUNK00ACFDCC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00acfdcc
 // SIZE 0x10
 class cUnk00acfdcc {
 public:
-    virtual void Slot00_acfdcc();
+    virtual void Slot00_acfdcc(uint32_t, uint32_t);
     virtual void Slot01_acfdcc();
     virtual void Slot02_acfdcc();
-    virtual void Slot03_acfdcc();
-    virtual void Slot04_acfdcc();
-    virtual void Slot05_acfdcc();
+    virtual uint32_t Slot03_acfdcc();
+    virtual void Slot04_acfdcc(uint32_t, uint32_t);
+    virtual uint32_t Slot05_acfdcc();
     virtual ~cUnk00acfdcc();
-    char unknown4[0xc];
+    char unknown4[0x4];
+    uint32_t field8;
+    uint32_t fieldc;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00acfdcc[sizeof(cUnk00acfdcc) == 0x10 ? 1 : -1];

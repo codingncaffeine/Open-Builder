@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00AD9838_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad8c20.h"
 #include "classes/cUnk00ad9818.h"
 
 // Between cUnk00ad9818 and cUnk00ad9838 at +0x10: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad9838_10 : public cUnk00ad9818 {
-    virtual void Slot03_ad9818();
+    virtual void Slot03_ad9818(uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00ad9838 cUnk00ad8c20
@@ -16,10 +17,10 @@ struct OB_NOVTABLE cUnk00ad9838_10 : public cUnk00ad9818 {
 // SIZE 0x14
 class cUnk00ad9838 : public cUnk00ad8c20, public cUnk00ad9838_10 {
 public:
-    virtual void Slot09_ad8c20();
-    virtual void Slot10_ad8c20();
-    virtual void Slot11_ad8c20();
-    virtual void Slot00_ace4b0();
+    virtual void Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ad8c20(uint32_t, uint32_t);
+    virtual bool Slot11_ad8c20(uint32_t, uint32_t);
+    virtual void Slot00_ace4b0(uint32_t, uint32_t);
     virtual void Slot01_ace4b0();
     virtual void Slot02_ace4b0();
 };

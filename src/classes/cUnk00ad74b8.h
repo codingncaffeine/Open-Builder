@@ -3,37 +3,43 @@
 #define OB_CLASSES_CUNK00AD74B8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad74b8
 // SIZE 0x64
 class cUnk00ad74b8 {
 public:
-    virtual void Slot00_ad74b8();
+    virtual void Slot00_ad74b8(uint32_t, uint32_t);
     virtual void Slot01_ad74b8();
     virtual void Slot02_ad74b8();
-    virtual void Slot03_ad74b8();
-    virtual void Slot04_ad74b8();
-    virtual void Slot05_ad74b8();
-    virtual void Slot06_ad74b8();
+    virtual void Slot03_ad74b8(uint32_t);
+    virtual void Slot04_ad74b8(uint32_t);
+    virtual bool Slot05_ad74b8(uint32_t);
+    virtual bool Slot06_ad74b8(uint32_t);
     virtual void Slot07_ad74b8();
     virtual void Slot08_ad74b8();
     virtual void Slot09_ad74b8();
-    virtual void Slot10_ad74b8();
-    virtual void Slot11_ad74b8();
+    virtual uint32_t Slot10_ad74b8();
+    virtual void Slot11_ad74b8(uint32_t, uint32_t);
     virtual void Slot12_ad74b8();
     virtual void Slot13_ad74b8();
-    virtual void Slot14_ad74b8();
+    virtual void Slot14_ad74b8(uint32_t, uint32_t);
     virtual void Slot15_ad74b8();
-    virtual void Slot16_ad74b8();
-    virtual void Slot17_ad74b8();
-    virtual void Slot18_ad74b8();
-    virtual void Slot19_ad74b8();
-    virtual void Slot20_ad74b8();
+    virtual void* Slot16_ad74b8();
+    virtual bool Slot17_ad74b8();
+    virtual bool Slot18_ad74b8(uint32_t);
+    virtual uint32_t Slot19_ad74b8();
+    virtual void Slot20_ad74b8(uint32_t);
     virtual ~cUnk00ad74b8();
     virtual void Slot22_ad74b8();
     virtual void Slot23_ad74b8();
-    virtual void Slot24_ad74b8();
-    char unknown4[0x60];
+    virtual uint32_t Slot24_ad74b8();
+    char unknown4[0x30];
+    uint32_t field34;
+    char unknown38[0xc];
+    char field44[0x14];
+    uint32_t field58;
+    char unknown5c[0x8];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad74b8[sizeof(cUnk00ad74b8) == 0x64 ? 1 : -1];

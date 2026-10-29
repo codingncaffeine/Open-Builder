@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ADB6A8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x8
 class cUnk00adb6a8 {
@@ -10,33 +11,33 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_adb6a8() = 0;
+    virtual void* Slot03_adb6a8() = 0;
     virtual void Slot04_adb6a8() = 0;
     virtual void Slot05_adb6a8() = 0;
     virtual void Slot06_adb6a8() = 0;
     virtual void Slot07_adb6a8() = 0;
-    virtual void Slot08_adb6a8() = 0;
-    virtual void Slot09_adb6a8() = 0;
-    virtual void Slot10_adb6a8() = 0;
-    virtual void Slot11_adb6a8() = 0;
+    virtual void Slot08_adb6a8(uint32_t, uint32_t) = 0;
+    virtual void Slot09_adb6a8(uint32_t, uint32_t) = 0;
+    virtual void Slot10_adb6a8(uint32_t) = 0;
+    virtual void Slot11_adb6a8(uint32_t) = 0;
     virtual void Slot12_adb6a8() = 0;
-    virtual void Slot13_adb6a8() = 0;
+    virtual void Slot13_adb6a8(uint32_t) = 0;
     virtual void Slot14_adb6a8() = 0;
     virtual void Slot15_adb6a8() = 0;
-    virtual void Slot16_adb6a8() = 0;
-    virtual void Slot17_adb6a8() = 0;
-    virtual void Slot18_adb6a8() = 0;
+    virtual uint32_t Slot16_adb6a8() = 0;
+    virtual void Slot17_adb6a8(uint32_t) = 0;
+    virtual uint32_t Slot18_adb6a8() = 0;
     virtual void Slot19_adb6a8() = 0;
     virtual void Slot20_adb6a8() = 0;
     virtual void Slot21_adb6a8() = 0;
-    virtual void Slot22_adb6a8() = 0;
-    virtual void Slot23_adb6a8() = 0;
+    virtual void Slot22_adb6a8(uint32_t) = 0;
+    virtual uint32_t Slot23_adb6a8() = 0;
     virtual void Slot24_adb6a8() = 0;
-    virtual void Slot25_adb6a8() = 0;
-    virtual void Slot26_adb6a8() = 0;
-    virtual void Slot27_adb6a8() = 0;
-    virtual void Slot28_adb6a8() = 0;
-    virtual void Slot29_adb6a8() = 0;
+    virtual void Slot25_adb6a8(uint32_t) = 0;
+    virtual void Slot26_adb6a8(uint32_t) = 0;
+    virtual void Slot27_adb6a8(uint32_t) = 0;
+    virtual void Slot28_adb6a8(uint32_t) = 0;
+    virtual uint32_t Slot29_adb6a8() = 0;
     char unknown4[0x4];
 };
 #ifdef _MSC_VER

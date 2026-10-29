@@ -3,41 +3,42 @@
 #define OB_CLASSES_CUNK00ABFE50_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00abfe50 {
 public:
-    virtual void Slot00_ad8468() = 0;
+    virtual void Slot00_ad8468(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad8468() = 0;
     virtual void Slot02_ad8468() = 0;
-    virtual void Slot03_abfe50() = 0;
+    virtual bool Slot03_abfe50(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot04_abfe50() = 0;
     virtual void Slot05_abfe50() = 0;
     virtual void Slot06_abfe50() = 0;
     virtual void Slot07_abfe50() = 0;
-    virtual void Slot08_abfe50() = 0;
+    virtual void Slot08_abfe50(uint32_t) = 0;
     virtual void Slot09_abfe50() = 0;
     virtual void Slot10_abfe50() = 0;
-    virtual void Slot11_abfe50() = 0;
-    virtual void Slot12_abfe50() = 0;
-    virtual void Slot13_abfe50() = 0;
-    virtual void Slot14_abfe50() = 0;
-    virtual void Slot15_abfe50() = 0;
-    virtual void Slot16_abfe50() = 0;
-    virtual void Slot17_abfe50() = 0;
-    virtual void Slot18_abfe50() = 0;
-    virtual void Slot19_abfe50() = 0;
-    virtual void Slot20_abfe50() = 0;
+    virtual void Slot11_abfe50(uint32_t) = 0;
+    virtual void Slot12_abfe50(uint32_t) = 0;
+    virtual void Slot13_abfe50(uint32_t, uint32_t) = 0;
+    virtual void Slot14_abfe50(uint32_t, uint32_t) = 0;
+    virtual void Slot15_abfe50(uint32_t, uint32_t) = 0;
+    virtual void Slot16_abfe50(uint32_t, uint32_t) = 0;
+    virtual void Slot17_abfe50(uint32_t, uint32_t) = 0;
+    virtual bool Slot18_abfe50() = 0;
+    virtual bool Slot19_abfe50() = 0;
+    virtual bool Slot20_abfe50(uint32_t) = 0;
     virtual void Slot21_abfe50() = 0;
-    virtual void Slot22_abfe50() = 0;
-    virtual void Slot23_abfe50() = 0;
+    virtual bool Slot22_abfe50(uint32_t, uint32_t) = 0;
+    virtual bool Slot23_abfe50(uint32_t, uint32_t) = 0;
     virtual void Slot24_abfe50() = 0;
-    virtual void Slot25_abfe50() = 0;
-    virtual void Slot26_abfe50() = 0;
-    virtual void Slot27_abfe50() = 0;
-    virtual void Slot28_abfe50() = 0;
-    virtual void Slot29_abfe50() = 0;
-    virtual void Slot30_abfe50() = 0;
-    virtual void Slot31_abfe50() = 0;
+    virtual void Slot25_abfe50(uint32_t) = 0;
+    virtual uint32_t Slot26_abfe50() = 0;
+    virtual void Slot27_abfe50(uint32_t) = 0;
+    virtual void Slot28_abfe50(uint32_t) = 0;
+    virtual void Slot29_abfe50(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot30_abfe50(uint32_t, uint32_t) = 0;
+    virtual bool Slot31_abfe50(uint32_t, uint32_t) = 0;
 };
 
 #endif

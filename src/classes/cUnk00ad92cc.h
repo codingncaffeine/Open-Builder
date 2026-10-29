@@ -3,22 +3,25 @@
 #define OB_CLASSES_CUNK00AD92CC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad92cc
 // SIZE 0x14
 class cUnk00ad92cc {
 public:
-    virtual void Slot00_ad92cc();
+    virtual void Slot00_ad92cc(uint32_t, uint32_t);
     virtual void Slot01_ad92cc();
     virtual void Slot02_ad92cc();
-    virtual void Slot03_ad92cc();
-    virtual void Slot04_ad92cc();
-    virtual void Slot05_ad92cc();
+    virtual void Slot03_ad92cc(uint32_t, uint32_t);
+    virtual void Slot04_ad92cc(uint32_t, uint32_t);
+    virtual void Slot05_ad92cc(uint32_t, uint32_t);
     virtual void Slot06_ad92cc();
-    virtual void Slot07_ad92cc();
+    virtual void Slot07_ad92cc(uint32_t);
     virtual ~cUnk00ad92cc() {}
-    virtual void Slot09_ad92cc();
-    char unknown4[0x10];
+    virtual uint32_t Slot09_ad92cc();
+    char unknown4[0x8];
+    uint32_t fieldc;
+    char unknown10[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad92cc[sizeof(cUnk00ad92cc) == 0x14 ? 1 : -1];

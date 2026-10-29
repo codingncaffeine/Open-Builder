@@ -3,17 +3,18 @@
 #define OB_CLASSES_CUNK00AD23B8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00acf150.h"
 #include "classes/cUnk00ad2374.h"
 
 // Between cUnk00ad2374 and cUnk00ad23b8 at +0x3c: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad23b8_3c : public cUnk00ad2374 {
-    virtual void Slot00_ad2374();
+    virtual void Slot00_ad2374(uint32_t, uint32_t);
     virtual void Slot01_ad2374();
     virtual void Slot02_ad2374();
     virtual void Slot03_ad2374();
     virtual void Slot04_ad2374();
-    virtual void Slot06_ad2374();
+    virtual void Slot06_ad2374(uint32_t);
 };
 
 // VTABLE: 0x00ad23b8 cUnk00acf150
@@ -22,8 +23,8 @@ struct OB_NOVTABLE cUnk00ad23b8_3c : public cUnk00ad2374 {
 class cUnk00ad23b8 : public cUnk00acf150, public cUnk00ad23b8_3c {
 public:
     virtual ~cUnk00ad23b8();
-    virtual void Slot06_acf150();
-    virtual void Slot13_acf150();
+    virtual void Slot06_acf150(uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_acf150(uint32_t, uint32_t, uint32_t);
     char unknown40[0x28];
 };
 #ifdef _MSC_VER

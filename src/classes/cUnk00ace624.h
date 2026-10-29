@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ACE624_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ace624
 // SIZE 0x8
@@ -12,8 +13,8 @@ public:
     virtual unsigned int Release();
     virtual unsigned int AddRef();
     virtual void Slot03_ace624();
-    virtual void Slot04_ace624();
-    char unknown4[0x4];
+    virtual uint32_t Slot04_ace624();
+    uint32_t field4;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ace624[sizeof(cUnk00ace624) == 0x8 ? 1 : -1];

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A9E20C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00a9e20c {
 public:

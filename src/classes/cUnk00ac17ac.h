@@ -3,15 +3,16 @@
 #define OB_CLASSES_CUNK00AC17AC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ac17ac {
 public:
     virtual ~cUnk00ac17ac() {}
-    virtual void Slot01_ac17ac() = 0;
-    virtual void Slot02_ac17ac() = 0;
-    virtual void Slot03_ac17ac() = 0;
-    virtual void Slot04_ac17ac() = 0;
-    virtual void Slot05_ac17ac() = 0;
+    virtual void Slot01_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot02_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot03_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot04_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot05_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
 };
 
 #endif

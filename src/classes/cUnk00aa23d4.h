@@ -3,19 +3,20 @@
 #define OB_CLASSES_CUNK00AA23D4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00aa23d4 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_aa23d4() = 0;
+    virtual void Slot03_aa23d4(uint32_t, uint32_t) = 0;
     virtual void Slot04_aa23d4() = 0;
-    virtual void Slot05_aa23d4() = 0;
+    virtual uint32_t Slot05_aa23d4() = 0;
     virtual void Slot06_aa23d4() = 0;
     virtual void Slot07_aa23d4() = 0;
-    virtual void Slot08_aa23d4() = 0;
-    virtual void Slot09_aa23d4() = 0;
+    virtual void Slot08_aa23d4(uint32_t, uint32_t) = 0;
+    virtual void Slot09_aa23d4(uint32_t, uint32_t, uint32_t) = 0;
 };
 
 #endif

@@ -3,17 +3,18 @@
 #define OB_CLASSES_CUNK00AC33A0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ac33a0
 class cUnk00ac33a0 {
 public:
-    virtual void Slot00_ac33a0();
+    virtual void Slot00_ac33a0(uint32_t, uint32_t);
     virtual void Slot01_ac33a0();
     virtual void Slot02_ac33a0();
-    virtual void Slot03_ac33a0();
-    virtual void Slot04_ac33a0();
-    virtual void Slot05_ac33a0();
-    virtual void Slot06_ac33a0();
+    virtual void Slot03_ac33a0(uint32_t);
+    virtual uint32_t Slot04_ac33a0();
+    virtual uint32_t Slot05_ac33a0();
+    virtual bool Slot06_ac33a0();
     virtual ~cUnk00ac33a0() {}
 };
 

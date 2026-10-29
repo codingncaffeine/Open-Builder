@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AC4F44_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ace624.h"
 
 // VTABLE: 0x00ac4f44

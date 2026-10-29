@@ -3,36 +3,37 @@
 #define OB_CLASSES_CUNK00ADB310_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00adb310 {
 public:
-    virtual void Slot00_ac1400() = 0;
+    virtual void Slot00_ac1400(uint32_t, uint32_t) = 0;
     virtual void Slot01_ac1400() = 0;
     virtual void Slot02_ac1400() = 0;
-    virtual void Slot03_adb310() = 0;
-    virtual void Slot04_adb310() = 0;
+    virtual void* Slot03_adb310() = 0;
+    virtual void Slot04_adb310(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot04_ac1400() = 0;
-    virtual void Slot06_adb310() = 0;
+    virtual bool Slot06_adb310() = 0;
     virtual void Slot05_ac1400() = 0;
-    virtual void Slot08_adb310() = 0;
-    virtual void Slot09_adb310() = 0;
-    virtual void Slot10_adb310() = 0;
-    virtual void Slot11_adb310() = 0;
+    virtual bool Slot08_adb310() = 0;
+    virtual void Slot09_adb310(uint32_t) = 0;
+    virtual void Slot10_adb310(uint32_t) = 0;
+    virtual bool Slot11_adb310() = 0;
     virtual void Slot12_adb310() = 0;
-    virtual void Slot13_adb310() = 0;
-    virtual void Slot14_adb310() = 0;
+    virtual uint32_t Slot13_adb310(uint32_t) = 0;
+    virtual uint32_t Slot14_adb310(uint32_t) = 0;
     virtual void Slot15_adb310() = 0;
-    virtual void Slot16_adb310() = 0;
-    virtual void Slot17_adb310() = 0;
+    virtual uint32_t Slot16_adb310() = 0;
+    virtual bool Slot17_adb310(uint32_t) = 0;
     virtual void Slot18_adb310() = 0;
     virtual void Slot19_adb310() = 0;
     virtual void Slot20_adb310() = 0;
-    virtual void Slot39_ac1400() = 0;
-    virtual void Slot22_adb310() = 0;
+    virtual bool Slot39_ac1400() = 0;
+    virtual bool Slot22_adb310() = 0;
     virtual void Slot23_adb310() = 0;
     virtual void Slot24_adb310() = 0;
-    virtual void Slot25_adb310() = 0;
-    virtual void Slot26_adb310() = 0;
+    virtual void Slot25_adb310(uint32_t) = 0;
+    virtual void Slot26_adb310(uint32_t) = 0;
     virtual void Slot27_adb310() = 0;
     virtual void Slot28_adb310() = 0;
     virtual void Slot29_adb310() = 0;

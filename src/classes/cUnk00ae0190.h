@@ -3,31 +3,32 @@
 #define OB_CLASSES_CUNK00AE0190_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ae0190 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ae0190() = 0;
-    virtual void Slot04_ae0190() = 0;
-    virtual void Slot05_ae0190() = 0;
-    virtual void Slot06_ae0190() = 0;
-    virtual void Slot07_ae0190() = 0;
-    virtual void Slot08_ae0190() = 0;
-    virtual void Slot09_ae0190() = 0;
-    virtual void Slot10_ae0190() = 0;
-    virtual void Slot11_ae0190() = 0;
-    virtual void Slot12_ae0190() = 0;
-    virtual void Slot13_ae0190() = 0;
-    virtual void Slot14_ae0190() = 0;
-    virtual void Slot15_ae0190() = 0;
-    virtual void Slot16_ae0190() = 0;
-    virtual void Slot17_ae0190() = 0;
-    virtual void Slot18_ae0190() = 0;
-    virtual void Slot19_ae0190() = 0;
-    virtual void Slot20_ae0190() = 0;
-    virtual void Slot21_ae0190() = 0;
+    virtual void Slot03_ae0190(uint32_t) = 0;
+    virtual void Slot04_ae0190(uint32_t) = 0;
+    virtual void Slot05_ae0190(uint32_t, uint32_t) = 0;
+    virtual void Slot06_ae0190(uint32_t, uint32_t) = 0;
+    virtual void Slot07_ae0190(uint32_t, uint32_t) = 0;
+    virtual void Slot08_ae0190(uint32_t) = 0;
+    virtual void Slot09_ae0190(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot10_ae0190(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot11_ae0190(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot12_ae0190(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot13_ae0190(uint32_t, uint32_t) = 0;
+    virtual void Slot14_ae0190(uint32_t, uint32_t) = 0;
+    virtual void Slot15_ae0190(uint32_t, uint32_t) = 0;
+    virtual void Slot16_ae0190(uint32_t) = 0;
+    virtual void Slot17_ae0190(uint32_t) = 0;
+    virtual void Slot18_ae0190(uint32_t) = 0;
+    virtual void Slot19_ae0190(uint32_t) = 0;
+    virtual uint32_t Slot20_ae0190() = 0;
+    virtual void Slot21_ae0190(uint32_t, uint32_t) = 0;
 };
 
 #endif

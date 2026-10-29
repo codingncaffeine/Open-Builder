@@ -3,19 +3,20 @@
 #define OB_CLASSES_CUNK00AAFE7C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aafbfc.h"
 #include "classes/cUnk00adc8d8.h"
 
 // Between cUnk00adc8d8 and cUnk00aafe7c at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00aafe7c_4 : public cUnk00adc8d8 {
-    virtual void Slot03_adc8d8();
-    virtual void Slot88_adc8d8();
-    virtual void Slot130_adc8d8();
-    virtual void Slot131_adc8d8();
-    virtual void Slot134_adc8d8();
-    virtual void Slot136_adc8d8();
-    virtual void Slot138_adc8d8();
-    virtual void Slot143_adc8d8();
+    virtual void Slot03_adc8d8(uint32_t);
+    virtual bool Slot88_adc8d8();
+    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
+    virtual bool Slot131_adc8d8(uint32_t, uint32_t);
+    virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot143_adc8d8(uint32_t, uint32_t);
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
 };
@@ -29,13 +30,18 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_aafbfc();
-    virtual void Slot04_aafbfc();
-    virtual void Slot05_aafbfc();
-    virtual void Slot06_aafbfc();
-    virtual void Slot07_aafbfc();
+    virtual void Slot03_aafbfc(bool);
+    virtual void Slot04_aafbfc(bool);
+    virtual void Slot05_aafbfc(uint32_t);
+    virtual void Slot06_aafbfc(uint32_t);
+    virtual void Slot07_aafbfc(uint32_t);
     virtual void Slot08_aafbfc();
-    char unknowndc[0x38];
+    bool fielddc;
+    bool fielddd;
+    char unknownde[0x2];
+    uint32_t fielde0;
+    uint32_t fielde4;
+    char unknowne8[0x2c];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aafe7c[sizeof(cUnk00aafe7c) == 0x114 ? 1 : -1];

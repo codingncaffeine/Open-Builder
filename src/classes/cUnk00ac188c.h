@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AC188C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ac182c.h"
 
 // VTABLE: 0x00ac188c
@@ -177,11 +178,11 @@ public:
     virtual void Slot171_ac188c();
     virtual void Slot172_ac188c();
     virtual void Slot173_ac188c();
-    virtual void Slot01_ac17ac();
-    virtual void Slot02_ac17ac();
-    virtual void Slot03_ac17ac();
-    virtual void Slot04_ac17ac();
-    virtual void Slot05_ac17ac();
+    virtual void Slot01_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot02_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot03_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac188c[sizeof(cUnk00ac188c) == 0x4 ? 1 : -1];

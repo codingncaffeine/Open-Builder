@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ADB500_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aefde0.h"
 
 // VTABLE: 0x00adb500
@@ -12,14 +13,14 @@ public:
     virtual ~cUnk00adb500() {}
     virtual void Slot17_aefde0();
     virtual void Slot18_aefde0();
-    virtual void Slot21_aefde0();
+    virtual void Slot21_aefde0(uint32_t, uint32_t, uint32_t);
     virtual void Slot24_aefde0();
     virtual void Slot25_aefde0();
     virtual void Slot26_aefde0();
-    virtual void Slot27_aefde0();
+    virtual void Slot27_aefde0(uint32_t);
     virtual void Slot28_aefde0();
-    virtual void Slot29_aefde0();
-    virtual void Slot30_aefde0();
+    virtual void Slot29_aefde0(uint32_t);
+    virtual void Slot30_aefde0(uint32_t, uint32_t);
     virtual void Slot31_aefde0();
     virtual void Slot32_aefde0();
     virtual void Slot33_aefde0();

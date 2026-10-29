@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AE37B4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ae37b4 {
@@ -10,15 +11,15 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ae37b4() = 0;
-    virtual void Slot04_ae37b4() = 0;
-    virtual void Slot05_ae37b4() = 0;
+    virtual void Slot03_ae37b4(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot04_ae37b4(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot05_ae37b4(uint32_t) = 0;
     virtual void Slot06_ae37b4() = 0;
-    virtual void Slot07_ae37b4() = 0;
-    virtual void Slot08_ae37b4() = 0;
-    virtual void Slot09_ae37b4() = 0;
-    virtual void Slot10_ae37b4() = 0;
-    virtual void Slot11_ae37b4() = 0;
+    virtual void Slot07_ae37b4(uint32_t) = 0;
+    virtual void Slot08_ae37b4(uint32_t) = 0;
+    virtual void Slot09_ae37b4(uint32_t) = 0;
+    virtual uint32_t Slot10_ae37b4() = 0;
+    virtual uint32_t Slot11_ae37b4() = 0;
     virtual void Slot12_ae37b4() = 0;
 };
 #ifdef _MSC_VER

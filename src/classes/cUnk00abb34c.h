@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ABB34C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00abb004.h"
 #include "gzcom/cUnk0090da1e.h"
 
@@ -15,11 +16,11 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_abb004();
+    virtual void Slot03_abb004(uint32_t);
     virtual void Slot04_abb004();
-    virtual void Slot05_abb004();
-    virtual void Slot06_abb004();
-    virtual void Slot07_abb004();
+    virtual void Slot05_abb004(uint32_t);
+    virtual void Slot06_abb004(uint32_t, uint32_t);
+    virtual void Slot07_abb004(uint32_t);
     char unknownc[0x114];
 };
 #ifdef _MSC_VER

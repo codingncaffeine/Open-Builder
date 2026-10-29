@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00A9421C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00a9421c
 class cUnk00a9421c {
 public:
-    virtual void Slot00_a9421c();
+    virtual void Slot00_a9421c(uint32_t, uint32_t);
     virtual void Slot01_a9421c();
     virtual void Slot02_a9421c();
-    virtual void Slot03_a9421c();
+    virtual void Slot03_a9421c(uint32_t);
 };
 
 #endif

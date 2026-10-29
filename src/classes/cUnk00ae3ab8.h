@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AE3AB8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ae3ab8 {
@@ -11,17 +12,17 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_ae3ab8() = 0;
-    virtual void Slot04_ae3ab8() = 0;
-    virtual void Slot05_ae3ab8() = 0;
-    virtual void Slot06_ae3ab8() = 0;
+    virtual void Slot04_ae3ab8(uint32_t, uint32_t) = 0;
+    virtual void Slot05_ae3ab8(uint32_t) = 0;
+    virtual void Slot06_ae3ab8(uint32_t) = 0;
     virtual void Slot07_ae3ab8() = 0;
-    virtual void Slot08_ae3ab8() = 0;
-    virtual void Slot09_ae3ab8() = 0;
-    virtual void Slot10_ae3ab8() = 0;
-    virtual void Slot11_ae3ab8() = 0;
+    virtual void Slot08_ae3ab8(uint32_t) = 0;
+    virtual void Slot09_ae3ab8(uint32_t) = 0;
+    virtual void Slot10_ae3ab8(uint32_t) = 0;
+    virtual void Slot11_ae3ab8(uint32_t) = 0;
     virtual void Slot12_ae3ab8() = 0;
-    virtual void Slot13_ae3ab8() = 0;
-    virtual void Slot14_ae3ab8() = 0;
+    virtual void Slot13_ae3ab8(uint32_t) = 0;
+    virtual void Slot14_ae3ab8(uint32_t, uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae3ab8[sizeof(cUnk00ae3ab8) == 0x4 ? 1 : -1];

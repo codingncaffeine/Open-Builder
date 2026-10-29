@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00AE5CBC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ae5cbc
 class cUnk00ae5cbc {
 public:
-    virtual void Slot00_ae5cbc();
-    virtual void Slot01_ae5cbc();
-    virtual void Slot02_ae5cbc();
-    virtual void Slot03_ae5cbc();
+    virtual uint32_t Slot00_ae5cbc(uint32_t, uint32_t);
+    virtual void Slot01_ae5cbc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot02_ae5cbc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot03_ae5cbc(uint32_t);
     virtual ~cUnk00ae5cbc() {}
 };
 

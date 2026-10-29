@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AD3FC0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a943c0.h"
 #include "classes/cUnk00ac2bdc.h"
 #include "classes/cUnk00ac2d78.h"
@@ -11,43 +12,43 @@
 
 // The subobject at +0x0 (vtable 0x00ad3fc0): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad3fc0_0 {
-    virtual void Slot00_ad4cf4() = 0;
+    virtual void Slot00_ad4cf4(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
     virtual void Slot03_ad3fc0() = 0;
     virtual void Slot04_ad3fc0() = 0;
-    virtual void Slot05_ad3fc0() = 0;
-    virtual void Slot06_ad3fc0() = 0;
+    virtual void Slot05_ad3fc0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot06_ad3fc0(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot07_ad3fc0() = 0;
     virtual void Slot08_ad3fc0() = 0;
     virtual void Slot09_ad3fc0() = 0;
-    virtual void Slot10_ad3fc0() = 0;
-    virtual void Slot11_ad3fc0() = 0;
+    virtual bool Slot10_ad3fc0() = 0;
+    virtual uint32_t Slot11_ad3fc0() = 0;
     virtual void Slot12_ad3fc0() = 0;
-    virtual void Slot13_ad3fc0() = 0;
+    virtual void Slot13_ad3fc0(uint32_t) = 0;
     virtual void Slot14_ad3fc0() = 0;
     virtual void Slot15_ad3fc0() = 0;
     virtual void Slot16_ad3fc0() = 0;
-    virtual void Slot17_ad3fc0() = 0;
+    virtual void Slot17_ad3fc0(uint32_t) = 0;
     virtual void Slot18_ad3fc0() = 0;
     virtual void Slot19_ad3fc0() = 0;
     virtual void Slot20_ad3fc0() = 0;
-    virtual void Slot21_ad3fc0() = 0;
-    virtual void Slot22_ad3fc0() = 0;
-    virtual void Slot23_ad3fc0() = 0;
+    virtual void Slot21_ad3fc0(uint32_t) = 0;
+    virtual bool Slot22_ad3fc0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot23_ad3fc0() = 0;
     virtual void Slot24_ad3fc0() = 0;
-    virtual void Slot25_ad3fc0() = 0;
+    virtual void Slot25_ad3fc0(uint32_t) = 0;
     virtual void Slot26_ad3fc0() = 0;
-    virtual void Slot27_ad3fc0() = 0;
+    virtual void Slot27_ad3fc0(uint32_t) = 0;
     virtual void Slot28_ad3fc0() = 0;
-    virtual void Slot29_ad3fc0() = 0;
-    virtual void Slot30_ad3fc0() = 0;
-    virtual void Slot31_ad3fc0() = 0;
-    virtual void Slot32_ad3fc0() = 0;
-    virtual void Slot33_ad3fc0() = 0;
-    virtual void Slot34_ad3fc0() = 0;
-    virtual void Slot35_ad3fc0() = 0;
-    virtual void Slot36_ad3fc0() = 0;
+    virtual bool Slot29_ad3fc0(uint32_t, uint32_t) = 0;
+    virtual bool Slot30_ad3fc0(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot31_ad3fc0() = 0;
+    virtual void Slot32_ad3fc0(uint32_t) = 0;
+    virtual bool Slot33_ad3fc0(uint32_t) = 0;
+    virtual bool Slot34_ad3fc0(uint32_t) = 0;
+    virtual bool Slot35_ad3fc0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot36_ad3fc0(uint32_t, uint32_t) = 0;
     virtual ~cUnk00ad3fc0_0() {}
     virtual void Slot38_ad3fc0() = 0;
     virtual void Slot39_ad3fc0() = 0;
@@ -57,47 +58,47 @@ struct OB_NOVTABLE cUnk00ad3fc0_0 {
     virtual void Slot43_ad3fc0() = 0;
     virtual void Slot44_ad3fc0() = 0;
     virtual void Slot45_ad3fc0() = 0;
-    virtual void Slot46_ad3fc0() = 0;
-    virtual void Slot47_ad3fc0() = 0;
-    virtual void Slot48_ad3fc0() = 0;
-    virtual void Slot49_ad3fc0() = 0;
-    virtual void Slot50_ad3fc0() = 0;
-    virtual void Slot51_ad3fc0() = 0;
-    virtual void Slot52_ad3fc0() = 0;
-    virtual void Slot53_ad3fc0() = 0;
+    virtual bool Slot46_ad3fc0(uint32_t, uint32_t) = 0;
+    virtual void Slot47_ad3fc0(uint32_t) = 0;
+    virtual void Slot48_ad3fc0(uint32_t) = 0;
+    virtual void Slot49_ad3fc0(uint32_t) = 0;
+    virtual void Slot50_ad3fc0(uint32_t) = 0;
+    virtual void Slot51_ad3fc0(uint32_t) = 0;
+    virtual void Slot52_ad3fc0(uint32_t) = 0;
+    virtual void Slot53_ad3fc0(uint32_t) = 0;
 };
 
 // Between cUnk00ac2d78 and cUnk00ad3fc0 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad3fc0_4 : public cUnk00ac2d78 {
-    virtual void Slot04_ac2d78();
-    virtual void Slot05_ac2d78();
-    virtual void Slot06_ac2d78();
-    virtual void Slot07_ac2d78();
-    virtual void Slot08_ac2d78();
-    virtual void Slot09_ac2d78();
-    virtual void Slot10_ac2d78();
-    virtual void Slot11_ac2d78();
-    virtual void Slot12_ac2d78();
-    virtual void Slot13_ac2d78();
-    virtual void Slot14_ac2d78();
-    virtual void Slot15_ac2d78();
-    virtual void Slot16_ac2d78();
-    virtual void Slot03_ad3e48();
+    virtual void Slot04_ac2d78(uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_ac2d78(uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ac2d78(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot07_ac2d78(uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_ac2d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot09_ac2d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ac2d78(uint32_t);
+    virtual void Slot11_ac2d78(uint32_t);
+    virtual bool Slot12_ac2d78(uint32_t);
+    virtual void Slot13_ac2d78(uint32_t);
+    virtual bool Slot14_ac2d78(uint32_t);
+    virtual bool Slot15_ac2d78(uint32_t);
+    virtual bool Slot16_ac2d78();
+    virtual void* Slot03_ad3e48();
 };
 
 // Between cUnk00a943c0 and cUnk00ad3fc0 at +0x8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad3fc0_8 : public cUnk00a943c0 {
-    virtual void Slot13_ad3e48();
+    virtual void Slot13_ad3e48(uint32_t);
 };
 
 // Between cUnk00ad2bc8 and cUnk00ad3fc0 at +0xc: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad3fc0_c : public cUnk00ad2bc8 {
-    virtual void Slot03_ad2bc8();
-    virtual void Slot04_ad2bc8();
-    virtual void Slot05_ad2bc8();
-    virtual void Slot06_ad2bc8();
-    virtual void Slot07_ad2bc8();
-    virtual void Slot08_ad2bc8();
+    virtual void Slot03_ad2bc8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_ad2bc8(uint32_t);
+    virtual void Slot05_ad2bc8(uint32_t, uint32_t);
+    virtual void Slot06_ad2bc8(uint32_t);
+    virtual void Slot07_ad2bc8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_ad2bc8(uint32_t);
 };
 
 // Between cUnk00ad2bec and cUnk00ad3fc0 at +0x10: a class the map never saw on its own, overriding these.
@@ -107,7 +108,7 @@ struct OB_NOVTABLE cUnk00ad3fc0_10 : public cUnk00ad2bec {
 
 // Between cUnk00ac2bdc and cUnk00ad3fc0 at +0x14: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad3fc0_14 : public cUnk00ac2bdc {
-    virtual void Slot03_ac2bdc();
+    virtual void Slot03_ac2bdc(uint32_t, uint32_t);
     virtual void Slot04_ac2bdc();
 };
 
@@ -123,38 +124,38 @@ public:
     virtual ~cUnk00ad3fc0();
     virtual void Slot03_ad3fc0();
     virtual void Slot04_ad3fc0();
-    virtual void Slot05_ad3fc0();
-    virtual void Slot06_ad3fc0();
+    virtual void Slot05_ad3fc0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ad3fc0(uint32_t, uint32_t, uint32_t);
     virtual void Slot07_ad3fc0();
     virtual void Slot08_ad3fc0();
     virtual void Slot09_ad3fc0();
-    virtual void Slot10_ad3fc0();
-    virtual void Slot11_ad3fc0();
+    virtual bool Slot10_ad3fc0();
+    virtual uint32_t Slot11_ad3fc0();
     virtual void Slot12_ad3fc0();
-    virtual void Slot13_ad3fc0();
+    virtual void Slot13_ad3fc0(uint32_t);
     virtual void Slot14_ad3fc0();
     virtual void Slot15_ad3fc0();
     virtual void Slot16_ad3fc0();
-    virtual void Slot17_ad3fc0();
+    virtual void Slot17_ad3fc0(uint32_t);
     virtual void Slot18_ad3fc0();
     virtual void Slot19_ad3fc0();
     virtual void Slot20_ad3fc0();
-    virtual void Slot21_ad3fc0();
-    virtual void Slot22_ad3fc0();
-    virtual void Slot23_ad3fc0();
+    virtual void Slot21_ad3fc0(uint32_t);
+    virtual bool Slot22_ad3fc0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot23_ad3fc0();
     virtual void Slot24_ad3fc0();
-    virtual void Slot25_ad3fc0();
+    virtual void Slot25_ad3fc0(uint32_t);
     virtual void Slot26_ad3fc0();
-    virtual void Slot27_ad3fc0();
+    virtual void Slot27_ad3fc0(uint32_t);
     virtual void Slot28_ad3fc0();
-    virtual void Slot29_ad3fc0();
-    virtual void Slot30_ad3fc0();
-    virtual void Slot31_ad3fc0();
-    virtual void Slot32_ad3fc0();
-    virtual void Slot33_ad3fc0();
-    virtual void Slot34_ad3fc0();
-    virtual void Slot35_ad3fc0();
-    virtual void Slot36_ad3fc0();
+    virtual bool Slot29_ad3fc0(uint32_t, uint32_t);
+    virtual bool Slot30_ad3fc0(uint32_t, uint32_t);
+    virtual uint32_t Slot31_ad3fc0();
+    virtual void Slot32_ad3fc0(uint32_t);
+    virtual bool Slot33_ad3fc0(uint32_t);
+    virtual bool Slot34_ad3fc0(uint32_t);
+    virtual bool Slot35_ad3fc0(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot36_ad3fc0(uint32_t, uint32_t);
     virtual void Slot38_ad3fc0();
     virtual void Slot39_ad3fc0();
     virtual void Slot40_ad3fc0();
@@ -163,15 +164,15 @@ public:
     virtual void Slot43_ad3fc0();
     virtual void Slot44_ad3fc0();
     virtual void Slot45_ad3fc0();
-    virtual void Slot46_ad3fc0();
-    virtual void Slot47_ad3fc0();
-    virtual void Slot48_ad3fc0();
-    virtual void Slot49_ad3fc0();
-    virtual void Slot50_ad3fc0();
-    virtual void Slot51_ad3fc0();
-    virtual void Slot52_ad3fc0();
-    virtual void Slot53_ad3fc0();
-    virtual void Slot00_ad4cf4();
+    virtual bool Slot46_ad3fc0(uint32_t, uint32_t);
+    virtual void Slot47_ad3fc0(uint32_t);
+    virtual void Slot48_ad3fc0(uint32_t);
+    virtual void Slot49_ad3fc0(uint32_t);
+    virtual void Slot50_ad3fc0(uint32_t);
+    virtual void Slot51_ad3fc0(uint32_t);
+    virtual void Slot52_ad3fc0(uint32_t);
+    virtual void Slot53_ad3fc0(uint32_t);
+    virtual void Slot00_ad4cf4(uint32_t, uint32_t);
     virtual void Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
     char unknown18[0x20];

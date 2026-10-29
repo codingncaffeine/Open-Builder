@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AAF8AC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aaf7d4.h"
 #include "classes/cUnk00ace624.h"
 
@@ -14,11 +15,11 @@ public:
     virtual ~cUnk00aaf8ac() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_aaf7d4();
-    virtual void Slot03_aaf7d4();
-    virtual void Slot04_aaf7d4();
+    virtual void Slot00_aaf7d4(uint32_t, uint32_t);
+    virtual void Slot03_aaf7d4(uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_aaf7d4(uint32_t);
     virtual void Slot05_aaf7d4();
-    virtual void Slot06_aaf7d4();
+    virtual void Slot06_aaf7d4(uint32_t);
     char unknownc[0x10];
 };
 #ifdef _MSC_VER

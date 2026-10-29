@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ADA4F0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad8bec.h"
 #include "gzcom/cRZString.h"
 

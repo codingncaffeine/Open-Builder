@@ -3,24 +3,25 @@
 #define OB_CLASSES_CUNK00ADA858_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ada858
 class cUnk00ada858 {
 public:
-    virtual void Slot00_ada858();
+    virtual void Slot00_ada858(uint32_t, uint32_t);
     virtual void Slot01_ada858();
     virtual void Slot02_ada858();
-    virtual void Slot03_ada858();
-    virtual void Slot04_ada858();
-    virtual void Slot05_ada858();
-    virtual void Slot06_ada858();
-    virtual void Slot07_ada858();
-    virtual void Slot08_ada858();
-    virtual void Slot09_ada858();
-    virtual void Slot10_ada858();
-    virtual void Slot11_ada858();
-    virtual void Slot12_ada858();
-    virtual void Slot13_ada858();
+    virtual void Slot03_ada858(uint32_t, uint32_t);
+    virtual uint32_t Slot04_ada858();
+    virtual void Slot05_ada858(uint32_t);
+    virtual void Slot06_ada858(uint32_t);
+    virtual void Slot07_ada858(uint32_t);
+    virtual void Slot08_ada858(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot09_ada858();
+    virtual void Slot10_ada858(uint32_t);
+    virtual uint32_t Slot11_ada858();
+    virtual uint32_t Slot12_ada858();
+    virtual void Slot13_ada858(uint32_t);
 };
 
 #endif

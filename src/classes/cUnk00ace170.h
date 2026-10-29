@@ -3,11 +3,12 @@
 #define OB_CLASSES_CUNK00ACE170_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ace170
 class cUnk00ace170 {
 public:
-    virtual void Slot00_ace170();
+    virtual void Slot00_ace170(uint32_t);
 };
 
 #endif

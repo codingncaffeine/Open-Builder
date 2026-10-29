@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00AD6AA0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad6cfc.h"
 #include "classes/cUnk00adc8d8.h"
 
 // Between cUnk00ad6cfc and cUnk00ad6aa0 at +0xd8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad6aa0_d8 : public cUnk00ad6cfc {
-    virtual void Slot03_ad6cfc();
+    virtual void* Slot03_ad6cfc();
 };
 
 // VTABLE: 0x00ad6aa0 cUnk00adc8d8
@@ -20,10 +21,10 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_adc8d8();
-    virtual void Slot88_adc8d8();
-    virtual void Slot130_adc8d8();
-    virtual void Slot131_adc8d8();
+    virtual void Slot03_adc8d8(uint32_t);
+    virtual bool Slot88_adc8d8();
+    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
+    virtual bool Slot131_adc8d8(uint32_t, uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad6aa0[sizeof(cUnk00ad6aa0) == 0xdc ? 1 : -1];

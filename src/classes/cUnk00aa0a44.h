@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AA0A44_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00aa0a44 {
@@ -11,7 +12,7 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_aa0a44() = 0;
-    virtual void Slot04_aa0a44() = 0;
+    virtual uint32_t Slot04_aa0a44() = 0;
     virtual void Slot05_aa0a44() = 0;
 };
 #ifdef _MSC_VER

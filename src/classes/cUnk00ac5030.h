@@ -3,21 +3,22 @@
 #define OB_CLASSES_CUNK00AC5030_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ac5030 {
 public:
-    virtual void Slot00_ac5030() = 0;
+    virtual void Slot00_ac5030(uint32_t, uint32_t) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ac5030() = 0;
-    virtual void Slot04_ac5030() = 0;
-    virtual void Slot05_ac5030() = 0;
-    virtual void Slot06_ac5030() = 0;
-    virtual void Slot07_ac5030() = 0;
+    virtual uint32_t Slot03_ac5030() = 0;
+    virtual uint32_t Slot04_ac5030() = 0;
+    virtual uint32_t Slot05_ac5030() = 0;
+    virtual uint32_t Slot06_ac5030() = 0;
+    virtual uint32_t Slot07_ac5030() = 0;
     virtual void Slot08_ac5030() = 0;
     virtual void Slot09_ac5030() = 0;
-    virtual void Slot10_ac5030() = 0;
+    virtual void Slot10_ac5030(uint32_t) = 0;
     virtual void Slot11_ac5030() = 0;
 };
 #ifdef _MSC_VER

@@ -3,38 +3,39 @@
 #define OB_CLASSES_CUNK00ADFE40_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00adfe40 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_adfe40() = 0;
-    virtual void Slot49_adda20() = 0;
-    virtual void Slot05_adfe40() = 0;
-    virtual void Slot06_adfe40() = 0;
-    virtual void Slot07_adfe40() = 0;
-    virtual void Slot08_adfe40() = 0;
-    virtual void Slot09_adfe40() = 0;
-    virtual void Slot10_adfe40() = 0;
-    virtual void Slot11_adfe40() = 0;
-    virtual void Slot12_adfe40() = 0;
-    virtual void Slot13_adfe40() = 0;
-    virtual void Slot14_adfe40() = 0;
+    virtual void* Slot03_adfe40() = 0;
+    virtual void Slot49_adda20(uint32_t) = 0;
+    virtual void Slot05_adfe40(uint32_t, uint32_t) = 0;
+    virtual void Slot06_adfe40(uint32_t) = 0;
+    virtual void Slot07_adfe40(uint32_t, uint32_t) = 0;
+    virtual void Slot08_adfe40(uint32_t, uint32_t) = 0;
+    virtual void Slot09_adfe40(uint32_t, uint32_t) = 0;
+    virtual void Slot10_adfe40(uint32_t) = 0;
+    virtual void Slot11_adfe40(uint32_t, uint32_t) = 0;
+    virtual void Slot12_adfe40(uint32_t, uint32_t) = 0;
+    virtual void Slot13_adfe40(uint32_t) = 0;
+    virtual void Slot14_adfe40(uint32_t) = 0;
     virtual void Slot15_adfe40() = 0;
-    virtual void Slot16_adfe40() = 0;
+    virtual void Slot16_adfe40(uint32_t) = 0;
     virtual void Slot17_adfe40() = 0;
-    virtual void Slot18_adfe40() = 0;
-    virtual void Slot19_adfe40() = 0;
-    virtual void Slot20_adfe40() = 0;
-    virtual void Slot21_adfe40() = 0;
-    virtual void Slot22_adfe40() = 0;
-    virtual void Slot23_adfe40() = 0;
-    virtual void Slot24_adfe40() = 0;
-    virtual void Slot25_adfe40() = 0;
-    virtual void Slot26_adfe40() = 0;
-    virtual void Slot27_adfe40() = 0;
-    virtual void Slot28_adfe40() = 0;
+    virtual void Slot18_adfe40(uint32_t) = 0;
+    virtual void Slot19_adfe40(uint32_t) = 0;
+    virtual void Slot20_adfe40(uint32_t) = 0;
+    virtual void Slot21_adfe40(uint32_t) = 0;
+    virtual void Slot22_adfe40(uint32_t) = 0;
+    virtual void Slot23_adfe40(uint32_t, uint32_t) = 0;
+    virtual void Slot24_adfe40(uint32_t, uint32_t) = 0;
+    virtual void Slot25_adfe40(uint32_t, uint32_t) = 0;
+    virtual void Slot26_adfe40(uint32_t, uint32_t) = 0;
+    virtual void Slot27_adfe40(uint32_t, uint32_t) = 0;
+    virtual void Slot28_adfe40(uint32_t, uint32_t) = 0;
 };
 
 #endif

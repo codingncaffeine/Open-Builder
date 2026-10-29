@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AA2478_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00aa2478 {
 public:
@@ -10,31 +11,31 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_aa2478() = 0;
-    virtual void Slot04_aa2478() = 0;
-    virtual void Slot05_aa2478() = 0;
-    virtual void Slot06_aa2478() = 0;
-    virtual void Slot07_aa2478() = 0;
-    virtual void Slot08_aa2478() = 0;
-    virtual void Slot09_aa2478() = 0;
-    virtual void Slot10_aa2478() = 0;
-    virtual void Slot11_aa2478() = 0;
-    virtual void Slot12_aa2478() = 0;
-    virtual void Slot13_aa2478() = 0;
-    virtual void Slot14_aa2478() = 0;
-    virtual void Slot15_aa2478() = 0;
-    virtual void Slot16_aa2478() = 0;
-    virtual void Slot17_aa2478() = 0;
+    virtual void Slot04_aa2478(uint32_t) = 0;
+    virtual void Slot05_aa2478(uint32_t) = 0;
+    virtual void Slot06_aa2478(uint32_t) = 0;
+    virtual void Slot07_aa2478(uint32_t) = 0;
+    virtual void Slot08_aa2478(uint32_t) = 0;
+    virtual void Slot09_aa2478(uint32_t) = 0;
+    virtual void Slot10_aa2478(uint32_t, uint32_t) = 0;
+    virtual void Slot11_aa2478(uint32_t, uint32_t) = 0;
+    virtual void Slot12_aa2478(uint32_t) = 0;
+    virtual void Slot13_aa2478(uint32_t, uint32_t) = 0;
+    virtual void Slot14_aa2478(uint32_t) = 0;
+    virtual void Slot15_aa2478(uint32_t) = 0;
+    virtual void Slot16_aa2478(uint32_t) = 0;
+    virtual void Slot17_aa2478(uint32_t, uint32_t) = 0;
     virtual void Slot18_aa2478() = 0;
-    virtual void Slot19_aa2478() = 0;
-    virtual void Slot20_aa2478() = 0;
-    virtual void Slot21_aa2478() = 0;
+    virtual void Slot19_aa2478(uint32_t) = 0;
+    virtual uint32_t Slot20_aa2478() = 0;
+    virtual void Slot21_aa2478(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot22_aa2478() = 0;
     virtual void Slot23_aa2478() = 0;
-    virtual void Slot24_aa2478() = 0;
-    virtual void Slot25_aa2478() = 0;
-    virtual void Slot26_aa2478() = 0;
-    virtual void Slot27_aa2478() = 0;
-    virtual void Slot28_aa2478() = 0;
+    virtual uint32_t Slot24_aa2478() = 0;
+    virtual uint32_t Slot25_aa2478() = 0;
+    virtual void Slot26_aa2478(uint32_t) = 0;
+    virtual void Slot27_aa2478(uint32_t) = 0;
+    virtual void Slot28_aa2478(uint32_t) = 0;
 };
 
 #endif

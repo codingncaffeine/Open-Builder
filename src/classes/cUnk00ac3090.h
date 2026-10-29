@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AC3090_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ac3004.h"
 
 // The subobject at +0x0 (vtable 0x00ac3090): an interface or base the class map has no class for.
@@ -10,43 +11,43 @@ struct OB_NOVTABLE cUnk00ac3090_0 {
     virtual void Slot00_ac3090() = 0;
     virtual void Slot01_ac3090() = 0;
     virtual void Slot02_ac3090() = 0;
-    virtual void Slot03_ac3090() = 0;
-    virtual void Slot04_ac3090() = 0;
-    virtual void Slot05_ac3090() = 0;
-    virtual void Slot06_ac3090() = 0;
-    virtual void Slot07_ac3090() = 0;
-    virtual void Slot08_ac3090() = 0;
-    virtual void Slot09_ac3090() = 0;
-    virtual void Slot10_ac3090() = 0;
-    virtual void Slot11_ac3090() = 0;
-    virtual void Slot12_ac3090() = 0;
-    virtual void Slot13_ac3090() = 0;
-    virtual void Slot14_ac3090() = 0;
-    virtual void Slot15_ac3090() = 0;
+    virtual void Slot03_ac3090(uint32_t) = 0;
+    virtual void Slot04_ac3090(uint32_t) = 0;
+    virtual void Slot05_ac3090(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot06_ac3090(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot07_ac3090(uint32_t) = 0;
+    virtual void Slot08_ac3090(uint32_t) = 0;
+    virtual void Slot09_ac3090(uint32_t) = 0;
+    virtual void Slot10_ac3090(uint32_t) = 0;
+    virtual void Slot11_ac3090(uint32_t) = 0;
+    virtual void Slot12_ac3090(uint32_t) = 0;
+    virtual uint32_t Slot13_ac3090() = 0;
+    virtual void Slot14_ac3090(uint32_t) = 0;
+    virtual void Slot15_ac3090(uint32_t) = 0;
     virtual void Slot16_ac3090() = 0;
-    virtual void Slot17_ac3090() = 0;
-    virtual void Slot18_ac3090() = 0;
-    virtual void Slot19_ac3090() = 0;
+    virtual bool Slot17_ac3090() = 0;
+    virtual void Slot18_ac3090(bool) = 0;
+    virtual void Slot19_ac3090(uint32_t) = 0;
     virtual void Slot20_ac3090() = 0;
-    virtual void Slot21_ac3090() = 0;
-    virtual void Slot22_ac3090() = 0;
-    virtual void Slot23_ac3090() = 0;
-    virtual void Slot24_ac3090() = 0;
-    virtual void Slot25_ac3090() = 0;
+    virtual void* Slot21_ac3090() = 0;
+    virtual bool Slot22_ac3090() = 0;
+    virtual void* Slot23_ac3090() = 0;
+    virtual uint32_t Slot24_ac3090() = 0;
+    virtual uint32_t Slot25_ac3090() = 0;
     virtual void Slot26_ac3090() = 0;
     virtual void Slot27_ac3090() = 0;
-    virtual void Slot28_ac3090() = 0;
-    virtual void Slot29_ac3090() = 0;
-    virtual void Slot30_ac3090() = 0;
+    virtual void Slot28_ac3090(uint32_t) = 0;
+    virtual void Slot29_ac3090(uint32_t) = 0;
+    virtual uint32_t Slot30_ac3090() = 0;
     virtual void Slot31_ac3090() = 0;
     virtual void Slot32_ac3090() = 0;
     virtual void Slot33_ac3090() = 0;
-    virtual void Slot34_ac3090() = 0;
-    virtual void Slot35_ac3090() = 0;
-    virtual void Slot36_ac3090() = 0;
+    virtual void Slot34_ac3090(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot35_ac3090(uint32_t, uint32_t) = 0;
+    virtual void Slot36_ac3090(uint32_t) = 0;
     virtual void Slot37_ac3090() = 0;
-    virtual void Slot38_ac3090() = 0;
-    virtual void Slot39_ac3090() = 0;
+    virtual void Slot38_ac3090(uint32_t) = 0;
+    virtual uint32_t Slot39_ac3090() = 0;
     virtual ~cUnk00ac3090_0() {}
     virtual void Slot41_ac3090() = 0;
     virtual void Slot42_ac3090() = 0;
@@ -60,10 +61,10 @@ struct OB_NOVTABLE cUnk00ac3090_0 {
 
 // Between cUnk00ac3004 and cUnk00ac3090 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ac3090_4 : public cUnk00ac3004 {
-    virtual void Slot03_ac3004();
-    virtual void Slot04_ac3004();
-    virtual void Slot05_ac3004();
-    virtual void Slot06_ac3004();
+    virtual void* Slot03_ac3004();
+    virtual uint32_t Slot04_ac3004();
+    virtual uint32_t Slot05_ac3004();
+    virtual void Slot06_ac3004(uint32_t);
 };
 
 // VTABLE: 0x00ac3090 cUnk00ac3090_0
@@ -74,43 +75,43 @@ public:
     virtual void Slot00_ac3090();
     virtual void Slot01_ac3090();
     virtual void Slot02_ac3090();
-    virtual void Slot03_ac3090();
-    virtual void Slot04_ac3090();
-    virtual void Slot05_ac3090();
-    virtual void Slot06_ac3090();
-    virtual void Slot07_ac3090();
-    virtual void Slot08_ac3090();
-    virtual void Slot09_ac3090();
-    virtual void Slot10_ac3090();
-    virtual void Slot11_ac3090();
-    virtual void Slot12_ac3090();
-    virtual void Slot13_ac3090();
-    virtual void Slot14_ac3090();
-    virtual void Slot15_ac3090();
+    virtual void Slot03_ac3090(uint32_t);
+    virtual void Slot04_ac3090(uint32_t);
+    virtual void Slot05_ac3090(uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ac3090(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_ac3090(uint32_t);
+    virtual void Slot08_ac3090(uint32_t);
+    virtual void Slot09_ac3090(uint32_t);
+    virtual void Slot10_ac3090(uint32_t);
+    virtual void Slot11_ac3090(uint32_t);
+    virtual void Slot12_ac3090(uint32_t);
+    virtual uint32_t Slot13_ac3090();
+    virtual void Slot14_ac3090(uint32_t);
+    virtual void Slot15_ac3090(uint32_t);
     virtual void Slot16_ac3090();
-    virtual void Slot17_ac3090();
-    virtual void Slot18_ac3090();
-    virtual void Slot19_ac3090();
+    virtual bool Slot17_ac3090();
+    virtual void Slot18_ac3090(bool);
+    virtual void Slot19_ac3090(uint32_t);
     virtual void Slot20_ac3090();
-    virtual void Slot21_ac3090();
-    virtual void Slot22_ac3090();
-    virtual void Slot23_ac3090();
-    virtual void Slot24_ac3090();
-    virtual void Slot25_ac3090();
+    virtual void* Slot21_ac3090();
+    virtual bool Slot22_ac3090();
+    virtual void* Slot23_ac3090();
+    virtual uint32_t Slot24_ac3090();
+    virtual uint32_t Slot25_ac3090();
     virtual void Slot26_ac3090();
     virtual void Slot27_ac3090();
-    virtual void Slot28_ac3090();
-    virtual void Slot29_ac3090();
-    virtual void Slot30_ac3090();
+    virtual void Slot28_ac3090(uint32_t);
+    virtual void Slot29_ac3090(uint32_t);
+    virtual uint32_t Slot30_ac3090();
     virtual void Slot31_ac3090();
     virtual void Slot32_ac3090();
     virtual void Slot33_ac3090();
-    virtual void Slot34_ac3090();
-    virtual void Slot35_ac3090();
-    virtual void Slot36_ac3090();
+    virtual void Slot34_ac3090(uint32_t, uint32_t, uint32_t);
+    virtual void Slot35_ac3090(uint32_t, uint32_t);
+    virtual void Slot36_ac3090(uint32_t);
     virtual void Slot37_ac3090();
-    virtual void Slot38_ac3090();
-    virtual void Slot39_ac3090();
+    virtual void Slot38_ac3090(uint32_t);
+    virtual uint32_t Slot39_ac3090();
     virtual void Slot41_ac3090();
     virtual void Slot42_ac3090();
     virtual void Slot43_ac3090();

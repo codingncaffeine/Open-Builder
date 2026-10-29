@@ -3,21 +3,22 @@
 #define OB_CLASSES_CUNK00ACD504_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00acd504
 class cUnk00acd504 {
 public:
     virtual ~cUnk00acd504() {}
-    virtual void Slot01_acd504();
-    virtual void Slot02_acd504();
-    virtual void Slot03_acd504();
+    virtual void Slot01_acd504(uint32_t);
+    virtual bool Slot02_acd504();
+    virtual void Slot03_acd504(uint32_t);
     virtual void Slot04_acd504();
-    virtual void Slot05_acd504();
-    virtual void Slot06_acd504();
-    virtual void Slot07_acd504();
-    virtual void Slot08_acd504();
-    virtual void Slot09_acd504();
-    virtual void Slot10_acd504();
+    virtual void Slot05_acd504(uint32_t);
+    virtual bool Slot06_acd504();
+    virtual void Slot07_acd504(uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_acd504(uint32_t);
+    virtual void Slot09_acd504(uint32_t);
+    virtual void Slot10_acd504(uint32_t);
 };
 
 // SYNTHETIC: 0x008fe861

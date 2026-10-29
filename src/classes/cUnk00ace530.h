@@ -3,15 +3,16 @@
 #define OB_CLASSES_CUNK00ACE530_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ace4b0.h"
 #include "classes/cUnk00ad8c20.h"
 
 // Between cUnk00ad8c20 and cUnk00ace530 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ace530_4 : public cUnk00ad8c20 {
-    virtual void Slot04_ad8c20();
-    virtual void Slot09_ad8c20();
-    virtual void Slot10_ad8c20();
-    virtual void Slot11_ad8c20();
+    virtual void Slot04_ad8c20(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ad8c20(uint32_t, uint32_t);
+    virtual bool Slot11_ad8c20(uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00ace530 cUnk00ace4b0
@@ -20,25 +21,25 @@ struct OB_NOVTABLE cUnk00ace530_4 : public cUnk00ad8c20 {
 class cUnk00ace530 : public cUnk00ace4b0, public cUnk00ace530_4 {
 public:
     virtual ~cUnk00ace530() {}
-    virtual void Slot00_ace4b0();
+    virtual void Slot00_ace4b0(uint32_t, uint32_t);
     virtual void Slot01_ace4b0();
     virtual void Slot02_ace4b0();
-    virtual void Slot03_ace4b0();
-    virtual void Slot04_ace4b0();
-    virtual void Slot05_ace4b0();
-    virtual void Slot06_ace4b0();
-    virtual void Slot07_ace4b0();
-    virtual void Slot08_ace4b0();
-    virtual void Slot09_ace4b0();
-    virtual void Slot10_ace4b0();
-    virtual void Slot11_ace4b0();
-    virtual void Slot12_ace4b0();
-    virtual void Slot13_ace4b0();
-    virtual void Slot14_ace4b0();
-    virtual void Slot15_ace4b0();
-    virtual void Slot16_ace4b0();
-    virtual void Slot17_ace4b0();
-    virtual void Slot18_ace4b0();
+    virtual void Slot03_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_ace4b0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_ace4b0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_ace4b0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot12_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot14_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot15_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot16_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot18_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     char unknown14[0x24];
 };
 #ifdef _MSC_VER

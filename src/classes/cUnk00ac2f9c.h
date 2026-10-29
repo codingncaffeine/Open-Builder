@@ -3,16 +3,17 @@
 #define OB_CLASSES_CUNK00AC2F9C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ac2f9c {
 public:
     virtual void Slot00_ac2f9c() = 0;
     virtual void Slot01_ac2f9c() = 0;
     virtual void Slot02_ac2f9c() = 0;
-    virtual void Slot03_ac2f9c();
-    virtual void Slot04_ac2f9c();
-    virtual void Slot05_ac2f9c();
-    virtual void Slot06_ac2f9c();
+    virtual void Slot03_ac2f9c(uint32_t);
+    virtual void Slot04_ac2f9c(uint32_t);
+    virtual void Slot05_ac2f9c(uint32_t);
+    virtual void Slot06_ac2f9c(uint32_t, uint32_t);
 };
 
 #endif

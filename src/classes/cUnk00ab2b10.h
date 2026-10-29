@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AB2B10_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ab0fb0.h"
 
 // The subobject at +0x0 (vtable 0x00ab2b10): an interface or base the class map has no class for.
@@ -10,13 +11,13 @@ struct OB_NOVTABLE cUnk00ab2b10_0 {
     virtual void Slot00_ab2348() = 0;
     virtual void Slot01_ab2348() = 0;
     virtual void Slot02_ab2348() = 0;
-    virtual void Slot03_ab2b10() = 0;
+    virtual void Slot03_ab2b10(uint32_t) = 0;
     virtual ~cUnk00ab2b10_0() {}
-    virtual void Slot05_ab2b10() = 0;
+    virtual void Slot05_ab2b10(uint32_t) = 0;
     virtual void Slot06_ab2b10() = 0;
     virtual void Slot07_ab2b10() = 0;
-    virtual void Slot08_ab2b10() = 0;
-    virtual void Slot09_ab2b10() = 0;
+    virtual void Slot08_ab2b10(uint32_t) = 0;
+    virtual void Slot09_ab2b10(uint32_t) = 0;
     virtual void Slot10_ab2b10() = 0;
     virtual void Slot11_ab2b10() = 0;
     virtual void Slot12_ab2b10() = 0;
@@ -29,24 +30,24 @@ struct OB_NOVTABLE cUnk00ab2b10_0 {
 
 // Between cUnk00ab0fb0 and cUnk00ab2b10 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ab2b10_4 : public cUnk00ab0fb0 {
-    virtual void Slot04_ab0fb0();
+    virtual void Slot04_ab0fb0(uint32_t, uint32_t, uint32_t);
     virtual void Slot05_ab0fb0();
-    virtual void Slot06_ab0fb0();
-    virtual void Slot08_ab0fb0();
-    virtual void Slot09_ab0fb0();
+    virtual void Slot06_ab0fb0(uint32_t);
+    virtual void Slot08_ab0fb0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_ab0fb0(uint32_t, uint32_t);
 };
 
 // SIZE 0x8
 class cUnk00ab2b10 : public cUnk00ab2b10_0, public cUnk00ab2b10_4 {
 public:
     virtual ~cUnk00ab2b10() {}
-    virtual void Slot10_ab0fb0();
-    virtual void Slot03_ab2b10();
-    virtual void Slot05_ab2b10();
+    virtual void Slot10_ab0fb0(uint32_t, uint32_t);
+    virtual void Slot03_ab2b10(uint32_t);
+    virtual void Slot05_ab2b10(uint32_t);
     virtual void Slot06_ab2b10();
     virtual void Slot07_ab2b10();
-    virtual void Slot08_ab2b10();
-    virtual void Slot09_ab2b10();
+    virtual void Slot08_ab2b10(uint32_t);
+    virtual void Slot09_ab2b10(uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab2b10[sizeof(cUnk00ab2b10) == 0x8 ? 1 : -1];

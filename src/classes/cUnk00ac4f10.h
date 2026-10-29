@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AC4F10_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ac4ebc.h"
 #include "classes/cUnk00ace624.h"
 
@@ -14,15 +15,15 @@ public:
     virtual ~cUnk00ac4f10() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_ac4ebc();
-    virtual void Slot03_ac4ebc();
-    virtual void Slot04_ac4ebc();
-    virtual void Slot05_ac4ebc();
-    virtual void Slot06_ac4ebc();
-    virtual void Slot07_ac4ebc();
-    virtual void Slot08_ac4ebc();
-    virtual void Slot09_ac4ebc();
-    virtual void Slot10_ac4ebc();
+    virtual void Slot00_ac4ebc(uint32_t, uint32_t);
+    virtual uint32_t Slot03_ac4ebc(uint32_t);
+    virtual void Slot04_ac4ebc(uint32_t);
+    virtual void Slot05_ac4ebc(uint32_t);
+    virtual void Slot06_ac4ebc(uint32_t, uint32_t);
+    virtual void Slot07_ac4ebc(uint32_t, uint32_t);
+    virtual void Slot08_ac4ebc(uint32_t);
+    virtual void Slot09_ac4ebc(uint32_t, uint32_t);
+    virtual void Slot10_ac4ebc(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot11_ac4ebc();
     char unknownc[0x34];
 };

@@ -3,35 +3,39 @@
 #define OB_CLASSES_CUNK00AD1818_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x10
 class cUnk00ad1818 {
 public:
-    virtual void Slot00_ad8d88();
+    virtual void Slot00_ad8d88(uint32_t, uint32_t);
     virtual void Slot01_ad8d88();
     virtual void Slot02_ad8d88();
     virtual void Slot03_ad1818() = 0;
-    virtual void Slot04_ad1818();
-    virtual void Slot05_ad1818();
-    virtual void Slot06_ad1818();
-    virtual void Slot07_ad1818();
-    virtual void Slot08_ad1818();
-    virtual void Slot09_ad1818();
-    virtual void Slot10_ad1818();
-    virtual void Slot11_ad1818();
-    virtual void Slot12_ad1818();
-    virtual void Slot13_ad1818();
-    virtual void Slot14_ad1818();
-    virtual void Slot15_ad1818();
-    virtual void Slot16_ad1818();
-    virtual void Slot17_ad1818() = 0;
-    virtual void Slot18_ad1818() = 0;
+    virtual void Slot04_ad1818(uint32_t);
+    virtual void Slot05_ad1818(uint32_t);
+    virtual void Slot06_ad1818(uint32_t);
+    virtual void Slot07_ad1818(uint32_t);
+    virtual void Slot08_ad1818(uint32_t);
+    virtual void Slot09_ad1818(uint32_t);
+    virtual void Slot10_ad1818(uint32_t, uint32_t);
+    virtual void Slot11_ad1818(uint32_t, uint32_t);
+    virtual void Slot12_ad1818(uint32_t);
+    virtual void Slot13_ad1818(uint32_t, uint32_t);
+    virtual void Slot14_ad1818(uint32_t);
+    virtual void Slot15_ad1818(uint32_t);
+    virtual void Slot16_ad1818(uint32_t);
+    virtual bool Slot17_ad1818(uint32_t, uint32_t) = 0;
+    virtual bool Slot18_ad1818() = 0;
     virtual void Slot19_ad1818();
-    virtual void Slot20_ad1818();
+    virtual uint32_t Slot20_ad1818();
     virtual ~cUnk00ad1818();
-    virtual void Slot22_ad1818();
-    virtual void Slot23_ad1818();
-    char unknown4[0xc];
+    virtual bool Slot22_ad1818(bool);
+    virtual bool Slot23_ad1818();
+    char unknown4[0x4];
+    bool field8;
+    char unknown9[0x3];
+    uint32_t fieldc;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad1818[sizeof(cUnk00ad1818) == 0x10 ? 1 : -1];

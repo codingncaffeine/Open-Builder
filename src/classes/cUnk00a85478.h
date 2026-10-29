@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A85478_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "gzcom/cRZString.h"
 
 // VTABLE: 0x00a85478

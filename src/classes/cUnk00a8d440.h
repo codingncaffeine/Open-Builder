@@ -3,13 +3,14 @@
 #define OB_CLASSES_CUNK00A8D440_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a87578.h"
 
 // VTABLE: 0x00a8d440
 // SIZE 0x10
 class cUnk00a8d440 : public cUnk00a87578 {
 public:
-    virtual void Slot03_a8738c();
+    virtual bool Slot03_a8738c(uint32_t);
     char unknownc[0x4];
 };
 #ifdef _MSC_VER

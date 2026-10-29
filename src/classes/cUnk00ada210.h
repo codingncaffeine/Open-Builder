@@ -3,39 +3,40 @@
 #define OB_CLASSES_CUNK00ADA210_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ada210
 // SIZE 0x30
 class cUnk00ada210 {
 public:
-    virtual void Slot00_ada210();
+    virtual void Slot00_ada210(uint32_t, uint32_t);
     virtual void Slot01_ada210();
     virtual void Slot02_ada210();
-    virtual void Slot03_ada210();
-    virtual void Slot04_ada210();
-    virtual void Slot05_ada210();
-    virtual void Slot06_ada210();
-    virtual void Slot07_ada210();
-    virtual void Slot08_ada210();
-    virtual void Slot09_ada210();
-    virtual void Slot10_ada210();
-    virtual void Slot11_ada210();
-    virtual void Slot12_ada210();
-    virtual void Slot13_ada210();
-    virtual void Slot14_ada210();
-    virtual void Slot15_ada210();
-    virtual void Slot16_ada210();
-    virtual void Slot17_ada210();
-    virtual void Slot18_ada210();
-    virtual void Slot19_ada210();
-    virtual void Slot20_ada210();
-    virtual void Slot21_ada210();
-    virtual void Slot22_ada210();
-    virtual void Slot23_ada210();
-    virtual void Slot24_ada210();
-    virtual void Slot25_ada210();
-    virtual void Slot26_ada210();
-    virtual void Slot27_ada210();
+    virtual void Slot03_ada210(uint32_t, uint32_t);
+    virtual void Slot04_ada210(uint32_t, uint32_t);
+    virtual void Slot05_ada210(uint32_t, uint32_t);
+    virtual void Slot06_ada210(uint32_t, uint32_t);
+    virtual void Slot07_ada210(uint32_t, uint32_t);
+    virtual void Slot08_ada210(uint32_t, uint32_t);
+    virtual void Slot09_ada210(uint32_t, uint32_t);
+    virtual void Slot10_ada210(uint32_t, uint32_t);
+    virtual void Slot11_ada210(uint32_t, uint32_t);
+    virtual void Slot12_ada210(uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_ada210(uint32_t, uint32_t, uint32_t);
+    virtual void Slot14_ada210(uint32_t, uint32_t, uint32_t);
+    virtual void Slot15_ada210(uint32_t, uint32_t, uint32_t);
+    virtual void Slot16_ada210(uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_ada210(uint32_t, uint32_t, uint32_t);
+    virtual void Slot18_ada210(uint32_t, uint32_t, uint32_t);
+    virtual void Slot19_ada210(uint32_t, uint32_t, uint32_t);
+    virtual void Slot20_ada210(uint32_t, uint32_t, uint32_t);
+    virtual void Slot21_ada210(uint32_t, uint32_t, uint32_t);
+    virtual void Slot22_ada210(uint32_t, uint32_t);
+    virtual void Slot23_ada210(uint32_t, uint32_t);
+    virtual void Slot24_ada210(uint32_t, uint32_t);
+    virtual void Slot25_ada210(uint32_t, uint32_t);
+    virtual void Slot26_ada210(uint32_t, uint32_t);
+    virtual void Slot27_ada210(uint32_t);
     virtual void Slot28_ada210();
     virtual ~cUnk00ada210();
     char unknown4[0x2c];

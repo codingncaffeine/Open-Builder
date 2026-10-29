@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00ADAF90_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00adaf90
 class cUnk00adaf90 {
 public:
-    virtual void Slot00_adaf90();
-    virtual void Slot01_adaf90();
-    virtual void Slot02_adaf90();
-    virtual void Slot03_adaf90();
+    virtual bool Slot00_adaf90(uint32_t, uint32_t);
+    virtual uint32_t Slot01_adaf90();
+    virtual uint32_t Slot02_adaf90();
+    virtual void Slot03_adaf90(uint32_t);
 };
 
 #endif

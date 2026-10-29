@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AB3B00_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a80784.h"
 #include "classes/cUnk00aaaa9c.h"
 
@@ -13,28 +14,28 @@ struct OB_NOVTABLE cUnk00ab3b00_0 {
     virtual unsigned int Release() = 0;
     virtual void Slot03_ab3b00() = 0;
     virtual void Slot04_ab3b00() = 0;
-    virtual void Slot05_ab3b00() = 0;
-    virtual void Slot06_ab3b00() = 0;
-    virtual void Slot07_ab3b00() = 0;
-    virtual void Slot08_ab3b00() = 0;
-    virtual void Slot09_ab3b00() = 0;
-    virtual void Slot10_ab3b00() = 0;
-    virtual void Slot11_ab3b00() = 0;
-    virtual void Slot12_ab3b00() = 0;
-    virtual void Slot13_ab3b00() = 0;
+    virtual void Slot05_ab3b00(uint32_t) = 0;
+    virtual void Slot06_ab3b00(uint32_t, uint32_t) = 0;
+    virtual void Slot07_ab3b00(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot08_ab3b00(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot09_ab3b00() = 0;
+    virtual void Slot10_ab3b00(uint32_t, uint32_t) = 0;
+    virtual void Slot11_ab3b00(uint32_t, uint32_t) = 0;
+    virtual void Slot12_ab3b00(uint32_t, uint32_t) = 0;
+    virtual void Slot13_ab3b00(uint32_t, uint32_t) = 0;
     virtual ~cUnk00ab3b00_0() {}
 };
 
 // Between cUnk00a80784 and cUnk00ab3b00 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ab3b00_4 : public cUnk00a80784 {
-    virtual void Slot03_a80784();
-    virtual void Slot04_a80784();
-    virtual void Slot05_a80784();
+    virtual bool Slot03_a80784(uint32_t);
+    virtual bool Slot04_a80784(uint32_t);
+    virtual uint32_t Slot05_a80784();
 };
 
 // Between cUnk00aaaa9c and cUnk00ab3b00 at +0x8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ab3b00_8 : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00ab3b00 cUnk00ab3b00_0
@@ -49,16 +50,18 @@ public:
     virtual unsigned int Release();
     virtual void Slot03_ab3b00();
     virtual void Slot04_ab3b00();
-    virtual void Slot05_ab3b00();
-    virtual void Slot06_ab3b00();
-    virtual void Slot07_ab3b00();
-    virtual void Slot08_ab3b00();
-    virtual void Slot09_ab3b00();
-    virtual void Slot10_ab3b00();
-    virtual void Slot11_ab3b00();
-    virtual void Slot12_ab3b00();
-    virtual void Slot13_ab3b00();
-    char unknownc[0x48];
+    virtual void Slot05_ab3b00(uint32_t);
+    virtual void Slot06_ab3b00(uint32_t, uint32_t);
+    virtual void Slot07_ab3b00(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_ab3b00(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot09_ab3b00();
+    virtual void Slot10_ab3b00(uint32_t, uint32_t);
+    virtual void Slot11_ab3b00(uint32_t, uint32_t);
+    virtual void Slot12_ab3b00(uint32_t, uint32_t);
+    virtual void Slot13_ab3b00(uint32_t, uint32_t);
+    char unknownc[0x40];
+    uint32_t field4c;
+    char unknown50[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab3b00[sizeof(cUnk00ab3b00) == 0x54 ? 1 : -1];

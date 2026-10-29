@@ -3,13 +3,14 @@
 #define OB_CLASSES_CUNK00AB95E0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ab95e0 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ab95e0() = 0;
+    virtual void Slot03_ab95e0(uint32_t, uint32_t, uint32_t) = 0;
 };
 
 #endif

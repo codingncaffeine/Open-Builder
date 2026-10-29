@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A9E364_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a9e2f4.h"
 #include "classes/cUnk00aaaa9c.h"
 #include "gzcom/cUnk0090da1e.h"
@@ -11,15 +12,15 @@
 struct OB_NOVTABLE cUnk00a9e364_8 : public cUnk00a9e2f4 {
     virtual void Slot03_a9e2f4();
     virtual void Slot04_a9e2f4();
-    virtual void Slot08_a9e2f4();
-    virtual void Slot09_a9e2f4();
+    virtual void Slot08_a9e2f4(uint32_t);
+    virtual void Slot09_a9e2f4(uint32_t);
     virtual void Slot10_a9e2f4();
-    virtual void Slot11_a9e2f4();
+    virtual void* Slot11_a9e2f4();
 };
 
 // Between cUnk00aaaa9c and cUnk00a9e364 at +0xc: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a9e364_c : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // SIZE 0x24

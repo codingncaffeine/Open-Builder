@@ -3,37 +3,38 @@
 #define OB_CLASSES_CUNK00AA2384_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aa2478.h"
 #include "gzcom/cUnk0090da1e.h"
 
 // Between cUnk00aa2478 and cUnk00aa2384 at +0x8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00aa2384_8 : public cUnk00aa2478 {
     virtual void Slot03_aa2478();
-    virtual void Slot04_aa2478();
-    virtual void Slot05_aa2478();
-    virtual void Slot06_aa2478();
-    virtual void Slot07_aa2478();
-    virtual void Slot08_aa2478();
-    virtual void Slot09_aa2478();
-    virtual void Slot10_aa2478();
-    virtual void Slot11_aa2478();
-    virtual void Slot12_aa2478();
-    virtual void Slot13_aa2478();
-    virtual void Slot14_aa2478();
-    virtual void Slot15_aa2478();
-    virtual void Slot16_aa2478();
-    virtual void Slot17_aa2478();
+    virtual void Slot04_aa2478(uint32_t);
+    virtual void Slot05_aa2478(uint32_t);
+    virtual void Slot06_aa2478(uint32_t);
+    virtual void Slot07_aa2478(uint32_t);
+    virtual void Slot08_aa2478(uint32_t);
+    virtual void Slot09_aa2478(uint32_t);
+    virtual void Slot10_aa2478(uint32_t, uint32_t);
+    virtual void Slot11_aa2478(uint32_t, uint32_t);
+    virtual void Slot12_aa2478(uint32_t);
+    virtual void Slot13_aa2478(uint32_t, uint32_t);
+    virtual void Slot14_aa2478(uint32_t);
+    virtual void Slot15_aa2478(uint32_t);
+    virtual void Slot16_aa2478(uint32_t);
+    virtual void Slot17_aa2478(uint32_t, uint32_t);
     virtual void Slot18_aa2478();
-    virtual void Slot19_aa2478();
-    virtual void Slot20_aa2478();
-    virtual void Slot21_aa2478();
+    virtual void Slot19_aa2478(uint32_t);
+    virtual uint32_t Slot20_aa2478();
+    virtual void Slot21_aa2478(uint32_t, uint32_t, uint32_t);
     virtual void Slot22_aa2478();
     virtual void Slot23_aa2478();
-    virtual void Slot24_aa2478();
-    virtual void Slot25_aa2478();
-    virtual void Slot26_aa2478();
-    virtual void Slot27_aa2478();
-    virtual void Slot28_aa2478();
+    virtual uint32_t Slot24_aa2478();
+    virtual uint32_t Slot25_aa2478();
+    virtual void Slot26_aa2478(uint32_t);
+    virtual void Slot27_aa2478(uint32_t);
+    virtual void Slot28_aa2478(uint32_t);
 };
 
 // VTABLE: 0x00aa2384 cUnk0090da1e

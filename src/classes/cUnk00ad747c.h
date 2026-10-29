@@ -3,15 +3,16 @@
 #define OB_CLASSES_CUNK00AD747C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad747c
 // SIZE 0x10
 class cUnk00ad747c {
 public:
-    virtual void Slot00_ad747c();
+    virtual void Slot00_ad747c(uint32_t, uint32_t);
     virtual void Slot01_ad747c();
     virtual void Slot02_ad747c();
-    virtual void Slot03_ad747c();
+    virtual void Slot03_ad747c(uint32_t);
     virtual ~cUnk00ad747c();
     char unknown4[0xc];
 };

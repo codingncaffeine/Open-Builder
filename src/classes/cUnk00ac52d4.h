@@ -3,27 +3,33 @@
 #define OB_CLASSES_CUNK00AC52D4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ac52d4
 // SIZE 0x30
 class cUnk00ac52d4 {
 public:
-    virtual void Slot00_ac52d4();
+    virtual void Slot00_ac52d4(uint32_t, uint32_t);
     virtual void Slot01_ac52d4();
     virtual void Slot02_ac52d4();
-    virtual void Slot03_ac52d4();
-    virtual void Slot04_ac52d4();
-    virtual void Slot05_ac52d4();
-    virtual void Slot06_ac52d4();
-    virtual void Slot07_ac52d4();
-    virtual void Slot08_ac52d4();
-    virtual void Slot09_ac52d4();
-    virtual void Slot10_ac52d4();
-    virtual void Slot11_ac52d4();
-    virtual void Slot12_ac52d4();
-    virtual void Slot13_ac52d4();
+    virtual bool Slot03_ac52d4();
+    virtual bool Slot04_ac52d4();
+    virtual void Slot05_ac52d4(uint32_t);
+    virtual void Slot06_ac52d4(uint32_t);
+    virtual void Slot07_ac52d4(uint32_t, uint32_t);
+    virtual void Slot08_ac52d4(uint32_t, uint32_t);
+    virtual bool Slot09_ac52d4(uint32_t);
+    virtual void Slot10_ac52d4(uint32_t);
+    virtual void Slot11_ac52d4(uint32_t);
+    virtual bool Slot12_ac52d4();
+    virtual uint32_t Slot13_ac52d4();
     virtual ~cUnk00ac52d4();
-    char unknown4[0x2c];
+    char unknown4[0x4];
+    bool field8;
+    char unknown9[0x1b];
+    uint32_t field24;
+    char unknown28[0x4];
+    uint32_t field2c;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac52d4[sizeof(cUnk00ac52d4) == 0x30 ? 1 : -1];

@@ -3,16 +3,17 @@
 #define OB_CLASSES_CUNK00ABCB60_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00abcb60
 // SIZE 0x40
 class cUnk00abcb60 {
 public:
-    virtual void Slot00_abcb60();
+    virtual void Slot00_abcb60(uint32_t, uint32_t);
     virtual void Slot01_abcb60();
     virtual void Slot02_abcb60();
-    virtual void Slot03_abcb60();
-    virtual void Slot04_abcb60();
+    virtual void Slot03_abcb60(uint32_t);
+    virtual void Slot04_abcb60(uint32_t, uint32_t, uint32_t);
     virtual void Slot05_abcb60();
     char unknown4[0x3c];
 };

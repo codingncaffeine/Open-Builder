@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ADA5F4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad8bec.h"
 #include "classes/cUnk00ada5b0.h"
 
@@ -12,15 +13,15 @@
 class cUnk00ada5f4 : public cUnk00ada5b0, public cUnk00ad8bec {
 public:
     virtual ~cUnk00ada5f4() {}
-    virtual void Slot04_ada5f4();
-    virtual void Slot05_ada5f4();
+    virtual void Slot04_ada5f4(uint32_t);
+    virtual bool Slot05_ada5f4(uint32_t);
     virtual void Slot06_ada5f4();
-    virtual void Slot07_ada5f4();
+    virtual void Slot07_ada5f4(uint32_t);
     virtual void Slot08_ada5f4();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_ada5b0();
+    virtual void Slot03_ada5b0(uint32_t);
     char unknown1c[0xc];
 };
 #ifdef _MSC_VER

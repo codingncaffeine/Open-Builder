@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00ABFCA8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00abfca8
 // SIZE 0xec
 class cUnk00abfca8 {
 public:
-    virtual void Slot00_abfca8();
+    virtual void Slot00_abfca8(uint32_t, uint32_t);
     virtual void Slot01_abfca8();
     virtual void Slot02_abfca8();
     virtual ~cUnk00abfca8();

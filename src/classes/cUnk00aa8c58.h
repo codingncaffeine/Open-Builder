@@ -3,10 +3,11 @@
 #define OB_CLASSES_CUNK00AA8C58_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00aa8c58 {
 public:
-    virtual void Slot00_aa8c58() = 0;
+    virtual void Slot00_aa8c58(uint32_t) = 0;
 };
 
 #endif

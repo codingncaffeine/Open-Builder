@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AD95E8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad7cf0.h"
 
 // VTABLE: 0x00ad95e8 cUnk00ad8d88
@@ -12,14 +13,14 @@
 class cUnk00ad95e8 : public cUnk00ad7cf0 {
 public:
     virtual ~cUnk00ad95e8() {}
-    virtual void Slot62_ad95e8();
-    virtual void Slot63_ad95e8();
-    virtual void Slot64_ad95e8();
-    virtual void Slot27_ad8d88();
-    virtual void Slot51_ad8d88();
+    virtual void Slot62_ad95e8(uint32_t, uint32_t);
+    virtual void Slot63_ad95e8(uint32_t);
+    virtual void Slot64_ad95e8(uint32_t);
+    virtual void Slot27_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot51_ad8d88(uint32_t, uint32_t);
     virtual void Slot52_ad8d88();
-    virtual void Slot54_ad8d88();
-    virtual void Slot56_ad8d88();
+    virtual uint32_t Slot54_ad8d88();
+    virtual bool Slot56_ad8d88(uint32_t);
 };
 
 // SYNTHETIC: 0x0097cf9d

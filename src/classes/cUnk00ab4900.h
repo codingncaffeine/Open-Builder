@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00AB4900_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ab4658.h"
 #include "classes/cUnk00adc8d8.h"
 
 // Between cUnk00adc8d8 and cUnk00ab4900 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ab4900_4 : public cUnk00adc8d8 {
-    virtual void Slot88_adc8d8();
+    virtual bool Slot88_adc8d8();
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
 };
@@ -23,21 +24,29 @@ public:
     virtual unsigned int AddRef();
     virtual unsigned int Release();
     virtual void Slot03_ab4658();
-    virtual void Slot04_ab4658();
-    virtual void Slot05_ab4658();
-    virtual void Slot06_ab4658();
-    virtual void Slot07_ab4658();
-    virtual void Slot08_ab4658();
-    virtual void Slot09_ab4658();
-    virtual void Slot10_ab4658();
-    virtual void Slot11_ab4658();
-    virtual void Slot12_ab4658();
-    virtual void Slot13_ab4658();
-    virtual void Slot14_ab4658();
-    virtual void Slot15_ab4658();
-    virtual void Slot16_ab4658();
-    virtual void Slot17_ab4658();
-    char unknowndc[0x2c];
+    virtual void Slot04_ab4658(uint32_t);
+    virtual uint32_t Slot05_ab4658();
+    virtual void Slot06_ab4658(uint32_t);
+    virtual uint32_t Slot07_ab4658();
+    virtual void Slot08_ab4658(uint32_t);
+    virtual float Slot09_ab4658();
+    virtual void Slot10_ab4658(uint32_t);
+    virtual float Slot11_ab4658();
+    virtual void Slot12_ab4658(uint32_t);
+    virtual float Slot13_ab4658();
+    virtual void Slot14_ab4658(uint32_t);
+    virtual uint32_t Slot15_ab4658();
+    virtual void Slot16_ab4658(uint32_t, uint32_t);
+    virtual void Slot17_ab4658(uint32_t);
+    uint32_t fielddc;
+    char unknowne0[0xc];
+    uint32_t fieldec;
+    float fieldf0;
+    float fieldf4;
+    float fieldf8;
+    char unknownfc[0x4];
+    uint32_t field100;
+    char unknown104[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab4900[sizeof(cUnk00ab4900) == 0x108 ? 1 : -1];

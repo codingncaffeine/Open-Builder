@@ -3,51 +3,52 @@
 #define OB_CLASSES_CUNK00AD8CA0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x10
 class cUnk00ad8ca0 {
 public:
-    virtual void Slot00_ad8fc8();
+    virtual void Slot00_ad8fc8(uint32_t, uint32_t);
     virtual void Slot01_ad8fc8();
     virtual void Slot02_ad8fc8();
-    virtual void Slot04_ad8fc8() = 0;
+    virtual void Slot04_ad8fc8(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot05_ad8fc8() = 0;
     virtual void Slot06_ad8fc8() = 0;
-    virtual void Slot06_ad8ca0() = 0;
-    virtual void Slot07_ad8ca0() = 0;
+    virtual void Slot06_ad8ca0(uint32_t, uint32_t) = 0;
+    virtual bool Slot07_ad8ca0() = 0;
     virtual void Slot08_ad8ca0() = 0;
-    virtual void Slot09_ad8ca0() = 0;
-    virtual void Slot08_ad8fc8() = 0;
-    virtual void Slot09_ad8fc8() = 0;
+    virtual bool Slot09_ad8ca0() = 0;
+    virtual void Slot08_ad8fc8(uint32_t) = 0;
+    virtual void Slot09_ad8fc8(uint32_t) = 0;
     virtual void Slot12_ad8ca0();
     virtual void Slot13_ad8ca0();
-    virtual void Slot14_ad8ca0() = 0;
-    virtual void Slot15_ad8ca0() = 0;
-    virtual void Slot16_ad8ca0() = 0;
-    virtual void Slot17_ad8ca0();
-    virtual void Slot18_ad8ca0();
-    virtual void Slot19_ad8ca0();
-    virtual void Slot20_ad8ca0();
-    virtual void Slot21_ad8ca0();
-    virtual void Slot22_ad8ca0();
-    virtual void Slot23_ad8ca0();
-    virtual void Slot24_ad8ca0();
-    virtual void Slot25_ad8ca0();
-    virtual void Slot26_ad8ca0();
-    virtual void Slot27_ad8ca0();
-    virtual void Slot28_ad8ca0();
-    virtual void Slot29_ad8ca0();
+    virtual uint32_t Slot14_ad8ca0() = 0;
+    virtual void Slot15_ad8ca0(uint32_t) = 0;
+    virtual uint32_t Slot16_ad8ca0(uint32_t) = 0;
+    virtual void Slot17_ad8ca0(uint32_t);
+    virtual uint32_t Slot18_ad8ca0(uint32_t, uint32_t);
+    virtual void Slot19_ad8ca0(uint32_t);
+    virtual void Slot20_ad8ca0(uint32_t);
+    virtual void Slot21_ad8ca0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot22_ad8ca0(uint32_t, uint32_t);
+    virtual void Slot23_ad8ca0(uint32_t);
+    virtual void Slot24_ad8ca0(uint32_t);
+    virtual void Slot25_ad8ca0(uint32_t);
+    virtual void Slot26_ad8ca0(uint32_t);
+    virtual void Slot27_ad8ca0(uint32_t);
+    virtual void Slot28_ad8ca0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot29_ad8ca0(uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ad8ca0();
     virtual void Slot31_ad8ca0();
-    virtual void Slot32_ad8ca0() = 0;
-    virtual void Slot33_ad8ca0() = 0;
-    virtual void Slot34_ad8ca0() = 0;
-    virtual void Slot35_ad8ca0() = 0;
-    virtual void Slot36_ad8ca0() = 0;
-    virtual void Slot37_ad8ca0() = 0;
-    virtual void Slot38_ad8ca0() = 0;
-    virtual void Slot39_ad8ca0() = 0;
-    virtual void Slot40_ad8ca0() = 0;
+    virtual void Slot32_ad8ca0(uint32_t) = 0;
+    virtual void Slot33_ad8ca0(uint32_t) = 0;
+    virtual void Slot34_ad8ca0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot35_ad8ca0(uint32_t, uint32_t) = 0;
+    virtual void Slot36_ad8ca0(uint32_t) = 0;
+    virtual void Slot37_ad8ca0(uint32_t) = 0;
+    virtual bool Slot38_ad8ca0(uint32_t) = 0;
+    virtual void Slot39_ad8ca0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot40_ad8ca0(uint32_t, uint32_t, uint32_t) = 0;
     char unknown4[0xc];
 };
 #ifdef _MSC_VER

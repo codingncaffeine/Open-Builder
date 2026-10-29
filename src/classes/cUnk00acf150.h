@@ -3,32 +3,35 @@
 #define OB_CLASSES_CUNK00ACF150_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00acf150
 // SIZE 0x3c
 class cUnk00acf150 {
 public:
     virtual ~cUnk00acf150();
-    virtual void Slot01_acf150();
-    virtual void Slot02_acf150();
-    virtual void Slot03_acf150();
-    virtual void Slot04_acf150();
+    virtual void* Slot01_acf150();
+    virtual void Slot02_acf150(uint32_t);
+    virtual uint32_t Slot03_acf150();
+    virtual void Slot04_acf150(uint32_t);
     virtual void Slot05_acf150();
-    virtual void Slot06_acf150();
-    virtual void Slot07_acf150();
-    virtual void Slot08_acf150();
-    virtual void Slot09_acf150();
-    virtual void Slot10_acf150();
-    virtual void Slot11_acf150();
-    virtual void Slot12_acf150();
-    virtual void Slot13_acf150();
-    virtual void Slot14_acf150();
-    virtual void Slot15_acf150();
-    virtual void Slot16_acf150();
-    virtual void Slot17_acf150();
-    virtual void Slot18_acf150();
-    virtual void Slot19_acf150();
-    char unknown4[0x38];
+    virtual void Slot06_acf150(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_acf150(uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_acf150(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_acf150(uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_acf150(uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_acf150(uint32_t, uint32_t, uint32_t);
+    virtual void Slot12_acf150(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_acf150(uint32_t, uint32_t, uint32_t);
+    virtual void Slot14_acf150(uint32_t, uint32_t);
+    virtual void Slot15_acf150(uint32_t);
+    virtual void Slot16_acf150(uint32_t);
+    virtual void Slot17_acf150(uint32_t);
+    virtual void Slot18_acf150(uint32_t);
+    virtual void Slot19_acf150(uint32_t);
+    char field4[0x30];
+    uint32_t field34;
+    char unknown38[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00acf150[sizeof(cUnk00acf150) == 0x3c ? 1 : -1];

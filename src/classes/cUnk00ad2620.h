@@ -3,23 +3,24 @@
 #define OB_CLASSES_CUNK00AD2620_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ad2620 {
 public:
-    virtual void Slot00_ad4cf4() = 0;
+    virtual void Slot00_ad4cf4(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
-    virtual void Slot03_ad2620() = 0;
-    virtual void Slot04_ad2620() = 0;
-    virtual void Slot18_ad4648() = 0;
-    virtual void Slot06_ad2620() = 0;
-    virtual void Slot07_ad2620() = 0;
-    virtual void Slot08_ad2620() = 0;
-    virtual void Slot09_ad2620() = 0;
-    virtual void Slot10_ad2620() = 0;
-    virtual void Slot19_ad4648() = 0;
-    virtual void Slot20_ad4648() = 0;
-    virtual void Slot14_ad2620() = 0;
+    virtual void Slot03_ad2620(uint32_t) = 0;
+    virtual void Slot04_ad2620(uint32_t) = 0;
+    virtual uint32_t Slot18_ad4648() = 0;
+    virtual uint32_t Slot06_ad2620() = 0;
+    virtual uint32_t Slot07_ad2620() = 0;
+    virtual bool Slot08_ad2620(uint32_t) = 0;
+    virtual bool Slot09_ad2620(uint32_t) = 0;
+    virtual bool Slot10_ad2620(uint32_t) = 0;
+    virtual bool Slot19_ad4648(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot20_ad4648(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot14_ad2620(uint32_t, uint32_t) = 0;
 };
 
 #endif

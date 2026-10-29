@@ -3,24 +3,27 @@
 #define OB_CLASSES_CUNK00AD27D4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad27d4
 // SIZE 0x18
 class cUnk00ad27d4 {
 public:
-    virtual void Slot00_ad4cf4();
+    virtual void Slot00_ad4cf4(uint32_t, uint32_t);
     virtual void Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
-    virtual void Slot03_ad27d4();
-    virtual void Slot04_ad27d4();
+    virtual void Slot03_ad27d4(uint32_t, uint32_t);
+    virtual void Slot04_ad27d4(uint32_t);
     virtual void Slot05_ad27d4();
-    virtual void Slot06_ad27d4();
-    virtual void Slot07_ad27d4();
-    virtual void Slot08_ad27d4();
-    virtual void Slot09_ad27d4();
-    virtual void Slot10_ad27d4();
+    virtual void Slot06_ad27d4(uint32_t, uint32_t);
+    virtual void Slot07_ad27d4(uint32_t, uint32_t);
+    virtual void Slot08_ad27d4(uint32_t, uint32_t);
+    virtual void Slot09_ad27d4(uint32_t);
+    virtual uint32_t Slot10_ad27d4();
     virtual ~cUnk00ad27d4();
-    char unknown4[0x14];
+    char unknown4[0x8];
+    uint32_t fieldc;
+    char unknown10[0x8];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad27d4[sizeof(cUnk00ad27d4) == 0x18 ? 1 : -1];

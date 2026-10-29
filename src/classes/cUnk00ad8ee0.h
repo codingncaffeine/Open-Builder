@@ -3,17 +3,18 @@
 #define OB_CLASSES_CUNK00AD8EE0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad8c20.h"
 #include "classes/cUnk00ad8e80.h"
 
 // Between cUnk00ad8e80 and cUnk00ad8ee0 at +0x10: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad8ee0_10 : public cUnk00ad8e80 {
-    virtual void Slot03_ad8e80();
-    virtual void Slot04_ad8e80();
-    virtual void Slot05_ad8e80();
-    virtual void Slot06_ad8e80();
-    virtual void Slot07_ad8e80();
-    virtual void Slot08_ad8e80();
+    virtual void Slot03_ad8e80(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot04_ad8e80(uint32_t, uint32_t);
+    virtual void Slot05_ad8e80(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ad8e80(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_ad8e80(uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_ad8e80(uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00ad8ee0 cUnk00ad8c20
@@ -21,11 +22,11 @@ struct OB_NOVTABLE cUnk00ad8ee0_10 : public cUnk00ad8e80 {
 // SIZE 0x1c
 class cUnk00ad8ee0 : public cUnk00ad8c20, public cUnk00ad8ee0_10 {
 public:
-    virtual void Slot04_ad8c20();
-    virtual void Slot09_ad8c20();
-    virtual void Slot10_ad8c20();
-    virtual void Slot11_ad8c20();
-    virtual void Slot00_ace4b0();
+    virtual void Slot04_ad8c20(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ad8c20(uint32_t, uint32_t);
+    virtual bool Slot11_ad8c20(uint32_t, uint32_t);
+    virtual void Slot00_ace4b0(uint32_t, uint32_t);
     virtual void Slot01_ace4b0();
     virtual void Slot02_ace4b0();
     char unknown14[0x8];

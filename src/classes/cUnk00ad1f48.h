@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AD1F48_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad1f48
 class cUnk00ad1f48 {
@@ -10,11 +11,11 @@ public:
     virtual void Slot00_ad1f48();
     virtual void Slot01_ad1f48();
     virtual void Slot02_ad1f48();
-    virtual void Slot03_ad1f48();
+    virtual void Slot03_ad1f48(uint32_t);
     virtual void Slot04_ad1f48();
     virtual ~cUnk00ad1f48();
     virtual void Slot06_ad1f48();
-    virtual void Slot07_ad1f48();
+    virtual void Slot07_ad1f48(uint32_t);
 };
 
 // SYNTHETIC: 0x00932eea

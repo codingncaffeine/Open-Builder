@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ADA5B0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ada5b0 {
@@ -10,7 +11,7 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ada5b0() = 0;
+    virtual void Slot03_ada5b0(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ada5b0[sizeof(cUnk00ada5b0) == 0x4 ? 1 : -1];

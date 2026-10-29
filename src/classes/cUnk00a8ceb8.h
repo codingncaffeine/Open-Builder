@@ -3,46 +3,65 @@
 #define OB_CLASSES_CUNK00A8CEB8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00a8ceb8
 // SIZE 0xc0
 class cUnk00a8ceb8 {
 public:
-    virtual void Slot00_a8ceb8();
+    virtual void Slot00_a8ceb8(uint32_t, uint32_t);
     virtual void Slot01_a8ceb8();
     virtual void Slot02_a8ceb8();
-    virtual void Slot03_a8ceb8();
+    virtual uint32_t Slot03_a8ceb8();
     virtual void Slot04_a8ceb8();
-    virtual void Slot05_a8ceb8();
-    virtual void Slot06_a8ceb8();
-    virtual void Slot07_a8ceb8();
-    virtual void Slot08_a8ceb8();
-    virtual void Slot09_a8ceb8();
-    virtual void Slot10_a8ceb8();
-    virtual void Slot11_a8ceb8();
-    virtual void Slot12_a8ceb8();
-    virtual void Slot13_a8ceb8();
-    virtual void Slot14_a8ceb8();
-    virtual void Slot15_a8ceb8();
-    virtual void Slot16_a8ceb8();
-    virtual void Slot17_a8ceb8();
-    virtual void Slot18_a8ceb8();
-    virtual void Slot19_a8ceb8();
-    virtual void Slot20_a8ceb8();
-    virtual void Slot21_a8ceb8();
+    virtual void Slot05_a8ceb8(uint32_t);
+    virtual void* Slot06_a8ceb8();
+    virtual void Slot07_a8ceb8(uint32_t, uint32_t);
+    virtual float Slot08_a8ceb8();
+    virtual float Slot09_a8ceb8();
+    virtual float Slot10_a8ceb8();
+    virtual bool Slot11_a8ceb8();
+    virtual uint16_t Slot12_a8ceb8();
+    virtual uint16_t Slot13_a8ceb8();
+    virtual bool Slot14_a8ceb8();
+    virtual void Slot15_a8ceb8(uint32_t);
+    virtual void Slot16_a8ceb8(uint32_t);
+    virtual void Slot17_a8ceb8(uint32_t);
+    virtual void Slot18_a8ceb8(uint32_t);
+    virtual bool Slot19_a8ceb8(uint32_t);
+    virtual bool Slot20_a8ceb8();
+    virtual void Slot21_a8ceb8(uint32_t);
     virtual void Slot22_a8ceb8();
-    virtual void Slot23_a8ceb8();
+    virtual void* Slot23_a8ceb8();
     virtual void Slot24_a8ceb8();
     virtual void Slot25_a8ceb8();
     virtual void Slot26_a8ceb8();
-    virtual void Slot27_a8ceb8();
-    virtual void Slot28_a8ceb8();
-    virtual void Slot29_a8ceb8();
-    virtual void Slot30_a8ceb8();
+    virtual void Slot27_a8ceb8(uint32_t);
+    virtual void* Slot28_a8ceb8();
+    virtual void* Slot29_a8ceb8();
+    virtual void* Slot30_a8ceb8();
     virtual void Slot31_a8ceb8();
-    virtual void Slot32_a8ceb8();
+    virtual void Slot32_a8ceb8(uint32_t, uint32_t);
     virtual ~cUnk00a8ceb8();
-    char unknown4[0xbc];
+    char unknown4[0x4];
+    uint32_t field8;
+    char unknownc[0x18];
+    char field24[0xc];
+    float field30;
+    float field34;
+    float field38;
+    bool field3c;
+    char unknown3d[0x1];
+    uint16_t field3e;
+    uint16_t field40;
+    bool field42;
+    char unknown43[0x4a];
+    bool field8d;
+    char unknown8e[0x2];
+    char field90[0xc];
+    char field9c[0xc];
+    char fielda8[0xc];
+    char fieldb4[0xc];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a8ceb8[sizeof(cUnk00a8ceb8) == 0xc0 ? 1 : -1];

@@ -3,24 +3,25 @@
 #define OB_CLASSES_CUNK00ADA890_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ada890
 class cUnk00ada890 {
 public:
-    virtual void Slot00_ada890();
+    virtual void Slot00_ada890(uint32_t, uint32_t);
     virtual void Slot01_ada890();
     virtual void Slot02_ada890();
-    virtual void Slot03_ada890();
-    virtual void Slot04_ada890();
-    virtual void Slot05_ada890();
-    virtual void Slot06_ada890();
-    virtual void Slot07_ada890();
-    virtual void Slot08_ada890();
-    virtual void Slot09_ada890();
-    virtual void Slot10_ada890();
-    virtual void Slot11_ada890();
-    virtual void Slot12_ada890();
-    virtual void Slot13_ada890();
+    virtual void Slot03_ada890(uint32_t, uint32_t);
+    virtual uint32_t Slot04_ada890();
+    virtual void Slot05_ada890(uint32_t);
+    virtual void Slot06_ada890(uint32_t);
+    virtual void Slot07_ada890(uint32_t);
+    virtual void Slot08_ada890(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot09_ada890();
+    virtual uint32_t Slot10_ada890();
+    virtual uint32_t Slot11_ada890();
+    virtual uint32_t Slot12_ada890();
+    virtual void Slot13_ada890(uint32_t);
 };
 
 #endif

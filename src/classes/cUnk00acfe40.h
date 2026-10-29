@@ -3,33 +3,40 @@
 #define OB_CLASSES_CUNK00ACFE40_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00acfe40
 // SIZE 0x30
 class cUnk00acfe40 {
 public:
-    virtual void Slot00_acfe40();
+    virtual void Slot00_acfe40(uint32_t, uint32_t);
     virtual void Slot01_acfe40();
     virtual void Slot02_acfe40();
     virtual void Slot03_acfe40();
     virtual void Slot04_acfe40();
-    virtual void Slot05_acfe40();
-    virtual void Slot06_acfe40();
-    virtual void Slot07_acfe40();
-    virtual void Slot08_acfe40();
-    virtual void Slot09_acfe40();
-    virtual void Slot10_acfe40();
-    virtual void Slot11_acfe40();
-    virtual void Slot12_acfe40();
-    virtual void Slot13_acfe40();
-    virtual void Slot14_acfe40();
-    virtual void Slot15_acfe40();
-    virtual void Slot16_acfe40();
-    virtual void Slot17_acfe40();
-    virtual void Slot18_acfe40();
-    virtual void Slot19_acfe40();
+    virtual uint32_t Slot05_acfe40();
+    virtual void Slot06_acfe40(uint32_t);
+    virtual bool Slot07_acfe40();
+    virtual void Slot08_acfe40(uint32_t);
+    virtual uint32_t Slot09_acfe40();
+    virtual void Slot10_acfe40(uint32_t);
+    virtual void Slot11_acfe40(uint32_t, uint32_t);
+    virtual void Slot12_acfe40(uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_acfe40(uint32_t);
+    virtual void Slot14_acfe40(uint32_t, uint32_t);
+    virtual void Slot15_acfe40(uint32_t);
+    virtual void Slot16_acfe40(uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_acfe40(uint32_t);
+    virtual void Slot18_acfe40(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot19_acfe40(uint32_t, uint32_t);
     virtual ~cUnk00acfe40();
-    char unknown4[0x2c];
+    char unknown4[0x1];
+    bool field5;
+    char unknown6[0x6];
+    uint32_t fieldc;
+    char unknown10[0x4];
+    uint32_t field14;
+    char unknown18[0x18];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00acfe40[sizeof(cUnk00acfe40) == 0x30 ? 1 : -1];

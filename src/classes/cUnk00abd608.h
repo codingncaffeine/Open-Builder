@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ABD608_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00abd5d4.h"
 #include "classes/cUnk00ad8bec.h"
 
@@ -14,12 +15,12 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_abd5d4();
-    virtual void Slot04_abd5d4();
-    virtual void Slot05_abd5d4();
-    virtual void Slot06_abd5d4();
-    virtual void Slot07_abd5d4();
-    virtual void Slot08_abd5d4();
+    virtual void* Slot03_abd5d4();
+    virtual void Slot04_abd5d4(uint32_t, uint32_t);
+    virtual void Slot05_abd5d4(uint32_t, uint32_t);
+    virtual void Slot06_abd5d4(uint32_t, uint32_t);
+    virtual void Slot07_abd5d4(uint32_t);
+    virtual void Slot08_abd5d4(uint32_t, uint32_t);
 };
 
 // SYNTHETIC: 0x00806210

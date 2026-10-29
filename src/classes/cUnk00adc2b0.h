@@ -3,41 +3,42 @@
 #define OB_CLASSES_CUNK00ADC2B0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00adc2b0 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_adb720() = 0;
-    virtual void Slot04_adc2b0() = 0;
-    virtual void Slot05_adc2b0() = 0;
-    virtual void Slot06_adc2b0() = 0;
-    virtual void Slot07_adc2b0() = 0;
-    virtual void Slot08_adc2b0() = 0;
-    virtual void Slot09_adc2b0() = 0;
-    virtual void Slot10_adc2b0() = 0;
-    virtual void Slot11_adc2b0() = 0;
-    virtual void Slot12_adc2b0() = 0;
-    virtual void Slot13_adc2b0() = 0;
-    virtual void Slot14_adc2b0() = 0;
-    virtual void Slot15_adc2b0() = 0;
-    virtual void Slot16_adc2b0() = 0;
-    virtual void Slot17_adc2b0() = 0;
-    virtual void Slot18_adc2b0() = 0;
-    virtual void Slot19_adc2b0() = 0;
-    virtual void Slot20_adc2b0() = 0;
-    virtual void Slot21_adc2b0() = 0;
-    virtual void Slot22_adc2b0() = 0;
-    virtual void Slot23_adc2b0() = 0;
-    virtual void Slot24_adc2b0() = 0;
-    virtual void Slot25_adc2b0() = 0;
-    virtual void Slot26_adc2b0() = 0;
-    virtual void Slot27_adc2b0() = 0;
-    virtual void Slot28_adc2b0() = 0;
-    virtual void Slot29_adc2b0() = 0;
-    virtual void Slot30_adc2b0() = 0;
-    virtual void Slot31_adc2b0() = 0;
+    virtual void* Slot03_adb720() = 0;
+    virtual uint32_t Slot04_adc2b0() = 0;
+    virtual void Slot05_adc2b0(uint32_t) = 0;
+    virtual void Slot06_adc2b0(uint32_t, uint32_t) = 0;
+    virtual void Slot07_adc2b0(uint32_t) = 0;
+    virtual uint32_t Slot08_adc2b0() = 0;
+    virtual void Slot09_adc2b0(uint32_t, uint32_t) = 0;
+    virtual void Slot10_adc2b0(uint32_t) = 0;
+    virtual void Slot11_adc2b0(uint32_t) = 0;
+    virtual void Slot12_adc2b0(uint32_t) = 0;
+    virtual void Slot13_adc2b0(uint32_t, uint32_t) = 0;
+    virtual void Slot14_adc2b0(uint32_t) = 0;
+    virtual void Slot15_adc2b0(uint32_t, uint32_t) = 0;
+    virtual bool Slot16_adc2b0(uint32_t) = 0;
+    virtual void Slot17_adc2b0(uint32_t) = 0;
+    virtual void Slot18_adc2b0(uint32_t, uint32_t) = 0;
+    virtual bool Slot19_adc2b0(uint32_t) = 0;
+    virtual void Slot20_adc2b0(uint32_t, uint32_t) = 0;
+    virtual void Slot21_adc2b0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot22_adc2b0() = 0;
+    virtual void Slot23_adc2b0(uint32_t, uint32_t) = 0;
+    virtual void Slot24_adc2b0(uint32_t) = 0;
+    virtual void Slot25_adc2b0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot26_adc2b0(uint32_t, uint32_t) = 0;
+    virtual void Slot27_adc2b0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot28_adc2b0(uint32_t, uint32_t) = 0;
+    virtual void Slot29_adc2b0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot30_adc2b0(uint32_t, uint32_t) = 0;
+    virtual void Slot31_adc2b0(uint32_t) = 0;
 };
 
 #endif

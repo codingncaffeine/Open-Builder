@@ -3,36 +3,41 @@
 #define OB_CLASSES_CUNK00AD7520_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad7520
 // SIZE 0xf84
 class cUnk00ad7520 {
 public:
-    virtual void Slot00_ad7520();
+    virtual void Slot00_ad7520(uint32_t, uint32_t);
     virtual void Slot01_ad7520();
     virtual void Slot02_ad7520();
-    virtual void Slot03_ad7520();
-    virtual void Slot04_ad7520();
-    virtual void Slot05_ad7520();
-    virtual void Slot06_ad7520();
+    virtual void Slot03_ad7520(uint32_t);
+    virtual void Slot04_ad7520(uint32_t);
+    virtual bool Slot05_ad7520(uint32_t);
+    virtual bool Slot06_ad7520(uint32_t);
     virtual void Slot07_ad7520();
     virtual void Slot08_ad7520();
     virtual void Slot09_ad7520();
-    virtual void Slot10_ad7520();
-    virtual void Slot11_ad7520();
+    virtual uint32_t Slot10_ad7520();
+    virtual void Slot11_ad7520(uint32_t, uint32_t);
     virtual void Slot12_ad7520();
     virtual void Slot13_ad7520();
-    virtual void Slot14_ad7520();
+    virtual void Slot14_ad7520(uint32_t, uint32_t);
     virtual void Slot15_ad7520();
-    virtual void Slot16_ad7520();
-    virtual void Slot17_ad7520();
-    virtual void Slot18_ad7520();
-    virtual void Slot19_ad7520();
-    virtual void Slot20_ad7520();
+    virtual void* Slot16_ad7520();
+    virtual bool Slot17_ad7520();
+    virtual bool Slot18_ad7520(uint32_t);
+    virtual uint32_t Slot19_ad7520();
+    virtual bool Slot20_ad7520(uint32_t);
     virtual ~cUnk00ad7520();
     virtual void Slot22_ad7520();
-    virtual void Slot23_ad7520();
-    char unknown4[0xf80];
+    virtual uint32_t Slot23_ad7520();
+    char unknown4[0xf60];
+    uint32_t fieldf64;
+    char fieldf68[0x14];
+    uint32_t fieldf7c;
+    char unknownf80[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad7520[sizeof(cUnk00ad7520) == 0xf84 ? 1 : -1];

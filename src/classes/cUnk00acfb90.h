@@ -3,28 +3,29 @@
 #define OB_CLASSES_CUNK00ACFB90_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00acfb90
 // SIZE 0x8
 class cUnk00acfb90 {
 public:
     virtual void Slot00_acfb90();
-    virtual void Slot01_acfb90();
-    virtual void Slot02_acfb90();
-    virtual void Slot03_acfb90();
+    virtual void Slot01_acfb90(uint32_t);
+    virtual void Slot02_acfb90(uint32_t, uint32_t);
+    virtual void Slot03_acfb90(uint32_t);
     virtual void Slot04_acfb90();
     virtual void Slot05_acfb90();
-    virtual void Slot06_acfb90();
+    virtual void Slot06_acfb90(uint32_t);
     virtual void Slot07_acfb90();
-    virtual void Slot08_acfb90();
+    virtual void Slot08_acfb90(uint32_t);
     virtual void Slot09_acfb90();
-    virtual void Slot10_acfb90();
+    virtual void Slot10_acfb90(uint32_t);
     virtual void Slot11_acfb90();
     virtual void Slot12_acfb90();
     virtual ~cUnk00acfb90();
-    virtual void Slot14_acfb90();
-    virtual void Slot15_acfb90();
-    virtual void Slot16_acfb90();
+    virtual void Slot14_acfb90(uint32_t);
+    virtual void Slot15_acfb90(uint32_t);
+    virtual void Slot16_acfb90(uint32_t);
     char unknown4[0x4];
 };
 #ifdef _MSC_VER

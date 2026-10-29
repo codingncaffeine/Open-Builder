@@ -3,21 +3,24 @@
 #define OB_CLASSES_CUNK00AA2A3C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00aa2a3c
 // SIZE 0x3c
 class cUnk00aa2a3c {
 public:
-    virtual void Slot00_aa2a3c();
+    virtual bool Slot00_aa2a3c(uint32_t, uint32_t);
     virtual void Slot01_aa2a3c();
     virtual void Slot02_aa2a3c();
     virtual void Slot03_aa2a3c();
-    virtual void Slot04_aa2a3c();
-    virtual void Slot05_aa2a3c();
-    virtual void Slot06_aa2a3c();
-    virtual void Slot07_aa2a3c();
+    virtual void Slot04_aa2a3c(uint32_t);
+    virtual void Slot05_aa2a3c(uint32_t);
+    virtual void Slot06_aa2a3c(uint32_t);
+    virtual uint32_t Slot07_aa2a3c();
     virtual ~cUnk00aa2a3c() {}
-    char unknown4[0x38];
+    char unknown4[0x2c];
+    uint32_t field30;
+    char unknown34[0x8];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa2a3c[sizeof(cUnk00aa2a3c) == 0x3c ? 1 : -1];

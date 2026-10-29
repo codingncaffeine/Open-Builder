@@ -3,20 +3,25 @@
 #define OB_CLASSES_CUNK00AA7998_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00aa7998
 // SIZE 0x6c
 class cUnk00aa7998 {
 public:
-    virtual void Slot00_aa7998();
+    virtual void Slot00_aa7998(uint32_t, uint32_t);
     virtual void Slot01_aa7998();
     virtual void Slot02_aa7998();
-    virtual void Slot03_aa7998();
-    virtual void Slot04_aa7998();
+    virtual void* Slot03_aa7998();
+    virtual uint32_t Slot04_aa7998();
     virtual void Slot05_aa7998();
-    virtual void Slot06_aa7998();
+    virtual uint32_t Slot06_aa7998();
     virtual ~cUnk00aa7998() {}
-    char unknown4[0x68];
+    char field4[0xc];
+    uint32_t field10;
+    char unknown14[0x14];
+    uint32_t field28;
+    char unknown2c[0x40];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa7998[sizeof(cUnk00aa7998) == 0x6c ? 1 : -1];

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AAAA9C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00aaaa9c
 class cUnk00aaaa9c {
@@ -10,7 +11,7 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 #endif

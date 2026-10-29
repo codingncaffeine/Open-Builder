@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AA2758_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a80784.h"
 
 // The subobject at +0x0 (vtable 0x00aa2758): an interface or base the class map has no class for.
@@ -13,43 +14,43 @@ struct OB_NOVTABLE cUnk00aa2758_0 {
     virtual void Slot03_aa2758() = 0;
     virtual void Slot04_aa2758() = 0;
     virtual void Slot05_aa2758() = 0;
-    virtual void Slot06_aa2758() = 0;
-    virtual void Slot07_aa2758() = 0;
-    virtual void Slot08_aa2758() = 0;
-    virtual void Slot09_aa2758() = 0;
-    virtual void Slot10_aa2758() = 0;
-    virtual void Slot11_aa2758() = 0;
-    virtual void Slot12_aa2758() = 0;
-    virtual void Slot13_aa2758() = 0;
-    virtual void Slot14_aa2758() = 0;
-    virtual void Slot15_aa2758() = 0;
-    virtual void Slot16_aa2758() = 0;
-    virtual void Slot17_aa2758() = 0;
-    virtual void Slot18_aa2758() = 0;
-    virtual void Slot19_aa2758() = 0;
-    virtual void Slot20_aa2758() = 0;
-    virtual void Slot21_aa2758() = 0;
-    virtual void Slot22_aa2758() = 0;
-    virtual void Slot23_aa2758() = 0;
-    virtual void Slot24_aa2758() = 0;
-    virtual void Slot25_aa2758() = 0;
-    virtual void Slot26_aa2758() = 0;
-    virtual void Slot27_aa2758() = 0;
-    virtual void Slot28_aa2758() = 0;
-    virtual void Slot29_aa2758() = 0;
+    virtual uint32_t Slot06_aa2758() = 0;
+    virtual bool Slot07_aa2758(uint32_t) = 0;
+    virtual float Slot08_aa2758() = 0;
+    virtual float Slot09_aa2758() = 0;
+    virtual float Slot10_aa2758() = 0;
+    virtual float Slot11_aa2758() = 0;
+    virtual float Slot12_aa2758() = 0;
+    virtual float Slot13_aa2758() = 0;
+    virtual float Slot14_aa2758() = 0;
+    virtual float Slot15_aa2758() = 0;
+    virtual void Slot16_aa2758(uint32_t) = 0;
+    virtual void Slot17_aa2758(uint32_t) = 0;
+    virtual bool Slot18_aa2758(uint32_t) = 0;
+    virtual bool Slot19_aa2758(uint32_t) = 0;
+    virtual void Slot20_aa2758(uint32_t) = 0;
+    virtual void Slot21_aa2758(uint32_t) = 0;
+    virtual float Slot22_aa2758() = 0;
+    virtual void Slot23_aa2758(uint32_t) = 0;
+    virtual float Slot24_aa2758() = 0;
+    virtual void Slot25_aa2758(uint32_t) = 0;
+    virtual void* Slot26_aa2758() = 0;
+    virtual void Slot27_aa2758(uint32_t) = 0;
+    virtual uint32_t Slot28_aa2758() = 0;
+    virtual void Slot29_aa2758(uint32_t) = 0;
     virtual void Slot30_aa2758() = 0;
-    virtual void Slot31_aa2758() = 0;
+    virtual void Slot31_aa2758(uint32_t) = 0;
     virtual void Slot32_aa2758() = 0;
-    virtual void Slot33_aa2758() = 0;
+    virtual bool Slot33_aa2758() = 0;
     virtual ~cUnk00aa2758_0() {}
-    virtual void Slot35_aa2758() = 0;
+    virtual void Slot35_aa2758(uint32_t) = 0;
 };
 
 // Between cUnk00a80784 and cUnk00aa2758 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00aa2758_4 : public cUnk00a80784 {
-    virtual void Slot03_a80784();
-    virtual void Slot04_a80784();
-    virtual void Slot05_a80784();
+    virtual bool Slot03_a80784(uint32_t);
+    virtual bool Slot04_a80784(uint32_t);
+    virtual uint32_t Slot05_a80784();
 };
 
 // VTABLE: 0x00aa2758 cUnk00aa2758_0
@@ -64,36 +65,48 @@ public:
     virtual void Slot03_aa2758();
     virtual void Slot04_aa2758();
     virtual void Slot05_aa2758();
-    virtual void Slot06_aa2758();
-    virtual void Slot07_aa2758();
-    virtual void Slot08_aa2758();
-    virtual void Slot09_aa2758();
-    virtual void Slot10_aa2758();
-    virtual void Slot11_aa2758();
-    virtual void Slot12_aa2758();
-    virtual void Slot13_aa2758();
-    virtual void Slot14_aa2758();
-    virtual void Slot15_aa2758();
-    virtual void Slot16_aa2758();
-    virtual void Slot17_aa2758();
-    virtual void Slot18_aa2758();
-    virtual void Slot19_aa2758();
-    virtual void Slot20_aa2758();
-    virtual void Slot21_aa2758();
-    virtual void Slot22_aa2758();
-    virtual void Slot23_aa2758();
-    virtual void Slot24_aa2758();
-    virtual void Slot25_aa2758();
-    virtual void Slot26_aa2758();
-    virtual void Slot27_aa2758();
-    virtual void Slot28_aa2758();
-    virtual void Slot29_aa2758();
+    virtual uint32_t Slot06_aa2758();
+    virtual bool Slot07_aa2758(uint32_t);
+    virtual float Slot08_aa2758();
+    virtual float Slot09_aa2758();
+    virtual float Slot10_aa2758();
+    virtual float Slot11_aa2758();
+    virtual float Slot12_aa2758();
+    virtual float Slot13_aa2758();
+    virtual float Slot14_aa2758();
+    virtual float Slot15_aa2758();
+    virtual void Slot16_aa2758(uint32_t);
+    virtual void Slot17_aa2758(uint32_t);
+    virtual bool Slot18_aa2758(uint32_t);
+    virtual bool Slot19_aa2758(uint32_t);
+    virtual void Slot20_aa2758(uint32_t);
+    virtual void Slot21_aa2758(uint32_t);
+    virtual float Slot22_aa2758();
+    virtual void Slot23_aa2758(uint32_t);
+    virtual float Slot24_aa2758();
+    virtual void Slot25_aa2758(uint32_t);
+    virtual void* Slot26_aa2758();
+    virtual void Slot27_aa2758(uint32_t);
+    virtual uint32_t Slot28_aa2758();
+    virtual void Slot29_aa2758(uint32_t);
     virtual void Slot30_aa2758();
-    virtual void Slot31_aa2758();
+    virtual void Slot31_aa2758(uint32_t);
     virtual void Slot32_aa2758();
-    virtual void Slot33_aa2758();
-    virtual void Slot35_aa2758();
-    char unknown8[0x4c];
+    virtual bool Slot33_aa2758();
+    virtual void Slot35_aa2758(uint32_t);
+    char unknown8[0x8];
+    uint32_t field10;
+    char unknown14[0x8];
+    float field1c;
+    float field20;
+    char unknown24[0x8];
+    float field2c;
+    float field30;
+    float field34;
+    char unknown38[0xc];
+    char field44[0x4];
+    uint32_t field48;
+    char unknown4c[0x8];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa2758[sizeof(cUnk00aa2758) == 0x54 ? 1 : -1];

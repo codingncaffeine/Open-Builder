@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A9F008_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a9efb4.h"
 #include "gzcom/cUnk0090da1e.h"
 
@@ -12,19 +13,22 @@
 class cUnk00a9f008 : public cUnk00a9efb4, public cUnk0090da1e {
 public:
     virtual ~cUnk00a9f008() {}
-    virtual void Slot10_a9f008();
-    virtual void Slot11_a9f008();
+    virtual void Slot10_a9f008(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_a9f008(uint32_t, uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_a9efb4();
-    virtual void Slot04_a9efb4();
-    virtual void Slot05_a9efb4();
-    virtual void Slot06_a9efb4();
-    virtual void Slot07_a9efb4();
-    virtual void Slot08_a9efb4();
+    virtual uint32_t Slot03_a9efb4();
+    virtual uint32_t Slot04_a9efb4();
+    virtual uint32_t Slot05_a9efb4();
+    virtual void Slot06_a9efb4(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_a9efb4(uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_a9efb4(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot09_a9efb4();
-    char unknownc[0x7c];
+    char unknownc[0x1c];
+    uint32_t field28;
+    uint32_t field2c;
+    char unknown30[0x58];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9f008[sizeof(cUnk00a9f008) == 0x88 ? 1 : -1];

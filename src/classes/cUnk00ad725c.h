@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00AD725C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad725c
 class cUnk00ad725c {
 public:
-    virtual void Slot00_ad725c();
+    virtual void Slot00_ad725c(uint32_t, uint32_t);
     virtual void Slot01_ad725c();
     virtual void Slot02_ad725c();
-    virtual void Slot03_ad725c();
+    virtual void Slot03_ad725c(uint32_t);
 };
 
 #endif

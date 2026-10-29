@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AA75DC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aaaaac.h"
 #include "classes/cUnk00ace624.h"
 
@@ -14,7 +15,7 @@ public:
     virtual ~cUnk00aa75dc() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_aa75b0();
+    virtual void Slot00_aa75b0(uint32_t, uint32_t);
     virtual void Slot03_aa75b0();
     virtual void Slot04_aa75b0();
     char unknownc[0x8];

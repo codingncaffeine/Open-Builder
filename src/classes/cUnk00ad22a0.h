@@ -3,26 +3,27 @@
 #define OB_CLASSES_CUNK00AD22A0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad222c.h"
 #include "classes/cUnk00ad223c.h"
 
 // The subobject at +0x0 (vtable 0x00ad22a0): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad22a0_0 {
-    virtual void Slot00_ad22a0() = 0;
+    virtual void Slot00_ad22a0(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad22a0() = 0;
     virtual void Slot02_ad22a0() = 0;
-    virtual void Slot03_ad22a0() = 0;
+    virtual void Slot03_ad22a0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual ~cUnk00ad22a0_0() {}
 };
 
 // Between cUnk00ad222c and cUnk00ad22a0 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad22a0_4 : public cUnk00ad222c {
-    virtual void Slot03_ad222c();
+    virtual void Slot03_ad222c(uint32_t, uint32_t, uint32_t, uint32_t);
 };
 
 // Between cUnk00ad223c and cUnk00ad22a0 at +0x8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad22a0_8 : public cUnk00ad223c {
-    virtual void Slot03_ad223c();
+    virtual void Slot03_ad223c(uint32_t);
 };
 
 // VTABLE: 0x00ad22a0 cUnk00ad22a0_0
@@ -32,10 +33,10 @@ struct OB_NOVTABLE cUnk00ad22a0_8 : public cUnk00ad223c {
 class cUnk00ad22a0 : public cUnk00ad22a0_0, public cUnk00ad22a0_4, public cUnk00ad22a0_8 {
 public:
     virtual ~cUnk00ad22a0();
-    virtual void Slot00_ad22a0();
+    virtual void Slot00_ad22a0(uint32_t, uint32_t);
     virtual void Slot01_ad22a0();
     virtual void Slot02_ad22a0();
-    virtual void Slot03_ad22a0();
+    virtual void Slot03_ad22a0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     char unknownc[0x14];
 };
 #ifdef _MSC_VER

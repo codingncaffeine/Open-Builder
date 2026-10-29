@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00AB7078_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a86864.h"
 #include "classes/cUnk00ae0240.h"
 
 // Between cUnk00a86864 and cUnk00ab7078 at +0x10c: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ab7078_10c : public cUnk00a86864 {
-    virtual void Slot03_a86864();
+    virtual bool Slot03_a86864(uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00ab7078 cUnk00adc8d8
@@ -21,9 +22,9 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_adc8d8();
-    virtual void Slot130_adc8d8();
-    virtual void Slot135_adc8d8();
+    virtual void Slot03_adc8d8(uint32_t);
+    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
+    virtual bool Slot135_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
     char unknown110[0x10];

@@ -3,47 +3,48 @@
 #define OB_CLASSES_CUNK00ACEAF0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a827d8.h"
 #include "classes/cUnk00aceb48.h"
 
 // Between cUnk00aceb48 and cUnk00aceaf0 at +0x8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00aceaf0_8 : public cUnk00aceb48 {
-    virtual void Slot00_aceb48();
+    virtual void Slot00_aceb48(uint32_t, uint32_t);
     virtual void Slot01_aceb48();
     virtual void Slot02_aceb48();
-    virtual void Slot04_aceb48();
-    virtual void Slot08_aceb48();
-    virtual void Slot09_aceb48();
-    virtual void Slot10_aceb48();
-    virtual void Slot11_aceb48();
+    virtual void Slot04_aceb48(uint32_t);
+    virtual void Slot08_aceb48(uint32_t);
+    virtual void Slot09_aceb48(uint32_t);
+    virtual void Slot10_aceb48(uint32_t, uint32_t);
+    virtual void Slot11_aceb48(uint32_t);
     virtual void Slot17_aceb48();
-    virtual void Slot18_aceb48();
+    virtual uint32_t Slot18_aceb48();
     virtual void Slot19_aceb48();
     virtual void Slot20_aceb48();
-    virtual void Slot21_aceb48();
-    virtual void Slot22_aceb48();
-    virtual void Slot24_aceb48();
+    virtual void Slot21_aceb48(uint32_t, uint32_t);
+    virtual void Slot22_aceb48(uint32_t, uint32_t);
+    virtual void Slot24_aceb48(uint32_t, uint32_t);
     virtual void Slot25_aceb48();
-    virtual void Slot26_aceb48();
-    virtual void Slot27_aceb48();
-    virtual void Slot28_aceb48();
-    virtual void Slot29_aceb48();
-    virtual void Slot30_aceb48();
-    virtual void Slot31_aceb48();
-    virtual void Slot32_aceb48();
-    virtual void Slot33_aceb48();
-    virtual void Slot34_aceb48();
-    virtual void Slot35_aceb48();
-    virtual void Slot36_aceb48();
+    virtual uint32_t Slot26_aceb48();
+    virtual void Slot27_aceb48(uint32_t);
+    virtual void Slot28_aceb48(uint32_t);
+    virtual void Slot29_aceb48(uint32_t);
+    virtual void Slot30_aceb48(uint32_t);
+    virtual void Slot31_aceb48(uint32_t);
+    virtual void Slot32_aceb48(uint32_t);
+    virtual void Slot33_aceb48(uint32_t);
+    virtual void Slot34_aceb48(uint32_t);
+    virtual void Slot35_aceb48(uint32_t);
+    virtual void Slot36_aceb48(uint32_t);
     virtual void Slot37_aceb48();
     virtual void Slot38_aceb48();
-    virtual void Slot39_aceb48();
-    virtual void Slot40_aceb48();
-    virtual void Slot41_aceb48();
-    virtual void Slot42_aceb48();
-    virtual void Slot43_aceb48();
-    virtual void Slot44_aceb48();
-    virtual void Slot45_aceb48();
+    virtual void Slot39_aceb48(uint32_t);
+    virtual void Slot40_aceb48(uint32_t);
+    virtual void Slot41_aceb48(uint32_t, uint32_t);
+    virtual void Slot42_aceb48(uint32_t, uint32_t, uint32_t);
+    virtual void Slot43_aceb48(uint32_t);
+    virtual void Slot44_aceb48(uint32_t, uint32_t, uint32_t);
+    virtual void Slot45_aceb48(uint32_t);
 };
 
 // VTABLE: 0x00aceaf0 cUnk00a827d8
@@ -52,17 +53,17 @@ struct OB_NOVTABLE cUnk00aceaf0_8 : public cUnk00aceb48 {
 class cUnk00aceaf0 : public cUnk00a827d8, public cUnk00aceaf0_8 {
 public:
     virtual ~cUnk00aceaf0() {}
-    virtual void Slot04_aceaf0();
-    virtual void Slot05_aceaf0();
-    virtual void Slot03_aceb48();
-    virtual void Slot05_aceb48();
-    virtual void Slot06_aceb48();
-    virtual void Slot07_aceb48();
+    virtual void Slot04_aceaf0(uint32_t, uint32_t);
+    virtual void Slot05_aceaf0(uint32_t, uint32_t);
+    virtual void Slot03_aceb48(uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_aceb48(uint32_t);
+    virtual void Slot06_aceb48(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_aceb48(uint32_t, uint32_t);
     virtual void Slot12_aceb48();
     virtual void Slot13_aceb48();
     virtual void Slot14_aceb48();
     virtual void Slot15_aceb48();
-    virtual void Slot16_aceb48();
+    virtual void Slot16_aceb48(uint32_t);
     virtual void Slot23_aceb48();
     char unknownc[0x4];
 };

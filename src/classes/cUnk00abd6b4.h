@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ABD6B4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00abd744.h"
 #include "classes/cUnk00ad8bec.h"
 
@@ -15,9 +16,9 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_abd744();
-    virtual void Slot04_abd744();
-    char unknown1c[0x40];
+    virtual void* Slot03_abd744();
+    virtual void Slot04_abd744(uint32_t);
+    char field1c[0x40];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00abd6b4[sizeof(cUnk00abd6b4) == 0x5c ? 1 : -1];

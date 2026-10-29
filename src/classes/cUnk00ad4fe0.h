@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AD4FE0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ace6f8.h"
 
 // VTABLE: 0x00ad4fe0 cUnk00ace6f8_0
@@ -10,8 +11,8 @@
 class cUnk00ad4fe0 : public cUnk00ace6f8 {
 public:
     virtual ~cUnk00ad4fe0() {}
-    virtual void Slot04_ace6f8();
-    virtual void Slot13_ace6f8();
+    virtual bool Slot04_ace6f8(uint32_t);
+    virtual uint32_t Slot13_ace6f8();
 };
 
 #endif

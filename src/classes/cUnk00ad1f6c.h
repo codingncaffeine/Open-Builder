@@ -3,16 +3,17 @@
 #define OB_CLASSES_CUNK00AD1F6C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad1f6c
 // SIZE 0x50
 class cUnk00ad1f6c {
 public:
-    virtual void Slot00_ad1f6c();
+    virtual void Slot00_ad1f6c(uint32_t, uint32_t);
     virtual void Slot01_ad1f6c();
     virtual void Slot02_ad1f6c();
-    virtual void Slot03_ad1f6c();
-    virtual void Slot04_ad1f6c();
+    virtual void Slot03_ad1f6c(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_ad1f6c(uint32_t);
     virtual void Slot05_ad1f6c();
     virtual void Slot06_ad1f6c();
     virtual void Slot07_ad1f6c();

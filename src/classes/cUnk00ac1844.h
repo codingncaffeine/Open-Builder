@@ -3,17 +3,18 @@
 #define OB_CLASSES_CUNK00AC1844_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ac185c.h"
 
 // VTABLE: 0x00ac1844
 // SIZE 0x4
 class cUnk00ac1844 : public cUnk00ac185c {
 public:
-    virtual void Slot01_ac17ac();
-    virtual void Slot02_ac17ac();
-    virtual void Slot03_ac17ac();
-    virtual void Slot04_ac17ac();
-    virtual void Slot05_ac17ac();
+    virtual void Slot01_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot02_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot03_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_ac17ac(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac1844[sizeof(cUnk00ac1844) == 0x4 ? 1 : -1];

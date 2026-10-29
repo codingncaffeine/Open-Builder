@@ -3,16 +3,17 @@
 #define OB_CLASSES_CUNK00ADB29C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00adb29c {
 public:
-    virtual void Slot00_adb26c() = 0;
+    virtual void Slot00_adb26c(uint32_t, uint32_t) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_adb29c() = 0;
     virtual void Slot04_adb29c() = 0;
-    virtual void Slot05_adb29c() = 0;
+    virtual void Slot05_adb29c(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adb29c[sizeof(cUnk00adb29c) == 0x4 ? 1 : -1];

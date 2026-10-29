@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A80710_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00a80710 {
@@ -10,31 +11,31 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_a80710() = 0;
+    virtual void Slot03_a80710(uint32_t) = 0;
     virtual void Slot04_a80710() = 0;
-    virtual void Slot05_a80710() = 0;
-    virtual void Slot06_a80710() = 0;
-    virtual void Slot07_a80710() = 0;
+    virtual void Slot05_a80710(uint32_t) = 0;
+    virtual uint32_t Slot06_a80710() = 0;
+    virtual uint32_t Slot07_a80710() = 0;
     virtual void Slot08_a80710() = 0;
-    virtual void Slot09_a80710() = 0;
-    virtual void Slot10_a80710() = 0;
-    virtual void Slot11_a80710() = 0;
-    virtual void Slot12_a80710() = 0;
-    virtual void Slot13_a80710() = 0;
-    virtual void Slot14_a80710() = 0;
-    virtual void Slot15_a80710() = 0;
-    virtual void Slot16_a80710() = 0;
-    virtual void Slot17_a80710() = 0;
-    virtual void Slot18_a80710() = 0;
+    virtual void* Slot09_a80710() = 0;
+    virtual uint32_t Slot10_a80710() = 0;
+    virtual uint32_t Slot11_a80710() = 0;
+    virtual void Slot12_a80710(uint32_t) = 0;
+    virtual uint32_t Slot13_a80710() = 0;
+    virtual void Slot14_a80710(uint32_t, uint32_t) = 0;
+    virtual void Slot15_a80710(uint32_t) = 0;
+    virtual uint32_t Slot16_a80710() = 0;
+    virtual uint32_t Slot17_a80710() = 0;
+    virtual void* Slot18_a80710() = 0;
     virtual void Slot19_a80710() = 0;
-    virtual void Slot20_a80710() = 0;
+    virtual void* Slot20_a80710() = 0;
     virtual void Slot21_a80710() = 0;
-    virtual void Slot22_a80710() = 0;
+    virtual void Slot22_a80710(uint32_t) = 0;
     virtual void Slot23_a80710() = 0;
-    virtual void Slot24_a80710() = 0;
-    virtual void Slot25_a80710() = 0;
-    virtual void Slot26_a80710() = 0;
-    virtual void Slot27_a80710() = 0;
+    virtual void Slot24_a80710(uint32_t) = 0;
+    virtual uint32_t Slot25_a80710() = 0;
+    virtual uint32_t Slot26_a80710() = 0;
+    virtual uint32_t Slot27_a80710() = 0;
     virtual void Slot28_a80710() = 0;
 };
 #ifdef _MSC_VER

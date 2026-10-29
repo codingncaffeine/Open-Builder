@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00A8ED34_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aaaa9c.h"
 #include "gzcom/cUnk0090da1e.h"
 
 // Between cUnk00aaaa9c and cUnk00a8ed34 at +0x8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a8ed34_8 : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00a8ed34 cUnk0090da1e

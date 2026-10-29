@@ -3,37 +3,38 @@
 #define OB_CLASSES_CUNK00A94428_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // The subobject at +0x0 (vtable 0x00a94428): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00a94428_0 {
-    virtual void Slot00_a94428() = 0;
+    virtual void Slot00_a94428(uint32_t, uint32_t) = 0;
     virtual void Slot01_a94428() = 0;
     virtual void Slot02_a94428() = 0;
-    virtual void Slot03_a94428() = 0;
+    virtual void Slot03_a94428(uint32_t) = 0;
 };
 
 // The subobject at +0x4 (vtable 0x00a94418): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00a94428_4 {
-    virtual void Slot00_a94428() = 0;
+    virtual void Slot00_a94428(uint32_t, uint32_t) = 0;
     virtual void Slot01_a94428() = 0;
     virtual void Slot02_a94428() = 0;
-    virtual void Slot03_a94428_4();
+    virtual void Slot03_a94428_4(uint32_t);
 };
 
 // The subobject at +0x8 (vtable 0x00a94408): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00a94428_8 {
-    virtual void Slot00_a94428() = 0;
+    virtual void Slot00_a94428(uint32_t, uint32_t) = 0;
     virtual void Slot01_a94428() = 0;
     virtual void Slot02_a94428() = 0;
-    virtual void Slot03_a94428_8();
+    virtual void Slot03_a94428_8(uint32_t);
 };
 
 // The subobject at +0xc (vtable 0x00a943f8): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00a94428_c {
-    virtual void Slot00_a94428() = 0;
+    virtual void Slot00_a94428(uint32_t, uint32_t) = 0;
     virtual void Slot01_a94428() = 0;
     virtual void Slot02_a94428() = 0;
-    virtual void Slot03_a94428_c();
+    virtual void Slot03_a94428_c(uint32_t);
 };
 
 // VTABLE: 0x00a94428 cUnk00a94428_0
@@ -42,10 +43,10 @@ struct OB_NOVTABLE cUnk00a94428_c {
 // VTABLE: 0x00a943f8 cUnk00a94428_c
 class cUnk00a94428 : public cUnk00a94428_0, public cUnk00a94428_4, public cUnk00a94428_8, public cUnk00a94428_c {
 public:
-    virtual void Slot00_a94428();
+    virtual void Slot00_a94428(uint32_t, uint32_t);
     virtual void Slot01_a94428();
     virtual void Slot02_a94428();
-    virtual void Slot03_a94428();
+    virtual void Slot03_a94428(uint32_t);
 };
 
 // SYNTHETIC: 0x004f8890

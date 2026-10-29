@@ -3,51 +3,52 @@
 #define OB_CLASSES_CUNK00AE28C8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ae28c8 {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ae28c8() = 0;
+    virtual void* Slot03_ae28c8() = 0;
     virtual void Slot04_ae28c8() = 0;
     virtual void Slot05_ae28c8() = 0;
-    virtual void Slot06_ae28c8() = 0;
-    virtual void Slot07_ae28c8() = 0;
-    virtual void Slot08_ae28c8() = 0;
-    virtual void Slot09_ae28c8() = 0;
-    virtual void Slot10_ae28c8() = 0;
-    virtual void Slot11_ae28c8() = 0;
-    virtual void Slot12_ae28c8() = 0;
-    virtual void Slot13_ae28c8() = 0;
-    virtual void Slot14_ae28c8() = 0;
-    virtual void Slot15_ae28c8() = 0;
-    virtual void Slot16_ae28c8() = 0;
-    virtual void Slot17_ae28c8() = 0;
-    virtual void Slot18_ae28c8() = 0;
-    virtual void Slot19_ae28c8() = 0;
-    virtual void Slot20_ae28c8() = 0;
-    virtual void Slot21_ae28c8() = 0;
-    virtual void Slot22_ae28c8() = 0;
-    virtual void Slot23_ae28c8() = 0;
-    virtual void Slot24_ae28c8() = 0;
-    virtual void Slot25_ae28c8() = 0;
+    virtual void Slot06_ae28c8(uint32_t) = 0;
+    virtual void Slot07_ae28c8(uint32_t) = 0;
+    virtual void Slot08_ae28c8(uint32_t) = 0;
+    virtual void Slot09_ae28c8(uint32_t) = 0;
+    virtual uint32_t Slot10_ae28c8() = 0;
+    virtual void Slot11_ae28c8(uint32_t) = 0;
+    virtual void Slot12_ae28c8(uint32_t, uint32_t) = 0;
+    virtual void Slot13_ae28c8(uint32_t, uint32_t) = 0;
+    virtual void Slot14_ae28c8(uint32_t) = 0;
+    virtual void Slot15_ae28c8(uint32_t) = 0;
+    virtual void Slot16_ae28c8(uint32_t) = 0;
+    virtual void Slot17_ae28c8(uint32_t) = 0;
+    virtual void Slot18_ae28c8(uint32_t) = 0;
+    virtual void Slot19_ae28c8(uint32_t) = 0;
+    virtual bool Slot20_ae28c8() = 0;
+    virtual void Slot21_ae28c8(uint32_t) = 0;
+    virtual bool Slot22_ae28c8(uint32_t) = 0;
+    virtual void Slot23_ae28c8(uint32_t) = 0;
+    virtual void Slot24_ae28c8(uint32_t) = 0;
+    virtual void Slot25_ae28c8(uint32_t) = 0;
     virtual void Slot26_ae28c8() = 0;
-    virtual void Slot27_ae28c8() = 0;
-    virtual void Slot28_ae28c8() = 0;
-    virtual void Slot29_ae28c8() = 0;
-    virtual void Slot30_ae28c8() = 0;
-    virtual void Slot31_ae28c8() = 0;
-    virtual void Slot32_ae28c8() = 0;
-    virtual void Slot33_ae28c8() = 0;
-    virtual void Slot34_ae28c8() = 0;
-    virtual void Slot35_ae28c8() = 0;
-    virtual void Slot36_ae28c8() = 0;
-    virtual void Slot37_ae28c8() = 0;
-    virtual void Slot38_ae28c8() = 0;
-    virtual void Slot39_ae28c8() = 0;
-    virtual void Slot40_ae28c8() = 0;
-    virtual void Slot41_ae28c8() = 0;
+    virtual void Slot27_ae28c8(uint32_t, uint32_t) = 0;
+    virtual void Slot28_ae28c8(uint32_t, uint32_t) = 0;
+    virtual void Slot29_ae28c8(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot30_ae28c8() = 0;
+    virtual void Slot31_ae28c8(uint32_t, uint32_t) = 0;
+    virtual void Slot32_ae28c8(uint32_t, uint32_t) = 0;
+    virtual void Slot33_ae28c8(uint32_t, uint32_t) = 0;
+    virtual void Slot34_ae28c8(uint32_t, uint32_t) = 0;
+    virtual void Slot35_ae28c8(uint32_t) = 0;
+    virtual void Slot36_ae28c8(uint32_t) = 0;
+    virtual void Slot37_ae28c8(uint32_t) = 0;
+    virtual void Slot38_ae28c8(uint32_t) = 0;
+    virtual void Slot39_ae28c8(uint32_t, uint32_t) = 0;
+    virtual void Slot40_ae28c8(uint32_t, uint32_t) = 0;
+    virtual void Slot41_ae28c8(uint32_t) = 0;
 };
 
 #endif

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AA42C8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a80784.h"
 
 // The subobject at +0x0 (vtable 0x00aa42c8): an interface or base the class map has no class for.
@@ -10,17 +11,17 @@ struct OB_NOVTABLE cUnk00aa42c8_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_aa42c8() = 0;
-    virtual void Slot04_aa42c8() = 0;
-    virtual void Slot05_aa42c8() = 0;
+    virtual void Slot03_aa42c8(uint32_t) = 0;
+    virtual bool Slot04_aa42c8(uint32_t) = 0;
+    virtual bool Slot05_aa42c8(uint32_t) = 0;
     virtual ~cUnk00aa42c8_0() {}
 };
 
 // Between cUnk00a80784 and cUnk00aa42c8 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00aa42c8_4 : public cUnk00a80784 {
-    virtual void Slot03_a80784();
-    virtual void Slot04_a80784();
-    virtual void Slot05_a80784();
+    virtual bool Slot03_a80784(uint32_t);
+    virtual bool Slot04_a80784(uint32_t);
+    virtual uint32_t Slot05_a80784();
 };
 
 // VTABLE: 0x00aa42c8 cUnk00aa42c8_0
@@ -32,9 +33,9 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_aa42c8();
-    virtual void Slot04_aa42c8();
-    virtual void Slot05_aa42c8();
+    virtual void Slot03_aa42c8(uint32_t);
+    virtual bool Slot04_aa42c8(uint32_t);
+    virtual bool Slot05_aa42c8(uint32_t);
     char unknown8[0x4];
 };
 #ifdef _MSC_VER

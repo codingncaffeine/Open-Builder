@@ -3,35 +3,36 @@
 #define OB_CLASSES_CUNK00AC2F70_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ac2ad8.h"
 
 // The subobject at +0x0 (vtable 0x00ac2f70): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ac2f70_0 {
-    virtual void Slot00_ac2f70() = 0;
+    virtual void Slot00_ac2f70(uint32_t, uint32_t) = 0;
     virtual void Slot01_ac2f70() = 0;
     virtual void Slot02_ac2f70() = 0;
     virtual void Slot03_ac2f70() = 0;
-    virtual void Slot04_ac2f70() = 0;
+    virtual bool Slot04_ac2f70() = 0;
     virtual void Slot05_ac2f70() = 0;
-    virtual void Slot06_ac2f70() = 0;
-    virtual void Slot07_ac2f70() = 0;
-    virtual void Slot08_ac2f70() = 0;
-    virtual void Slot09_ac2f70() = 0;
+    virtual void Slot06_ac2f70(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot07_ac2f70(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot08_ac2f70(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot09_ac2f70(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot10_ac2f70() = 0;
 };
 
 // Between cUnk00ac2ad8 and cUnk00ac2f70 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ac2f70_4 : public cUnk00ac2ad8 {
-    virtual void Slot03_ac2ad8();
-    virtual void Slot04_ac2ad8();
-    virtual void Slot05_ac2ad8();
-    virtual void Slot06_ac2ad8();
-    virtual void Slot07_ac2ad8();
-    virtual void Slot08_ac2ad8();
-    virtual void Slot09_ac2ad8();
-    virtual void Slot10_ac2ad8();
-    virtual void Slot11_ac2ad8();
-    virtual void Slot12_ac2ad8();
+    virtual void Slot03_ac2ad8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_ac2ad8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_ac2ad8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ac2ad8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_ac2ad8(uint32_t);
+    virtual void Slot08_ac2ad8(uint32_t);
+    virtual void Slot09_ac2ad8(uint32_t);
+    virtual void Slot10_ac2ad8(uint32_t);
+    virtual void Slot11_ac2ad8(uint32_t);
+    virtual void Slot12_ac2ad8(uint32_t);
 };
 
 // VTABLE: 0x00ac2f70 cUnk00ac2f70_0
@@ -39,16 +40,16 @@ struct OB_NOVTABLE cUnk00ac2f70_4 : public cUnk00ac2ad8 {
 // SIZE 0x14
 class cUnk00ac2f70 : public cUnk00ac2f70_0, public cUnk00ac2f70_4 {
 public:
-    virtual void Slot00_ac2f70();
+    virtual void Slot00_ac2f70(uint32_t, uint32_t);
     virtual void Slot01_ac2f70();
     virtual void Slot02_ac2f70();
     virtual void Slot03_ac2f70();
-    virtual void Slot04_ac2f70();
+    virtual bool Slot04_ac2f70();
     virtual void Slot05_ac2f70();
-    virtual void Slot06_ac2f70();
-    virtual void Slot07_ac2f70();
-    virtual void Slot08_ac2f70();
-    virtual void Slot09_ac2f70();
+    virtual void Slot06_ac2f70(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_ac2f70(uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_ac2f70(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_ac2f70(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot10_ac2f70();
     char unknown8[0xc];
 };

@@ -3,18 +3,19 @@
 #define OB_CLASSES_CUNK00A88274_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00a88274
 // SIZE 0xc
 class cUnk00a88274 {
 public:
-    virtual void Slot00_a88274();
+    virtual void Slot00_a88274(uint32_t, uint32_t);
     virtual void Slot01_a88274();
     virtual void Slot02_a88274();
     virtual void Slot03_a88274();
     virtual void Slot04_a88274();
-    virtual void Slot05_a88274();
-    virtual void Slot06_a88274();
+    virtual void Slot05_a88274(uint32_t);
+    virtual void Slot06_a88274(uint32_t);
     virtual void Slot07_a88274();
     virtual ~cUnk00a88274() {}
     char unknown4[0x8];

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AD1938_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad1878.h"
 
 // VTABLE: 0x00ad1938
@@ -10,10 +11,12 @@
 class cUnk00ad1938 : public cUnk00ad1878 {
 public:
     virtual ~cUnk00ad1938() {}
-    virtual void Slot03_ad1878();
-    virtual void Slot17_ad1878();
-    virtual void Slot18_ad1878();
-    char unknown4[0x10];
+    virtual void Slot03_ad1878(uint32_t);
+    virtual void Slot17_ad1878(uint32_t, uint32_t);
+    virtual bool Slot18_ad1878();
+    char unknown4[0xc];
+    bool field10;
+    char unknown11[0x3];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad1938[sizeof(cUnk00ad1938) == 0x14 ? 1 : -1];

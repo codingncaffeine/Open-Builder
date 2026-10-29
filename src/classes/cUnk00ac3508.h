@@ -3,22 +3,23 @@
 #define OB_CLASSES_CUNK00AC3508_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ac3508 {
 public:
-    virtual void Slot00_ac34cc() = 0;
+    virtual void Slot00_ac34cc(uint32_t, uint32_t) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ac3508() = 0;
-    virtual void Slot04_ac3508() = 0;
-    virtual void Slot05_ac3508() = 0;
-    virtual void Slot06_ac3508() = 0;
-    virtual void Slot07_ac3508() = 0;
-    virtual void Slot08_ac3508() = 0;
-    virtual void Slot09_ac3508() = 0;
-    virtual void Slot10_ac3508() = 0;
-    virtual void Slot11_ac3508() = 0;
+    virtual void Slot03_ac3508(uint32_t) = 0;
+    virtual void Slot04_ac3508(uint32_t, uint32_t) = 0;
+    virtual void Slot05_ac3508(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot06_ac3508(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot07_ac3508(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot08_ac3508(uint32_t, uint32_t) = 0;
+    virtual void Slot09_ac3508(uint32_t, uint32_t) = 0;
+    virtual void Slot10_ac3508(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot11_ac3508(uint32_t, uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac3508[sizeof(cUnk00ac3508) == 0x4 ? 1 : -1];

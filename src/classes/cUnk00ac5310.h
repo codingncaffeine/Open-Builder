@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AC5310_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ac52d4.h"
 
 // VTABLE: 0x00ac5310
@@ -10,8 +11,8 @@
 class cUnk00ac5310 : public cUnk00ac52d4 {
 public:
     virtual ~cUnk00ac5310() {}
-    virtual void Slot09_ac52d4();
-    virtual void Slot10_ac52d4();
+    virtual bool Slot09_ac52d4(uint32_t);
+    virtual void Slot10_ac52d4(uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac5310[sizeof(cUnk00ac5310) == 0x30 ? 1 : -1];

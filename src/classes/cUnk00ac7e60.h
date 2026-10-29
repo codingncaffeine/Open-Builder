@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AC7E60_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00adc678.h"
 
 // VTABLE: 0x00ac7e60 cUnk00adc8d8
@@ -13,13 +14,13 @@ public:
     virtual ~cUnk00ac7e60() {}
     virtual void Slot152_ac7e60();
     virtual void Slot153_ac7e60();
-    virtual void Slot154_ac7e60();
+    virtual void Slot154_ac7e60(uint32_t, uint32_t);
     virtual void Slot155_ac7e60();
     virtual void Slot156_ac7e60();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_adc8d8();
+    virtual void Slot03_adc8d8(uint32_t);
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
     char unknown128[0x14];

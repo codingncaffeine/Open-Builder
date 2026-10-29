@@ -3,22 +3,23 @@
 #define OB_CLASSES_CUNK00AC14BC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ac14bc
 // SIZE 0x450
 class cUnk00ac14bc {
 public:
-    virtual void Slot00_ac14bc();
+    virtual void Slot00_ac14bc(uint32_t, uint32_t);
     virtual void Slot01_ac14bc();
     virtual void Slot02_ac14bc();
-    virtual void Slot03_ac14bc();
-    virtual void Slot04_ac14bc();
-    virtual void Slot05_ac14bc();
-    virtual void Slot06_ac14bc();
-    virtual void Slot07_ac14bc();
+    virtual bool Slot03_ac14bc(uint32_t);
+    virtual void Slot04_ac14bc(uint32_t);
+    virtual void Slot05_ac14bc(uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ac14bc(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_ac14bc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ac14bc();
-    virtual void Slot09_ac14bc();
-    virtual void Slot10_ac14bc();
+    virtual bool Slot09_ac14bc(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ac14bc(uint32_t, uint32_t);
     char unknown4[0x44c];
 };
 #ifdef _MSC_VER

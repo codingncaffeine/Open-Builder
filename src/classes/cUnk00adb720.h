@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ADB720_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00adb720 {
@@ -10,18 +11,18 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_adb720() = 0;
+    virtual void* Slot03_adb720() = 0;
     virtual void Slot04_adb6a8() = 0;
     virtual void Slot05_adb6a8() = 0;
-    virtual void Slot06_adb720() = 0;
-    virtual void Slot07_adb720() = 0;
-    virtual void Slot08_adb720() = 0;
-    virtual void Slot09_adb720() = 0;
-    virtual void Slot10_adb720() = 0;
-    virtual void Slot11_adb720() = 0;
-    virtual void Slot12_adb720() = 0;
-    virtual void Slot13_adb720() = 0;
-    virtual void Slot14_adb720() = 0;
+    virtual uint32_t Slot06_adb720() = 0;
+    virtual void Slot07_adb720(uint32_t) = 0;
+    virtual void Slot08_adb720(uint32_t, uint32_t) = 0;
+    virtual void Slot09_adb720(uint32_t, uint32_t) = 0;
+    virtual void Slot10_adb720(uint32_t) = 0;
+    virtual void Slot11_adb720(uint32_t) = 0;
+    virtual void Slot12_adb720(uint32_t) = 0;
+    virtual void Slot13_adb720(uint32_t) = 0;
+    virtual uint32_t Slot14_adb720() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adb720[sizeof(cUnk00adb720) == 0x4 ? 1 : -1];

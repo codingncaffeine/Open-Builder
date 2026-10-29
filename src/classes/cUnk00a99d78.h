@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A99D78_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00a99d78 {
@@ -10,43 +11,43 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_a99d78() = 0;
-    virtual void Slot04_a99d78() = 0;
-    virtual void Slot05_a99d78() = 0;
+    virtual void Slot03_a99d78(uint32_t, uint32_t) = 0;
+    virtual void Slot04_a99d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot05_a99d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot06_a99d78() = 0;
-    virtual void Slot07_a99d78() = 0;
-    virtual void Slot08_a99d78() = 0;
-    virtual void Slot09_a99d78() = 0;
-    virtual void Slot10_a99d78() = 0;
-    virtual void Slot11_a99d78() = 0;
-    virtual void Slot12_a99d78() = 0;
-    virtual void Slot13_a99d78() = 0;
+    virtual void Slot07_a99d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot08_a99d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot09_a99d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot10_a99d78(uint32_t) = 0;
+    virtual void Slot11_a99d78(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot12_a99d78(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot13_a99d78(uint32_t) = 0;
     virtual void Slot14_a99d78() = 0;
     virtual void Slot15_a99d78() = 0;
     virtual void Slot16_a99d78() = 0;
-    virtual void Slot17_a99d78() = 0;
-    virtual void Slot18_a99d78() = 0;
-    virtual void Slot19_a99d78() = 0;
+    virtual void Slot17_a99d78(uint32_t) = 0;
+    virtual void Slot18_a99d78(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot19_a99d78(uint32_t, uint32_t) = 0;
     virtual void Slot20_a99d78() = 0;
     virtual void Slot21_a99d78() = 0;
-    virtual void Slot22_a99d78() = 0;
-    virtual void Slot23_a99d78() = 0;
+    virtual void Slot22_a99d78(uint32_t, uint32_t) = 0;
+    virtual void Slot23_a99d78(uint32_t, uint32_t) = 0;
     virtual void Slot24_a99d78() = 0;
-    virtual void Slot25_a99d78() = 0;
+    virtual void Slot25_a99d78(uint32_t) = 0;
     virtual void Slot26_a99d78() = 0;
-    virtual void Slot27_a99d78() = 0;
+    virtual void Slot27_a99d78(uint32_t) = 0;
     virtual void Slot28_a99d78() = 0;
-    virtual void Slot29_a99d78() = 0;
-    virtual void Slot30_a99d78() = 0;
-    virtual void Slot31_a99d78() = 0;
+    virtual void Slot29_a99d78(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void* Slot30_a99d78() = 0;
+    virtual void Slot31_a99d78(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot32_a99d78() = 0;
-    virtual void Slot33_a99d78() = 0;
-    virtual void Slot34_a99d78() = 0;
-    virtual void Slot35_a99d78() = 0;
-    virtual void Slot36_a99d78() = 0;
-    virtual void Slot37_a99d78() = 0;
-    virtual void Slot38_a99d78() = 0;
-    virtual void Slot39_a99d78() = 0;
+    virtual void Slot33_a99d78(uint32_t) = 0;
+    virtual void Slot34_a99d78(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot35_a99d78(uint32_t, uint32_t) = 0;
+    virtual void Slot36_a99d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot37_a99d78(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot38_a99d78(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot39_a99d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot40_a99d78() = 0;
 };
 #ifdef _MSC_VER

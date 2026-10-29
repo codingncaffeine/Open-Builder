@@ -3,13 +3,14 @@
 #define OB_CLASSES_CUNK00A9FB28_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a9fb38.h"
 
 // VTABLE: 0x00a9fb28
 // SIZE 0x4
 class cUnk00a9fb28 : public cUnk00a9fb38 {
 public:
-    virtual void Slot03_abbf94();
+    virtual void Slot03_abbf94(uint32_t, uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9fb28[sizeof(cUnk00a9fb28) == 0x4 ? 1 : -1];

@@ -3,17 +3,18 @@
 #define OB_CLASSES_CUNK00AD96EC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ad96ec {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ad96ec() = 0;
-    virtual void Slot04_ad96ec() = 0;
-    virtual void Slot05_ad96ec() = 0;
-    virtual void Slot06_ad96ec() = 0;
-    virtual void Slot07_ad96ec() = 0;
+    virtual void Slot03_ad96ec(uint32_t) = 0;
+    virtual void Slot04_ad96ec(uint32_t) = 0;
+    virtual void Slot05_ad96ec(uint32_t, uint32_t) = 0;
+    virtual void Slot06_ad96ec(uint32_t, uint32_t) = 0;
+    virtual void Slot07_ad96ec(uint32_t, uint32_t) = 0;
 };
 
 #endif

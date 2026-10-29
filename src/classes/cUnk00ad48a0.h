@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AD48A0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad4830.h"
 #include "classes/cUnk00ad8fa4.h"
 
@@ -12,30 +13,40 @@
 class cUnk00ad48a0 : public cUnk00ad4830, public cUnk00ad8fa4 {
 public:
     virtual ~cUnk00ad48a0() {}
-    virtual void Slot19_ad48a0();
-    virtual void Slot20_ad48a0();
-    virtual void Slot21_ad48a0();
-    virtual void Slot22_ad48a0();
-    virtual void Slot00_ad4830();
+    virtual bool Slot19_ad48a0();
+    virtual uint32_t Slot20_ad48a0();
+    virtual uint32_t Slot21_ad48a0();
+    virtual uint32_t Slot22_ad48a0();
+    virtual void Slot00_ad4830(uint32_t, uint32_t);
     virtual void Slot01_ad4830();
     virtual void Slot02_ad4830();
-    virtual void Slot03_ad4830();
-    virtual void Slot04_ad4830();
+    virtual uint32_t Slot03_ad4830();
+    virtual bool Slot04_ad4830(uint32_t);
     virtual void Slot05_ad4830();
     virtual void Slot06_ad4830();
     virtual void Slot07_ad4830();
     virtual void Slot08_ad4830();
-    virtual void Slot09_ad4830();
+    virtual void Slot09_ad4830(uint32_t);
     virtual void Slot10_ad4830();
     virtual void Slot11_ad4830();
-    virtual void Slot12_ad4830();
-    virtual void Slot13_ad4830();
+    virtual bool Slot12_ad4830();
+    virtual void Slot13_ad4830(bool);
     virtual void Slot14_ad4830();
-    virtual void Slot15_ad4830();
-    virtual void Slot16_ad4830();
-    virtual void Slot17_ad4830();
+    virtual bool Slot15_ad4830(bool);
+    virtual void Slot16_ad4830(uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_ad4830(uint32_t, uint32_t);
     virtual void Slot18_ad4830();
-    char unknown8[0x54];
+    char unknown8[0x1c];
+    uint32_t field24;
+    char unknown28[0x15];
+    bool field3d;
+    char unknown3e[0x2];
+    uint32_t field40;
+    uint32_t field44;
+    uint32_t field48;
+    char unknown4c[0xc];
+    bool field58;
+    char unknown59[0x3];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad48a0[sizeof(cUnk00ad48a0) == 0x5c ? 1 : -1];

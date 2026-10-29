@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A83548_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aaaa9c.h"
 
 // The subobject at +0x0 (vtable 0x00a83548): an interface or base the class map has no class for.
@@ -10,14 +11,14 @@ struct OB_NOVTABLE cUnk00a83548_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_a83548() = 0;
-    virtual void Slot04_a83548() = 0;
+    virtual void Slot03_a83548(uint32_t, uint32_t) = 0;
+    virtual bool Slot04_a83548(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual ~cUnk00a83548_0() {}
 };
 
 // Between cUnk00aaaa9c and cUnk00a83548 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a83548_4 : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00a83548 cUnk00a83548_0
@@ -29,8 +30,8 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_a83548();
-    virtual void Slot04_a83548();
+    virtual void Slot03_a83548(uint32_t, uint32_t);
+    virtual bool Slot04_a83548(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     char unknown8[0x68];
 };
 #ifdef _MSC_VER

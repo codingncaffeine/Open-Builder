@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ADB2E0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ace624.h"
 #include "classes/cUnk00adb26c.h"
 #include "classes/cUnk00adb29c.h"
@@ -11,7 +12,7 @@
 struct OB_NOVTABLE cUnk00adb2e0_4 : public cUnk00adb29c {
     virtual void Slot03_adb29c();
     virtual void Slot04_adb29c();
-    virtual void Slot05_adb29c();
+    virtual void Slot05_adb29c(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00adb2e0 cUnk00adb26c
@@ -23,17 +24,18 @@ public:
     virtual ~cUnk00adb2e0() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_adb26c();
-    virtual void Slot03_adb26c();
+    virtual void Slot00_adb26c(uint32_t, uint32_t);
+    virtual void Slot03_adb26c(uint32_t);
     virtual void Slot04_adb26c();
-    virtual void Slot05_adb26c();
+    virtual void Slot05_adb26c(uint32_t);
     virtual void Slot06_adb26c();
     virtual void Slot07_adb26c();
     virtual void Slot08_adb26c();
     virtual void Slot09_adb26c();
     virtual void Slot10_adb26c();
-    virtual void Slot11_adb26c();
-    char unknown10[0x58];
+    virtual uint32_t Slot11_adb26c();
+    char unknown10[0x54];
+    uint32_t field64;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adb2e0[sizeof(cUnk00adb2e0) == 0x68 ? 1 : -1];

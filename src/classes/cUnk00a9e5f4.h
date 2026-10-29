@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A9E5F4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a9e0e4.h"
 #include "classes/cUnk00a9e460.h"
 #include "classes/cUnk00aaaa9c.h"
@@ -13,16 +14,16 @@ struct OB_NOVTABLE cUnk00a9e5f4_8 : public cUnk00a9e460 {
     virtual void Slot03_a9e460();
     virtual void Slot04_a9e460();
     virtual void Slot05_a9e460();
-    virtual void Slot06_a9e460();
-    virtual void Slot07_a9e460();
-    virtual void Slot08_a9e460();
-    virtual void Slot09_a9e460();
-    virtual void Slot10_a9e460();
-    virtual void Slot11_a9e460();
-    virtual void Slot12_a9e460();
-    virtual void Slot13_a9e460();
-    virtual void Slot14_a9e460();
-    virtual void Slot15_a9e460();
+    virtual void Slot06_a9e460(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_a9e460(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_a9e460(uint32_t, uint32_t, uint32_t);
+    virtual void Slot09_a9e460(uint32_t, uint32_t);
+    virtual void Slot10_a9e460(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_a9e460(uint32_t);
+    virtual void Slot12_a9e460(uint32_t);
+    virtual void Slot13_a9e460(uint32_t);
+    virtual uint32_t Slot14_a9e460();
+    virtual void Slot15_a9e460(uint32_t);
     virtual void Slot16_a9e460();
 };
 
@@ -30,14 +31,14 @@ struct OB_NOVTABLE cUnk00a9e5f4_8 : public cUnk00a9e460 {
 struct OB_NOVTABLE cUnk00a9e5f4_c : public cUnk00a9e0e4 {
     virtual void Slot03_a9e0e4();
     virtual void Slot04_a9e0e4();
-    virtual void Slot05_a9e0e4();
-    virtual void Slot06_a9e0e4();
-    virtual void Slot07_a9e0e4();
+    virtual uint32_t Slot05_a9e0e4();
+    virtual bool Slot06_a9e0e4(uint32_t, uint32_t);
+    virtual uint32_t Slot07_a9e0e4();
 };
 
 // Between cUnk00aaaa9c and cUnk00a9e5f4 at +0x10: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a9e5f4_10 : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00a9e5f4 cUnk0090da1e
@@ -48,14 +49,17 @@ struct OB_NOVTABLE cUnk00a9e5f4_10 : public cUnk00aaaa9c {
 class cUnk00a9e5f4 : public cUnk0090da1e, public cUnk00a9e5f4_8, public cUnk00a9e5f4_c, public cUnk00a9e5f4_10 {
 public:
     virtual ~cUnk00a9e5f4();
-    virtual void Slot06_a9e5f4();
-    virtual void Slot07_a9e5f4();
-    virtual void Slot08_a9e5f4();
-    virtual void Slot09_a9e5f4();
+    virtual uint32_t Slot06_a9e5f4();
+    virtual uint32_t Slot07_a9e5f4();
+    virtual void Slot08_a9e5f4(uint32_t);
+    virtual void Slot09_a9e5f4(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    char unknown14[0xec];
+    char unknown14[0xd0];
+    uint32_t fielde4;
+    uint32_t fielde8;
+    char unknownec[0x14];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9e5f4[sizeof(cUnk00a9e5f4) == 0x100 ? 1 : -1];

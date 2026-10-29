@@ -3,27 +3,33 @@
 #define OB_CLASSES_CUNK00ADA628_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ada628
 // SIZE 0x30
 class cUnk00ada628 {
 public:
-    virtual void Slot00_ada628();
+    virtual void Slot00_ada628(uint32_t, uint32_t);
     virtual void Slot01_ada628();
     virtual void Slot02_ada628();
-    virtual void Slot03_ada628();
-    virtual void Slot04_ada628();
+    virtual uint32_t Slot03_ada628();
+    virtual bool Slot04_ada628();
     virtual void Slot05_ada628();
     virtual void Slot06_ada628();
     virtual void Slot07_ada628();
     virtual void Slot08_ada628();
-    virtual void Slot09_ada628();
-    virtual void Slot10_ada628();
+    virtual void Slot09_ada628(uint32_t);
+    virtual void Slot10_ada628(uint32_t, uint32_t, uint32_t);
     virtual void Slot11_ada628();
-    virtual void Slot12_ada628();
-    virtual void Slot13_ada628();
+    virtual void Slot12_ada628(uint32_t);
+    virtual uint32_t Slot13_ada628();
     virtual ~cUnk00ada628();
-    char unknown4[0x2c];
+    char unknown4[0x18];
+    uint32_t field1c;
+    uint32_t field20;
+    char unknown24[0x4];
+    uint32_t field28;
+    char unknown2c[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ada628[sizeof(cUnk00ada628) == 0x30 ? 1 : -1];

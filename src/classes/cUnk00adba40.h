@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00ADBA40_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00adb720.h"
 #include "classes/cUnk00adc678.h"
 
 // Between cUnk00adc678 and cUnk00adba40 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00adba40_4 : public cUnk00adc678 {
-    virtual void Slot03_adc8d8();
+    virtual void Slot03_adc8d8(uint32_t);
 };
 
 // VTABLE: 0x00adba40 cUnk00adb720
@@ -20,23 +21,25 @@ public:
     virtual ~cUnk00adba40() {}
     virtual void Slot15_adba40();
     virtual void Slot16_adba40();
-    virtual void Slot17_adba40();
+    virtual void Slot17_adba40(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_adb720();
-    virtual void Slot06_adb720();
-    virtual void Slot07_adb720();
-    virtual void Slot08_adb720();
-    virtual void Slot09_adb720();
-    virtual void Slot10_adb720();
-    virtual void Slot11_adb720();
-    virtual void Slot12_adb720();
-    virtual void Slot13_adb720();
-    virtual void Slot14_adb720();
+    virtual void* Slot03_adb720();
+    virtual uint32_t Slot06_adb720();
+    virtual void Slot07_adb720(uint32_t);
+    virtual void Slot08_adb720(uint32_t, uint32_t);
+    virtual void Slot09_adb720(uint32_t, uint32_t);
+    virtual void Slot10_adb720(uint32_t);
+    virtual void Slot11_adb720(uint32_t);
+    virtual void Slot12_adb720(uint32_t);
+    virtual void Slot13_adb720(uint32_t);
+    virtual uint32_t Slot14_adb720();
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
-    char unknown12c[0x28];
+    uint32_t field12c;
+    char unknown130[0x20];
+    uint32_t field150;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adba40[sizeof(cUnk00adba40) == 0x154 ? 1 : -1];

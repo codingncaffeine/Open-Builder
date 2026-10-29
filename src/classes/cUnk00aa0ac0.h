@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AA0AC0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a9f040.h"
 #include "classes/cUnk00aa0a44.h"
 #include "classes/cUnk00ad8bec.h"
@@ -16,14 +17,15 @@ public:
     virtual ~cUnk00aa0ac0() {}
     virtual void Slot06_aa0ac0();
     virtual void Slot07_aa0ac0();
-    virtual void Slot08_aa0ac0();
+    virtual uint32_t Slot08_aa0ac0();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
     virtual void Slot03_aa0a44();
-    virtual void Slot04_aa0a44();
+    virtual uint32_t Slot04_aa0a44();
     virtual void Slot05_aa0a44();
-    char unknown134[0x18];
+    uint32_t field134;
+    char unknown138[0x14];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa0ac0[sizeof(cUnk00aa0ac0) == 0x14c ? 1 : -1];

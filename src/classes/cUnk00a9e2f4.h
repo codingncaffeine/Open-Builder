@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A9E2F4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00a9e2f4 {
@@ -15,10 +16,10 @@ public:
     virtual void Slot05_a9e2f4() = 0;
     virtual void Slot06_a9e2f4() = 0;
     virtual void Slot07_a9e2f4() = 0;
-    virtual void Slot08_a9e2f4() = 0;
-    virtual void Slot09_a9e2f4() = 0;
+    virtual void Slot08_a9e2f4(uint32_t) = 0;
+    virtual void Slot09_a9e2f4(uint32_t) = 0;
     virtual void Slot10_a9e2f4() = 0;
-    virtual void Slot11_a9e2f4() = 0;
+    virtual void* Slot11_a9e2f4() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9e2f4[sizeof(cUnk00a9e2f4) == 0x4 ? 1 : -1];

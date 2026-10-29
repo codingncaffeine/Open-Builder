@@ -3,18 +3,19 @@
 #define OB_CLASSES_CUNK00AE3A44_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00ae37b4.h"
 
 // Between cUnk00adc8d8 and cUnk00ae3a44 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ae3a44_4 : public cUnk00adc8d8 {
-    virtual void Slot88_adc8d8();
-    virtual void Slot130_adc8d8();
-    virtual void Slot131_adc8d8();
-    virtual void Slot134_adc8d8();
+    virtual bool Slot88_adc8d8();
+    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
+    virtual bool Slot131_adc8d8(uint32_t, uint32_t);
+    virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
-    virtual void Slot49_adda20();
+    virtual void Slot49_adda20(uint32_t);
 };
 
 // VTABLE: 0x00ae3a44 cUnk00ae37b4
@@ -24,21 +25,24 @@ class cUnk00ae3a44 : public cUnk00ae37b4, public cUnk00ae3a44_4 {
 public:
     virtual ~cUnk00ae3a44() {}
     virtual void Slot13_ae3a44();
-    virtual void Slot14_ae3a44();
+    virtual void Slot14_ae3a44(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_ae37b4();
-    virtual void Slot04_ae37b4();
-    virtual void Slot05_ae37b4();
+    virtual void Slot03_ae37b4(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_ae37b4(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_ae37b4(uint32_t);
     virtual void Slot06_ae37b4();
-    virtual void Slot07_ae37b4();
-    virtual void Slot08_ae37b4();
-    virtual void Slot09_ae37b4();
-    virtual void Slot10_ae37b4();
-    virtual void Slot11_ae37b4();
+    virtual void Slot07_ae37b4(uint32_t);
+    virtual void Slot08_ae37b4(uint32_t);
+    virtual void Slot09_ae37b4(uint32_t);
+    virtual uint32_t Slot10_ae37b4();
+    virtual uint32_t Slot11_ae37b4();
     virtual void Slot12_ae37b4();
-    char unknowndc[0x5c];
+    char unknowndc[0x50];
+    uint32_t field12c;
+    uint32_t field130;
+    char unknown134[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae3a44[sizeof(cUnk00ae3a44) == 0x138 ? 1 : -1];

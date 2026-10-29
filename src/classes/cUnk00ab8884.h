@@ -3,20 +3,21 @@
 #define OB_CLASSES_CUNK00AB8884_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aaaa9c.h"
 #include "classes/cUnk00ab889c.h"
 #include "classes/cUnk00adc8d8.h"
 
 // Between cUnk00adc8d8 and cUnk00ab8884 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ab8884_4 : public cUnk00adc8d8 {
-    virtual void Slot88_adc8d8();
+    virtual bool Slot88_adc8d8();
     virtual void Slot04_adb6a8();
     virtual void Slot05_adb6a8();
 };
 
 // Between cUnk00aaaa9c and cUnk00ab8884 at +0xdc: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ab8884_dc : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00ab8884 cUnk00ab889c
@@ -30,9 +31,10 @@ public:
     virtual unsigned int AddRef();
     virtual unsigned int Release();
     virtual void Slot03_ab889c();
-    virtual void Slot04_ab889c();
-    virtual void Slot05_ab889c();
-    char unknowne0[0x54];
+    virtual void Slot04_ab889c(uint32_t);
+    virtual void Slot05_ab889c(uint32_t, uint32_t);
+    char unknowne0[0x50];
+    uint32_t field130;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab8884[sizeof(cUnk00ab8884) == 0x134 ? 1 : -1];

@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AE3A84_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ae3a84 {
@@ -10,16 +11,16 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ae3a84() = 0;
-    virtual void Slot04_ae3a84() = 0;
+    virtual void Slot03_ae3a84(uint32_t) = 0;
+    virtual void Slot04_ae3a84(uint32_t, uint32_t) = 0;
     virtual void Slot05_ae3a84() = 0;
-    virtual void Slot06_ae3a84() = 0;
+    virtual void Slot06_ae3a84(uint32_t) = 0;
     virtual void Slot07_ae3a84() = 0;
-    virtual void Slot08_ae3a84() = 0;
-    virtual void Slot09_ae3a84() = 0;
-    virtual void Slot10_ae3a84() = 0;
-    virtual void Slot11_ae3a84() = 0;
-    virtual void Slot12_ae3a84() = 0;
+    virtual uint32_t Slot08_ae3a84() = 0;
+    virtual void Slot09_ae3a84(uint32_t) = 0;
+    virtual void Slot10_ae3a84(uint32_t) = 0;
+    virtual void Slot11_ae3a84(uint32_t) = 0;
+    virtual void Slot12_ae3a84(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae3a84[sizeof(cUnk00ae3a84) == 0x4 ? 1 : -1];

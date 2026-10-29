@@ -3,31 +3,32 @@
 #define OB_CLASSES_CUNK00AD76D8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad76d8
 class cUnk00ad76d8 {
 public:
-    virtual void Slot00_ad76d8();
+    virtual void Slot00_ad76d8(uint32_t, uint32_t);
     virtual void Slot01_ad76d8();
     virtual void Slot02_ad76d8();
-    virtual void Slot03_ad76d8();
-    virtual void Slot04_ad76d8();
-    virtual void Slot05_ad76d8();
-    virtual void Slot06_ad76d8();
+    virtual bool Slot03_ad76d8(uint32_t);
+    virtual bool Slot04_ad76d8(uint32_t);
+    virtual void Slot05_ad76d8(uint32_t);
+    virtual void Slot06_ad76d8(uint32_t);
     virtual void Slot07_ad76d8();
     virtual void Slot08_ad76d8();
     virtual void Slot09_ad76d8();
-    virtual void Slot10_ad76d8();
-    virtual void Slot11_ad76d8();
+    virtual uint32_t Slot10_ad76d8();
+    virtual void Slot11_ad76d8(uint32_t, uint32_t);
     virtual void Slot12_ad76d8();
     virtual void Slot13_ad76d8();
     virtual void Slot14_ad76d8();
     virtual void Slot15_ad76d8();
-    virtual void Slot16_ad76d8();
+    virtual void* Slot16_ad76d8();
     virtual void Slot17_ad76d8();
-    virtual void Slot18_ad76d8();
-    virtual void Slot19_ad76d8();
-    virtual void Slot20_ad76d8();
+    virtual void Slot18_ad76d8(uint32_t);
+    virtual uint32_t Slot19_ad76d8();
+    virtual bool Slot20_ad76d8(uint32_t);
     virtual ~cUnk00ad76d8();
 };
 

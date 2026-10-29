@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ACE2C0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00acd5e8.h"
 
 // VTABLE: 0x00ace2c0
@@ -10,7 +11,7 @@
 class cUnk00ace2c0 : public cUnk00acd5e8 {
 public:
     virtual ~cUnk00ace2c0();
-    virtual void Slot03_acd504();
+    virtual void Slot03_acd504(uint32_t);
     char unknown28[0x1c];
 };
 #ifdef _MSC_VER

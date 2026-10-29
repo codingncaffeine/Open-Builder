@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AB2760_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ab2760
 // SIZE 0x28

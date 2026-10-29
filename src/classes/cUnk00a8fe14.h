@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A8FE14_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aa42c8.h"
 
 // VTABLE: 0x00a8fe14 cUnk00aa42c8_0
@@ -11,7 +12,7 @@
 class cUnk00a8fe14 : public cUnk00aa42c8 {
 public:
     virtual ~cUnk00a8fe14();
-    virtual void Slot03_aa42c8();
+    virtual void Slot03_aa42c8(uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a8fe14[sizeof(cUnk00a8fe14) == 0xc ? 1 : -1];

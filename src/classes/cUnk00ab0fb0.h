@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AB0FB0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ab0fb0 {
 public:
@@ -10,13 +11,13 @@ public:
     virtual void Slot01_ab2348() = 0;
     virtual void Slot02_ab2348() = 0;
     virtual void Slot03_ab0fb0() = 0;
-    virtual void Slot04_ab0fb0() = 0;
+    virtual void Slot04_ab0fb0(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot05_ab0fb0() = 0;
-    virtual void Slot06_ab0fb0() = 0;
+    virtual void Slot06_ab0fb0(uint32_t) = 0;
     virtual void Slot07_ab0fb0() = 0;
-    virtual void Slot08_ab0fb0() = 0;
-    virtual void Slot09_ab0fb0() = 0;
-    virtual void Slot10_ab0fb0() = 0;
+    virtual void Slot08_ab0fb0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot09_ab0fb0(uint32_t, uint32_t) = 0;
+    virtual void Slot10_ab0fb0(uint32_t, uint32_t) = 0;
     virtual void Slot11_ab0fb0() = 0;
 };
 

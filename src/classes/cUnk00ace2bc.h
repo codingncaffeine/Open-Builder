@@ -3,12 +3,13 @@
 #define OB_CLASSES_CUNK00ACE2BC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ace158.h"
 
 // VTABLE: 0x00ace2bc
 class cUnk00ace2bc : public cUnk00ace158 {
 public:
-    virtual void Slot00_ace158();
+    virtual void Slot00_ace158(uint32_t);
 };
 
 #endif

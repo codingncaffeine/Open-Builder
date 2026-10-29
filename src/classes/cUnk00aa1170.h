@@ -3,35 +3,36 @@
 #define OB_CLASSES_CUNK00AA1170_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a9ebe4.h"
 
 // The subobject at +0x0 (vtable 0x00aa1170): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00aa1170_0 {
-    virtual void Slot00_aa1170() = 0;
+    virtual void Slot00_aa1170(uint32_t, uint32_t) = 0;
     virtual void Slot01_aa1170() = 0;
     virtual void Slot02_aa1170() = 0;
-    virtual void Slot03_aa1170() = 0;
-    virtual void Slot04_aa1170() = 0;
+    virtual void Slot03_aa1170(uint32_t) = 0;
+    virtual void Slot04_aa1170(uint32_t) = 0;
     virtual void Slot05_aa1170() = 0;
-    virtual void Slot06_aa1170() = 0;
-    virtual void Slot07_aa1170() = 0;
-    virtual void Slot08_aa1170() = 0;
-    virtual void Slot09_aa1170() = 0;
-    virtual void Slot10_aa1170() = 0;
+    virtual bool Slot06_aa1170() = 0;
+    virtual void Slot07_aa1170(uint32_t) = 0;
+    virtual void Slot08_aa1170(uint32_t) = 0;
+    virtual void Slot09_aa1170(uint32_t) = 0;
+    virtual void Slot10_aa1170(uint32_t, uint32_t) = 0;
     virtual void Slot11_aa1170() = 0;
-    virtual void Slot12_aa1170() = 0;
-    virtual void Slot13_aa1170() = 0;
-    virtual void Slot14_aa1170() = 0;
-    virtual void Slot15_aa1170() = 0;
-    virtual void Slot16_aa1170() = 0;
-    virtual void Slot17_aa1170() = 0;
+    virtual void Slot12_aa1170(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot13_aa1170(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot14_aa1170(uint32_t) = 0;
+    virtual void Slot15_aa1170(uint32_t) = 0;
+    virtual void Slot16_aa1170(uint32_t, uint32_t) = 0;
+    virtual void Slot17_aa1170(uint32_t) = 0;
     virtual ~cUnk00aa1170_0() {}
 };
 
 // Between cUnk00a9ebe4 and cUnk00aa1170 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00aa1170_4 : public cUnk00a9ebe4 {
-    virtual void Slot03_a9ebe4();
-    virtual void Slot04_a9ebe4();
+    virtual void Slot03_a9ebe4(uint32_t, uint32_t);
+    virtual void Slot04_a9ebe4(uint32_t);
 };
 
 // VTABLE: 0x00aa1170 cUnk00aa1170_0
@@ -40,25 +41,27 @@ struct OB_NOVTABLE cUnk00aa1170_4 : public cUnk00a9ebe4 {
 class cUnk00aa1170 : public cUnk00aa1170_0, public cUnk00aa1170_4 {
 public:
     virtual ~cUnk00aa1170();
-    virtual void Slot00_aa1170();
+    virtual void Slot00_aa1170(uint32_t, uint32_t);
     virtual void Slot01_aa1170();
     virtual void Slot02_aa1170();
-    virtual void Slot03_aa1170();
-    virtual void Slot04_aa1170();
+    virtual void Slot03_aa1170(uint32_t);
+    virtual void Slot04_aa1170(uint32_t);
     virtual void Slot05_aa1170();
-    virtual void Slot06_aa1170();
-    virtual void Slot07_aa1170();
-    virtual void Slot08_aa1170();
-    virtual void Slot09_aa1170();
-    virtual void Slot10_aa1170();
+    virtual bool Slot06_aa1170();
+    virtual void Slot07_aa1170(uint32_t);
+    virtual void Slot08_aa1170(uint32_t);
+    virtual void Slot09_aa1170(uint32_t);
+    virtual void Slot10_aa1170(uint32_t, uint32_t);
     virtual void Slot11_aa1170();
-    virtual void Slot12_aa1170();
-    virtual void Slot13_aa1170();
-    virtual void Slot14_aa1170();
-    virtual void Slot15_aa1170();
-    virtual void Slot16_aa1170();
-    virtual void Slot17_aa1170();
-    char unknown8[0x144];
+    virtual void Slot12_aa1170(uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_aa1170(uint32_t, uint32_t, uint32_t);
+    virtual void Slot14_aa1170(uint32_t);
+    virtual void Slot15_aa1170(uint32_t);
+    virtual void Slot16_aa1170(uint32_t, uint32_t);
+    virtual void Slot17_aa1170(uint32_t);
+    char unknown8[0x1d];
+    bool field25;
+    char unknown26[0x126];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa1170[sizeof(cUnk00aa1170) == 0x14c ? 1 : -1];

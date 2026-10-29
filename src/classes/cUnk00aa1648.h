@@ -3,13 +3,14 @@
 #define OB_CLASSES_CUNK00AA1648_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00aa1648 {
 public:
-    virtual void Slot00_aa1648();
+    virtual void Slot00_aa1648(uint32_t, uint32_t);
     virtual void Slot01_aa1648();
     virtual void Slot02_aa1648();
-    virtual void Slot03_aa1648() = 0;
+    virtual void Slot03_aa1648(uint32_t) = 0;
     virtual ~cUnk00aa1648() {}
     virtual void Slot05_aa1648();
 };

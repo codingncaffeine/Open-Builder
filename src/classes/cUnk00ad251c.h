@@ -3,18 +3,19 @@
 #define OB_CLASSES_CUNK00AD251C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ad251c {
 public:
     virtual ~cUnk00ad251c() {}
-    virtual void Slot01_ad251c() = 0;
-    virtual void Slot02_ad251c() = 0;
-    virtual void Slot03_ad251c() = 0;
-    virtual void Slot04_ad251c() = 0;
-    virtual void Slot05_ad251c() = 0;
+    virtual void Slot01_ad251c(uint32_t) = 0;
+    virtual void Slot02_ad251c(uint32_t) = 0;
+    virtual void Slot03_ad251c(uint32_t) = 0;
+    virtual uint32_t Slot04_ad251c() = 0;
+    virtual uint32_t Slot05_ad251c() = 0;
     virtual void Slot06_ad251c() = 0;
-    virtual void Slot07_ad251c() = 0;
-    virtual void Slot08_ad251c() = 0;
+    virtual void Slot07_ad251c(uint32_t) = 0;
+    virtual void Slot08_ad251c(uint32_t) = 0;
 };
 
 #endif

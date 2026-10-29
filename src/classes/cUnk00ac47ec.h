@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AC47EC_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ac34cc.h"
 #include "classes/cUnk00ac34f8.h"
 #include "classes/cUnk00ac3508.h"
@@ -11,104 +12,104 @@
 
 // Between cUnk00ac34f8 and cUnk00ac47ec at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ac47ec_4 : public cUnk00ac34f8 {
-    virtual void Slot03_ac34f8();
+    virtual void Slot03_ac34f8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
 };
 
 // Between cUnk00ac3508 and cUnk00ac47ec at +0x8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ac47ec_8 : public cUnk00ac3508 {
-    virtual void Slot03_ac3508();
-    virtual void Slot04_ac3508();
-    virtual void Slot05_ac3508();
-    virtual void Slot06_ac3508();
-    virtual void Slot07_ac3508();
-    virtual void Slot08_ac3508();
-    virtual void Slot09_ac3508();
-    virtual void Slot10_ac3508();
-    virtual void Slot11_ac3508();
+    virtual void Slot03_ac3508(uint32_t);
+    virtual void Slot04_ac3508(uint32_t, uint32_t);
+    virtual void Slot05_ac3508(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ac3508(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_ac3508(uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_ac3508(uint32_t, uint32_t);
+    virtual void Slot09_ac3508(uint32_t, uint32_t);
+    virtual void Slot10_ac3508(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_ac3508(uint32_t, uint32_t);
 };
 
 // Between cUnk00ac3538 and cUnk00ac47ec at +0xc: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ac47ec_c : public cUnk00ac3538 {
-    virtual void Slot03_ac3538();
-    virtual void Slot04_ac3538();
-    virtual void Slot05_ac3538();
-    virtual void Slot06_ac3538();
-    virtual void Slot07_ac3538();
-    virtual void Slot08_ac3538();
-    virtual void Slot09_ac3538();
-    virtual void Slot10_ac3538();
-    virtual void Slot11_ac3538();
-    virtual void Slot12_ac3538();
-    virtual void Slot13_ac3538();
-    virtual void Slot14_ac3538();
-    virtual void Slot15_ac3538();
-    virtual void Slot16_ac3538();
-    virtual void Slot17_ac3538();
-    virtual void Slot18_ac3538();
-    virtual void Slot19_ac3538();
-    virtual void Slot20_ac3538();
-    virtual void Slot21_ac3538();
-    virtual void Slot22_ac3538();
-    virtual void Slot23_ac3538();
-    virtual void Slot24_ac3538();
-    virtual void Slot25_ac3538();
-    virtual void Slot26_ac3538();
-    virtual void Slot27_ac3538();
-    virtual void Slot28_ac3538();
-    virtual void Slot29_ac3538();
-    virtual void Slot30_ac3538();
-    virtual void Slot31_ac3538();
-    virtual void Slot32_ac3538();
-    virtual void Slot33_ac3538();
-    virtual void Slot34_ac3538();
-    virtual void Slot35_ac3538();
-    virtual void Slot36_ac3538();
-    virtual void Slot37_ac3538();
-    virtual void Slot38_ac3538();
-    virtual void Slot39_ac3538();
-    virtual void Slot40_ac3538();
-    virtual void Slot41_ac3538();
+    virtual void Slot03_ac3538(uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_ac3538(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot05_ac3538(uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ac3538(uint32_t);
+    virtual void Slot07_ac3538(uint32_t, uint32_t);
+    virtual void Slot08_ac3538(uint32_t);
+    virtual void Slot09_ac3538(uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ac3538(uint32_t, uint32_t);
+    virtual void Slot11_ac3538(uint32_t);
+    virtual void Slot12_ac3538(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_ac3538(uint32_t, uint32_t);
+    virtual void Slot14_ac3538(uint32_t);
+    virtual void Slot15_ac3538(uint32_t);
+    virtual void Slot16_ac3538(uint32_t);
+    virtual void Slot17_ac3538(uint32_t);
+    virtual void Slot18_ac3538(uint32_t, uint32_t, uint32_t);
+    virtual void Slot19_ac3538(uint32_t);
+    virtual void Slot20_ac3538(uint32_t, uint32_t, uint32_t);
+    virtual void Slot21_ac3538(uint32_t, uint32_t);
+    virtual void Slot22_ac3538(uint32_t, uint32_t);
+    virtual void Slot23_ac3538(uint32_t);
+    virtual void Slot24_ac3538(uint32_t, uint32_t);
+    virtual void Slot25_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot26_ac3538(uint32_t, uint32_t);
+    virtual void Slot27_ac3538(uint32_t, uint32_t, uint32_t);
+    virtual void Slot28_ac3538(uint32_t, uint32_t, uint32_t);
+    virtual void Slot29_ac3538(uint32_t, uint32_t, uint32_t);
+    virtual void Slot30_ac3538(uint32_t, uint32_t);
+    virtual void Slot31_ac3538(uint32_t, uint32_t);
+    virtual void Slot32_ac3538(uint32_t, uint32_t, uint32_t);
+    virtual void Slot33_ac3538(uint32_t);
+    virtual void Slot34_ac3538(uint32_t, uint32_t);
+    virtual void Slot35_ac3538(uint32_t, uint32_t);
+    virtual void Slot36_ac3538(uint32_t, uint32_t);
+    virtual void Slot37_ac3538(uint32_t);
+    virtual void Slot38_ac3538(uint32_t, uint32_t, uint32_t);
+    virtual void Slot39_ac3538(uint32_t, uint32_t, uint32_t);
+    virtual void Slot40_ac3538(uint32_t);
+    virtual void Slot41_ac3538(uint32_t);
     virtual void Slot42_ac3538();
     virtual void Slot43_ac3538();
-    virtual void Slot44_ac3538();
-    virtual void Slot45_ac3538();
-    virtual void Slot46_ac3538();
-    virtual void Slot47_ac3538();
-    virtual void Slot48_ac3538();
-    virtual void Slot49_ac3538();
+    virtual void Slot44_ac3538(uint32_t);
+    virtual void Slot45_ac3538(uint32_t);
+    virtual void Slot46_ac3538(uint32_t);
+    virtual void Slot47_ac3538(uint32_t, uint32_t);
+    virtual void Slot48_ac3538(uint32_t, uint32_t);
+    virtual void Slot49_ac3538(uint32_t, uint32_t);
     virtual void Slot50_ac3538();
-    virtual void Slot51_ac3538();
-    virtual void Slot52_ac3538();
-    virtual void Slot53_ac3538();
-    virtual void Slot54_ac3538();
-    virtual void Slot55_ac3538();
-    virtual void Slot56_ac3538();
-    virtual void Slot57_ac3538();
-    virtual void Slot58_ac3538();
-    virtual void Slot59_ac3538();
-    virtual void Slot60_ac3538();
-    virtual void Slot61_ac3538();
-    virtual void Slot62_ac3538();
-    virtual void Slot63_ac3538();
-    virtual void Slot64_ac3538();
-    virtual void Slot65_ac3538();
-    virtual void Slot66_ac3538();
-    virtual void Slot67_ac3538();
-    virtual void Slot68_ac3538();
-    virtual void Slot69_ac3538();
-    virtual void Slot70_ac3538();
-    virtual void Slot71_ac3538();
-    virtual void Slot72_ac3538();
-    virtual void Slot73_ac3538();
-    virtual void Slot74_ac3538();
+    virtual void Slot51_ac3538(uint32_t);
+    virtual void Slot52_ac3538(uint32_t);
+    virtual void Slot53_ac3538(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot54_ac3538(uint32_t, uint32_t);
+    virtual void Slot55_ac3538(uint32_t, uint32_t);
+    virtual void Slot56_ac3538(uint32_t, uint32_t);
+    virtual void Slot57_ac3538(uint32_t, uint32_t);
+    virtual void Slot58_ac3538(uint32_t, uint32_t);
+    virtual void Slot59_ac3538(uint32_t);
+    virtual void Slot60_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot61_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot62_ac3538(uint32_t, uint32_t);
+    virtual uint32_t Slot63_ac3538();
+    virtual void Slot64_ac3538(uint32_t);
+    virtual void Slot65_ac3538(uint32_t, uint32_t);
+    virtual void Slot66_ac3538(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot67_ac3538(uint32_t);
+    virtual void Slot68_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot69_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot70_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot71_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot72_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot73_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot74_ac3538(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot75_ac3538();
-    virtual void Slot76_ac3538();
-    virtual void Slot77_ac3538();
-    virtual void Slot78_ac3538();
+    virtual void Slot76_ac3538(uint32_t);
+    virtual uint32_t Slot77_ac3538();
+    virtual uint32_t Slot78_ac3538();
     virtual void Slot79_ac3538();
     virtual void Slot80_ac3538();
-    virtual void Slot81_ac3538();
-    virtual void Slot82_ac3538();
+    virtual bool Slot81_ac3538();
+    virtual uint32_t Slot82_ac3538(uint32_t, uint32_t);
 };
 
 // VTABLE: 0x00ac47ec cUnk00ac34cc
@@ -124,15 +125,15 @@ public:
     virtual void Slot12_ac47ec();
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_ac34cc();
-    virtual void Slot03_ac34cc();
-    virtual void Slot04_ac34cc();
-    virtual void Slot05_ac34cc();
-    virtual void Slot06_ac34cc();
-    virtual void Slot07_ac34cc();
-    virtual void Slot08_ac34cc();
-    virtual void Slot09_ac34cc();
-    virtual void Slot10_ac34cc();
+    virtual void Slot00_ac34cc(uint32_t, uint32_t);
+    virtual bool Slot03_ac34cc();
+    virtual void Slot04_ac34cc(uint32_t);
+    virtual void Slot05_ac34cc(uint32_t);
+    virtual void Slot06_ac34cc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_ac34cc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot08_ac34cc(uint32_t);
+    virtual bool Slot09_ac34cc();
+    virtual bool Slot10_ac34cc();
     char unknown18[0x2c8];
 };
 #ifdef _MSC_VER

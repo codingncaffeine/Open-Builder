@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ACCF68_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00accf68
 // SIZE 0x3c
@@ -13,22 +14,24 @@ public:
     virtual void Slot02_accf68();
     virtual void Slot03_accf68();
     virtual void Slot04_accf68();
-    virtual void Slot05_accf68();
-    virtual void Slot06_accf68();
-    virtual void Slot07_accf68();
-    virtual void Slot08_accf68();
-    virtual void Slot09_accf68();
+    virtual void Slot05_accf68(bool);
+    virtual void Slot06_accf68(uint32_t);
+    virtual void Slot07_accf68(uint32_t);
+    virtual void Slot08_accf68(uint32_t, uint32_t);
+    virtual void Slot09_accf68(uint32_t, uint32_t);
     virtual void Slot10_accf68();
-    virtual void Slot11_accf68();
-    virtual void Slot12_accf68();
-    virtual void Slot13_accf68();
-    virtual void Slot14_accf68();
-    virtual void Slot15_accf68();
-    virtual void Slot16_accf68();
+    virtual void Slot11_accf68(uint32_t, uint32_t);
+    virtual void Slot12_accf68(uint32_t, uint32_t);
+    virtual void Slot13_accf68(uint32_t, uint32_t);
+    virtual void Slot14_accf68(uint32_t, uint32_t);
+    virtual void Slot15_accf68(uint32_t, uint32_t, uint32_t);
+    virtual void Slot16_accf68(uint32_t, uint32_t, uint32_t);
     virtual void Slot17_accf68();
     virtual void Slot18_accf68();
     virtual void Slot19_accf68();
-    char unknown4[0x38];
+    char unknown4[0x8];
+    bool fieldc;
+    char unknownd[0x2f];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00accf68[sizeof(cUnk00accf68) == 0x3c ? 1 : -1];

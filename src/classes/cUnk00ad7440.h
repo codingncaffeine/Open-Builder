@@ -3,23 +3,24 @@
 #define OB_CLASSES_CUNK00AD7440_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad7440
 // SIZE 0x14
 class cUnk00ad7440 {
 public:
-    virtual void Slot00_ad7440();
+    virtual void Slot00_ad7440(uint32_t, uint32_t);
     virtual void Slot01_ad7440();
     virtual void Slot02_ad7440();
-    virtual void Slot03_ad7440();
-    virtual void Slot04_ad7440();
-    virtual void Slot05_ad7440();
-    virtual void Slot06_ad7440();
-    virtual void Slot07_ad7440();
-    virtual void Slot08_ad7440();
-    virtual void Slot09_ad7440();
-    virtual void Slot10_ad7440();
-    virtual void Slot11_ad7440();
+    virtual void Slot03_ad7440(uint32_t);
+    virtual void Slot04_ad7440(uint32_t);
+    virtual void Slot05_ad7440(uint32_t);
+    virtual void Slot06_ad7440(uint32_t, uint32_t);
+    virtual void Slot07_ad7440(uint32_t, uint32_t);
+    virtual void Slot08_ad7440(uint32_t, uint32_t);
+    virtual void Slot09_ad7440(uint32_t);
+    virtual void Slot10_ad7440(uint32_t);
+    virtual void Slot11_ad7440(uint32_t, uint32_t);
     virtual ~cUnk00ad7440();
     char unknown4[0x10];
 };

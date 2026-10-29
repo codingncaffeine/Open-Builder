@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A8F7F0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a80784.h"
 #include "classes/cUnk00aaaa9c.h"
 
@@ -13,63 +14,63 @@ struct OB_NOVTABLE cUnk00a8f7f0_0 {
     virtual unsigned int Release() = 0;
     virtual void Slot03_a8f7f0() = 0;
     virtual void Slot04_a8f7f0() = 0;
-    virtual void Slot05_a8f7f0() = 0;
-    virtual void Slot06_a8f7f0() = 0;
-    virtual void Slot07_a8f7f0() = 0;
-    virtual void Slot08_a8f7f0() = 0;
-    virtual void Slot09_a8f7f0() = 0;
-    virtual void Slot10_a8f7f0() = 0;
-    virtual void Slot11_a8f7f0() = 0;
-    virtual void Slot12_a8f7f0() = 0;
-    virtual void Slot13_a8f7f0() = 0;
-    virtual void Slot14_a8f7f0() = 0;
-    virtual void Slot15_a8f7f0() = 0;
-    virtual void Slot16_a8f7f0() = 0;
-    virtual void Slot17_a8f7f0() = 0;
-    virtual void Slot18_a8f7f0() = 0;
-    virtual void Slot19_a8f7f0() = 0;
+    virtual void Slot05_a8f7f0(uint32_t, uint32_t) = 0;
+    virtual void Slot06_a8f7f0(uint32_t, uint32_t) = 0;
+    virtual void Slot07_a8f7f0(uint32_t, uint32_t) = 0;
+    virtual void Slot08_a8f7f0(uint32_t, uint32_t) = 0;
+    virtual void Slot09_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot10_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot11_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot12_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot13_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot14_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot15_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot16_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot17_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot18_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot19_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot20_a8f7f0() = 0;
-    virtual void Slot21_a8f7f0() = 0;
+    virtual void Slot21_a8f7f0(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot22_a8f7f0() = 0;
     virtual void Slot23_a8f7f0() = 0;
-    virtual void Slot24_a8f7f0() = 0;
-    virtual void Slot25_a8f7f0() = 0;
-    virtual void Slot26_a8f7f0() = 0;
-    virtual void Slot27_a8f7f0() = 0;
-    virtual void Slot28_a8f7f0() = 0;
-    virtual void Slot29_a8f7f0() = 0;
-    virtual void Slot30_a8f7f0() = 0;
-    virtual void Slot31_a8f7f0() = 0;
-    virtual void Slot32_a8f7f0() = 0;
-    virtual void Slot33_a8f7f0() = 0;
+    virtual void Slot24_a8f7f0(uint32_t, uint32_t) = 0;
+    virtual void Slot25_a8f7f0(uint32_t, uint32_t) = 0;
+    virtual void Slot26_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot27_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot28_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot29_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot30_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot31_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot32_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot33_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot34_a8f7f0() = 0;
-    virtual void Slot35_a8f7f0() = 0;
-    virtual void Slot36_a8f7f0() = 0;
-    virtual void Slot37_a8f7f0() = 0;
-    virtual void Slot38_a8f7f0() = 0;
-    virtual void Slot39_a8f7f0() = 0;
-    virtual void Slot40_a8f7f0() = 0;
-    virtual void Slot41_a8f7f0() = 0;
+    virtual void Slot35_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot36_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot37_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot38_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot39_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot40_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot41_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot42_a8f7f0() = 0;
-    virtual void Slot43_a8f7f0() = 0;
-    virtual void Slot44_a8f7f0() = 0;
-    virtual void Slot45_a8f7f0() = 0;
-    virtual void Slot46_a8f7f0() = 0;
-    virtual void Slot47_a8f7f0() = 0;
-    virtual void Slot48_a8f7f0() = 0;
+    virtual void Slot43_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot44_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot45_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot46_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot47_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot48_a8f7f0(uint32_t) = 0;
     virtual ~cUnk00a8f7f0_0() {}
 };
 
 // Between cUnk00a80784 and cUnk00a8f7f0 at +0x4: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a8f7f0_4 : public cUnk00a80784 {
-    virtual void Slot03_a80784();
-    virtual void Slot04_a80784();
-    virtual void Slot05_a80784();
+    virtual bool Slot03_a80784(uint32_t);
+    virtual bool Slot04_a80784(uint32_t);
+    virtual uint32_t Slot05_a80784();
 };
 
 // Between cUnk00aaaa9c and cUnk00a8f7f0 at +0x8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00a8f7f0_8 : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c();
+    virtual void Slot03_aaaa9c(uint32_t);
 };
 
 // VTABLE: 0x00a8f7f0 cUnk00a8f7f0_0
@@ -84,50 +85,50 @@ public:
     virtual unsigned int Release();
     virtual void Slot03_a8f7f0();
     virtual void Slot04_a8f7f0();
-    virtual void Slot05_a8f7f0();
-    virtual void Slot06_a8f7f0();
-    virtual void Slot07_a8f7f0();
-    virtual void Slot08_a8f7f0();
-    virtual void Slot09_a8f7f0();
-    virtual void Slot10_a8f7f0();
-    virtual void Slot11_a8f7f0();
-    virtual void Slot12_a8f7f0();
-    virtual void Slot13_a8f7f0();
-    virtual void Slot14_a8f7f0();
-    virtual void Slot15_a8f7f0();
-    virtual void Slot16_a8f7f0();
-    virtual void Slot17_a8f7f0();
-    virtual void Slot18_a8f7f0();
-    virtual void Slot19_a8f7f0();
+    virtual void Slot05_a8f7f0(uint32_t, uint32_t);
+    virtual void Slot06_a8f7f0(uint32_t, uint32_t);
+    virtual void Slot07_a8f7f0(uint32_t, uint32_t);
+    virtual void Slot08_a8f7f0(uint32_t, uint32_t);
+    virtual void Slot09_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot12_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot14_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot15_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot16_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot18_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot19_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot20_a8f7f0();
-    virtual void Slot21_a8f7f0();
+    virtual void Slot21_a8f7f0(uint32_t, uint32_t, uint32_t);
     virtual void Slot22_a8f7f0();
     virtual void Slot23_a8f7f0();
-    virtual void Slot24_a8f7f0();
-    virtual void Slot25_a8f7f0();
-    virtual void Slot26_a8f7f0();
-    virtual void Slot27_a8f7f0();
-    virtual void Slot28_a8f7f0();
-    virtual void Slot29_a8f7f0();
-    virtual void Slot30_a8f7f0();
-    virtual void Slot31_a8f7f0();
-    virtual void Slot32_a8f7f0();
-    virtual void Slot33_a8f7f0();
+    virtual void Slot24_a8f7f0(uint32_t, uint32_t);
+    virtual void Slot25_a8f7f0(uint32_t, uint32_t);
+    virtual void Slot26_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot27_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot28_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot29_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot30_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot31_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot32_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot33_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot34_a8f7f0();
-    virtual void Slot35_a8f7f0();
-    virtual void Slot36_a8f7f0();
-    virtual void Slot37_a8f7f0();
-    virtual void Slot38_a8f7f0();
-    virtual void Slot39_a8f7f0();
-    virtual void Slot40_a8f7f0();
-    virtual void Slot41_a8f7f0();
+    virtual void Slot35_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot36_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot37_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot38_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot39_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot40_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot41_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot42_a8f7f0();
-    virtual void Slot43_a8f7f0();
-    virtual void Slot44_a8f7f0();
-    virtual void Slot45_a8f7f0();
-    virtual void Slot46_a8f7f0();
-    virtual void Slot47_a8f7f0();
-    virtual void Slot48_a8f7f0();
+    virtual void Slot43_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot44_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot45_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot46_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot47_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot48_a8f7f0(uint32_t);
     char unknownc[0x90];
 };
 #ifdef _MSC_VER

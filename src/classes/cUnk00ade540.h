@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00ADE540_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00adde3c.h"
 
 // VTABLE: 0x00ade540
@@ -10,8 +11,8 @@
 class cUnk00ade540 : public cUnk00adde3c {
 public:
     virtual ~cUnk00ade540();
-    virtual void Slot01_adde30();
-    virtual void Slot02_adde3c();
+    virtual void Slot01_adde30(uint32_t, uint32_t);
+    virtual bool Slot02_adde3c();
     virtual void Slot03_adde3c();
     char unknown18[0x30];
 };

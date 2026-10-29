@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00A862D8_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00a8623c.h"
 #include "gzcom/cUnk0090da1e.h"
 
@@ -12,34 +13,48 @@
 class cUnk00a862d8 : public cUnk00a8623c, public cUnk0090da1e {
 public:
     virtual ~cUnk00a862d8() {}
-    virtual void Slot06_a862d8();
-    virtual void Slot07_a862d8();
-    virtual void Slot08_a862d8();
-    virtual void Slot09_a862d8();
-    virtual void Slot10_a862d8();
-    virtual void Slot11_a862d8();
+    virtual uint32_t Slot06_a862d8();
+    virtual void Slot07_a862d8(uint32_t);
+    virtual void* Slot08_a862d8();
+    virtual void* Slot09_a862d8();
+    virtual void* Slot10_a862d8();
+    virtual uint32_t Slot11_a862d8();
     virtual void Slot12_a862d8();
-    virtual void Slot13_a862d8();
+    virtual bool Slot13_a862d8(uint32_t);
     virtual void Slot14_a862d8();
     virtual void Slot15_a862d8();
     virtual void Slot16_a862d8();
-    virtual void Slot17_a862d8();
-    virtual void Slot18_a862d8();
+    virtual void Slot17_a862d8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot18_a862d8();
     virtual void Slot19_a862d8();
-    virtual void Slot20_a862d8();
-    virtual void Slot21_a862d8();
-    virtual void Slot22_a862d8();
-    virtual void Slot23_a862d8();
-    virtual void Slot24_a862d8();
+    virtual uint32_t Slot20_a862d8();
+    virtual void Slot21_a862d8(uint32_t);
+    virtual uint32_t Slot22_a862d8();
+    virtual uint32_t Slot23_a862d8();
+    virtual uint32_t Slot24_a862d8();
     virtual void Slot25_a862d8();
-    virtual void Slot26_a862d8();
+    virtual void Slot26_a862d8(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
     virtual void Slot03_a8623c();
-    virtual void Slot04_a8623c();
-    virtual void Slot05_a8623c();
-    char unknownc[0xf0];
+    virtual bool Slot04_a8623c();
+    virtual void* Slot05_a8623c();
+    char fieldc[0x20];
+    char field2c[0x20];
+    char field4c[0x2c];
+    uint32_t field78;
+    char unknown7c[0x24];
+    uint32_t fielda0;
+    char fielda4[0x2c];
+    uint32_t fieldd0;
+    uint32_t fieldd4;
+    uint32_t fieldd8;
+    char unknowndc[0x10];
+    uint32_t fieldec;
+    char unknownf0[0x4];
+    uint32_t fieldf4;
+    char unknownf8[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a862d8[sizeof(cUnk00a862d8) == 0xfc ? 1 : -1];

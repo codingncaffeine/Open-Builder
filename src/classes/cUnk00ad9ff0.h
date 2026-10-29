@@ -3,50 +3,53 @@
 #define OB_CLASSES_CUNK00AD9FF0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad9ff0
 // SIZE 0x40
 class cUnk00ad9ff0 {
 public:
-    virtual void Slot00_ad9ff0();
+    virtual void Slot00_ad9ff0(uint32_t, uint32_t);
     virtual void Slot01_ad9ff0();
     virtual void Slot02_ad9ff0();
-    virtual void Slot03_ad9ff0();
-    virtual void Slot04_ad9ff0();
-    virtual void Slot05_ad9ff0();
-    virtual void Slot06_ad9ff0();
-    virtual void Slot07_ad9ff0();
-    virtual void Slot08_ad9ff0();
-    virtual void Slot09_ad9ff0();
-    virtual void Slot10_ad9ff0();
-    virtual void Slot11_ad9ff0();
-    virtual void Slot12_ad9ff0();
-    virtual void Slot13_ad9ff0();
-    virtual void Slot14_ad9ff0();
-    virtual void Slot15_ad9ff0();
-    virtual void Slot16_ad9ff0();
-    virtual void Slot17_ad9ff0();
-    virtual void Slot18_ad9ff0();
-    virtual void Slot19_ad9ff0();
-    virtual void Slot20_ad9ff0();
-    virtual void Slot21_ad9ff0();
-    virtual void Slot22_ad9ff0();
-    virtual void Slot23_ad9ff0();
-    virtual void Slot24_ad9ff0();
-    virtual void Slot25_ad9ff0();
-    virtual void Slot26_ad9ff0();
-    virtual void Slot27_ad9ff0();
+    virtual void Slot03_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot04_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot05_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot06_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot07_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot08_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot09_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot10_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot11_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot12_ad9ff0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_ad9ff0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot14_ad9ff0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot15_ad9ff0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot16_ad9ff0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_ad9ff0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot18_ad9ff0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot19_ad9ff0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot20_ad9ff0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot21_ad9ff0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot22_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot23_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot24_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot25_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot26_ad9ff0(uint32_t, uint32_t);
+    virtual void Slot27_ad9ff0(uint32_t);
     virtual void Slot28_ad9ff0();
     virtual void Slot29_ad9ff0();
-    virtual void Slot30_ad9ff0();
+    virtual uint32_t Slot30_ad9ff0();
     virtual void Slot31_ad9ff0();
-    virtual void Slot32_ad9ff0();
-    virtual void Slot33_ad9ff0();
+    virtual void Slot32_ad9ff0(uint32_t);
+    virtual void Slot33_ad9ff0(uint32_t);
     virtual void Slot34_ad9ff0();
-    virtual void Slot35_ad9ff0();
-    virtual void Slot36_ad9ff0();
+    virtual void Slot35_ad9ff0(uint32_t);
+    virtual void Slot36_ad9ff0(uint32_t);
     virtual ~cUnk00ad9ff0();
-    char unknown4[0x3c];
+    char unknown4[0x8];
+    uint32_t fieldc;
+    char unknown10[0x30];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad9ff0[sizeof(cUnk00ad9ff0) == 0x40 ? 1 : -1];

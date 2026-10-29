@@ -3,17 +3,18 @@
 #define OB_CLASSES_CUNK00AD73D4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad73d4
 // SIZE 0x10
 class cUnk00ad73d4 {
 public:
-    virtual void Slot00_ad73d4();
+    virtual void Slot00_ad73d4(uint32_t, uint32_t);
     virtual void Slot01_ad73d4();
     virtual void Slot02_ad73d4();
-    virtual void Slot03_ad73d4();
-    virtual void Slot04_ad73d4();
-    virtual void Slot05_ad73d4();
+    virtual void Slot03_ad73d4(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot04_ad73d4(uint32_t, uint32_t);
+    virtual void Slot05_ad73d4(uint32_t);
     virtual ~cUnk00ad73d4();
     char unknown4[0xc];
 };

@@ -3,24 +3,25 @@
 #define OB_CLASSES_CUNK00AB9910_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ab9910
 class cUnk00ab9910 {
 public:
-    virtual void Slot00_ab9910();
-    virtual void Slot01_ab9910();
-    virtual void Slot02_ab9910();
-    virtual void Slot03_ab9910();
-    virtual void Slot04_ab9910();
-    virtual void Slot05_ab9910();
-    virtual void Slot06_ab9910();
-    virtual void Slot07_ab9910();
-    virtual void Slot08_ab9910();
-    virtual void Slot09_ab9910();
-    virtual void Slot10_ab9910();
+    virtual void Slot00_ab9910(uint32_t);
+    virtual void Slot01_ab9910(uint32_t);
+    virtual void Slot02_ab9910(uint32_t);
+    virtual void Slot03_ab9910(uint32_t, uint32_t);
+    virtual void Slot04_ab9910(uint32_t, uint32_t);
+    virtual void Slot05_ab9910(uint32_t, uint32_t);
+    virtual void Slot06_ab9910(uint32_t, uint32_t);
+    virtual void Slot07_ab9910(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_ab9910(uint32_t, uint32_t);
+    virtual void Slot09_ab9910(uint32_t);
+    virtual void Slot10_ab9910(uint32_t);
     virtual void Slot11_ab9910();
-    virtual void Slot12_ab9910();
-    virtual void Slot13_ab9910();
+    virtual void Slot12_ab9910(uint32_t);
+    virtual void Slot13_ab9910(uint32_t);
     virtual void Slot14_ab9910();
     virtual void Slot15_ab9910();
 };

@@ -3,24 +3,25 @@
 #define OB_CLASSES_CUNK00AE20A0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00ae2300.h"
 
 // Between cUnk00ae2300 and cUnk00ae20a0 at +0xd8: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ae20a0_d8 : public cUnk00ae2300 {
-    virtual void Slot03_ae2300();
-    virtual void Slot08_ae2300();
-    virtual void Slot09_ae2300();
-    virtual void Slot10_ae2300();
-    virtual void Slot11_ae2300();
-    virtual void Slot12_ae2300();
-    virtual void Slot13_ae2300();
-    virtual void Slot14_ae2300();
-    virtual void Slot15_ae2300();
-    virtual void Slot16_ae2300();
-    virtual void Slot17_ae2300();
-    virtual void Slot18_ae2300();
-    virtual void Slot19_ae2300();
+    virtual void* Slot03_ae2300();
+    virtual void Slot08_ae2300(uint32_t);
+    virtual void Slot09_ae2300(uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot12_ae2300(uint32_t);
+    virtual uint32_t Slot13_ae2300();
+    virtual void Slot14_ae2300(uint32_t);
+    virtual void Slot15_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot16_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_ae2300(uint32_t);
+    virtual bool Slot18_ae2300(bool);
+    virtual uint32_t Slot19_ae2300();
 };
 
 // VTABLE: 0x00ae20a0 cUnk00adc8d8
@@ -32,14 +33,14 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_adc8d8();
-    virtual void Slot88_adc8d8();
+    virtual void Slot03_adc8d8(uint32_t);
+    virtual bool Slot88_adc8d8();
     virtual void Slot103_adc8d8();
-    virtual void Slot104_adc8d8();
-    virtual void Slot107_adc8d8();
-    virtual void Slot130_adc8d8();
-    virtual void Slot131_adc8d8();
-    virtual void Slot08_ae1a28();
+    virtual void Slot104_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot107_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot130_adc8d8(uint32_t, uint32_t);
+    virtual bool Slot131_adc8d8(uint32_t, uint32_t);
+    virtual void Slot08_ae1a28(uint32_t);
     char unknowndc[0x14];
 };
 #ifdef _MSC_VER

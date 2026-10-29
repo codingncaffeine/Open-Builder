@@ -3,34 +3,35 @@
 #define OB_CLASSES_CUNK00AD75A0_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00acec00.h"
 #include "classes/cUnk00ad7638.h"
 
 // Between cUnk00ad7638 and cUnk00ad75a0 at +0x2c: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad75a0_2c : public cUnk00ad7638 {
-    virtual void Slot03_ad7638();
-    virtual void Slot04_ad7638();
-    virtual void Slot05_ad7638();
-    virtual void Slot06_ad7638();
+    virtual bool Slot03_ad7638();
+    virtual uint32_t Slot04_ad7638();
+    virtual void Slot05_ad7638(uint32_t);
+    virtual void* Slot06_ad7638();
 };
 
 // VTABLE: 0x00ad75a0 cUnk00acec00
 // VTABLE: 0x00ad7580 cUnk00ad75a0_2c
 class cUnk00ad75a0 : public cUnk00acec00, public cUnk00ad75a0_2c {
 public:
-    virtual void Slot10_acec00();
-    virtual void Slot12_acec00();
-    virtual void Slot15_acec00();
-    virtual void Slot17_acec00();
-    virtual void Slot20_acec00();
-    virtual void Slot22_acec00();
-    virtual void Slot25_acec00();
-    virtual void Slot27_acec00();
-    virtual void Slot31_acec00();
-    virtual void Slot34_acec00();
-    virtual void Slot36_acec00();
-    virtual void Slot37_acec00();
-    virtual void Slot00_ad1590();
+    virtual uint32_t Slot10_acec00();
+    virtual void Slot12_acec00(uint32_t);
+    virtual uint32_t Slot15_acec00();
+    virtual void Slot17_acec00(uint32_t);
+    virtual uint32_t Slot20_acec00();
+    virtual void Slot22_acec00(uint32_t);
+    virtual uint32_t Slot25_acec00();
+    virtual void Slot27_acec00(uint32_t);
+    virtual bool Slot31_acec00();
+    virtual bool Slot34_acec00();
+    virtual void Slot36_acec00(uint32_t);
+    virtual void Slot37_acec00(uint32_t);
+    virtual void Slot00_ad1590(uint32_t, uint32_t);
     virtual void Slot01_ad1590();
     virtual void Slot02_ad1590();
 };

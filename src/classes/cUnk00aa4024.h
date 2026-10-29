@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AA4024_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00aa4024
 class cUnk00aa4024 {
@@ -10,7 +11,7 @@ public:
     virtual void Slot00_aa4024();
     virtual void Slot01_aa4024();
     virtual void Slot02_aa4024();
-    virtual void Slot03_aa4024();
+    virtual void Slot03_aa4024(uint32_t);
 };
 
 #endif

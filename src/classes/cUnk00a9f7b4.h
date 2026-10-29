@@ -3,14 +3,15 @@
 #define OB_CLASSES_CUNK00A9F7B4_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00aae9e4.h"
 
 class cUnk00a9f7b4 : public cUnk00aae9e4 {
 public:
     virtual void Slot05_a9f7b4() = 0;
     virtual void Slot06_a9f7b4() = 0;
-    virtual void Slot01_a9f7a8();
-    virtual void Slot04_aae9e4();
+    virtual void Slot01_a9f7a8(uint32_t, uint32_t);
+    virtual void Slot04_aae9e4(uint32_t);
 };
 
 #endif

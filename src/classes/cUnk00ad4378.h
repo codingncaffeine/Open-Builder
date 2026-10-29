@@ -3,20 +3,21 @@
 #define OB_CLASSES_CUNK00AD4378_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ad2620.h"
 #include "classes/cUnk00ad4648.h"
 
 // Between cUnk00ad2620 and cUnk00ad4378 at +0x18: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad4378_18 : public cUnk00ad2620 {
-    virtual void Slot03_ad2620();
-    virtual void Slot04_ad2620();
-    virtual void Slot06_ad2620();
-    virtual void Slot07_ad2620();
-    virtual void Slot08_ad2620();
-    virtual void Slot09_ad2620();
-    virtual void Slot10_ad2620();
-    virtual void Slot14_ad2620();
-    virtual void Slot18_ad4648();
+    virtual void Slot03_ad2620(uint32_t);
+    virtual void Slot04_ad2620(uint32_t);
+    virtual uint32_t Slot06_ad2620();
+    virtual uint32_t Slot07_ad2620();
+    virtual bool Slot08_ad2620(uint32_t);
+    virtual bool Slot09_ad2620(uint32_t);
+    virtual bool Slot10_ad2620(uint32_t);
+    virtual void Slot14_ad2620(uint32_t, uint32_t);
+    virtual uint32_t Slot18_ad4648();
 };
 
 // VTABLE: 0x00ad4378 cUnk00ad4648
@@ -25,13 +26,13 @@ struct OB_NOVTABLE cUnk00ad4378_18 : public cUnk00ad2620 {
 class cUnk00ad4378 : public cUnk00ad4648, public cUnk00ad4378_18 {
 public:
     virtual ~cUnk00ad4378() {}
-    virtual void Slot21_ad4378();
-    virtual void Slot22_ad4378();
-    virtual void Slot23_ad4378();
-    virtual void Slot18_ad4648();
-    virtual void Slot19_ad4648();
-    virtual void Slot20_ad4648();
-    virtual void Slot00_ad4cf4();
+    virtual bool Slot21_ad4378(uint32_t);
+    virtual bool Slot22_ad4378(uint32_t);
+    virtual bool Slot23_ad4378(uint32_t);
+    virtual uint32_t Slot18_ad4648();
+    virtual bool Slot19_ad4648(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot20_ad4648(uint32_t, uint32_t, uint32_t);
+    virtual void Slot00_ad4cf4(uint32_t, uint32_t);
     virtual void Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
     char unknown1c[0xc];

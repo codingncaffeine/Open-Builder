@@ -3,15 +3,16 @@
 #define OB_CLASSES_CUNK00ABF64C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00abf64c
 // SIZE 0x4c
 class cUnk00abf64c {
 public:
-    virtual void Slot00_abf64c();
+    virtual void Slot00_abf64c(uint32_t, uint32_t);
     virtual void Slot01_abf64c();
     virtual void Slot02_abf64c();
-    virtual void Slot03_abf64c();
+    virtual void Slot03_abf64c(uint32_t);
     virtual ~cUnk00abf64c();
     virtual void Slot05_abf64c();
     char unknown4[0x48];

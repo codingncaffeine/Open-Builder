@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AC5060_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 #include "classes/cUnk00ac5030.h"
 #include "classes/cUnk00ace624.h"
 
@@ -14,17 +15,23 @@ public:
     virtual ~cUnk00ac5060() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_ac5030();
-    virtual void Slot03_ac5030();
-    virtual void Slot04_ac5030();
-    virtual void Slot05_ac5030();
-    virtual void Slot06_ac5030();
-    virtual void Slot07_ac5030();
+    virtual void Slot00_ac5030(uint32_t, uint32_t);
+    virtual uint32_t Slot03_ac5030();
+    virtual uint32_t Slot04_ac5030();
+    virtual uint32_t Slot05_ac5030();
+    virtual uint32_t Slot06_ac5030();
+    virtual uint32_t Slot07_ac5030();
     virtual void Slot08_ac5030();
     virtual void Slot09_ac5030();
-    virtual void Slot10_ac5030();
+    virtual void Slot10_ac5030(uint32_t);
     virtual void Slot11_ac5030();
-    char unknownc[0x3c];
+    uint32_t fieldc;
+    uint32_t field10;
+    uint32_t field14;
+    uint32_t field18;
+    char unknown1c[0x4];
+    uint32_t field20;
+    char unknown24[0x24];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac5060[sizeof(cUnk00ac5060) == 0x48 ? 1 : -1];

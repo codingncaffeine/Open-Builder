@@ -3,34 +3,35 @@
 #define OB_CLASSES_CUNK00AB3610_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ab3610
 class cUnk00ab3610 {
 public:
-    virtual void Slot00_ab3610();
+    virtual void Slot00_ab3610(uint32_t, uint32_t);
     virtual void Slot01_ab3610();
     virtual void Slot02_ab3610();
     virtual void Slot03_ab3610();
     virtual void Slot04_ab3610();
     virtual void Slot05_ab3610();
-    virtual void Slot06_ab3610();
-    virtual void Slot07_ab3610();
-    virtual void Slot08_ab3610();
-    virtual void Slot09_ab3610();
-    virtual void Slot10_ab3610();
-    virtual void Slot11_ab3610();
-    virtual void Slot12_ab3610();
-    virtual void Slot13_ab3610();
+    virtual float Slot06_ab3610();
+    virtual float Slot07_ab3610();
+    virtual uint32_t Slot08_ab3610();
+    virtual uint32_t Slot09_ab3610();
+    virtual void Slot10_ab3610(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_ab3610(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot12_ab3610(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_ab3610(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot14_ab3610();
     virtual void Slot15_ab3610();
-    virtual void Slot16_ab3610();
-    virtual void Slot17_ab3610();
-    virtual void Slot18_ab3610();
-    virtual void Slot19_ab3610();
+    virtual void Slot16_ab3610(uint32_t);
+    virtual void Slot17_ab3610(uint32_t, uint32_t);
+    virtual void Slot18_ab3610(uint32_t);
+    virtual void Slot19_ab3610(uint32_t, uint32_t);
     virtual void Slot20_ab3610();
-    virtual void Slot21_ab3610();
-    virtual void Slot22_ab3610();
-    virtual void Slot23_ab3610();
+    virtual void Slot21_ab3610(uint32_t, uint32_t);
+    virtual void Slot22_ab3610(uint32_t);
+    virtual void Slot23_ab3610(uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ab3610();
 };
 

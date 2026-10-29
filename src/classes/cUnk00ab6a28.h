@@ -3,6 +3,7 @@
 #define OB_CLASSES_CUNK00AB6A28_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // SIZE 0x4
 class cUnk00ab6a28 {
@@ -11,25 +12,25 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_ab6a28() = 0;
-    virtual void Slot04_ab6a28() = 0;
-    virtual void Slot05_ab6a28() = 0;
-    virtual void Slot06_ab6a28() = 0;
+    virtual void Slot04_ab6a28(uint32_t) = 0;
+    virtual uint32_t Slot05_ab6a28(uint32_t) = 0;
+    virtual void Slot06_ab6a28(uint32_t) = 0;
     virtual void Slot07_ab6a28() = 0;
     virtual void Slot08_ab6a28() = 0;
     virtual void Slot09_ab6a28() = 0;
-    virtual void Slot10_ab6a28() = 0;
+    virtual void Slot10_ab6a28(uint32_t) = 0;
     virtual void Slot11_ab6a28() = 0;
-    virtual void Slot12_ab6a28() = 0;
-    virtual void Slot13_ab6a28() = 0;
-    virtual void Slot14_ab6a28() = 0;
-    virtual void Slot15_ab6a28() = 0;
-    virtual void Slot16_ab6a28() = 0;
-    virtual void Slot17_ab6a28() = 0;
-    virtual void Slot18_ab6a28() = 0;
-    virtual void Slot19_ab6a28() = 0;
-    virtual void Slot20_ab6a28() = 0;
-    virtual void Slot21_ab6a28() = 0;
-    virtual void Slot22_ab6a28() = 0;
+    virtual void Slot12_ab6a28(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot13_ab6a28(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot14_ab6a28() = 0;
+    virtual void Slot15_ab6a28(uint32_t) = 0;
+    virtual void Slot16_ab6a28(uint32_t) = 0;
+    virtual uint32_t Slot17_ab6a28() = 0;
+    virtual void Slot18_ab6a28(uint32_t, uint32_t) = 0;
+    virtual void Slot19_ab6a28(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot20_ab6a28(uint32_t) = 0;
+    virtual void Slot21_ab6a28(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot22_ab6a28(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab6a28[sizeof(cUnk00ab6a28) == 0x4 ? 1 : -1];

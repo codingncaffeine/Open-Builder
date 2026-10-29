@@ -3,30 +3,31 @@
 #define OB_CLASSES_CUNK00AD9B70_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ad9b70 {
 public:
     virtual ~cUnk00ad9b70() {}
-    virtual void Slot01_ad9b70() = 0;
-    virtual void Slot02_ad9b70() = 0;
-    virtual void Slot03_ad9b70() = 0;
-    virtual void Slot04_ad9b70() = 0;
-    virtual void Slot05_ad9b70() = 0;
-    virtual void Slot06_ad9b70() = 0;
-    virtual void Slot07_ad9b70() = 0;
-    virtual void Slot08_ad9b70() = 0;
-    virtual void Slot09_ad9b70() = 0;
-    virtual void Slot10_ad9b70() = 0;
-    virtual void Slot11_ad9b70() = 0;
-    virtual void Slot12_ad9b70() = 0;
-    virtual void Slot13_ad9b70() = 0;
-    virtual void Slot14_ad9b70() = 0;
-    virtual void Slot15_ad9b70() = 0;
-    virtual void Slot16_ad9b70() = 0;
-    virtual void Slot17_ad9b70() = 0;
-    virtual void Slot18_ad9b70() = 0;
-    virtual void Slot19_ad9b70() = 0;
-    virtual void Slot20_ad9b70() = 0;
+    virtual void Slot01_ad9b70(uint32_t) = 0;
+    virtual void Slot02_ad9b70(uint32_t) = 0;
+    virtual bool Slot03_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot04_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot05_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot06_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot07_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot08_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot09_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot10_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot11_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot12_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot13_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot14_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot15_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot16_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot17_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot18_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot19_ad9b70(uint32_t, uint32_t) = 0;
+    virtual bool Slot20_ad9b70(uint32_t, uint32_t) = 0;
 };
 
 #endif

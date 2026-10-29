@@ -3,45 +3,49 @@
 #define OB_CLASSES_CUNK00AD1250_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00ad1250
 // SIZE 0x28
 class cUnk00ad1250 {
 public:
-    virtual void Slot00_ad1250();
+    virtual void Slot00_ad1250(uint32_t, uint32_t);
     virtual void Slot01_ad1250();
     virtual void Slot02_ad1250();
     virtual void Slot03_ad1250();
-    virtual void Slot04_ad1250();
-    virtual void Slot05_ad1250();
-    virtual void Slot06_ad1250();
-    virtual void Slot07_ad1250();
-    virtual void Slot08_ad1250();
-    virtual void Slot09_ad1250();
-    virtual void Slot10_ad1250();
-    virtual void Slot11_ad1250();
+    virtual bool Slot04_ad1250();
+    virtual void Slot05_ad1250(uint32_t, uint32_t);
+    virtual void Slot06_ad1250(uint32_t, uint32_t);
+    virtual void Slot07_ad1250(uint32_t, uint32_t);
+    virtual void Slot08_ad1250(uint32_t, uint32_t);
+    virtual void Slot09_ad1250(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ad1250(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_ad1250(uint32_t);
     virtual void Slot12_ad1250();
     virtual void Slot13_ad1250();
-    virtual void Slot14_ad1250();
-    virtual void Slot15_ad1250();
-    virtual void Slot16_ad1250();
-    virtual void Slot17_ad1250();
-    virtual void Slot18_ad1250();
-    virtual void Slot19_ad1250();
-    virtual void Slot20_ad1250();
-    virtual void Slot21_ad1250();
-    virtual void Slot22_ad1250();
+    virtual void Slot14_ad1250(uint32_t);
+    virtual void Slot15_ad1250(uint32_t);
+    virtual void Slot16_ad1250(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot17_ad1250(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot18_ad1250(uint32_t, uint32_t, uint32_t);
+    virtual void Slot19_ad1250(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot20_ad1250(uint32_t, uint32_t);
+    virtual void Slot21_ad1250(uint32_t, uint32_t);
+    virtual void Slot22_ad1250(uint32_t, uint32_t, uint32_t);
     virtual void Slot23_ad1250();
-    virtual void Slot24_ad1250();
+    virtual void Slot24_ad1250(uint32_t);
     virtual void Slot25_ad1250();
     virtual void Slot26_ad1250();
     virtual void Slot27_ad1250();
     virtual void Slot28_ad1250();
     virtual void Slot29_ad1250();
     virtual ~cUnk00ad1250();
-    virtual void Slot31_ad1250();
-    virtual void Slot32_ad1250();
-    char unknown4[0x24];
+    virtual void Slot31_ad1250(uint32_t);
+    virtual void Slot32_ad1250(uint32_t);
+    char unknown4[0x4];
+    uint32_t field8;
+    uint32_t fieldc;
+    char unknown10[0x18];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad1250[sizeof(cUnk00ad1250) == 0x28 ? 1 : -1];

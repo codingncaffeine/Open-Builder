@@ -3,20 +3,21 @@
 #define OB_CLASSES_CUNK00AADA64_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 // VTABLE: 0x00aada64
 // SIZE 0x40
 class cUnk00aada64 {
 public:
-    virtual void Slot00_aada64();
+    virtual void Slot00_aada64(uint32_t, uint32_t);
     virtual void Slot01_aada64();
     virtual void Slot02_aada64();
-    virtual void Slot03_aada64();
-    virtual void Slot04_aada64();
-    virtual void Slot05_aada64();
+    virtual void Slot03_aada64(uint32_t);
+    virtual void Slot04_aada64(uint32_t);
+    virtual void Slot05_aada64(uint32_t);
     virtual void Slot06_aada64();
-    virtual void Slot07_aada64();
-    virtual void Slot08_aada64();
+    virtual void Slot07_aada64(uint32_t, uint32_t);
+    virtual void Slot08_aada64(uint32_t);
     virtual void Slot09_aada64();
     virtual void Slot10_aada64();
     virtual ~cUnk00aada64() {}

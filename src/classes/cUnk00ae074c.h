@@ -3,23 +3,24 @@
 #define OB_CLASSES_CUNK00AE074C_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ae074c {
 public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ae074c() = 0;
+    virtual void* Slot03_ae074c() = 0;
     virtual void Slot04_ae074c() = 0;
-    virtual void Slot05_ae074c() = 0;
-    virtual void Slot06_ae074c() = 0;
-    virtual void Slot07_ae074c() = 0;
-    virtual void Slot08_ae074c() = 0;
-    virtual void Slot09_ae074c() = 0;
-    virtual void Slot10_ae074c() = 0;
-    virtual void Slot11_ae074c() = 0;
-    virtual void Slot12_ae074c() = 0;
-    virtual void Slot13_ae074c() = 0;
+    virtual void Slot05_ae074c(uint32_t) = 0;
+    virtual void Slot06_ae074c(uint32_t) = 0;
+    virtual uint32_t Slot07_ae074c() = 0;
+    virtual void Slot08_ae074c(uint32_t) = 0;
+    virtual uint32_t Slot09_ae074c() = 0;
+    virtual void Slot10_ae074c(uint32_t) = 0;
+    virtual void Slot11_ae074c(uint32_t) = 0;
+    virtual void Slot12_ae074c(uint32_t, uint32_t) = 0;
+    virtual void Slot13_ae074c(uint32_t, uint32_t) = 0;
 };
 
 #endif

@@ -3,11 +3,12 @@
 #define OB_CLASSES_CUNK00ACE604_H
 
 #include "common/compiler.h"
+#include "common/types.h"
 
 class cUnk00ace604 {
 public:
-    virtual void Slot00_ace604() = 0;
-    virtual void Slot01_ace604() = 0;
+    virtual void Slot00_ace604(uint32_t) = 0;
+    virtual void Slot01_ace604(uint32_t, uint32_t) = 0;
 };
 
 #endif
