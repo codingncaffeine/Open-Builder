@@ -9,10 +9,10 @@
 // SIZE 0x8
 class cUnk00a8ece0 {
 public:
-    virtual void Slot00_a8ece0(uint32_t, uint32_t);
+    virtual bool Slot00_a8ece0(uint32_t, uint32_t);
     virtual void Slot01_a8ece0();
     virtual void Slot02_a8ece0();
-    virtual void Slot03_a8ece0(uint32_t, uint32_t);
+    virtual bool Slot03_a8ece0(uint32_t, uint32_t);
     char unknown4[0x4];
 };
 #ifdef _MSC_VER

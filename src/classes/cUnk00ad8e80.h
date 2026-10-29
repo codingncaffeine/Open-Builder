@@ -7,14 +7,14 @@
 
 class cUnk00ad8e80 {
 public:
-    virtual void Slot00_ace4b0(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ace4b0() = 0;
-    virtual void Slot02_ace4b0() = 0;
-    virtual void Slot03_ad8e80(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ace4b0(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ace4b0() = 0;
+    virtual uint32_t Slot02_ace4b0() = 0;
+    virtual bool Slot03_ad8e80(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot04_ad8e80(uint32_t, uint32_t) = 0;
-    virtual void Slot05_ad8e80(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot06_ad8e80(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot07_ad8e80(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot05_ad8e80(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot06_ad8e80(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot07_ad8e80(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot08_ad8e80(uint32_t, uint32_t) = 0;
 };
 

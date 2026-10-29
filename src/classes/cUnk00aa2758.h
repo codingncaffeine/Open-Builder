@@ -11,9 +11,9 @@ struct OB_NOVTABLE cUnk00aa2758_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_aa2758() = 0;
-    virtual void Slot04_aa2758() = 0;
-    virtual void Slot05_aa2758() = 0;
+    virtual bool Slot03_aa2758() = 0;
+    virtual bool Slot04_aa2758() = 0;
+    virtual bool Slot05_aa2758() = 0;
     virtual uint32_t Slot06_aa2758() = 0;
     virtual bool Slot07_aa2758(uint32_t) = 0;
     virtual float Slot08_aa2758() = 0;
@@ -38,7 +38,7 @@ struct OB_NOVTABLE cUnk00aa2758_0 {
     virtual void Slot27_aa2758(uint32_t) = 0;
     virtual uint32_t Slot28_aa2758() = 0;
     virtual void Slot29_aa2758(uint32_t) = 0;
-    virtual void Slot30_aa2758() = 0;
+    virtual bool Slot30_aa2758() = 0;
     virtual void Slot31_aa2758(uint32_t) = 0;
     virtual void Slot32_aa2758() = 0;
     virtual bool Slot33_aa2758() = 0;
@@ -46,25 +46,21 @@ struct OB_NOVTABLE cUnk00aa2758_0 {
     virtual void Slot35_aa2758(uint32_t) = 0;
 };
 
-// Between cUnk00a80784 and cUnk00aa2758 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00aa2758_4 : public cUnk00a80784 {
+// VTABLE: 0x00aa2758 cUnk00aa2758_0
+// VTABLE: 0x00aa273c cUnk00a80784
+// SIZE 0x54
+class cUnk00aa2758 : public cUnk00aa2758_0, public cUnk00a80784 {
+public:
+    virtual ~cUnk00aa2758() {}
     virtual bool Slot03_a80784(uint32_t);
     virtual bool Slot04_a80784(uint32_t);
     virtual uint32_t Slot05_a80784();
-};
-
-// VTABLE: 0x00aa2758 cUnk00aa2758_0
-// VTABLE: 0x00aa273c cUnk00aa2758_4
-// SIZE 0x54
-class cUnk00aa2758 : public cUnk00aa2758_0, public cUnk00aa2758_4 {
-public:
-    virtual ~cUnk00aa2758() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_aa2758();
-    virtual void Slot04_aa2758();
-    virtual void Slot05_aa2758();
+    virtual bool Slot03_aa2758();
+    virtual bool Slot04_aa2758();
+    virtual bool Slot05_aa2758();
     virtual uint32_t Slot06_aa2758();
     virtual bool Slot07_aa2758(uint32_t);
     virtual float Slot08_aa2758();
@@ -89,7 +85,7 @@ public:
     virtual void Slot27_aa2758(uint32_t);
     virtual uint32_t Slot28_aa2758();
     virtual void Slot29_aa2758(uint32_t);
-    virtual void Slot30_aa2758();
+    virtual bool Slot30_aa2758();
     virtual void Slot31_aa2758(uint32_t);
     virtual void Slot32_aa2758();
     virtual bool Slot33_aa2758();

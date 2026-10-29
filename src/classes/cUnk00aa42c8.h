@@ -17,19 +17,15 @@ struct OB_NOVTABLE cUnk00aa42c8_0 {
     virtual ~cUnk00aa42c8_0() {}
 };
 
-// Between cUnk00a80784 and cUnk00aa42c8 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00aa42c8_4 : public cUnk00a80784 {
+// VTABLE: 0x00aa42c8 cUnk00aa42c8_0
+// VTABLE: 0x00aa42b0 cUnk00a80784
+// SIZE 0xc
+class cUnk00aa42c8 : public cUnk00aa42c8_0, public cUnk00a80784 {
+public:
+    virtual ~cUnk00aa42c8() {}
     virtual bool Slot03_a80784(uint32_t);
     virtual bool Slot04_a80784(uint32_t);
     virtual uint32_t Slot05_a80784();
-};
-
-// VTABLE: 0x00aa42c8 cUnk00aa42c8_0
-// VTABLE: 0x00aa42b0 cUnk00aa42c8_4
-// SIZE 0xc
-class cUnk00aa42c8 : public cUnk00aa42c8_0, public cUnk00aa42c8_4 {
-public:
-    virtual ~cUnk00aa42c8() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();

@@ -12,7 +12,7 @@ public:
     virtual bool Slot00_a90b38(uint32_t, uint32_t);
     virtual uint32_t Slot01_a90b38();
     virtual uint32_t Slot02_a90b38();
-    virtual void Slot03_a90b38(uint32_t, uint32_t);
+    virtual bool Slot03_a90b38(uint32_t, uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a90b38[sizeof(cUnk00a90b38) == 0x4 ? 1 : -1];

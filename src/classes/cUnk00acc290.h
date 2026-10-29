@@ -9,13 +9,13 @@
 // SIZE 0x100
 class cUnk00acc290 {
 public:
-    virtual void Slot00_acc290(uint32_t, uint32_t);
-    virtual void Slot01_acc290();
+    virtual bool Slot00_acc290(uint32_t, uint32_t);
+    virtual uint32_t Slot01_acc290();
     virtual void Slot02_acc290();
     virtual bool Slot03_acc290();
     virtual bool Slot04_acc290();
-    virtual void Slot05_acc290();
-    virtual void Slot06_acc290(uint32_t);
+    virtual bool Slot05_acc290();
+    virtual bool Slot06_acc290(uint32_t);
     virtual void Slot07_acc290();
     virtual void Slot08_acc290();
     virtual void Slot09_acc290(uint32_t);
@@ -29,13 +29,13 @@ public:
     virtual void Slot17_acc290(uint32_t);
     virtual void Slot18_acc290(uint32_t, uint32_t, uint32_t);
     virtual void Slot19_acc290();
-    virtual void Slot20_acc290(uint32_t);
+    virtual bool Slot20_acc290(uint32_t);
     virtual void Slot21_acc290(uint32_t);
-    virtual void Slot22_acc290();
-    virtual void Slot23_acc290(uint32_t);
+    virtual bool Slot22_acc290();
+    virtual bool Slot23_acc290(uint32_t);
     virtual void Slot24_acc290();
     virtual void Slot25_acc290(uint32_t, uint32_t);
-    virtual void Slot26_acc290();
+    virtual bool Slot26_acc290();
     char unknown4[0x4];
     bool field8;
     char unknown9[0xef];

@@ -8,17 +8,17 @@
 
 // VTABLE: 0x00ad95e8 cUnk00ad8d88
 // VTABLE: 0x00ad95a8 cUnk00ad8d48
-// VTABLE: 0x00ad9548 cUnk00ad7cf0_1c
-// VTABLE: 0x00ad94e8 cUnk00ad7cf0_2c
+// VTABLE: 0x00ad9548 cUnk00ad1818
+// VTABLE: 0x00ad94e8 cUnk00ad1878
 class cUnk00ad95e8 : public cUnk00ad7cf0 {
 public:
     virtual ~cUnk00ad95e8() {}
-    virtual void Slot62_ad95e8(uint32_t, uint32_t);
-    virtual void Slot63_ad95e8(uint32_t);
-    virtual void Slot64_ad95e8(uint32_t);
-    virtual void Slot27_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot62_ad95e8(uint32_t, uint32_t);
+    virtual bool Slot63_ad95e8(uint32_t);
+    virtual bool Slot64_ad95e8(uint32_t);
+    virtual bool Slot27_ad8d88(uint32_t, uint32_t);
     virtual bool Slot51_ad8d88(uint32_t, uint32_t);
-    virtual void Slot52_ad8d88();
+    virtual uint32_t Slot52_ad8d88();
     virtual uint32_t Slot54_ad8d88();
     virtual bool Slot56_ad8d88(uint32_t);
 };

@@ -14,7 +14,7 @@ public:
     virtual void Slot151_aab0f8(uint32_t);
     virtual bool Slot88_adc8d8();
     virtual bool Slot143_adc8d8(uint32_t, uint32_t);
-    virtual void Slot04_adb6a8();
+    virtual bool Slot04_adb6a8();
     char unknownd8[0x8];
 };
 #ifdef _MSC_VER

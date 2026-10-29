@@ -8,24 +8,24 @@
 // SIZE 0x4
 class cUnk00ad4830 {
 public:
-    virtual void Slot00_ad4830(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ad4830(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad4830() = 0;
     virtual void Slot02_ad4830() = 0;
     virtual uint32_t Slot03_ad4830() = 0;
     virtual bool Slot04_ad4830(uint32_t) = 0;
     virtual void Slot05_ad4830() = 0;
     virtual void Slot06_ad4830() = 0;
-    virtual void Slot07_ad4830() = 0;
-    virtual void Slot08_ad4830() = 0;
+    virtual bool Slot07_ad4830() = 0;
+    virtual bool Slot08_ad4830() = 0;
     virtual void Slot09_ad4830(uint32_t) = 0;
-    virtual void Slot10_ad4830() = 0;
-    virtual void Slot11_ad4830() = 0;
+    virtual bool Slot10_ad4830() = 0;
+    virtual bool Slot11_ad4830() = 0;
     virtual bool Slot12_ad4830() = 0;
     virtual void Slot13_ad4830(bool) = 0;
     virtual void Slot14_ad4830() = 0;
     virtual bool Slot15_ad4830(bool) = 0;
-    virtual void Slot16_ad4830(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot17_ad4830(uint32_t, uint32_t) = 0;
+    virtual bool Slot16_ad4830(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot17_ad4830(uint32_t, uint32_t) = 0;
     virtual void Slot18_ad4830() = 0;
 };
 #ifdef _MSC_VER

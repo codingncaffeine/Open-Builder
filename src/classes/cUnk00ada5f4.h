@@ -16,12 +16,12 @@ public:
     virtual void Slot04_ada5f4(uint32_t);
     virtual bool Slot05_ada5f4(uint32_t);
     virtual void Slot06_ada5f4();
-    virtual void Slot07_ada5f4(uint32_t);
+    virtual bool Slot07_ada5f4(uint32_t);
     virtual void Slot08_ada5f4();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_ada5b0(uint32_t);
+    virtual bool Slot03_ada5b0(uint32_t);
     char unknown1c[0xc];
 };
 #ifdef _MSC_VER

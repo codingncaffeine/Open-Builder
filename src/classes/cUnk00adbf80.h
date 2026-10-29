@@ -9,14 +9,14 @@
 // SIZE 0x1c
 class cUnk00adbf80 {
 public:
-    virtual void Slot00_adbf80(uint32_t, uint32_t);
-    virtual void Slot01_adbf80();
+    virtual bool Slot00_adbf80(uint32_t, uint32_t);
+    virtual uint32_t Slot01_adbf80();
     virtual void Slot02_adbf80();
     virtual bool Slot03_adbf80(uint32_t, uint32_t);
     virtual uint32_t Slot04_adbf80();
     virtual void Slot05_adbf80(uint32_t);
-    virtual void Slot06_adbf80(uint32_t);
-    virtual void Slot07_adbf80(uint32_t);
+    virtual bool Slot06_adbf80(uint32_t);
+    virtual uint32_t Slot07_adbf80(uint32_t);
     virtual void Slot08_adbf80(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot09_adbf80();
     virtual uint32_t Slot10_adbf80();

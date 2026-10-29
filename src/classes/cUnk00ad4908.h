@@ -9,8 +9,8 @@
 // SIZE 0x68
 class cUnk00ad4908 {
 public:
-    virtual void Slot00_ad4908(uint32_t, uint32_t);
-    virtual void Slot01_ad4908();
+    virtual bool Slot00_ad4908(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad4908();
     virtual void Slot02_ad4908();
     virtual uint32_t Slot03_ad4908();
     virtual void* Slot04_ad4908();
@@ -33,7 +33,7 @@ public:
     virtual uint32_t Slot21_ad4908();
     virtual bool Slot22_ad4908();
     virtual bool Slot23_ad4908(uint32_t);
-    virtual void Slot24_ad4908(uint32_t);
+    virtual bool Slot24_ad4908(uint32_t);
     virtual bool Slot25_ad4908(bool);
     virtual bool Slot26_ad4908(uint32_t);
     virtual bool Slot27_ad4908(uint32_t);

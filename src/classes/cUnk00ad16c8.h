@@ -9,21 +9,21 @@
 // SIZE 0x28
 class cUnk00ad16c8 {
 public:
-    virtual void Slot00_ad16c8(uint32_t, uint32_t);
-    virtual void Slot01_ad16c8();
+    virtual bool Slot00_ad16c8(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad16c8();
     virtual void Slot02_ad16c8();
     virtual uint32_t Slot03_ad16c8();
     virtual void Slot04_ad16c8(uint32_t);
-    virtual void Slot05_ad16c8(uint32_t);
-    virtual void Slot06_ad16c8(uint32_t);
+    virtual uint32_t Slot05_ad16c8(uint32_t);
+    virtual uint32_t Slot06_ad16c8(uint32_t);
     virtual void Slot07_ad16c8(uint32_t, uint32_t);
     virtual void Slot08_ad16c8(uint32_t);
     virtual void Slot09_ad16c8(uint32_t);
     virtual void Slot10_ad16c8(uint32_t);
-    virtual void Slot11_ad16c8(uint32_t, uint32_t, uint32_t);
-    virtual void Slot12_ad16c8(uint32_t, uint32_t);
-    virtual void Slot13_ad16c8();
-    virtual void Slot14_ad16c8(uint32_t);
+    virtual bool Slot11_ad16c8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot12_ad16c8(uint32_t, uint32_t);
+    virtual uint32_t Slot13_ad16c8();
+    virtual uint32_t Slot14_ad16c8(uint32_t);
     virtual ~cUnk00ad16c8();
     char unknown4[0x8];
     uint32_t fieldc;

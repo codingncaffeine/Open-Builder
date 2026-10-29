@@ -10,7 +10,7 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ad97fc(uint32_t) = 0;
+    virtual bool Slot03_ad97fc(uint32_t) = 0;
     virtual void Slot04_ad97fc(uint32_t) = 0;
     virtual void Slot05_ad97fc(uint32_t, uint32_t) = 0;
     virtual void Slot06_ad97fc(uint32_t) = 0;

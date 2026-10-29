@@ -10,23 +10,23 @@
 class cUnk00accf68 {
 public:
     virtual ~cUnk00accf68();
-    virtual void Slot01_accf68();
-    virtual void Slot02_accf68();
-    virtual void Slot03_accf68();
-    virtual void Slot04_accf68();
+    virtual bool Slot01_accf68();
+    virtual bool Slot02_accf68();
+    virtual uint32_t Slot03_accf68();
+    virtual uint32_t Slot04_accf68();
     virtual void Slot05_accf68(bool);
-    virtual void Slot06_accf68(uint32_t);
-    virtual void Slot07_accf68(uint32_t);
+    virtual bool Slot06_accf68(uint32_t);
+    virtual bool Slot07_accf68(uint32_t);
     virtual void Slot08_accf68(uint32_t, uint32_t);
     virtual void Slot09_accf68(uint32_t, uint32_t);
-    virtual void Slot10_accf68();
-    virtual void Slot11_accf68(uint32_t, uint32_t);
-    virtual void Slot12_accf68(uint32_t, uint32_t);
-    virtual void Slot13_accf68(uint32_t, uint32_t);
+    virtual bool Slot10_accf68();
+    virtual bool Slot11_accf68(uint32_t, uint32_t);
+    virtual bool Slot12_accf68(uint32_t, uint32_t);
+    virtual uint32_t Slot13_accf68(uint32_t, uint32_t);
     virtual void Slot14_accf68(uint32_t, uint32_t);
-    virtual void Slot15_accf68(uint32_t, uint32_t, uint32_t);
-    virtual void Slot16_accf68(uint32_t, uint32_t, uint32_t);
-    virtual void Slot17_accf68();
+    virtual bool Slot15_accf68(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot16_accf68(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot17_accf68();
     virtual void Slot18_accf68();
     virtual void Slot19_accf68();
     char unknown4[0x8];

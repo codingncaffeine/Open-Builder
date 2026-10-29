@@ -7,34 +7,28 @@
 #include "classes/cUnk00ab6a28.h"
 #include "classes/cUnk00adc8d8.h"
 
-// Between cUnk00adc8d8 and cUnk00ab6d28 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ab6d28_4 : public cUnk00adc8d8 {
-    virtual void Slot03_adc8d8(uint32_t);
-    virtual bool Slot88_adc8d8();
-    virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot139_adc8d8(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot142_adc8d8(uint32_t);
-    virtual void Slot04_adb6a8();
-    virtual void Slot05_adb6a8();
-};
-
 // VTABLE: 0x00ab6d28 cUnk00ab6a28
-// VTABLE: 0x00ab6d88 cUnk00ab6d28_4
+// VTABLE: 0x00ab6d88 cUnk00adc8d8
 // SIZE 0x140
-class cUnk00ab6d28 : public cUnk00ab6a28, public cUnk00ab6d28_4 {
+class cUnk00ab6d28 : public cUnk00ab6a28, public cUnk00adc8d8 {
 public:
     virtual ~cUnk00ab6d28() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_ab6a28();
+    virtual bool Slot03_adc8d8(uint32_t);
+    virtual bool Slot88_adc8d8();
+    virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot139_adc8d8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot142_adc8d8(uint32_t);
+    virtual uint32_t Slot03_ab6a28();
     virtual void Slot04_ab6a28(uint32_t);
     virtual uint32_t Slot05_ab6a28(uint32_t);
-    virtual void Slot06_ab6a28(uint32_t);
-    virtual void Slot07_ab6a28();
-    virtual void Slot08_ab6a28();
-    virtual void Slot09_ab6a28();
+    virtual uint32_t Slot06_ab6a28(uint32_t);
+    virtual uint32_t Slot07_ab6a28();
+    virtual uint32_t Slot08_ab6a28();
+    virtual uint32_t Slot09_ab6a28();
     virtual void Slot10_ab6a28(uint32_t);
     virtual void Slot11_ab6a28();
     virtual void Slot12_ab6a28(uint32_t, uint32_t, uint32_t);
@@ -43,11 +37,13 @@ public:
     virtual void Slot15_ab6a28(uint32_t);
     virtual void Slot16_ab6a28(uint32_t);
     virtual uint32_t Slot17_ab6a28();
-    virtual void Slot18_ab6a28(uint32_t, uint32_t);
-    virtual void Slot19_ab6a28(uint32_t, uint32_t, uint32_t);
-    virtual void Slot20_ab6a28(uint32_t);
-    virtual void Slot21_ab6a28(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot18_ab6a28(uint32_t, uint32_t);
+    virtual bool Slot19_ab6a28(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot20_ab6a28(uint32_t);
+    virtual bool Slot21_ab6a28(uint32_t, uint32_t, uint32_t);
     virtual void Slot22_ab6a28(uint32_t);
+    virtual bool Slot04_adb6a8();
+    virtual bool Slot05_adb6a8();
     char unknowndc[0xc];
     uint32_t fielde8;
     uint32_t fieldec;

@@ -9,12 +9,12 @@
 // SIZE 0x14
 class cUnk00ad92cc {
 public:
-    virtual void Slot00_ad92cc(uint32_t, uint32_t);
-    virtual void Slot01_ad92cc();
+    virtual bool Slot00_ad92cc(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad92cc();
     virtual void Slot02_ad92cc();
-    virtual void Slot03_ad92cc(uint32_t, uint32_t);
-    virtual void Slot04_ad92cc(uint32_t, uint32_t);
-    virtual void Slot05_ad92cc(uint32_t, uint32_t);
+    virtual bool Slot03_ad92cc(uint32_t, uint32_t);
+    virtual bool Slot04_ad92cc(uint32_t, uint32_t);
+    virtual bool Slot05_ad92cc(uint32_t, uint32_t);
     virtual void Slot06_ad92cc();
     virtual void Slot07_ad92cc(uint32_t);
     virtual ~cUnk00ad92cc() {}

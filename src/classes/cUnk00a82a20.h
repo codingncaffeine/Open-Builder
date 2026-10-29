@@ -8,23 +8,23 @@
 // VTABLE: 0x00a82a20
 class cUnk00a82a20 {
 public:
-    virtual void Slot00_a82a20(uint32_t, uint32_t);
-    virtual void Slot01_a82a20();
+    virtual bool Slot00_a82a20(uint32_t, uint32_t);
+    virtual uint32_t Slot01_a82a20();
     virtual void Slot02_a82a20();
     virtual void Slot03_a82a20();
-    virtual void Slot04_a82a20(uint32_t);
-    virtual void Slot05_a82a20(uint32_t);
-    virtual void Slot06_a82a20(uint32_t, uint32_t);
-    virtual void Slot07_a82a20(uint32_t, uint32_t);
-    virtual void Slot08_a82a20(uint32_t, uint32_t, uint32_t);
-    virtual void Slot09_a82a20(uint32_t);
-    virtual void Slot10_a82a20(uint32_t, uint32_t, uint32_t);
-    virtual void Slot11_a82a20(uint32_t, uint32_t);
-    virtual void Slot12_a82a20(uint32_t, uint32_t);
-    virtual void Slot13_a82a20(uint32_t, uint32_t);
-    virtual void Slot14_a82a20(uint32_t);
+    virtual uint32_t Slot04_a82a20(uint32_t);
+    virtual bool Slot05_a82a20(uint32_t);
+    virtual uint32_t Slot06_a82a20(uint32_t, uint32_t);
+    virtual uint32_t Slot07_a82a20(uint32_t, uint32_t);
+    virtual bool Slot08_a82a20(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot09_a82a20(uint32_t);
+    virtual bool Slot10_a82a20(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot11_a82a20(uint32_t, uint32_t);
+    virtual uint32_t Slot12_a82a20(uint32_t, uint32_t);
+    virtual bool Slot13_a82a20(uint32_t, uint32_t);
+    virtual bool Slot14_a82a20(uint32_t);
     virtual ~cUnk00a82a20();
-    virtual void Slot16_a82a20(uint32_t);
+    virtual uint32_t Slot16_a82a20(uint32_t);
 };
 
 // SYNTHETIC: 0x00419500

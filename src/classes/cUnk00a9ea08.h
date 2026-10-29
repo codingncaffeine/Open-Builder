@@ -13,10 +13,10 @@ public:
     virtual unsigned int Release() = 0;
     virtual void* Slot03_a9ea08() = 0;
     virtual void* Slot04_a9ea08() = 0;
-    virtual void Slot05_a9ea08(uint32_t) = 0;
-    virtual void Slot06_a9ea08(uint32_t, uint32_t) = 0;
+    virtual bool Slot05_a9ea08(uint32_t) = 0;
+    virtual float Slot06_a9ea08(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot07_a9ea08() = 0;
-    virtual void Slot08_a9ea08(uint32_t) = 0;
+    virtual bool Slot08_a9ea08(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9ea08[sizeof(cUnk00a9ea08) == 0x4 ? 1 : -1];

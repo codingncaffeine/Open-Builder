@@ -7,45 +7,10 @@
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00ae0b00.h"
 
-// Between cUnk00ae0b00 and cUnk00ae0b90 at +0xd8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ae0b90_d8 : public cUnk00ae0b00 {
-    virtual void* Slot03_ae0b00();
-    virtual void Slot04_ae0b00(uint32_t);
-    virtual void Slot05_ae0b00(uint32_t);
-    virtual void Slot07_ae0b00(uint32_t);
-    virtual uint32_t Slot08_ae0b00();
-    virtual void Slot09_ae0b00(uint32_t);
-    virtual void Slot10_ae0b00(uint32_t, uint32_t);
-    virtual void Slot11_ae0b00(uint32_t, uint32_t);
-    virtual bool Slot12_ae0b00(uint32_t);
-    virtual void Slot13_ae0b00(uint32_t);
-    virtual void Slot14_ae0b00(uint32_t, uint32_t);
-    virtual void Slot15_ae0b00(uint32_t);
-    virtual void Slot16_ae0b00(uint32_t);
-    virtual void Slot17_ae0b00(uint32_t);
-    virtual void Slot18_ae0b00(uint32_t);
-    virtual void Slot19_ae0b00(uint32_t);
-    virtual void Slot20_ae0b00(uint32_t);
-    virtual void Slot21_ae0b00(uint32_t);
-    virtual void Slot22_ae0b00(uint32_t, uint32_t);
-    virtual void Slot23_ae0b00(uint32_t, uint32_t);
-    virtual void Slot24_ae0b00(uint32_t, uint32_t);
-    virtual void Slot25_ae0b00(uint32_t, uint32_t);
-    virtual void Slot26_ae0b00(uint32_t);
-    virtual void Slot27_ae0b00(uint32_t);
-    virtual void Slot28_ae0b00(uint32_t);
-    virtual void Slot29_ae0b00(uint32_t, uint32_t);
-    virtual void Slot30_ae0b00(uint32_t, uint32_t);
-    virtual void Slot31_ae0b00(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot32_ae0b00(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot33_ae0b00(uint32_t, uint32_t);
-    virtual void Slot34_ae0b00(uint32_t, uint32_t);
-};
-
 // VTABLE: 0x00ae0b90 cUnk00adc8d8
-// VTABLE: 0x00ae0df0 cUnk00ae0b90_d8
+// VTABLE: 0x00ae0df0 cUnk00ae0b00
 // SIZE 0x170
-class cUnk00ae0b90 : public cUnk00adc8d8, public cUnk00ae0b90_d8 {
+class cUnk00ae0b90 : public cUnk00adc8d8, public cUnk00ae0b00 {
 public:
     virtual ~cUnk00ae0b90();
     virtual bool QueryInterface(unsigned int, void **);
@@ -59,10 +24,44 @@ public:
     virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual bool Slot140_adc8d8(uint32_t, uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_adb6a8();
-    virtual void Slot05_adb6a8();
-    virtual void Slot06_ae0b00(uint32_t, uint32_t);
-    char unknowndc[0x94];
+    virtual bool Slot04_adb6a8();
+    virtual bool Slot05_adb6a8();
+    virtual void* Slot03_ae0b00();
+    virtual bool Slot04_ae0b00(uint32_t);
+    virtual bool Slot05_ae0b00(uint32_t);
+    virtual bool Slot06_ae0b00(uint32_t, uint32_t);
+    virtual uint32_t Slot07_ae0b00(uint32_t);
+    virtual uint32_t Slot08_ae0b00();
+    virtual bool Slot09_ae0b00(uint32_t);
+    virtual bool Slot10_ae0b00(uint32_t, uint32_t);
+    virtual bool Slot11_ae0b00(uint32_t, uint32_t);
+    virtual bool Slot12_ae0b00(uint32_t);
+    virtual bool Slot13_ae0b00(uint32_t);
+    virtual bool Slot14_ae0b00(uint32_t, uint32_t);
+    virtual bool Slot15_ae0b00(uint32_t);
+    virtual bool Slot16_ae0b00(uint32_t);
+    virtual bool Slot17_ae0b00(uint32_t);
+    virtual bool Slot18_ae0b00(uint32_t);
+    virtual bool Slot19_ae0b00(uint32_t);
+    virtual bool Slot20_ae0b00(uint32_t);
+    virtual bool Slot21_ae0b00(uint32_t);
+    virtual bool Slot22_ae0b00(uint32_t, uint32_t);
+    virtual bool Slot23_ae0b00(uint32_t, uint32_t);
+    virtual bool Slot24_ae0b00(uint32_t, uint32_t);
+    virtual bool Slot25_ae0b00(uint32_t, uint32_t);
+    virtual bool Slot26_ae0b00(uint32_t);
+    virtual bool Slot27_ae0b00(uint32_t);
+    virtual bool Slot28_ae0b00(uint32_t);
+    virtual bool Slot29_ae0b00(uint32_t, uint32_t);
+    virtual bool Slot30_ae0b00(uint32_t, uint32_t);
+    virtual bool Slot31_ae0b00(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot32_ae0b00(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot33_ae0b00(uint32_t, uint32_t);
+    virtual bool Slot34_ae0b00(uint32_t, uint32_t);
+    char unknowndc[0x38];
+    uint32_t field114;
+    uint32_t field118;
+    char unknown11c[0x54];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae0b90[sizeof(cUnk00ae0b90) == 0x170 ? 1 : -1];

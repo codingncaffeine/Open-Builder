@@ -8,11 +8,11 @@
 
 // The subobject at +0x0 (vtable 0x00ad2718): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad2718_0 {
-    virtual void Slot00_ad4cf4(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad4cf4() = 0;
+    virtual bool Slot00_ad4cf4(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
     virtual void Slot03_ad2718(uint32_t) = 0;
-    virtual void Slot04_ad2718() = 0;
+    virtual uint32_t Slot04_ad2718() = 0;
     virtual ~cUnk00ad2718_0() {}
     virtual bool Slot06_ad2718(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot07_ad2718(uint32_t, uint32_t) = 0;
@@ -40,8 +40,12 @@ struct OB_NOVTABLE cUnk00ad2718_0 {
     virtual uint32_t Slot29_ad2718() = 0;
 };
 
-// Between cUnk00ac2b18 and cUnk00ad2718 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad2718_4 : public cUnk00ac2b18 {
+// VTABLE: 0x00ad2718 cUnk00ad2718_0
+// VTABLE: 0x00ad2680 cUnk00ac2b18
+// SIZE 0x38
+class cUnk00ad2718 : public cUnk00ad2718_0, public cUnk00ac2b18 {
+public:
+    virtual ~cUnk00ad2718();
     virtual bool Slot03_ac2b18();
     virtual bool Slot04_ac2b18();
     virtual bool Slot05_ac2b18(uint32_t, uint32_t, uint32_t, uint32_t);
@@ -72,20 +76,12 @@ struct OB_NOVTABLE cUnk00ad2718_4 : public cUnk00ac2b18 {
     virtual bool Slot30_ac2b18(uint32_t, uint32_t);
     virtual uint32_t Slot31_ac2b18();
     virtual void Slot32_ac2b18(uint32_t);
-    virtual void Slot33_ac2b18(uint32_t);
-    virtual void Slot34_ac2b18(uint32_t);
+    virtual bool Slot33_ac2b18(uint32_t);
+    virtual bool Slot34_ac2b18(uint32_t);
     virtual bool Slot35_ac2b18(uint32_t, uint32_t, uint32_t);
     virtual bool Slot36_ac2b18(uint32_t, uint32_t);
-};
-
-// VTABLE: 0x00ad2718 cUnk00ad2718_0
-// VTABLE: 0x00ad2680 cUnk00ad2718_4
-// SIZE 0x38
-class cUnk00ad2718 : public cUnk00ad2718_0, public cUnk00ad2718_4 {
-public:
-    virtual ~cUnk00ad2718();
     virtual void Slot03_ad2718(uint32_t);
-    virtual void Slot04_ad2718();
+    virtual uint32_t Slot04_ad2718();
     virtual bool Slot06_ad2718(uint32_t, uint32_t, uint32_t);
     virtual bool Slot07_ad2718(uint32_t, uint32_t);
     virtual uint32_t Slot08_ad2718(uint32_t);
@@ -110,10 +106,13 @@ public:
     virtual bool Slot27_ad2718(uint32_t);
     virtual bool Slot28_ad2718();
     virtual uint32_t Slot29_ad2718();
-    virtual void Slot00_ad4cf4(uint32_t, uint32_t);
-    virtual void Slot01_ad4cf4();
+    virtual bool Slot00_ad4cf4(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
-    char unknown8[0x30];
+    uint32_t field8;
+    char unknownc[0x8];
+    uint32_t field14;
+    char unknown18[0x20];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad2718[sizeof(cUnk00ad2718) == 0x38 ? 1 : -1];

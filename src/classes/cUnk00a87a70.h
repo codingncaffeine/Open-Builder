@@ -15,7 +15,7 @@ struct OB_NOVTABLE cUnk00a87a70_0 {
     virtual void Slot04_a87a70() = 0;
     virtual uint32_t Slot05_a87a70() = 0;
     virtual void Slot06_a87a70(uint32_t) = 0;
-    virtual void Slot07_a87a70(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot07_a87a70(uint32_t, uint32_t) = 0;
     virtual void Slot08_a87a70(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot09_a87a70(uint32_t) = 0;
     virtual uint32_t Slot10_a87a70() = 0;
@@ -26,11 +26,11 @@ struct OB_NOVTABLE cUnk00a87a70_0 {
     virtual float Slot15_a87a70() = 0;
     virtual float Slot16_a87a70() = 0;
     virtual float Slot17_a87a70() = 0;
-    virtual void Slot18_a87a70(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot18_a87a70(uint32_t, uint32_t) = 0;
     virtual void Slot19_a87a70(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot20_a87a70(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot21_a87a70(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot22_a87a70(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot22_a87a70(uint32_t, uint32_t) = 0;
     virtual void Slot23_a87a70(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void* Slot24_a87a70() = 0;
     virtual void* Slot25_a87a70() = 0;
@@ -39,19 +39,15 @@ struct OB_NOVTABLE cUnk00a87a70_0 {
     virtual ~cUnk00a87a70_0() {}
 };
 
-// Between cUnk00a80784 and cUnk00a87a70 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a87a70_4 : public cUnk00a80784 {
+// VTABLE: 0x00a87a70 cUnk00a87a70_0
+// VTABLE: 0x00a87a54 cUnk00a80784
+// SIZE 0x44
+class cUnk00a87a70 : public cUnk00a87a70_0, public cUnk00a80784 {
+public:
+    virtual ~cUnk00a87a70() {}
     virtual bool Slot03_a80784(uint32_t);
     virtual bool Slot04_a80784(uint32_t);
     virtual uint32_t Slot05_a80784();
-};
-
-// VTABLE: 0x00a87a70 cUnk00a87a70_0
-// VTABLE: 0x00a87a54 cUnk00a87a70_4
-// SIZE 0x44
-class cUnk00a87a70 : public cUnk00a87a70_0, public cUnk00a87a70_4 {
-public:
-    virtual ~cUnk00a87a70() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
@@ -59,7 +55,7 @@ public:
     virtual void Slot04_a87a70();
     virtual uint32_t Slot05_a87a70();
     virtual void Slot06_a87a70(uint32_t);
-    virtual void Slot07_a87a70(uint32_t, uint32_t);
+    virtual uint32_t Slot07_a87a70(uint32_t, uint32_t);
     virtual void Slot08_a87a70(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot09_a87a70(uint32_t);
     virtual uint32_t Slot10_a87a70();
@@ -70,17 +66,18 @@ public:
     virtual float Slot15_a87a70();
     virtual float Slot16_a87a70();
     virtual float Slot17_a87a70();
-    virtual void Slot18_a87a70(uint32_t, uint32_t);
+    virtual uint32_t Slot18_a87a70(uint32_t, uint32_t);
     virtual void Slot19_a87a70(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot20_a87a70(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot21_a87a70(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot22_a87a70(uint32_t, uint32_t);
+    virtual uint32_t Slot22_a87a70(uint32_t, uint32_t);
     virtual void Slot23_a87a70(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void* Slot24_a87a70();
     virtual void* Slot25_a87a70();
     virtual void Slot26_a87a70(uint32_t, uint32_t, uint32_t);
     virtual void Slot27_a87a70();
-    char unknown8[0xc];
+    char unknown8[0x8];
+    uint32_t field10;
     uint32_t field14;
     uint32_t field18;
     uint32_t field1c;

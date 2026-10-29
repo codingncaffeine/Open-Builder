@@ -11,7 +11,7 @@ class cUnk00ac003c {
 public:
     virtual ~cUnk00ac003c();
     virtual void Slot01_ac003c();
-    virtual void Slot02_ac003c();
+    virtual bool Slot02_ac003c();
     virtual void Slot03_ac003c();
     virtual void Slot04_ac003c();
     char unknown4[0x20];

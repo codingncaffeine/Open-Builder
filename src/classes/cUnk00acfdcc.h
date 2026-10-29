@@ -9,11 +9,11 @@
 // SIZE 0x10
 class cUnk00acfdcc {
 public:
-    virtual void Slot00_acfdcc(uint32_t, uint32_t);
-    virtual void Slot01_acfdcc();
+    virtual bool Slot00_acfdcc(uint32_t, uint32_t);
+    virtual uint32_t Slot01_acfdcc();
     virtual void Slot02_acfdcc();
     virtual uint32_t Slot03_acfdcc();
-    virtual void Slot04_acfdcc(uint32_t, uint32_t);
+    virtual bool Slot04_acfdcc(uint32_t, uint32_t);
     virtual uint32_t Slot05_acfdcc();
     virtual ~cUnk00acfdcc();
     char unknown4[0x4];

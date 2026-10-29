@@ -8,8 +8,8 @@
 // SIZE 0x4
 class cUnk00ac2b18 {
 public:
-    virtual void Slot00_ad4cf4(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad4cf4() = 0;
+    virtual bool Slot00_ad4cf4(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
     virtual bool Slot03_ac2b18() = 0;
     virtual bool Slot04_ac2b18() = 0;
@@ -41,8 +41,8 @@ public:
     virtual bool Slot30_ac2b18(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot31_ac2b18() = 0;
     virtual void Slot32_ac2b18(uint32_t) = 0;
-    virtual void Slot33_ac2b18(uint32_t) = 0;
-    virtual void Slot34_ac2b18(uint32_t) = 0;
+    virtual bool Slot33_ac2b18(uint32_t) = 0;
+    virtual bool Slot34_ac2b18(uint32_t) = 0;
     virtual bool Slot35_ac2b18(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot36_ac2b18(uint32_t, uint32_t) = 0;
 };

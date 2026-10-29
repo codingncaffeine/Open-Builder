@@ -7,13 +7,13 @@
 
 class cUnk00ad265c {
 public:
-    virtual void Slot00_ad265c(uint32_t, uint32_t);
+    virtual bool Slot00_ad265c(uint32_t, uint32_t);
     virtual uint32_t Slot01_ad265c();
     virtual uint32_t Slot02_ad265c();
     virtual uint32_t Slot03_ad265c();
-    virtual void Slot04_ad265c(uint32_t);
-    virtual void Slot05_ad265c(uint32_t, uint32_t) = 0;
-    virtual void Slot06_ad265c(uint32_t, uint32_t) = 0;
+    virtual bool Slot04_ad265c(uint32_t);
+    virtual bool Slot05_ad265c(uint32_t, uint32_t) = 0;
+    virtual bool Slot06_ad265c(uint32_t, uint32_t) = 0;
     virtual ~cUnk00ad265c() {}
 };
 

@@ -7,14 +7,14 @@
 
 class cUnk00ad2374 {
 public:
-    virtual void Slot00_ad2374(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad2374() = 0;
+    virtual bool Slot00_ad2374(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad2374() = 0;
     virtual void Slot02_ad2374() = 0;
-    virtual void Slot03_ad2374() = 0;
-    virtual void Slot04_ad2374() = 0;
-    virtual void Slot13_acf150(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot06_ad2374(uint32_t) = 0;
-    virtual void Slot06_acf150(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot03_ad2374() = 0;
+    virtual bool Slot04_ad2374() = 0;
+    virtual bool Slot13_acf150(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot06_ad2374(uint32_t) = 0;
+    virtual bool Slot06_acf150(uint32_t, uint32_t, uint32_t) = 0;
 };
 
 #endif

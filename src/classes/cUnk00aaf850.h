@@ -15,9 +15,9 @@ public:
     virtual ~cUnk00aaf850() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_aaf7f0(uint32_t, uint32_t);
-    virtual void Slot03_aaf7f0(uint32_t);
-    virtual void Slot04_aaf7f0(uint32_t);
+    virtual bool Slot00_aaf7f0(uint32_t, uint32_t);
+    virtual uint32_t Slot03_aaf7f0(uint32_t);
+    virtual uint32_t Slot04_aaf7f0(uint32_t);
     virtual uint32_t Slot05_aaf7f0();
     virtual void Slot06_aaf7f0(uint32_t, uint32_t);
     virtual void Slot07_aaf7f0(uint32_t, uint32_t);
@@ -26,8 +26,8 @@ public:
     virtual void Slot10_aaf7f0(uint32_t);
     virtual void Slot11_aaf7f0(uint32_t);
     virtual void Slot12_aaf7f0(uint32_t, uint32_t);
-    virtual void Slot13_aaf7f0(uint32_t);
-    virtual void Slot14_aaf7f0();
+    virtual bool Slot13_aaf7f0(uint32_t);
+    virtual uint32_t Slot14_aaf7f0();
     virtual void Slot15_aaf7f0(uint32_t);
     virtual void Slot16_aaf7f0();
     virtual bool Slot17_aaf7f0();

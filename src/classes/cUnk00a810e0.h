@@ -8,39 +8,35 @@
 #include "classes/cUnk00a81058.h"
 #include "gzcom/cUnk0090da1e.h"
 
-// Between cUnk00a80784 and cUnk00a810e0 at +0x8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a810e0_8 : public cUnk00a80784 {
+// VTABLE: 0x00a810e0 cUnk0090da1e
+// VTABLE: 0x00a810c8 cUnk00a80784
+// VTABLE: 0x00a81090 cUnk00a81058
+// SIZE 0x28
+class cUnk00a810e0 : public cUnk0090da1e, public cUnk00a80784, public cUnk00a81058 {
+public:
+    virtual ~cUnk00a810e0() {}
     virtual bool Slot03_a80784(uint32_t);
     virtual bool Slot04_a80784(uint32_t);
     virtual uint32_t Slot05_a80784();
-};
-
-// Between cUnk00a81058 and cUnk00a810e0 at +0xc: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a810e0_c : public cUnk00a81058 {
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual unsigned int AddRef();
+    virtual unsigned int Release();
     virtual void Slot03_a81058(uint32_t, uint32_t);
-    virtual void Slot04_a81058();
-    virtual void Slot05_a81058();
+    virtual float Slot04_a81058();
+    virtual float Slot05_a81058();
     virtual bool Slot06_a81058();
-    virtual void Slot07_a81058(uint32_t);
+    virtual bool Slot07_a81058(uint32_t);
     virtual uint32_t Slot08_a81058();
     virtual uint32_t Slot09_a81058();
     virtual void Slot10_a81058(uint32_t);
     virtual uint32_t Slot11_a81058();
     virtual void Slot12_a81058(uint32_t);
-    virtual void Slot13_a81058(uint32_t);
-};
-
-// VTABLE: 0x00a810e0 cUnk0090da1e
-// VTABLE: 0x00a810c8 cUnk00a810e0_8
-// VTABLE: 0x00a81090 cUnk00a810e0_c
-// SIZE 0x28
-class cUnk00a810e0 : public cUnk0090da1e, public cUnk00a810e0_8, public cUnk00a810e0_c {
-public:
-    virtual ~cUnk00a810e0() {}
-    virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
-    virtual unsigned int Release();
-    char unknown10[0x18];
+    virtual bool Slot13_a81058(uint32_t);
+    bool field10;
+    char unknown11[0xb];
+    uint32_t field1c;
+    uint32_t field20;
+    uint32_t field24;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a810e0[sizeof(cUnk00a810e0) == 0x28 ? 1 : -1];

@@ -7,7 +7,7 @@
 #include "classes/cUnk00adfeb8.h"
 
 // VTABLE: 0x00aba190 cUnk00adc8d8
-// VTABLE: 0x00aba118 cUnk00adfeb8_d8
+// VTABLE: 0x00aba118 cUnk00adfe40
 // SIZE 0x114
 class cUnk00aba190 : public cUnk00adfeb8 {
 public:

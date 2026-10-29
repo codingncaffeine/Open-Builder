@@ -9,23 +9,40 @@
 // SIZE 0x88
 class cUnk00a92ec0 {
 public:
-    virtual void Slot00_a92ec0(uint32_t, uint32_t);
-    virtual void Slot01_a92ec0();
-    virtual void Slot02_a92ec0();
-    virtual void Slot03_a92ec0();
-    virtual void Slot04_a92ec0();
-    virtual void Slot05_a92ec0();
-    virtual void Slot06_a92ec0();
-    virtual void Slot07_a92ec0();
-    virtual void Slot08_a92ec0();
+    virtual bool Slot00_a92ec0(uint32_t, uint32_t);
+    virtual uint32_t Slot01_a92ec0();
+    virtual uint32_t Slot02_a92ec0();
+    virtual bool Slot03_a92ec0();
+    virtual bool Slot04_a92ec0();
+    virtual bool Slot05_a92ec0();
+    virtual bool Slot06_a92ec0();
+    virtual bool Slot07_a92ec0();
+    virtual bool Slot08_a92ec0();
     virtual void Slot09_a92ec0(uint32_t);
-    virtual void Slot10_a92ec0(uint32_t);
-    virtual void Slot11_a92ec0();
+    virtual uint32_t Slot10_a92ec0(uint32_t);
+    virtual uint32_t Slot11_a92ec0();
     virtual void Slot12_a92ec0(uint32_t);
-    virtual void Slot13_a92ec0(uint32_t);
+    virtual bool Slot13_a92ec0(uint32_t);
     virtual void Slot14_a92ec0(uint32_t);
     virtual ~cUnk00a92ec0();
-    char unknown4[0x84];
+    // STUB: 0x004de330
+    void Fn004de330();
+    // STUB: 0x004de630
+    void Fn004de630();
+    // STUB: 0x004e05a0
+    bool Fn004e05a0();
+    char unknown4[0x4];
+    uint32_t mnRefCount;
+    char unknownc[0x8];
+    bool mbInitialized;
+    char unknown15[0x3];
+    uint32_t mnPercent;
+    char unknown1c[0x8];
+    int32_t mnCounter;
+    bool mbReady;
+    char unknown29[0x17];
+    uint32_t* mpList;
+    char unknown44[0x44];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a92ec0[sizeof(cUnk00a92ec0) == 0x88 ? 1 : -1];

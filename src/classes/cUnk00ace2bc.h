@@ -9,7 +9,7 @@
 // VTABLE: 0x00ace2bc
 class cUnk00ace2bc : public cUnk00ace158 {
 public:
-    virtual void Slot00_ace158(uint32_t);
+    virtual bool Slot00_ace158(uint32_t);
 };
 
 #endif

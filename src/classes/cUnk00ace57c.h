@@ -8,15 +8,15 @@
 // VTABLE: 0x00ace57c
 class cUnk00ace57c {
 public:
-    virtual void Slot00_ace57c(uint32_t, uint32_t);
+    virtual bool Slot00_ace57c(uint32_t, uint32_t);
     virtual void Slot01_ace57c();
     virtual void Slot02_ace57c();
-    virtual void Slot03_ace57c(uint32_t);
-    virtual void Slot04_ace57c(uint32_t);
-    virtual void Slot05_ace57c(uint32_t, uint32_t);
-    virtual void Slot06_ace57c(uint32_t, uint32_t);
-    virtual void Slot07_ace57c(uint32_t);
-    virtual void Slot08_ace57c(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot03_ace57c(uint32_t);
+    virtual bool Slot04_ace57c(uint32_t);
+    virtual bool Slot05_ace57c(uint32_t, uint32_t);
+    virtual bool Slot06_ace57c(uint32_t, uint32_t);
+    virtual uint32_t Slot07_ace57c(uint32_t);
+    virtual bool Slot08_ace57c(uint32_t, uint32_t, uint32_t);
     virtual void Slot09_ace57c();
     virtual void Slot10_ace57c();
     virtual ~cUnk00ace57c() {}

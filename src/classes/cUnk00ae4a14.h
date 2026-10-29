@@ -8,8 +8,8 @@
 // VTABLE: 0x00ae4a14
 class cUnk00ae4a14 {
 public:
-    virtual void Slot00_ae4a14(uint32_t);
-    virtual void Slot01_ae4a14();
+    virtual uint32_t Slot00_ae4a14(uint32_t);
+    virtual uint32_t Slot01_ae4a14();
 };
 
 #endif

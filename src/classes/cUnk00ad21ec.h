@@ -7,12 +7,12 @@
 
 class cUnk00ad21ec {
 public:
-    virtual void Slot00_ad442c(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad442c() = 0;
-    virtual void Slot02_ad442c() = 0;
-    virtual void Slot03_ad21ec(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot04_ad21ec(uint32_t) = 0;
-    virtual void Slot05_ad21ec(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ad442c(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad442c() = 0;
+    virtual uint32_t Slot02_ad442c() = 0;
+    virtual bool Slot03_ad21ec(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot04_ad21ec(uint32_t) = 0;
+    virtual bool Slot05_ad21ec(uint32_t, uint32_t) = 0;
     virtual bool Slot06_ad21ec() = 0;
     virtual bool Slot07_ad21ec() = 0;
     virtual bool Slot08_ad21ec(uint32_t, uint32_t) = 0;

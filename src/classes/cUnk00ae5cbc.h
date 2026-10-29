@@ -9,8 +9,8 @@
 class cUnk00ae5cbc {
 public:
     virtual uint32_t Slot00_ae5cbc(uint32_t, uint32_t);
-    virtual void Slot01_ae5cbc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot02_ae5cbc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot01_ae5cbc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot02_ae5cbc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot03_ae5cbc(uint32_t);
     virtual ~cUnk00ae5cbc() {}
 };

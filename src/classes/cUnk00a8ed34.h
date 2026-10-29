@@ -7,20 +7,16 @@
 #include "classes/cUnk00aaaa9c.h"
 #include "gzcom/cUnk0090da1e.h"
 
-// Between cUnk00aaaa9c and cUnk00a8ed34 at +0x8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a8ed34_8 : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c(uint32_t);
-};
-
 // VTABLE: 0x00a8ed34 cUnk0090da1e
-// VTABLE: 0x00a8ed24 cUnk00a8ed34_8
+// VTABLE: 0x00a8ed24 cUnk00aaaa9c
 // SIZE 0x14
-class cUnk00a8ed34 : public cUnk0090da1e, public cUnk00a8ed34_8 {
+class cUnk00a8ed34 : public cUnk0090da1e, public cUnk00aaaa9c {
 public:
     virtual ~cUnk00a8ed34();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
+    virtual bool Slot03_aaaa9c(uint32_t);
     char unknownc[0x8];
 };
 #ifdef _MSC_VER

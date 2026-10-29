@@ -9,10 +9,10 @@
 // SIZE 0x10
 class cUnk00ab4afc {
 public:
-    virtual void Slot00_ab4afc(uint32_t, uint32_t);
+    virtual bool Slot00_ab4afc(uint32_t, uint32_t);
     virtual void Slot01_ab4afc();
     virtual void Slot02_ab4afc();
-    virtual void Slot03_ab4afc(uint32_t, uint32_t);
+    virtual bool Slot03_ab4afc(uint32_t, uint32_t);
     virtual bool Slot04_ab4afc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     char unknown4[0xc];
 };

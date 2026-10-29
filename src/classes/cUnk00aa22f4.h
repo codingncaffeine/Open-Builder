@@ -7,8 +7,15 @@
 #include "classes/cUnk00aa2400.h"
 #include "gzcom/cUnk0090da1e.h"
 
-// Between cUnk00aa2400 and cUnk00aa22f4 at +0x8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00aa22f4_8 : public cUnk00aa2400 {
+// VTABLE: 0x00aa22f4 cUnk0090da1e
+// VTABLE: 0x00aa2280 cUnk00aa2400
+// SIZE 0x1c
+class cUnk00aa22f4 : public cUnk0090da1e, public cUnk00aa2400 {
+public:
+    virtual ~cUnk00aa22f4() {}
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual unsigned int AddRef();
+    virtual unsigned int Release();
     virtual void Slot03_aa2400();
     virtual void Slot04_aa2400(uint32_t);
     virtual void Slot05_aa2400(uint32_t);
@@ -24,29 +31,21 @@ struct OB_NOVTABLE cUnk00aa22f4_8 : public cUnk00aa2400 {
     virtual void Slot15_aa2400(uint32_t);
     virtual void Slot16_aa2400(uint32_t);
     virtual void Slot17_aa2400(uint32_t, uint32_t);
-    virtual void Slot18_aa2400();
+    virtual bool Slot18_aa2400();
     virtual void Slot19_aa2400(uint32_t);
     virtual uint32_t Slot20_aa2400();
     virtual void Slot21_aa2400(uint32_t, uint32_t);
-    virtual void Slot22_aa2400();
-    virtual void Slot23_aa2400();
+    virtual bool Slot22_aa2400();
+    virtual uint32_t Slot23_aa2400();
     virtual uint32_t Slot24_aa2400();
     virtual uint32_t Slot25_aa2400();
     virtual void Slot26_aa2400(uint32_t, uint32_t);
     virtual void Slot27_aa2400(uint32_t);
-    virtual void Slot28_aa2400(uint32_t);
-};
-
-// VTABLE: 0x00aa22f4 cUnk0090da1e
-// VTABLE: 0x00aa2280 cUnk00aa22f4_8
-// SIZE 0x1c
-class cUnk00aa22f4 : public cUnk0090da1e, public cUnk00aa22f4_8 {
-public:
-    virtual ~cUnk00aa22f4() {}
-    virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
-    virtual unsigned int Release();
-    char unknownc[0x10];
+    virtual bool Slot28_aa2400(uint32_t);
+    char unknownc[0x4];
+    uint32_t field10;
+    uint32_t field14;
+    uint32_t field18;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa22f4[sizeof(cUnk00aa22f4) == 0x1c ? 1 : -1];

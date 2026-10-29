@@ -11,7 +11,7 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ab4658() = 0;
+    virtual uint32_t Slot03_ab4658() = 0;
     virtual void Slot04_ab4658(uint32_t) = 0;
     virtual uint32_t Slot05_ab4658() = 0;
     virtual void Slot06_ab4658(uint32_t) = 0;
@@ -25,7 +25,7 @@ public:
     virtual void Slot14_ab4658(uint32_t) = 0;
     virtual uint32_t Slot15_ab4658() = 0;
     virtual void Slot16_ab4658(uint32_t, uint32_t) = 0;
-    virtual void Slot17_ab4658(uint32_t) = 0;
+    virtual uint32_t Slot17_ab4658(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab4658[sizeof(cUnk00ab4658) == 0x4 ? 1 : -1];

@@ -10,7 +10,7 @@ class cUnk00aa2af4 {
 public:
     virtual ~cUnk00aa2af4() {}
     virtual void Slot01_aa2af4();
-    virtual void Slot02_aa2af4();
+    virtual bool Slot02_aa2af4();
 };
 
 #endif

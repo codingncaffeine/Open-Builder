@@ -8,35 +8,39 @@
 
 // The subobject at +0x0 (vtable 0x00ac5488): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ac5488_0 {
-    virtual void Slot00_ac5488(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ac5488() = 0;
+    virtual bool Slot00_ac5488(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ac5488() = 0;
     virtual void Slot02_ac5488() = 0;
-    virtual void Slot03_ac5488() = 0;
-    virtual void Slot04_ac5488() = 0;
+    virtual bool Slot03_ac5488() = 0;
+    virtual bool Slot04_ac5488() = 0;
     virtual bool Slot05_ac5488(uint32_t) = 0;
     virtual void Slot06_ac5488(uint32_t) = 0;
     virtual void Slot07_ac5488(uint32_t) = 0;
     virtual void Slot08_ac5488(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot09_ac5488(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot09_ac5488(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot10_ac5488(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot11_ac5488(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot12_ac5488(uint32_t) = 0;
-    virtual void Slot13_ac5488(uint32_t) = 0;
+    virtual uint32_t Slot11_ac5488(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot12_ac5488(uint32_t) = 0;
+    virtual bool Slot13_ac5488(uint32_t) = 0;
     virtual void Slot14_ac5488(uint32_t) = 0;
-    virtual void Slot15_ac5488(uint32_t) = 0;
+    virtual uint32_t Slot15_ac5488(uint32_t) = 0;
     virtual bool Slot16_ac5488(uint32_t) = 0;
-    virtual void Slot17_ac5488(uint32_t) = 0;
-    virtual void Slot18_ac5488(uint32_t, uint32_t) = 0;
-    virtual void Slot19_ac5488(uint32_t, uint32_t) = 0;
-    virtual void Slot20_ac5488(uint32_t, uint32_t) = 0;
-    virtual void Slot21_ac5488(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot22_ac5488(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot23_ac5488(uint32_t, uint32_t) = 0;
+    virtual bool Slot17_ac5488(uint32_t) = 0;
+    virtual uint32_t Slot18_ac5488(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot19_ac5488(uint32_t, uint32_t) = 0;
+    virtual bool Slot20_ac5488(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot21_ac5488(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot22_ac5488(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot23_ac5488(uint32_t, uint32_t) = 0;
     virtual ~cUnk00ac5488_0() {}
 };
 
-// Between cUnk00a93658 and cUnk00ac5488 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ac5488_4 : public cUnk00a93658 {
+// VTABLE: 0x00ac5488 cUnk00ac5488_0
+// VTABLE: 0x00ac5454 cUnk00a93658
+// SIZE 0x70
+class cUnk00ac5488 : public cUnk00ac5488_0, public cUnk00a93658 {
+public:
+    virtual ~cUnk00ac5488();
     virtual uint32_t Slot03_a93658();
     virtual void Slot04_a93658(uint32_t);
     virtual uint32_t Slot05_a93658();
@@ -45,39 +49,32 @@ struct OB_NOVTABLE cUnk00ac5488_4 : public cUnk00a93658 {
     virtual bool Slot10_a93658(uint32_t);
     virtual bool Slot11_a93658(uint32_t);
     virtual uint32_t Slot12_a93658();
-};
-
-// VTABLE: 0x00ac5488 cUnk00ac5488_0
-// VTABLE: 0x00ac5454 cUnk00ac5488_4
-// SIZE 0x70
-class cUnk00ac5488 : public cUnk00ac5488_0, public cUnk00ac5488_4 {
-public:
-    virtual ~cUnk00ac5488();
-    virtual void Slot00_ac5488(uint32_t, uint32_t);
-    virtual void Slot01_ac5488();
+    virtual bool Slot00_ac5488(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ac5488();
     virtual void Slot02_ac5488();
-    virtual void Slot03_ac5488();
-    virtual void Slot04_ac5488();
+    virtual bool Slot03_ac5488();
+    virtual bool Slot04_ac5488();
     virtual bool Slot05_ac5488(uint32_t);
     virtual void Slot06_ac5488(uint32_t);
     virtual void Slot07_ac5488(uint32_t);
     virtual void Slot08_ac5488(uint32_t, uint32_t, uint32_t);
-    virtual void Slot09_ac5488(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot09_ac5488(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot10_ac5488(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot11_ac5488(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot12_ac5488(uint32_t);
-    virtual void Slot13_ac5488(uint32_t);
+    virtual uint32_t Slot11_ac5488(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot12_ac5488(uint32_t);
+    virtual bool Slot13_ac5488(uint32_t);
     virtual void Slot14_ac5488(uint32_t);
-    virtual void Slot15_ac5488(uint32_t);
+    virtual uint32_t Slot15_ac5488(uint32_t);
     virtual bool Slot16_ac5488(uint32_t);
-    virtual void Slot17_ac5488(uint32_t);
-    virtual void Slot18_ac5488(uint32_t, uint32_t);
-    virtual void Slot19_ac5488(uint32_t, uint32_t);
-    virtual void Slot20_ac5488(uint32_t, uint32_t);
-    virtual void Slot21_ac5488(uint32_t, uint32_t, uint32_t);
-    virtual void Slot22_ac5488(uint32_t, uint32_t, uint32_t);
-    virtual void Slot23_ac5488(uint32_t, uint32_t);
-    char unknown8[0xc];
+    virtual bool Slot17_ac5488(uint32_t);
+    virtual uint32_t Slot18_ac5488(uint32_t, uint32_t);
+    virtual uint32_t Slot19_ac5488(uint32_t, uint32_t);
+    virtual bool Slot20_ac5488(uint32_t, uint32_t);
+    virtual uint32_t Slot21_ac5488(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot22_ac5488(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot23_ac5488(uint32_t, uint32_t);
+    char unknown8[0x8];
+    uint32_t field10;
     uint32_t field14;
     char unknown18[0x8];
     uint32_t field20;

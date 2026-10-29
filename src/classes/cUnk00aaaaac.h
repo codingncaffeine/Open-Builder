@@ -12,9 +12,9 @@ class cUnk00aaaaac : public cUnk00aa75b0 {
 public:
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_aa75b0(uint32_t, uint32_t);
-    virtual void Slot03_aa75b0();
-    virtual void Slot04_aa75b0();
+    virtual bool Slot00_aa75b0(uint32_t, uint32_t);
+    virtual bool Slot03_aa75b0();
+    virtual bool Slot04_aa75b0();
     virtual void Slot05_aa75b0();
 };
 #ifdef _MSC_VER

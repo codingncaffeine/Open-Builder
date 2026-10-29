@@ -11,29 +11,25 @@ struct OB_NOVTABLE cUnk00ab4968_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ab4968(uint32_t) = 0;
+    virtual bool Slot03_ab4968(uint32_t) = 0;
     virtual ~cUnk00ab4968_0() {}
-    virtual void Slot05_ab4968() = 0;
-    virtual void Slot06_ab4968() = 0;
-};
-
-// Between cUnk00a83524 and cUnk00ab4968 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ab4968_4 : public cUnk00a83524 {
-    virtual bool Slot03_a83524(uint32_t, uint32_t);
+    virtual bool Slot05_ab4968() = 0;
+    virtual bool Slot06_ab4968() = 0;
 };
 
 // VTABLE: 0x00ab4968 cUnk00ab4968_0
-// VTABLE: 0x00ab4954 cUnk00ab4968_4
+// VTABLE: 0x00ab4954 cUnk00a83524
 // SIZE 0x18
-class cUnk00ab4968 : public cUnk00ab4968_0, public cUnk00ab4968_4 {
+class cUnk00ab4968 : public cUnk00ab4968_0, public cUnk00a83524 {
 public:
     virtual ~cUnk00ab4968() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_ab4968(uint32_t);
-    virtual void Slot05_ab4968();
-    virtual void Slot06_ab4968();
+    virtual bool Slot03_a83524(uint32_t, uint32_t);
+    virtual bool Slot03_ab4968(uint32_t);
+    virtual bool Slot05_ab4968();
+    virtual bool Slot06_ab4968();
     char unknown8[0x10];
 };
 #ifdef _MSC_VER

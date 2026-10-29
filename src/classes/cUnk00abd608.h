@@ -16,11 +16,11 @@ public:
     virtual unsigned int AddRef();
     virtual unsigned int Release();
     virtual void* Slot03_abd5d4();
-    virtual void Slot04_abd5d4(uint32_t, uint32_t);
-    virtual void Slot05_abd5d4(uint32_t, uint32_t);
-    virtual void Slot06_abd5d4(uint32_t, uint32_t);
+    virtual bool Slot04_abd5d4(uint32_t, uint32_t);
+    virtual bool Slot05_abd5d4(uint32_t, uint32_t);
+    virtual bool Slot06_abd5d4(uint32_t, uint32_t);
     virtual void Slot07_abd5d4(uint32_t);
-    virtual void Slot08_abd5d4(uint32_t, uint32_t);
+    virtual bool Slot08_abd5d4(uint32_t, uint32_t);
 };
 
 // SYNTHETIC: 0x00806210

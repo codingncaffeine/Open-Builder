@@ -9,7 +9,7 @@
 // SIZE 0x28
 class cUnk00a94200 {
 public:
-    virtual void Slot00_a94200(uint32_t, uint32_t);
+    virtual bool Slot00_a94200(uint32_t, uint32_t);
     virtual void Slot01_a94200();
     virtual void Slot02_a94200();
     char unknown4[0x24];

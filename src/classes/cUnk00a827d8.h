@@ -12,7 +12,7 @@ public:
     virtual void Slot00_a827d8(uint32_t, uint32_t);
     virtual void Slot01_a827d8(uint32_t, uint32_t);
     virtual void Slot02_a827d8(uint32_t, uint32_t);
-    char unknown4[0x4];
+    uint32_t field4;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a827d8[sizeof(cUnk00a827d8) == 0x8 ? 1 : -1];

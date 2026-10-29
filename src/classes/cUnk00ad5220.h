@@ -7,11 +7,11 @@
 
 class cUnk00ad5220 {
 public:
-    virtual void Slot00_ad51f0(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad51f0() = 0;
+    virtual bool Slot00_ad51f0(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad51f0() = 0;
     virtual void Slot02_ad51f0() = 0;
-    virtual void Slot03_ad5220(uint32_t) = 0;
-    virtual void Slot04_ad5220(uint32_t, uint32_t) = 0;
+    virtual bool Slot03_ad5220(uint32_t) = 0;
+    virtual bool Slot04_ad5220(uint32_t, uint32_t) = 0;
 };
 
 #endif

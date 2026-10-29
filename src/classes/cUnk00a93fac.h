@@ -9,7 +9,7 @@
 // SIZE 0x8
 class cUnk00a93fac {
 public:
-    virtual void Slot00_a93fac(uint32_t, uint32_t);
+    virtual bool Slot00_a93fac(uint32_t, uint32_t);
     virtual void Slot01_a93fac();
     virtual void Slot02_a93fac();
     virtual bool Slot03_a93fac();

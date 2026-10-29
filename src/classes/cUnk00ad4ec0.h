@@ -9,8 +9,8 @@
 // SIZE 0xc
 class cUnk00ad4ec0 {
 public:
-    virtual void Slot00_ad4ec0(uint32_t, uint32_t);
-    virtual void Slot01_ad4ec0();
+    virtual bool Slot00_ad4ec0(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad4ec0();
     virtual void Slot02_ad4ec0();
     virtual void Slot03_ad4ec0(uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ad4ec0();

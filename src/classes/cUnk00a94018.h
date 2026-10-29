@@ -7,11 +7,11 @@
 
 class cUnk00a94018 {
 public:
-    virtual void Slot00_a940e4(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_a940e4(uint32_t, uint32_t) = 0;
     virtual void Slot01_a940e4() = 0;
     virtual void Slot02_a940e4() = 0;
-    virtual void Slot03_a94018() = 0;
-    virtual void Slot04_a94018() = 0;
+    virtual bool Slot03_a94018() = 0;
+    virtual bool Slot04_a94018() = 0;
 };
 
 #endif

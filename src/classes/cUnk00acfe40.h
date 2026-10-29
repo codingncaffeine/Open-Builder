@@ -9,26 +9,26 @@
 // SIZE 0x30
 class cUnk00acfe40 {
 public:
-    virtual void Slot00_acfe40(uint32_t, uint32_t);
-    virtual void Slot01_acfe40();
-    virtual void Slot02_acfe40();
-    virtual void Slot03_acfe40();
-    virtual void Slot04_acfe40();
+    virtual bool Slot00_acfe40(uint32_t, uint32_t);
+    virtual uint32_t Slot01_acfe40();
+    virtual uint32_t Slot02_acfe40();
+    virtual bool Slot03_acfe40();
+    virtual bool Slot04_acfe40();
     virtual uint32_t Slot05_acfe40();
     virtual void Slot06_acfe40(uint32_t);
     virtual bool Slot07_acfe40();
     virtual void Slot08_acfe40(uint32_t);
     virtual uint32_t Slot09_acfe40();
-    virtual void Slot10_acfe40(uint32_t);
-    virtual void Slot11_acfe40(uint32_t, uint32_t);
-    virtual void Slot12_acfe40(uint32_t, uint32_t, uint32_t);
-    virtual void Slot13_acfe40(uint32_t);
-    virtual void Slot14_acfe40(uint32_t, uint32_t);
+    virtual bool Slot10_acfe40(uint32_t);
+    virtual uint32_t Slot11_acfe40(uint32_t, uint32_t);
+    virtual bool Slot12_acfe40(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot13_acfe40(uint32_t);
+    virtual bool Slot14_acfe40(uint32_t, uint32_t);
     virtual void Slot15_acfe40(uint32_t);
-    virtual void Slot16_acfe40(uint32_t, uint32_t, uint32_t);
-    virtual void Slot17_acfe40(uint32_t);
-    virtual void Slot18_acfe40(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot19_acfe40(uint32_t, uint32_t);
+    virtual bool Slot16_acfe40(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot17_acfe40(uint32_t);
+    virtual bool Slot18_acfe40(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot19_acfe40(uint32_t, uint32_t);
     virtual ~cUnk00acfe40();
     char unknown4[0x1];
     bool field5;

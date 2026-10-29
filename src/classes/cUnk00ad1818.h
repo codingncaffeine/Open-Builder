@@ -8,22 +8,22 @@
 // SIZE 0x10
 class cUnk00ad1818 {
 public:
-    virtual void Slot00_ad8d88(uint32_t, uint32_t);
-    virtual void Slot01_ad8d88();
-    virtual void Slot02_ad8d88();
+    virtual bool Slot00_ad8d88(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad8d88();
+    virtual uint32_t Slot02_ad8d88();
     virtual void Slot03_ad1818() = 0;
-    virtual void Slot04_ad1818(uint32_t);
-    virtual void Slot05_ad1818(uint32_t);
-    virtual void Slot06_ad1818(uint32_t);
-    virtual void Slot07_ad1818(uint32_t);
-    virtual void Slot08_ad1818(uint32_t);
-    virtual void Slot09_ad1818(uint32_t);
-    virtual void Slot10_ad1818(uint32_t, uint32_t);
-    virtual void Slot11_ad1818(uint32_t, uint32_t);
-    virtual void Slot12_ad1818(uint32_t);
-    virtual void Slot13_ad1818(uint32_t, uint32_t);
-    virtual void Slot14_ad1818(uint32_t);
-    virtual void Slot15_ad1818(uint32_t);
+    virtual bool Slot04_ad1818(uint32_t);
+    virtual bool Slot05_ad1818(uint32_t);
+    virtual bool Slot06_ad1818(uint32_t);
+    virtual bool Slot07_ad1818(uint32_t);
+    virtual bool Slot08_ad1818(uint32_t);
+    virtual bool Slot09_ad1818(uint32_t);
+    virtual bool Slot10_ad1818(uint32_t, uint32_t);
+    virtual bool Slot11_ad1818(uint32_t, uint32_t);
+    virtual bool Slot12_ad1818(uint32_t);
+    virtual bool Slot13_ad1818(uint32_t, uint32_t);
+    virtual bool Slot14_ad1818(uint32_t);
+    virtual bool Slot15_ad1818(uint32_t);
     virtual void Slot16_ad1818(uint32_t);
     virtual bool Slot17_ad1818(uint32_t, uint32_t) = 0;
     virtual bool Slot18_ad1818() = 0;

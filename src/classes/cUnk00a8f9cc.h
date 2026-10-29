@@ -9,7 +9,7 @@
 // SIZE 0x14
 class cUnk00a8f9cc {
 public:
-    virtual void Slot00_a8f9cc(uint32_t, uint32_t);
+    virtual bool Slot00_a8f9cc(uint32_t, uint32_t);
     virtual void Slot01_a8f9cc();
     virtual void Slot02_a8f9cc();
     char unknown4[0x10];

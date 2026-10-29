@@ -9,7 +9,7 @@
 // SIZE 0x64
 class cUnk00a8fa40 {
 public:
-    virtual void Slot00_a8fa40(uint32_t, uint32_t);
+    virtual bool Slot00_a8fa40(uint32_t, uint32_t);
     virtual void Slot01_a8fa40();
     virtual void Slot02_a8fa40();
     virtual void* Slot03_a8fa40();
@@ -17,21 +17,21 @@ public:
     virtual void* Slot05_a8fa40();
     virtual void Slot06_a8fa40();
     virtual void Slot07_a8fa40();
-    virtual void Slot08_a8fa40();
+    virtual bool Slot08_a8fa40();
     virtual void Slot09_a8fa40();
     virtual void Slot10_a8fa40();
-    virtual void Slot11_a8fa40(uint32_t, uint32_t);
+    virtual uint32_t Slot11_a8fa40(uint32_t, uint32_t);
     virtual void Slot12_a8fa40();
     virtual void Slot13_a8fa40(uint32_t);
     virtual void Slot14_a8fa40(uint32_t);
     virtual void Slot15_a8fa40(uint32_t);
-    virtual void Slot16_a8fa40(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot16_a8fa40(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot17_a8fa40();
     virtual void Slot18_a8fa40();
     virtual void Slot19_a8fa40(uint32_t);
-    virtual void Slot20_a8fa40();
+    virtual uint32_t Slot20_a8fa40();
     virtual void Slot21_a8fa40(uint32_t, uint32_t);
-    virtual void Slot22_a8fa40(uint32_t);
+    virtual bool Slot22_a8fa40(uint32_t);
     virtual void Slot23_a8fa40(uint32_t);
     virtual void Slot24_a8fa40(uint32_t);
     virtual ~cUnk00a8fa40();

@@ -1,0 +1,10 @@
+field 8 uint32_t mnRefCount
+field 14 bool mbInitialized
+field 18 uint32_t mnPercent
+field 24 int32_t mnCounter
+field 28 bool mbReady
+field 40 uint32_t* mpList
+method 0x004de330 void Fn004de330()
+method 0x004de630 void Fn004de630()
+method 0x004e05a0 bool Fn004e05a0()
+slot Slot08_a92ec0 bool

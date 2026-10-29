@@ -12,7 +12,7 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void* Slot03_abd744() = 0;
-    virtual void Slot04_abd744(uint32_t) = 0;
+    virtual bool Slot04_abd744(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00abd744[sizeof(cUnk00abd744) == 0x4 ? 1 : -1];

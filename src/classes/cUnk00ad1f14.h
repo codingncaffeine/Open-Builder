@@ -10,17 +10,17 @@
 class cUnk00ad1f14 {
 public:
     virtual ~cUnk00ad1f14();
-    virtual void Slot01_ad1f14(uint32_t);
-    virtual void Slot02_ad1f14(uint32_t);
-    virtual void Slot03_ad1f14(uint32_t);
-    virtual void Slot04_ad1f14(uint32_t);
-    virtual void Slot05_ad1f14(uint32_t, uint32_t);
-    virtual void Slot06_ad1f14(uint32_t, uint32_t);
-    virtual void Slot07_ad1f14();
+    virtual bool Slot01_ad1f14(uint32_t);
+    virtual bool Slot02_ad1f14(uint32_t);
+    virtual bool Slot03_ad1f14(uint32_t);
+    virtual bool Slot04_ad1f14(uint32_t);
+    virtual bool Slot05_ad1f14(uint32_t, uint32_t);
+    virtual bool Slot06_ad1f14(uint32_t, uint32_t);
+    virtual bool Slot07_ad1f14();
     virtual bool Slot08_ad1f14();
-    virtual void Slot09_ad1f14(uint32_t, uint32_t);
-    virtual void Slot10_ad1f14(uint32_t, uint32_t);
-    virtual void Slot11_ad1f14(uint32_t);
+    virtual bool Slot09_ad1f14(uint32_t, uint32_t);
+    virtual bool Slot10_ad1f14(uint32_t, uint32_t);
+    virtual bool Slot11_ad1f14(uint32_t);
     virtual uint32_t Slot12_ad1f14();
     char unknown4[0x14];
     bool field18;

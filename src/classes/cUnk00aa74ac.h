@@ -9,10 +9,10 @@
 // SIZE 0x54
 class cUnk00aa74ac {
 public:
-    virtual void Slot00_aa74ac(uint32_t, uint32_t);
+    virtual bool Slot00_aa74ac(uint32_t, uint32_t);
     virtual void Slot01_aa74ac();
     virtual void Slot02_aa74ac();
-    virtual void Slot03_aa74ac(uint32_t);
+    virtual bool Slot03_aa74ac(uint32_t);
     virtual void Slot04_aa74ac();
     virtual void Slot05_aa74ac();
     virtual void Slot06_aa74ac();

@@ -9,9 +9,9 @@
 // SIZE 0x30
 class cUnk00ada288 {
 public:
-    virtual void Slot00_ada288(uint32_t, uint32_t);
-    virtual void Slot01_ada288();
-    virtual void Slot02_ada288();
+    virtual bool Slot00_ada288(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ada288();
+    virtual uint32_t Slot02_ada288();
     virtual void Slot03_ada288(uint32_t, uint32_t);
     virtual void Slot04_ada288(uint32_t, uint32_t);
     virtual void Slot05_ada288(uint32_t, uint32_t);

@@ -8,16 +8,16 @@
 // SIZE 0x4
 class cUnk00adb26c {
 public:
-    virtual void Slot00_adb26c(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_adb26c(uint32_t, uint32_t) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_adb26c(uint32_t) = 0;
+    virtual bool Slot03_adb26c(uint32_t) = 0;
     virtual void Slot04_adb26c() = 0;
-    virtual void Slot05_adb26c(uint32_t) = 0;
+    virtual bool Slot05_adb26c(uint32_t) = 0;
     virtual void Slot06_adb26c() = 0;
-    virtual void Slot07_adb26c() = 0;
+    virtual bool Slot07_adb26c() = 0;
     virtual void Slot08_adb26c() = 0;
-    virtual void Slot09_adb26c() = 0;
+    virtual bool Slot09_adb26c() = 0;
     virtual void Slot10_adb26c() = 0;
     virtual uint32_t Slot11_adb26c() = 0;
 };

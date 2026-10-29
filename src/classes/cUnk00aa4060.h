@@ -8,19 +8,19 @@
 // VTABLE: 0x00aa4060
 class cUnk00aa4060 {
 public:
-    virtual void Slot00_aa4060();
-    virtual void Slot01_aa4060();
+    virtual bool Slot00_aa4060();
+    virtual bool Slot01_aa4060();
     virtual void Slot02_aa4060(uint32_t);
     virtual uint32_t Slot03_aa4060();
     virtual void Slot04_aa4060();
-    virtual void Slot05_aa4060();
+    virtual bool Slot05_aa4060();
     virtual void Slot06_aa4060(uint32_t);
     virtual void Slot07_aa4060(uint32_t);
-    virtual void Slot08_aa4060(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot08_aa4060(uint32_t, uint32_t, uint32_t);
     virtual void Slot09_aa4060(uint32_t, uint32_t);
-    virtual void Slot10_aa4060(uint32_t);
+    virtual uint32_t Slot10_aa4060(uint32_t);
     virtual void Slot11_aa4060(uint32_t);
-    virtual void Slot12_aa4060(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot12_aa4060(uint32_t, uint32_t, uint32_t);
     virtual void Slot13_aa4060(uint32_t, uint32_t);
     virtual void Slot14_aa4060(uint32_t, uint32_t, uint32_t);
     virtual void Slot15_aa4060();

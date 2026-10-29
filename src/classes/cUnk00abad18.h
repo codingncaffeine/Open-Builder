@@ -9,10 +9,10 @@
 // SIZE 0x160
 class cUnk00abad18 {
 public:
-    virtual void Slot00_abad18(uint32_t, uint32_t);
+    virtual bool Slot00_abad18(uint32_t, uint32_t);
     virtual void Slot01_abad18();
     virtual void Slot02_abad18();
-    virtual void Slot03_abad18(uint32_t);
+    virtual uint32_t Slot03_abad18(uint32_t);
     virtual void Slot04_abad18(uint32_t);
     virtual uint32_t Slot05_abad18();
     virtual ~cUnk00abad18() {}

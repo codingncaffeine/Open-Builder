@@ -8,8 +8,8 @@
 // SIZE 0x4
 class cUnk00ace69c {
 public:
-    virtual void Slot00_ace6f8(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ace6f8() = 0;
+    virtual bool Slot00_ace6f8(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ace6f8() = 0;
     virtual void Slot02_ace6f8() = 0;
     virtual bool Slot03_ace69c() = 0;
     virtual bool Slot04_ace69c() = 0;

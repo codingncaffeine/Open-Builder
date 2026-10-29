@@ -11,9 +11,9 @@
 class cUnk00abd324 : public cUnk00ad8c20 {
 public:
     virtual ~cUnk00abd324() {}
-    virtual void Slot04_ad8c20(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
-    virtual void Slot10_ad8c20(uint32_t, uint32_t);
+    virtual bool Slot04_ad8c20(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot10_ad8c20(uint32_t, uint32_t);
     virtual bool Slot11_ad8c20(uint32_t, uint32_t);
 };
 #ifdef _MSC_VER

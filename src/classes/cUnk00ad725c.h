@@ -8,9 +8,9 @@
 // VTABLE: 0x00ad725c
 class cUnk00ad725c {
 public:
-    virtual void Slot00_ad725c(uint32_t, uint32_t);
-    virtual void Slot01_ad725c();
-    virtual void Slot02_ad725c();
+    virtual bool Slot00_ad725c(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad725c();
+    virtual uint32_t Slot02_ad725c();
     virtual void Slot03_ad725c(uint32_t);
 };
 

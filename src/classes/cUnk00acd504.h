@@ -15,7 +15,7 @@ public:
     virtual void Slot04_acd504();
     virtual void Slot05_acd504(uint32_t);
     virtual bool Slot06_acd504();
-    virtual void Slot07_acd504(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot07_acd504(uint32_t, uint32_t, uint32_t);
     virtual void Slot08_acd504(uint32_t);
     virtual void Slot09_acd504(uint32_t);
     virtual void Slot10_acd504(uint32_t);

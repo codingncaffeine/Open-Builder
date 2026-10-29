@@ -48,19 +48,19 @@ public:
     virtual void Slot38_addff8(uint32_t) = 0;
     virtual void Slot39_addff8(uint32_t, uint32_t) = 0;
     virtual bool Slot40_addff8(uint32_t, uint32_t) = 0;
-    virtual void Slot41_addff8(uint32_t) = 0;
+    virtual bool Slot41_addff8(uint32_t) = 0;
     virtual uint32_t Slot42_addff8() = 0;
-    virtual void Slot43_addff8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot43_addff8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot44_addff8(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot45_addff8(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot46_addff8(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot45_addff8(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot46_addff8(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot47_addff8(uint32_t) = 0;
     virtual void Slot48_addff8(uint32_t) = 0;
-    virtual void Slot49_addff8() = 0;
-    virtual void Slot50_addff8() = 0;
-    virtual void Slot51_addff8() = 0;
-    virtual void Slot52_addff8() = 0;
-    virtual void Slot53_addff8() = 0;
+    virtual uint32_t Slot49_addff8() = 0;
+    virtual uint32_t Slot50_addff8() = 0;
+    virtual uint32_t Slot51_addff8() = 0;
+    virtual uint32_t Slot52_addff8() = 0;
+    virtual uint32_t Slot53_addff8() = 0;
     virtual void* Slot54_addff8() = 0;
 };
 

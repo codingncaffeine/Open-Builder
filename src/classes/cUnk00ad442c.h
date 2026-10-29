@@ -8,37 +8,33 @@
 
 // The subobject at +0x0 (vtable 0x00ad442c): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad442c_0 {
-    virtual void Slot00_ad442c(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad442c() = 0;
-    virtual void Slot02_ad442c() = 0;
-    virtual void Slot03_ad442c(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ad442c(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad442c() = 0;
+    virtual uint32_t Slot02_ad442c() = 0;
+    virtual bool Slot03_ad442c(uint32_t, uint32_t) = 0;
     virtual void Slot04_ad442c(uint32_t, uint32_t, uint32_t) = 0;
     virtual ~cUnk00ad442c_0() {}
 };
 
-// Between cUnk00ad21ec and cUnk00ad442c at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad442c_4 : public cUnk00ad21ec {
-    virtual void Slot03_ad21ec(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_ad21ec(uint32_t);
-    virtual void Slot05_ad21ec(uint32_t, uint32_t);
+// VTABLE: 0x00ad442c cUnk00ad442c_0
+// VTABLE: 0x00ad43fc cUnk00ad21ec
+// SIZE 0x54
+class cUnk00ad442c : public cUnk00ad442c_0, public cUnk00ad21ec {
+public:
+    virtual ~cUnk00ad442c();
+    virtual bool Slot03_ad21ec(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot04_ad21ec(uint32_t);
+    virtual bool Slot05_ad21ec(uint32_t, uint32_t);
     virtual bool Slot06_ad21ec();
     virtual bool Slot07_ad21ec();
     virtual bool Slot08_ad21ec(uint32_t, uint32_t);
     virtual bool Slot09_ad21ec(uint32_t);
     virtual bool Slot10_ad21ec(uint32_t, uint32_t);
     virtual bool Slot11_ad21ec(uint32_t, uint32_t, uint32_t, uint32_t);
-};
-
-// VTABLE: 0x00ad442c cUnk00ad442c_0
-// VTABLE: 0x00ad43fc cUnk00ad442c_4
-// SIZE 0x54
-class cUnk00ad442c : public cUnk00ad442c_0, public cUnk00ad442c_4 {
-public:
-    virtual ~cUnk00ad442c();
-    virtual void Slot00_ad442c(uint32_t, uint32_t);
-    virtual void Slot01_ad442c();
-    virtual void Slot02_ad442c();
-    virtual void Slot03_ad442c(uint32_t, uint32_t);
+    virtual bool Slot00_ad442c(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad442c();
+    virtual uint32_t Slot02_ad442c();
+    virtual bool Slot03_ad442c(uint32_t, uint32_t);
     virtual void Slot04_ad442c(uint32_t, uint32_t, uint32_t);
     char unknown8[0x4c];
 };

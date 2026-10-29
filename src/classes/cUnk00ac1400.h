@@ -8,113 +8,109 @@
 
 // The subobject at +0x0 (vtable 0x00ac1400): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ac1400_0 {
-    virtual void Slot00_ac1400(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ac1400(uint32_t, uint32_t) = 0;
     virtual void Slot01_ac1400() = 0;
     virtual void Slot02_ac1400() = 0;
     virtual void Slot03_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot04_ac1400() = 0;
-    virtual void Slot05_ac1400() = 0;
-    virtual void Slot06_ac1400(uint32_t) = 0;
-    virtual void Slot07_ac1400(uint32_t) = 0;
-    virtual void Slot08_ac1400() = 0;
+    virtual bool Slot04_ac1400() = 0;
+    virtual bool Slot05_ac1400() = 0;
+    virtual bool Slot06_ac1400(uint32_t) = 0;
+    virtual bool Slot07_ac1400(uint32_t) = 0;
+    virtual bool Slot08_ac1400() = 0;
     virtual uint32_t Slot09_ac1400() = 0;
     virtual uint32_t Slot10_ac1400() = 0;
     virtual void Slot11_ac1400(uint32_t) = 0;
     virtual void* Slot12_ac1400() = 0;
-    virtual void Slot13_ac1400() = 0;
+    virtual uint32_t Slot13_ac1400() = 0;
     virtual void Slot14_ac1400(uint32_t) = 0;
     virtual void Slot15_ac1400(uint32_t) = 0;
     virtual uint32_t Slot16_ac1400() = 0;
-    virtual void Slot17_ac1400() = 0;
+    virtual uint32_t Slot17_ac1400() = 0;
     virtual void Slot18_ac1400(uint32_t, uint32_t) = 0;
     virtual void Slot19_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot20_ac1400(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot21_ac1400(uint32_t, uint32_t) = 0;
+    virtual bool Slot20_ac1400(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot21_ac1400(uint32_t, uint32_t) = 0;
     virtual void Slot22_ac1400(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot23_ac1400(uint32_t) = 0;
-    virtual void Slot24_ac1400() = 0;
+    virtual uint32_t Slot24_ac1400() = 0;
     virtual void Slot25_ac1400(uint32_t, uint32_t) = 0;
-    virtual void Slot26_ac1400(uint32_t) = 0;
+    virtual bool Slot26_ac1400(uint32_t) = 0;
     virtual void Slot27_ac1400() = 0;
-    virtual void Slot28_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot28_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot29_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot30_ac1400(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot31_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot32_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot33_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot30_ac1400(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot31_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot32_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot33_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t Slot34_ac1400() = 0;
     virtual uint32_t Slot35_ac1400() = 0;
     virtual uint32_t Slot36_ac1400() = 0;
     virtual uint32_t Slot37_ac1400() = 0;
-    virtual void Slot38_ac1400(uint32_t) = 0;
+    virtual bool Slot38_ac1400(uint32_t) = 0;
     virtual bool Slot39_ac1400() = 0;
     virtual ~cUnk00ac1400_0() {}
-    virtual void Slot41_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot41_ac1400(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot42_ac1400() = 0;
-    virtual void Slot43_ac1400() = 0;
-    virtual void Slot44_ac1400() = 0;
+    virtual bool Slot43_ac1400() = 0;
+    virtual bool Slot44_ac1400() = 0;
     virtual void Slot45_ac1400() = 0;
-    virtual void Slot46_ac1400(uint32_t, uint32_t, uint32_t) = 0;
-};
-
-// Between cUnk00ac13d8 and cUnk00ac1400 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ac1400_4 : public cUnk00ac13d8 {
-    virtual void Slot03_ac13d8(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_ac13d8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot46_ac1400(uint32_t, uint32_t, uint32_t) = 0;
 };
 
 // VTABLE: 0x00ac1400 cUnk00ac1400_0
-// VTABLE: 0x00ac13ec cUnk00ac1400_4
+// VTABLE: 0x00ac13ec cUnk00ac13d8
 // SIZE 0x4c
-class cUnk00ac1400 : public cUnk00ac1400_0, public cUnk00ac1400_4 {
+class cUnk00ac1400 : public cUnk00ac1400_0, public cUnk00ac13d8 {
 public:
     virtual ~cUnk00ac1400() {}
-    virtual void Slot00_ac1400(uint32_t, uint32_t);
+    virtual bool Slot03_ac13d8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot04_ac13d8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot00_ac1400(uint32_t, uint32_t);
     virtual void Slot01_ac1400();
     virtual void Slot02_ac1400();
     virtual void Slot03_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_ac1400();
-    virtual void Slot05_ac1400();
-    virtual void Slot06_ac1400(uint32_t);
-    virtual void Slot07_ac1400(uint32_t);
-    virtual void Slot08_ac1400();
+    virtual bool Slot04_ac1400();
+    virtual bool Slot05_ac1400();
+    virtual bool Slot06_ac1400(uint32_t);
+    virtual bool Slot07_ac1400(uint32_t);
+    virtual bool Slot08_ac1400();
     virtual uint32_t Slot09_ac1400();
     virtual uint32_t Slot10_ac1400();
     virtual void Slot11_ac1400(uint32_t);
     virtual void* Slot12_ac1400();
-    virtual void Slot13_ac1400();
+    virtual uint32_t Slot13_ac1400();
     virtual void Slot14_ac1400(uint32_t);
     virtual void Slot15_ac1400(uint32_t);
     virtual uint32_t Slot16_ac1400();
-    virtual void Slot17_ac1400();
+    virtual uint32_t Slot17_ac1400();
     virtual void Slot18_ac1400(uint32_t, uint32_t);
     virtual void Slot19_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot20_ac1400(uint32_t, uint32_t, uint32_t);
-    virtual void Slot21_ac1400(uint32_t, uint32_t);
+    virtual bool Slot20_ac1400(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot21_ac1400(uint32_t, uint32_t);
     virtual void Slot22_ac1400(uint32_t, uint32_t, uint32_t);
     virtual void Slot23_ac1400(uint32_t);
-    virtual void Slot24_ac1400();
+    virtual uint32_t Slot24_ac1400();
     virtual void Slot25_ac1400(uint32_t, uint32_t);
-    virtual void Slot26_ac1400(uint32_t);
+    virtual bool Slot26_ac1400(uint32_t);
     virtual void Slot27_ac1400();
-    virtual void Slot28_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot28_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot29_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot30_ac1400(uint32_t, uint32_t, uint32_t);
-    virtual void Slot31_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot32_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot33_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot30_ac1400(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot31_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot32_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot33_ac1400(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot34_ac1400();
     virtual uint32_t Slot35_ac1400();
     virtual uint32_t Slot36_ac1400();
     virtual uint32_t Slot37_ac1400();
-    virtual void Slot38_ac1400(uint32_t);
+    virtual bool Slot38_ac1400(uint32_t);
     virtual bool Slot39_ac1400();
-    virtual void Slot41_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot41_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot42_ac1400();
-    virtual void Slot43_ac1400();
-    virtual void Slot44_ac1400();
+    virtual bool Slot43_ac1400();
+    virtual bool Slot44_ac1400();
     virtual void Slot45_ac1400();
-    virtual void Slot46_ac1400(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot46_ac1400(uint32_t, uint32_t, uint32_t);
     bool field8;
     char unknown9[0x7];
     uint32_t field10;

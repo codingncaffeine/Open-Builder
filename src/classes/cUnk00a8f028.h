@@ -7,17 +7,17 @@
 #include "classes/cUnk00a8d888.h"
 
 // VTABLE: 0x00a8f028 cUnk00adc8d8
-// VTABLE: 0x00a8efa8 cUnk00adc678_d8
-// VTABLE: 0x00a8ef98 cUnk00a8d888_128
+// VTABLE: 0x00a8efa8 cUnk00adc2b0
+// VTABLE: 0x00a8ef98 cUnk00a86864
 // SIZE 0x1f8
 class cUnk00a8f028 : public cUnk00a8d888 {
 public:
     virtual ~cUnk00a8f028();
-    virtual void Slot152_a8d888(uint32_t, uint32_t, uint32_t);
-    virtual void Slot153_a8d888(uint32_t, uint32_t);
+    virtual bool Slot152_a8d888(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot153_a8d888(uint32_t, uint32_t);
     virtual void Slot154_a8d888();
-    virtual void Slot155_a8d888();
-    virtual void Slot156_a8d888(uint32_t);
+    virtual bool Slot155_a8d888();
+    virtual bool Slot156_a8d888(uint32_t);
     virtual void Slot157_a8d888(uint32_t);
     virtual void Slot158_a8d888(uint32_t, uint32_t);
     virtual void Slot159_a8d888();

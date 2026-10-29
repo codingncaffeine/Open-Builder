@@ -9,11 +9,11 @@
 // SIZE 0x8
 class cUnk00ad53ec {
 public:
-    virtual void Slot00_ad53ec(uint32_t, uint32_t);
-    virtual void Slot01_ad53ec();
-    virtual void Slot02_ad53ec();
+    virtual bool Slot00_ad53ec(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad53ec();
+    virtual uint32_t Slot02_ad53ec();
     virtual bool Slot03_ad53ec(uint32_t, uint32_t);
-    virtual void Slot04_ad53ec(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot04_ad53ec(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ad53ec() {}
     char unknown4[0x4];
 };

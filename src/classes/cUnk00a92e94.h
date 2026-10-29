@@ -7,7 +7,7 @@
 
 class cUnk00a92e94 {
 public:
-    virtual void Slot00_a92e94(uint32_t) = 0;
+    virtual uint32_t Slot00_a92e94(uint32_t) = 0;
 };
 
 #endif

@@ -14,26 +14,26 @@ class cUnk00a862d8 : public cUnk00a8623c, public cUnk0090da1e {
 public:
     virtual ~cUnk00a862d8() {}
     virtual uint32_t Slot06_a862d8();
-    virtual void Slot07_a862d8(uint32_t);
+    virtual bool Slot07_a862d8(uint32_t);
     virtual void* Slot08_a862d8();
     virtual void* Slot09_a862d8();
     virtual void* Slot10_a862d8();
     virtual uint32_t Slot11_a862d8();
     virtual void Slot12_a862d8();
     virtual bool Slot13_a862d8(uint32_t);
-    virtual void Slot14_a862d8();
+    virtual bool Slot14_a862d8();
     virtual void Slot15_a862d8();
-    virtual void Slot16_a862d8();
-    virtual void Slot17_a862d8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot16_a862d8();
+    virtual bool Slot17_a862d8(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot18_a862d8();
-    virtual void Slot19_a862d8();
+    virtual uint32_t Slot19_a862d8();
     virtual uint32_t Slot20_a862d8();
-    virtual void Slot21_a862d8(uint32_t);
+    virtual uint32_t Slot21_a862d8(uint32_t);
     virtual uint32_t Slot22_a862d8();
     virtual uint32_t Slot23_a862d8();
     virtual uint32_t Slot24_a862d8();
-    virtual void Slot25_a862d8();
-    virtual void Slot26_a862d8(uint32_t);
+    virtual bool Slot25_a862d8();
+    virtual bool Slot26_a862d8(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();

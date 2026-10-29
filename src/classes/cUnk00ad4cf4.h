@@ -9,33 +9,39 @@
 
 // The subobject at +0x0 (vtable 0x00ad4cf4): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad4cf4_0 {
-    virtual void Slot00_ad4cf4(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad4cf4() = 0;
+    virtual bool Slot00_ad4cf4(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
-    virtual void Slot03_ad4cf4() = 0;
-    virtual void Slot04_ad4cf4(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot03_ad4cf4() = 0;
+    virtual bool Slot04_ad4cf4(uint32_t, uint32_t) = 0;
     virtual ~cUnk00ad4cf4_0() {}
     virtual bool Slot06_ad4cf4(uint32_t) = 0;
     virtual uint32_t Slot07_ad4cf4() = 0;
     virtual void Slot08_ad4cf4(bool) = 0;
 };
 
-// Between cUnk00ad4aa0 and cUnk00ad4cf4 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad4cf4_4 : public cUnk00ad4aa0 {
+// VTABLE: 0x00ad4cf4 cUnk00ad4cf4_0
+// VTABLE: 0x00ad4c60 cUnk00ad4aa0
+// VTABLE: 0x00ad4c4c cUnk00a943c0
+// SIZE 0x190
+class cUnk00ad4cf4 : public cUnk00ad4cf4_0, public cUnk00ad4aa0, public cUnk00a943c0 {
+public:
+    virtual ~cUnk00ad4cf4();
+    virtual void Slot13_ad3e48(uint32_t);
     virtual bool Slot03_ad4aa0(uint32_t);
-    virtual void Slot04_ad4aa0();
-    virtual void Slot05_ad4aa0(uint32_t, uint32_t);
-    virtual void Slot06_ad4aa0(uint32_t);
+    virtual bool Slot04_ad4aa0();
+    virtual bool Slot05_ad4aa0(uint32_t, uint32_t);
+    virtual uint32_t Slot06_ad4aa0(uint32_t);
     virtual bool Slot07_ad4aa0();
-    virtual void Slot08_ad4aa0();
+    virtual bool Slot08_ad4aa0();
     virtual bool Slot09_ad4aa0();
-    virtual void Slot10_ad4aa0();
-    virtual void Slot11_ad4aa0(uint32_t);
-    virtual void Slot12_ad4aa0(uint32_t, uint32_t, uint32_t);
-    virtual void Slot13_ad4aa0(uint32_t);
-    virtual void Slot14_ad4aa0(uint32_t);
-    virtual void Slot15_ad4aa0(uint32_t);
-    virtual void Slot16_ad4aa0(uint32_t);
+    virtual bool Slot10_ad4aa0();
+    virtual bool Slot11_ad4aa0(uint32_t);
+    virtual bool Slot12_ad4aa0(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot13_ad4aa0(uint32_t);
+    virtual bool Slot14_ad4aa0(uint32_t);
+    virtual bool Slot15_ad4aa0(uint32_t);
+    virtual bool Slot16_ad4aa0(uint32_t);
     virtual bool Slot17_ad4aa0(uint32_t);
     virtual uint32_t Slot18_ad4aa0();
     virtual uint32_t Slot19_ad4aa0();
@@ -46,43 +52,39 @@ struct OB_NOVTABLE cUnk00ad4cf4_4 : public cUnk00ad4aa0 {
     virtual uint32_t Slot24_ad4aa0();
     virtual uint32_t Slot25_ad4aa0();
     virtual uint32_t Slot26_ad4aa0(uint32_t, uint32_t, uint32_t);
-    virtual void Slot27_ad4aa0(uint32_t);
+    virtual bool Slot27_ad4aa0(uint32_t);
     virtual bool Slot28_ad4aa0(bool);
-    virtual void Slot29_ad4aa0(uint32_t, uint32_t);
-    virtual void Slot30_ad4aa0(uint32_t);
-    virtual void Slot31_ad4aa0(uint32_t);
-    virtual void Slot32_ad4aa0(uint32_t, uint32_t, uint32_t);
-    virtual void Slot33_ad4aa0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot29_ad4aa0(uint32_t, uint32_t);
+    virtual bool Slot30_ad4aa0(uint32_t);
+    virtual bool Slot31_ad4aa0(uint32_t);
+    virtual bool Slot32_ad4aa0(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot33_ad4aa0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot34_ad4aa0(uint32_t);
     virtual void* Slot35_ad4aa0();
     virtual void Slot36_ad4aa0(uint32_t);
-};
-
-// Between cUnk00a943c0 and cUnk00ad4cf4 at +0x8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad4cf4_8 : public cUnk00a943c0 {
-    virtual void Slot13_ad3e48(uint32_t);
-};
-
-// VTABLE: 0x00ad4cf4 cUnk00ad4cf4_0
-// VTABLE: 0x00ad4c60 cUnk00ad4cf4_4
-// VTABLE: 0x00ad4c4c cUnk00ad4cf4_8
-// SIZE 0x190
-class cUnk00ad4cf4 : public cUnk00ad4cf4_0, public cUnk00ad4cf4_4, public cUnk00ad4cf4_8 {
-public:
-    virtual ~cUnk00ad4cf4();
-    virtual void Slot00_ad4cf4(uint32_t, uint32_t);
-    virtual void Slot01_ad4cf4();
+    virtual bool Slot00_ad4cf4(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
-    virtual void Slot03_ad4cf4();
-    virtual void Slot04_ad4cf4(uint32_t, uint32_t);
+    virtual uint32_t Slot03_ad4cf4();
+    virtual bool Slot04_ad4cf4(uint32_t, uint32_t);
     virtual bool Slot06_ad4cf4(uint32_t);
     virtual uint32_t Slot07_ad4cf4();
     virtual void Slot08_ad4cf4(bool);
-    char unknownc[0x138];
+    char unknownc[0x54];
+    bool field60;
+    char unknown61[0xd3];
+    bool field134;
+    bool field135;
+    char unknown136[0x6];
+    uint32_t field13c;
+    uint32_t field140;
     uint32_t field144;
-    char unknown148[0x24];
+    char unknown148[0x4];
+    uint32_t field14c;
+    char unknown150[0x1c];
     bool field16c;
-    char unknown16d[0x23];
+    char unknown16d[0x13];
+    char field180[0x10];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad4cf4[sizeof(cUnk00ad4cf4) == 0x190 ? 1 : -1];

@@ -9,7 +9,7 @@
 // SIZE 0x20
 class cUnk00ab4b34 {
 public:
-    virtual void Slot00_ab4b34(uint32_t, uint32_t);
+    virtual bool Slot00_ab4b34(uint32_t, uint32_t);
     virtual void Slot01_ab4b34();
     virtual void Slot02_ab4b34();
     virtual void Slot03_ab4b34(uint32_t, uint32_t);

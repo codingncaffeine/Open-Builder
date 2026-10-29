@@ -8,8 +8,8 @@
 class cUnk00ac3004 {
 public:
     virtual void Slot00_ac3090() = 0;
-    virtual void Slot01_ac3090() = 0;
-    virtual void Slot02_ac3090() = 0;
+    virtual uint32_t Slot01_ac3090() = 0;
+    virtual uint32_t Slot02_ac3090() = 0;
     virtual void* Slot03_ac3004() = 0;
     virtual uint32_t Slot04_ac3004() = 0;
     virtual uint32_t Slot05_ac3004() = 0;

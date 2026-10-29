@@ -7,56 +7,56 @@
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00ae1210.h"
 
-// Between cUnk00ae1210 and cUnk00ae1300 at +0xd8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ae1300_d8 : public cUnk00ae1210 {
-    virtual void* Slot03_ae1210();
-    virtual void Slot04_ae1210(uint32_t);
-    virtual void Slot06_ae1210(uint32_t, uint32_t);
-    virtual void Slot07_ae1210(uint32_t, uint32_t);
-    virtual void Slot08_ae1210(uint32_t);
-    virtual void Slot09_ae1210(uint32_t);
-    virtual void Slot10_ae1210(uint32_t, uint32_t);
-    virtual void Slot11_ae1210(uint32_t, uint32_t);
-    virtual void Slot12_ae1210(uint32_t);
-    virtual uint32_t Slot13_ae1210();
-    virtual void Slot14_ae1210(uint32_t);
-    virtual void Slot15_ae1210(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot16_ae1210(uint32_t);
-    virtual void Slot17_ae1210(uint32_t, uint32_t, uint32_t);
-    virtual void Slot18_ae1210(uint32_t, uint32_t, uint32_t);
-    virtual void Slot19_ae1210(uint32_t, uint32_t);
-    virtual void Slot20_ae1210(uint32_t);
-    virtual void Slot21_ae1210(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot22_ae1210(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot23_ae1210(uint32_t);
-    virtual void Slot24_ae1210();
-    virtual bool Slot25_ae1210(uint32_t);
-    virtual bool Slot26_ae1210(uint32_t);
-    virtual void Slot27_ae1210();
-    virtual void Slot28_ae1210(uint32_t, uint32_t);
-    virtual void Slot29_ae1210(uint32_t, uint32_t);
-};
-
 // VTABLE: 0x00ae1300 cUnk00adc8d8
-// VTABLE: 0x00ae1288 cUnk00ae1300_d8
+// VTABLE: 0x00ae1288 cUnk00ae1210
 // SIZE 0x11c
-class cUnk00ae1300 : public cUnk00adc8d8, public cUnk00ae1300_d8 {
+class cUnk00ae1300 : public cUnk00adc8d8, public cUnk00ae1210 {
 public:
     virtual ~cUnk00ae1300();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot68_adc8d8(uint32_t, uint32_t);
+    virtual uint32_t Slot68_adc8d8(uint32_t, uint32_t);
     virtual bool Slot88_adc8d8();
     virtual bool Slot130_adc8d8(uint32_t, uint32_t);
     virtual bool Slot131_adc8d8(uint32_t, uint32_t);
     virtual bool Slot143_adc8d8(uint32_t, uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_adb6a8();
-    virtual void Slot05_adb6a8();
+    virtual bool Slot04_adb6a8();
+    virtual bool Slot05_adb6a8();
     virtual void Slot49_adda20(uint32_t);
-    virtual void Slot05_ae1210(uint32_t, uint32_t);
-    char unknowndc[0x40];
+    virtual void* Slot03_ae1210();
+    virtual uint32_t Slot04_ae1210(uint32_t);
+    virtual bool Slot05_ae1210(uint32_t, uint32_t);
+    virtual bool Slot06_ae1210(uint32_t, uint32_t);
+    virtual bool Slot07_ae1210(uint32_t, uint32_t);
+    virtual bool Slot08_ae1210(uint32_t);
+    virtual bool Slot09_ae1210(uint32_t);
+    virtual bool Slot10_ae1210(uint32_t, uint32_t);
+    virtual bool Slot11_ae1210(uint32_t, uint32_t);
+    virtual bool Slot12_ae1210(uint32_t);
+    virtual uint32_t Slot13_ae1210();
+    virtual bool Slot14_ae1210(uint32_t);
+    virtual bool Slot15_ae1210(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot16_ae1210(uint32_t);
+    virtual bool Slot17_ae1210(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot18_ae1210(uint32_t, uint32_t, uint32_t);
+    virtual void Slot19_ae1210(uint32_t, uint32_t);
+    virtual bool Slot20_ae1210(uint32_t);
+    virtual bool Slot21_ae1210(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot22_ae1210(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot23_ae1210(uint32_t);
+    virtual bool Slot24_ae1210();
+    virtual bool Slot25_ae1210(uint32_t);
+    virtual bool Slot26_ae1210(uint32_t);
+    virtual void Slot27_ae1210();
+    virtual void Slot28_ae1210(uint32_t, uint32_t);
+    virtual bool Slot29_ae1210(uint32_t, uint32_t);
+    char unknowndc[0x4];
+    uint32_t fielde0;
+    char unknowne4[0x14];
+    uint32_t fieldf8;
+    char unknownfc[0x20];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae1300[sizeof(cUnk00ae1300) == 0x11c ? 1 : -1];

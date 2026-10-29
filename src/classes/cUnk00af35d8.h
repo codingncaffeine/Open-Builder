@@ -9,8 +9,8 @@
 class cUnk00af35d8 {
 public:
     virtual ~cUnk00af35d8();
-    virtual void Slot01_af35d8();
-    virtual void Slot02_af35d8();
+    virtual uint32_t Slot01_af35d8();
+    virtual uint32_t Slot02_af35d8();
 };
 
 // SYNTHETIC: 0x00a66bd3

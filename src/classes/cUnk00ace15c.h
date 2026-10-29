@@ -9,9 +9,9 @@ class cUnk00ace15c {
 public:
     virtual uint32_t Slot00_ace15c() = 0;
     virtual void Slot01_ace15c(uint32_t, uint32_t) = 0;
-    virtual void Slot02_ace15c(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot03_ace15c(uint32_t) = 0;
-    virtual void Slot04_ace15c() = 0;
+    virtual bool Slot02_ace15c(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot03_ace15c(uint32_t) = 0;
+    virtual bool Slot04_ace15c() = 0;
 };
 
 #endif

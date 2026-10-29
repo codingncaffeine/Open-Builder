@@ -8,7 +8,7 @@
 // SIZE 0x4
 class cUnk00ac3508 {
 public:
-    virtual void Slot00_ac34cc(uint32_t, uint32_t) = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_ac3508(uint32_t) = 0;

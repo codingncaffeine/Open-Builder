@@ -15,16 +15,16 @@ public:
     virtual ~cUnk00ab8c00() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_ab3be8(uint32_t, uint32_t);
+    virtual bool Slot00_ab3be8(uint32_t, uint32_t);
     virtual void Slot03_ab3be8();
-    virtual void Slot04_ab3be8();
+    virtual bool Slot04_ab3be8();
     virtual void Slot05_ab3be8();
     virtual float Slot06_ab3be8();
     virtual uint32_t Slot07_ab3be8();
     virtual uint32_t Slot08_ab3be8();
-    virtual void Slot09_ab3be8(uint32_t, uint32_t);
+    virtual uint32_t Slot09_ab3be8(uint32_t, uint32_t);
     virtual void Slot10_ab3be8(uint32_t, uint32_t, uint32_t);
-    virtual void Slot11_ab3be8(uint32_t, uint32_t);
+    virtual uint32_t Slot11_ab3be8(uint32_t, uint32_t);
     virtual float Slot12_ab3be8(uint32_t);
     virtual float Slot13_ab3be8(uint32_t, uint32_t);
     virtual float Slot14_ab3be8(uint32_t, uint32_t);
@@ -38,7 +38,7 @@ public:
     virtual float Slot22_ab3be8();
     virtual float Slot23_ab3be8();
     virtual float Slot24_ab3be8();
-    virtual void Slot25_ab3be8(uint32_t, uint32_t);
+    virtual uint32_t Slot25_ab3be8(uint32_t, uint32_t);
     virtual void Slot26_ab3be8(uint32_t, uint32_t, uint32_t);
     virtual void Slot27_ab3be8(uint32_t, uint32_t, uint32_t);
     virtual void Slot28_ab3be8(uint32_t, uint32_t, uint32_t);

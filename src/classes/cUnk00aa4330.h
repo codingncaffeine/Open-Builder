@@ -11,7 +11,7 @@ struct OB_NOVTABLE cUnk00aa4330_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_aa4330(uint32_t) = 0;
+    virtual bool Slot03_aa4330(uint32_t) = 0;
     virtual bool Slot04_aa4330(uint32_t) = 0;
     virtual bool Slot05_aa4330(uint32_t) = 0;
     virtual ~cUnk00aa4330_0() {}
@@ -19,23 +19,19 @@ struct OB_NOVTABLE cUnk00aa4330_0 {
     virtual void Slot08_aa4330() = 0;
 };
 
-// Between cUnk00a80784 and cUnk00aa4330 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00aa4330_4 : public cUnk00a80784 {
+// VTABLE: 0x00aa4330 cUnk00aa4330_0
+// VTABLE: 0x00aa4318 cUnk00a80784
+// SIZE 0x18
+class cUnk00aa4330 : public cUnk00aa4330_0, public cUnk00a80784 {
+public:
+    virtual ~cUnk00aa4330();
     virtual bool Slot03_a80784(uint32_t);
     virtual bool Slot04_a80784(uint32_t);
     virtual uint32_t Slot05_a80784();
-};
-
-// VTABLE: 0x00aa4330 cUnk00aa4330_0
-// VTABLE: 0x00aa4318 cUnk00aa4330_4
-// SIZE 0x18
-class cUnk00aa4330 : public cUnk00aa4330_0, public cUnk00aa4330_4 {
-public:
-    virtual ~cUnk00aa4330();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_aa4330(uint32_t);
+    virtual bool Slot03_aa4330(uint32_t);
     virtual bool Slot04_aa4330(uint32_t);
     virtual bool Slot05_aa4330(uint32_t);
     virtual void Slot07_aa4330(uint32_t);
@@ -45,8 +41,5 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa4330[sizeof(cUnk00aa4330) == 0x18 ? 1 : -1];
 #endif
-
-// SYNTHETIC: 0x005ea420
-// cUnk00aa4330::`scalar deleting dtor'
 
 #endif

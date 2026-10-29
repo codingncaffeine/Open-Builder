@@ -11,8 +11,8 @@
 class cUnk00ad1938 : public cUnk00ad1878 {
 public:
     virtual ~cUnk00ad1938() {}
-    virtual void Slot03_ad1878(uint32_t);
-    virtual void Slot17_ad1878(uint32_t, uint32_t);
+    virtual bool Slot03_ad1878(uint32_t);
+    virtual bool Slot17_ad1878(uint32_t, uint32_t);
     virtual bool Slot18_ad1878();
     char unknown4[0xc];
     bool field10;

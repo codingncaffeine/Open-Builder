@@ -7,11 +7,11 @@
 
 // The subobject at +0x0 (vtable 0x00a85544): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00a85544_0 {
-    virtual void Slot00_a85544(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_a85544(uint32_t, uint32_t) = 0;
     virtual void Slot01_a85544() = 0;
     virtual void Slot02_a85544() = 0;
     virtual void Slot03_a85544() = 0;
-    virtual void Slot04_a85544() = 0;
+    virtual bool Slot04_a85544() = 0;
     virtual void Slot05_a85544() = 0;
     virtual void Slot06_a85544(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot07_a85544(uint32_t) = 0;
@@ -19,24 +19,24 @@ struct OB_NOVTABLE cUnk00a85544_0 {
     virtual void Slot09_a85544() = 0;
     virtual void Slot10_a85544() = 0;
     virtual void Slot11_a85544() = 0;
-    virtual void Slot12_a85544(uint32_t) = 0;
+    virtual uint32_t Slot12_a85544(uint32_t) = 0;
     virtual ~cUnk00a85544_0() {}
 };
 
 // The subobject at +0x4 (vtable 0x00a85534): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00a85544_4 {
-    virtual void Slot00_a85544(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_a85544(uint32_t, uint32_t) = 0;
     virtual void Slot01_a85544() = 0;
     virtual void Slot02_a85544() = 0;
-    virtual void Slot03_a85544_4(uint32_t);
+    virtual bool Slot03_a85544_4(uint32_t);
 };
 
 // The subobject at +0x8 (vtable 0x00a8551c): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00a85544_8 {
-    virtual void Slot00_a85544(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_a85544(uint32_t, uint32_t) = 0;
     virtual void Slot01_a85544() = 0;
     virtual void Slot02_a85544() = 0;
-    virtual void Slot03_a85544_8(uint32_t);
+    virtual uint32_t Slot03_a85544_8(uint32_t);
     virtual void Slot04_a85544_8(uint32_t);
     virtual uint32_t Slot05_a85544_8();
 };
@@ -47,11 +47,11 @@ struct OB_NOVTABLE cUnk00a85544_8 {
 class cUnk00a85544 : public cUnk00a85544_0, public cUnk00a85544_4, public cUnk00a85544_8 {
 public:
     virtual ~cUnk00a85544() {}
-    virtual void Slot00_a85544(uint32_t, uint32_t);
+    virtual bool Slot00_a85544(uint32_t, uint32_t);
     virtual void Slot01_a85544();
     virtual void Slot02_a85544();
     virtual void Slot03_a85544();
-    virtual void Slot04_a85544();
+    virtual bool Slot04_a85544();
     virtual void Slot05_a85544();
     virtual void Slot06_a85544(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot07_a85544(uint32_t);
@@ -59,7 +59,7 @@ public:
     virtual void Slot09_a85544();
     virtual void Slot10_a85544();
     virtual void Slot11_a85544();
-    virtual void Slot12_a85544(uint32_t);
+    virtual uint32_t Slot12_a85544(uint32_t);
 };
 
 // SYNTHETIC: 0x0042ef60

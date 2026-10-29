@@ -13,9 +13,9 @@ public:
     virtual unsigned int Release() = 0;
     virtual void Slot03_abb004(uint32_t) = 0;
     virtual void Slot04_abb004() = 0;
-    virtual void Slot05_abb004(uint32_t) = 0;
+    virtual bool Slot05_abb004(uint32_t) = 0;
     virtual void Slot06_abb004(uint32_t, uint32_t) = 0;
-    virtual void Slot07_abb004(uint32_t) = 0;
+    virtual uint32_t Slot07_abb004(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00abb004[sizeof(cUnk00abb004) == 0x4 ? 1 : -1];

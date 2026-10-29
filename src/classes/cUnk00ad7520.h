@@ -9,22 +9,22 @@
 // SIZE 0xf84
 class cUnk00ad7520 {
 public:
-    virtual void Slot00_ad7520(uint32_t, uint32_t);
-    virtual void Slot01_ad7520();
+    virtual bool Slot00_ad7520(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad7520();
     virtual void Slot02_ad7520();
-    virtual void Slot03_ad7520(uint32_t);
-    virtual void Slot04_ad7520(uint32_t);
+    virtual bool Slot03_ad7520(uint32_t);
+    virtual bool Slot04_ad7520(uint32_t);
     virtual bool Slot05_ad7520(uint32_t);
     virtual bool Slot06_ad7520(uint32_t);
     virtual void Slot07_ad7520();
-    virtual void Slot08_ad7520();
-    virtual void Slot09_ad7520();
+    virtual bool Slot08_ad7520();
+    virtual bool Slot09_ad7520();
     virtual uint32_t Slot10_ad7520();
-    virtual void Slot11_ad7520(uint32_t, uint32_t);
-    virtual void Slot12_ad7520();
-    virtual void Slot13_ad7520();
-    virtual void Slot14_ad7520(uint32_t, uint32_t);
-    virtual void Slot15_ad7520();
+    virtual bool Slot11_ad7520(uint32_t, uint32_t);
+    virtual bool Slot12_ad7520();
+    virtual bool Slot13_ad7520();
+    virtual uint32_t Slot14_ad7520(uint32_t, uint32_t);
+    virtual bool Slot15_ad7520();
     virtual void* Slot16_ad7520();
     virtual bool Slot17_ad7520();
     virtual bool Slot18_ad7520(uint32_t);

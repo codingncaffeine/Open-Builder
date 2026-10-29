@@ -11,7 +11,7 @@ public:
     virtual bool Slot00_ae466c(uint32_t, uint32_t);
     virtual uint32_t Slot01_ae466c();
     virtual uint32_t Slot02_ae466c();
-    virtual void Slot03_ae466c(uint32_t);
+    virtual bool Slot03_ae466c(uint32_t);
 };
 
 #endif

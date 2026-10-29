@@ -12,7 +12,7 @@ public:
     virtual ~cUnk00ace624() {}
     virtual unsigned int Release();
     virtual unsigned int AddRef();
-    virtual void Slot03_ace624();
+    virtual uint32_t Slot03_ace624();
     virtual uint32_t Slot04_ace624();
     uint32_t field4;
 };

@@ -21,12 +21,12 @@ public:
     virtual void Slot10_ae1a28() = 0;
     virtual void Slot11_ae1a28() = 0;
     virtual void Slot12_ae1a28(uint32_t) = 0;
-    virtual void Slot13_ae1a28(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot13_ae1a28(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot14_ae1a28(uint32_t) = 0;
     virtual void Slot15_ae1a28(uint32_t) = 0;
-    virtual void Slot16_ae1a28() = 0;
-    virtual void Slot17_ae1a28(uint32_t) = 0;
-    virtual void Slot18_ae1a28() = 0;
+    virtual uint32_t Slot16_ae1a28() = 0;
+    virtual bool Slot17_ae1a28(uint32_t) = 0;
+    virtual uint32_t Slot18_ae1a28() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae1a28[sizeof(cUnk00ae1a28) == 0x4 ? 1 : -1];

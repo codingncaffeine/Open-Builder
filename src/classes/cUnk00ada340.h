@@ -9,19 +9,19 @@
 // SIZE 0x30
 class cUnk00ada340 {
 public:
-    virtual void Slot00_ada340(uint32_t, uint32_t);
-    virtual void Slot01_ada340();
-    virtual void Slot02_ada340();
+    virtual bool Slot00_ada340(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ada340();
+    virtual uint32_t Slot02_ada340();
     virtual void Slot03_ada340(uint32_t, uint32_t);
-    virtual void Slot04_ada340(uint32_t);
-    virtual void Slot05_ada340(uint32_t);
-    virtual void Slot06_ada340(uint32_t);
-    virtual void Slot07_ada340(uint32_t);
-    virtual void Slot08_ada340(uint32_t);
-    virtual void Slot09_ada340(uint32_t);
-    virtual void Slot10_ada340(uint32_t);
-    virtual void Slot11_ada340(uint32_t);
-    virtual void Slot12_ada340(uint32_t);
+    virtual bool Slot04_ada340(uint32_t);
+    virtual bool Slot05_ada340(uint32_t);
+    virtual bool Slot06_ada340(uint32_t);
+    virtual uint32_t Slot07_ada340(uint32_t);
+    virtual uint32_t Slot08_ada340(uint32_t);
+    virtual uint32_t Slot09_ada340(uint32_t);
+    virtual uint32_t Slot10_ada340(uint32_t);
+    virtual float Slot11_ada340(uint32_t);
+    virtual float Slot12_ada340(uint32_t);
     virtual void Slot13_ada340(uint32_t, uint32_t, uint32_t);
     virtual void Slot14_ada340(uint32_t, uint32_t, uint32_t);
     virtual void Slot15_ada340(uint32_t, uint32_t, uint32_t);
@@ -35,8 +35,8 @@ public:
     virtual void Slot23_ada340(uint32_t, uint32_t);
     virtual void Slot24_ada340(uint32_t, uint32_t, uint32_t);
     virtual void Slot25_ada340(uint32_t, uint32_t, uint32_t);
-    virtual void Slot26_ada340(uint32_t);
-    virtual void Slot27_ada340();
+    virtual uint32_t Slot26_ada340(uint32_t);
+    virtual uint32_t Slot27_ada340();
     virtual ~cUnk00ada340();
     char unknown4[0x2c];
 };

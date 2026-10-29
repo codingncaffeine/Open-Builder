@@ -7,7 +7,7 @@
 #include "classes/cUnk00ace6f8.h"
 
 // VTABLE: 0x00ae4628 cUnk00ace6f8_0
-// VTABLE: 0x00ae45fc cUnk00ace6f8_4
+// VTABLE: 0x00ae45fc cUnk00ace69c
 class cUnk00ae4628 : public cUnk00ace6f8 {
 public:
     virtual uint32_t Slot13_ace6f8();

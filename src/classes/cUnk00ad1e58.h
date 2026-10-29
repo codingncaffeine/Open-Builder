@@ -10,7 +10,7 @@
 class cUnk00ad1e58 : public cUnk00abfed0 {
 public:
     virtual ~cUnk00ad1e58();
-    virtual void Slot03_abfed0(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot03_abfed0(uint32_t, uint32_t, uint32_t);
 };
 
 // SYNTHETIC: 0x009307fc

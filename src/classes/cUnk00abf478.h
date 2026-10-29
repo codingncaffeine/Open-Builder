@@ -8,7 +8,7 @@
 // VTABLE: 0x00abf478
 class cUnk00abf478 {
 public:
-    virtual void Slot00_abf478(uint32_t, uint32_t);
+    virtual bool Slot00_abf478(uint32_t, uint32_t);
     virtual uint32_t Slot01_abf478();
     virtual uint32_t Slot02_abf478();
     virtual bool Slot03_abf478(uint32_t);
@@ -22,7 +22,7 @@ public:
     virtual bool Slot11_abf478(uint32_t, uint32_t);
     virtual bool Slot12_abf478();
     virtual bool Slot13_abf478();
-    virtual void Slot14_abf478(uint32_t, uint32_t);
+    virtual uint32_t Slot14_abf478(uint32_t, uint32_t);
     virtual bool Slot15_abf478();
     virtual void Slot16_abf478();
     virtual bool Slot17_abf478();

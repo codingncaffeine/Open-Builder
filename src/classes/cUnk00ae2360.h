@@ -11,8 +11,8 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void* Slot03_ae2360() = 0;
-    virtual void Slot04_ae2360(uint32_t, uint32_t) = 0;
-    virtual void Slot05_ae2360(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot04_ae2360(uint32_t, uint32_t) = 0;
+    virtual bool Slot05_ae2360(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot06_ae2360() = 0;
     virtual void Slot07_ae2360(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot08_ae2360(uint32_t) = 0;

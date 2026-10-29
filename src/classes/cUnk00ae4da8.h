@@ -16,9 +16,9 @@ public:
     virtual void Slot03_ae4d28(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot04_ae4d28();
     virtual uint32_t Slot05_ae4d28();
-    virtual void Slot07_ae4d28();
-    virtual void Slot09_ae4d28(uint32_t);
-    virtual void Slot12_ae4d28(uint32_t);
+    virtual uint32_t Slot07_ae4d28();
+    virtual uint32_t Slot09_ae4d28(uint32_t);
+    virtual uint32_t Slot12_ae4d28(uint32_t);
     virtual void Slot13_ae4d28(uint32_t);
     char unknown4[0x88];
 };

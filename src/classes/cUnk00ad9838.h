@@ -7,22 +7,18 @@
 #include "classes/cUnk00ad8c20.h"
 #include "classes/cUnk00ad9818.h"
 
-// Between cUnk00ad9818 and cUnk00ad9838 at +0x10: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad9838_10 : public cUnk00ad9818 {
-    virtual void Slot03_ad9818(uint32_t, uint32_t);
-};
-
 // VTABLE: 0x00ad9838 cUnk00ad8c20
-// VTABLE: 0x00ad9828 cUnk00ad9838_10
+// VTABLE: 0x00ad9828 cUnk00ad9818
 // SIZE 0x14
-class cUnk00ad9838 : public cUnk00ad8c20, public cUnk00ad9838_10 {
+class cUnk00ad9838 : public cUnk00ad8c20, public cUnk00ad9818 {
 public:
-    virtual void Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
-    virtual void Slot10_ad8c20(uint32_t, uint32_t);
+    virtual bool Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot10_ad8c20(uint32_t, uint32_t);
     virtual bool Slot11_ad8c20(uint32_t, uint32_t);
-    virtual void Slot00_ace4b0(uint32_t, uint32_t);
-    virtual void Slot01_ace4b0();
-    virtual void Slot02_ace4b0();
+    virtual bool Slot00_ace4b0(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ace4b0();
+    virtual uint32_t Slot02_ace4b0();
+    virtual bool Slot03_ad9818(uint32_t, uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad9838[sizeof(cUnk00ad9838) == 0x14 ? 1 : -1];

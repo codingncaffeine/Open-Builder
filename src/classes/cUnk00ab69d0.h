@@ -7,23 +7,17 @@
 #include "classes/cUnk00ab6718.h"
 #include "classes/cUnk00adc8d8.h"
 
-// Between cUnk00adc8d8 and cUnk00ab69d0 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ab69d0_4 : public cUnk00adc8d8 {
-    virtual bool Slot88_adc8d8();
-    virtual void Slot04_adb6a8();
-    virtual void Slot05_adb6a8();
-};
-
 // VTABLE: 0x00ab69d0 cUnk00ab6718
-// VTABLE: 0x00ab6770 cUnk00ab69d0_4
+// VTABLE: 0x00ab6770 cUnk00adc8d8
 // SIZE 0x1b4
-class cUnk00ab69d0 : public cUnk00ab6718, public cUnk00ab69d0_4 {
+class cUnk00ab69d0 : public cUnk00ab6718, public cUnk00adc8d8 {
 public:
     virtual ~cUnk00ab69d0() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_ab6718();
+    virtual bool Slot88_adc8d8();
+    virtual uint32_t Slot03_ab6718();
     virtual void Slot04_ab6718(uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot05_ab6718();
     virtual void Slot06_ab6718(uint32_t);
@@ -41,6 +35,8 @@ public:
     virtual void* Slot18_ab6718();
     virtual void Slot19_ab6718(uint32_t);
     virtual void* Slot20_ab6718();
+    virtual bool Slot04_adb6a8();
+    virtual bool Slot05_adb6a8();
     char fielddc[0x10];
     char fieldec[0x8];
     char fieldf4[0x14];

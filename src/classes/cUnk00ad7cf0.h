@@ -9,82 +9,74 @@
 #include "classes/cUnk00ad8d48.h"
 #include "classes/cUnk00ad8d88.h"
 
-// Between cUnk00ad1818 and cUnk00ad7cf0 at +0x1c: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad7cf0_1c : public cUnk00ad1818 {
-    virtual void Slot03_ad1818();
-    virtual void Slot14_ad1818(uint32_t);
-    virtual void Slot15_ad1818(uint32_t);
-    virtual bool Slot17_ad1818(uint32_t, uint32_t);
-    virtual bool Slot18_ad1818();
-};
-
-// Between cUnk00ad1878 and cUnk00ad7cf0 at +0x2c: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad7cf0_2c : public cUnk00ad1878 {
-    virtual void Slot03_ad1878(uint32_t);
-    virtual bool Slot14_ad1878(uint32_t, uint32_t);
-    virtual void Slot15_ad1878(uint32_t);
-    virtual void Slot17_ad1878(uint32_t, uint32_t);
-    virtual bool Slot18_ad1878();
-};
-
-class cUnk00ad7cf0 : public cUnk00ad8d88, public cUnk00ad8d48, public cUnk00ad7cf0_1c, public cUnk00ad7cf0_2c {
+class cUnk00ad7cf0 : public cUnk00ad8d88, public cUnk00ad8d48, public cUnk00ad1818, public cUnk00ad1878 {
 public:
     virtual ~cUnk00ad7cf0() {}
     virtual void Slot57_ad7cf0(uint32_t, uint32_t, uint32_t);
     virtual void Slot58_ad7cf0(uint32_t, uint32_t, uint32_t);
-    virtual void Slot59_ad7cf0(uint32_t);
-    virtual void Slot60_ad7cf0(uint32_t);
-    virtual void Slot61_ad7cf0(uint32_t);
-    virtual void Slot00_ad8d88(uint32_t, uint32_t);
-    virtual void Slot01_ad8d88();
-    virtual void Slot02_ad8d88();
-    virtual void Slot03_ad8d88();
+    virtual uint32_t Slot59_ad7cf0(uint32_t);
+    virtual uint32_t Slot60_ad7cf0(uint32_t);
+    virtual uint32_t Slot61_ad7cf0(uint32_t);
+    virtual void Slot03_ad1818();
+    virtual bool Slot14_ad1818(uint32_t);
+    virtual bool Slot15_ad1818(uint32_t);
+    virtual bool Slot17_ad1818(uint32_t, uint32_t);
+    virtual bool Slot18_ad1818();
+    virtual bool Slot03_ad1878(uint32_t);
+    virtual bool Slot14_ad1878(uint32_t, uint32_t);
+    virtual uint32_t Slot15_ad1878(uint32_t);
+    virtual bool Slot17_ad1878(uint32_t, uint32_t);
+    virtual bool Slot18_ad1878();
+    virtual bool Slot00_ad8d88(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad8d88();
+    virtual uint32_t Slot02_ad8d88();
+    virtual uint32_t Slot03_ad8d88();
     virtual void Slot04_ad8d88();
     virtual void Slot05_ad8d88(uint32_t);
     virtual void Slot06_ad8d88();
     virtual void Slot07_ad8d88(uint32_t);
-    virtual void Slot08_ad8d88(uint32_t, uint32_t);
-    virtual void Slot09_ad8d88(uint32_t);
-    virtual void Slot10_ad8d88(uint32_t, uint32_t);
-    virtual void Slot11_ad8d88(uint32_t);
-    virtual void Slot12_ad8d88(uint32_t, uint32_t);
-    virtual void Slot13_ad8d88(uint32_t);
-    virtual void Slot14_ad8d88(uint32_t, uint32_t);
-    virtual void Slot15_ad8d88(uint32_t);
-    virtual void Slot16_ad8d88(uint32_t, uint32_t);
-    virtual void Slot17_ad8d88(uint32_t);
-    virtual void Slot18_ad8d88(uint32_t, uint32_t);
-    virtual void Slot19_ad8d88(uint32_t);
+    virtual bool Slot08_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot09_ad8d88(uint32_t);
+    virtual bool Slot10_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot11_ad8d88(uint32_t);
+    virtual bool Slot12_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot13_ad8d88(uint32_t);
+    virtual bool Slot14_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot15_ad8d88(uint32_t);
+    virtual bool Slot16_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot17_ad8d88(uint32_t);
+    virtual bool Slot18_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot19_ad8d88(uint32_t);
     virtual void Slot20_ad8d88(uint32_t, uint32_t);
     virtual void Slot21_ad8d88(uint32_t);
     virtual void Slot22_ad8d88(uint32_t, uint32_t);
     virtual void Slot23_ad8d88(uint32_t);
-    virtual void Slot24_ad8d88(uint32_t);
+    virtual bool Slot24_ad8d88(uint32_t);
     virtual void Slot25_ad8d88(uint32_t);
-    virtual void Slot26_ad8d88(uint32_t);
+    virtual bool Slot26_ad8d88(uint32_t);
     virtual void Slot28_ad8d88();
     virtual void Slot29_ad8d88(uint32_t);
     virtual void Slot30_ad8d88();
     virtual void Slot31_ad8d88(uint32_t);
-    virtual void Slot32_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot32_ad8d88(uint32_t, uint32_t);
     virtual void Slot33_ad8d88(uint32_t);
-    virtual void Slot34_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot34_ad8d88(uint32_t, uint32_t);
     virtual void Slot35_ad8d88(uint32_t);
-    virtual void Slot36_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot36_ad8d88(uint32_t, uint32_t);
     virtual void Slot37_ad8d88(uint32_t);
-    virtual void Slot38_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot38_ad8d88(uint32_t, uint32_t);
     virtual void Slot39_ad8d88(uint32_t);
-    virtual void Slot40_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot40_ad8d88(uint32_t, uint32_t);
     virtual void Slot41_ad8d88(uint32_t, uint32_t);
-    virtual void Slot42_ad8d88(uint32_t, uint32_t);
+    virtual bool Slot42_ad8d88(uint32_t, uint32_t);
     virtual void Slot43_ad8d88(uint32_t, uint32_t);
     virtual void Slot44_ad8d88(uint32_t, uint32_t);
     virtual void Slot45_ad8d88(uint32_t);
     virtual void Slot46_ad8d88(uint32_t, uint32_t);
     virtual void Slot47_ad8d88(uint32_t, uint32_t);
-    virtual void Slot48_ad8d88(uint32_t);
+    virtual bool Slot48_ad8d88(uint32_t);
     virtual void Slot49_ad8d88(uint32_t);
-    virtual void Slot50_ad8d88(uint32_t);
+    virtual bool Slot50_ad8d88(uint32_t);
     virtual bool Slot56_ad8d88(uint32_t);
 };
 

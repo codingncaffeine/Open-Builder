@@ -7,26 +7,26 @@
 
 class cUnk00ae0ab0 {
 public:
-    virtual void Slot00_ae0ab0() = 0;
-    virtual void Slot01_ae0ab0() = 0;
-    virtual void Slot02_ae0ab0() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual unsigned int AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual void Slot03_ae0ab0() = 0;
-    virtual void Slot04_ae0ab0() = 0;
+    virtual uint32_t Slot04_ae0ab0() = 0;
     virtual void Slot05_ae0ab0() = 0;
     virtual void Slot06_ae0ab0() = 0;
-    virtual void Slot07_ae0ab0() = 0;
-    virtual void Slot08_ae0ab0() = 0;
-    virtual void Slot09_ae0ab0() = 0;
-    virtual void Slot10_ae0ab0() = 0;
-    virtual void Slot11_ae0ab0() = 0;
+    virtual bool Slot07_ae0ab0(uint32_t, uint32_t) = 0;
+    virtual bool Slot08_ae0ab0(uint32_t, uint32_t) = 0;
+    virtual bool Slot09_ae0ab0(uint32_t) = 0;
+    virtual uint32_t Slot10_ae0ab0() = 0;
+    virtual bool Slot11_ae0ab0(uint32_t) = 0;
     virtual void Slot12_ae0ab0() = 0;
-    virtual void Slot13_ae0ab0() = 0;
+    virtual bool Slot13_ae0ab0(uint32_t) = 0;
     virtual void Slot14_ae0ab0() = 0;
-    virtual void Slot15_ae0ab0() = 0;
-    virtual void Slot16_ae0ab0() = 0;
-    virtual void Slot17_ae0ab0() = 0;
-    virtual void Slot18_ae0ab0() = 0;
-    virtual void Slot19_ae0ab0() = 0;
+    virtual void Slot15_ae0ab0(uint32_t, uint32_t) = 0;
+    virtual void Slot16_ae0ab0(uint32_t, uint32_t) = 0;
+    virtual void Slot17_ae0ab0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot18_ae0ab0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot19_ae0ab0(uint32_t) = 0;
 };
 
 #endif

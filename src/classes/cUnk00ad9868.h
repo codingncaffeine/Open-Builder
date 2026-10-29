@@ -7,15 +7,15 @@
 
 class cUnk00ad9868 {
 public:
-    virtual void Slot00_ad8fc8(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad8fc8() = 0;
-    virtual void Slot02_ad8fc8() = 0;
+    virtual bool Slot00_ad8fc8(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad8fc8() = 0;
+    virtual uint32_t Slot02_ad8fc8() = 0;
     virtual void Slot03_ad9868() = 0;
-    virtual void Slot04_ad9868(uint32_t, uint32_t) = 0;
-    virtual void Slot05_ad9868(uint32_t, uint32_t) = 0;
-    virtual void Slot06_ad9868(uint32_t, uint32_t) = 0;
-    virtual void Slot07_ad9868() = 0;
-    virtual void Slot08_ad9868(uint32_t) = 0;
+    virtual uint32_t Slot04_ad9868(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot05_ad9868(uint32_t, uint32_t) = 0;
+    virtual bool Slot06_ad9868(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot07_ad9868() = 0;
+    virtual uint32_t Slot08_ad9868(uint32_t) = 0;
     virtual void Slot09_ad9868(uint32_t, uint32_t) = 0;
     virtual void Slot10_ad9868(uint32_t, uint32_t) = 0;
 };

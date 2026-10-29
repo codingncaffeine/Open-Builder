@@ -7,12 +7,12 @@
 
 class cUnk00adc294 {
 public:
-    virtual void Slot00_adc294() = 0;
-    virtual void Slot01_adc294() = 0;
-    virtual void Slot02_adc294() = 0;
-    virtual void Slot03_adc294() = 0;
-    virtual void Slot04_adc294() = 0;
-    virtual void Slot05_adc294() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual unsigned int AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_adc294(uint32_t) = 0;
+    virtual bool Slot04_adc294(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot05_adc294(uint32_t, uint32_t) = 0;
 };
 
 #endif

@@ -9,11 +9,11 @@
 class cUnk00ac5268 {
 public:
     virtual void Slot00_ac5268();
-    virtual void Slot01_ac5268(uint32_t, uint32_t);
-    virtual void Slot02_ac5268(uint32_t);
+    virtual bool Slot01_ac5268(uint32_t, uint32_t);
+    virtual bool Slot02_ac5268(uint32_t);
     virtual void Slot03_ac5268(uint32_t);
-    virtual void Slot04_ac5268(uint32_t);
-    virtual void Slot05_ac5268();
+    virtual bool Slot04_ac5268(uint32_t);
+    virtual uint32_t Slot05_ac5268();
     virtual void Slot06_ac5268(uint32_t);
     virtual void Slot07_ac5268(uint32_t);
     virtual void Slot08_ac5268(uint32_t);

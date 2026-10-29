@@ -7,8 +7,8 @@
 
 class cUnk00ad221c {
 public:
-    virtual void Slot00_ad22c4(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad22c4() = 0;
+    virtual bool Slot00_ad22c4(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad22c4() = 0;
     virtual void Slot02_ad22c4() = 0;
     virtual bool Slot03_ad221c(uint32_t, uint32_t) = 0;
 };

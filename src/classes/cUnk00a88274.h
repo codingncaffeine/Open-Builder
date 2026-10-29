@@ -9,14 +9,14 @@
 // SIZE 0xc
 class cUnk00a88274 {
 public:
-    virtual void Slot00_a88274(uint32_t, uint32_t);
+    virtual bool Slot00_a88274(uint32_t, uint32_t);
     virtual void Slot01_a88274();
     virtual void Slot02_a88274();
-    virtual void Slot03_a88274();
+    virtual bool Slot03_a88274();
     virtual void Slot04_a88274();
-    virtual void Slot05_a88274(uint32_t);
-    virtual void Slot06_a88274(uint32_t);
-    virtual void Slot07_a88274();
+    virtual bool Slot05_a88274(uint32_t);
+    virtual uint32_t Slot06_a88274(uint32_t);
+    virtual uint32_t Slot07_a88274();
     virtual ~cUnk00a88274() {}
     char unknown4[0x8];
 };

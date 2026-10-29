@@ -7,24 +7,20 @@
 #include "classes/cUnk00acf150.h"
 #include "classes/cUnk00ad2374.h"
 
-// Between cUnk00ad2374 and cUnk00ad23b8 at +0x3c: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad23b8_3c : public cUnk00ad2374 {
-    virtual void Slot00_ad2374(uint32_t, uint32_t);
-    virtual void Slot01_ad2374();
-    virtual void Slot02_ad2374();
-    virtual void Slot03_ad2374();
-    virtual void Slot04_ad2374();
-    virtual void Slot06_ad2374(uint32_t);
-};
-
 // VTABLE: 0x00ad23b8 cUnk00acf150
-// VTABLE: 0x00ad2394 cUnk00ad23b8_3c
+// VTABLE: 0x00ad2394 cUnk00ad2374
 // SIZE 0x68
-class cUnk00ad23b8 : public cUnk00acf150, public cUnk00ad23b8_3c {
+class cUnk00ad23b8 : public cUnk00acf150, public cUnk00ad2374 {
 public:
     virtual ~cUnk00ad23b8();
-    virtual void Slot06_acf150(uint32_t, uint32_t, uint32_t);
-    virtual void Slot13_acf150(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot06_acf150(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot13_acf150(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot00_ad2374(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad2374();
+    virtual void Slot02_ad2374();
+    virtual bool Slot03_ad2374();
+    virtual bool Slot04_ad2374();
+    virtual bool Slot06_ad2374(uint32_t);
     char unknown40[0x28];
 };
 #ifdef _MSC_VER

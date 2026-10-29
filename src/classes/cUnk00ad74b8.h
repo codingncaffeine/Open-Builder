@@ -9,22 +9,22 @@
 // SIZE 0x64
 class cUnk00ad74b8 {
 public:
-    virtual void Slot00_ad74b8(uint32_t, uint32_t);
-    virtual void Slot01_ad74b8();
+    virtual bool Slot00_ad74b8(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad74b8();
     virtual void Slot02_ad74b8();
-    virtual void Slot03_ad74b8(uint32_t);
-    virtual void Slot04_ad74b8(uint32_t);
+    virtual bool Slot03_ad74b8(uint32_t);
+    virtual bool Slot04_ad74b8(uint32_t);
     virtual bool Slot05_ad74b8(uint32_t);
     virtual bool Slot06_ad74b8(uint32_t);
-    virtual void Slot07_ad74b8();
-    virtual void Slot08_ad74b8();
-    virtual void Slot09_ad74b8();
+    virtual bool Slot07_ad74b8();
+    virtual bool Slot08_ad74b8();
+    virtual bool Slot09_ad74b8();
     virtual uint32_t Slot10_ad74b8();
-    virtual void Slot11_ad74b8(uint32_t, uint32_t);
-    virtual void Slot12_ad74b8();
-    virtual void Slot13_ad74b8();
-    virtual void Slot14_ad74b8(uint32_t, uint32_t);
-    virtual void Slot15_ad74b8();
+    virtual bool Slot11_ad74b8(uint32_t, uint32_t);
+    virtual bool Slot12_ad74b8();
+    virtual bool Slot13_ad74b8();
+    virtual uint32_t Slot14_ad74b8(uint32_t, uint32_t);
+    virtual bool Slot15_ad74b8();
     virtual void* Slot16_ad74b8();
     virtual bool Slot17_ad74b8();
     virtual bool Slot18_ad74b8(uint32_t);

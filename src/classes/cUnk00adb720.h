@@ -12,16 +12,16 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void* Slot03_adb720() = 0;
-    virtual void Slot04_adb6a8() = 0;
-    virtual void Slot05_adb6a8() = 0;
+    virtual bool Slot04_adb6a8() = 0;
+    virtual bool Slot05_adb6a8() = 0;
     virtual uint32_t Slot06_adb720() = 0;
     virtual void Slot07_adb720(uint32_t) = 0;
-    virtual void Slot08_adb720(uint32_t, uint32_t) = 0;
-    virtual void Slot09_adb720(uint32_t, uint32_t) = 0;
+    virtual bool Slot08_adb720(uint32_t, uint32_t) = 0;
+    virtual bool Slot09_adb720(uint32_t, uint32_t) = 0;
     virtual void Slot10_adb720(uint32_t) = 0;
     virtual void Slot11_adb720(uint32_t) = 0;
     virtual void Slot12_adb720(uint32_t) = 0;
-    virtual void Slot13_adb720(uint32_t) = 0;
+    virtual uint32_t Slot13_adb720(uint32_t) = 0;
     virtual uint32_t Slot14_adb720() = 0;
 };
 #ifdef _MSC_VER

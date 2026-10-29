@@ -10,7 +10,7 @@
 // Between cUnk00ad2620 and cUnk00ad4268 at +0x104: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad4268_104 : public cUnk00ad2620 {
     virtual void Slot03_ad2620(uint32_t);
-    virtual void Slot04_ad2620(uint32_t);
+    virtual bool Slot04_ad2620(uint32_t);
     virtual uint32_t Slot06_ad2620();
     virtual uint32_t Slot07_ad2620();
     virtual bool Slot08_ad2620(uint32_t);
@@ -23,13 +23,13 @@ struct OB_NOVTABLE cUnk00ad4268_104 : public cUnk00ad2620 {
 };
 
 // VTABLE: 0x00ad4268 cUnk00ad3e48_0
-// VTABLE: 0x00ad4244 cUnk00ad3e48_4
-// VTABLE: 0x00ad4200 cUnk00ad3e48_8
-// VTABLE: 0x00ad4168 cUnk00ad3e48_c
+// VTABLE: 0x00ad4244 cUnk00ad2bc8
+// VTABLE: 0x00ad4200 cUnk00ac2d78
+// VTABLE: 0x00ad4168 cUnk00ac2b18
 // VTABLE: 0x00ad4158 cUnk00ad2bec
 // VTABLE: 0x00ad4148 cUnk00a943c0
-// VTABLE: 0x00ad4128 cUnk00ad3e48_18
-// VTABLE: 0x00ad4110 cUnk00ad3e48_1c
+// VTABLE: 0x00ad4128 cUnk00ad2bfc
+// VTABLE: 0x00ad4110 cUnk00ac2bf0
 // VTABLE: 0x00ad42fc cUnk00ad4268_104
 // SIZE 0x114
 class cUnk00ad4268 : public cUnk00ad3e48, public cUnk00ad4268_104 {
@@ -39,8 +39,8 @@ public:
     virtual bool Slot35_ad4268(uint32_t);
     virtual bool Slot36_ad4268(uint32_t);
     virtual uint32_t Slot18_ad4648();
-    virtual void Slot00_ad4cf4(uint32_t, uint32_t);
-    virtual void Slot01_ad4cf4();
+    virtual bool Slot00_ad4cf4(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
     char unknown108[0xc];
 };

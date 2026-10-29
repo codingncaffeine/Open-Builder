@@ -7,8 +7,8 @@
 
 class cUnk00ad7638 {
 public:
-    virtual void Slot00_ad1590(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad1590() = 0;
+    virtual bool Slot00_ad1590(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad1590() = 0;
     virtual void Slot02_ad1590() = 0;
     virtual bool Slot03_ad7638() = 0;
     virtual uint32_t Slot04_ad7638() = 0;

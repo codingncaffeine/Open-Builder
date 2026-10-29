@@ -8,21 +8,17 @@
 #include "classes/cUnk00aaaa9c.h"
 #include "classes/cUnk00ace624.h"
 
-// Between cUnk00aaaa9c and cUnk00ab4ab4 at +0xc: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ab4ab4_c : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c(uint32_t);
-};
-
 // VTABLE: 0x00ab4ab4 cUnk00a83524
 // VTABLE: 0x00ab4aa0 cUnk00ace624
-// VTABLE: 0x00ab4a90 cUnk00ab4ab4_c
+// VTABLE: 0x00ab4a90 cUnk00aaaa9c
 // SIZE 0x14
-class cUnk00ab4ab4 : public cUnk00a83524, public cUnk00ace624, public cUnk00ab4ab4_c {
+class cUnk00ab4ab4 : public cUnk00a83524, public cUnk00ace624, public cUnk00aaaa9c {
 public:
     virtual ~cUnk00ab4ab4() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
+    virtual bool Slot03_aaaa9c(uint32_t);
     virtual bool Slot03_a83524(uint32_t, uint32_t);
     char unknown10[0x4];
 };

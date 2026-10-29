@@ -4,15 +4,28 @@
 #include "classes/cUnk00a808b8.h"
 #include "classes/cUnk00a810e0.h"
 #include "classes/cUnk00a81204.h"
+#include "classes/cUnk00a812cc.h"
 #include "classes/cUnk00a812f8.h"
+#include "classes/cUnk00a81514.h"
+#include "classes/cUnk00a81c9c.h"
+#include "classes/cUnk00a81d4c.h"
+#include "classes/cUnk00a81fdc.h"
+#include "classes/cUnk00a8237c.h"
 #include "classes/cUnk00a827d8.h"
 #include "classes/cUnk00a829ac.h"
 #include "classes/cUnk00a82a20.h"
+#include "classes/cUnk00a82fec.h"
 #include "classes/cUnk00a83548.h"
 #include "classes/cUnk00a83ac0.h"
+#include "classes/cUnk00a83b8c.h"
+#include "classes/cUnk00a83be8.h"
+#include "classes/cUnk00a845b8.h"
 #include "classes/cUnk00a84b44.h"
+#include "classes/cUnk00a84b90.h"
+#include "classes/cUnk00a85218.h"
 #include "classes/cUnk00a85478.h"
 #include "classes/cUnk00a85544.h"
+#include "classes/cUnk00a85650.h"
 #include "classes/cUnk00a856cc.h"
 #include "classes/cUnk00a85800.h"
 #include "classes/cUnk00a858d0.h"
@@ -20,7 +33,9 @@
 #include "classes/cUnk00a85998.h"
 #include "classes/cUnk00a85a20.h"
 #include "classes/cUnk00a85b14.h"
+#include "classes/cUnk00a85ed0.h"
 #include "classes/cUnk00a85f40.h"
+#include "classes/cUnk00a85ff8.h"
 #include "classes/cUnk00a8615c.h"
 #include "classes/cUnk00a86258.h"
 #include "classes/cUnk00a862d8.h"
@@ -45,11 +60,15 @@
 #include "classes/cUnk00a87e70.h"
 #include "classes/cUnk00a87ee8.h"
 #include "classes/cUnk00a87f58.h"
+#include "classes/cUnk00a87fc0.h"
 #include "classes/cUnk00a88050.h"
+#include "classes/cUnk00a88084.h"
+#include "classes/cUnk00a880b8.h"
 #include "classes/cUnk00a881d4.h"
 #include "classes/cUnk00a881e8.h"
 #include "classes/cUnk00a88274.h"
 #include "classes/cUnk00a8ceb8.h"
+#include "classes/cUnk00a8d260.h"
 #include "classes/cUnk00a8d424.h"
 #include "classes/cUnk00a8d440.h"
 #include "classes/cUnk00a8d4e0.h"
@@ -60,16 +79,20 @@
 #include "classes/cUnk00a8ed34.h"
 #include "classes/cUnk00a8ed58.h"
 #include "classes/cUnk00a8ed5c.h"
+#include "classes/cUnk00a8edbc.h"
 #include "classes/cUnk00a8edf8.h"
+#include "classes/cUnk00a8ee38.h"
 #include "classes/cUnk00a8eea0.h"
 #include "classes/cUnk00a8f028.h"
 #include "classes/cUnk00a8f328.h"
 #include "classes/cUnk00a8f694.h"
 #include "classes/cUnk00a8f6d8.h"
+#include "classes/cUnk00a8f79c.h"
 #include "classes/cUnk00a8f7f0.h"
 #include "classes/cUnk00a8f8e4.h"
 #include "classes/cUnk00a8f9cc.h"
 #include "classes/cUnk00a8fa40.h"
+#include "classes/cUnk00a8fad4.h"
 #include "classes/cUnk00a8fe14.h"
 #include "classes/cUnk00a8fe48.h"
 #include "classes/cUnk00a90040.h"
@@ -175,6 +198,7 @@
 #include "classes/cUnk00a93da0.h"
 #include "classes/cUnk00a93db8.h"
 #include "classes/cUnk00a93dd0.h"
+#include "classes/cUnk00a93e18.h"
 #include "classes/cUnk00a93e5c.h"
 #include "classes/cUnk00a93e74.h"
 #include "classes/cUnk00a93e8c.h"
@@ -227,17 +251,25 @@
 #include "classes/cUnk00a99d34.h"
 #include "classes/cUnk00a99e70.h"
 #include "classes/cUnk00a9b768.h"
+#include "classes/cUnk00a9bd88.h"
 #include "classes/cUnk00a9d894.h"
 #include "classes/cUnk00a9dbb8.h"
+#include "classes/cUnk00a9e0c0.h"
 #include "classes/cUnk00a9e160.h"
+#include "classes/cUnk00a9e1e8.h"
 #include "classes/cUnk00a9e27c.h"
 #include "classes/cUnk00a9e3dc.h"
 #include "classes/cUnk00a9e4d4.h"
+#include "classes/cUnk00a9e54c.h"
 #include "classes/cUnk00a9e5f4.h"
 #include "classes/cUnk00a9e640.h"
+#include "classes/cUnk00a9e69c.h"
 #include "classes/cUnk00a9e750.h"
+#include "classes/cUnk00a9e7c8.h"
 #include "classes/cUnk00a9e838.h"
+#include "classes/cUnk00a9e8cc.h"
 #include "classes/cUnk00a9e940.h"
+#include "classes/cUnk00a9e9c4.h"
 #include "classes/cUnk00a9ea60.h"
 #include "classes/cUnk00a9eb40.h"
 #include "classes/cUnk00a9ee78.h"
@@ -324,6 +356,7 @@
 #include "classes/cUnk00aa1ce4.h"
 #include "classes/cUnk00aa22f4.h"
 #include "classes/cUnk00aa2384.h"
+#include "classes/cUnk00aa2654.h"
 #include "classes/cUnk00aa26b4.h"
 #include "classes/cUnk00aa2758.h"
 #include "classes/cUnk00aa2a3c.h"
@@ -343,13 +376,16 @@
 #include "classes/cUnk00aa4044.h"
 #include "classes/cUnk00aa4060.h"
 #include "classes/cUnk00aa42c8.h"
+#include "classes/cUnk00aa42fc.h"
 #include "classes/cUnk00aa4330.h"
+#include "classes/cUnk00aa442c.h"
 #include "classes/cUnk00aa4468.h"
 #include "classes/cUnk00aa44ac.h"
 #include "classes/cUnk00aa44c4.h"
 #include "classes/cUnk00aa45b0.h"
 #include "classes/cUnk00aa51d8.h"
 #include "classes/cUnk00aa56c0.h"
+#include "classes/cUnk00aa5b80.h"
 #include "classes/cUnk00aa6658.h"
 #include "classes/cUnk00aa6c44.h"
 #include "classes/cUnk00aa6dfc.h"
@@ -380,9 +416,23 @@
 #include "classes/cUnk00aab008.h"
 #include "classes/cUnk00aab0d8.h"
 #include "classes/cUnk00aab0f8.h"
+#include "classes/cUnk00aab7d8.h"
+#include "classes/cUnk00aaba58.h"
+#include "classes/cUnk00aabcd8.h"
+#include "classes/cUnk00aabf58.h"
+#include "classes/cUnk00aac1d8.h"
+#include "classes/cUnk00aac458.h"
+#include "classes/cUnk00aac6d8.h"
+#include "classes/cUnk00aac958.h"
+#include "classes/cUnk00aacbd8.h"
+#include "classes/cUnk00aad0d8.h"
+#include "classes/cUnk00aad130.h"
+#include "classes/cUnk00aad3c8.h"
 #include "classes/cUnk00aad410.h"
+#include "classes/cUnk00aad6a8.h"
 #include "classes/cUnk00aada64.h"
 #include "classes/cUnk00aadab8.h"
+#include "classes/cUnk00aadee8.h"
 #include "classes/cUnk00aae270.h"
 #include "classes/cUnk00aae630.h"
 #include "classes/cUnk00aae904.h"
@@ -403,16 +453,22 @@
 #include "classes/cUnk00aaf8ac.h"
 #include "classes/cUnk00aafb58.h"
 #include "classes/cUnk00aafe7c.h"
+#include "classes/cUnk00aaff28.h"
+#include "classes/cUnk00ab01a8.h"
+#include "classes/cUnk00ab0428.h"
 #include "classes/cUnk00ab0d18.h"
 #include "classes/cUnk00ab0d4c.h"
 #include "classes/cUnk00ab0dc8.h"
 #include "classes/cUnk00ab0eb0.h"
 #include "classes/cUnk00ab0f58.h"
+#include "classes/cUnk00ab1160.h"
+#include "classes/cUnk00ab1374.h"
 #include "classes/cUnk00ab15dc.h"
 #include "classes/cUnk00ab1610.h"
 #include "classes/cUnk00ab1830.h"
 #include "classes/cUnk00ab1b28.h"
 #include "classes/cUnk00ab2150.h"
+#include "classes/cUnk00ab2490.h"
 #include "classes/cUnk00ab2760.h"
 #include "classes/cUnk00ab27dc.h"
 #include "classes/cUnk00ab29b0.h"
@@ -439,6 +495,7 @@
 #include "classes/cUnk00ab4b18.h"
 #include "classes/cUnk00ab4b34.h"
 #include "classes/cUnk00ab4b64.h"
+#include "classes/cUnk00ab4d08.h"
 #include "classes/cUnk00ab4ff4.h"
 #include "classes/cUnk00ab5164.h"
 #include "classes/cUnk00ab51e4.h"
@@ -463,6 +520,7 @@
 #include "classes/cUnk00ab78a0.h"
 #include "classes/cUnk00ab78f0.h"
 #include "classes/cUnk00ab7b58.h"
+#include "classes/cUnk00ab7e44.h"
 #include "classes/cUnk00ab83b8.h"
 #include "classes/cUnk00ab8884.h"
 #include "classes/cUnk00ab88c0.h"
@@ -479,6 +537,7 @@
 #include "classes/cUnk00aba190.h"
 #include "classes/cUnk00aba68c.h"
 #include "classes/cUnk00aba700.h"
+#include "classes/cUnk00aba770.h"
 #include "classes/cUnk00abaa38.h"
 #include "classes/cUnk00abaae0.h"
 #include "classes/cUnk00abad18.h"
@@ -529,10 +588,12 @@
 #include "classes/cUnk00ac185c.h"
 #include "classes/cUnk00ac1874.h"
 #include "classes/cUnk00ac188c.h"
+#include "classes/cUnk00ac2848.h"
 #include "classes/cUnk00ac2f70.h"
 #include "classes/cUnk00ac3248.h"
 #include "classes/cUnk00ac385c.h"
 #include "classes/cUnk00ac3f90.h"
+#include "classes/cUnk00ac4444.h"
 #include "classes/cUnk00ac47ec.h"
 #include "classes/cUnk00ac4f10.h"
 #include "classes/cUnk00ac4f44.h"
@@ -541,6 +602,7 @@
 #include "classes/cUnk00ac5268.h"
 #include "classes/cUnk00ac5548.h"
 #include "classes/cUnk00ac55b4.h"
+#include "classes/cUnk00ac7630.h"
 #include "classes/cUnk00ac7880.h"
 #include "classes/cUnk00ac7b68.h"
 #include "classes/cUnk00ac7e60.h"
@@ -584,6 +646,7 @@
 #include "classes/cUnk00acec00.h"
 #include "classes/cUnk00ad1638.h"
 #include "classes/cUnk00ad1f68.h"
+#include "classes/cUnk00ad2328.h"
 #include "classes/cUnk00ad2804.h"
 #include "classes/cUnk00ad2830.h"
 #include "classes/cUnk00ad46c8.h"
@@ -593,6 +656,7 @@
 #include "classes/cUnk00ad5398.h"
 #include "classes/cUnk00ad53a4.h"
 #include "classes/cUnk00ad5420.h"
+#include "classes/cUnk00ad7070.h"
 #include "classes/cUnk00ad725c.h"
 #include "classes/cUnk00ad75a0.h"
 #include "classes/cUnk00ad87d0.h"
@@ -672,15 +736,28 @@ void GeneratedClasses_game()
     (void)new cUnk00a808b8;
     (void)new cUnk00a810e0;
     (void)new cUnk00a81204;
+    (void)new cUnk00a812cc;
     (void)new cUnk00a812f8;
+    (void)new cUnk00a81514;
+    (void)new cUnk00a81c9c;
+    (void)new cUnk00a81d4c;
+    (void)new cUnk00a81fdc;
+    (void)new cUnk00a8237c;
     (void)new cUnk00a827d8;
     (void)new cUnk00a829ac;
     (void)new cUnk00a82a20;
+    (void)new cUnk00a82fec;
     (void)new cUnk00a83548;
     (void)new cUnk00a83ac0;
+    (void)new cUnk00a83b8c;
+    (void)new cUnk00a83be8;
+    (void)new cUnk00a845b8;
     (void)new cUnk00a84b44;
+    (void)new cUnk00a84b90;
+    (void)new cUnk00a85218;
     (void)new cUnk00a85478;
     (void)new cUnk00a85544;
+    (void)new cUnk00a85650;
     (void)new cUnk00a856cc;
     (void)new cUnk00a85800;
     (void)new cUnk00a858d0;
@@ -688,7 +765,9 @@ void GeneratedClasses_game()
     (void)new cUnk00a85998;
     (void)new cUnk00a85a20;
     (void)new cUnk00a85b14;
+    (void)new cUnk00a85ed0;
     (void)new cUnk00a85f40;
+    (void)new cUnk00a85ff8;
     (void)new cUnk00a8615c;
     (void)new cUnk00a86258;
     (void)new cUnk00a862d8;
@@ -713,11 +792,15 @@ void GeneratedClasses_game()
     (void)new cUnk00a87e70;
     (void)new cUnk00a87ee8;
     (void)new cUnk00a87f58;
+    (void)new cUnk00a87fc0;
     (void)new cUnk00a88050;
+    (void)new cUnk00a88084;
+    (void)new cUnk00a880b8;
     (void)new cUnk00a881d4;
     (void)new cUnk00a881e8;
     (void)new cUnk00a88274;
     (void)new cUnk00a8ceb8;
+    (void)new cUnk00a8d260;
     (void)new cUnk00a8d424;
     (void)new cUnk00a8d440;
     (void)new cUnk00a8d4e0;
@@ -728,16 +811,20 @@ void GeneratedClasses_game()
     (void)new cUnk00a8ed34;
     (void)new cUnk00a8ed58;
     (void)new cUnk00a8ed5c;
+    (void)new cUnk00a8edbc;
     (void)new cUnk00a8edf8;
+    (void)new cUnk00a8ee38;
     (void)new cUnk00a8eea0;
     (void)new cUnk00a8f028;
     (void)new cUnk00a8f328;
     (void)new cUnk00a8f694;
     (void)new cUnk00a8f6d8;
+    (void)new cUnk00a8f79c;
     (void)new cUnk00a8f7f0;
     (void)new cUnk00a8f8e4;
     (void)new cUnk00a8f9cc;
     (void)new cUnk00a8fa40;
+    (void)new cUnk00a8fad4;
     (void)new cUnk00a8fe14;
     (void)new cUnk00a8fe48;
     (void)new cUnk00a90040;
@@ -843,6 +930,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a93da0;
     (void)new cUnk00a93db8;
     (void)new cUnk00a93dd0;
+    (void)new cUnk00a93e18;
     (void)new cUnk00a93e5c;
     (void)new cUnk00a93e74;
     (void)new cUnk00a93e8c;
@@ -895,17 +983,25 @@ void GeneratedClasses_game()
     (void)new cUnk00a99d34;
     (void)new cUnk00a99e70;
     (void)new cUnk00a9b768;
+    (void)new cUnk00a9bd88;
     (void)new cUnk00a9d894;
     (void)new cUnk00a9dbb8;
+    (void)new cUnk00a9e0c0;
     (void)new cUnk00a9e160;
+    (void)new cUnk00a9e1e8;
     (void)new cUnk00a9e27c;
     (void)new cUnk00a9e3dc;
     (void)new cUnk00a9e4d4;
+    (void)new cUnk00a9e54c;
     (void)new cUnk00a9e5f4;
     (void)new cUnk00a9e640;
+    (void)new cUnk00a9e69c;
     (void)new cUnk00a9e750;
+    (void)new cUnk00a9e7c8;
     (void)new cUnk00a9e838;
+    (void)new cUnk00a9e8cc;
     (void)new cUnk00a9e940;
+    (void)new cUnk00a9e9c4;
     (void)new cUnk00a9ea60;
     (void)new cUnk00a9eb40;
     (void)new cUnk00a9ee78;
@@ -992,6 +1088,7 @@ void GeneratedClasses_game()
     (void)new cUnk00aa1ce4;
     (void)new cUnk00aa22f4;
     (void)new cUnk00aa2384;
+    (void)new cUnk00aa2654;
     (void)new cUnk00aa26b4;
     (void)new cUnk00aa2758;
     (void)new cUnk00aa2a3c;
@@ -1011,13 +1108,16 @@ void GeneratedClasses_game()
     (void)new cUnk00aa4044;
     (void)new cUnk00aa4060;
     (void)new cUnk00aa42c8;
+    (void)new cUnk00aa42fc;
     (void)new cUnk00aa4330;
+    (void)new cUnk00aa442c;
     (void)new cUnk00aa4468;
     (void)new cUnk00aa44ac;
     (void)new cUnk00aa44c4;
     (void)new cUnk00aa45b0;
     (void)new cUnk00aa51d8;
     (void)new cUnk00aa56c0;
+    (void)new cUnk00aa5b80;
     (void)new cUnk00aa6658;
     (void)new cUnk00aa6c44;
     (void)new cUnk00aa6dfc;
@@ -1048,9 +1148,23 @@ void GeneratedClasses_game()
     (void)new cUnk00aab008;
     (void)new cUnk00aab0d8;
     (void)new cUnk00aab0f8;
+    (void)new cUnk00aab7d8;
+    (void)new cUnk00aaba58;
+    (void)new cUnk00aabcd8;
+    (void)new cUnk00aabf58;
+    (void)new cUnk00aac1d8;
+    (void)new cUnk00aac458;
+    (void)new cUnk00aac6d8;
+    (void)new cUnk00aac958;
+    (void)new cUnk00aacbd8;
+    (void)new cUnk00aad0d8;
+    (void)new cUnk00aad130;
+    (void)new cUnk00aad3c8;
     (void)new cUnk00aad410;
+    (void)new cUnk00aad6a8;
     (void)new cUnk00aada64;
     (void)new cUnk00aadab8;
+    (void)new cUnk00aadee8;
     (void)new cUnk00aae270;
     (void)new cUnk00aae630;
     (void)new cUnk00aae904;
@@ -1071,16 +1185,22 @@ void GeneratedClasses_game()
     (void)new cUnk00aaf8ac;
     (void)new cUnk00aafb58;
     (void)new cUnk00aafe7c;
+    (void)new cUnk00aaff28;
+    (void)new cUnk00ab01a8;
+    (void)new cUnk00ab0428;
     (void)new cUnk00ab0d18;
     (void)new cUnk00ab0d4c;
     (void)new cUnk00ab0dc8;
     (void)new cUnk00ab0eb0;
     (void)new cUnk00ab0f58;
+    (void)new cUnk00ab1160;
+    (void)new cUnk00ab1374;
     (void)new cUnk00ab15dc;
     (void)new cUnk00ab1610;
     (void)new cUnk00ab1830;
     (void)new cUnk00ab1b28;
     (void)new cUnk00ab2150;
+    (void)new cUnk00ab2490;
     (void)new cUnk00ab2760;
     (void)new cUnk00ab27dc;
     (void)new cUnk00ab29b0;
@@ -1107,6 +1227,7 @@ void GeneratedClasses_game()
     (void)new cUnk00ab4b18;
     (void)new cUnk00ab4b34;
     (void)new cUnk00ab4b64;
+    (void)new cUnk00ab4d08;
     (void)new cUnk00ab4ff4;
     (void)new cUnk00ab5164;
     (void)new cUnk00ab51e4;
@@ -1131,6 +1252,7 @@ void GeneratedClasses_game()
     (void)new cUnk00ab78a0;
     (void)new cUnk00ab78f0;
     (void)new cUnk00ab7b58;
+    (void)new cUnk00ab7e44;
     (void)new cUnk00ab83b8;
     (void)new cUnk00ab8884;
     (void)new cUnk00ab88c0;
@@ -1147,6 +1269,7 @@ void GeneratedClasses_game()
     (void)new cUnk00aba190;
     (void)new cUnk00aba68c;
     (void)new cUnk00aba700;
+    (void)new cUnk00aba770;
     (void)new cUnk00abaa38;
     (void)new cUnk00abaae0;
     (void)new cUnk00abad18;
@@ -1197,10 +1320,12 @@ void GeneratedClasses_game()
     (void)new cUnk00ac185c;
     (void)new cUnk00ac1874;
     (void)new cUnk00ac188c;
+    (void)new cUnk00ac2848;
     (void)new cUnk00ac2f70;
     (void)new cUnk00ac3248;
     (void)new cUnk00ac385c;
     (void)new cUnk00ac3f90;
+    (void)new cUnk00ac4444;
     (void)new cUnk00ac47ec;
     (void)new cUnk00ac4f10;
     (void)new cUnk00ac4f44;
@@ -1209,6 +1334,7 @@ void GeneratedClasses_game()
     (void)new cUnk00ac5268;
     (void)new cUnk00ac5548;
     (void)new cUnk00ac55b4;
+    (void)new cUnk00ac7630;
     (void)new cUnk00ac7880;
     (void)new cUnk00ac7b68;
     (void)new cUnk00ac7e60;
@@ -1252,6 +1378,7 @@ void GeneratedClasses_game()
     (void)new cUnk00acec00;
     (void)new cUnk00ad1638;
     (void)new cUnk00ad1f68;
+    (void)new cUnk00ad2328;
     (void)new cUnk00ad2804;
     (void)new cUnk00ad2830;
     (void)new cUnk00ad46c8;
@@ -1261,6 +1388,7 @@ void GeneratedClasses_game()
     (void)new cUnk00ad5398;
     (void)new cUnk00ad53a4;
     (void)new cUnk00ad5420;
+    (void)new cUnk00ad7070;
     (void)new cUnk00ad725c;
     (void)new cUnk00ad75a0;
     (void)new cUnk00ad87d0;

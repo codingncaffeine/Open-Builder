@@ -10,7 +10,7 @@
 // SIZE 0xd8
 class cUnk00adcb38 : public cUnk00adc8d8 {
 public:
-    virtual void Slot89_adc8d8();
+    virtual bool Slot89_adc8d8();
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adcb38[sizeof(cUnk00adcb38) == 0xd8 ? 1 : -1];

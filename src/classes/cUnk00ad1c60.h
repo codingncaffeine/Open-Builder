@@ -8,35 +8,35 @@
 // VTABLE: 0x00ad1c60
 class cUnk00ad1c60 {
 public:
-    virtual void Slot00_ad1c60(uint32_t, uint32_t);
-    virtual void Slot01_ad1c60();
+    virtual bool Slot00_ad1c60(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad1c60();
     virtual void Slot02_ad1c60();
     virtual void Slot03_ad1c60(uint32_t);
     virtual void Slot04_ad1c60(uint32_t);
-    virtual void Slot05_ad1c60(uint32_t);
-    virtual void Slot06_ad1c60(uint32_t);
-    virtual void Slot07_ad1c60(uint32_t);
-    virtual void Slot08_ad1c60(uint32_t);
-    virtual void Slot09_ad1c60(uint32_t);
-    virtual void Slot10_ad1c60(uint32_t);
-    virtual void Slot11_ad1c60();
-    virtual void Slot12_ad1c60();
-    virtual void Slot13_ad1c60();
-    virtual void Slot14_ad1c60(uint32_t);
-    virtual void Slot15_ad1c60();
-    virtual void Slot16_ad1c60();
-    virtual void Slot17_ad1c60(uint32_t);
-    virtual void Slot18_ad1c60();
-    virtual void Slot19_ad1c60();
+    virtual bool Slot05_ad1c60(uint32_t);
+    virtual bool Slot06_ad1c60(uint32_t);
+    virtual bool Slot07_ad1c60(uint32_t);
+    virtual bool Slot08_ad1c60(uint32_t);
+    virtual uint32_t Slot09_ad1c60(uint32_t);
+    virtual uint32_t Slot10_ad1c60(uint32_t);
+    virtual uint32_t Slot11_ad1c60();
+    virtual uint32_t Slot12_ad1c60();
+    virtual uint32_t Slot13_ad1c60();
+    virtual bool Slot14_ad1c60(uint32_t);
+    virtual uint32_t Slot15_ad1c60();
+    virtual uint32_t Slot16_ad1c60();
+    virtual bool Slot17_ad1c60(uint32_t);
+    virtual uint32_t Slot18_ad1c60();
+    virtual uint32_t Slot19_ad1c60();
     virtual void Slot20_ad1c60();
-    virtual void Slot21_ad1c60(uint32_t);
-    virtual void Slot22_ad1c60(uint32_t);
-    virtual void Slot23_ad1c60(uint32_t);
+    virtual bool Slot21_ad1c60(uint32_t);
+    virtual bool Slot22_ad1c60(uint32_t);
+    virtual bool Slot23_ad1c60(uint32_t);
     virtual void Slot24_ad1c60();
     virtual void Slot25_ad1c60();
-    virtual void Slot26_ad1c60(uint32_t);
-    virtual void Slot27_ad1c60(uint32_t);
-    virtual void Slot28_ad1c60();
+    virtual bool Slot26_ad1c60(uint32_t);
+    virtual bool Slot27_ad1c60(uint32_t);
+    virtual uint32_t Slot28_ad1c60();
     virtual ~cUnk00ad1c60();
 };
 

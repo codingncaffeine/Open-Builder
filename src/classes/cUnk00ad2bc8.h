@@ -8,15 +8,15 @@
 // SIZE 0x4
 class cUnk00ad2bc8 {
 public:
-    virtual void Slot00_ad4cf4(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad4cf4() = 0;
+    virtual bool Slot00_ad4cf4(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
-    virtual void Slot03_ad2bc8(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot04_ad2bc8(uint32_t) = 0;
+    virtual bool Slot03_ad2bc8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot04_ad2bc8(uint32_t) = 0;
     virtual void Slot05_ad2bc8(uint32_t, uint32_t) = 0;
     virtual void Slot06_ad2bc8(uint32_t) = 0;
-    virtual void Slot07_ad2bc8(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot08_ad2bc8(uint32_t) = 0;
+    virtual bool Slot07_ad2bc8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual float Slot08_ad2bc8(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad2bc8[sizeof(cUnk00ad2bc8) == 0x4 ? 1 : -1];

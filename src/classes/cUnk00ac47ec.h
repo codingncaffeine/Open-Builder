@@ -7,16 +7,31 @@
 #include "classes/cUnk00ac34cc.h"
 #include "classes/cUnk00ac34f8.h"
 #include "classes/cUnk00ac3508.h"
-#include "classes/cUnk00ac3538.h"
 #include "classes/cUnk00ace624.h"
+#include "engine/cIGZGDriver.h"
 
-// Between cUnk00ac34f8 and cUnk00ac47ec at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ac47ec_4 : public cUnk00ac34f8 {
-    virtual void Slot03_ac34f8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-};
-
-// Between cUnk00ac3508 and cUnk00ac47ec at +0x8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ac47ec_8 : public cUnk00ac3508 {
+// VTABLE: 0x00ac47ec cUnk00ac34cc
+// VTABLE: 0x00ac47dc cUnk00ac34f8
+// VTABLE: 0x00ac47ac cUnk00ac3508
+// VTABLE: 0x00ac4660 cIGZGDriver
+// VTABLE: 0x00ac4820 cUnk00ace624
+// SIZE 0x2e0
+class cUnk00ac47ec : public cUnk00ac34cc, public cUnk00ac34f8, public cUnk00ac3508, public cIGZGDriver, public cUnk00ace624 {
+public:
+    virtual ~cUnk00ac47ec() {}
+    virtual uint32_t Slot11_ac47ec();
+    virtual bool Slot12_ac47ec();
+    virtual unsigned int AddRef();
+    virtual unsigned int Release();
+    virtual bool Slot03_ac34cc();
+    virtual uint32_t Slot04_ac34cc(uint32_t);
+    virtual bool Slot05_ac34cc(uint32_t);
+    virtual bool Slot06_ac34cc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot07_ac34cc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot08_ac34cc(uint32_t);
+    virtual bool Slot09_ac34cc();
+    virtual bool Slot10_ac34cc();
+    virtual uint32_t Slot03_ac34f8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot03_ac3508(uint32_t);
     virtual void Slot04_ac3508(uint32_t, uint32_t);
     virtual void Slot05_ac3508(uint32_t, uint32_t, uint32_t, uint32_t);
@@ -26,114 +41,87 @@ struct OB_NOVTABLE cUnk00ac47ec_8 : public cUnk00ac3508 {
     virtual void Slot09_ac3508(uint32_t, uint32_t);
     virtual void Slot10_ac3508(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot11_ac3508(uint32_t, uint32_t);
-};
-
-// Between cUnk00ac3538 and cUnk00ac47ec at +0xc: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ac47ec_c : public cUnk00ac3538 {
-    virtual void Slot03_ac3538(uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_ac3538(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot05_ac3538(uint32_t, uint32_t, uint32_t);
-    virtual void Slot06_ac3538(uint32_t);
-    virtual void Slot07_ac3538(uint32_t, uint32_t);
-    virtual void Slot08_ac3538(uint32_t);
-    virtual void Slot09_ac3538(uint32_t, uint32_t, uint32_t);
-    virtual void Slot10_ac3538(uint32_t, uint32_t);
-    virtual void Slot11_ac3538(uint32_t);
-    virtual void Slot12_ac3538(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot13_ac3538(uint32_t, uint32_t);
-    virtual void Slot14_ac3538(uint32_t);
-    virtual void Slot15_ac3538(uint32_t);
-    virtual void Slot16_ac3538(uint32_t);
-    virtual void Slot17_ac3538(uint32_t);
-    virtual void Slot18_ac3538(uint32_t, uint32_t, uint32_t);
-    virtual void Slot19_ac3538(uint32_t);
-    virtual void Slot20_ac3538(uint32_t, uint32_t, uint32_t);
-    virtual void Slot21_ac3538(uint32_t, uint32_t);
-    virtual void Slot22_ac3538(uint32_t, uint32_t);
-    virtual void Slot23_ac3538(uint32_t);
-    virtual void Slot24_ac3538(uint32_t, uint32_t);
-    virtual void Slot25_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot26_ac3538(uint32_t, uint32_t);
-    virtual void Slot27_ac3538(uint32_t, uint32_t, uint32_t);
-    virtual void Slot28_ac3538(uint32_t, uint32_t, uint32_t);
-    virtual void Slot29_ac3538(uint32_t, uint32_t, uint32_t);
-    virtual void Slot30_ac3538(uint32_t, uint32_t);
-    virtual void Slot31_ac3538(uint32_t, uint32_t);
-    virtual void Slot32_ac3538(uint32_t, uint32_t, uint32_t);
-    virtual void Slot33_ac3538(uint32_t);
-    virtual void Slot34_ac3538(uint32_t, uint32_t);
-    virtual void Slot35_ac3538(uint32_t, uint32_t);
-    virtual void Slot36_ac3538(uint32_t, uint32_t);
-    virtual void Slot37_ac3538(uint32_t);
-    virtual void Slot38_ac3538(uint32_t, uint32_t, uint32_t);
-    virtual void Slot39_ac3538(uint32_t, uint32_t, uint32_t);
-    virtual void Slot40_ac3538(uint32_t);
-    virtual void Slot41_ac3538(uint32_t);
-    virtual void Slot42_ac3538();
-    virtual void Slot43_ac3538();
-    virtual void Slot44_ac3538(uint32_t);
-    virtual void Slot45_ac3538(uint32_t);
-    virtual void Slot46_ac3538(uint32_t);
-    virtual void Slot47_ac3538(uint32_t, uint32_t);
-    virtual void Slot48_ac3538(uint32_t, uint32_t);
-    virtual void Slot49_ac3538(uint32_t, uint32_t);
-    virtual void Slot50_ac3538();
-    virtual void Slot51_ac3538(uint32_t);
-    virtual void Slot52_ac3538(uint32_t);
-    virtual void Slot53_ac3538(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot54_ac3538(uint32_t, uint32_t);
-    virtual void Slot55_ac3538(uint32_t, uint32_t);
-    virtual void Slot56_ac3538(uint32_t, uint32_t);
-    virtual void Slot57_ac3538(uint32_t, uint32_t);
-    virtual void Slot58_ac3538(uint32_t, uint32_t);
-    virtual void Slot59_ac3538(uint32_t);
-    virtual void Slot60_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot61_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot62_ac3538(uint32_t, uint32_t);
-    virtual uint32_t Slot63_ac3538();
-    virtual void Slot64_ac3538(uint32_t);
-    virtual void Slot65_ac3538(uint32_t, uint32_t);
-    virtual void Slot66_ac3538(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot67_ac3538(uint32_t);
-    virtual void Slot68_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot69_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot70_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot71_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot72_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot73_ac3538(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot74_ac3538(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot75_ac3538();
-    virtual void Slot76_ac3538(uint32_t);
-    virtual uint32_t Slot77_ac3538();
-    virtual uint32_t Slot78_ac3538();
-    virtual void Slot79_ac3538();
-    virtual void Slot80_ac3538();
-    virtual bool Slot81_ac3538();
-    virtual uint32_t Slot82_ac3538(uint32_t, uint32_t);
-};
-
-// VTABLE: 0x00ac47ec cUnk00ac34cc
-// VTABLE: 0x00ac47dc cUnk00ac47ec_4
-// VTABLE: 0x00ac47ac cUnk00ac47ec_8
-// VTABLE: 0x00ac4660 cUnk00ac47ec_c
-// VTABLE: 0x00ac4820 cUnk00ace624
-// SIZE 0x2e0
-class cUnk00ac47ec : public cUnk00ac34cc, public cUnk00ac47ec_4, public cUnk00ac47ec_8, public cUnk00ac47ec_c, public cUnk00ace624 {
-public:
-    virtual ~cUnk00ac47ec() {}
-    virtual void Slot11_ac47ec();
-    virtual void Slot12_ac47ec();
-    virtual unsigned int AddRef();
-    virtual unsigned int Release();
-    virtual void Slot00_ac34cc(uint32_t, uint32_t);
-    virtual bool Slot03_ac34cc();
-    virtual void Slot04_ac34cc(uint32_t);
-    virtual void Slot05_ac34cc(uint32_t);
-    virtual void Slot06_ac34cc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot07_ac34cc(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot08_ac34cc(uint32_t);
-    virtual bool Slot09_ac34cc();
-    virtual bool Slot10_ac34cc();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual void DrawArrays(unsigned int, int, int);
+    virtual void DrawElements(unsigned int, int, unsigned int, void const *);
+    virtual void InterleavedArrays(unsigned int, int, void const *);
+    virtual unsigned int MakeVertexFormat(unsigned int);
+    virtual unsigned int MakeVertexFormat(unsigned int, unsigned int const *);
+    virtual unsigned int VertexFormatStride(unsigned int);
+    virtual unsigned int VertexFormatElementOffset(unsigned int, unsigned int, unsigned int);
+    virtual unsigned int VertexFormatNumElements(unsigned int, unsigned int);
+    virtual void Clear(unsigned int);
+    virtual void ClearColor(float, float, float, float);
+    virtual void ClearDepth(double);
+    virtual void ClearStencil(int);
+    virtual void ColorMask(bool);
+    virtual void DepthFunc(unsigned int);
+    virtual void DepthMask(bool);
+    virtual void StencilFunc(unsigned int, int, unsigned int);
+    virtual void StencilMask(unsigned int);
+    virtual void StencilOp(unsigned int, unsigned int, unsigned int);
+    virtual void BlendFunc(unsigned int, unsigned int);
+    virtual void AlphaFunc(unsigned int, float);
+    virtual void ShadeModel(unsigned int);
+    virtual void BindTexture(unsigned int, unsigned int);
+    virtual void TexImage2D(unsigned int, int, int, int, int, int, unsigned int, unsigned int, void const *);
+    virtual void PixelStore(unsigned int, int);
+    virtual void TexEnv(unsigned int, unsigned int, float const *);
+    virtual void TexEnv(unsigned int, unsigned int, int);
+    virtual void TexParameter(unsigned int, unsigned int, int);
+    virtual void Fog(unsigned int, float const *);
+    virtual void Fog(unsigned int, unsigned int);
+    virtual void ColorMultiplier(float, float, float);
+    virtual void AlphaMultiplier(float);
+    virtual void EnableVertexColors(bool, bool);
+    virtual void GenTextures(int, unsigned int *);
+    virtual void DeleteTextures(int, unsigned int const *);
+    virtual bool IsTexture(unsigned int);
+    virtual void PrioritizeTextures(int, unsigned int const *, float const *);
+    virtual bool AreTexturesResident(int, unsigned int const *, bool *);
+    virtual void MatrixMode(unsigned int);
+    virtual void LoadMatrix(float const *);
+    virtual void LoadIdentity();
+    virtual void Flush();
+    virtual void Enable(unsigned int);
+    virtual void Disable(unsigned int);
+    virtual bool IsEnabled(unsigned int);
+    virtual void GetBoolean(unsigned int, bool *);
+    virtual void GetInteger(unsigned int, int *);
+    virtual void GetFloat(unsigned int, float *);
+    virtual unsigned int GetError();
+    virtual void TexStage(unsigned int);
+    virtual void TexStageCoord(unsigned int);
+    virtual void TexStageMatrix(float const *, unsigned int, unsigned int, unsigned int);
+    virtual void TexStageCombine(eGDTextureStageCombineScale, eGDTextureStageCombineValue);
+    virtual void TexStageCombine(eGDTextureStageCombineOperand, eGDTextureStageCombineValue);
+    virtual void TexStageCombine(eGDTextureStageCombineSource, eGDTextureStageCombineValue);
+    virtual void TexStageCombine(eGDTextureStageCombineMode, eGDTextureStageCombineValue);
+    virtual void SetTexture(unsigned int, unsigned int);
+    virtual unsigned int GetTexture(unsigned int);
+    virtual unsigned int CreateTexture(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+    virtual void LoadTextureLevel(unsigned int, int, int, int, int, int, unsigned int, unsigned int, unsigned int, void const *);
+    virtual void SetCombiner(cGDCombiner const &, unsigned int);
+    virtual unsigned int CountVideoModes(void) const;
+    virtual void GetVideoModeInfo(sGDMode &);
+    virtual void GetVideoModeInfo(unsigned int, sGDMode &);
+    virtual void SetVideoMode(int, void *, bool, bool);
+    virtual void PolygonOffset(int);
+    virtual void BitBlt(int, int, int, int, unsigned int, unsigned int, void const *, bool, void const *);
+    virtual void StretchBlt(int, int, int, int, int, int, unsigned int, unsigned int, void const *, bool, void const *);
+    virtual void BitBltAlpha(int, int, int, int, unsigned int, unsigned int, void const *, bool, void const *, unsigned int);
+    virtual void StretchBltAlpha(int, int, int, int, int, int, unsigned int, unsigned int, void const *, bool, void const *, unsigned int);
+    virtual void BitBltAlphaModulate(int, int, int, int, unsigned int, unsigned int, void const *, bool, void const *, unsigned int);
+    virtual void StretchBltAlphaModulate(int, int, int, int, int, int, unsigned int, unsigned int, void const *, bool, void const *, unsigned int);
+    virtual void SetViewport(int, int, int, int);
+    virtual void SetViewport();
+    virtual void GetViewport(int *);
+    virtual char const * GetDriverInfo(void) const;
+    virtual unsigned int GetGZCLSID(void) const;
+    virtual bool Init();
+    virtual bool Shutdown();
+    virtual bool IsDeviceReady();
+    virtual bool Punt(unsigned int, void *);
     char unknown18[0x2c8];
 };
 #ifdef _MSC_VER
@@ -141,7 +129,7 @@ typedef char ob_size_cUnk00ac47ec[sizeof(cUnk00ac47ec) == 0x2e0 ? 1 : -1];
 #endif
 
 // SYNTHETIC: 0x00886420
-// cUnk00ac47ec::Slot00_ac34cc`adjustor{4}'
+// cUnk00ac47ec::QueryInterface`adjustor{4}'
 
 // SYNTHETIC: 0x00886390
 // cUnk00ac47ec::AddRef`adjustor{4}'
@@ -150,7 +138,7 @@ typedef char ob_size_cUnk00ac47ec[sizeof(cUnk00ac47ec) == 0x2e0 ? 1 : -1];
 // cUnk00ac47ec::Release`adjustor{4}'
 
 // SYNTHETIC: 0x00886430
-// cUnk00ac47ec::Slot00_ac34cc`adjustor{8}'
+// cUnk00ac47ec::QueryInterface`adjustor{8}'
 
 // SYNTHETIC: 0x008863b0
 // cUnk00ac47ec::AddRef`adjustor{8}'
@@ -159,7 +147,7 @@ typedef char ob_size_cUnk00ac47ec[sizeof(cUnk00ac47ec) == 0x2e0 ? 1 : -1];
 // cUnk00ac47ec::Release`adjustor{8}'
 
 // SYNTHETIC: 0x00886440
-// cUnk00ac47ec::Slot00_ac34cc`adjustor{12}'
+// cUnk00ac47ec::QueryInterface`adjustor{12}'
 
 // SYNTHETIC: 0x008863d0
 // cUnk00ac47ec::AddRef`adjustor{12}'

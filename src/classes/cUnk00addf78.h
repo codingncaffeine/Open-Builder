@@ -7,37 +7,37 @@
 
 class cUnk00addf78 {
 public:
-    virtual void Slot00_addf78() = 0;
-    virtual void Slot01_addf78() = 0;
-    virtual void Slot02_addf78() = 0;
-    virtual void Slot03_addf78() = 0;
-    virtual void Slot04_addf78() = 0;
-    virtual void Slot05_addf78() = 0;
-    virtual void Slot06_addf78() = 0;
-    virtual void Slot07_addf78() = 0;
-    virtual void Slot08_addf78() = 0;
-    virtual void Slot09_addf78() = 0;
-    virtual void Slot10_addf78() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual unsigned int AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot04_adb6a8() = 0;
+    virtual bool Slot05_adb6a8() = 0;
+    virtual void Slot05_addf78(uint32_t) = 0;
+    virtual void Slot06_addf78(uint32_t, uint32_t) = 0;
+    virtual void Slot07_addf78(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot08_addf78(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot09_addf78(uint32_t, uint32_t) = 0;
+    virtual void Slot10_addf78(uint32_t, uint32_t) = 0;
     virtual void Slot11_addf78() = 0;
-    virtual void Slot12_addf78() = 0;
+    virtual void Slot157_ade188(uint32_t) = 0;
     virtual void Slot13_addf78() = 0;
-    virtual void Slot14_addf78() = 0;
-    virtual void Slot15_addf78() = 0;
-    virtual void Slot16_addf78() = 0;
-    virtual void Slot17_addf78() = 0;
-    virtual void Slot18_addf78() = 0;
-    virtual void Slot19_addf78() = 0;
+    virtual void Slot14_addf78(uint32_t) = 0;
+    virtual void Slot15_addf78(uint32_t, uint32_t) = 0;
+    virtual void Slot16_addf78(uint32_t) = 0;
+    virtual void Slot17_addf78(uint32_t) = 0;
+    virtual void Slot18_addf78(uint32_t) = 0;
+    virtual void Slot19_addf78(uint32_t) = 0;
     virtual void Slot20_addf78() = 0;
-    virtual void Slot21_addf78() = 0;
-    virtual void Slot22_addf78() = 0;
-    virtual void Slot23_addf78() = 0;
-    virtual void Slot24_addf78() = 0;
-    virtual void Slot25_addf78() = 0;
-    virtual void Slot26_addf78() = 0;
-    virtual void Slot27_addf78() = 0;
-    virtual void Slot28_addf78() = 0;
+    virtual void Slot21_addf78(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot22_addf78(uint32_t, uint32_t) = 0;
+    virtual void Slot23_addf78(uint32_t, uint32_t) = 0;
+    virtual void Slot24_addf78(uint32_t, uint32_t) = 0;
+    virtual void Slot25_addf78(uint32_t) = 0;
+    virtual void Slot26_addf78(uint32_t, uint32_t) = 0;
+    virtual void Slot27_addf78(uint32_t) = 0;
+    virtual void Slot28_addf78(uint32_t, uint32_t) = 0;
     virtual void Slot29_addf78() = 0;
-    virtual void Slot30_addf78() = 0;
+    virtual uint32_t Slot30_addf78() = 0;
 };
 
 #endif

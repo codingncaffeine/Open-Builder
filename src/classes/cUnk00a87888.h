@@ -11,29 +11,25 @@ struct OB_NOVTABLE cUnk00a87888_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_a87888() = 0;
+    virtual bool Slot03_a87888() = 0;
     virtual bool Slot04_a87888() = 0;
     virtual uint32_t Slot05_a87888() = 0;
     virtual ~cUnk00a87888_0() {}
 };
 
-// Between cUnk00a80784 and cUnk00a87888 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a87888_4 : public cUnk00a80784 {
+// VTABLE: 0x00a87888 cUnk00a87888_0
+// VTABLE: 0x00a87870 cUnk00a80784
+// SIZE 0x10
+class cUnk00a87888 : public cUnk00a87888_0, public cUnk00a80784 {
+public:
+    virtual ~cUnk00a87888() {}
     virtual bool Slot03_a80784(uint32_t);
     virtual bool Slot04_a80784(uint32_t);
     virtual uint32_t Slot05_a80784();
-};
-
-// VTABLE: 0x00a87888 cUnk00a87888_0
-// VTABLE: 0x00a87870 cUnk00a87888_4
-// SIZE 0x10
-class cUnk00a87888 : public cUnk00a87888_0, public cUnk00a87888_4 {
-public:
-    virtual ~cUnk00a87888() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_a87888();
+    virtual bool Slot03_a87888();
     virtual bool Slot04_a87888();
     virtual uint32_t Slot05_a87888();
     uint32_t field8;

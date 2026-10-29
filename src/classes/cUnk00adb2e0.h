@@ -8,32 +8,28 @@
 #include "classes/cUnk00adb26c.h"
 #include "classes/cUnk00adb29c.h"
 
-// Between cUnk00adb29c and cUnk00adb2e0 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00adb2e0_4 : public cUnk00adb29c {
-    virtual void Slot03_adb29c();
-    virtual void Slot04_adb29c();
-    virtual void Slot05_adb29c(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-};
-
 // VTABLE: 0x00adb2e0 cUnk00adb26c
-// VTABLE: 0x00adb2c8 cUnk00adb2e0_4
+// VTABLE: 0x00adb2c8 cUnk00adb29c
 // VTABLE: 0x00adb2b4 cUnk00ace624
 // SIZE 0x68
-class cUnk00adb2e0 : public cUnk00adb26c, public cUnk00adb2e0_4, public cUnk00ace624 {
+class cUnk00adb2e0 : public cUnk00adb26c, public cUnk00adb29c, public cUnk00ace624 {
 public:
     virtual ~cUnk00adb2e0() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_adb26c(uint32_t, uint32_t);
-    virtual void Slot03_adb26c(uint32_t);
+    virtual bool Slot00_adb26c(uint32_t, uint32_t);
+    virtual bool Slot03_adb26c(uint32_t);
     virtual void Slot04_adb26c();
-    virtual void Slot05_adb26c(uint32_t);
+    virtual bool Slot05_adb26c(uint32_t);
     virtual void Slot06_adb26c();
-    virtual void Slot07_adb26c();
+    virtual bool Slot07_adb26c();
     virtual void Slot08_adb26c();
-    virtual void Slot09_adb26c();
+    virtual bool Slot09_adb26c();
     virtual void Slot10_adb26c();
     virtual uint32_t Slot11_adb26c();
+    virtual void Slot03_adb29c();
+    virtual void Slot04_adb29c();
+    virtual void Slot05_adb29c(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     char unknown10[0x54];
     uint32_t field64;
 };

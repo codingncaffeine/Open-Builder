@@ -9,21 +9,21 @@
 // SIZE 0x1c
 class cUnk00ae3770 {
 public:
-    virtual void Slot00_ae3770(uint32_t, uint32_t);
-    virtual void Slot01_ae3770();
+    virtual bool Slot00_ae3770(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ae3770();
     virtual void Slot02_ae3770();
-    virtual void Slot03_ae3770();
-    virtual void Slot04_ae3770();
-    virtual void Slot05_ae3770(uint32_t, uint32_t);
+    virtual bool Slot03_ae3770();
+    virtual bool Slot04_ae3770();
+    virtual bool Slot05_ae3770(uint32_t, uint32_t);
     virtual void Slot06_ae3770(uint32_t, uint32_t);
-    virtual void Slot07_ae3770(uint32_t);
-    virtual void Slot08_ae3770(uint32_t, uint32_t, uint32_t);
-    virtual void Slot09_ae3770(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot10_ae3770(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot07_ae3770(uint32_t);
+    virtual bool Slot08_ae3770(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot09_ae3770(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot10_ae3770(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot11_ae3770(uint32_t, uint32_t);
-    virtual void Slot12_ae3770(uint32_t, uint32_t);
-    virtual void Slot13_ae3770(uint32_t, uint32_t, uint32_t);
-    virtual void Slot14_ae3770(uint32_t);
+    virtual bool Slot12_ae3770(uint32_t, uint32_t);
+    virtual uint32_t Slot13_ae3770(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot14_ae3770(uint32_t);
     virtual ~cUnk00ae3770();
     char unknown4[0x18];
 };

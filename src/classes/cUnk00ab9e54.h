@@ -9,7 +9,7 @@
 // SIZE 0xcc
 class cUnk00ab9e54 {
 public:
-    virtual void Slot00_ab9e54(uint32_t, uint32_t);
+    virtual bool Slot00_ab9e54(uint32_t, uint32_t);
     virtual void Slot01_ab9e54();
     virtual void Slot02_ab9e54();
     virtual bool Slot03_ab9e54(uint32_t, uint32_t);

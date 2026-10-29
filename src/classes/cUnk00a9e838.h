@@ -9,41 +9,31 @@
 #include "classes/cUnk00aaaa9c.h"
 #include "gzcom/cUnk0090da1e.h"
 
-// Between cUnk00a9e0e4 and cUnk00a9e838 at +0x8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a9e838_8 : public cUnk00a9e0e4 {
-    virtual void Slot03_a9e0e4();
-    virtual void Slot04_a9e0e4();
-    virtual uint32_t Slot05_a9e0e4();
-    virtual bool Slot06_a9e0e4(uint32_t, uint32_t);
-    virtual uint32_t Slot07_a9e0e4();
-};
-
-// Between cUnk00a80784 and cUnk00a9e838 at +0xc: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a9e838_c : public cUnk00a80784 {
-    virtual bool Slot03_a80784(uint32_t);
-    virtual bool Slot04_a80784(uint32_t);
-    virtual uint32_t Slot05_a80784();
-};
-
-// Between cUnk00aaaa9c and cUnk00a9e838 at +0x10: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a9e838_10 : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c(uint32_t);
-};
-
 // VTABLE: 0x00a9e838 cUnk0090da1e
-// VTABLE: 0x00a9e818 cUnk00a9e838_8
-// VTABLE: 0x00a9e800 cUnk00a9e838_c
-// VTABLE: 0x00a9e7f0 cUnk00a9e838_10
+// VTABLE: 0x00a9e818 cUnk00a9e0e4
+// VTABLE: 0x00a9e800 cUnk00a80784
+// VTABLE: 0x00a9e7f0 cUnk00aaaa9c
 // SIZE 0x78
-class cUnk00a9e838 : public cUnk0090da1e, public cUnk00a9e838_8, public cUnk00a9e838_c, public cUnk00a9e838_10 {
+class cUnk00a9e838 : public cUnk0090da1e, public cUnk00a9e0e4, public cUnk00a80784, public cUnk00aaaa9c {
 public:
     virtual ~cUnk00a9e838();
     virtual void Slot06_a9e838();
     virtual uint32_t Slot07_a9e838();
+    virtual bool Slot03_a80784(uint32_t);
+    virtual bool Slot04_a80784(uint32_t);
+    virtual uint32_t Slot05_a80784();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    char unknown14[0x64];
+    virtual bool Slot03_aaaa9c(uint32_t);
+    virtual bool Slot03_a9e0e4();
+    virtual uint32_t Slot04_a9e0e4();
+    virtual uint32_t Slot05_a9e0e4();
+    virtual bool Slot06_a9e0e4(uint32_t, uint32_t);
+    virtual uint32_t Slot07_a9e0e4();
+    char unknown14[0x14];
+    uint32_t field28;
+    char unknown2c[0x4c];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9e838[sizeof(cUnk00a9e838) == 0x78 ? 1 : -1];

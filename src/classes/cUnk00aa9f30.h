@@ -7,18 +7,18 @@
 #include "classes/cUnk00aa8748.h"
 
 // VTABLE: 0x00aa9f30 cUnk00aa8748_0
-// VTABLE: 0x00aa9f20 cUnk00aa8748_4
+// VTABLE: 0x00aa9f20 cUnk00aaaa9c
 // SIZE 0x3b8
 class cUnk00aa9f30 : public cUnk00aa8748 {
 public:
     virtual ~cUnk00aa9f30();
     virtual void Slot81_aa9f30();
     virtual void Slot82_aa9f30();
-    virtual void Slot03_aa8748();
-    virtual void Slot04_aa8748();
+    virtual bool Slot03_aa8748();
+    virtual bool Slot04_aa8748();
     virtual void Slot10_aa8748(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot16_aa8748();
-    virtual void Slot20_aa8748();
+    virtual uint32_t Slot20_aa8748();
     virtual void Slot52_aa8748(uint32_t, uint32_t);
     virtual bool Slot53_aa8748(uint32_t, uint32_t);
     char unknown368[0x50];

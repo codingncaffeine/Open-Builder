@@ -14,8 +14,8 @@ public:
     virtual uint32_t Slot03_a9efb4() = 0;
     virtual uint32_t Slot04_a9efb4() = 0;
     virtual uint32_t Slot05_a9efb4() = 0;
-    virtual void Slot06_a9efb4(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot07_a9efb4(uint32_t, uint32_t, uint32_t) = 0;
+    virtual float Slot06_a9efb4(uint32_t, uint32_t, uint32_t) = 0;
+    virtual float Slot07_a9efb4(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot08_a9efb4(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot09_a9efb4() = 0;
 };

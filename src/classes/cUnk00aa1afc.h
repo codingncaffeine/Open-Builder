@@ -10,9 +10,9 @@
 // SIZE 0x18
 class cUnk00aa1afc : public cUnk00aa1648 {
 public:
-    virtual void Slot06_aa1afc();
-    virtual void Slot07_aa1afc();
-    virtual void Slot03_aa1648(uint32_t);
+    virtual bool Slot06_aa1afc();
+    virtual bool Slot07_aa1afc();
+    virtual bool Slot03_aa1648(uint32_t);
     char unknown4[0x14];
 };
 #ifdef _MSC_VER

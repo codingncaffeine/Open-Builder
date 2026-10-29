@@ -8,9 +8,9 @@
 // VTABLE: 0x00ac33a0
 class cUnk00ac33a0 {
 public:
-    virtual void Slot00_ac33a0(uint32_t, uint32_t);
-    virtual void Slot01_ac33a0();
-    virtual void Slot02_ac33a0();
+    virtual bool Slot00_ac33a0(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ac33a0();
+    virtual uint32_t Slot02_ac33a0();
     virtual void Slot03_ac33a0(uint32_t);
     virtual uint32_t Slot04_ac33a0();
     virtual uint32_t Slot05_ac33a0();

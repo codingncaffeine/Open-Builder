@@ -9,12 +9,12 @@
 // SIZE 0x1c
 class cUnk00ad1644 {
 public:
-    virtual void Slot00_ad1644(uint32_t, uint32_t);
-    virtual void Slot01_ad1644();
+    virtual bool Slot00_ad1644(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad1644();
     virtual void Slot02_ad1644();
-    virtual void Slot03_ad1644();
-    virtual void Slot04_ad1644();
-    virtual void Slot05_ad1644(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot03_ad1644();
+    virtual bool Slot04_ad1644();
+    virtual uint32_t Slot05_ad1644(uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ad1644();
     char unknown4[0x18];
 };

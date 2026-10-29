@@ -9,20 +9,20 @@
 class cUnk00ad1998 : public cUnk00ad1818 {
 public:
     virtual ~cUnk00ad1998() {}
-    virtual void Slot04_ad1818(uint32_t);
-    virtual void Slot05_ad1818(uint32_t);
-    virtual void Slot06_ad1818(uint32_t);
-    virtual void Slot07_ad1818(uint32_t);
-    virtual void Slot08_ad1818(uint32_t);
-    virtual void Slot09_ad1818(uint32_t);
-    virtual void Slot10_ad1818(uint32_t, uint32_t);
-    virtual void Slot11_ad1818(uint32_t, uint32_t);
-    virtual void Slot12_ad1818(uint32_t);
-    virtual void Slot13_ad1818(uint32_t, uint32_t);
-    virtual void Slot15_ad1818(uint32_t);
+    virtual bool Slot04_ad1818(uint32_t);
+    virtual bool Slot05_ad1818(uint32_t);
+    virtual bool Slot06_ad1818(uint32_t);
+    virtual bool Slot07_ad1818(uint32_t);
+    virtual bool Slot08_ad1818(uint32_t);
+    virtual bool Slot09_ad1818(uint32_t);
+    virtual bool Slot10_ad1818(uint32_t, uint32_t);
+    virtual bool Slot11_ad1818(uint32_t, uint32_t);
+    virtual bool Slot12_ad1818(uint32_t);
+    virtual bool Slot13_ad1818(uint32_t, uint32_t);
+    virtual bool Slot15_ad1818(uint32_t);
     virtual bool Slot17_ad1818(uint32_t, uint32_t);
     virtual bool Slot18_ad1818();
-    virtual void Slot14_ad1818(uint32_t) = 0;
+    virtual bool Slot14_ad1818(uint32_t) = 0;
 };
 
 #endif

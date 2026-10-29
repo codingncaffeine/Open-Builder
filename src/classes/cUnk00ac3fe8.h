@@ -8,12 +8,12 @@
 // SIZE 0x4
 class cUnk00ac3fe8 {
 public:
-    virtual void Slot00_ac3fe8() = 0;
-    virtual void Slot01_ac3fe8() = 0;
-    virtual void Slot02_ac3fe8() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual unsigned int AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual void Slot03_ac3fe8() = 0;
     virtual void Slot04_ac3fe8() = 0;
-    virtual void Slot05_ac3fe8() = 0;
+    virtual uint32_t Slot05_ac3fe8() = 0;
     virtual void Slot06_ac3fe8() = 0;
     virtual void Slot07_ac3fe8() = 0;
     virtual void Slot08_ac3fe8() = 0;
@@ -58,8 +58,8 @@ public:
     virtual void Slot47_ac3fe8() = 0;
     virtual void Slot48_ac3fe8() = 0;
     virtual void Slot49_ac3fe8() = 0;
-    virtual void Slot50_ac3fe8() = 0;
-    virtual void Slot51_ac3fe8() = 0;
+    virtual void Slot50_ac3fe8(uint32_t) = 0;
+    virtual void Slot51_ac3fe8(uint32_t, uint32_t) = 0;
     virtual void Slot52_ac3fe8() = 0;
     virtual void Slot53_ac3fe8() = 0;
     virtual void Slot54_ac3fe8() = 0;
@@ -72,7 +72,7 @@ public:
     virtual void Slot61_ac3fe8() = 0;
     virtual void Slot62_ac3fe8() = 0;
     virtual void Slot63_ac3fe8() = 0;
-    virtual void Slot64_ac3fe8() = 0;
+    virtual uint32_t Slot64_ac3fe8(uint32_t) = 0;
     virtual void Slot65_ac3fe8() = 0;
     virtual void Slot66_ac3fe8() = 0;
     virtual void Slot67_ac3fe8() = 0;
@@ -83,9 +83,9 @@ public:
     virtual void Slot72_ac3fe8() = 0;
     virtual void Slot73_ac3fe8() = 0;
     virtual void Slot74_ac3fe8() = 0;
-    virtual void Slot75_ac3fe8() = 0;
-    virtual void Slot76_ac3fe8() = 0;
-    virtual void Slot77_ac3fe8() = 0;
+    virtual uint32_t Slot75_ac3fe8(uint32_t, uint32_t) = 0;
+    virtual void Slot76_ac3fe8(uint32_t, uint32_t) = 0;
+    virtual void Slot77_ac3fe8(uint32_t, uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac3fe8[sizeof(cUnk00ac3fe8) == 0x4 ? 1 : -1];

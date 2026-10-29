@@ -11,21 +11,21 @@ struct OB_NOVTABLE cUnk00abb6c0_0 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_abb6c0() = 0;
-    virtual void Slot04_abb6c0() = 0;
-    virtual void Slot05_abb6c0() = 0;
-    virtual void Slot06_abb6c0(uint32_t) = 0;
-    virtual void Slot07_abb6c0(uint32_t) = 0;
-    virtual void Slot08_abb6c0(uint32_t) = 0;
+    virtual uint32_t Slot03_abb6c0() = 0;
+    virtual uint32_t Slot04_abb6c0() = 0;
+    virtual uint32_t Slot05_abb6c0() = 0;
+    virtual bool Slot06_abb6c0(uint32_t) = 0;
+    virtual uint32_t Slot07_abb6c0(uint32_t) = 0;
+    virtual float Slot08_abb6c0(uint32_t) = 0;
     virtual void Slot09_abb6c0(uint32_t, uint32_t) = 0;
     virtual void Slot10_abb6c0(uint32_t, uint32_t) = 0;
     virtual void Slot11_abb6c0(uint32_t, uint32_t) = 0;
-    virtual void Slot12_abb6c0(uint32_t) = 0;
-    virtual void Slot13_abb6c0(uint32_t) = 0;
-    virtual void Slot14_abb6c0(uint32_t) = 0;
-    virtual void Slot15_abb6c0(uint32_t) = 0;
-    virtual void Slot16_abb6c0(uint32_t) = 0;
-    virtual void Slot17_abb6c0(uint32_t) = 0;
+    virtual uint32_t Slot12_abb6c0(uint32_t) = 0;
+    virtual uint32_t Slot13_abb6c0(uint32_t) = 0;
+    virtual uint32_t Slot14_abb6c0(uint32_t) = 0;
+    virtual uint32_t Slot15_abb6c0(uint32_t) = 0;
+    virtual uint32_t Slot16_abb6c0(uint32_t) = 0;
+    virtual uint32_t Slot17_abb6c0(uint32_t) = 0;
 };
 
 // VTABLE: 0x00abb6c0 cUnk00abb6c0_0
@@ -36,21 +36,21 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_abb6c0();
-    virtual void Slot04_abb6c0();
-    virtual void Slot05_abb6c0();
-    virtual void Slot06_abb6c0(uint32_t);
-    virtual void Slot07_abb6c0(uint32_t);
-    virtual void Slot08_abb6c0(uint32_t);
+    virtual uint32_t Slot03_abb6c0();
+    virtual uint32_t Slot04_abb6c0();
+    virtual uint32_t Slot05_abb6c0();
+    virtual bool Slot06_abb6c0(uint32_t);
+    virtual uint32_t Slot07_abb6c0(uint32_t);
+    virtual float Slot08_abb6c0(uint32_t);
     virtual void Slot09_abb6c0(uint32_t, uint32_t);
     virtual void Slot10_abb6c0(uint32_t, uint32_t);
     virtual void Slot11_abb6c0(uint32_t, uint32_t);
-    virtual void Slot12_abb6c0(uint32_t);
-    virtual void Slot13_abb6c0(uint32_t);
-    virtual void Slot14_abb6c0(uint32_t);
-    virtual void Slot15_abb6c0(uint32_t);
-    virtual void Slot16_abb6c0(uint32_t);
-    virtual void Slot17_abb6c0(uint32_t);
+    virtual uint32_t Slot12_abb6c0(uint32_t);
+    virtual uint32_t Slot13_abb6c0(uint32_t);
+    virtual uint32_t Slot14_abb6c0(uint32_t);
+    virtual uint32_t Slot15_abb6c0(uint32_t);
+    virtual uint32_t Slot16_abb6c0(uint32_t);
+    virtual uint32_t Slot17_abb6c0(uint32_t);
 };
 
 // SYNTHETIC: 0x005bcb50

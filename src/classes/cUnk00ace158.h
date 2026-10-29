@@ -7,7 +7,7 @@
 
 class cUnk00ace158 {
 public:
-    virtual void Slot00_ace158(uint32_t) = 0;
+    virtual bool Slot00_ace158(uint32_t) = 0;
 };
 
 #endif

@@ -7,13 +7,13 @@
 
 class cUnk00ab5568 {
 public:
-    virtual void Slot00_ab5568(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ab5568(uint32_t, uint32_t) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ab5568() = 0;
-    virtual void Slot04_ab5568() = 0;
-    virtual void Slot05_ab5568(uint32_t) = 0;
-    virtual void Slot06_ab5568(uint32_t, uint32_t) = 0;
+    virtual bool Slot03_ab5568() = 0;
+    virtual bool Slot04_ab5568() = 0;
+    virtual bool Slot05_ab5568(uint32_t) = 0;
+    virtual bool Slot06_ab5568(uint32_t, uint32_t) = 0;
 };
 
 #endif

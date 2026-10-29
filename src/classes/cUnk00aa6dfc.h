@@ -8,7 +8,7 @@
 // VTABLE: 0x00aa6dfc
 class cUnk00aa6dfc {
 public:
-    virtual void Slot00_aa6dfc(uint32_t, uint32_t);
+    virtual bool Slot00_aa6dfc(uint32_t, uint32_t);
     virtual void Slot01_aa6dfc();
     virtual void Slot02_aa6dfc();
     virtual bool Slot03_aa6dfc();
@@ -16,13 +16,13 @@ public:
     virtual void Slot05_aa6dfc(uint32_t, uint32_t);
     virtual void Slot06_aa6dfc(uint32_t, uint32_t, uint32_t);
     virtual void Slot07_aa6dfc(uint32_t, uint32_t, uint32_t);
-    virtual void Slot08_aa6dfc(uint32_t, uint32_t);
+    virtual bool Slot08_aa6dfc(uint32_t, uint32_t);
     virtual void Slot09_aa6dfc();
     virtual void Slot10_aa6dfc(bool);
     virtual bool Slot11_aa6dfc();
     virtual ~cUnk00aa6dfc();
-    virtual void Slot13_aa6dfc(uint32_t, uint32_t);
-    virtual void Slot14_aa6dfc(uint32_t, uint32_t);
+    virtual bool Slot13_aa6dfc(uint32_t, uint32_t);
+    virtual bool Slot14_aa6dfc(uint32_t, uint32_t);
 };
 
 // SYNTHETIC: 0x006013d0

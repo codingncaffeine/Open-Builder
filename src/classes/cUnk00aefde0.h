@@ -7,9 +7,9 @@
 
 class cUnk00aefde0 {
 public:
-    virtual void Slot00_aefde0(uint32_t, uint32_t);
+    virtual bool Slot00_aefde0(uint32_t, uint32_t);
     virtual void Slot01_aefde0();
-    virtual void Slot02_aefde0();
+    virtual uint32_t Slot02_aefde0();
     virtual void Slot03_aefde0(uint32_t);
     virtual void Slot04_aefde0();
     virtual void Slot05_aefde0();
@@ -20,7 +20,7 @@ public:
     virtual void Slot10_aefde0(bool);
     virtual void Slot11_aefde0(uint32_t);
     virtual void Slot12_aefde0(uint32_t, uint32_t, uint32_t);
-    virtual void Slot13_aefde0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot13_aefde0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot14_aefde0();
     virtual void Slot15_aefde0(uint32_t);
     virtual void Slot16_aefde0();
@@ -31,12 +31,12 @@ public:
     virtual void Slot21_aefde0(uint32_t, uint32_t, uint32_t);
     virtual void Slot22_aefde0(uint32_t, uint32_t);
     virtual ~cUnk00aefde0();
-    virtual void Slot24_aefde0() = 0;
+    virtual bool Slot24_aefde0() = 0;
     virtual void Slot25_aefde0() = 0;
     virtual void Slot26_aefde0() = 0;
     virtual void Slot27_aefde0(uint32_t) = 0;
     virtual void Slot28_aefde0() = 0;
-    virtual void Slot29_aefde0(uint32_t) = 0;
+    virtual bool Slot29_aefde0(uint32_t) = 0;
     virtual void Slot30_aefde0(uint32_t, uint32_t) = 0;
     virtual void Slot31_aefde0() = 0;
     virtual void Slot32_aefde0() = 0;

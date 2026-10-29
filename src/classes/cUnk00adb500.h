@@ -14,12 +14,12 @@ public:
     virtual void Slot17_aefde0();
     virtual void Slot18_aefde0();
     virtual void Slot21_aefde0(uint32_t, uint32_t, uint32_t);
-    virtual void Slot24_aefde0();
+    virtual bool Slot24_aefde0();
     virtual void Slot25_aefde0();
     virtual void Slot26_aefde0();
     virtual void Slot27_aefde0(uint32_t);
     virtual void Slot28_aefde0();
-    virtual void Slot29_aefde0(uint32_t);
+    virtual bool Slot29_aefde0(uint32_t);
     virtual void Slot30_aefde0(uint32_t, uint32_t);
     virtual void Slot31_aefde0();
     virtual void Slot32_aefde0();

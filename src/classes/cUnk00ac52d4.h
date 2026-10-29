@@ -9,8 +9,8 @@
 // SIZE 0x30
 class cUnk00ac52d4 {
 public:
-    virtual void Slot00_ac52d4(uint32_t, uint32_t);
-    virtual void Slot01_ac52d4();
+    virtual bool Slot00_ac52d4(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ac52d4();
     virtual void Slot02_ac52d4();
     virtual bool Slot03_ac52d4();
     virtual bool Slot04_ac52d4();

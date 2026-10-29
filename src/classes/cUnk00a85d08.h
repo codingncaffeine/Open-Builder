@@ -7,12 +7,12 @@
 
 class cUnk00a85d08 {
 public:
-    virtual void Slot00_a85d08() = 0;
-    virtual void Slot01_a85d08() = 0;
-    virtual void Slot02_a85d08() = 0;
-    virtual void Slot03_a85d08() = 0;
-    virtual void Slot04_a85d08() = 0;
-    virtual void Slot05_a85d08() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual unsigned int AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_a85d08(uint32_t) = 0;
+    virtual bool Slot04_a85d08() = 0;
+    virtual bool Slot05_a85d08() = 0;
 };
 
 #endif

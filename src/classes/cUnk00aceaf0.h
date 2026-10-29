@@ -7,64 +7,60 @@
 #include "classes/cUnk00a827d8.h"
 #include "classes/cUnk00aceb48.h"
 
-// Between cUnk00aceb48 and cUnk00aceaf0 at +0x8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00aceaf0_8 : public cUnk00aceb48 {
-    virtual void Slot00_aceb48(uint32_t, uint32_t);
-    virtual void Slot01_aceb48();
+// VTABLE: 0x00aceaf0 cUnk00a827d8
+// VTABLE: 0x00acea38 cUnk00aceb48
+// SIZE 0x10
+class cUnk00aceaf0 : public cUnk00a827d8, public cUnk00aceb48 {
+public:
+    virtual ~cUnk00aceaf0() {}
+    virtual uint32_t Slot04_aceaf0(uint32_t, uint32_t);
+    virtual uint32_t Slot05_aceaf0(uint32_t, uint32_t);
+    virtual bool Slot00_aceb48(uint32_t, uint32_t);
+    virtual uint32_t Slot01_aceb48();
     virtual void Slot02_aceb48();
+    virtual void Slot03_aceb48(uint32_t, uint32_t, uint32_t);
     virtual void Slot04_aceb48(uint32_t);
+    virtual void Slot05_aceb48(uint32_t);
+    virtual void Slot06_aceb48(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_aceb48(uint32_t, uint32_t);
     virtual void Slot08_aceb48(uint32_t);
     virtual void Slot09_aceb48(uint32_t);
     virtual void Slot10_aceb48(uint32_t, uint32_t);
     virtual void Slot11_aceb48(uint32_t);
+    virtual uint32_t Slot12_aceb48();
+    virtual uint32_t Slot13_aceb48();
+    virtual uint32_t Slot14_aceb48();
+    virtual uint32_t Slot15_aceb48();
+    virtual uint32_t Slot16_aceb48(uint32_t);
     virtual void Slot17_aceb48();
     virtual uint32_t Slot18_aceb48();
-    virtual void Slot19_aceb48();
+    virtual uint32_t Slot19_aceb48();
     virtual void Slot20_aceb48();
     virtual void Slot21_aceb48(uint32_t, uint32_t);
     virtual void Slot22_aceb48(uint32_t, uint32_t);
+    virtual uint32_t Slot23_aceb48();
     virtual void Slot24_aceb48(uint32_t, uint32_t);
-    virtual void Slot25_aceb48();
+    virtual uint32_t Slot25_aceb48();
     virtual uint32_t Slot26_aceb48();
-    virtual void Slot27_aceb48(uint32_t);
-    virtual void Slot28_aceb48(uint32_t);
-    virtual void Slot29_aceb48(uint32_t);
-    virtual void Slot30_aceb48(uint32_t);
-    virtual void Slot31_aceb48(uint32_t);
-    virtual void Slot32_aceb48(uint32_t);
-    virtual void Slot33_aceb48(uint32_t);
-    virtual void Slot34_aceb48(uint32_t);
-    virtual void Slot35_aceb48(uint32_t);
-    virtual void Slot36_aceb48(uint32_t);
-    virtual void Slot37_aceb48();
-    virtual void Slot38_aceb48();
-    virtual void Slot39_aceb48(uint32_t);
-    virtual void Slot40_aceb48(uint32_t);
+    virtual uint32_t Slot27_aceb48(uint32_t);
+    virtual uint32_t Slot28_aceb48(uint32_t);
+    virtual uint32_t Slot29_aceb48(uint32_t);
+    virtual uint32_t Slot30_aceb48(uint32_t);
+    virtual bool Slot31_aceb48(uint32_t);
+    virtual bool Slot32_aceb48(uint32_t);
+    virtual uint32_t Slot33_aceb48(uint32_t);
+    virtual uint32_t Slot34_aceb48(uint32_t);
+    virtual uint32_t Slot35_aceb48(uint32_t);
+    virtual uint32_t Slot36_aceb48(uint32_t);
+    virtual uint32_t Slot37_aceb48();
+    virtual uint32_t Slot38_aceb48();
+    virtual uint32_t Slot39_aceb48(uint32_t);
+    virtual uint32_t Slot40_aceb48(uint32_t);
     virtual void Slot41_aceb48(uint32_t, uint32_t);
     virtual void Slot42_aceb48(uint32_t, uint32_t, uint32_t);
     virtual void Slot43_aceb48(uint32_t);
     virtual void Slot44_aceb48(uint32_t, uint32_t, uint32_t);
     virtual void Slot45_aceb48(uint32_t);
-};
-
-// VTABLE: 0x00aceaf0 cUnk00a827d8
-// VTABLE: 0x00acea38 cUnk00aceaf0_8
-// SIZE 0x10
-class cUnk00aceaf0 : public cUnk00a827d8, public cUnk00aceaf0_8 {
-public:
-    virtual ~cUnk00aceaf0() {}
-    virtual void Slot04_aceaf0(uint32_t, uint32_t);
-    virtual void Slot05_aceaf0(uint32_t, uint32_t);
-    virtual void Slot03_aceb48(uint32_t, uint32_t, uint32_t);
-    virtual void Slot05_aceb48(uint32_t);
-    virtual void Slot06_aceb48(uint32_t, uint32_t, uint32_t);
-    virtual void Slot07_aceb48(uint32_t, uint32_t);
-    virtual void Slot12_aceb48();
-    virtual void Slot13_aceb48();
-    virtual void Slot14_aceb48();
-    virtual void Slot15_aceb48();
-    virtual void Slot16_aceb48(uint32_t);
-    virtual void Slot23_aceb48();
     char unknownc[0x4];
 };
 #ifdef _MSC_VER

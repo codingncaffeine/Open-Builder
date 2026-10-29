@@ -11,14 +11,14 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_a9e2f4() = 0;
-    virtual void Slot04_a9e2f4() = 0;
-    virtual void Slot05_a9e2f4() = 0;
-    virtual void Slot06_a9e2f4() = 0;
-    virtual void Slot07_a9e2f4() = 0;
+    virtual bool Slot03_a9e2f4() = 0;
+    virtual bool Slot04_a9e2f4() = 0;
+    virtual uint32_t Slot05_a9e2f4() = 0;
+    virtual uint32_t Slot06_a9e2f4(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot07_a9e2f4() = 0;
     virtual void Slot08_a9e2f4(uint32_t) = 0;
-    virtual void Slot09_a9e2f4(uint32_t) = 0;
-    virtual void Slot10_a9e2f4() = 0;
+    virtual bool Slot09_a9e2f4(uint32_t) = 0;
+    virtual uint32_t Slot10_a9e2f4() = 0;
     virtual void* Slot11_a9e2f4() = 0;
 };
 #ifdef _MSC_VER

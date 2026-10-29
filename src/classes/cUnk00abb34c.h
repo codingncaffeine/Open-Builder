@@ -18,9 +18,9 @@ public:
     virtual unsigned int Release();
     virtual void Slot03_abb004(uint32_t);
     virtual void Slot04_abb004();
-    virtual void Slot05_abb004(uint32_t);
+    virtual bool Slot05_abb004(uint32_t);
     virtual void Slot06_abb004(uint32_t, uint32_t);
-    virtual void Slot07_abb004(uint32_t);
+    virtual uint32_t Slot07_abb004(uint32_t);
     char unknownc[0x114];
 };
 #ifdef _MSC_VER

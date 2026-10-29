@@ -9,8 +9,8 @@
 // SIZE 0x10
 class cUnk00ad5398 {
 public:
-    virtual void Slot00_ad5398(uint32_t, uint32_t);
-    virtual void Slot01_ad5398();
+    virtual bool Slot00_ad5398(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad5398();
     virtual void Slot02_ad5398();
     char unknown4[0xc];
 };

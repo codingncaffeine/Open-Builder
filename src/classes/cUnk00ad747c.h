@@ -9,10 +9,10 @@
 // SIZE 0x10
 class cUnk00ad747c {
 public:
-    virtual void Slot00_ad747c(uint32_t, uint32_t);
-    virtual void Slot01_ad747c();
+    virtual bool Slot00_ad747c(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad747c();
     virtual void Slot02_ad747c();
-    virtual void Slot03_ad747c(uint32_t);
+    virtual bool Slot03_ad747c(uint32_t);
     virtual ~cUnk00ad747c();
     char unknown4[0xc];
 };

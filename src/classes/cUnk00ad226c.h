@@ -9,33 +9,25 @@
 
 // The subobject at +0x0 (vtable 0x00ad226c): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad226c_0 {
-    virtual void Slot00_ad22a0(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad22a0() = 0;
+    virtual bool Slot00_ad22a0(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad22a0() = 0;
     virtual void Slot02_ad22a0() = 0;
-    virtual void Slot03_ad226c(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot03_ad226c(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual ~cUnk00ad226c_0() {}
 };
 
-// Between cUnk00ad222c and cUnk00ad226c at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad226c_4 : public cUnk00ad222c {
-    virtual void Slot03_ad222c(uint32_t, uint32_t, uint32_t, uint32_t);
-};
-
-// Between cUnk00ad223c and cUnk00ad226c at +0x8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad226c_8 : public cUnk00ad223c {
-    virtual void Slot03_ad223c(uint32_t);
-};
-
 // VTABLE: 0x00ad226c cUnk00ad226c_0
-// VTABLE: 0x00ad225c cUnk00ad226c_4
-// VTABLE: 0x00ad224c cUnk00ad226c_8
+// VTABLE: 0x00ad225c cUnk00ad222c
+// VTABLE: 0x00ad224c cUnk00ad223c
 // SIZE 0x1c
-class cUnk00ad226c : public cUnk00ad226c_0, public cUnk00ad226c_4, public cUnk00ad226c_8 {
+class cUnk00ad226c : public cUnk00ad226c_0, public cUnk00ad222c, public cUnk00ad223c {
 public:
     virtual ~cUnk00ad226c();
-    virtual void Slot03_ad226c(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot00_ad22a0(uint32_t, uint32_t);
-    virtual void Slot01_ad22a0();
+    virtual bool Slot03_ad222c(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot03_ad223c(uint32_t);
+    virtual bool Slot03_ad226c(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot00_ad22a0(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad22a0();
     virtual void Slot02_ad22a0();
     char unknownc[0x10];
 };

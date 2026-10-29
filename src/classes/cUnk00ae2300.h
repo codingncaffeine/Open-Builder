@@ -19,12 +19,12 @@ public:
     virtual void Slot09_ae2300(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot10_ae2300(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot11_ae2300(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot12_ae2300(uint32_t) = 0;
+    virtual bool Slot12_ae2300(uint32_t) = 0;
     virtual uint32_t Slot13_ae2300() = 0;
-    virtual void Slot14_ae2300(uint32_t) = 0;
+    virtual uint32_t Slot14_ae2300(uint32_t) = 0;
     virtual void Slot15_ae2300(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot16_ae2300(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot17_ae2300(uint32_t) = 0;
+    virtual bool Slot17_ae2300(uint32_t) = 0;
     virtual bool Slot18_ae2300(bool) = 0;
     virtual uint32_t Slot19_ae2300() = 0;
 };

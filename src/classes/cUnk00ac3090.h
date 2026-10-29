@@ -9,18 +9,18 @@
 // The subobject at +0x0 (vtable 0x00ac3090): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ac3090_0 {
     virtual void Slot00_ac3090() = 0;
-    virtual void Slot01_ac3090() = 0;
-    virtual void Slot02_ac3090() = 0;
-    virtual void Slot03_ac3090(uint32_t) = 0;
-    virtual void Slot04_ac3090(uint32_t) = 0;
-    virtual void Slot05_ac3090(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot06_ac3090(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot07_ac3090(uint32_t) = 0;
-    virtual void Slot08_ac3090(uint32_t) = 0;
-    virtual void Slot09_ac3090(uint32_t) = 0;
-    virtual void Slot10_ac3090(uint32_t) = 0;
-    virtual void Slot11_ac3090(uint32_t) = 0;
-    virtual void Slot12_ac3090(uint32_t) = 0;
+    virtual uint32_t Slot01_ac3090() = 0;
+    virtual uint32_t Slot02_ac3090() = 0;
+    virtual bool Slot03_ac3090(uint32_t) = 0;
+    virtual bool Slot04_ac3090(uint32_t) = 0;
+    virtual bool Slot05_ac3090(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot06_ac3090(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot07_ac3090(uint32_t) = 0;
+    virtual bool Slot08_ac3090(uint32_t) = 0;
+    virtual bool Slot09_ac3090(uint32_t) = 0;
+    virtual bool Slot10_ac3090(uint32_t) = 0;
+    virtual bool Slot11_ac3090(uint32_t) = 0;
+    virtual bool Slot12_ac3090(uint32_t) = 0;
     virtual uint32_t Slot13_ac3090() = 0;
     virtual void Slot14_ac3090(uint32_t) = 0;
     virtual void Slot15_ac3090(uint32_t) = 0;
@@ -39,52 +39,48 @@ struct OB_NOVTABLE cUnk00ac3090_0 {
     virtual void Slot28_ac3090(uint32_t) = 0;
     virtual void Slot29_ac3090(uint32_t) = 0;
     virtual uint32_t Slot30_ac3090() = 0;
-    virtual void Slot31_ac3090() = 0;
-    virtual void Slot32_ac3090() = 0;
-    virtual void Slot33_ac3090() = 0;
-    virtual void Slot34_ac3090(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot35_ac3090(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot31_ac3090() = 0;
+    virtual uint32_t Slot32_ac3090() = 0;
+    virtual uint32_t Slot33_ac3090() = 0;
+    virtual bool Slot34_ac3090(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot35_ac3090(uint32_t, uint32_t) = 0;
     virtual void Slot36_ac3090(uint32_t) = 0;
-    virtual void Slot37_ac3090() = 0;
+    virtual uint32_t Slot37_ac3090() = 0;
     virtual void Slot38_ac3090(uint32_t) = 0;
     virtual uint32_t Slot39_ac3090() = 0;
     virtual ~cUnk00ac3090_0() {}
-    virtual void Slot41_ac3090() = 0;
-    virtual void Slot42_ac3090() = 0;
-    virtual void Slot43_ac3090() = 0;
-    virtual void Slot44_ac3090() = 0;
-    virtual void Slot45_ac3090() = 0;
-    virtual void Slot46_ac3090() = 0;
+    virtual bool Slot41_ac3090() = 0;
+    virtual bool Slot42_ac3090() = 0;
+    virtual bool Slot43_ac3090() = 0;
+    virtual bool Slot44_ac3090() = 0;
+    virtual bool Slot45_ac3090() = 0;
+    virtual bool Slot46_ac3090() = 0;
     virtual void Slot47_ac3090() = 0;
     virtual void Slot48_ac3090() = 0;
 };
 
-// Between cUnk00ac3004 and cUnk00ac3090 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ac3090_4 : public cUnk00ac3004 {
+// VTABLE: 0x00ac3090 cUnk00ac3090_0
+// VTABLE: 0x00ac3070 cUnk00ac3004
+class cUnk00ac3090 : public cUnk00ac3090_0, public cUnk00ac3004 {
+public:
+    virtual ~cUnk00ac3090();
     virtual void* Slot03_ac3004();
     virtual uint32_t Slot04_ac3004();
     virtual uint32_t Slot05_ac3004();
     virtual void Slot06_ac3004(uint32_t);
-};
-
-// VTABLE: 0x00ac3090 cUnk00ac3090_0
-// VTABLE: 0x00ac3070 cUnk00ac3090_4
-class cUnk00ac3090 : public cUnk00ac3090_0, public cUnk00ac3090_4 {
-public:
-    virtual ~cUnk00ac3090();
     virtual void Slot00_ac3090();
-    virtual void Slot01_ac3090();
-    virtual void Slot02_ac3090();
-    virtual void Slot03_ac3090(uint32_t);
-    virtual void Slot04_ac3090(uint32_t);
-    virtual void Slot05_ac3090(uint32_t, uint32_t, uint32_t);
-    virtual void Slot06_ac3090(uint32_t, uint32_t, uint32_t);
-    virtual void Slot07_ac3090(uint32_t);
-    virtual void Slot08_ac3090(uint32_t);
-    virtual void Slot09_ac3090(uint32_t);
-    virtual void Slot10_ac3090(uint32_t);
-    virtual void Slot11_ac3090(uint32_t);
-    virtual void Slot12_ac3090(uint32_t);
+    virtual uint32_t Slot01_ac3090();
+    virtual uint32_t Slot02_ac3090();
+    virtual bool Slot03_ac3090(uint32_t);
+    virtual bool Slot04_ac3090(uint32_t);
+    virtual bool Slot05_ac3090(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot06_ac3090(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot07_ac3090(uint32_t);
+    virtual bool Slot08_ac3090(uint32_t);
+    virtual bool Slot09_ac3090(uint32_t);
+    virtual bool Slot10_ac3090(uint32_t);
+    virtual bool Slot11_ac3090(uint32_t);
+    virtual bool Slot12_ac3090(uint32_t);
     virtual uint32_t Slot13_ac3090();
     virtual void Slot14_ac3090(uint32_t);
     virtual void Slot15_ac3090(uint32_t);
@@ -103,21 +99,21 @@ public:
     virtual void Slot28_ac3090(uint32_t);
     virtual void Slot29_ac3090(uint32_t);
     virtual uint32_t Slot30_ac3090();
-    virtual void Slot31_ac3090();
-    virtual void Slot32_ac3090();
-    virtual void Slot33_ac3090();
-    virtual void Slot34_ac3090(uint32_t, uint32_t, uint32_t);
-    virtual void Slot35_ac3090(uint32_t, uint32_t);
+    virtual uint32_t Slot31_ac3090();
+    virtual uint32_t Slot32_ac3090();
+    virtual uint32_t Slot33_ac3090();
+    virtual bool Slot34_ac3090(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot35_ac3090(uint32_t, uint32_t);
     virtual void Slot36_ac3090(uint32_t);
-    virtual void Slot37_ac3090();
+    virtual uint32_t Slot37_ac3090();
     virtual void Slot38_ac3090(uint32_t);
     virtual uint32_t Slot39_ac3090();
-    virtual void Slot41_ac3090();
-    virtual void Slot42_ac3090();
-    virtual void Slot43_ac3090();
-    virtual void Slot44_ac3090();
-    virtual void Slot45_ac3090();
-    virtual void Slot46_ac3090();
+    virtual bool Slot41_ac3090();
+    virtual bool Slot42_ac3090();
+    virtual bool Slot43_ac3090();
+    virtual bool Slot44_ac3090();
+    virtual bool Slot45_ac3090();
+    virtual bool Slot46_ac3090();
     virtual void Slot47_ac3090();
     virtual void Slot48_ac3090();
 };

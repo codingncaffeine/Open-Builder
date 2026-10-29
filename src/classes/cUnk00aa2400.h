@@ -25,17 +25,17 @@ public:
     virtual void Slot15_aa2400(uint32_t) = 0;
     virtual void Slot16_aa2400(uint32_t) = 0;
     virtual void Slot17_aa2400(uint32_t, uint32_t) = 0;
-    virtual void Slot18_aa2400() = 0;
+    virtual bool Slot18_aa2400() = 0;
     virtual void Slot19_aa2400(uint32_t) = 0;
     virtual uint32_t Slot20_aa2400() = 0;
     virtual void Slot21_aa2400(uint32_t, uint32_t) = 0;
-    virtual void Slot22_aa2400() = 0;
-    virtual void Slot23_aa2400() = 0;
+    virtual bool Slot22_aa2400() = 0;
+    virtual uint32_t Slot23_aa2400() = 0;
     virtual uint32_t Slot24_aa2400() = 0;
     virtual uint32_t Slot25_aa2400() = 0;
     virtual void Slot26_aa2400(uint32_t, uint32_t) = 0;
     virtual void Slot27_aa2400(uint32_t) = 0;
-    virtual void Slot28_aa2400(uint32_t) = 0;
+    virtual bool Slot28_aa2400(uint32_t) = 0;
 };
 
 #endif

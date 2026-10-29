@@ -9,11 +9,11 @@
 // SIZE 0xc
 class cUnk00ad40f8 {
 public:
-    virtual void Slot00_ad40f8(uint32_t, uint32_t);
-    virtual void Slot01_ad40f8();
-    virtual void Slot02_ad40f8();
-    virtual void Slot03_ad40f8(uint32_t, uint32_t);
-    virtual void Slot04_ad40f8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot00_ad40f8(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad40f8();
+    virtual uint32_t Slot02_ad40f8();
+    virtual bool Slot03_ad40f8(uint32_t, uint32_t);
+    virtual bool Slot04_ad40f8(uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ad40f8() {}
     char unknown4[0x8];
 };

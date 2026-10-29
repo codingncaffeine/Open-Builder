@@ -9,12 +9,12 @@
 // SIZE 0xc
 class cUnk00b00a5c {
 public:
-    virtual void Slot00_b00a5c(uint32_t, uint32_t);
-    virtual void Slot01_b00a5c();
+    virtual bool Slot00_b00a5c(uint32_t, uint32_t);
+    virtual uint32_t Slot01_b00a5c();
     virtual void Slot02_b00a5c();
     virtual void Slot03_b00a5c();
     virtual void Slot04_b00a5c();
-    virtual void Slot05_b00a5c(uint32_t);
+    virtual uint32_t Slot05_b00a5c(uint32_t);
     virtual void Slot06_b00a5c();
     virtual void Slot07_b00a5c();
     virtual void Slot08_b00a5c(uint32_t);

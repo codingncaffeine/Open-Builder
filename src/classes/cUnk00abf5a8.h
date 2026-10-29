@@ -8,7 +8,7 @@
 // VTABLE: 0x00abf5a8
 class cUnk00abf5a8 {
 public:
-    virtual void Slot00_abf5a8(uint32_t, uint32_t);
+    virtual bool Slot00_abf5a8(uint32_t, uint32_t);
     virtual void Slot01_abf5a8();
     virtual void Slot02_abf5a8();
     virtual ~cUnk00abf5a8();

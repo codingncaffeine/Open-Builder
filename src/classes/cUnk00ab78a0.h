@@ -8,13 +8,13 @@
 
 // VTABLE: 0x00ab78a0 cUnk00adb720
 // VTABLE: 0x00ab7640 cUnk00adc8d8
-// VTABLE: 0x00ab75c0 cUnk00adc678_d8
+// VTABLE: 0x00ab75c0 cUnk00adc2b0
 // SIZE 0x15c
 class cUnk00ab78a0 : public cUnk00adba40 {
 public:
     virtual ~cUnk00ab78a0() {}
     virtual void Slot17_adba40(uint32_t);
-    virtual void Slot04_adb6a8();
+    virtual bool Slot04_adb6a8();
     char unknown154[0x8];
 };
 #ifdef _MSC_VER

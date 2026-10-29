@@ -7,11 +7,11 @@
 
 class cUnk00ad8fa4 {
 public:
-    virtual void Slot00_ad4830(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ad4830(uint32_t, uint32_t) = 0;
     virtual void Slot01_ad4830() = 0;
     virtual void Slot02_ad4830() = 0;
     virtual void Slot03_ad8fa4(uint32_t);
-    virtual void Slot04_ad8fa4(uint32_t, uint32_t);
+    virtual bool Slot04_ad8fa4(uint32_t, uint32_t);
     virtual bool Slot05_ad8fa4(uint32_t, uint32_t);
     virtual void Slot06_ad8fa4(uint32_t);
     virtual ~cUnk00ad8fa4() {}

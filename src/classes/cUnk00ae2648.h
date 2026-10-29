@@ -7,25 +7,11 @@
 #include "classes/cUnk00ae2360.h"
 #include "classes/cUnk00ae2398.h"
 
-// Between cUnk00ae2360 and cUnk00ae2648 at +0xdc: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ae2648_dc : public cUnk00ae2360 {
-    virtual void* Slot03_ae2360();
-    virtual void Slot04_ae2360(uint32_t, uint32_t);
-    virtual void Slot05_ae2360(uint32_t, uint32_t, uint32_t);
-    virtual void Slot06_ae2360();
-    virtual void Slot07_ae2360(uint32_t, uint32_t, uint32_t);
-    virtual void Slot08_ae2360(uint32_t);
-    virtual uint32_t Slot09_ae2360();
-    virtual uint32_t Slot10_ae2360();
-    virtual uint32_t Slot11_ae2360();
-    virtual uint32_t Slot12_ae2360();
-};
-
 // VTABLE: 0x00ae2648 cUnk00adc8d8
-// VTABLE: 0x00ae2638 cUnk00ae2398_d8
-// VTABLE: 0x00ae2604 cUnk00ae2648_dc
+// VTABLE: 0x00ae2638 cUnk00ae2350
+// VTABLE: 0x00ae2604 cUnk00ae2360
 // SIZE 0x118
-class cUnk00ae2648 : public cUnk00ae2398, public cUnk00ae2648_dc {
+class cUnk00ae2648 : public cUnk00ae2398, public cUnk00ae2360 {
 public:
     virtual ~cUnk00ae2648();
     virtual bool QueryInterface(unsigned int, void **);
@@ -37,9 +23,25 @@ public:
     virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual bool Slot143_adc8d8(uint32_t, uint32_t);
-    virtual void Slot04_adb6a8();
-    virtual void Slot05_adb6a8();
-    char unknowne0[0x38];
+    virtual bool Slot04_adb6a8();
+    virtual bool Slot05_adb6a8();
+    virtual void* Slot03_ae2360();
+    virtual bool Slot04_ae2360(uint32_t, uint32_t);
+    virtual bool Slot05_ae2360(uint32_t, uint32_t, uint32_t);
+    virtual void Slot06_ae2360();
+    virtual void Slot07_ae2360(uint32_t, uint32_t, uint32_t);
+    virtual void Slot08_ae2360(uint32_t);
+    virtual uint32_t Slot09_ae2360();
+    virtual uint32_t Slot10_ae2360();
+    virtual uint32_t Slot11_ae2360();
+    virtual uint32_t Slot12_ae2360();
+    char unknowne0[0x18];
+    uint32_t fieldf8;
+    uint32_t fieldfc;
+    uint32_t field100;
+    uint32_t field104;
+    uint32_t field108;
+    char unknown10c[0xc];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae2648[sizeof(cUnk00ae2648) == 0x118 ? 1 : -1];
@@ -50,12 +52,6 @@ typedef char ob_size_cUnk00ae2648[sizeof(cUnk00ae2648) == 0x118 ? 1 : -1];
 
 // SYNTHETIC: 0x009cdc2b
 // cUnk00ae2648::QueryInterface`adjustor{216}'
-
-// SYNTHETIC: 0x009cdc36
-// cUnk00ae2648::AddRef`adjustor{216}'
-
-// SYNTHETIC: 0x009cdc41
-// cUnk00ae2648::Release`adjustor{216}'
 
 // SYNTHETIC: 0x009cdc4c
 // cUnk00ae2648::QueryInterface`adjustor{220}'

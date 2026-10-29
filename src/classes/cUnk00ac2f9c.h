@@ -10,10 +10,10 @@ public:
     virtual void Slot00_ac2f9c() = 0;
     virtual void Slot01_ac2f9c() = 0;
     virtual void Slot02_ac2f9c() = 0;
-    virtual void Slot03_ac2f9c(uint32_t);
-    virtual void Slot04_ac2f9c(uint32_t);
-    virtual void Slot05_ac2f9c(uint32_t);
-    virtual void Slot06_ac2f9c(uint32_t, uint32_t);
+    virtual bool Slot03_ac2f9c(uint32_t);
+    virtual bool Slot04_ac2f9c(uint32_t);
+    virtual uint32_t Slot05_ac2f9c(uint32_t);
+    virtual bool Slot06_ac2f9c(uint32_t, uint32_t);
 };
 
 #endif

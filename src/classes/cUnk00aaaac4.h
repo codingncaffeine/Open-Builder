@@ -11,7 +11,7 @@ public:
     virtual ~cUnk00aaaac4() {}
     virtual void Slot01_aaaac4();
     virtual void Slot02_aaaac4();
-    virtual void Slot03_aaaac4();
+    virtual uint32_t Slot03_aaaac4();
     virtual uint32_t Slot04_aaaac4();
 };
 

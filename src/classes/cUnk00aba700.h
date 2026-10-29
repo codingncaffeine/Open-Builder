@@ -9,22 +9,22 @@
 // VTABLE: 0x00aba700
 class cUnk00aba700 : public cUnk00aba6c0 {
 public:
-    virtual void Slot00_aba6c0(uint32_t);
+    virtual bool Slot00_aba6c0(uint32_t);
     virtual void Slot01_aba6c0(uint32_t);
     virtual void Slot02_aba6c0(uint32_t);
     virtual void Slot03_aba6c0(uint32_t, uint32_t);
-    virtual void Slot04_aba6c0(uint32_t, uint32_t);
-    virtual void Slot05_aba6c0(uint32_t, uint32_t);
+    virtual bool Slot04_aba6c0(uint32_t, uint32_t);
+    virtual bool Slot05_aba6c0(uint32_t, uint32_t);
     virtual void Slot06_aba6c0(uint32_t, uint32_t);
-    virtual void Slot07_aba6c0(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot08_aba6c0(uint32_t, uint32_t);
+    virtual bool Slot07_aba6c0(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot08_aba6c0(uint32_t, uint32_t);
     virtual void Slot09_aba6c0(uint32_t);
     virtual void Slot10_aba6c0(uint32_t);
     virtual void Slot11_aba6c0();
-    virtual void Slot12_aba6c0(uint32_t);
+    virtual bool Slot12_aba6c0(uint32_t);
     virtual void Slot13_aba6c0(uint32_t);
-    virtual void Slot14_aba6c0();
-    virtual void Slot15_aba6c0();
+    virtual uint32_t Slot14_aba6c0();
+    virtual uint32_t Slot15_aba6c0();
 };
 
 #endif

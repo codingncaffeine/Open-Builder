@@ -11,16 +11,16 @@ public:
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void* Slot03_ae074c() = 0;
-    virtual void Slot04_ae074c() = 0;
-    virtual void Slot05_ae074c(uint32_t) = 0;
+    virtual uint32_t Slot04_ae074c() = 0;
+    virtual bool Slot05_ae074c(uint32_t) = 0;
     virtual void Slot06_ae074c(uint32_t) = 0;
     virtual uint32_t Slot07_ae074c() = 0;
     virtual void Slot08_ae074c(uint32_t) = 0;
     virtual uint32_t Slot09_ae074c() = 0;
     virtual void Slot10_ae074c(uint32_t) = 0;
     virtual void Slot11_ae074c(uint32_t) = 0;
-    virtual void Slot12_ae074c(uint32_t, uint32_t) = 0;
-    virtual void Slot13_ae074c(uint32_t, uint32_t) = 0;
+    virtual bool Slot12_ae074c(uint32_t, uint32_t) = 0;
+    virtual bool Slot13_ae074c(uint32_t, uint32_t) = 0;
 };
 
 #endif

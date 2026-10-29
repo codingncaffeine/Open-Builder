@@ -9,10 +9,10 @@
 // SIZE 0x4048
 class cUnk00ad4818 {
 public:
-    virtual void Slot00_ad4818(uint32_t, uint32_t);
-    virtual void Slot01_ad4818();
+    virtual bool Slot00_ad4818(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad4818();
     virtual void Slot02_ad4818();
-    virtual void Slot03_ad4818(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot03_ad4818(uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ad4818();
     char unknown4[0x4044];
 };

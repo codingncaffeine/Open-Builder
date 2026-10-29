@@ -7,30 +7,26 @@
 #include "classes/cUnk00ad51f0.h"
 #include "classes/cUnk00ad5220.h"
 
-// Between cUnk00ad5220 and cUnk00ad5248 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad5248_4 : public cUnk00ad5220 {
-    virtual void Slot03_ad5220(uint32_t);
-    virtual void Slot04_ad5220(uint32_t, uint32_t);
-};
-
 // VTABLE: 0x00ad5248 cUnk00ad51f0
-// VTABLE: 0x00ad5234 cUnk00ad5248_4
+// VTABLE: 0x00ad5234 cUnk00ad5220
 // SIZE 0x24
-class cUnk00ad5248 : public cUnk00ad51f0, public cUnk00ad5248_4 {
+class cUnk00ad5248 : public cUnk00ad51f0, public cUnk00ad5220 {
 public:
     virtual ~cUnk00ad5248();
-    virtual void Slot00_ad51f0(uint32_t, uint32_t);
-    virtual void Slot01_ad51f0();
+    virtual bool Slot00_ad51f0(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad51f0();
     virtual void Slot02_ad51f0();
-    virtual void Slot03_ad51f0();
-    virtual void Slot04_ad51f0(uint32_t);
-    virtual void Slot05_ad51f0(uint32_t);
-    virtual void Slot06_ad51f0(uint32_t);
-    virtual void Slot07_ad51f0(uint32_t);
-    virtual void Slot08_ad51f0(uint32_t);
+    virtual uint32_t Slot03_ad51f0();
+    virtual bool Slot04_ad51f0(uint32_t);
+    virtual uint32_t Slot05_ad51f0(uint32_t);
+    virtual uint32_t Slot06_ad51f0(uint32_t);
+    virtual uint32_t Slot07_ad51f0(uint32_t);
+    virtual uint32_t Slot08_ad51f0(uint32_t);
     virtual void Slot09_ad51f0(uint32_t);
-    virtual void Slot10_ad51f0();
-    virtual void Slot11_ad51f0(uint32_t, uint32_t);
+    virtual uint32_t Slot10_ad51f0();
+    virtual bool Slot11_ad51f0(uint32_t, uint32_t);
+    virtual bool Slot03_ad5220(uint32_t);
+    virtual bool Slot04_ad5220(uint32_t, uint32_t);
     char unknown8[0x1c];
 };
 #ifdef _MSC_VER

@@ -9,12 +9,12 @@
 // SIZE 0xc0
 class cUnk00a8ceb8 {
 public:
-    virtual void Slot00_a8ceb8(uint32_t, uint32_t);
+    virtual bool Slot00_a8ceb8(uint32_t, uint32_t);
     virtual void Slot01_a8ceb8();
     virtual void Slot02_a8ceb8();
     virtual uint32_t Slot03_a8ceb8();
     virtual void Slot04_a8ceb8();
-    virtual void Slot05_a8ceb8(uint32_t);
+    virtual bool Slot05_a8ceb8(uint32_t);
     virtual void* Slot06_a8ceb8();
     virtual void Slot07_a8ceb8(uint32_t, uint32_t);
     virtual float Slot08_a8ceb8();
@@ -24,24 +24,24 @@ public:
     virtual uint16_t Slot12_a8ceb8();
     virtual uint16_t Slot13_a8ceb8();
     virtual bool Slot14_a8ceb8();
-    virtual void Slot15_a8ceb8(uint32_t);
-    virtual void Slot16_a8ceb8(uint32_t);
-    virtual void Slot17_a8ceb8(uint32_t);
-    virtual void Slot18_a8ceb8(uint32_t);
+    virtual uint32_t Slot15_a8ceb8(uint32_t);
+    virtual uint32_t Slot16_a8ceb8(uint32_t);
+    virtual uint32_t Slot17_a8ceb8(uint32_t);
+    virtual bool Slot18_a8ceb8(uint32_t);
     virtual bool Slot19_a8ceb8(uint32_t);
     virtual bool Slot20_a8ceb8();
     virtual void Slot21_a8ceb8(uint32_t);
-    virtual void Slot22_a8ceb8();
+    virtual uint32_t Slot22_a8ceb8();
     virtual void* Slot23_a8ceb8();
     virtual void Slot24_a8ceb8();
     virtual void Slot25_a8ceb8();
     virtual void Slot26_a8ceb8();
-    virtual void Slot27_a8ceb8(uint32_t);
+    virtual bool Slot27_a8ceb8(uint32_t);
     virtual void* Slot28_a8ceb8();
     virtual void* Slot29_a8ceb8();
     virtual void* Slot30_a8ceb8();
     virtual void Slot31_a8ceb8();
-    virtual void Slot32_a8ceb8(uint32_t, uint32_t);
+    virtual bool Slot32_a8ceb8(uint32_t, uint32_t);
     virtual ~cUnk00a8ceb8();
     char unknown4[0x4];
     uint32_t field8;

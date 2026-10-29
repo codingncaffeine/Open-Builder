@@ -11,9 +11,9 @@
 class cUnk00aa1ce4 : public cUnk00aa1afc {
 public:
     virtual ~cUnk00aa1ce4();
-    virtual void Slot03_aa1648(uint32_t);
-    virtual void Slot06_aa1afc();
-    virtual void Slot07_aa1afc();
+    virtual bool Slot03_aa1648(uint32_t);
+    virtual bool Slot06_aa1afc();
+    virtual bool Slot07_aa1afc();
     char unknown18[0x30];
 };
 #ifdef _MSC_VER

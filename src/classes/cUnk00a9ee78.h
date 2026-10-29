@@ -15,9 +15,9 @@ public:
     virtual void Slot03_a9ee78(uint32_t, uint32_t);
     virtual void Slot04_a9ee78(uint32_t);
     virtual void Slot05_a9ee78(uint32_t, uint32_t, uint32_t);
-    virtual void Slot06_a9ee78(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot06_a9ee78(uint32_t, uint32_t, uint32_t);
     virtual void Slot07_a9ee78();
-    virtual void Slot08_a9ee78();
+    virtual uint32_t Slot08_a9ee78();
     virtual void Slot09_a9ee78(uint32_t);
     char unknown4[0x4];
     bool field8;

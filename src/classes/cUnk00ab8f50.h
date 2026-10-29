@@ -12,8 +12,8 @@ class cUnk00ab8f50 : public cUnk00adc8d8 {
 public:
     virtual ~cUnk00ab8f50();
     virtual bool Slot88_adc8d8();
-    virtual void Slot04_adb6a8();
-    virtual void Slot05_adb6a8();
+    virtual bool Slot04_adb6a8();
+    virtual bool Slot05_adb6a8();
     char unknownd8[0x4];
 };
 #ifdef _MSC_VER

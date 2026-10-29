@@ -2,6 +2,7 @@
 // flags, so the compiler emits their vtables, thunks and deleting destructors here, as the original's
 // sources did. Not decompiled code; never called.
 #include "classes/cUnk00ac2c88.h"
+#include "classes/cUnk00ac2e28.h"
 #include "classes/cUnk00ac3090.h"
 #include "classes/cUnk00ac33a0.h"
 #include "classes/cUnk00ac51fc.h"
@@ -123,17 +124,23 @@
 #include "classes/cUnk00ada4f0.h"
 #include "classes/cUnk00ada628.h"
 #include "classes/cUnk00adbf80.h"
+#include "classes/cUnk00adc398.h"
 #include "classes/cUnk00adc678.h"
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00adde30.h"
 #include "classes/cUnk00adde3c.h"
 #include "classes/cUnk00ade188.h"
 #include "classes/cUnk00ade540.h"
+#include "classes/cUnk00ade648.h"
+#include "classes/cUnk00adea90.h"
+#include "classes/cUnk00adeec0.h"
+#include "classes/cUnk00adf2e8.h"
 #include "classes/cUnk00adf6a0.h"
 #include "classes/cUnk00adfbd0.h"
 #include "classes/cUnk00adfeb8.h"
 #include "classes/cUnk00ae0240.h"
 #include "classes/cUnk00ae04d8.h"
+#include "classes/cUnk00ae0810.h"
 #include "classes/cUnk00ae0b90.h"
 #include "classes/cUnk00ae0fb0.h"
 #include "classes/cUnk00ae1300.h"
@@ -162,6 +169,7 @@
 void GeneratedClasses_gzcom()
 {
     (void)new cUnk00ac2c88;
+    (void)new cUnk00ac2e28;
     (void)new cUnk00ac3090;
     (void)new cUnk00ac33a0;
     (void)new cUnk00ac51fc;
@@ -283,17 +291,23 @@ void GeneratedClasses_gzcom()
     (void)new cUnk00ada4f0;
     (void)new cUnk00ada628;
     (void)new cUnk00adbf80;
+    (void)new cUnk00adc398;
     (void)new cUnk00adc678;
     (void)new cUnk00adc8d8;
     (void)new cUnk00adde30;
     (void)new cUnk00adde3c;
     (void)new cUnk00ade188;
     (void)new cUnk00ade540;
+    (void)new cUnk00ade648;
+    (void)new cUnk00adea90;
+    (void)new cUnk00adeec0;
+    (void)new cUnk00adf2e8;
     (void)new cUnk00adf6a0;
     (void)new cUnk00adfbd0;
     (void)new cUnk00adfeb8;
     (void)new cUnk00ae0240;
     (void)new cUnk00ae04d8;
+    (void)new cUnk00ae0810;
     (void)new cUnk00ae0b90;
     (void)new cUnk00ae0fb0;
     (void)new cUnk00ae1300;

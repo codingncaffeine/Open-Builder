@@ -7,21 +7,21 @@
 
 class cUnk00a855a4 {
 public:
-    virtual void Slot00_a855a4() = 0;
-    virtual void Slot01_a855a4() = 0;
-    virtual void Slot02_a855a4() = 0;
-    virtual void Slot03_a855a4() = 0;
-    virtual void Slot04_a855a4() = 0;
-    virtual void Slot05_a855a4() = 0;
-    virtual void Slot06_a855a4() = 0;
-    virtual void Slot07_a855a4() = 0;
-    virtual void Slot08_a855a4() = 0;
-    virtual void Slot09_a855a4() = 0;
-    virtual void Slot10_a855a4() = 0;
-    virtual void Slot11_a855a4() = 0;
-    virtual void Slot12_a855a4() = 0;
-    virtual void Slot13_a855a4() = 0;
-    virtual void Slot14_a855a4() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual unsigned int AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual void* Slot03_a855a4() = 0;
+    virtual void* Slot04_a855a4() = 0;
+    virtual void* Slot05_a855a4() = 0;
+    virtual uint32_t Slot06_a855a4() = 0;
+    virtual uint32_t Slot07_a855a4() = 0;
+    virtual uint32_t Slot08_a855a4(uint32_t) = 0;
+    virtual uint32_t Slot09_a855a4(uint32_t) = 0;
+    virtual uint32_t Slot10_a855a4(uint32_t) = 0;
+    virtual uint32_t Slot11_a855a4() = 0;
+    virtual bool Slot12_a855a4() = 0;
+    virtual void Slot13_a855a4(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot14_a855a4(uint32_t) = 0;
 };
 
 #endif

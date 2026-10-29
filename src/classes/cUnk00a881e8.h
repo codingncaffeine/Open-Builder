@@ -12,7 +12,7 @@ public:
     virtual void Slot01_a881e8();
     virtual void Slot02_a881e8();
     virtual void Slot03_a881e8();
-    virtual void Slot04_a881e8();
+    virtual uint32_t Slot04_a881e8();
     virtual uint32_t Slot05_a881e8();
 };
 

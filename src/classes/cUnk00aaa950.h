@@ -11,8 +11,8 @@ public:
     virtual ~cUnk00aaa950() {}
     virtual void Slot81_aaa950() = 0;
     virtual void Slot82_aaa950() = 0;
-    virtual void Slot03_aa8748();
-    virtual void Slot04_aa8748();
+    virtual bool Slot03_aa8748();
+    virtual bool Slot04_aa8748();
     virtual void Slot16_aa8748();
     virtual void Slot17_aa8748();
     virtual bool Slot46_aa8748();
@@ -21,19 +21,19 @@ public:
     virtual bool Slot56_aa8748(uint32_t);
     virtual void Slot57_aa8748(uint32_t);
     virtual void Slot58_aa8748(uint32_t, uint32_t);
-    virtual void Slot59_aa8748(uint32_t);
+    virtual uint32_t Slot59_aa8748(uint32_t);
     virtual void Slot60_aa8748();
     virtual bool Slot61_aa8748();
     virtual bool Slot62_aa8748();
     virtual bool Slot63_aa8748();
     virtual bool Slot64_aa8748();
-    virtual void Slot65_aa8748(uint32_t, uint32_t);
+    virtual bool Slot65_aa8748(uint32_t, uint32_t);
     virtual void Slot68_aa8748(uint32_t, uint32_t, uint32_t);
     virtual bool Slot69_aa8748(uint32_t);
     virtual void Slot70_aa8748();
     virtual void Slot71_aa8748(uint32_t);
-    virtual void Slot73_aa8748(uint32_t);
-    virtual void Slot74_aa8748(uint32_t);
+    virtual float Slot73_aa8748(uint32_t);
+    virtual float Slot74_aa8748(uint32_t);
     virtual void Slot75_aa8748();
     virtual void Slot76_aa8748(uint32_t);
     virtual void Slot77_aa8748(uint32_t);

@@ -8,12 +8,12 @@
 
 // The subobject at +0x0 (vtable 0x00ad22c4): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ad22c4_0 {
-    virtual void Slot00_ad22c4(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad22c4() = 0;
+    virtual bool Slot00_ad22c4(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad22c4() = 0;
     virtual void Slot02_ad22c4() = 0;
-    virtual void Slot03_ad22c4(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot04_ad22c4(uint32_t) = 0;
-    virtual void Slot05_ad22c4(uint32_t, uint32_t) = 0;
+    virtual bool Slot03_ad22c4(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot04_ad22c4(uint32_t) = 0;
+    virtual bool Slot05_ad22c4(uint32_t, uint32_t) = 0;
     virtual bool Slot06_ad22c4() = 0;
     virtual bool Slot07_ad22c4() = 0;
     virtual bool Slot08_ad22c4(uint32_t, uint32_t) = 0;
@@ -23,23 +23,19 @@ struct OB_NOVTABLE cUnk00ad22c4_0 {
     virtual ~cUnk00ad22c4_0() {}
 };
 
-// Between cUnk00ad221c and cUnk00ad22c4 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad22c4_4 : public cUnk00ad221c {
-    virtual bool Slot03_ad221c(uint32_t, uint32_t);
-};
-
 // VTABLE: 0x00ad22c4 cUnk00ad22c4_0
-// VTABLE: 0x00ad22b4 cUnk00ad22c4_4
+// VTABLE: 0x00ad22b4 cUnk00ad221c
 // SIZE 0x30
-class cUnk00ad22c4 : public cUnk00ad22c4_0, public cUnk00ad22c4_4 {
+class cUnk00ad22c4 : public cUnk00ad22c4_0, public cUnk00ad221c {
 public:
     virtual ~cUnk00ad22c4();
-    virtual void Slot00_ad22c4(uint32_t, uint32_t);
-    virtual void Slot01_ad22c4();
+    virtual bool Slot03_ad221c(uint32_t, uint32_t);
+    virtual bool Slot00_ad22c4(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad22c4();
     virtual void Slot02_ad22c4();
-    virtual void Slot03_ad22c4(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_ad22c4(uint32_t);
-    virtual void Slot05_ad22c4(uint32_t, uint32_t);
+    virtual bool Slot03_ad22c4(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot04_ad22c4(uint32_t);
+    virtual bool Slot05_ad22c4(uint32_t, uint32_t);
     virtual bool Slot06_ad22c4();
     virtual bool Slot07_ad22c4();
     virtual bool Slot08_ad22c4(uint32_t, uint32_t);

@@ -9,19 +9,19 @@
 // SIZE 0x30
 class cUnk00ada628 {
 public:
-    virtual void Slot00_ada628(uint32_t, uint32_t);
-    virtual void Slot01_ada628();
-    virtual void Slot02_ada628();
+    virtual bool Slot00_ada628(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ada628();
+    virtual uint32_t Slot02_ada628();
     virtual uint32_t Slot03_ada628();
     virtual bool Slot04_ada628();
-    virtual void Slot05_ada628();
-    virtual void Slot06_ada628();
-    virtual void Slot07_ada628();
+    virtual bool Slot05_ada628();
+    virtual bool Slot06_ada628();
+    virtual bool Slot07_ada628();
     virtual void Slot08_ada628();
     virtual void Slot09_ada628(uint32_t);
     virtual void Slot10_ada628(uint32_t, uint32_t, uint32_t);
-    virtual void Slot11_ada628();
-    virtual void Slot12_ada628(uint32_t);
+    virtual bool Slot11_ada628();
+    virtual bool Slot12_ada628(uint32_t);
     virtual uint32_t Slot13_ada628();
     virtual ~cUnk00ada628();
     char unknown4[0x18];

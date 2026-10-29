@@ -9,24 +9,24 @@
 // SIZE 0xc
 class cUnk00ace650 {
 public:
-    virtual void Slot00_ace650(uint32_t, uint32_t);
-    virtual void Slot01_ace650();
+    virtual bool Slot00_ace650(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ace650();
     virtual void Slot02_ace650();
     virtual void Slot03_ace650();
-    virtual void Slot04_ace650(uint32_t, uint32_t, uint32_t);
-    virtual void Slot05_ace650(uint32_t, uint32_t, uint32_t);
-    virtual void Slot06_ace650(uint32_t);
-    virtual void Slot07_ace650(uint32_t);
-    virtual void Slot08_ace650(uint32_t);
-    virtual void Slot09_ace650(uint32_t);
-    virtual void Slot10_ace650(uint32_t, uint32_t);
-    virtual void Slot11_ace650(uint32_t, uint32_t);
-    virtual void Slot12_ace650(uint32_t, uint32_t);
-    virtual void Slot13_ace650(uint32_t, uint32_t);
-    virtual void Slot14_ace650();
+    virtual bool Slot04_ace650(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot05_ace650(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot06_ace650(uint32_t);
+    virtual bool Slot07_ace650(uint32_t);
+    virtual bool Slot08_ace650(uint32_t);
+    virtual bool Slot09_ace650(uint32_t);
+    virtual bool Slot10_ace650(uint32_t, uint32_t);
+    virtual bool Slot11_ace650(uint32_t, uint32_t);
+    virtual bool Slot12_ace650(uint32_t, uint32_t);
+    virtual bool Slot13_ace650(uint32_t, uint32_t);
+    virtual bool Slot14_ace650();
     virtual void Slot15_ace650(uint32_t);
     virtual void Slot16_ace650(uint32_t);
-    virtual void Slot17_ace650(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot17_ace650(uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ace650();
     char unknown4[0x8];
 };

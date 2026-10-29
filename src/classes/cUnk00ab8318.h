@@ -16,7 +16,7 @@ public:
     virtual void Slot05_ab8318(uint32_t) = 0;
     virtual void Slot06_ab8318() = 0;
     virtual void Slot07_ab8318(uint32_t, uint32_t) = 0;
-    virtual void Slot08_ab8318(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot08_ab8318(uint32_t, uint32_t) = 0;
     virtual void Slot09_ab8318() = 0;
 };
 #ifdef _MSC_VER

@@ -9,7 +9,7 @@
 class cUnk00aa2b00 {
 public:
     virtual ~cUnk00aa2b00() {}
-    virtual void Slot01_aa2b00();
+    virtual bool Slot01_aa2b00();
     virtual void Slot02_aa2b00();
 };
 

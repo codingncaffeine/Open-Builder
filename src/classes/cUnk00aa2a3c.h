@@ -11,7 +11,7 @@ class cUnk00aa2a3c {
 public:
     virtual bool Slot00_aa2a3c(uint32_t, uint32_t);
     virtual void Slot01_aa2a3c();
-    virtual void Slot02_aa2a3c();
+    virtual uint32_t Slot02_aa2a3c();
     virtual void Slot03_aa2a3c();
     virtual void Slot04_aa2a3c(uint32_t);
     virtual void Slot05_aa2a3c(uint32_t);

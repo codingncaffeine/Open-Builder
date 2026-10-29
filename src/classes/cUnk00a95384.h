@@ -10,7 +10,7 @@
 class cUnk00a95384 {
 public:
     virtual void Slot00_a95384(uint32_t);
-    virtual void Slot01_a95384(uint32_t);
+    virtual uint32_t Slot01_a95384(uint32_t);
     virtual void Slot02_a95384(uint32_t);
     char unknown4[0x24];
 };

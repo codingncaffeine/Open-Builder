@@ -26,7 +26,7 @@ struct OB_NOVTABLE cUnk00a87b00_0 {
     virtual float Slot15_a87b00() = 0;
     virtual float Slot16_a87b00() = 0;
     virtual float Slot17_a87b00() = 0;
-    virtual void Slot18_a87b00(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot18_a87b00(uint32_t, uint32_t) = 0;
     virtual void Slot19_a87b00(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot20_a87b00(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot21_a87b00(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
@@ -39,19 +39,15 @@ struct OB_NOVTABLE cUnk00a87b00_0 {
     virtual ~cUnk00a87b00_0() {}
 };
 
-// Between cUnk00a80784 and cUnk00a87b00 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a87b00_4 : public cUnk00a80784 {
+// VTABLE: 0x00a87b00 cUnk00a87b00_0
+// VTABLE: 0x00a87ae4 cUnk00a80784
+// SIZE 0x44
+class cUnk00a87b00 : public cUnk00a87b00_0, public cUnk00a80784 {
+public:
+    virtual ~cUnk00a87b00() {}
     virtual bool Slot03_a80784(uint32_t);
     virtual bool Slot04_a80784(uint32_t);
     virtual uint32_t Slot05_a80784();
-};
-
-// VTABLE: 0x00a87b00 cUnk00a87b00_0
-// VTABLE: 0x00a87ae4 cUnk00a87b00_4
-// SIZE 0x44
-class cUnk00a87b00 : public cUnk00a87b00_0, public cUnk00a87b00_4 {
-public:
-    virtual ~cUnk00a87b00() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
@@ -70,7 +66,7 @@ public:
     virtual float Slot15_a87b00();
     virtual float Slot16_a87b00();
     virtual float Slot17_a87b00();
-    virtual void Slot18_a87b00(uint32_t, uint32_t);
+    virtual uint32_t Slot18_a87b00(uint32_t, uint32_t);
     virtual void Slot19_a87b00(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot20_a87b00(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot21_a87b00(uint32_t, uint32_t, uint32_t, uint32_t);
@@ -80,7 +76,8 @@ public:
     virtual void* Slot25_a87b00();
     virtual void Slot26_a87b00(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot27_a87b00(uint32_t, uint32_t);
-    char unknown8[0xc];
+    char unknown8[0x8];
+    uint32_t field10;
     uint32_t field14;
     uint32_t field18;
     uint32_t field1c;

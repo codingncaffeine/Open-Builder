@@ -10,8 +10,8 @@ class cUnk00ace174 {
 public:
     virtual uint32_t Slot00_ace174();
     virtual void Slot01_ace174(uint32_t, uint32_t);
-    virtual void Slot02_ace174(uint32_t, uint32_t, uint32_t);
-    virtual void Slot03_ace174(uint32_t);
+    virtual bool Slot02_ace174(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot03_ace174(uint32_t);
     virtual bool Slot04_ace174();
 };
 

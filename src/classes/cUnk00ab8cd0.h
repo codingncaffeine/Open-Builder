@@ -15,8 +15,8 @@ public:
     virtual bool Slot135_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual bool Slot137_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_adb6a8();
-    virtual void Slot05_adb6a8();
+    virtual bool Slot04_adb6a8();
+    virtual bool Slot05_adb6a8();
     char unknownd8[0x60];
 };
 #ifdef _MSC_VER

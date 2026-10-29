@@ -9,11 +9,11 @@
 // SIZE 0x140
 class cUnk00ab5494 {
 public:
-    virtual void Slot00_ab5494(uint32_t, uint32_t);
+    virtual bool Slot00_ab5494(uint32_t, uint32_t);
     virtual void Slot01_ab5494();
     virtual void Slot02_ab5494();
     virtual bool Slot03_ab5494(uint32_t, uint32_t);
-    virtual void Slot04_ab5494(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot04_ab5494(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ab5494();
     char unknown4[0x13c];
 };

@@ -8,32 +8,17 @@
 #include "classes/cUnk00ab8318.h"
 #include "classes/cUnk00adc8d8.h"
 
-// Between cUnk00ab8318 and cUnk00ab83b8 at +0xd8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ab83b8_d8 : public cUnk00ab8318 {
-    virtual void* Slot03_ab8318();
-    virtual void Slot04_ab8318(uint32_t);
-    virtual void Slot05_ab8318(uint32_t);
-    virtual void Slot06_ab8318();
-    virtual void Slot07_ab8318(uint32_t, uint32_t);
-    virtual void Slot08_ab8318(uint32_t, uint32_t);
-    virtual void Slot09_ab8318();
-};
-
-// Between cUnk00aaaa9c and cUnk00ab83b8 at +0xdc: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ab83b8_dc : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c(uint32_t);
-};
-
 // VTABLE: 0x00ab83b8 cUnk00adc8d8
-// VTABLE: 0x00ab838c cUnk00ab83b8_d8
-// VTABLE: 0x00ab837c cUnk00ab83b8_dc
+// VTABLE: 0x00ab838c cUnk00ab8318
+// VTABLE: 0x00ab837c cUnk00aaaa9c
 // SIZE 0x96c
-class cUnk00ab83b8 : public cUnk00adc8d8, public cUnk00ab83b8_d8, public cUnk00ab83b8_dc {
+class cUnk00ab83b8 : public cUnk00adc8d8, public cUnk00ab8318, public cUnk00aaaa9c {
 public:
     virtual ~cUnk00ab83b8();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
+    virtual bool Slot03_aaaa9c(uint32_t);
     virtual bool Slot88_adc8d8();
     virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual bool Slot135_adc8d8(uint32_t, uint32_t, uint32_t);
@@ -42,8 +27,15 @@ public:
     virtual bool Slot141_adc8d8(uint32_t);
     virtual bool Slot142_adc8d8(uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_adb6a8();
-    virtual void Slot05_adb6a8();
+    virtual void* Slot03_ab8318();
+    virtual void Slot04_ab8318(uint32_t);
+    virtual void Slot05_ab8318(uint32_t);
+    virtual void Slot06_ab8318();
+    virtual void Slot07_ab8318(uint32_t, uint32_t);
+    virtual uint32_t Slot08_ab8318(uint32_t, uint32_t);
+    virtual void Slot09_ab8318();
+    virtual bool Slot04_adb6a8();
+    virtual bool Slot05_adb6a8();
     char unknowne0[0x88c];
 };
 #ifdef _MSC_VER

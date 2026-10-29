@@ -9,9 +9,9 @@
 // SIZE 0xd4
 class cUnk00ac17d0 {
 public:
-    virtual void Slot00_ac17d0(uint32_t, uint32_t);
+    virtual bool Slot00_ac17d0(uint32_t, uint32_t);
     virtual void Slot01_ac17d0();
-    virtual void Slot02_ac17d0();
+    virtual uint32_t Slot02_ac17d0();
     virtual void Slot03_ac17d0(uint32_t);
     virtual void Slot04_ac17d0();
     virtual void Slot05_ac17d0();
@@ -22,15 +22,15 @@ public:
     virtual void Slot10_ac17d0(bool);
     virtual void Slot11_ac17d0(uint32_t);
     virtual void Slot12_ac17d0(uint32_t, uint32_t, uint32_t);
-    virtual void Slot13_ac17d0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot13_ac17d0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot14_ac17d0();
     virtual void Slot15_ac17d0(uint32_t);
     virtual void Slot16_ac17d0();
     virtual void Slot17_ac17d0();
     virtual void Slot18_ac17d0();
-    virtual void Slot19_ac17d0(uint32_t, uint32_t);
+    virtual bool Slot19_ac17d0(uint32_t, uint32_t);
     virtual void Slot20_ac17d0();
-    virtual void Slot21_ac17d0(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot21_ac17d0(uint32_t, uint32_t, uint32_t);
     virtual void Slot22_ac17d0(uint32_t, uint32_t);
     char unknown4[0x3e];
     bool field42;

@@ -8,18 +8,18 @@
 // SIZE 0x4
 class cUnk00ab3be8 {
 public:
-    virtual void Slot00_ab3be8(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ab3be8(uint32_t, uint32_t) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_ab3be8() = 0;
-    virtual void Slot04_ab3be8() = 0;
+    virtual bool Slot04_ab3be8() = 0;
     virtual void Slot05_ab3be8() = 0;
     virtual float Slot06_ab3be8() = 0;
     virtual uint32_t Slot07_ab3be8() = 0;
     virtual uint32_t Slot08_ab3be8() = 0;
-    virtual void Slot09_ab3be8(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot09_ab3be8(uint32_t, uint32_t) = 0;
     virtual void Slot10_ab3be8(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot11_ab3be8(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot11_ab3be8(uint32_t, uint32_t) = 0;
     virtual float Slot12_ab3be8(uint32_t) = 0;
     virtual float Slot13_ab3be8(uint32_t, uint32_t) = 0;
     virtual float Slot14_ab3be8(uint32_t, uint32_t) = 0;
@@ -33,7 +33,7 @@ public:
     virtual float Slot22_ab3be8() = 0;
     virtual float Slot23_ab3be8() = 0;
     virtual float Slot24_ab3be8() = 0;
-    virtual void Slot25_ab3be8(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot25_ab3be8(uint32_t, uint32_t) = 0;
     virtual void Slot26_ab3be8(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot27_ab3be8(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot28_ab3be8(uint32_t, uint32_t, uint32_t) = 0;

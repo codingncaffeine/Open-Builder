@@ -13,7 +13,7 @@ public:
     virtual unsigned int AddRef();
     virtual unsigned int Release();
     virtual void Slot03_ad8bec(uint32_t);
-    virtual void Slot12_aaee5c(uint32_t);
+    virtual bool Slot12_aaee5c(uint32_t);
     virtual uint32_t Slot05_ad8bec();
     virtual uint32_t Slot06_ad8bec();
     virtual uint32_t Slot07_ad8bec();

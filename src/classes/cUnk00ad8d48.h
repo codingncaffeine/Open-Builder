@@ -8,15 +8,15 @@
 // SIZE 0x18
 class cUnk00ad8d48 {
 public:
-    virtual void Slot00_ad8d88(uint32_t, uint32_t);
-    virtual void Slot01_ad8d88();
-    virtual void Slot02_ad8d88();
+    virtual bool Slot00_ad8d88(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad8d88();
+    virtual uint32_t Slot02_ad8d88();
     virtual void Slot03_ad8d48(uint32_t);
     virtual uint32_t Slot04_ad8d48();
-    virtual void Slot05_ad8d48();
-    virtual void Slot27_ad8d88(uint32_t, uint32_t) = 0;
+    virtual bool Slot05_ad8d48();
+    virtual bool Slot27_ad8d88(uint32_t, uint32_t) = 0;
     virtual bool Slot51_ad8d88(uint32_t, uint32_t) = 0;
-    virtual void Slot52_ad8d88() = 0;
+    virtual uint32_t Slot52_ad8d88() = 0;
     virtual bool Slot56_ad8d88(uint32_t) = 0;
     virtual uint32_t Slot54_ad8d88() = 0;
     virtual ~cUnk00ad8d48();

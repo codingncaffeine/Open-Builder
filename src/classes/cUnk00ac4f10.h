@@ -15,10 +15,10 @@ public:
     virtual ~cUnk00ac4f10() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_ac4ebc(uint32_t, uint32_t);
+    virtual bool Slot00_ac4ebc(uint32_t, uint32_t);
     virtual uint32_t Slot03_ac4ebc(uint32_t);
-    virtual void Slot04_ac4ebc(uint32_t);
-    virtual void Slot05_ac4ebc(uint32_t);
+    virtual uint32_t Slot04_ac4ebc(uint32_t);
+    virtual uint32_t Slot05_ac4ebc(uint32_t);
     virtual void Slot06_ac4ebc(uint32_t, uint32_t);
     virtual void Slot07_ac4ebc(uint32_t, uint32_t);
     virtual void Slot08_ac4ebc(uint32_t);

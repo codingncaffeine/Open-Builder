@@ -25,39 +25,35 @@ struct OB_NOVTABLE cUnk00ab0eb0_0 {
     virtual void Slot14_ab0eb0() = 0;
     virtual void Slot15_ab0eb0() = 0;
     virtual void Slot16_ab0eb0() = 0;
-    virtual void Slot17_ab0eb0(uint32_t, uint32_t) = 0;
-    virtual void Slot18_ab0eb0(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot17_ab0eb0(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot18_ab0eb0(uint32_t, uint32_t) = 0;
     virtual void Slot19_ab0eb0(uint32_t) = 0;
-    virtual void Slot20_ab0eb0(uint32_t) = 0;
+    virtual uint32_t Slot20_ab0eb0(uint32_t) = 0;
     virtual void Slot21_ab0eb0(uint32_t) = 0;
     virtual void Slot22_ab0eb0(uint32_t, uint32_t) = 0;
     virtual void Slot23_ab0eb0(uint32_t, uint32_t) = 0;
     virtual void Slot24_ab0eb0(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot25_ab0eb0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot26_ab0eb0(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot26_ab0eb0(uint32_t, uint32_t) = 0;
     virtual void Slot27_ab0eb0(uint32_t, uint32_t) = 0;
-    virtual void Slot28_ab0eb0(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot28_ab0eb0(uint32_t, uint32_t) = 0;
     virtual void Slot29_ab0eb0() = 0;
     virtual void Slot30_ab0eb0() = 0;
     virtual void Slot31_ab0eb0(uint32_t, uint32_t) = 0;
     virtual void Slot32_ab0eb0(uint32_t, uint32_t) = 0;
-    virtual void Slot33_ab0eb0(uint32_t) = 0;
+    virtual bool Slot33_ab0eb0(uint32_t) = 0;
     virtual ~cUnk00ab0eb0_0() {}
 };
 
-// Between cUnk00a80784 and cUnk00ab0eb0 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ab0eb0_4 : public cUnk00a80784 {
+// VTABLE: 0x00ab0eb0 cUnk00ab0eb0_0
+// VTABLE: 0x00ab0e94 cUnk00a80784
+// SIZE 0x68
+class cUnk00ab0eb0 : public cUnk00ab0eb0_0, public cUnk00a80784 {
+public:
+    virtual ~cUnk00ab0eb0();
     virtual bool Slot03_a80784(uint32_t);
     virtual bool Slot04_a80784(uint32_t);
     virtual uint32_t Slot05_a80784();
-};
-
-// VTABLE: 0x00ab0eb0 cUnk00ab0eb0_0
-// VTABLE: 0x00ab0e94 cUnk00ab0eb0_4
-// SIZE 0x68
-class cUnk00ab0eb0 : public cUnk00ab0eb0_0, public cUnk00ab0eb0_4 {
-public:
-    virtual ~cUnk00ab0eb0();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
@@ -75,23 +71,23 @@ public:
     virtual void Slot14_ab0eb0();
     virtual void Slot15_ab0eb0();
     virtual void Slot16_ab0eb0();
-    virtual void Slot17_ab0eb0(uint32_t, uint32_t);
-    virtual void Slot18_ab0eb0(uint32_t, uint32_t);
+    virtual uint32_t Slot17_ab0eb0(uint32_t, uint32_t);
+    virtual uint32_t Slot18_ab0eb0(uint32_t, uint32_t);
     virtual void Slot19_ab0eb0(uint32_t);
-    virtual void Slot20_ab0eb0(uint32_t);
+    virtual uint32_t Slot20_ab0eb0(uint32_t);
     virtual void Slot21_ab0eb0(uint32_t);
     virtual void Slot22_ab0eb0(uint32_t, uint32_t);
     virtual void Slot23_ab0eb0(uint32_t, uint32_t);
     virtual void Slot24_ab0eb0(uint32_t, uint32_t, uint32_t);
     virtual void Slot25_ab0eb0(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot26_ab0eb0(uint32_t, uint32_t);
+    virtual uint32_t Slot26_ab0eb0(uint32_t, uint32_t);
     virtual void Slot27_ab0eb0(uint32_t, uint32_t);
-    virtual void Slot28_ab0eb0(uint32_t, uint32_t);
+    virtual uint32_t Slot28_ab0eb0(uint32_t, uint32_t);
     virtual void Slot29_ab0eb0();
     virtual void Slot30_ab0eb0();
     virtual void Slot31_ab0eb0(uint32_t, uint32_t);
     virtual void Slot32_ab0eb0(uint32_t, uint32_t);
-    virtual void Slot33_ab0eb0(uint32_t);
+    virtual bool Slot33_ab0eb0(uint32_t);
     char unknown8[0x8];
     uint32_t field10;
     char unknown14[0x1c];

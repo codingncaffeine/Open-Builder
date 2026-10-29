@@ -8,7 +8,7 @@
 // SIZE 0x4
 class cUnk00adb29c {
 public:
-    virtual void Slot00_adb26c(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_adb26c(uint32_t, uint32_t) = 0;
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_adb29c() = 0;

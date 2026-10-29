@@ -9,9 +9,9 @@
 // SIZE 0x8
 class cUnk00ac4f58 {
 public:
-    virtual void Slot00_ac4f58(uint32_t, uint32_t, uint32_t);
-    virtual void Slot01_ac4f58(uint32_t);
-    virtual void Slot02_ac4f58(uint32_t);
+    virtual uint32_t Slot00_ac4f58(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot01_ac4f58(uint32_t);
+    virtual uint32_t Slot02_ac4f58(uint32_t);
     virtual uint32_t Slot03_ac4f58(uint32_t, uint32_t);
     virtual uint32_t Slot04_ac4f58(uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot05_ac4f58(uint32_t);

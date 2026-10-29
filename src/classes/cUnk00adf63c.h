@@ -12,12 +12,12 @@ public:
     virtual unsigned int Release() = 0;
     virtual void* Slot03_adf63c() = 0;
     virtual void Slot04_adf63c(uint32_t) = 0;
-    virtual void Slot05_adf63c(uint32_t, uint32_t) = 0;
+    virtual bool Slot05_adf63c(uint32_t, uint32_t) = 0;
     virtual void Slot06_adf63c(uint32_t, uint32_t) = 0;
     virtual void Slot07_adf63c(uint32_t, uint32_t) = 0;
     virtual void Slot08_adf63c(uint32_t) = 0;
     virtual void Slot09_adf63c(uint32_t) = 0;
-    virtual void Slot10_adf63c(uint32_t) = 0;
+    virtual uint32_t Slot10_adf63c(uint32_t) = 0;
     virtual void Slot11_adf63c(uint32_t, uint32_t) = 0;
 };
 

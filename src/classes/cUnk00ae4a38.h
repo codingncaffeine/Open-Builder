@@ -9,7 +9,7 @@
 class cUnk00ae4a38 {
 public:
     virtual ~cUnk00ae4a38();
-    virtual void Slot01_ae4a38();
+    virtual uint32_t Slot01_ae4a38();
 };
 
 // SYNTHETIC: 0x009dcaa0

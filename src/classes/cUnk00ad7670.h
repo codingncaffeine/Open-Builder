@@ -9,29 +9,29 @@
 // SIZE 0x48
 class cUnk00ad7670 {
 public:
-    virtual void Slot00_ad7670(uint32_t, uint32_t);
-    virtual void Slot01_ad7670();
+    virtual bool Slot00_ad7670(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad7670();
     virtual void Slot02_ad7670();
     virtual bool Slot03_ad7670(uint32_t);
     virtual bool Slot04_ad7670(uint32_t);
-    virtual void Slot05_ad7670(uint32_t);
-    virtual void Slot06_ad7670(uint32_t);
-    virtual void Slot07_ad7670();
-    virtual void Slot08_ad7670();
+    virtual bool Slot05_ad7670(uint32_t);
+    virtual bool Slot06_ad7670(uint32_t);
+    virtual bool Slot07_ad7670();
+    virtual bool Slot08_ad7670();
     virtual bool Slot09_ad7670();
     virtual uint32_t Slot10_ad7670();
-    virtual void Slot11_ad7670(uint32_t, uint32_t);
-    virtual void Slot12_ad7670();
-    virtual void Slot13_ad7670();
-    virtual void Slot14_ad7670(uint32_t, uint32_t);
+    virtual bool Slot11_ad7670(uint32_t, uint32_t);
+    virtual bool Slot12_ad7670();
+    virtual bool Slot13_ad7670();
+    virtual uint32_t Slot14_ad7670(uint32_t, uint32_t);
     virtual void Slot15_ad7670();
     virtual void* Slot16_ad7670();
-    virtual void Slot17_ad7670();
-    virtual void Slot18_ad7670(uint32_t);
+    virtual bool Slot17_ad7670();
+    virtual bool Slot18_ad7670(uint32_t);
     virtual uint32_t Slot19_ad7670();
     virtual bool Slot20_ad7670(uint32_t);
     virtual ~cUnk00ad7670();
-    virtual void Slot22_ad7670();
+    virtual bool Slot22_ad7670();
     char unknown4[0x20];
     uint32_t field24;
     uint32_t field28;

@@ -7,23 +7,42 @@
 #include "classes/cUnk00ac1400.h"
 #include "classes/cUnk00adb310.h"
 
-// Between cUnk00adb310 and cUnk00adb418 at +0x4c: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00adb418_4c : public cUnk00adb310 {
+// VTABLE: 0x00adb418 cUnk00ac1400_0
+// VTABLE: 0x00adb400 cUnk00ac13d8
+// VTABLE: 0x00adb388 cUnk00adb310
+// SIZE 0x88
+class cUnk00adb418 : public cUnk00ac1400, public cUnk00adb310 {
+public:
+    virtual ~cUnk00adb418() {}
+    virtual void Slot47_adb418(uint32_t);
+    virtual bool Slot48_adb418(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot00_ac1400(uint32_t, uint32_t);
+    virtual void Slot01_ac1400();
+    virtual void Slot02_ac1400();
+    virtual bool Slot04_ac1400();
+    virtual bool Slot05_ac1400();
+    virtual bool Slot06_ac1400(uint32_t);
+    virtual bool Slot07_ac1400(uint32_t);
+    virtual void Slot11_ac1400(uint32_t);
+    virtual void* Slot12_ac1400();
+    virtual bool Slot20_ac1400(uint32_t, uint32_t, uint32_t);
+    virtual void Slot29_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot39_ac1400();
     virtual void* Slot03_adb310();
-    virtual void Slot04_adb310(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot04_adb310(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot06_adb310();
     virtual bool Slot08_adb310();
     virtual void Slot09_adb310(uint32_t);
-    virtual void Slot10_adb310(uint32_t);
+    virtual bool Slot10_adb310(uint32_t);
     virtual bool Slot11_adb310();
-    virtual void Slot12_adb310();
+    virtual bool Slot12_adb310();
     virtual uint32_t Slot13_adb310(uint32_t);
     virtual uint32_t Slot14_adb310(uint32_t);
-    virtual void Slot15_adb310();
+    virtual uint32_t Slot15_adb310();
     virtual uint32_t Slot16_adb310();
     virtual bool Slot17_adb310(uint32_t);
-    virtual void Slot18_adb310();
-    virtual void Slot19_adb310();
+    virtual uint32_t Slot18_adb310();
+    virtual uint32_t Slot19_adb310();
     virtual void Slot20_adb310();
     virtual bool Slot22_adb310();
     virtual void Slot23_adb310();
@@ -33,30 +52,8 @@ struct OB_NOVTABLE cUnk00adb418_4c : public cUnk00adb310 {
     virtual void Slot27_adb310();
     virtual void Slot28_adb310();
     virtual void Slot29_adb310();
-};
-
-// VTABLE: 0x00adb418 cUnk00ac1400_0
-// VTABLE: 0x00adb400 cUnk00ac1400_4
-// VTABLE: 0x00adb388 cUnk00adb418_4c
-// SIZE 0x88
-class cUnk00adb418 : public cUnk00ac1400, public cUnk00adb418_4c {
-public:
-    virtual ~cUnk00adb418() {}
-    virtual void Slot47_adb418(uint32_t);
-    virtual bool Slot48_adb418(uint32_t, uint32_t, uint32_t);
-    virtual void Slot00_ac1400(uint32_t, uint32_t);
-    virtual void Slot01_ac1400();
-    virtual void Slot02_ac1400();
-    virtual void Slot04_ac1400();
-    virtual void Slot05_ac1400();
-    virtual void Slot06_ac1400(uint32_t);
-    virtual void Slot07_ac1400(uint32_t);
-    virtual void Slot11_ac1400(uint32_t);
-    virtual void* Slot12_ac1400();
-    virtual void Slot20_ac1400(uint32_t, uint32_t, uint32_t);
-    virtual void Slot29_ac1400(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot39_ac1400();
-    char unknown50[0x14];
+    bool field50;
+    char unknown51[0x13];
     char field64[0x24];
 };
 #ifdef _MSC_VER

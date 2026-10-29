@@ -9,13 +9,13 @@
 // SIZE 0x8
 class cUnk00ad40d0 {
 public:
-    virtual void Slot00_ad40d0(uint32_t, uint32_t);
-    virtual void Slot01_ad40d0();
-    virtual void Slot02_ad40d0();
-    virtual void Slot03_ad40d0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_ad40d0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot00_ad40d0(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad40d0();
+    virtual uint32_t Slot02_ad40d0();
+    virtual bool Slot03_ad40d0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot04_ad40d0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot05_ad40d0(uint32_t, uint32_t);
-    virtual void Slot06_ad40d0(uint32_t, uint32_t);
+    virtual bool Slot06_ad40d0(uint32_t, uint32_t);
     virtual ~cUnk00ad40d0() {}
     virtual void Slot08_ad40d0(uint32_t, uint32_t, uint32_t);
     virtual void Slot09_ad40d0(uint32_t, uint32_t, uint32_t);

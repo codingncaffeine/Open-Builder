@@ -8,14 +8,14 @@
 // VTABLE: 0x00ada858
 class cUnk00ada858 {
 public:
-    virtual void Slot00_ada858(uint32_t, uint32_t);
+    virtual bool Slot00_ada858(uint32_t, uint32_t);
     virtual void Slot01_ada858();
     virtual void Slot02_ada858();
-    virtual void Slot03_ada858(uint32_t, uint32_t);
+    virtual bool Slot03_ada858(uint32_t, uint32_t);
     virtual uint32_t Slot04_ada858();
     virtual void Slot05_ada858(uint32_t);
-    virtual void Slot06_ada858(uint32_t);
-    virtual void Slot07_ada858(uint32_t);
+    virtual bool Slot06_ada858(uint32_t);
+    virtual uint32_t Slot07_ada858(uint32_t);
     virtual void Slot08_ada858(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot09_ada858();
     virtual void Slot10_ada858(uint32_t);

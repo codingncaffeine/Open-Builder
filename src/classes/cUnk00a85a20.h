@@ -11,8 +11,8 @@
 class cUnk00a85a20 : public cUnk00aa6658 {
 public:
     virtual ~cUnk00a85a20();
-    virtual void Slot03_aa6658();
-    virtual void Slot04_aa6658();
+    virtual bool Slot03_aa6658();
+    virtual bool Slot04_aa6658();
     virtual bool Slot12_aa6658();
     virtual bool Slot14_aa6658(uint32_t, uint32_t);
     virtual bool Slot16_aa6658(uint32_t, uint32_t, uint32_t);

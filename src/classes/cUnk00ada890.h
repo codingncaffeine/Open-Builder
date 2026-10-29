@@ -8,14 +8,14 @@
 // VTABLE: 0x00ada890
 class cUnk00ada890 {
 public:
-    virtual void Slot00_ada890(uint32_t, uint32_t);
+    virtual bool Slot00_ada890(uint32_t, uint32_t);
     virtual void Slot01_ada890();
     virtual void Slot02_ada890();
-    virtual void Slot03_ada890(uint32_t, uint32_t);
+    virtual bool Slot03_ada890(uint32_t, uint32_t);
     virtual uint32_t Slot04_ada890();
     virtual void Slot05_ada890(uint32_t);
-    virtual void Slot06_ada890(uint32_t);
-    virtual void Slot07_ada890(uint32_t);
+    virtual bool Slot06_ada890(uint32_t);
+    virtual uint32_t Slot07_ada890(uint32_t);
     virtual void Slot08_ada890(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot09_ada890();
     virtual uint32_t Slot10_ada890();

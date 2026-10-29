@@ -8,23 +8,23 @@
 // SIZE 0x4
 class cUnk00ad4aa0 {
 public:
-    virtual void Slot00_ad4cf4(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad4cf4() = 0;
+    virtual bool Slot00_ad4cf4(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
     virtual bool Slot03_ad4aa0(uint32_t) = 0;
-    virtual void Slot04_ad4aa0() = 0;
-    virtual void Slot05_ad4aa0(uint32_t, uint32_t) = 0;
-    virtual void Slot06_ad4aa0(uint32_t) = 0;
+    virtual bool Slot04_ad4aa0() = 0;
+    virtual bool Slot05_ad4aa0(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot06_ad4aa0(uint32_t) = 0;
     virtual bool Slot07_ad4aa0() = 0;
-    virtual void Slot08_ad4aa0() = 0;
+    virtual bool Slot08_ad4aa0() = 0;
     virtual bool Slot09_ad4aa0() = 0;
-    virtual void Slot10_ad4aa0() = 0;
-    virtual void Slot11_ad4aa0(uint32_t) = 0;
-    virtual void Slot12_ad4aa0(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot13_ad4aa0(uint32_t) = 0;
-    virtual void Slot14_ad4aa0(uint32_t) = 0;
-    virtual void Slot15_ad4aa0(uint32_t) = 0;
-    virtual void Slot16_ad4aa0(uint32_t) = 0;
+    virtual bool Slot10_ad4aa0() = 0;
+    virtual bool Slot11_ad4aa0(uint32_t) = 0;
+    virtual bool Slot12_ad4aa0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot13_ad4aa0(uint32_t) = 0;
+    virtual bool Slot14_ad4aa0(uint32_t) = 0;
+    virtual bool Slot15_ad4aa0(uint32_t) = 0;
+    virtual bool Slot16_ad4aa0(uint32_t) = 0;
     virtual bool Slot17_ad4aa0(uint32_t) = 0;
     virtual uint32_t Slot18_ad4aa0() = 0;
     virtual uint32_t Slot19_ad4aa0() = 0;
@@ -35,13 +35,13 @@ public:
     virtual uint32_t Slot24_ad4aa0() = 0;
     virtual uint32_t Slot25_ad4aa0() = 0;
     virtual uint32_t Slot26_ad4aa0(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot27_ad4aa0(uint32_t) = 0;
+    virtual bool Slot27_ad4aa0(uint32_t) = 0;
     virtual bool Slot28_ad4aa0(bool) = 0;
-    virtual void Slot29_ad4aa0(uint32_t, uint32_t) = 0;
-    virtual void Slot30_ad4aa0(uint32_t) = 0;
-    virtual void Slot31_ad4aa0(uint32_t) = 0;
-    virtual void Slot32_ad4aa0(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot33_ad4aa0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot29_ad4aa0(uint32_t, uint32_t) = 0;
+    virtual bool Slot30_ad4aa0(uint32_t) = 0;
+    virtual bool Slot31_ad4aa0(uint32_t) = 0;
+    virtual bool Slot32_ad4aa0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot33_ad4aa0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot34_ad4aa0(uint32_t) = 0;
     virtual void* Slot35_ad4aa0() = 0;
     virtual void Slot36_ad4aa0(uint32_t) = 0;

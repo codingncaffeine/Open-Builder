@@ -9,23 +9,23 @@
 // SIZE 0x18
 class cUnk00ad4648 {
 public:
-    virtual void Slot00_ad4cf4(uint32_t, uint32_t);
-    virtual void Slot01_ad4cf4();
+    virtual bool Slot00_ad4cf4(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
     virtual bool Slot03_ad4648(uint32_t);
-    virtual void Slot04_ad4648(uint32_t);
-    virtual void Slot05_ad4648(uint32_t);
-    virtual void Slot06_ad4648();
-    virtual void Slot07_ad4648(uint32_t);
-    virtual void Slot08_ad4648();
-    virtual void Slot09_ad4648();
+    virtual bool Slot04_ad4648(uint32_t);
+    virtual bool Slot05_ad4648(uint32_t);
+    virtual bool Slot06_ad4648();
+    virtual bool Slot07_ad4648(uint32_t);
+    virtual uint32_t Slot08_ad4648();
+    virtual uint32_t Slot09_ad4648();
     virtual bool Slot10_ad4648(uint32_t, uint32_t);
-    virtual void Slot11_ad4648(uint32_t, uint32_t);
+    virtual bool Slot11_ad4648(uint32_t, uint32_t);
     virtual bool Slot12_ad4648(uint32_t, uint32_t);
     virtual bool Slot13_ad4648(uint32_t, uint32_t);
-    virtual void Slot14_ad4648(uint32_t, uint32_t);
+    virtual bool Slot14_ad4648(uint32_t, uint32_t);
     virtual bool Slot15_ad4648(uint32_t, uint32_t);
-    virtual void Slot16_ad4648(uint32_t);
+    virtual bool Slot16_ad4648(uint32_t);
     virtual ~cUnk00ad4648();
     virtual uint32_t Slot18_ad4648();
     virtual bool Slot19_ad4648(uint32_t, uint32_t, uint32_t);

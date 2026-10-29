@@ -11,8 +11,8 @@ public:
     virtual void Slot00_ab35d4();
     virtual void Slot01_ab35d4();
     virtual void Slot02_ab35d4();
-    virtual void Slot03_ab35d4(uint32_t);
-    virtual void Slot04_ab35d4(uint32_t);
+    virtual uint32_t Slot03_ab35d4(uint32_t);
+    virtual bool Slot04_ab35d4(uint32_t);
     virtual uint32_t Slot05_ab35d4();
 };
 

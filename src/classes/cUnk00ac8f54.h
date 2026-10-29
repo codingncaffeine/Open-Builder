@@ -7,20 +7,27 @@
 #include "classes/cUnk00ac8bf8.h"
 #include "gzcom/cUnk0090da1e.h"
 
-// Between cUnk00ac8bf8 and cUnk00ac8f54 at +0x8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ac8f54_8 : public cUnk00ac8bf8 {
+// VTABLE: 0x00ac8f54 cUnk0090da1e
+// VTABLE: 0x00ac8dd0 cUnk00ac8bf8
+// SIZE 0x1c
+class cUnk00ac8f54 : public cUnk0090da1e, public cUnk00ac8bf8 {
+public:
+    virtual ~cUnk00ac8f54() {}
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual unsigned int AddRef();
+    virtual unsigned int Release();
     virtual uint32_t Slot03_ac8bf8();
     virtual uint32_t Slot04_ac8bf8();
     virtual uint32_t Slot05_ac8bf8();
     virtual void Slot06_ac8bf8(uint32_t);
-    virtual void Slot07_ac8bf8(uint32_t, uint32_t, uint32_t);
-    virtual void Slot08_ac8bf8();
+    virtual bool Slot07_ac8bf8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot08_ac8bf8();
     virtual void Slot09_ac8bf8(uint32_t);
     virtual uint32_t Slot10_ac8bf8();
-    virtual void Slot11_ac8bf8();
-    virtual void Slot12_ac8bf8();
-    virtual void Slot13_ac8bf8();
-    virtual void Slot14_ac8bf8();
+    virtual bool Slot11_ac8bf8();
+    virtual bool Slot12_ac8bf8();
+    virtual uint32_t Slot13_ac8bf8();
+    virtual uint32_t Slot14_ac8bf8();
     virtual void Slot15_ac8bf8(uint32_t);
     virtual void Slot16_ac8bf8(uint32_t);
     virtual void Slot17_ac8bf8(uint32_t);
@@ -28,32 +35,32 @@ struct OB_NOVTABLE cUnk00ac8f54_8 : public cUnk00ac8bf8 {
     virtual void Slot19_ac8bf8(uint32_t);
     virtual void Slot20_ac8bf8(uint32_t);
     virtual void Slot21_ac8bf8(uint32_t, uint32_t);
-    virtual void Slot22_ac8bf8(uint32_t);
-    virtual void Slot23_ac8bf8(uint32_t);
-    virtual void Slot24_ac8bf8(uint32_t);
-    virtual void Slot25_ac8bf8(uint32_t);
-    virtual void Slot26_ac8bf8(uint32_t);
-    virtual void Slot27_ac8bf8(uint32_t);
-    virtual void Slot28_ac8bf8(uint32_t);
-    virtual void Slot29_ac8bf8(uint32_t);
-    virtual void Slot30_ac8bf8(uint32_t);
-    virtual void Slot31_ac8bf8(uint32_t);
-    virtual void Slot32_ac8bf8(uint32_t);
-    virtual void Slot33_ac8bf8(uint32_t);
-    virtual void Slot34_ac8bf8(uint32_t);
-    virtual void Slot35_ac8bf8(uint32_t);
-    virtual void Slot36_ac8bf8(uint32_t, uint32_t);
-    virtual void Slot37_ac8bf8(uint32_t, uint32_t);
-    virtual void Slot38_ac8bf8(uint32_t, uint32_t);
-    virtual void Slot39_ac8bf8(uint32_t);
-    virtual void Slot40_ac8bf8(uint32_t);
-    virtual void Slot41_ac8bf8(uint32_t);
-    virtual void Slot42_ac8bf8(uint32_t);
-    virtual void Slot43_ac8bf8(uint32_t);
-    virtual void Slot44_ac8bf8(uint32_t);
-    virtual void Slot45_ac8bf8(uint32_t);
-    virtual void Slot46_ac8bf8(uint32_t);
-    virtual void Slot47_ac8bf8(uint32_t);
+    virtual bool Slot22_ac8bf8(uint32_t);
+    virtual uint32_t Slot23_ac8bf8(uint32_t);
+    virtual uint32_t Slot24_ac8bf8(uint32_t);
+    virtual bool Slot25_ac8bf8(uint32_t);
+    virtual bool Slot26_ac8bf8(uint32_t);
+    virtual bool Slot27_ac8bf8(uint32_t);
+    virtual bool Slot28_ac8bf8(uint32_t);
+    virtual bool Slot29_ac8bf8(uint32_t);
+    virtual bool Slot30_ac8bf8(uint32_t);
+    virtual bool Slot31_ac8bf8(uint32_t);
+    virtual bool Slot32_ac8bf8(uint32_t);
+    virtual bool Slot33_ac8bf8(uint32_t);
+    virtual bool Slot34_ac8bf8(uint32_t);
+    virtual bool Slot35_ac8bf8(uint32_t);
+    virtual bool Slot36_ac8bf8(uint32_t, uint32_t);
+    virtual bool Slot37_ac8bf8(uint32_t, uint32_t);
+    virtual bool Slot38_ac8bf8(uint32_t, uint32_t);
+    virtual uint32_t Slot39_ac8bf8(uint32_t);
+    virtual uint32_t Slot40_ac8bf8(uint32_t);
+    virtual float Slot41_ac8bf8(uint32_t);
+    virtual bool Slot42_ac8bf8(uint32_t);
+    virtual uint32_t Slot43_ac8bf8(uint32_t);
+    virtual uint32_t Slot44_ac8bf8(uint32_t);
+    virtual uint32_t Slot45_ac8bf8(uint32_t);
+    virtual uint32_t Slot46_ac8bf8(uint32_t);
+    virtual uint32_t Slot47_ac8bf8(uint32_t);
     virtual void Slot48_ac8bf8();
     virtual void Slot49_ac8bf8(uint32_t, uint32_t);
     virtual void Slot50_ac8bf8(uint32_t, uint32_t);
@@ -61,13 +68,13 @@ struct OB_NOVTABLE cUnk00ac8f54_8 : public cUnk00ac8bf8 {
     virtual void Slot52_ac8bf8(uint32_t, uint32_t);
     virtual void Slot53_ac8bf8(uint32_t);
     virtual void Slot54_ac8bf8(uint32_t);
-    virtual void Slot55_ac8bf8(uint32_t);
+    virtual uint32_t Slot55_ac8bf8(uint32_t);
     virtual void Slot56_ac8bf8();
     virtual void Slot57_ac8bf8(uint32_t);
     virtual void Slot58_ac8bf8(uint32_t);
     virtual void Slot59_ac8bf8(uint32_t, uint32_t);
     virtual void Slot60_ac8bf8(uint32_t);
-    virtual void Slot61_ac8bf8(uint32_t);
+    virtual uint32_t Slot61_ac8bf8(uint32_t);
     virtual void Slot62_ac8bf8();
     virtual void Slot63_ac8bf8();
     virtual void Slot64_ac8bf8(uint32_t);
@@ -76,44 +83,33 @@ struct OB_NOVTABLE cUnk00ac8f54_8 : public cUnk00ac8bf8 {
     virtual void Slot67_ac8bf8(uint32_t);
     virtual void Slot68_ac8bf8(uint32_t);
     virtual void Slot69_ac8bf8(uint32_t, uint32_t);
-    virtual void Slot70_ac8bf8(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot71_ac8bf8(uint32_t);
-    virtual void Slot72_ac8bf8(uint32_t);
-    virtual void Slot73_ac8bf8(uint32_t, uint32_t, uint32_t);
-    virtual void Slot74_ac8bf8(uint32_t, uint32_t, uint32_t);
-    virtual void Slot75_ac8bf8(uint32_t);
-    virtual void Slot76_ac8bf8(uint32_t);
-    virtual void Slot77_ac8bf8(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot70_ac8bf8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot71_ac8bf8(uint32_t);
+    virtual uint32_t Slot72_ac8bf8(uint32_t);
+    virtual uint32_t Slot73_ac8bf8(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot74_ac8bf8(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot75_ac8bf8(uint32_t);
+    virtual uint32_t Slot76_ac8bf8(uint32_t);
+    virtual uint32_t Slot77_ac8bf8(uint32_t, uint32_t, uint32_t);
     virtual void Slot78_ac8bf8(uint32_t);
-    virtual void Slot79_ac8bf8(uint32_t);
+    virtual uint32_t Slot79_ac8bf8(uint32_t);
     virtual void Slot80_ac8bf8(uint32_t);
     virtual void Slot81_ac8bf8(uint32_t, uint32_t);
-    virtual void Slot82_ac8bf8(uint32_t);
-    virtual void Slot83_ac8bf8();
+    virtual uint32_t Slot82_ac8bf8(uint32_t);
+    virtual uint32_t Slot83_ac8bf8();
     virtual void Slot84_ac8bf8(uint32_t);
     virtual void Slot85_ac8bf8(uint32_t);
     virtual void Slot86_ac8bf8(uint32_t);
     virtual void Slot87_ac8bf8(uint32_t);
-    virtual void Slot88_ac8bf8(uint32_t);
+    virtual uint32_t Slot88_ac8bf8(uint32_t);
     virtual void Slot89_ac8bf8(uint32_t, uint32_t);
     virtual void Slot90_ac8bf8(uint32_t, uint32_t);
-    virtual void Slot91_ac8bf8();
+    virtual uint32_t Slot91_ac8bf8();
     virtual void Slot92_ac8bf8(uint32_t);
-    virtual void Slot93_ac8bf8(uint32_t, uint32_t);
-    virtual void Slot94_ac8bf8(uint32_t);
+    virtual uint32_t Slot93_ac8bf8(uint32_t, uint32_t);
+    virtual uint32_t Slot94_ac8bf8(uint32_t);
     virtual void Slot95_ac8bf8(uint32_t, uint32_t);
-    virtual void Slot96_ac8bf8(uint32_t);
-};
-
-// VTABLE: 0x00ac8f54 cUnk0090da1e
-// VTABLE: 0x00ac8dd0 cUnk00ac8f54_8
-// SIZE 0x1c
-class cUnk00ac8f54 : public cUnk0090da1e, public cUnk00ac8f54_8 {
-public:
-    virtual ~cUnk00ac8f54() {}
-    virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
-    virtual unsigned int Release();
+    virtual uint32_t Slot96_ac8bf8(uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac8f54[sizeof(cUnk00ac8f54) == 0x1c ? 1 : -1];

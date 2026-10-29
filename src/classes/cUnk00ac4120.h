@@ -7,10 +7,10 @@
 
 class cUnk00ac4120 {
 public:
-    virtual void Slot00_ac4120() = 0;
-    virtual void Slot01_ac4120() = 0;
-    virtual void Slot02_ac4120() = 0;
-    virtual void Slot03_ac4120() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual unsigned int AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual void Slot03_ac4120(uint32_t, uint32_t, uint32_t) = 0;
 };
 
 #endif

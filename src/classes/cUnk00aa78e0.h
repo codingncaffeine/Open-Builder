@@ -9,12 +9,12 @@
 // SIZE 0x18
 class cUnk00aa78e0 {
 public:
-    virtual void Slot00_aa78e0(uint32_t, uint32_t);
+    virtual bool Slot00_aa78e0(uint32_t, uint32_t);
     virtual void Slot01_aa78e0();
     virtual void Slot02_aa78e0();
     virtual uint32_t Slot03_aa78e0();
-    virtual void Slot04_aa78e0();
-    virtual void Slot05_aa78e0();
+    virtual uint32_t Slot04_aa78e0();
+    virtual uint32_t Slot05_aa78e0();
     virtual ~cUnk00aa78e0() {}
     uint32_t field4;
     char unknown8[0x10];

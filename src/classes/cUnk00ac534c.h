@@ -9,8 +9,8 @@
 // SIZE 0x8
 class cUnk00ac534c {
 public:
-    virtual void Slot00_ac534c(uint32_t, uint32_t);
-    virtual void Slot01_ac534c();
+    virtual bool Slot00_ac534c(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ac534c();
     virtual void Slot02_ac534c();
     virtual void Slot03_ac534c();
     virtual ~cUnk00ac534c() {}

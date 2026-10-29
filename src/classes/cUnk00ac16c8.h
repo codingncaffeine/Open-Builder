@@ -9,9 +9,9 @@
 // SIZE 0xc8
 class cUnk00ac16c8 {
 public:
-    virtual void Slot00_ac16c8(uint32_t, uint32_t);
+    virtual bool Slot00_ac16c8(uint32_t, uint32_t);
     virtual void Slot01_ac16c8();
-    virtual void Slot02_ac16c8();
+    virtual uint32_t Slot02_ac16c8();
     virtual void Slot03_ac16c8();
     virtual void Slot04_ac16c8();
     virtual void Slot05_ac16c8(uint32_t);
@@ -24,8 +24,8 @@ public:
     virtual void Slot12_ac16c8(uint32_t);
     virtual void Slot13_ac16c8(uint32_t);
     virtual void Slot14_ac16c8(uint32_t);
-    virtual void Slot15_ac16c8();
-    virtual void Slot16_ac16c8();
+    virtual uint32_t Slot15_ac16c8();
+    virtual bool Slot16_ac16c8();
     virtual void Slot17_ac16c8(uint32_t);
     virtual uint32_t Slot18_ac16c8();
     virtual void Slot19_ac16c8();
@@ -50,7 +50,7 @@ public:
     virtual void Slot38_ac16c8(uint32_t, uint32_t, uint32_t);
     virtual void Slot39_ac16c8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot40_ac16c8();
-    virtual void Slot41_ac16c8();
+    virtual bool Slot41_ac16c8();
     virtual void Slot42_ac16c8();
     virtual void Slot43_ac16c8();
     virtual void Slot44_ac16c8(uint32_t, uint32_t, uint32_t);

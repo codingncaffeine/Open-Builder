@@ -15,7 +15,7 @@ public:
     virtual void Slot04_aafbfc(bool) = 0;
     virtual void Slot05_aafbfc(uint32_t) = 0;
     virtual void Slot06_aafbfc(uint32_t) = 0;
-    virtual void Slot07_aafbfc(uint32_t) = 0;
+    virtual bool Slot07_aafbfc(uint32_t) = 0;
     virtual void Slot08_aafbfc() = 0;
 };
 #ifdef _MSC_VER

@@ -11,7 +11,7 @@ public:
     virtual bool Slot00_adaf90(uint32_t, uint32_t);
     virtual uint32_t Slot01_adaf90();
     virtual uint32_t Slot02_adaf90();
-    virtual void Slot03_adaf90(uint32_t);
+    virtual bool Slot03_adaf90(uint32_t);
 };
 
 #endif

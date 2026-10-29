@@ -9,15 +9,15 @@
 // SIZE 0x40
 class cUnk00aada64 {
 public:
-    virtual void Slot00_aada64(uint32_t, uint32_t);
+    virtual bool Slot00_aada64(uint32_t, uint32_t);
     virtual void Slot01_aada64();
     virtual void Slot02_aada64();
-    virtual void Slot03_aada64(uint32_t);
-    virtual void Slot04_aada64(uint32_t);
-    virtual void Slot05_aada64(uint32_t);
-    virtual void Slot06_aada64();
+    virtual bool Slot03_aada64(uint32_t);
+    virtual bool Slot04_aada64(uint32_t);
+    virtual bool Slot05_aada64(uint32_t);
+    virtual bool Slot06_aada64();
     virtual void Slot07_aada64(uint32_t, uint32_t);
-    virtual void Slot08_aada64(uint32_t);
+    virtual bool Slot08_aada64(uint32_t);
     virtual void Slot09_aada64();
     virtual void Slot10_aada64();
     virtual ~cUnk00aada64() {}

@@ -9,10 +9,10 @@
 // SIZE 0x4
 class cUnk00ab52d4 {
 public:
-    virtual void Slot00_ab52d4(uint32_t, uint32_t);
+    virtual bool Slot00_ab52d4(uint32_t, uint32_t);
     virtual void Slot01_ab52d4();
     virtual void Slot02_ab52d4();
-    virtual void Slot03_ab52d4(uint32_t);
+    virtual bool Slot03_ab52d4(uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab52d4[sizeof(cUnk00ab52d4) == 0x4 ? 1 : -1];

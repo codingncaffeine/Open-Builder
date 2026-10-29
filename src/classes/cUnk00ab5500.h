@@ -9,7 +9,7 @@
 // SIZE 0x24
 class cUnk00ab5500 {
 public:
-    virtual void Slot00_ab5500(uint32_t, uint32_t);
+    virtual bool Slot00_ab5500(uint32_t, uint32_t);
     virtual void Slot01_ab5500();
     virtual void Slot02_ab5500();
     virtual void Slot03_ab5500(uint32_t, uint32_t);

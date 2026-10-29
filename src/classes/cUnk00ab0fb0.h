@@ -7,18 +7,18 @@
 
 class cUnk00ab0fb0 {
 public:
-    virtual void Slot00_ab2348() = 0;
+    virtual bool Slot00_ab2348(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab2348() = 0;
     virtual void Slot02_ab2348() = 0;
-    virtual void Slot03_ab0fb0() = 0;
-    virtual void Slot04_ab0fb0(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot05_ab0fb0() = 0;
-    virtual void Slot06_ab0fb0(uint32_t) = 0;
-    virtual void Slot07_ab0fb0() = 0;
-    virtual void Slot08_ab0fb0(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot09_ab0fb0(uint32_t, uint32_t) = 0;
-    virtual void Slot10_ab0fb0(uint32_t, uint32_t) = 0;
-    virtual void Slot11_ab0fb0() = 0;
+    virtual bool Slot03_ab0fb0(uint32_t) = 0;
+    virtual bool Slot04_ab0fb0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot05_ab0fb0() = 0;
+    virtual uint32_t Slot06_ab0fb0(uint32_t) = 0;
+    virtual void Slot07_ab0fb0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot08_ab0fb0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot09_ab0fb0(uint32_t, uint32_t) = 0;
+    virtual bool Slot10_ab0fb0(uint32_t, uint32_t) = 0;
+    virtual bool Slot11_ab0fb0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
 };
 
 #endif

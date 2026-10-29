@@ -10,9 +10,9 @@
 class cUnk00ae4bdc : public cUnk00ae5bf4 {
 public:
     virtual ~cUnk00ae4bdc();
-    virtual void Slot10_ae4bdc(uint32_t);
+    virtual uint32_t Slot10_ae4bdc(uint32_t);
     virtual void Slot11_ae4bdc(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot12_ae4bdc(uint32_t, uint32_t);
+    virtual uint32_t Slot12_ae4bdc(uint32_t, uint32_t);
     virtual void Slot01_ae4c8c();
     virtual void Slot02_ae5cd4();
     virtual void Slot03_ae5cd4();

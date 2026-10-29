@@ -17,7 +17,7 @@ public:
     virtual unsigned int AddRef();
     virtual unsigned int Release();
     virtual void* Slot03_abd744();
-    virtual void Slot04_abd744(uint32_t);
+    virtual bool Slot04_abd744(uint32_t);
     char field1c[0x40];
 };
 #ifdef _MSC_VER

@@ -10,7 +10,7 @@
 // Between cUnk00ad2620 and cUnk00ad4378 at +0x18: a class the map never saw on its own, overriding these.
 struct OB_NOVTABLE cUnk00ad4378_18 : public cUnk00ad2620 {
     virtual void Slot03_ad2620(uint32_t);
-    virtual void Slot04_ad2620(uint32_t);
+    virtual bool Slot04_ad2620(uint32_t);
     virtual uint32_t Slot06_ad2620();
     virtual uint32_t Slot07_ad2620();
     virtual bool Slot08_ad2620(uint32_t);
@@ -32,8 +32,8 @@ public:
     virtual uint32_t Slot18_ad4648();
     virtual bool Slot19_ad4648(uint32_t, uint32_t, uint32_t);
     virtual bool Slot20_ad4648(uint32_t, uint32_t, uint32_t);
-    virtual void Slot00_ad4cf4(uint32_t, uint32_t);
-    virtual void Slot01_ad4cf4();
+    virtual bool Slot00_ad4cf4(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
     char unknown1c[0xc];
 };

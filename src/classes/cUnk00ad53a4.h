@@ -9,8 +9,8 @@
 // SIZE 0x10
 class cUnk00ad53a4 {
 public:
-    virtual void Slot00_ad53a4(uint32_t, uint32_t);
-    virtual void Slot01_ad53a4();
+    virtual bool Slot00_ad53a4(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad53a4();
     virtual void Slot02_ad53a4();
     char unknown4[0xc];
 };

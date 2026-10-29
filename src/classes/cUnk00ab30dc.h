@@ -12,7 +12,7 @@ public:
     virtual bool Slot00_ab30dc(uint32_t, uint32_t);
     virtual uint32_t Slot01_ab30dc();
     virtual uint32_t Slot02_ab30dc();
-    virtual void Slot03_ab30dc(uint32_t);
+    virtual uint32_t Slot03_ab30dc(uint32_t);
     char unknown4[0x8];
 };
 #ifdef _MSC_VER

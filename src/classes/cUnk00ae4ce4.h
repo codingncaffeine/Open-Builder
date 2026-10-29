@@ -14,12 +14,12 @@ public:
     virtual void Slot03_ae4ce4(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot04_ae4ce4();
     virtual uint32_t Slot05_ae4ce4();
-    virtual void Slot06_ae4ce4(uint32_t, uint32_t);
+    virtual uint32_t Slot06_ae4ce4(uint32_t, uint32_t);
     virtual uint32_t Slot07_ae4ce4();
-    virtual void Slot08_ae4ce4();
+    virtual uint32_t Slot08_ae4ce4();
     virtual uint32_t Slot09_ae4ce4(uint32_t);
-    virtual void Slot10_ae4ce4(uint32_t, uint32_t);
-    virtual void Slot11_ae4ce4(uint32_t, uint32_t);
+    virtual uint32_t Slot10_ae4ce4(uint32_t, uint32_t);
+    virtual uint32_t Slot11_ae4ce4(uint32_t, uint32_t);
     virtual uint32_t Slot12_ae4ce4(uint32_t);
     virtual void Slot13_ae4ce4(uint32_t);
 };

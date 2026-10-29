@@ -9,9 +9,9 @@
 // SIZE 0x40
 class cUnk00ad9ff0 {
 public:
-    virtual void Slot00_ad9ff0(uint32_t, uint32_t);
-    virtual void Slot01_ad9ff0();
-    virtual void Slot02_ad9ff0();
+    virtual bool Slot00_ad9ff0(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad9ff0();
+    virtual uint32_t Slot02_ad9ff0();
     virtual void Slot03_ad9ff0(uint32_t, uint32_t);
     virtual void Slot04_ad9ff0(uint32_t, uint32_t);
     virtual void Slot05_ad9ff0(uint32_t, uint32_t);
@@ -37,15 +37,15 @@ public:
     virtual void Slot25_ad9ff0(uint32_t, uint32_t);
     virtual void Slot26_ad9ff0(uint32_t, uint32_t);
     virtual void Slot27_ad9ff0(uint32_t);
-    virtual void Slot28_ad9ff0();
+    virtual uint32_t Slot28_ad9ff0();
     virtual void Slot29_ad9ff0();
     virtual uint32_t Slot30_ad9ff0();
-    virtual void Slot31_ad9ff0();
-    virtual void Slot32_ad9ff0(uint32_t);
-    virtual void Slot33_ad9ff0(uint32_t);
-    virtual void Slot34_ad9ff0();
-    virtual void Slot35_ad9ff0(uint32_t);
-    virtual void Slot36_ad9ff0(uint32_t);
+    virtual uint32_t Slot31_ad9ff0();
+    virtual uint32_t Slot32_ad9ff0(uint32_t);
+    virtual uint32_t Slot33_ad9ff0(uint32_t);
+    virtual uint32_t Slot34_ad9ff0();
+    virtual uint32_t Slot35_ad9ff0(uint32_t);
+    virtual uint32_t Slot36_ad9ff0(uint32_t);
     virtual ~cUnk00ad9ff0();
     char unknown4[0x8];
     uint32_t fieldc;

@@ -15,7 +15,7 @@ public:
     virtual ~cUnk00ac5060() {}
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot00_ac5030(uint32_t, uint32_t);
+    virtual bool Slot00_ac5030(uint32_t, uint32_t);
     virtual uint32_t Slot03_ac5030();
     virtual uint32_t Slot04_ac5030();
     virtual uint32_t Slot05_ac5030();

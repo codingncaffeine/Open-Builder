@@ -7,23 +7,20 @@
 #include "classes/cUnk00aace34.h"
 #include "classes/cUnk00adc8d8.h"
 
-// Between cUnk00aace34 and cUnk00aab558 at +0xd8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00aab558_d8 : public cUnk00aace34 {
-    virtual void* Slot03_aace34();
-    virtual void Slot04_aace34(uint32_t);
-    virtual void Slot05_aace34(uint32_t);
-    virtual void Slot06_aace34(uint32_t);
-    virtual void Slot08_aace34(uint32_t);
-};
-
 // SIZE 0x100
-class cUnk00aab558 : public cUnk00adc8d8, public cUnk00aab558_d8 {
+class cUnk00aab558 : public cUnk00adc8d8, public cUnk00aace34 {
 public:
     virtual ~cUnk00aab558() {}
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    char unknowndc[0x24];
+    virtual void* Slot03_aace34();
+    virtual void Slot04_aace34(uint32_t);
+    virtual void Slot05_aace34(uint32_t);
+    virtual void Slot06_aace34(uint32_t);
+    virtual void Slot08_aace34(uint32_t);
+    char unknowndc[0x20];
+    uint32_t fieldfc;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aab558[sizeof(cUnk00aab558) == 0x100 ? 1 : -1];

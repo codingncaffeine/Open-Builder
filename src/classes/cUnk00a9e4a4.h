@@ -8,18 +8,18 @@
 // SIZE 0x4
 class cUnk00a9e4a4 {
 public:
-    virtual void Slot00_a9e4a4() = 0;
-    virtual void Slot01_a9e4a4() = 0;
-    virtual void Slot02_a9e4a4() = 0;
-    virtual void Slot03_a9e4a4() = 0;
-    virtual void Slot04_a9e4a4() = 0;
-    virtual void Slot05_a9e4a4() = 0;
-    virtual void Slot06_a9e4a4() = 0;
-    virtual void Slot07_a9e4a4() = 0;
-    virtual void Slot08_a9e4a4() = 0;
-    virtual void Slot09_a9e4a4() = 0;
-    virtual void Slot10_a9e4a4() = 0;
-    virtual void Slot11_a9e4a4() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual unsigned int AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual uint32_t Slot03_a9e4a4() = 0;
+    virtual bool Slot04_a9e4a4(uint32_t) = 0;
+    virtual bool Slot05_a9e4a4(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot06_a9e4a4(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot07_a9e4a4(uint32_t, uint32_t) = 0;
+    virtual bool Slot08_a9e4a4(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot09_a9e4a4(uint32_t) = 0;
+    virtual uint32_t Slot10_a9e4a4() = 0;
+    virtual uint32_t Slot11_a9e4a4() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9e4a4[sizeof(cUnk00a9e4a4) == 0x4 ? 1 : -1];

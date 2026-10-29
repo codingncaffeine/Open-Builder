@@ -9,20 +9,20 @@
 // SIZE 0x44
 class cUnk00ac5290 {
 public:
-    virtual void Slot00_ac5290(uint32_t, uint32_t);
-    virtual void Slot01_ac5290();
+    virtual bool Slot00_ac5290(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ac5290();
     virtual void Slot02_ac5290();
-    virtual void Slot03_ac5290();
-    virtual void Slot04_ac5290();
+    virtual bool Slot03_ac5290();
+    virtual bool Slot04_ac5290();
     virtual void Slot05_ac5290(uint32_t, uint32_t);
-    virtual void Slot06_ac5290(uint32_t, uint32_t);
-    virtual void Slot07_ac5290(uint32_t);
+    virtual bool Slot06_ac5290(uint32_t, uint32_t);
+    virtual bool Slot07_ac5290(uint32_t);
     virtual uint32_t Slot08_ac5290();
-    virtual void Slot09_ac5290(uint32_t);
-    virtual void Slot10_ac5290(uint32_t);
-    virtual void Slot11_ac5290(uint32_t);
-    virtual void Slot12_ac5290(uint32_t);
-    virtual void Slot13_ac5290();
+    virtual uint32_t Slot09_ac5290(uint32_t);
+    virtual bool Slot10_ac5290(uint32_t);
+    virtual bool Slot11_ac5290(uint32_t);
+    virtual bool Slot12_ac5290(uint32_t);
+    virtual bool Slot13_ac5290();
     virtual void Slot14_ac5290();
     virtual void Slot15_ac5290();
     virtual ~cUnk00ac5290();

@@ -19,7 +19,7 @@ public:
     virtual void Slot09_aaeec0() = 0;
     virtual void Slot10_aaeec0() = 0;
     virtual void Slot11_aaeec0() = 0;
-    virtual void Slot12_aaee5c(uint32_t) = 0;
+    virtual bool Slot12_aaee5c(uint32_t) = 0;
     virtual void Slot13_aaee5c() = 0;
 };
 #ifdef _MSC_VER

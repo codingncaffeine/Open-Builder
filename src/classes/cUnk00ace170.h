@@ -8,7 +8,7 @@
 // VTABLE: 0x00ace170
 class cUnk00ace170 {
 public:
-    virtual void Slot00_ace170(uint32_t);
+    virtual uint32_t Slot00_ace170(uint32_t);
 };
 
 #endif

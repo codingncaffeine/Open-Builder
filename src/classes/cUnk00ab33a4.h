@@ -12,7 +12,7 @@ public:
     virtual void Slot01_ab33a4();
     virtual void Slot02_ab33a4();
     virtual void Slot03_ab33a4();
-    virtual void Slot04_ab33a4(uint32_t);
+    virtual bool Slot04_ab33a4(uint32_t);
     virtual uint32_t Slot05_ab33a4();
 };
 

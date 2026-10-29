@@ -8,13 +8,13 @@
 // VTABLE: 0x00acfbe4
 class cUnk00acfbe4 {
 public:
-    virtual void Slot00_acfbe4();
-    virtual void Slot01_acfbe4();
-    virtual void Slot02_acfbe4();
-    virtual void Slot03_acfbe4();
-    virtual void Slot04_acfbe4();
+    virtual uint32_t Slot00_acfbe4();
+    virtual uint32_t Slot01_acfbe4();
+    virtual uint32_t Slot02_acfbe4();
+    virtual uint32_t Slot03_acfbe4();
+    virtual uint32_t Slot04_acfbe4();
     virtual ~cUnk00acfbe4();
-    virtual void Slot06_acfbe4(uint32_t);
+    virtual uint32_t Slot06_acfbe4(uint32_t);
 };
 
 // SYNTHETIC: 0x00920b1d

@@ -7,19 +7,10 @@
 #include "classes/cUnk00ad8bec.h"
 #include "classes/cUnk00ad96ec.h"
 
-// Between cUnk00ad96ec and cUnk00ad94a8 at +0x18: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ad94a8_18 : public cUnk00ad96ec {
-    virtual void Slot03_ad96ec(uint32_t);
-    virtual void Slot04_ad96ec(uint32_t);
-    virtual void Slot05_ad96ec(uint32_t, uint32_t);
-    virtual void Slot06_ad96ec(uint32_t, uint32_t);
-    virtual void Slot07_ad96ec(uint32_t, uint32_t);
-};
-
 // VTABLE: 0x00ad94a8 cUnk00ad8bec
-// VTABLE: 0x00ad9484 cUnk00ad94a8_18
+// VTABLE: 0x00ad9484 cUnk00ad96ec
 // SIZE 0x20
-class cUnk00ad94a8 : public cUnk00ad8bec, public cUnk00ad94a8_18 {
+class cUnk00ad94a8 : public cUnk00ad8bec, public cUnk00ad96ec {
 public:
     virtual ~cUnk00ad94a8();
     virtual void Slot13_ad94a8();
@@ -28,6 +19,11 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
+    virtual bool Slot03_ad96ec(uint32_t);
+    virtual void Slot04_ad96ec(uint32_t);
+    virtual void Slot05_ad96ec(uint32_t, uint32_t);
+    virtual bool Slot06_ad96ec(uint32_t, uint32_t);
+    virtual bool Slot07_ad96ec(uint32_t, uint32_t);
     char unknown1c[0x4];
 };
 #ifdef _MSC_VER

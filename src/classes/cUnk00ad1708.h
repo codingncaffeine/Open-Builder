@@ -9,18 +9,18 @@
 // SIZE 0x1c
 class cUnk00ad1708 {
 public:
-    virtual void Slot00_ad1708(uint32_t, uint32_t);
-    virtual void Slot01_ad1708();
+    virtual bool Slot00_ad1708(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad1708();
     virtual void Slot02_ad1708();
-    virtual void Slot03_ad1708();
-    virtual void Slot04_ad1708();
+    virtual bool Slot03_ad1708();
+    virtual bool Slot04_ad1708();
     virtual bool Slot05_ad1708(uint32_t, uint32_t, uint32_t);
     virtual bool Slot06_ad1708(uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ad1708();
-    virtual void Slot08_ad1708(uint32_t, uint32_t, uint32_t);
-    virtual void Slot09_ad1708(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot10_ad1708(uint32_t, uint32_t, uint32_t);
-    virtual void Slot11_ad1708(uint32_t, uint32_t);
+    virtual uint32_t Slot08_ad1708(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot09_ad1708(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot10_ad1708(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot11_ad1708(uint32_t, uint32_t);
     char unknown4[0x18];
 };
 #ifdef _MSC_VER

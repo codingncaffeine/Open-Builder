@@ -8,44 +8,40 @@
 
 // The subobject at +0x0 (vtable 0x00ab2b10): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ab2b10_0 {
-    virtual void Slot00_ab2348() = 0;
+    virtual bool Slot00_ab2348(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab2348() = 0;
     virtual void Slot02_ab2348() = 0;
-    virtual void Slot03_ab2b10(uint32_t) = 0;
+    virtual bool Slot03_ab2b10(uint32_t) = 0;
     virtual ~cUnk00ab2b10_0() {}
     virtual void Slot05_ab2b10(uint32_t) = 0;
     virtual void Slot06_ab2b10() = 0;
-    virtual void Slot07_ab2b10() = 0;
+    virtual void Slot07_ab2b10(uint32_t) = 0;
     virtual void Slot08_ab2b10(uint32_t) = 0;
     virtual void Slot09_ab2b10(uint32_t) = 0;
-    virtual void Slot10_ab2b10() = 0;
-    virtual void Slot11_ab2b10() = 0;
-    virtual void Slot12_ab2b10() = 0;
-    virtual void Slot13_ab2b10() = 0;
-    virtual void Slot14_ab2b10() = 0;
-    virtual void Slot15_ab2b10() = 0;
-    virtual void Slot16_ab2b10() = 0;
+    virtual void Slot10_ab2b10(uint32_t, uint32_t) = 0;
+    virtual void Slot11_ab2b10(uint32_t, uint32_t) = 0;
+    virtual bool Slot12_ab2b10(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot13_ab2b10() = 0;
+    virtual bool Slot14_ab2b10(uint32_t, uint32_t) = 0;
+    virtual void Slot15_ab2b10(uint32_t, uint32_t) = 0;
+    virtual void Slot16_ab2b10(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot17_ab2b10() = 0;
 };
 
-// Between cUnk00ab0fb0 and cUnk00ab2b10 at +0x4: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ab2b10_4 : public cUnk00ab0fb0 {
-    virtual void Slot04_ab0fb0(uint32_t, uint32_t, uint32_t);
-    virtual void Slot05_ab0fb0();
-    virtual void Slot06_ab0fb0(uint32_t);
-    virtual void Slot08_ab0fb0(uint32_t, uint32_t, uint32_t);
-    virtual void Slot09_ab0fb0(uint32_t, uint32_t);
-};
-
 // SIZE 0x8
-class cUnk00ab2b10 : public cUnk00ab2b10_0, public cUnk00ab2b10_4 {
+class cUnk00ab2b10 : public cUnk00ab2b10_0, public cUnk00ab0fb0 {
 public:
     virtual ~cUnk00ab2b10() {}
-    virtual void Slot10_ab0fb0(uint32_t, uint32_t);
-    virtual void Slot03_ab2b10(uint32_t);
+    virtual bool Slot04_ab0fb0(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t Slot05_ab0fb0();
+    virtual uint32_t Slot06_ab0fb0(uint32_t);
+    virtual uint32_t Slot08_ab0fb0(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot09_ab0fb0(uint32_t, uint32_t);
+    virtual bool Slot10_ab0fb0(uint32_t, uint32_t);
+    virtual bool Slot03_ab2b10(uint32_t);
     virtual void Slot05_ab2b10(uint32_t);
     virtual void Slot06_ab2b10();
-    virtual void Slot07_ab2b10();
+    virtual void Slot07_ab2b10(uint32_t);
     virtual void Slot08_ab2b10(uint32_t);
     virtual void Slot09_ab2b10(uint32_t);
 };

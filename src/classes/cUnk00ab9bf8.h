@@ -11,15 +11,15 @@
 class cUnk00ab9bf8 : public cUnk00adc8d8 {
 public:
     virtual ~cUnk00ab9bf8() {}
-    virtual void Slot03_adc8d8(uint32_t);
+    virtual bool Slot03_adc8d8(uint32_t);
     virtual bool Slot88_adc8d8();
     virtual bool Slot129_adc8d8(uint32_t);
     virtual bool Slot130_adc8d8(uint32_t, uint32_t);
     virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual bool Slot135_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_adb6a8();
-    virtual void Slot05_adb6a8();
+    virtual bool Slot04_adb6a8();
+    virtual bool Slot05_adb6a8();
     char unknownd8[0x34];
 };
 #ifdef _MSC_VER

@@ -9,10 +9,25 @@
 #include "classes/cUnk00aaaa9c.h"
 #include "gzcom/cUnk0090da1e.h"
 
-// Between cUnk00a81120 and cUnk00a81204 at +0x8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a81204_8 : public cUnk00a81120 {
-    virtual void Slot03_a81120(uint32_t);
-    virtual void Slot04_a81120();
+// VTABLE: 0x00a81204 cUnk0090da1e
+// VTABLE: 0x00a811b0 cUnk00a81120
+// VTABLE: 0x00a81194 cUnk00a80784
+// VTABLE: 0x00a81184 cUnk00aaaa9c
+// SIZE 0xb8
+class cUnk00a81204 : public cUnk0090da1e, public cUnk00a81120, public cUnk00a80784, public cUnk00aaaa9c {
+public:
+    virtual ~cUnk00a81204();
+    virtual void Slot06_a81204();
+    virtual void Slot07_a81204();
+    virtual void Slot08_a81204();
+    virtual bool Slot03_a80784(uint32_t);
+    virtual bool Slot04_a80784(uint32_t);
+    virtual uint32_t Slot05_a80784();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual unsigned int AddRef();
+    virtual unsigned int Release();
+    virtual bool Slot03_a81120(uint32_t);
+    virtual bool Slot04_a81120();
     virtual uint32_t Slot05_a81120();
     virtual void* Slot06_a81120();
     virtual void Slot07_a81120();
@@ -20,44 +35,45 @@ struct OB_NOVTABLE cUnk00a81204_8 : public cUnk00a81120 {
     virtual void Slot09_a81120();
     virtual void* Slot10_a81120();
     virtual void* Slot11_a81120();
-    virtual void Slot12_a81120(uint32_t);
-    virtual void Slot13_a81120(uint32_t);
-    virtual void Slot14_a81120(uint32_t);
-    virtual void Slot15_a81120(uint32_t);
-    virtual void Slot16_a81120(uint32_t, uint32_t);
-    virtual void Slot17_a81120(uint32_t);
-    virtual void Slot18_a81120(uint32_t, uint32_t);
-    virtual void Slot19_a81120();
-    virtual void Slot20_a81120(uint32_t);
-};
-
-// Between cUnk00a80784 and cUnk00a81204 at +0xc: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a81204_c : public cUnk00a80784 {
-    virtual bool Slot03_a80784(uint32_t);
-    virtual bool Slot04_a80784(uint32_t);
-    virtual uint32_t Slot05_a80784();
-};
-
-// Between cUnk00aaaa9c and cUnk00a81204 at +0x10: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00a81204_10 : public cUnk00aaaa9c {
-    virtual void Slot03_aaaa9c(uint32_t);
-};
-
-// VTABLE: 0x00a81204 cUnk0090da1e
-// VTABLE: 0x00a811b0 cUnk00a81204_8
-// VTABLE: 0x00a81194 cUnk00a81204_c
-// VTABLE: 0x00a81184 cUnk00a81204_10
-// SIZE 0xb8
-class cUnk00a81204 : public cUnk0090da1e, public cUnk00a81204_8, public cUnk00a81204_c, public cUnk00a81204_10 {
-public:
-    virtual ~cUnk00a81204();
-    virtual void Slot06_a81204();
-    virtual void Slot07_a81204();
-    virtual void Slot08_a81204();
-    virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
-    virtual unsigned int Release();
-    char unknown14[0xa4];
+    virtual uint32_t Slot12_a81120(uint32_t);
+    virtual uint32_t Slot13_a81120(uint32_t);
+    virtual bool Slot14_a81120(uint32_t);
+    virtual uint32_t Slot15_a81120(uint32_t);
+    virtual bool Slot16_a81120(uint32_t, uint32_t);
+    virtual uint32_t Slot17_a81120(uint32_t);
+    virtual bool Slot18_a81120(uint32_t, uint32_t);
+    virtual void Slot19_a81120(uint32_t);
+    virtual bool Slot20_a81120(uint32_t);
+    virtual bool Slot03_aaaa9c(uint32_t);
+    // STUB: 0x0040df90
+    void Fn0040df90(void* entry);
+    uint32_t mnType;
+    char field18[0x20];
+    char field38[0x20];
+    uint32_t mnRefA;
+    uint32_t mnValue5c;
+    uint32_t mn60;
+    uint32_t mn64;
+    char unknown68[0x4];
+    void* mpRecords;
+    uint32_t mnRecords;
+    char unknown74[0x4];
+    char field78[0xc];
+    void* mpEntriesBegin;
+    void* mpEntriesEnd;
+    char unknown8c[0x4];
+    int32_t mnIndex;
+    uint8_t mbFlag;
+    char unknown95[0x3];
+    uint32_t* mpListABegin;
+    uint32_t* mpListAEnd;
+    char unknowna0[0x4];
+    uint32_t* mpListBBegin;
+    uint32_t* mpListBEnd;
+    char unknownac[0x4];
+    void* mpNodes;
+    uint8_t mbRegistered;
+    char unknownb5[0x3];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a81204[sizeof(cUnk00a81204) == 0xb8 ? 1 : -1];

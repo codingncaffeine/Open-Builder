@@ -7,11 +7,11 @@
 
 class cUnk00ac2bf0 {
 public:
-    virtual void Slot00_ad4cf4(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ad4cf4() = 0;
+    virtual bool Slot00_ad4cf4(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad4cf4() = 0;
     virtual void Slot02_ad4cf4() = 0;
-    virtual void Slot03_ac2bf0(uint32_t) = 0;
-    virtual void Slot04_ac2bf0() = 0;
+    virtual bool Slot03_ac2bf0(uint32_t) = 0;
+    virtual bool Slot04_ac2bf0() = 0;
     virtual uint32_t Slot05_ac2bf0() = 0;
 };
 

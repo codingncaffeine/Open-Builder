@@ -7,8 +7,47 @@
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00addff8.h"
 
-// Between cUnk00addff8 and cUnk00ade188 at +0xd8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ade188_d8 : public cUnk00addff8 {
+// VTABLE: 0x00ade188 cUnk00adc8d8
+// VTABLE: 0x00ade450 cUnk00addff8
+// SIZE 0x22c
+class cUnk00ade188 : public cUnk00adc8d8, public cUnk00addff8 {
+public:
+    virtual ~cUnk00ade188();
+    virtual void Slot151_ade188();
+    virtual void Slot152_ade188(uint32_t);
+    virtual void Slot153_ade188(uint32_t);
+    virtual void Slot154_ade188(uint32_t);
+    virtual void Slot155_ade188(uint32_t, uint32_t);
+    virtual void Slot156_ade188(uint32_t, uint32_t);
+    virtual void Slot157_ade188(uint32_t);
+    virtual void Slot158_ade188(uint32_t);
+    virtual void Slot159_ade188(uint32_t);
+    virtual uint32_t Slot160_ade188(uint32_t, uint32_t, uint32_t);
+    virtual float Slot161_ade188(uint32_t, uint32_t, uint32_t);
+    virtual void Slot162_ade188(uint32_t, uint32_t);
+    virtual void Slot163_ade188(uint32_t, uint32_t);
+    virtual float Slot164_ade188(uint32_t);
+    virtual float Slot165_ade188(uint32_t);
+    virtual void Slot166_ade188(uint32_t);
+    virtual uint32_t Slot167_ade188(uint32_t, uint32_t);
+    virtual uint32_t Slot168_ade188(uint32_t, uint32_t);
+    virtual uint32_t Slot169_ade188(uint32_t);
+    virtual void Slot170_ade188();
+    virtual void Slot171_ade188(uint32_t);
+    virtual void Slot172_ade188(uint32_t);
+    virtual void Slot173_ade188(uint32_t, uint32_t);
+    virtual void Slot174_ade188(uint32_t, uint32_t);
+    virtual void Slot175_ade188(uint32_t, uint32_t);
+    virtual void Slot176_ade188(uint32_t, uint32_t);
+    virtual void Slot177_ade188(uint32_t, uint32_t);
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual unsigned int AddRef();
+    virtual unsigned int Release();
+    virtual bool Slot88_adc8d8();
+    virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot03_addff8(bool);
     virtual void Slot04_addff8(bool);
     virtual void Slot05_addff8(uint32_t);
@@ -47,66 +86,39 @@ struct OB_NOVTABLE cUnk00ade188_d8 : public cUnk00addff8 {
     virtual void Slot38_addff8(uint32_t);
     virtual void Slot39_addff8(uint32_t, uint32_t);
     virtual bool Slot40_addff8(uint32_t, uint32_t);
-    virtual void Slot41_addff8(uint32_t);
+    virtual bool Slot41_addff8(uint32_t);
     virtual uint32_t Slot42_addff8();
-    virtual void Slot43_addff8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot43_addff8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot44_addff8(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot45_addff8(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot46_addff8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot45_addff8(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot46_addff8(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot47_addff8(uint32_t);
     virtual void Slot48_addff8(uint32_t);
-    virtual void Slot49_addff8();
-    virtual void Slot50_addff8();
-    virtual void Slot51_addff8();
-    virtual void Slot52_addff8();
-    virtual void Slot53_addff8();
+    virtual uint32_t Slot49_addff8();
+    virtual uint32_t Slot50_addff8();
+    virtual uint32_t Slot51_addff8();
+    virtual uint32_t Slot52_addff8();
+    virtual uint32_t Slot53_addff8();
     virtual void* Slot54_addff8();
-};
-
-// VTABLE: 0x00ade188 cUnk00adc8d8
-// VTABLE: 0x00ade450 cUnk00ade188_d8
-// SIZE 0x22c
-class cUnk00ade188 : public cUnk00adc8d8, public cUnk00ade188_d8 {
-public:
-    virtual ~cUnk00ade188();
-    virtual void Slot151_ade188();
-    virtual void Slot152_ade188(uint32_t);
-    virtual void Slot153_ade188(uint32_t);
-    virtual void Slot154_ade188(uint32_t);
-    virtual void Slot155_ade188(uint32_t, uint32_t);
-    virtual void Slot156_ade188(uint32_t, uint32_t);
-    virtual void Slot157_ade188(uint32_t);
-    virtual void Slot158_ade188(uint32_t);
-    virtual void Slot159_ade188(uint32_t);
-    virtual void Slot160_ade188(uint32_t, uint32_t, uint32_t);
-    virtual void Slot161_ade188(uint32_t, uint32_t, uint32_t);
-    virtual void Slot162_ade188(uint32_t, uint32_t);
-    virtual void Slot163_ade188(uint32_t, uint32_t);
-    virtual float Slot164_ade188(uint32_t);
-    virtual float Slot165_ade188(uint32_t);
-    virtual void Slot166_ade188(uint32_t);
-    virtual void Slot167_ade188(uint32_t, uint32_t);
-    virtual void Slot168_ade188(uint32_t, uint32_t);
-    virtual void Slot169_ade188(uint32_t);
-    virtual void Slot170_ade188();
-    virtual void Slot171_ade188(uint32_t);
-    virtual void Slot172_ade188(uint32_t);
-    virtual void Slot173_ade188(uint32_t, uint32_t);
-    virtual void Slot174_ade188(uint32_t, uint32_t);
-    virtual void Slot175_ade188(uint32_t, uint32_t);
-    virtual void Slot176_ade188(uint32_t, uint32_t);
-    virtual void Slot177_ade188(uint32_t, uint32_t);
-    virtual bool QueryInterface(unsigned int, void **);
-    virtual unsigned int AddRef();
-    virtual unsigned int Release();
-    virtual bool Slot88_adc8d8();
-    virtual bool Slot134_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot136_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot138_adc8d8(uint32_t, uint32_t, uint32_t);
-    virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot04_adb6a8();
-    virtual void Slot05_adb6a8();
-    char unknowndc[0x150];
+    virtual bool Slot04_adb6a8();
+    virtual bool Slot05_adb6a8();
+    char unknowndc[0x4c];
+    uint32_t field128;
+    bool field12c;
+    bool field12d;
+    char unknown12e[0x2];
+    uint32_t field130;
+    char unknown134[0x4];
+    uint32_t field138;
+    char unknown13c[0x4];
+    uint32_t field140;
+    char unknown144[0x14];
+    uint32_t field158;
+    char unknown15c[0x34];
+    uint32_t field190;
+    char unknown194[0x8c];
+    uint32_t field220;
+    char unknown224[0x8];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ade188[sizeof(cUnk00ade188) == 0x22c ? 1 : -1];

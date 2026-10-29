@@ -7,41 +7,39 @@
 #include "classes/cUnk00adc8d8.h"
 #include "classes/cUnk00ae2300.h"
 
-// Between cUnk00ae2300 and cUnk00ae20a0 at +0xd8: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cUnk00ae20a0_d8 : public cUnk00ae2300 {
-    virtual void* Slot03_ae2300();
-    virtual void Slot08_ae2300(uint32_t);
-    virtual void Slot09_ae2300(uint32_t, uint32_t, uint32_t);
-    virtual void Slot10_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot11_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot12_ae2300(uint32_t);
-    virtual uint32_t Slot13_ae2300();
-    virtual void Slot14_ae2300(uint32_t);
-    virtual void Slot15_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot16_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot17_ae2300(uint32_t);
-    virtual bool Slot18_ae2300(bool);
-    virtual uint32_t Slot19_ae2300();
-};
-
 // VTABLE: 0x00ae20a0 cUnk00adc8d8
-// VTABLE: 0x00ae2050 cUnk00ae20a0_d8
+// VTABLE: 0x00ae2050 cUnk00ae2300
 // SIZE 0xf0
-class cUnk00ae20a0 : public cUnk00adc8d8, public cUnk00ae20a0_d8 {
+class cUnk00ae20a0 : public cUnk00adc8d8, public cUnk00ae2300 {
 public:
     virtual ~cUnk00ae20a0();
     virtual bool QueryInterface(unsigned int, void **);
     virtual unsigned int AddRef();
     virtual unsigned int Release();
-    virtual void Slot03_adc8d8(uint32_t);
+    virtual bool Slot03_adc8d8(uint32_t);
     virtual bool Slot88_adc8d8();
     virtual void Slot103_adc8d8();
     virtual void Slot104_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual void Slot107_adc8d8(uint32_t, uint32_t, uint32_t);
     virtual bool Slot130_adc8d8(uint32_t, uint32_t);
     virtual bool Slot131_adc8d8(uint32_t, uint32_t);
+    virtual void* Slot03_ae2300();
+    virtual void Slot08_ae2300(uint32_t);
+    virtual void Slot09_ae2300(uint32_t, uint32_t, uint32_t);
+    virtual void Slot10_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot11_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot12_ae2300(uint32_t);
+    virtual uint32_t Slot13_ae2300();
+    virtual uint32_t Slot14_ae2300(uint32_t);
+    virtual void Slot15_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot16_ae2300(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot17_ae2300(uint32_t);
+    virtual bool Slot18_ae2300(bool);
+    virtual uint32_t Slot19_ae2300();
     virtual void Slot08_ae1a28(uint32_t);
-    char unknowndc[0x14];
+    bool fielddc;
+    uint8_t fielddd;
+    char unknownde[0x12];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae20a0[sizeof(cUnk00ae20a0) == 0xf0 ? 1 : -1];
