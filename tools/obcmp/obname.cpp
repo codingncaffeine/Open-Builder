@@ -485,22 +485,6 @@ bool choose(uint32_t vt, const std::vector<std::pair<uint32_t, int>>& cands, dou
     return true;
 }
 
-std::vector<int> kset(const Side& s, int i) {
-    std::vector<int> k;
-    if (i < 0) return k;
-    for (int f : s.feats[size_t(i)]) if (featKey[size_t(f)][0] == 'k') k.push_back(f);
-    return k;
-}
-
-double jaccard(const std::vector<int>& a, const std::vector<int>& b) {
-    if (a.empty() || b.empty()) return 0;
-    size_t i = 0, j = 0, both = 0;
-    while (i < a.size() && j < b.size()) {
-        if (a[i] == b[j]) { ++both; ++i; ++j; } else if (a[i] < b[j]) ++i; else ++j;
-    }
-    return double(both) / double(a.size() + b.size() - both);
-}
-
 // The IDs that name a class: what its own QueryInterface (slot 0) compares, and the IDs its slots return.
 std::set<std::string> idsOf(const Side& s, int fn, bool k, bool r) {
     std::set<std::string> out;
