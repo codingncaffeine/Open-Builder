@@ -285,8 +285,7 @@ void* cUnk00a9ea60::Slot04_a9ea60()
     return 0;
 }
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x0057f440 score 1
+// FUNCTION: 0x0057f440
 uint32_t cUnk00a9ea60::Slot07_a9ea60()
 {
     uint32_t r = 2;
@@ -307,7 +306,6 @@ uint32_t cUnk00a9ea60::Slot07_a9ea60()
     }
     return r;
 }
-#endif
 
 // FUNCTION: 0x0057f480
 bool cUnk00a9ea60::QueryInterface(unsigned int iid, void** ppv)

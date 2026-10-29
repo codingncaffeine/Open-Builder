@@ -159,6 +159,17 @@ inline std::string hex(uint64_t v) {
     return buf;
 }
 
+// Alignment fill the compiler or linker puts after code: int3, nop, "mov edi,edi", and the long no-ops
+// "lea r,[r+0x0]" / "lea r,[r]" (a 2003 compiler pads a jump table to 4 bytes with one).
+inline bool isFill(const std::string& t) {
+    if (t == "int3" || t.rfind("nop", 0) == 0 || t == "mov edi,edi") return true;
+    if (t.rfind("lea ", 0) != 0) return false;
+    size_t comma = t.find(','), open = t.find('[');
+    if (comma == std::string::npos || open != comma + 1) return false;
+    std::string reg = t.substr(4, comma - 4), mem = t.substr(open);
+    return mem == "[" + reg + "]" || mem == "[" + reg + "+0x0]";
+}
+
 // Turns one function into normalised instruction tokens.
 // refs, when given, receives every address in the image outside the function that an instruction refers to, in order.
 inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t size,
@@ -294,7 +305,7 @@ inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t
 
     // The tables after the code: "table T<place>", then one token per entry ("L<n>" for a jump, "b<n>" for an index).
     if (!tables.empty()) {
-        while (!out.empty() && (out.back() == "int3" || out.back().rfind("nop", 0) == 0)) out.pop_back();  // alignment
+        while (!out.empty() && isFill(out.back())) out.pop_back();  // the alignment before the tables
         std::sort(tables.begin(), tables.end(), [](const Table& a, const Table& b) { return a.at < b.at; });
         long largestByte = -1;
         for (const Table& t : tables) {
@@ -319,7 +330,7 @@ inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t
 
 // Drops the int3 / nop padding a function's extent may end with (up to the next symbol, the alignment fill).
 inline void trimPadding(std::vector<std::string>& tokens) {
-    while (!tokens.empty() && (tokens.back() == "int3" || tokens.back().rfind("nop", 0) == 0)) tokens.pop_back();
+    while (!tokens.empty() && isFill(tokens.back())) tokens.pop_back();
 }
 
 inline size_t lcs(const std::vector<std::string>& a, const std::vector<std::string>& b) {
