@@ -47,11 +47,12 @@ public:
     virtual uint32_t Dispatch_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool IsAutomatonOnscreen(uint32_t);
     virtual bool HandleRemoveNetworkOccupant(uint32_t);
-    virtual void Slot53_a95880();
+    virtual bool Slot53_a95880(uint32_t);
     virtual bool HandleRemoveOccupant(uint32_t);
     virtual void HandlePostCityInit();
     virtual void DoAnimationTick(uint32_t, uint32_t);
     virtual void ScanExemplars();
+    char unknowna88[0x38];
 };
 
 // SYNTHETIC: 0x00545670

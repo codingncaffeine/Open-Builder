@@ -15,6 +15,7 @@ public:
     virtual bool Slot05_ad8fa4(uint32_t, uint32_t);
     virtual void Slot06_ad8fa4(uint32_t);
     virtual ~cUnk00ad8fa4() {}
+    uint32_t field4;
 };
 
 #endif

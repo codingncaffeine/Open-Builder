@@ -16,6 +16,7 @@ public:
     virtual bool OnMouseUpR(uint32_t, uint32_t, uint32_t);
     virtual bool OnMouseMove(uint32_t, uint32_t, uint32_t);
     virtual void EndInput();
+    char unknown28[0x18];
 };
 
 // SYNTHETIC: 0x004b7ed0

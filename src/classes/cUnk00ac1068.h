@@ -25,6 +25,7 @@ public:
     virtual void Slot03_ac0f80();
     virtual bool Slot04_ac0f80(uint32_t);
     virtual bool Slot54_ac0f80(uint32_t);
+    uint32_t field5c;
 };
 
 #endif

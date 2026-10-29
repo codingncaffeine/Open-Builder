@@ -20,7 +20,7 @@ public:
     virtual uint32_t Slot09_ae4d28(uint32_t);
     virtual uint32_t Slot12_ae4d28(uint32_t);
     virtual void Slot13_ae4d28(uint32_t);
-    char unknown4[0x88];
+    char unknown1c[0x70];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ae4da8[sizeof(cUnk00ae4da8) == 0x8c ? 1 : -1];

@@ -10,6 +10,7 @@
 class cUnk00ace2bc : public cUnk00ace158 {
 public:
     virtual bool Slot00_ace158(uint32_t);
+    char unknown4[0x14];
 };
 
 #endif

@@ -35,6 +35,9 @@ public:
     void Fn005ebff0();
     // STUB: 0x005ec050
     void Fn005ec050();
+    char unknown4[0x2];
+    int16_t field6;
+    char unknown8[0x28];
 };
 
 #endif

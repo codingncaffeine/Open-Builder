@@ -31,7 +31,7 @@ public:
     virtual bool Slot18_ad9b70(uint32_t, uint32_t);
     virtual bool Slot19_ad9b70(uint32_t, uint32_t);
     virtual bool Slot20_ad9b70(uint32_t, uint32_t);
-    char unknown4[0x20];
+    char unknownc[0x18];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad9cd0[sizeof(cUnk00ad9cd0) == 0x24 ? 1 : -1];

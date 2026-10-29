@@ -15,6 +15,8 @@ public:
     virtual bool Slot05_ad265c(uint32_t, uint32_t) = 0;
     virtual bool Slot06_ad265c(uint32_t, uint32_t) = 0;
     virtual ~cUnk00ad265c() {}
+    char unknown4[0x18];
+    uint32_t field1c;
 };
 
 #endif

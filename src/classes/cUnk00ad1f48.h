@@ -16,6 +16,7 @@ public:
     virtual ~cUnk00ad1f48();
     virtual uint32_t Slot06_ad1f48();
     virtual uint32_t Slot07_ad1f48(uint32_t);
+    char unknown4[0x4];
 };
 
 // SYNTHETIC: 0x00932eea

@@ -25,6 +25,7 @@ public:
     virtual bool EraseArgument(uint32_t);
     virtual ~cRZCmdLine();
     virtual uint32_t Slot16_a82a20(uint32_t);
+    char unknown4[0x10];
 };
 
 // SYNTHETIC: 0x00419500

@@ -14,6 +14,7 @@ public:
     virtual void Slot02_ae4ce4(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot03_ae4ce4(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot04_ae4ce4();
+    char unknownc[0x4c];
 };
 
 // SYNTHETIC: 0x009ee910

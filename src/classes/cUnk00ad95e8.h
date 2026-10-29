@@ -16,21 +16,24 @@ public:
     virtual bool Slot62_ad95e8(uint32_t, uint32_t);
     virtual bool Slot63_ad95e8(uint32_t);
     virtual bool Slot64_ad95e8(uint32_t);
-    virtual bool Slot27_ad8d88(uint32_t, uint32_t);
-    virtual bool Slot51_ad8d88(uint32_t, uint32_t);
-    virtual uint32_t Slot52_ad8d88();
     virtual uint32_t Slot54_ad8d88();
     virtual bool Slot56_ad8d88(uint32_t);
+    virtual uint32_t Slot03_ad9030();
+    virtual bool Slot04_ad9030(uint32_t, uint32_t);
+    virtual bool Slot05_ad9030(uint32_t, uint32_t);
+    char unknown40[0x4];
+    uint32_t field44;
+    char unknown48[0x4];
 };
 
 // SYNTHETIC: 0x0097cf9d
-// cUnk00ad95e8::Slot27_ad8d88`adjustor{4}'
+// cUnk00ad95e8::Slot04_ad9030`adjustor{4}'
 
 // SYNTHETIC: 0x0096e823
-// cUnk00ad95e8::Slot51_ad8d88`adjustor{4}'
+// cUnk00ad95e8::Slot05_ad9030`adjustor{4}'
 
 // SYNTHETIC: 0x0097cfa5
-// cUnk00ad95e8::Slot52_ad8d88`adjustor{4}'
+// cUnk00ad95e8::Slot03_ad9030`adjustor{4}'
 
 // SYNTHETIC: 0x0096e7c3
 // cUnk00ad95e8::Slot56_ad8d88`adjustor{4}'

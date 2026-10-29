@@ -13,7 +13,7 @@ public:
     virtual bool Init();
     virtual bool Shutdown();
     virtual bool Slot03_aa1648(uint32_t);
-    char unknown4[0x14];
+    char unknownc[0xc];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZToolCommandSystemSupport[sizeof(cGZToolCommandSystemSupport) == 0x18 ? 1 : -1];

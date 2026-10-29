@@ -15,7 +15,7 @@ public:
     virtual void Slot05_acd504(uint32_t);
     virtual uint32_t Slot07_acd504(uint32_t, uint32_t, uint32_t);
     virtual void Slot10_acd504(uint32_t);
-    char unknown4[0x54];
+    char unknownc[0x4c];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ace300[sizeof(cUnk00ace300) == 0x58 ? 1 : -1];

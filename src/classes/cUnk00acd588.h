@@ -10,7 +10,7 @@
 // SIZE 0x1c
 class cUnk00acd588 : public cUnk00acd504 {
 public:
-    char unknown4[0x18];
+    char unknownc[0x10];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00acd588[sizeof(cUnk00acd588) == 0x1c ? 1 : -1];

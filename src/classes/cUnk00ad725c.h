@@ -12,6 +12,7 @@ public:
     virtual uint32_t Slot01_ad725c();
     virtual uint32_t Slot02_ad725c();
     virtual void Slot03_ad725c(uint32_t);
+    char unknown4[0x4];
 };
 
 #endif

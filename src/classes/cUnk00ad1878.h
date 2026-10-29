@@ -7,9 +7,9 @@
 
 class cUnk00ad1878 {
 public:
-    virtual bool Slot00_ad8d88(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad8d88();
-    virtual uint32_t Slot02_ad8d88();
+    virtual bool Slot00_ad9030(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad9030();
+    virtual uint32_t Slot02_ad9030();
     virtual bool Slot03_ad1878(uint32_t) = 0;
     virtual void Slot04_ad1878(uint32_t);
     virtual void Slot05_ad1878(uint32_t);
@@ -31,6 +31,10 @@ public:
     virtual ~cUnk00ad1878();
     virtual bool Slot22_ad1878(bool);
     virtual bool Slot23_ad1878();
+    char unknown4[0x4];
+    bool field8;
+    char unknown9[0x3];
+    uint32_t fieldc;
 };
 
 #endif

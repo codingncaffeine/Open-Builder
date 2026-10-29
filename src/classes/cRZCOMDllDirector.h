@@ -53,6 +53,11 @@ public:
     virtual uint32_t GZCOM();
     virtual bool GetLibraryPath(uint32_t);
     virtual void Slot15_ace6f8();
+    uint32_t field8;
+    char unknownc[0x18];
+    uint32_t field24;
+    uint32_t field28;
+    char unknown2c[0xc];
 };
 
 #endif

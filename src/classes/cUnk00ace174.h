@@ -13,6 +13,8 @@ public:
     virtual bool Slot02_ace174(uint32_t, uint32_t, uint32_t);
     virtual bool Slot03_ace174(uint32_t);
     virtual bool Slot04_ace174();
+    char unknown4[0x18];
+    uint32_t field1c;
 };
 
 #endif

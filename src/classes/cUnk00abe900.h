@@ -8,9 +8,9 @@
 // SIZE 0x4
 class cUnk00abe900 {
 public:
-    virtual void Slot00_abe900() = 0;
-    virtual void Slot01_abe900() = 0;
-    virtual void Slot02_abe900() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual unsigned int AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual void Slot03_abe900() = 0;
     virtual void Slot04_abe900() = 0;
     virtual void Slot05_abe900() = 0;

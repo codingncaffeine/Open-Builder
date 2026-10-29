@@ -8,9 +8,9 @@
 // SIZE 0x4
 class cUnk00ad8d88 {
 public:
-    virtual bool Slot00_ad8d88(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ad8d88() = 0;
-    virtual uint32_t Slot02_ad8d88() = 0;
+    virtual bool Slot00_ad9030(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad9030() = 0;
+    virtual uint32_t Slot02_ad9030() = 0;
     virtual uint32_t Slot03_ad8d88() = 0;
     virtual void Slot04_ad8d88() = 0;
     virtual void Slot05_ad8d88(uint32_t) = 0;
@@ -35,7 +35,7 @@ public:
     virtual bool Slot24_ad8d88(uint32_t) = 0;
     virtual void Slot25_ad8d88(uint32_t) = 0;
     virtual bool Slot26_ad8d88(uint32_t) = 0;
-    virtual bool Slot27_ad8d88(uint32_t, uint32_t) = 0;
+    virtual bool Slot04_ad9030(uint32_t, uint32_t) = 0;
     virtual void Slot28_ad8d88() = 0;
     virtual void Slot29_ad8d88(uint32_t) = 0;
     virtual void Slot30_ad8d88() = 0;
@@ -59,8 +59,8 @@ public:
     virtual bool Slot48_ad8d88(uint32_t) = 0;
     virtual void Slot49_ad8d88(uint32_t) = 0;
     virtual bool Slot50_ad8d88(uint32_t) = 0;
-    virtual bool Slot51_ad8d88(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot52_ad8d88() = 0;
+    virtual bool Slot05_ad9030(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot03_ad9030() = 0;
     virtual bool Slot56_ad8d88(uint32_t) = 0;
     virtual uint32_t Slot54_ad8d88() = 0;
 };

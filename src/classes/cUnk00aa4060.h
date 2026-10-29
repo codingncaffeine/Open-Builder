@@ -25,6 +25,8 @@ public:
     virtual void Slot14_aa4060(uint32_t, uint32_t, uint32_t);
     virtual void Slot15_aa4060();
     virtual void Slot16_aa4060();
+    uint32_t field4;
+    char unknown8[0x8];
 };
 
 #endif

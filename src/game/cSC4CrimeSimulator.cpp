@@ -2,7 +2,7 @@
 #include "classes/cUnk00a878c0.h"
 #include "gzcom/cRZString.h"
 
-// The class map knows only the four vtable pointers; the data after them is this view of the object.
+// The object seen as its four vtable pointers and the data after them (offsets from the object).
 struct Vec_ab0dc8 {
     void** mpBegin;
     void** mpEnd;
@@ -13,7 +13,8 @@ struct Vec_ab0dc8 {
     void Fn0051ca60(void** pos, void** a, void** b, uint32_t n, uint32_t m);
 };
 
-struct View_ab0dc8 : public cSC4CrimeSimulator {
+struct View_ab0dc8 {
+    void* mpVtables[4];      // 0x0
     uint8_t mbInitialized;   // 0x10
     uint8_t mbFlag11;        // 0x11
     int32_t mnRefCount;      // 0x14
@@ -57,13 +58,13 @@ struct Item_ab0dc8 {
 // FUNCTION: 0x0069f350
 int32_t cSC4CrimeSimulator::Slot06_ab0dc8()
 {
-    return static_cast<int32_t>(static_cast<View_ab0dc8*>(this)->mf6c);
+    return static_cast<int32_t>(reinterpret_cast<View_ab0dc8*>(this)->mf6c);
 }
 
 // FUNCTION: 0x0069f5d0
 uint32_t cSC4CrimeSimulator::Slot02_ab0dc8()
 {
-    View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
+    View_ab0dc8* self = reinterpret_cast<View_ab0dc8*>(this);
     if (self->mnRefCount > 1) {
         self->mnRefCount = self->mnRefCount - 1;
         return self->mnRefCount;
@@ -76,7 +77,7 @@ uint32_t cSC4CrimeSimulator::Slot02_ab0dc8()
 // FUNCTION: 0x0069f9a0
 bool cSC4CrimeSimulator::GetVisualsCreated(uint32_t index)
 {
-    View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
+    View_ab0dc8* self = reinterpret_cast<View_ab0dc8*>(this);
     if (index < self->mItems.size()) {
         return static_cast<Item_ab0dc8*>(self->mItems[index])->mbFlag;
     }
@@ -86,7 +87,7 @@ bool cSC4CrimeSimulator::GetVisualsCreated(uint32_t index)
 // FUNCTION: 0x0069fd40
 bool cSC4CrimeSimulator::SetVisualsCreated(uint32_t index, uint32_t value)
 {
-    View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
+    View_ab0dc8* self = reinterpret_cast<View_ab0dc8*>(this);
     if (index < self->mItems.size()) {
         static_cast<Item_ab0dc8*>(self->mItems[index])->mbFlag = *reinterpret_cast<bool*>(&value);
         return true;
@@ -97,7 +98,7 @@ bool cSC4CrimeSimulator::SetVisualsCreated(uint32_t index, uint32_t value)
 // FUNCTION: 0x0069f430
 bool cSC4CrimeSimulator::GetCrimeHotspot(void* a, void* b, void* c)
 {
-    View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
+    View_ab0dc8* self = reinterpret_cast<View_ab0dc8*>(this);
     if (self->mn88 > 0) {
         if (a) {
             *static_cast<uint8_t*>(a) = static_cast<uint8_t>(self->mn88);
@@ -338,7 +339,7 @@ bool cSC4CrimeSimulator_4::Slot03_ab0dc8_4(void* arg)
 // FUNCTION: 0x006a1860
 bool cSC4CrimeSimulator::Shutdown()
 {
-    View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
+    View_ab0dc8* self = reinterpret_cast<View_ab0dc8*>(this);
     if (self->mbInitialized) {
         self->mbInitialized = 0;
         if (self->mpGrid5c) {
@@ -593,7 +594,7 @@ struct Records_ab0dc8 {
 // CLOSE: 0x006a1960 score 6 (only the base/index order of three addresses; the original adds an integer base)
 bool cSC4CrimeSimulator::GetCrimeIncidentArray(void* arg)
 {
-    View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
+    View_ab0dc8* self = reinterpret_cast<View_ab0dc8*>(this);
     Records_ab0dc8* out = static_cast<Records_ab0dc8*>(arg);
     cB43cec_ab0dc8* app = gpB43cec;
     int32_t n = self->mItems.size();
@@ -756,7 +757,7 @@ struct Region_ab0dc8 {
 // CLOSE: 0x006a15b0 score 139 (needs the inline constructor of cUnk00a878c0; register order of the global loads)
 bool cSC4CrimeSimulator::Init()
 {
-    View_ab0dc8* self = static_cast<View_ab0dc8*>(this);
+    View_ab0dc8* self = reinterpret_cast<View_ab0dc8*>(this);
     if (!self->mbInitialized) {
         self->mbInitialized = 1;
         if (!gB48618) {

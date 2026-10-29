@@ -373,6 +373,18 @@ public:
     virtual void InitGhostModel();
     virtual void ShutdownGhostModel();
     virtual void UpdateGhostModel();
+    char unknown3c[0x40];
+    float field7c;
+    float field80;
+    char unknown84[0x4];
+    uint32_t field88;
+    char unknown8c[0x4];
+    bool field90;
+    char unknown91[0x3];
+    float field94;
+    char unknown98[0x18];
+    uint32_t fieldb0;
+    char unknownb4[0xd14];
 };
 
 // SYNTHETIC: 0x0056dc70

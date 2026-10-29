@@ -22,6 +22,12 @@ public:
     virtual uint32_t KeyFlags();
     virtual uint32_t RepeatCount();
     virtual void Slot13_ada890(uint32_t);
+    char unknown4[0x4];
+    uint32_t field8;
+    uint32_t fieldc;
+    uint32_t field10;
+    uint32_t field14;
+    uint32_t field18;
 };
 
 #endif

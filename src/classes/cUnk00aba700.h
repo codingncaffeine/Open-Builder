@@ -25,6 +25,8 @@ public:
     virtual void Slot13_aba6c0(uint32_t);
     virtual uint32_t Slot14_aba6c0();
     virtual uint32_t Slot15_aba6c0();
+    char unknown4[0x3c];
+    uint32_t field40;
 };
 
 #endif

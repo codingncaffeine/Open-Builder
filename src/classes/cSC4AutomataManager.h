@@ -63,7 +63,7 @@ struct OB_NOVTABLE cSC4AutomataManager_0 {
     virtual bool HandleViewFilterChanged(uint32_t, uint32_t) = 0;
     virtual bool HandleInsertNetworkOccupant(uint32_t) = 0;
     virtual bool HandleRemoveNetworkOccupant(uint32_t) = 0;
-    virtual void Slot53_a95880() = 0;
+    virtual bool Slot53_a95880(uint32_t) = 0;
     virtual bool HandleInsertOccupant(uint32_t) = 0;
     virtual bool HandleRemoveOccupant(uint32_t) = 0;
     virtual void HandlePostCityInit() = 0;
@@ -144,7 +144,7 @@ public:
     virtual bool HandleViewFilterChanged(uint32_t, uint32_t);
     virtual bool HandleInsertNetworkOccupant(uint32_t);
     virtual bool HandleRemoveNetworkOccupant(uint32_t);
-    virtual void Slot53_a95880();
+    virtual bool Slot53_a95880(uint32_t);
     virtual bool HandleInsertOccupant(uint32_t);
     virtual bool HandleRemoveOccupant(uint32_t);
     virtual void HandlePostCityInit();
@@ -159,6 +159,15 @@ public:
     virtual void SeedTrackedBuildingsMap();
     virtual void ScanExemplars();
     virtual void InitExemplarData();
+    char unknown10[0x38];
+    uint32_t field48;
+    bool field4c;
+    bool field4d;
+    char unknown4e[0x9ca];
+    char fielda18[0xc];
+    char fielda24[0x18];
+    uint8_t fielda3c;
+    char unknowna3d[0x4b];
 };
 
 // SYNTHETIC: 0x00512cd0

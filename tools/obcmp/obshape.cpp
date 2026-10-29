@@ -21,6 +21,7 @@
 //   get T OFF                 return the member at OFF (a: its address)
 //   set T OFF ARG             the member at OFF = argument ARG (0 = the first)
 //   setconst T OFF ARG CT CV  the same, then return the constant CV of type CT
+// --extents: "address extent" (hex), how far past this the function reaches (see thisExtent), for those that do.
 // The shapes are what the compiler emits for the spellings in tools/obcmp/test/shapes.cpp (checked by shapes.sh).
 
 #include "pe.h"
@@ -261,21 +262,60 @@ uint32_t extent(const ZydisDecoder& dec, const Image& img, const std::vector<std
     return limit;
 }
 
+// How far past `this` a member function reads or writes: the end of the furthest [reg+N] whose register still holds
+// the ecx it was called with (copied by mov, kept across calls in esi/edi/ebx/ebp), in a straight pass over its
+// instructions. A lower bound on the size of every class whose vtable holds the function (0 = no member seen).
+uint32_t thisExtent(const ZydisDecoder& dec, const Image& img, uint32_t va, uint32_t size) {
+    const uint8_t* code = img.at(va, size);
+    if (!code) return 0;
+    auto r32 = [](ZydisRegister r) { return ZydisRegisterGetLargestEnclosing(ZYDIS_MACHINE_MODE_LEGACY_32, r); };
+    std::set<ZydisRegister> holds{ZYDIS_REGISTER_ECX};
+    uint32_t end = 0;
+    for (uint32_t o = 0; o < size;) {
+        Ins x;
+        if (ZYAN_FAILED(ZydisDecoderDecodeFull(&dec, code + o, size - o, &x.i, x.o))) break;
+        o += x.i.length;
+        for (unsigned k = 0; k < x.i.operand_count_visible; ++k) {
+            const auto& m = x.o[k];
+            if (m.type != ZYDIS_OPERAND_TYPE_MEMORY || m.mem.index != ZYDIS_REGISTER_NONE || m.mem.segment == ZYDIS_REGISTER_FS ||
+                !holds.count(m.mem.base))
+                continue;
+            int64_t d = m.mem.disp.value;
+            unsigned width = x.i.mnemonic == ZYDIS_MNEMONIC_LEA ? 0 : std::max(1u, unsigned(m.size) / 8);  // lea: an address, maybe one past the end
+            if (d >= 0 && d < 0x10000) end = std::max(end, uint32_t(d) + width);
+        }
+        if (x.i.mnemonic == ZYDIS_MNEMONIC_CALL) {
+            holds.erase(ZYDIS_REGISTER_EAX), holds.erase(ZYDIS_REGISTER_ECX), holds.erase(ZYDIS_REGISTER_EDX);
+            continue;
+        }
+        const auto &d = x.o[0], &s = x.o[1];
+        bool copy = x.i.mnemonic == ZYDIS_MNEMONIC_MOV && x.i.operand_count_visible == 2 &&
+                    d.type == ZYDIS_OPERAND_TYPE_REGISTER && s.type == ZYDIS_OPERAND_TYPE_REGISTER &&
+                    r32(d.reg.value) == d.reg.value && holds.count(s.reg.value);
+        for (unsigned k = 0; k < x.i.operand_count; ++k)  // implicit operands too (cdq, mul, stos...)
+            if (x.o[k].type == ZYDIS_OPERAND_TYPE_REGISTER && (x.o[k].actions & ZYDIS_OPERAND_ACTION_MASK_WRITE))
+                holds.erase(r32(x.o[k].reg.value));
+        if (copy) holds.insert(d.reg.value);
+    }
+    return end;
+}
+
 }  // namespace
 
 int main(int argc, char** argv) {
     std::vector<std::string> pos;
     std::string out;
-    std::ofstream sizesOut;
+    std::ofstream sizesOut, extentsOut;
     size_t longer = 0;
     for (int i = 1; i < argc; ++i) {
         std::string a = argv[i];
         if (a == "--out" && i + 1 < argc) out = argv[++i];
         else if (a == "--sizes" && i + 1 < argc) sizesOut.open(argv[++i]);
+        else if (a == "--extents" && i + 1 < argc) extentsOut.open(argv[++i]);
         else pos.push_back(a);
     }
     if (pos.size() != 2) {
-        std::fprintf(stderr, "usage: obshape <program> <functions.tsv> [--out shapes.tsv] [--sizes sizes.tsv]\n");
+        std::fprintf(stderr, "usage: obshape <program> <functions.tsv> [--out shapes.tsv] [--sizes sizes.tsv] [--extents extents.tsv]\n");
         return 2;
     }
     Image img;
@@ -330,11 +370,13 @@ int main(int argc, char** argv) {
         std::string room = std::to_string(std::min(r, limit));
         os << std::hex << va << std::dec << "\t" << room << "\t" << p << "\t" << returns(v) << "\t" << sh << "\n";
         ++count;
+        uint32_t e = sizesOut.is_open() || extentsOut.is_open() ? std::max(extent(dec, img, fns, k), size) : size;
         if (sizesOut.is_open()) {
-            uint32_t e = extent(dec, img, fns, k);
             if (e > size) ++longer;
-            sizesOut << std::hex << va << "\t" << std::max(e, size) << std::dec << "\n";
+            sizesOut << std::hex << va << "\t" << e << std::dec << "\n";
         }
+        if (extentsOut.is_open())
+            if (uint32_t t = thisExtent(dec, img, va, e)) extentsOut << std::hex << va << "\t" << t << std::dec << "\n";
     }
     if (sizesOut.is_open()) std::fprintf(stderr, "%zu functions longer than listed\n", longer);
     std::fprintf(stderr, "%zu functions, %zu one-line shapes\n", count, shaped);

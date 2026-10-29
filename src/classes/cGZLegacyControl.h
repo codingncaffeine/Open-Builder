@@ -59,6 +59,9 @@ public:
     virtual void SetID(bool);
     virtual bool ImplementInterface(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool SetParent(uint32_t);
+    char unknownc[0x10];
+    bool field1c;
+    char unknown1d[0x3];
 };
 
 // SYNTHETIC: 0x0094c761

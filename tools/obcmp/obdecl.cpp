@@ -2,7 +2,7 @@
 // for them in the original: their vtables, adjustor thunks and deleting destructors.
 //
 //   obdecl <classes.tsv> <slots.tsv> <deleting.tsv> <known.tsv> [--purecall ADDR] [--src DIR] [--out DIR]
-//          [--report FILE] [--exclude FILE] [--shapes shapes.tsv]
+//          [--report FILE] [--exclude FILE] [--shapes shapes.tsv] [--extents extents.tsv]
 //
 // classes.tsv, slots.tsv, deleting.tsv: obclass output. known.tsv: the slots of the classes declared by hand
 // (tools/known-slots.sh), which generated classes derive from by name; hand classes are found by their
@@ -154,6 +154,7 @@ struct Model {
     std::vector<std::pair<uint32_t, std::pair<int32_t, size_t>>> thunks;  // thunk address, its slot
     bool hasDtor = false, inlineDtor = true, o1 = false;
     bool assumedSize = false;  // no SIZE annotation: the size is a guess the derived classes check
+    bool reachedSize = false;  // no SIZE annotation: the size is as far as its functions reach, a lower bound
     uint32_t ownDeleting = 0;
     std::vector<std::string> includes;
 };
@@ -267,7 +268,7 @@ std::string methodName(const Names& n, uint32_t vtable, size_t index, const std:
 
 int main(int argc, char** argv) {
     std::vector<std::string> pos;
-    std::string srcDir = "src", outDir = "src/classes", reportPath, excludePath, shapesPath, only;
+    std::string srcDir = "src", outDir = "src/classes", reportPath, excludePath, shapesPath, extentsPath, only;
     std::string namesPath, namesBeforePath, renameMapPath;
     uint32_t purecall = 0;
     for (int i = 1; i < argc; ++i) {
@@ -282,6 +283,7 @@ int main(int argc, char** argv) {
         else if (a == "--report") reportPath = value();
         else if (a == "--exclude") excludePath = value();
         else if (a == "--shapes") shapesPath = value();
+        else if (a == "--extents") extentsPath = value();
         else if (a == "--only") only = value();
         else if (a == "--names") namesPath = value();
         else if (a == "--names-before") namesBeforePath = value();
@@ -345,6 +347,12 @@ int main(int argc, char** argv) {
         if (v.size() <= i) v.resize(i + 1);
         v[i] = s;
     }
+    // How far past this each function reaches (obshape --extents): a class of no known size is at least as big as its
+    // vtables' functions reach.
+    std::map<uint32_t, uint32_t> reach;
+    if (!extentsPath.empty())
+        for (auto& r : readTsv(extentsPath))
+            if (r.size() >= 2) reach[parseHex(r[0])] = parseHex(r[1]);
     // Functions in vtables at two or more different slot indices: bodies the linker folded (/OPT:ICF) for several
     // methods, so the same function in two slots says nothing about their being one method.
     std::set<uint32_t> folded_;
@@ -599,6 +607,17 @@ int main(int argc, char** argv) {
             m.end = 0;  // unknown
         }
         if (m.size && m.end && m.size < m.end) return fail("size " + hexn(m.size) + " smaller than its subobjects");
+        // No size from operator new or a derived class: at least as far as the functions in its vtables reach past the
+        // subobject they are called on (thunks left out), so the members they use can be placed. Not checked as a size.
+        if ((!m.size || m.assumedSize) && m.end) {
+            uint32_t far = 0;
+            for (auto& [o, v] : r.layout)
+                for (auto& s : slots[v])
+                    if (s.kind != "thunk" && s.kind != "thunk-vtordisp")
+                        if (auto e = reach.find(s.target); e != reach.end()) far = std::max(far, uint32_t(o) + e->second);
+            far = (far + 3) & ~3u;
+            if (far > std::max(m.size, m.end)) m.size = far, m.assumedSize = false, m.reachedSize = true;
+        }
 
         // Identities and final overriders as the bases have them.
         for (auto& s : m.subs) {
@@ -1317,6 +1336,9 @@ int main(int argc, char** argv) {
                 bool pointer = !fd.type.empty() && fd.type.back() == '*' && fd.name.find('[') == std::string::npos;
                 bool address = b.shape->kind == "get" && b.shape->detail[0] == "a";
                 if (pointer && !address && (b.shape->kind != "get" || sigs[b.root].ret != 'P')) continue;
+                // a float field moved as a dword (its bits through eax): a body would convert int <-> float
+                if (fd.type == "float" && fd.name.find('[') == std::string::npos && !address && b.shape->detail[0] != "f")
+                    continue;
             }
             keep.push_back(b);
             bodied.insert({b.owner, b.root});
@@ -1499,7 +1521,7 @@ int main(int argc, char** argv) {
         h << "\n";
         for (auto& s : synthesized) h << s << "\n";
         for (auto& [v, b] : vtables) h << "// VTABLE: 0x" << hex8(v) << (b.empty() ? "" : " " + b) << "\n";
-        if (m.size && !m.assumedSize) h << "// SIZE 0x" << hexn(m.size) << "\n";
+        if (m.size && !m.assumedSize && !m.reachedSize) h << "// SIZE 0x" << hexn(m.size) << "\n";
         h << "class " << m.name;
         bool first = true;
         for (auto& s : m.subs) {
@@ -1511,7 +1533,7 @@ int main(int argc, char** argv) {
         for (auto& l : lines) h << "    " << l << "\n";
         h << "};\n";
         // The 2003 compiler (32-bit) checks the size; other compilers lay it out for their own pointer size.
-        if (m.size && !m.assumedSize)
+        if (m.size && !m.assumedSize && !m.reachedSize)
             h << "#ifdef _MSC_VER\ntypedef char ob_size_" << m.name << "[sizeof(" << m.name << ") == 0x" << hexn(m.size)
               << " ? 1 : -1];\n#endif\n";
         for (auto& [a, n] : synthetic) h << "\n// SYNTHETIC: 0x" << hex8(a) << "\n// " << n << "\n";

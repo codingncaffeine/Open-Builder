@@ -53,6 +53,7 @@ public:
     virtual bool Slot38_a99d78(uint32_t, uint32_t, uint32_t);
     virtual bool Slot39_a99d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot40_a99d78();
+    char field1c[0x18];
 };
 
 // SYNTHETIC: 0x005403d0

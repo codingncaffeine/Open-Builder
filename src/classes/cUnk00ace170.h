@@ -9,6 +9,7 @@
 class cUnk00ace170 {
 public:
     virtual uint32_t Slot00_ace170(uint32_t);
+    char unknown4[0x10];
 };
 
 #endif

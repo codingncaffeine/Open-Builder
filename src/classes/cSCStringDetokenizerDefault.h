@@ -12,7 +12,7 @@ class cSCStringDetokenizerDefault : public cSCStringDetokenizer {
 public:
     virtual ~cSCStringDetokenizerDefault();
     virtual bool Init();
-    char unknown4[0x90];
+    char unknown30[0x64];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSCStringDetokenizerDefault[sizeof(cSCStringDetokenizerDefault) == 0x94 ? 1 : -1];

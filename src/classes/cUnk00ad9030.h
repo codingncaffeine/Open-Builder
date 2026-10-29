@@ -8,12 +8,12 @@
 // SIZE 0x4
 class cUnk00ad9030 {
 public:
-    virtual void Slot00_ad9030() = 0;
-    virtual void Slot01_ad9030() = 0;
-    virtual void Slot02_ad9030() = 0;
-    virtual void Slot03_ad9030() = 0;
-    virtual void Slot04_ad9030() = 0;
-    virtual void Slot05_ad9030() = 0;
+    virtual bool Slot00_ad9030(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot01_ad9030() = 0;
+    virtual uint32_t Slot02_ad9030() = 0;
+    virtual uint32_t Slot03_ad9030() = 0;
+    virtual bool Slot04_ad9030(uint32_t, uint32_t) = 0;
+    virtual bool Slot05_ad9030(uint32_t, uint32_t) = 0;
     virtual void Slot06_ad9030() = 0;
     virtual void Slot07_ad9030() = 0;
     virtual void Slot08_ad9030() = 0;

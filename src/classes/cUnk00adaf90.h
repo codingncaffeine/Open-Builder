@@ -12,6 +12,7 @@ public:
     virtual uint32_t Slot01_adaf90();
     virtual uint32_t Slot02_adaf90();
     virtual bool Slot03_adaf90(uint32_t);
+    char unknown4[0x4];
 };
 
 #endif

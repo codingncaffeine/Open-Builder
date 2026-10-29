@@ -11,6 +11,7 @@ class cRZTextFile : public cRZFile {
 public:
     virtual ~cRZTextFile();
     virtual bool Open(uint32_t, uint32_t, uint32_t);
+    char unknown80[0x8];
 };
 
 // SYNTHETIC: 0x009307fc

@@ -11,6 +11,7 @@ class cUnk00ace61c : public cUnk00ace60c {
 public:
     virtual void Slot00_ace60c(uint32_t);
     virtual void Slot01_ace60c(uint32_t, uint32_t);
+    char unknown4[0x24];
 };
 
 #endif

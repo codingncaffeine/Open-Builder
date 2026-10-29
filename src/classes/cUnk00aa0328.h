@@ -9,6 +9,8 @@
 class cUnk00aa0328 {
 public:
     virtual uint32_t Slot00_aa0328();
+    char unknown4[0x8];
+    uint32_t fieldc;
 };
 
 #endif

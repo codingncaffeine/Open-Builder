@@ -15,6 +15,7 @@ public:
     virtual bool Slot06_ace69c();
     virtual bool OnStart(uint32_t);
     virtual uint32_t Slot13_ace6f8();
+    char unknown38[0x34];
 };
 
 // SYNTHETIC: 0x004ec680

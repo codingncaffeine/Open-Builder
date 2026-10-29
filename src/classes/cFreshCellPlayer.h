@@ -36,7 +36,7 @@ public:
     virtual bool Slot16_ad4830(uint32_t, uint32_t, uint32_t);
     virtual bool Slot17_ad4830(uint32_t, uint32_t);
     virtual void Slot18_ad4830();
-    char unknown8[0x1c];
+    char unknownc[0x18];
     uint32_t field24;
     char unknown28[0x15];
     bool field3d;

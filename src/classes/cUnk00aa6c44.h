@@ -12,6 +12,7 @@ public:
     virtual void Slot01_aa6c44(uint32_t);
     virtual void Slot02_aa6c44();
     virtual void Slot03_aa6c44(uint32_t);
+    char unknown4[0x4];
 };
 
 #endif

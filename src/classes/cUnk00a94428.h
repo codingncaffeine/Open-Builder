@@ -47,6 +47,7 @@ public:
     virtual void Slot01_a94428();
     virtual void Slot02_a94428();
     virtual void Slot03_a94428(uint32_t);
+    char unknown10[0x50];
 };
 
 // SYNTHETIC: 0x004f8890

@@ -67,6 +67,7 @@
 #include "classes/cUnk00a881d4.h"
 #include "classes/cUnk00a881e8.h"
 #include "classes/cSC4FeatureManager.h"
+#include "classes/cUnk00a8c970.h"
 #include "classes/cSC4LotConfiguration.h"
 #include "classes/cUnk00a8d260.h"
 #include "classes/cUnk00a8d424.h"
@@ -227,6 +228,7 @@
 #include "classes/cUnk00a942b8.h"
 #include "classes/cUnk00a94428.h"
 #include "classes/cUnk00a944bc.h"
+#include "classes/cSC4AircraftManager.h"
 #include "classes/cUnk00a949b8.h"
 #include "classes/cUnk00a95384.h"
 #include "classes/cUnk00a95390.h"
@@ -241,6 +243,8 @@
 #include "classes/cUnk00a95590.h"
 #include "classes/cSC4AutomataManager.h"
 #include "classes/cSC4AutomataCOMDirector.h"
+#include "classes/cSC4AutomataGenerator.h"
+#include "classes/cUnk00a95f00.h"
 #include "classes/cUnk00a960bc.h"
 #include "classes/cUnk00a96134.h"
 #include "classes/cUnk00a96138.h"
@@ -250,10 +254,13 @@
 #include "classes/cUnk00a985b0.h"
 #include "classes/cUnk00a99d34.h"
 #include "classes/cSC4PathInfo.h"
+#include "classes/cSC4PedestrianManager.h"
 #include "classes/cUnk00a9b768.h"
 #include "classes/cSC4TrafficAutomataManager.h"
+#include "classes/cSC4VehicleManager.h"
 #include "classes/cUnk00a9d894.h"
 #include "classes/cSC4Watercraft.h"
+#include "classes/cSC4WatercraftManager.h"
 #include "classes/cSC4DisasterManagerEarthquake.h"
 #include "classes/cUnk00a9e160.h"
 #include "classes/cSC4DisasterManagerEffect.h"
@@ -271,6 +278,7 @@
 #include "classes/cUnk00a9e940.h"
 #include "classes/cSC4DisasterManagerVolcano.h"
 #include "classes/cSC4DisasterInstanceVolcano.h"
+#include "classes/cUnk00a9eaa0.h"
 #include "classes/cSC4ViewInputControlTorch.h"
 #include "classes/cSC4DecalEffect.h"
 #include "classes/cUnk00a9eea4.h"
@@ -405,7 +413,9 @@
 #include "classes/cUnk00aa8bbc.h"
 #include "classes/cUnk00aa8c5c.h"
 #include "classes/cUnk00aa8eb4.h"
+#include "classes/cUnk00aa99a8.h"
 #include "classes/cSC4PowerLineTool.h"
+#include "classes/cUnk00aaa5c0.h"
 #include "classes/cUnk00aaaa9c.h"
 #include "classes/cUnk00aaaaac.h"
 #include "classes/cUnk00aaaac4.h"
@@ -531,6 +541,7 @@
 #include "classes/cUnk00ab95f0.h"
 #include "classes/cSC4WinRegionView.h"
 #include "classes/cUnk00ab9910.h"
+#include "classes/cWinBMPViewGVExtra.h"
 #include "classes/cSC4WinSnapshotTaker.h"
 #include "classes/cSC4WinSnapshotAlbum.h"
 #include "classes/cSC4WinSplashScreen.h"
@@ -719,6 +730,8 @@
 #include "classes/cUnk00ae4d28.h"
 #include "classes/cUnk00ae4da8.h"
 #include "classes/cUnk00ae5404.h"
+#include "classes/cUnk00ae542c.h"
+#include "classes/cUnk00ae5468.h"
 #include "classes/cUnk00ae5bf4.h"
 #include "classes/cUnk00ae5c20.h"
 #include "classes/cUnk00ae5c4c.h"
@@ -799,6 +812,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a881d4;
     (void)new cUnk00a881e8;
     (void)new cSC4FeatureManager;
+    (void)new cUnk00a8c970;
     (void)new cSC4LotConfiguration;
     (void)new cUnk00a8d260;
     (void)new cUnk00a8d424;
@@ -959,6 +973,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a942b8;
     (void)new cUnk00a94428;
     (void)new cUnk00a944bc;
+    (void)new cSC4AircraftManager;
     (void)new cUnk00a949b8;
     (void)new cUnk00a95384;
     (void)new cUnk00a95390;
@@ -973,6 +988,8 @@ void GeneratedClasses_game()
     (void)new cUnk00a95590;
     (void)new cSC4AutomataManager;
     (void)new cSC4AutomataCOMDirector;
+    (void)new cSC4AutomataGenerator;
+    (void)new cUnk00a95f00;
     (void)new cUnk00a960bc;
     (void)new cUnk00a96134;
     (void)new cUnk00a96138;
@@ -982,10 +999,13 @@ void GeneratedClasses_game()
     (void)new cUnk00a985b0;
     (void)new cUnk00a99d34;
     (void)new cSC4PathInfo;
+    (void)new cSC4PedestrianManager;
     (void)new cUnk00a9b768;
     (void)new cSC4TrafficAutomataManager;
+    (void)new cSC4VehicleManager;
     (void)new cUnk00a9d894;
     (void)new cSC4Watercraft;
+    (void)new cSC4WatercraftManager;
     (void)new cSC4DisasterManagerEarthquake;
     (void)new cUnk00a9e160;
     (void)new cSC4DisasterManagerEffect;
@@ -1003,6 +1023,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a9e940;
     (void)new cSC4DisasterManagerVolcano;
     (void)new cSC4DisasterInstanceVolcano;
+    (void)new cUnk00a9eaa0;
     (void)new cSC4ViewInputControlTorch;
     (void)new cSC4DecalEffect;
     (void)new cUnk00a9eea4;
@@ -1137,7 +1158,9 @@ void GeneratedClasses_game()
     (void)new cUnk00aa8bbc;
     (void)new cUnk00aa8c5c;
     (void)new cUnk00aa8eb4;
+    (void)new cUnk00aa99a8;
     (void)new cSC4PowerLineTool;
+    (void)new cUnk00aaa5c0;
     (void)new cUnk00aaaa9c;
     (void)new cUnk00aaaaac;
     (void)new cUnk00aaaac4;
@@ -1263,6 +1286,7 @@ void GeneratedClasses_game()
     (void)new cUnk00ab95f0;
     (void)new cSC4WinRegionView;
     (void)new cUnk00ab9910;
+    (void)new cWinBMPViewGVExtra;
     (void)new cSC4WinSnapshotTaker;
     (void)new cSC4WinSnapshotAlbum;
     (void)new cSC4WinSplashScreen;
@@ -1451,6 +1475,8 @@ void GeneratedClasses_game()
     (void)new cUnk00ae4d28;
     (void)new cUnk00ae4da8;
     (void)new cUnk00ae5404;
+    (void)new cUnk00ae542c;
+    (void)new cUnk00ae5468;
     (void)new cUnk00ae5bf4;
     (void)new cUnk00ae5c20;
     (void)new cUnk00ae5c4c;

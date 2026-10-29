@@ -10,6 +10,7 @@ class cUnk00ab2ac4 : public cUnk00a80784 {
 public:
     virtual bool Slot03_a80784(void*);
     virtual bool Slot04_a80784(void*);
+    char unknown4[0x9c];
 };
 
 #endif

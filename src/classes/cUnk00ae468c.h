@@ -12,6 +12,7 @@ public:
     virtual uint32_t Slot01_ae468c();
     virtual uint32_t Slot02_ae468c();
     virtual bool Slot03_ae468c(uint32_t);
+    char unknown4[0x4];
 };
 
 #endif

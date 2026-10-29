@@ -10,7 +10,7 @@
 class cSC4ViewInputControlEffect : public cSC4ViewInputControl {
 public:
     virtual ~cSC4ViewInputControlEffect();
-    virtual void Slot30_a902e0();
+    virtual void Slot30_a902e0(uint32_t);
     virtual bool Init();
     virtual bool Shutdown();
     virtual bool ShouldStack();
@@ -19,6 +19,7 @@ public:
     virtual bool OnMouseUpL(uint32_t, uint32_t, uint32_t);
     virtual bool OnMouseMove(uint32_t, uint32_t, uint32_t);
     virtual bool OnMouseExit();
+    char unknown28[0x7c];
 };
 
 // SYNTHETIC: 0x004bb140

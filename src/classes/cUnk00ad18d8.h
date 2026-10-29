@@ -11,9 +11,9 @@
 class cUnk00ad18d8 : public cGZPersistDBSerialRecord {
 public:
     virtual ~cUnk00ad18d8() {}
-    virtual void Slot03_ad1818();
     virtual bool Slot17_ad1818(uint32_t, uint32_t);
     virtual bool Slot18_ad1818();
+    virtual void Slot10_ad9030();
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad18d8[sizeof(cUnk00ad18d8) == 0x10 ? 1 : -1];

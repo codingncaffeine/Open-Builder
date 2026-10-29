@@ -13,6 +13,8 @@ public:
     virtual void Slot02_aaaac4();
     virtual uint32_t Slot03_aaaac4();
     virtual uint32_t Slot04_aaaac4();
+    uint32_t field4;
+    char unknown8[0x8];
 };
 
 #endif

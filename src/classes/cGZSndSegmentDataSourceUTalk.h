@@ -30,6 +30,12 @@ public:
     virtual uint32_t GetPosition();
     virtual bool SetPosition(uint32_t);
     virtual ~cGZSndSegmentDataSourceUTalk();
+    char unknown4[0x18];
+    char field1c[0x14];
+    uint32_t field30;
+    char unknown34[0x10];
+    uint32_t field44;
+    char unknown48[0x8];
 };
 
 // SYNTHETIC: 0x0096c1c5

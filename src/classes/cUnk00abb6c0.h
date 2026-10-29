@@ -51,6 +51,7 @@ public:
     virtual uint32_t Slot15_abb6c0(uint32_t);
     virtual uint32_t Slot16_abb6c0(uint32_t);
     virtual uint32_t Slot17_abb6c0(uint32_t);
+    char unknownc[0x20];
 };
 
 // SYNTHETIC: 0x005bcb50

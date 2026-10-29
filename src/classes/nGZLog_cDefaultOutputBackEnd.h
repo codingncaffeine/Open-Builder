@@ -18,6 +18,8 @@ public:
     virtual void SetName(uint32_t);
     virtual uint32_t Name();
     virtual ~nGZLog_cDefaultOutputBackEnd();
+    char unknown4[0x1c];
+    uint32_t field20;
 };
 
 #endif

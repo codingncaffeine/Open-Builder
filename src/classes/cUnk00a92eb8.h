@@ -10,6 +10,7 @@
 class cUnk00a92eb8 : public cUnk00a92e94 {
 public:
     virtual uint32_t Slot00_a92e94(uint32_t);
+    char unknown4[0x80];
 };
 
 #endif

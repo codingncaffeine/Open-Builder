@@ -15,6 +15,7 @@ public:
     virtual uint32_t Slot04_acfbe4();
     virtual ~cUnk00acfbe4();
     virtual uint32_t Slot06_acfbe4(uint32_t);
+    char unknown4[0x4];
 };
 
 // SYNTHETIC: 0x00920b1d

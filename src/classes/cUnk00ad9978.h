@@ -35,6 +35,7 @@ public:
     virtual bool Slot24_ad9978(uint32_t);
     virtual bool Slot25_ad9978(uint32_t);
     virtual bool Slot26_ad9978(uint32_t);
+    char unknown4[0xc];
 };
 
 // SYNTHETIC: 0x0097ee67

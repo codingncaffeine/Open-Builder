@@ -12,7 +12,7 @@ class cUnk00ad2164 : public nGZLog_cDefaultOutputBackEnd {
 public:
     virtual ~cUnk00ad2164() {}
     virtual void Slot07_ad21b8(uint32_t, uint32_t, uint32_t);
-    char unknown4[0x40];
+    char unknown24[0x20];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad2164[sizeof(cUnk00ad2164) == 0x44 ? 1 : -1];

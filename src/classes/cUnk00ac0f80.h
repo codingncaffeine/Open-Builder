@@ -65,6 +65,15 @@ public:
     virtual bool Slot54_ac0f80(uint32_t);
     virtual bool Slot55_ac0f80();
     virtual bool Slot56_ac0f80();
+    uint32_t field4;
+    uint32_t field8;
+    char unknownc[0x38];
+    uint32_t field44;
+    char unknown48[0x4];
+    bool field4c;
+    char unknown4d[0x3];
+    uint32_t field50;
+    char unknown54[0x8];
 };
 
 // SYNTHETIC: 0x00821660

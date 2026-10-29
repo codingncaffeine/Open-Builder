@@ -12,6 +12,7 @@ public:
     virtual void Slot01_ab34fc();
     virtual void Slot02_ab34fc();
     virtual bool Slot03_ab34fc(uint32_t);
+    char unknown4[0x3058];
 };
 
 #endif

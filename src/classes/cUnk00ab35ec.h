@@ -12,6 +12,7 @@ public:
     virtual void Slot01_ab35ec();
     virtual void Slot02_ab35ec();
     virtual void Slot03_ab35ec(uint32_t);
+    char unknown4[0x158];
 };
 
 #endif

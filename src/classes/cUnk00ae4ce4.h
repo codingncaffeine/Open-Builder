@@ -22,6 +22,7 @@ public:
     virtual uint32_t Slot11_ae4ce4(uint32_t, uint32_t);
     virtual uint32_t Slot12_ae4ce4(uint32_t);
     virtual void Slot13_ae4ce4(uint32_t);
+    char unknown4[0x8];
 };
 
 // SYNTHETIC: 0x0092b4d2

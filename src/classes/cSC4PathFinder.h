@@ -42,6 +42,18 @@ public:
     virtual void ReleasePathNodes();
     virtual void GetCompressedRoute(void*, void*);
     virtual ~cSC4PathFinder();
+    char unknown4[0x64];
+    uint32_t field68;
+    uint32_t field6c;
+    char unknown70[0x4];
+    uint32_t field74;
+    char unknown78[0x8];
+    uint32_t field80;
+    char unknown84[0xc];
+    uint32_t field90;
+    char unknown94[0x2c];
+    uint32_t fieldc0;
+    char unknownc4[0x309c];
 };
 
 // SYNTHETIC: 0x006d7050

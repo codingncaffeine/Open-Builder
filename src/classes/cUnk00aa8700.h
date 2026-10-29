@@ -10,6 +10,7 @@ class cUnk00aa8700 {
 public:
     virtual uint32_t Slot00_aa8700(uint32_t);
     virtual void Slot01_aa8700(uint32_t, uint32_t);
+    char unknown4[0x24];
 };
 
 #endif

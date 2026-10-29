@@ -11,6 +11,7 @@ public:
     virtual void Slot00_ac0548(uint32_t);
     virtual uint32_t Slot01_ac0548();
     virtual void Slot02_ac0548(uint32_t);
+    uint32_t field4;
 };
 
 #endif

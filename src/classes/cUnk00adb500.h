@@ -24,7 +24,7 @@ public:
     virtual void Slot31_aefde0();
     virtual void Slot32_aefde0();
     virtual void Slot33_aefde0();
-    char unknown4[0xd8];
+    char unknown88[0x54];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adb500[sizeof(cUnk00adb500) == 0xdc ? 1 : -1];

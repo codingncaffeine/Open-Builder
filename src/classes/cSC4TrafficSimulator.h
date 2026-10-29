@@ -52,6 +52,22 @@ public:
     virtual void Slot41_ab33d0();
     virtual void GetOccupantCountForAllSubnetworks(uint32_t, uint32_t);
     virtual ~cSC4TrafficSimulator();
+    char unknown4[0x2c];
+    uint32_t field30;
+    char unknown34[0x4];
+    uint32_t field38;
+    char unknown3c[0x8];
+    uint32_t field44;
+    uint32_t field48;
+    char unknown4c[0x198];
+    char field1e4[0x5a4];
+    float field788;
+    char unknown78c[0x4c8];
+    float fieldc54;
+    char unknownc58[0x9c];
+    float fieldcf4;
+    char unknowncf8[0x4];
+    float fieldcfc;
 };
 
 // SYNTHETIC: 0x007215a0

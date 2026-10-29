@@ -116,6 +116,23 @@ public:
     virtual bool Slot46_ac3090();
     virtual void Slot47_ac3090();
     virtual void Slot48_ac3090();
+    char field8[0xb0];
+    bool fieldb8;
+    char unknownb9[0x3];
+    uint32_t fieldbc;
+    char unknownc0[0x8];
+    bool fieldc8;
+    char unknownc9[0x3];
+    uint32_t fieldcc;
+    char unknownd0[0x18];
+    char fielde8[0x40];
+    uint32_t field128;
+    char unknown12c[0xc];
+    uint32_t field138;
+    uint32_t field13c;
+    char unknown140[0x8];
+    uint32_t field148;
+    uint32_t field14c;
 };
 
 // SYNTHETIC: 0x0087ac20

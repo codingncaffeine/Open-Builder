@@ -13,6 +13,7 @@ public:
     virtual void Slot02_abf5a8();
     virtual ~cUnk00abf5a8();
     virtual void Slot04_abf5a8();
+    char unknown4[0x4];
 };
 
 // SYNTHETIC: 0x00817540

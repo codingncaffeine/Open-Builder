@@ -12,6 +12,7 @@ public:
     virtual void AddRef();
     virtual void Release();
     virtual bool DoMessage(uint32_t);
+    char unknown4[0x4];
 };
 
 #endif

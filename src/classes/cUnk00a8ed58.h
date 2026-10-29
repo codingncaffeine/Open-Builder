@@ -9,6 +9,7 @@
 class cUnk00a8ed58 {
 public:
     virtual ~cUnk00a8ed58() {}
+    char unknown4[0x4];
 };
 
 #endif

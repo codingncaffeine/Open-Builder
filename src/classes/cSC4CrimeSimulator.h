@@ -84,6 +84,11 @@ public:
     void Fn006a07a0();
     // STUB: 0x006a1530
     void Fn006a1530();
+    char unknown10[0x4c];
+    uint32_t field5c;
+    char unknown60[0x1c];
+    uint32_t field7c;
+    char unknown80[0x5c];
 };
 
 // SYNTHETIC: 0x006a05a0

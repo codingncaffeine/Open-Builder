@@ -17,6 +17,7 @@ public:
     virtual void Slot06_ac5268(uint32_t);
     virtual void Slot07_ac5268(uint32_t);
     virtual void Slot08_ac5268(uint32_t);
+    char unknown4[0x4];
 };
 
 #endif

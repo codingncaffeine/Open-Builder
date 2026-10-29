@@ -41,6 +41,9 @@ public:
     virtual void Slot31_aefde0() = 0;
     virtual void Slot32_aefde0() = 0;
     virtual void Slot33_aefde0() = 0;
+    char unknown4[0x38];
+    bool field3c;
+    char unknown3d[0x4b];
 };
 
 #endif

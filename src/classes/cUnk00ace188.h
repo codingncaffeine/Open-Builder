@@ -12,6 +12,7 @@ public:
     virtual ~cUnk00ace188();
     virtual void Slot03_acd504(uint32_t);
     virtual void Slot05_acd504(uint32_t);
+    char unknown2c[0xc];
 };
 
 // SYNTHETIC: 0x00908551

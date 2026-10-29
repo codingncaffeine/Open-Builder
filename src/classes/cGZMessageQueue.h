@@ -38,6 +38,7 @@ public:
     virtual bool GetBackMessageBlock(uint32_t);
     virtual uint32_t GetMessageCount();
     virtual ~cGZMessageQueue();
+    char unknown4[0x18];
 };
 
 // SYNTHETIC: 0x0092fb90

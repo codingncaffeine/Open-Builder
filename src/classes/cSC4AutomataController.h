@@ -13,7 +13,7 @@ struct OB_NOVTABLE cSC4AutomataController_0 {
     virtual unsigned int Release() = 0;
     virtual bool Init() = 0;
     virtual bool Shutdown() = 0;
-    virtual void Slot05_a95d90() = 0;
+    virtual uint32_t Slot05_a95d90() = 0;
     virtual uint32_t GetOccupant() = 0;
     virtual uint32_t GetTemplateName() = 0;
     virtual uint32_t GetTemplate() = 0;
@@ -24,7 +24,7 @@ struct OB_NOVTABLE cSC4AutomataController_0 {
     virtual void Slot13_a95d90(uint32_t, uint32_t) = 0;
     virtual void SetOccupant(uint32_t) = 0;
     virtual void SetTemplate(uint32_t) = 0;
-    virtual void Slot16_a95d90() = 0;
+    virtual void Slot16_a95d90(uint32_t) = 0;
     virtual void SetPosition(uint32_t) = 0;
     virtual void Activate(uint32_t) = 0;
     virtual void SetLifetime(uint32_t) = 0;
@@ -93,6 +93,13 @@ public:
     virtual void IsTickable();
     virtual void DoAnimationTick(uint32_t, uint32_t, uint32_t);
     virtual void FinalRelease();
+    char unknown8[0x4];
+    uint32_t fieldc;
+    uint32_t field10;
+    char unknown14[0x10];
+    char field24[0x30];
+    uint32_t field54;
+    char unknown58[0x4];
 };
 
 #endif

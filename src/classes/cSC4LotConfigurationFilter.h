@@ -13,6 +13,7 @@ public:
     virtual void Release();
     virtual bool IsLotConfigurationIncluded(uint32_t);
     virtual ~cSC4LotConfigurationFilter() {}
+    char unknown4[0x4];
 };
 
 // SYNTHETIC: 0x004897a0

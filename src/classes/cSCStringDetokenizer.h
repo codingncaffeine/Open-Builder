@@ -23,6 +23,9 @@ public:
     virtual ~cSCStringDetokenizer();
     virtual bool PerformDetokenize(uint32_t, uint32_t);
     virtual bool ConvertToken(uint32_t, uint32_t);
+    char unknown4[0x28];
+    bool field2c;
+    char unknown2d[0x3];
 };
 
 // SYNTHETIC: 0x006013d0

@@ -29,6 +29,7 @@ public:
     virtual bool Slot18_abf478(uint32_t);
     virtual uint32_t Slot19_abf478();
     virtual bool Slot20_abf478(uint32_t);
+    char unknown4[0x18];
 };
 
 #endif

@@ -25,6 +25,11 @@ public:
     virtual uint32_t Slot14_aa0f48();
     virtual uint32_t Slot15_aa0f48();
     virtual void Slot16_aa0f48(uint32_t);
+    char unknown4[0x4];
+    uint32_t field8;
+    bool fieldc;
+    char unknownd[0x3];
+    char field10[0x8];
 };
 
 #endif

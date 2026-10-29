@@ -30,6 +30,9 @@ public:
     virtual uint32_t Slot04_ad7638();
     virtual void Slot05_ad7638(uint32_t);
     virtual void* Slot06_ad7638();
+    uint32_t field30;
+    bool field34;
+    char unknown35[0x3];
 };
 
 // SYNTHETIC: 0x0096ba55

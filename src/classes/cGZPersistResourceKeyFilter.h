@@ -13,6 +13,7 @@ public:
     virtual void Release();
     virtual bool IsKeyIncluded(uint32_t);
     virtual ~cGZPersistResourceKeyFilter() {}
+    char unknown4[0x4];
 };
 
 #endif

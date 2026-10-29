@@ -8,10 +8,10 @@
 // SIZE 0x10
 class cGZPersistDBSerialRecord {
 public:
-    virtual bool Slot00_ad8d88(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad8d88();
-    virtual uint32_t Slot02_ad8d88();
-    virtual void Slot03_ad1818() = 0;
+    virtual bool Slot00_ad9030(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad9030();
+    virtual uint32_t Slot02_ad9030();
+    virtual void Slot10_ad9030() = 0;
     virtual bool GetFieldUint8(uint32_t);
     virtual bool GetFieldSint8(uint32_t);
     virtual bool GetFieldUint16(uint32_t);

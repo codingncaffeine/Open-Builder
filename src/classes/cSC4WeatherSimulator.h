@@ -33,6 +33,12 @@ public:
     virtual float GetAmbientWind(uint32_t);
     virtual void GetWindAtCell(uint32_t, uint32_t, uint32_t);
     virtual ~cSC4WeatherSimulator();
+    char unknown4[0x28];
+    uint32_t field2c;
+    uint32_t field30;
+    float field34;
+    float field38;
+    char unknown3c[0xf4];
 };
 
 // SYNTHETIC: 0x00729330

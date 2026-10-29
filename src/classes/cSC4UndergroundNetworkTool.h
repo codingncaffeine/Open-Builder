@@ -9,8 +9,8 @@
 class cSC4UndergroundNetworkTool : public cSC4NetworkTool {
 public:
     virtual ~cSC4UndergroundNetworkTool() {}
-    virtual void Slot81_aaa950() = 0;
-    virtual void Slot82_aaa950() = 0;
+    virtual uint32_t Slot81_aaa950() = 0;
+    virtual void Slot82_aaa950(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Init();
     virtual bool Shutdown();
     virtual void Slot16_aa8748();
@@ -40,6 +40,7 @@ public:
     virtual void InsertNetworkSpecificConstraintsForCell(uint32_t);
     virtual void ReloadNetworkSpecificInfo(uint32_t);
     virtual void SetQuadTrianglesToDraw(uint32_t, uint32_t);
+    char unknown368[0x24];
 };
 
 #endif

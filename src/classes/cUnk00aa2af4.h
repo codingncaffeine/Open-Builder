@@ -11,6 +11,7 @@ public:
     virtual ~cUnk00aa2af4() {}
     virtual void Slot01_aa2af4();
     virtual bool Slot02_aa2af4();
+    char unknown4[0x8];
 };
 
 #endif

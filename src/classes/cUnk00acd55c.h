@@ -12,7 +12,7 @@ class cUnk00acd55c : public cUnk00acd504 {
 public:
     virtual void Slot03_acd504(uint32_t);
     virtual void Slot05_acd504(uint32_t);
-    char unknown4[0x28];
+    char unknownc[0x20];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00acd55c[sizeof(cUnk00acd55c) == 0x2c ? 1 : -1];

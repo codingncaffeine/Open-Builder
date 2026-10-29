@@ -10,6 +10,7 @@ class cUnk00ae67c0 {
 public:
     virtual ~cUnk00ae67c0();
     virtual uint32_t Slot01_ae67c0();
+    char unknown4[0x4];
 };
 
 // SYNTHETIC: 0x009f5c1b

@@ -14,6 +14,7 @@ public:
     virtual uint32_t Slot03_ab35d4(uint32_t);
     virtual bool Slot04_ab35d4(uint32_t);
     virtual uint32_t Slot05_ab35d4();
+    char unknown4[0x154];
 };
 
 #endif

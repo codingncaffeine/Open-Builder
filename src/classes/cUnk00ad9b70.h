@@ -28,6 +28,7 @@ public:
     virtual bool Slot18_ad9b70(uint32_t, uint32_t) = 0;
     virtual bool Slot19_ad9b70(uint32_t, uint32_t) = 0;
     virtual bool Slot20_ad9b70(uint32_t, uint32_t) = 0;
+    char unknown4[0x8];
 };
 
 #endif

@@ -14,6 +14,7 @@ public:
     virtual void Slot03_a881e8();
     virtual uint32_t Slot04_a881e8();
     virtual uint32_t Slot05_a881e8();
+    uint32_t field4;
 };
 
 #endif

@@ -16,6 +16,11 @@ public:
     virtual uint32_t GetHandle();
     virtual bool IsLoaded();
     virtual ~cGZCOMLibrary() {}
+    bool field4;
+    char unknown5[0x7];
+    uint32_t fieldc;
+    char unknown10[0x14];
+    uint32_t field24;
 };
 
 #endif

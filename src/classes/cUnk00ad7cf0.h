@@ -17,7 +17,6 @@ public:
     virtual uint32_t Slot59_ad7cf0(uint32_t);
     virtual uint32_t Slot60_ad7cf0(uint32_t);
     virtual uint32_t Slot61_ad7cf0(uint32_t);
-    virtual void Slot03_ad1818();
     virtual bool GetFieldFloat64_2(uint32_t);
     virtual bool GetFieldResKey(uint32_t);
     virtual bool Slot17_ad1818(uint32_t, uint32_t);
@@ -27,9 +26,6 @@ public:
     virtual uint32_t Slot15_ad1878(uint32_t);
     virtual bool Slot17_ad1878(uint32_t, uint32_t);
     virtual bool Slot18_ad1878();
-    virtual bool Slot00_ad8d88(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad8d88();
-    virtual uint32_t Slot02_ad8d88();
     virtual uint32_t Slot03_ad8d88();
     virtual void Slot04_ad8d88();
     virtual void Slot05_ad8d88(uint32_t);
@@ -78,6 +74,11 @@ public:
     virtual void Slot49_ad8d88(uint32_t);
     virtual bool Slot50_ad8d88(uint32_t);
     virtual bool Slot56_ad8d88(uint32_t);
+    virtual bool Slot00_ad9030(uint32_t, uint32_t);
+    virtual uint32_t Slot01_ad9030();
+    virtual uint32_t Slot02_ad9030();
+    virtual void Slot10_ad9030();
+    char unknown3c[0x4];
 };
 
 #endif

@@ -11,7 +11,7 @@
 class cUnk00a87578 : public cGZPersistResourceKeyFilter {
 public:
     virtual bool IsKeyIncluded(uint32_t);
-    char unknown4[0x8];
+    char unknown8[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a87578[sizeof(cUnk00a87578) == 0xc ? 1 : -1];

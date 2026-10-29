@@ -12,7 +12,7 @@ class cUnk00a906c0 : public cSC4LotConfigurationFilter {
 public:
     virtual ~cUnk00a906c0();
     virtual bool IsLotConfigurationIncluded(uint32_t);
-    char unknown4[0x18];
+    char unknown8[0x14];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a906c0[sizeof(cUnk00a906c0) == 0x1c ? 1 : -1];

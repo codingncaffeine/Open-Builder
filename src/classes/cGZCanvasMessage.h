@@ -19,6 +19,9 @@ public:
     virtual void Slot08_ada82c(uint32_t);
     virtual uint32_t EventType();
     virtual void Slot10_ada82c(uint32_t);
+    char unknown4[0x4];
+    uint32_t field8;
+    uint32_t fieldc;
 };
 
 #endif

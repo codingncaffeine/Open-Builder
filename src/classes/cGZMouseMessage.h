@@ -22,6 +22,12 @@ public:
     virtual uint32_t WheelDelta();
     virtual uint32_t KeyFlags();
     virtual void Slot13_ada858(uint32_t);
+    char unknown4[0x4];
+    uint32_t field8;
+    uint32_t fieldc;
+    char unknown10[0x8];
+    uint32_t field18;
+    uint32_t field1c;
 };
 
 #endif

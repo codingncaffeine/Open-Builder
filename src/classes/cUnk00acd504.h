@@ -19,6 +19,7 @@ public:
     virtual void Slot08_acd504(uint32_t);
     virtual void Slot09_acd504(uint32_t);
     virtual void Slot10_acd504(uint32_t);
+    char unknown4[0x8];
 };
 
 // SYNTHETIC: 0x008fe861

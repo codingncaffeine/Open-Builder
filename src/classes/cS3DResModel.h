@@ -21,6 +21,8 @@ public:
     virtual bool Slot06_abd5d4(uint32_t, uint32_t);
     virtual void Slot07_abd5d4(uint32_t);
     virtual bool Slot08_abd5d4(uint32_t, uint32_t);
+    char unknown1c[0x30];
+    char field4c[0x28];
 };
 
 // SYNTHETIC: 0x00806210

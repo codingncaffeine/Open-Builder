@@ -12,6 +12,7 @@ public:
     virtual void AddRef();
     virtual void Release();
     virtual ~cS3DCamera() {}
+    char unknown4[0x4];
 };
 
 // SYNTHETIC: 0x007ff130

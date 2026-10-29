@@ -21,6 +21,7 @@ public:
     virtual void EndRead();
     virtual ~cGZGimexReader() {}
     virtual void FinalRelease();
+    char unknown4[0x14];
 };
 
 // SYNTHETIC: 0x0090ca10

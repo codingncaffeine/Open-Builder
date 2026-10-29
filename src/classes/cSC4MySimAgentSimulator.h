@@ -60,6 +60,7 @@ public:
     virtual void Slot10_a85544();
     virtual void Slot11_a85544();
     virtual uint32_t GetActiveUIPanelSim(uint32_t);
+    char unknownc[0x30];
 };
 
 // SYNTHETIC: 0x0042ef60
