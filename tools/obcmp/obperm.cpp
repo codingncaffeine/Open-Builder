@@ -936,7 +936,9 @@ int main(int argc, char** argv) {
         std::string cpp = dir + "/t.cpp", obj = dir + "/t.obj";
         { std::ofstream o(cpp); o << text; }
         fs::remove(obj);
-        run("tools/vc71.sh cl " + common + " " + flags + " /Fo" + quote(obj) + " " + quote(cpp) + " >/dev/null 2>&1");
+        // a candidate can send the compiler into a loop: no compile runs past a minute (a warm one takes about one
+        // second); timeout signals its whole process group, the compiler under Wine included
+        run("timeout -k 5 60 tools/vc71.sh cl " + common + " " + flags + " /Fo" + quote(obj) + " " + quote(cpp) + " >/dev/null 2>&1");
         if (!fs::exists(obj)) return -1;
         long best = -1;
         for (auto& [name, lines] : objectListing(obj))
