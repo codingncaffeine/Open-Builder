@@ -376,7 +376,7 @@ struct cB43cec_ab2150 {
 };
 
 // GLOBAL: 0x00b43cec
-extern cB43cec_ab2150* gpB43cec;
+extern cB43cec_ab2150* gpB43cec_ab2150;
 
 // FUNCTION: 0x006d78b0
 bool cSC4PathFinder::Init()
@@ -384,8 +384,8 @@ bool cSC4PathFinder::Init()
     Data_ab2150* d = Of_ab2150(this);
     if (!d->mbActive) {
         d->mbActive = true;
-        d->mnWidth = gpB43cec->Fn93();
-        d->mnHeight = gpB43cec->Fn94();
+        d->mnWidth = gpB43cec_ab2150->Fn93();
+        d->mnHeight = gpB43cec_ab2150->Fn94();
         uint32_t fill = 0;
         d->mListA.Fn006d6920(d->mnWidth + 2, &fill);
         fill = 0;

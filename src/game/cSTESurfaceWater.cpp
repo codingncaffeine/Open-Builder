@@ -206,7 +206,7 @@ struct World_ab3b00 {
     virtual bool Fn99(uint32_t a, uint32_t b);
 };
 // GLOBAL: 0x00b43cec
-extern World_ab3b00* gpB43cec;
+extern World_ab3b00* gpB43cec_ab3b00;
 
 static inline Grid_ab3b00* GridOf_ab3b00(cSTESurfaceWater* p)
 {
@@ -314,7 +314,7 @@ void cSTESurfaceWater::Slot07_ab3b00(uint32_t a, uint32_t b, uint32_t c, uint32_
 {
     uint32_t y;
     uint32_t x;
-    gpB43cec->Fn95(a, c, &x, &y);
+    gpB43cec_ab3b00->Fn95(a, c, &x, &y);
     IsNavigable(x, y, d, e);
 }
 #endif
@@ -531,19 +531,19 @@ bool cSTESurfaceWater::Shutdown()
         if (svc) {
             svc->Fn06(static_cast<cUnk00aaaa9c*>(this), 0xc0);
         }
-        Obj50_ab3b00* w = gpB43cec->Fn50();
+        Obj50_ab3b00* w = gpB43cec_ab3b00->Fn50();
         if (w) {
             w->Fn20(static_cast<cUnk00aaaa9c*>(this));
         }
-        cB43ccc* reg = gpB43ccc;
+        cIGZMessageServer2* reg = gpB43ccc;
         if (reg) {
             cUnk00aaaa9c* sub = static_cast<cUnk00aaaa9c*>(this);
-            reg->Fn06(sub, 0x26d31ec1);
-            reg->Fn06(sub, 0x26d31ec4);
-            reg->Fn06(sub, 0x26d31ec5);
-            reg->Fn06(sub, 0x89d3e9f3);
-            reg->Fn06(sub, 0x99ef1142);
-            reg->Fn06(sub, 0x99ef1143);
+            reg->RemoveNotification(sub, 0x26d31ec1);
+            reg->RemoveNotification(sub, 0x26d31ec4);
+            reg->RemoveNotification(sub, 0x26d31ec5);
+            reg->RemoveNotification(sub, 0x89d3e9f3);
+            reg->RemoveNotification(sub, 0x99ef1142);
+            reg->RemoveNotification(sub, 0x99ef1143);
         }
         Alloc_ab3b00 alloc;
         float* first = mpEntries;
@@ -694,7 +694,7 @@ bool cSTESurfaceWater::Init()
             svc->Fn05(static_cast<cUnk00aaaa9c*>(this), 0xc0);
         }
         Fn0073d180(GridOf_ab3b00(this)->mField40);
-        gpB43cec->Fn22();
+        gpB43cec_ab3b00->Fn22();
         mbReady = 1;
     }
     return true;
@@ -941,7 +941,7 @@ bool cSTESurfaceWater::Slot03_aaaa9c(void* pv)
         }
         break;
     case 0x26d31ec1:
-        if (!gpB43cec->Fn22()) {
+        if (!gpB43cec_ab3b00->Fn22()) {
             break;
         }
     case 0x26d31ec4:
@@ -977,7 +977,7 @@ bool cSTESurfaceWater::Slot03_aaaa9c(void* pv)
                 t->Fn48()->Fn08(&pos);
                 int32_t cx;
                 int32_t cy;
-                gpB43cec->Fn95(pos.mnX, pos.mnZ, reinterpret_cast<uint32_t*>(&cx), reinterpret_cast<uint32_t*>(&cy));
+                gpB43cec_ab3b00->Fn95(pos.mnX, pos.mnZ, reinterpret_cast<uint32_t*>(&cx), reinterpret_cast<uint32_t*>(&cy));
                 bool found = false;
                 uint8_t mask = t->Fn40();
                 int32_t dx[4] = {-1, 0, 1, 0};
@@ -986,7 +986,7 @@ bool cSTESurfaceWater::Slot03_aaaa9c(void* pv)
                     if (mask & (1 << i)) {
                         int32_t x = dx[i] + cx;
                         int32_t y = dy[i] + cy;
-                        if (x >= 0 && y >= 0 && x < gpB43cec->Fn93() - 1 && y < gpB43cec->Fn94() - 1) {
+                        if (x >= 0 && y >= 0 && x < gpB43cec_ab3b00->Fn93() - 1 && y < gpB43cec_ab3b00->Fn94() - 1) {
                             Tile_ab3b00* tile = names->Fn08(x, y, 0x1f4f, 1);
                             if (tile && tile->Fn08(0x40000) && !tile->Fn19()) {
                                 found = true;
@@ -1174,7 +1174,7 @@ bool cSTESurfaceWater::IsNavigable(uint32_t a, uint32_t b, uint32_t c, uint32_t 
     while (bounds.Next(&cx, &cy)) {
         int32_t x = cx;
         int32_t y = cy;
-        if (!gpB43cec->Fn99(x, y)) {
+        if (!gpB43cec_ab3b00->Fn99(x, y)) {
             return false;
         }
         if (!static_cast<uint8_t>(HasDraftClearance(x, y))) {
@@ -1185,7 +1185,7 @@ bool cSTESurfaceWater::IsNavigable(uint32_t a, uint32_t b, uint32_t c, uint32_t 
             pos.mfY = gpB43cf4->Fn29();
             pos.mnX = 0;
             pos.mnZ = 0;
-            gpB43cec->Fn97(x, y, &pos.mnX, &pos.mnZ);
+            gpB43cec_ab3b00->Fn97(x, y, &pos.mnX, &pos.mnZ);
             uint32_t owner = gpB43d08->Fn05(&pos);
             if (owner && owner != d) {
                 return false;

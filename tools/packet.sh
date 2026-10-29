@@ -31,6 +31,8 @@ done >>"$work/names"
 awk '{printf "0x%08x\t%s\n", strtonum("0x" $1), $3 " (library)"}' re/map/libraries.tsv >>"$work/names" 2>/dev/null || true
 # what the Mac reference build calls the rest (tools/names/run.sh), position-only guesses left out
 awk -F'\t' '$3 != "s" { printf "0x%08x\t%s (mac)\n", strtonum("0x" $1), $2 }' re/names/functions.tsv >>"$work/names" 2>/dev/null || true
+# and its service pointers (SL::spCity, ...; tools/names/sl-globals.sh)
+awk -F'\t' '{ printf "0x%08x\tSL::%s (mac)\n", strtonum("0x" $1), $2 }' re/names/globals.tsv >>"$work/names" 2>/dev/null || true
 awk -F'\t' '{ a = sprintf("0x%08x", strtonum($1)); if (!(a in n)) { n[a] = $2; print a "\t" $2 } }' "$work/names" >"$out/names.tsv"
 
 # Candidates: stubbed methods of generated classes whose code is still to do and is real code.

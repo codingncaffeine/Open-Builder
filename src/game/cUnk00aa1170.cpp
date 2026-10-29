@@ -222,7 +222,7 @@ void cUnk00aa1170::Slot03_aa1170(uint32_t a)
             }
         }
         if (mnMadeA) {
-            cB43ccc* g = gpB43ccc;
+            cIGZMessageServer2* g = gpB43ccc;
             if (g) {
                 cMade_aa1170* made = new cMade_aa1170;
                 if (made) {
@@ -232,7 +232,7 @@ void cUnk00aa1170::Slot03_aa1170(uint32_t a)
                 made->Fn11(mnMadeB);
                 made->Fn16(mnMadeC);
                 made->Fn33(this);
-                g->Fn04(made, 0);
+                g->MessagePost(made, false);
                 made->Release();
             }
         }

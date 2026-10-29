@@ -244,7 +244,7 @@ struct cCurve_a9ea60 {
 };
 
 // GLOBAL: 0x00b43cec
-extern cScreen_a9ea60* gpB43cec;
+extern cScreen_a9ea60* gpB43cec_a9ea60;
 
 // GLOBAL: 0x00b22bb9
 extern bool gb22bb9;
@@ -394,7 +394,7 @@ bool cSC4DisasterInstanceVolcano::Slot05_a9ea08(uint32_t a)
     mnPosY = p[1];
     float fA = 0.0f;
     float fB = 0.0f;
-    cScreen_a9ea60* pScreen = gpB43cec;
+    cScreen_a9ea60* pScreen = gpB43cec_a9ea60;
     pScreen->Fn95(static_cast<float>(p[0]), static_cast<float>(p[1]), &fA, &fB);
     pScreen->Fn72()->Fn13(this, fA, fB, 0, 0, 0);
     return true;
@@ -565,7 +565,7 @@ bool cSC4DisasterInstanceVolcano::Init()
 {
     mbActive = true;
     Fn0057ffe0(this);
-    cScreen_a9ea60* pScreen = gpB43cec;
+    cScreen_a9ea60* pScreen = gpB43cec_a9ea60;
     mpMetrics = pScreen->Fn84();
     if (mpMetrics) {
         static_cast<cHost_a9ea60*>(mpMetrics)->AddRef();

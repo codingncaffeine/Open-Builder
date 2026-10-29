@@ -417,10 +417,10 @@ struct ObMap {
 bool cSC4Advisor::Slot04_a81120()
 {
     if (mbRegistered) {
-        gpB43ccc->Fn06(static_cast<cUnk00aaaa9c*>(this), 0xea917750);
-        gpB43ccc->Fn06(static_cast<cUnk00aaaa9c*>(this), 0x8a917759);
-        gpB43ccc->Fn06(static_cast<cUnk00aaaa9c*>(this), 0x4a91dd6e);
-        gpB43ccc->Fn06(static_cast<cUnk00aaaa9c*>(this), 0x4a92ecef);
+        gpB43ccc->RemoveNotification(static_cast<cUnk00aaaa9c*>(this), 0xea917750);
+        gpB43ccc->RemoveNotification(static_cast<cUnk00aaaa9c*>(this), 0x8a917759);
+        gpB43ccc->RemoveNotification(static_cast<cUnk00aaaa9c*>(this), 0x4a91dd6e);
+        gpB43ccc->RemoveNotification(static_cast<cUnk00aaaa9c*>(this), 0x4a92ecef);
         mbRegistered = 0;
     }
     ObMap* map = reinterpret_cast<ObMap*>(field78);
