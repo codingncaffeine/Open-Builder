@@ -4,6 +4,7 @@
 #   functions.tsv   address, size, folder (game or gzcom: the flags its class was built with), declaration
 #   <address>.asm   the original's instructions, calls and addresses named where we know them
 #   <address>.c     Ghidra's decompilation (a draft: types and names are guesses)
+#   layout.txt      every field and vtable slot by offset from this (tools/layout.sh)
 # in scratch/packets/<class>/. One Ghidra run serves every class given.
 #   tools/packet.sh cUnk00a87dd0 [cUnk... ...]
 #   tools/packet.sh --pick N [MAXSIZE] [MIN-MAX]   N classes with MIN to MAX (default 6-20) such methods of at most
@@ -64,6 +65,7 @@ for cls in "${classes[@]}"; do
   paste <(cut -f2 "$work/$cls") <(cut -f3 "$work/$cls") <(cut -f4 "$work/$cls" | llvm-undname 2>/dev/null | awk 'BEGIN { RS = ""; FS = "\n" } { print ($2 != "" ? $2 : $1) }') |
     awk -F'\t' -v f="$folder" '{ print "0x" $1 "\t" $2 "\t" f "\t" $3 }' >"$dir/functions.tsv"
   cut -f2 "$work/$cls" >>"$work/all-addresses"
+  tools/layout.sh "$cls" >"$dir/layout.txt" 2>/dev/null || echo "# clang could not lay out $cls" >"$dir/layout.txt"
   # the original's instructions, with names
   while IFS=$'\t' read -r a size _ _; do
     objdump -d -M intel --no-show-raw-insn --start-address="$a" --stop-address="$((a + size))" "$exe" |
