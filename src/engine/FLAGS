@@ -1,0 +1,3 @@
+# The engine (graphics drivers first): built like the game's sources, full optimisation and function-level linking
+# (its functions are 16-aligned in the original, as the game's are).
+/O2 /GX- /W3

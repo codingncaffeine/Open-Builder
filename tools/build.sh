@@ -4,7 +4,8 @@
 # Every .cpp under src/ is compiled in, plus hook/, the hook table (tools/gen-hooks.sh) and the stubs that lead to
 # the original's code (tools/gen-stubs.sh). A source under src/ is compiled with the flags in the nearest FLAGS file
 # above it (the original built its parts with different flags); hook/ and the generated files with hook_flags. No C
-# runtime: the DLL imports only kernel32 (sdk/), and the runtime functions decompiled code calls are stubs.
+# runtime: the DLL imports kernel32 (sdk/) and, for the decompiled OpenGL driver, the SDK's opengl32; the runtime
+# functions decompiled code calls are stubs.
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
@@ -71,7 +72,7 @@ sources+=("$out/hooks.gen.cpp" "$out/stubs.gen.cpp")
 objs=()
 for s in "${sources[@]}"; do objs+=("$out/obj/$(basename "${s%.cpp}").obj"); done
 link /nologo /dll /nodefaultlib /entry:DllMain /def:hook/version.def "/map:$out/version.map" \
-  "/out:$out/version.dll" "${objs[@]}" "$out/sdk/kernel32.lib" 2>&1 | quiet
+  "/out:$out/version.dll" "${objs[@]}" "$out/sdk/kernel32.lib" OpenGL32.Lib 2>&1 | quiet
 
 [[ -f "$out/version.dll" ]] || { echo "build failed" >&2; exit 1; }
 echo "built $out/version.dll ($(stat -c %s "$out/version.dll") bytes, ${#sources[@]} sources)"
