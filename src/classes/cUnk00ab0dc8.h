@@ -7,18 +7,18 @@
 
 // The subobject at +0x0 (vtable 0x00ab0dc8): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ab0dc8_0 {
-    virtual bool Slot00_ab0dc8(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ab0dc8(uint32_t, void*) = 0;
     virtual void Slot01_ab0dc8() = 0;
-    virtual void Slot02_ab0dc8() = 0;
+    virtual uint32_t Slot02_ab0dc8() = 0;
     virtual bool Slot03_ab0dc8() = 0;
     virtual bool Slot04_ab0dc8() = 0;
     virtual uint32_t Slot05_ab0dc8() = 0;
-    virtual void Slot06_ab0dc8() = 0;
+    virtual int32_t Slot06_ab0dc8() = 0;
     virtual uint32_t Slot07_ab0dc8() = 0;
-    virtual bool Slot08_ab0dc8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot08_ab0dc8(void*, void*, void*) = 0;
     virtual uint32_t Slot09_ab0dc8(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot10_ab0dc8(uint32_t, uint32_t) = 0;
-    virtual bool Slot11_ab0dc8(uint32_t) = 0;
+    virtual bool Slot11_ab0dc8(void*) = 0;
     virtual bool Slot12_ab0dc8(uint32_t, uint32_t) = 0;
     virtual bool Slot13_ab0dc8(uint32_t) = 0;
     virtual ~cUnk00ab0dc8_0() {}
@@ -27,18 +27,18 @@ struct OB_NOVTABLE cUnk00ab0dc8_0 {
 
 // The subobject at +0x4 (vtable 0x00ab0db8): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ab0dc8_4 {
-    virtual bool Slot00_ab0dc8(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ab0dc8(uint32_t, void*) = 0;
     virtual void Slot01_ab0dc8() = 0;
-    virtual void Slot02_ab0dc8() = 0;
-    virtual bool Slot03_ab0dc8_4(uint32_t);
+    virtual uint32_t Slot02_ab0dc8() = 0;
+    virtual bool Slot03_ab0dc8_4(void*);
 };
 
 // The subobject at +0x8 (vtable 0x00ab0d9c): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ab0dc8_8 {
-    virtual bool Slot00_ab0dc8(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ab0dc8(uint32_t, void*) = 0;
     virtual void Slot01_ab0dc8() = 0;
-    virtual void Slot02_ab0dc8() = 0;
-    virtual uint32_t Slot03_ab0dc8_8(uint32_t);
+    virtual uint32_t Slot02_ab0dc8() = 0;
+    virtual uint32_t Slot03_ab0dc8_8(void*);
     virtual uint32_t Slot04_ab0dc8_8();
     virtual bool Slot05_ab0dc8_8();
     virtual uint32_t Slot06_ab0dc8_8(uint32_t, uint32_t, uint32_t);
@@ -46,11 +46,11 @@ struct OB_NOVTABLE cUnk00ab0dc8_8 {
 
 // The subobject at +0xc (vtable 0x00ab0d84): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ab0dc8_c {
-    virtual bool Slot00_ab0dc8(uint32_t, uint32_t) = 0;
+    virtual bool Slot00_ab0dc8(uint32_t, void*) = 0;
     virtual void Slot01_ab0dc8() = 0;
-    virtual void Slot02_ab0dc8() = 0;
-    virtual uint32_t Slot03_ab0dc8_c(uint32_t);
-    virtual void Slot04_ab0dc8_c(uint32_t);
+    virtual uint32_t Slot02_ab0dc8() = 0;
+    virtual uint32_t Slot03_ab0dc8_c(void*);
+    virtual bool Slot04_ab0dc8_c(void*);
     virtual uint32_t Slot05_ab0dc8_c();
 };
 
@@ -61,21 +61,29 @@ struct OB_NOVTABLE cUnk00ab0dc8_c {
 class cUnk00ab0dc8 : public cUnk00ab0dc8_0, public cUnk00ab0dc8_4, public cUnk00ab0dc8_8, public cUnk00ab0dc8_c {
 public:
     virtual ~cUnk00ab0dc8();
-    virtual bool Slot00_ab0dc8(uint32_t, uint32_t);
+    virtual bool Slot00_ab0dc8(uint32_t, void*);
     virtual void Slot01_ab0dc8();
-    virtual void Slot02_ab0dc8();
+    virtual uint32_t Slot02_ab0dc8();
     virtual bool Slot03_ab0dc8();
     virtual bool Slot04_ab0dc8();
     virtual uint32_t Slot05_ab0dc8();
-    virtual void Slot06_ab0dc8();
+    virtual int32_t Slot06_ab0dc8();
     virtual uint32_t Slot07_ab0dc8();
-    virtual bool Slot08_ab0dc8(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot08_ab0dc8(void*, void*, void*);
     virtual uint32_t Slot09_ab0dc8(uint32_t, uint32_t);
     virtual uint32_t Slot10_ab0dc8(uint32_t, uint32_t);
-    virtual bool Slot11_ab0dc8(uint32_t);
+    virtual bool Slot11_ab0dc8(void*);
     virtual bool Slot12_ab0dc8(uint32_t, uint32_t);
     virtual bool Slot13_ab0dc8(uint32_t);
     virtual uint32_t Slot15_ab0dc8();
+    // STUB: 0x006a1fd0
+    void Fn006a1fd0(uint32_t);
+    // STUB: 0x0069f260
+    void Fn0069f260(void* obj, bool flag);
+    // STUB: 0x006a07a0
+    void Fn006a07a0();
+    // STUB: 0x006a1530
+    void Fn006a1530();
 };
 
 // SYNTHETIC: 0x006a05a0

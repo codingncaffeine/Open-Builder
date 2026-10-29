@@ -8,23 +8,33 @@
 // VTABLE: 0x00aa4468
 class cUnk00aa4468 {
 public:
-    virtual bool Slot00_aa4468(uint32_t, uint32_t);
+    virtual bool Slot00_aa4468(uint32_t, void*);
     virtual uint32_t Slot01_aa4468();
     virtual uint32_t Slot02_aa4468();
     virtual uint32_t Slot03_aa4468();
-    virtual uint32_t Slot04_aa4468(uint32_t, uint32_t);
-    virtual bool Slot05_aa4468(uint32_t);
-    virtual bool Slot06_aa4468(uint32_t);
-    virtual bool Slot07_aa4468(uint32_t);
-    virtual void Slot08_aa4468(uint32_t);
-    virtual void Slot09_aa4468(uint32_t);
-    virtual uint32_t Slot10_aa4468();
+    virtual uint32_t Slot04_aa4468(void*, void*);
+    virtual bool Slot05_aa4468(void*);
+    virtual bool Slot06_aa4468(void*);
+    virtual bool Slot07_aa4468(void*);
+    virtual void Slot08_aa4468(uint8_t);
+    virtual void Slot09_aa4468(uint8_t);
+    virtual bool Slot10_aa4468();
     virtual void Slot11_aa4468();
     virtual uint32_t Slot12_aa4468();
     virtual void Slot13_aa4468(uint32_t);
     virtual uint32_t Slot14_aa4468();
     virtual void Slot15_aa4468(uint32_t);
-    virtual uint32_t Slot16_aa4468(uint32_t);
+    virtual void* Slot16_aa4468(uint32_t);
+    // STUB: 0x005ebc60
+    void Fn005ebc60(int32_t);
+    // STUB: 0x005ebcd0
+    void Fn005ebcd0();
+    // STUB: 0x005ebf80
+    void Fn005ebf80();
+    // STUB: 0x005ebff0
+    void Fn005ebff0();
+    // STUB: 0x005ec050
+    void Fn005ec050();
 };
 
 #endif

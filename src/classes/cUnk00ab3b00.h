@@ -17,10 +17,10 @@ struct OB_NOVTABLE cUnk00ab3b00_0 {
     virtual float Slot05_ab3b00(uint32_t) = 0;
     virtual float Slot06_ab3b00(uint32_t, uint32_t) = 0;
     virtual void Slot07_ab3b00(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot08_ab3b00(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot08_ab3b00(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t Slot09_ab3b00() = 0;
     virtual float Slot10_ab3b00(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot11_ab3b00(uint32_t, uint32_t) = 0;
+    virtual void* Slot11_ab3b00(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot12_ab3b00(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot13_ab3b00(uint32_t, uint32_t) = 0;
     virtual ~cUnk00ab3b00_0() {}
@@ -45,15 +45,39 @@ public:
     virtual float Slot05_ab3b00(uint32_t);
     virtual float Slot06_ab3b00(uint32_t, uint32_t);
     virtual void Slot07_ab3b00(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot08_ab3b00(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot08_ab3b00(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot09_ab3b00();
     virtual float Slot10_ab3b00(uint32_t, uint32_t);
-    virtual uint32_t Slot11_ab3b00(uint32_t, uint32_t);
+    virtual void* Slot11_ab3b00(uint32_t, uint32_t);
     virtual uint32_t Slot12_ab3b00(uint32_t, uint32_t);
     virtual uint32_t Slot13_ab3b00(uint32_t, uint32_t);
-    char unknownc[0x40];
-    uint32_t field4c;
-    char unknown50[0x4];
+    // STUB: 0x0073d090
+    bool Fn0073d090(void*);
+    // STUB: 0x00740060
+    bool Fn00740060(uint32_t);
+    // STUB: 0x0073d180
+    void Fn0073d180(void*);
+    // STUB: 0x0073eaf0
+    void Fn0073eaf0();
+    // STUB: 0x0073d850
+    void Fn0073d850();
+    // STUB: 0x0073fdd0
+    void Fn0073fdd0();
+    uint8_t mbReady;
+    char unknownd[0x3];
+    int32_t mnRefCount;
+    void* mpGrid;
+    float* mpEntries;
+    float* mpEntriesEnd;
+    char unknown20[0x14];
+    uint8_t mbFlag34;
+    char unknown35[0x3];
+    int32_t mnCount38;
+    void* mpItem;
+    uint8_t mVec40[0xc];
+    void* mpObj4c;
+    uint8_t mbFlag50;
+    char unknown51[0x3];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab3b00[sizeof(cUnk00ab3b00) == 0x54 ? 1 : -1];

@@ -1,0 +1,19 @@
+field c uint8_t mbReady
+field 10 int32_t mnRefCount
+field 14 void* mpGrid
+field 18 float* mpEntries
+field 1c float* mpEntriesEnd
+slot Slot11_ab3b00 void* uint32_t uint32_t
+method 0x0073d090 bool Fn0073d090(void*)
+method 0x00740060 bool Fn00740060(uint32_t)
+field 34 uint8_t mbFlag34
+field 38 int32_t mnCount38
+field 3c void* mpItem
+field 40 uint8_t mVec40[0xc]
+field 4c void* mpObj4c
+field 50 uint8_t mbFlag50
+method 0x0073d180 void Fn0073d180(void*)
+method 0x0073eaf0 void Fn0073eaf0()
+method 0x0073d850 void Fn0073d850()
+method 0x0073fdd0 void Fn0073fdd0()
+slot Slot08_ab3b00 bool uint32_t uint32_t uint32_t uint32_t

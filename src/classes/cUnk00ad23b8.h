@@ -13,8 +13,8 @@
 class cUnk00ad23b8 : public cUnk00acf150, public cUnk00ad2374 {
 public:
     virtual ~cUnk00ad23b8();
-    virtual bool Slot06_acf150(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot13_acf150(uint32_t, uint32_t, uint32_t);
+    virtual bool Slot06_acf150(void*, void*, void*);
+    virtual bool Slot13_acf150(void*, void*, uint32_t);
     virtual bool Slot00_ad2374(uint32_t, uint32_t);
     virtual uint32_t Slot01_ad2374();
     virtual void Slot02_ad2374();

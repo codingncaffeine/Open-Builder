@@ -13,7 +13,7 @@ struct OB_NOVTABLE cUnk00a9ea60_0 {
     virtual unsigned int AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual bool Slot03_a9ea60() = 0;
-    virtual uint32_t Slot04_a9ea60() = 0;
+    virtual void* Slot04_a9ea60() = 0;
     virtual uint32_t Slot05_a9ea60() = 0;
     virtual bool Slot06_a9ea60(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot07_a9ea60() = 0;
@@ -22,7 +22,7 @@ struct OB_NOVTABLE cUnk00a9ea60_0 {
     virtual void Slot10_a9ea60() = 0;
     virtual void Slot11_a9ea60() = 0;
     virtual uint32_t Slot12_a9ea60() = 0;
-    virtual void Slot13_a9ea60(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot13_a9ea60(const char*, const void*, bool, void*) = 0;
     virtual void Slot14_a9ea60(uint32_t) = 0;
 };
 
@@ -44,7 +44,7 @@ public:
     virtual uint32_t Slot07_a9ea08();
     virtual bool Slot08_a9ea08(uint32_t);
     virtual bool Slot03_a9ea60();
-    virtual uint32_t Slot04_a9ea60();
+    virtual void* Slot04_a9ea60();
     virtual uint32_t Slot05_a9ea60();
     virtual bool Slot06_a9ea60(uint32_t, uint32_t);
     virtual uint32_t Slot07_a9ea60();
@@ -52,11 +52,35 @@ public:
     virtual void Slot10_a9ea60();
     virtual void Slot11_a9ea60();
     virtual uint32_t Slot12_a9ea60();
-    virtual void Slot13_a9ea60(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot13_a9ea60(const char*, const void*, bool, void*);
     virtual void Slot14_a9ea60(uint32_t);
-    char unknownc[0x18];
-    uint32_t field24;
-    char unknown28[0x2c];
+    // STUB: 0x0057f360
+    void Fn0057f360();
+    // STUB: 0x0057f3d0
+    void Fn0057f3d0();
+    // STUB: 0x0057f740
+    void Fn0057f740();
+    uint32_t mnRefCount;
+    int32_t mnPosX;
+    int32_t mnPosY;
+    char unknown18[0x8];
+    bool mbActive;
+    char unknown21[0x3];
+    uint32_t mnState;
+    void* mpHost;
+    void* mpMetrics;
+    void* mpFactory;
+    void* mpEffect;
+    float mfSizeX;
+    float mfSizeY;
+    bool mbFlag40;
+    bool mbFlag41;
+    bool mbFlag42;
+    bool mbFlag43;
+    bool mbFlag44;
+    char unknown45[0x7];
+    void* mpCurve;
+    uint32_t mnTimer;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9ea60[sizeof(cUnk00a9ea60) == 0x54 ? 1 : -1];

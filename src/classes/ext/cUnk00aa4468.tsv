@@ -1,0 +1,14 @@
+slot Slot00_aa4468 bool uint32_t void*
+slot Slot04_aa4468 uint32_t void* void*
+slot Slot08_aa4468 void uint8_t
+slot Slot09_aa4468 void uint8_t
+slot Slot10_aa4468 bool
+slot Slot16_aa4468 void* uint32_t
+slot Slot05_aa4468 bool void*
+slot Slot06_aa4468 bool void*
+slot Slot07_aa4468 bool void*
+method 0x005ebc60 void Fn005ebc60(int32_t)
+method 0x005ebcd0 void Fn005ebcd0()
+method 0x005ebf80 void Fn005ebf80()
+method 0x005ebff0 void Fn005ebff0()
+method 0x005ec050 void Fn005ec050()

@@ -4,6 +4,7 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00acf150
 // SIZE 0x3c
@@ -11,27 +12,33 @@ class cUnk00acf150 {
 public:
     virtual ~cUnk00acf150();
     virtual void* Slot01_acf150();
-    virtual void Slot02_acf150(uint32_t);
+    virtual void Slot02_acf150(void*);
     virtual uint32_t Slot03_acf150();
-    virtual bool Slot04_acf150(uint32_t);
+    virtual bool Slot04_acf150(void*);
     virtual bool Slot05_acf150();
-    virtual bool Slot06_acf150(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot07_acf150(uint32_t, uint32_t, uint32_t);
-    virtual uint32_t Slot08_acf150(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual uint32_t Slot09_acf150(uint32_t, uint32_t, uint32_t);
-    virtual void Slot10_acf150(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot11_acf150(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot12_acf150(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot13_acf150(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot14_acf150(uint32_t, uint32_t);
-    virtual bool Slot15_acf150(uint32_t);
-    virtual bool Slot16_acf150(uint32_t);
-    virtual void Slot17_acf150(uint32_t);
-    virtual bool Slot18_acf150(uint32_t);
-    virtual bool Slot19_acf150(uint32_t);
-    char field4[0x30];
-    uint32_t field34;
-    char unknown38[0x4];
+    virtual bool Slot06_acf150(void*, void*, void*);
+    virtual bool Slot07_acf150(void*, void*, void*);
+    virtual uint32_t Slot08_acf150(void*, void*, void*, uint32_t);
+    virtual uint32_t Slot09_acf150(void*, void*, void*);
+    virtual bool Slot10_acf150(void*, void*, void*);
+    virtual bool Slot11_acf150(void*, void*, uint32_t);
+    virtual bool Slot12_acf150(void*, void*, void*, uint32_t);
+    virtual bool Slot13_acf150(void*, void*, uint32_t);
+    virtual bool Slot14_acf150(void*, uint32_t);
+    virtual bool Slot15_acf150(void*);
+    virtual bool Slot16_acf150(bool);
+    virtual bool Slot17_acf150(bool);
+    virtual bool Slot18_acf150(void*);
+    virtual bool Slot19_acf150(bool);
+    cRZString mName;
+    bool mbKeepOpen;
+    bool mbParsed;
+    char unknown1a[0x2];
+    uint8_t mMapA[12];
+    uint8_t mMapB[12];
+    void* mpStream;
+    bool mbWriteMode;
+    char unknown39[0x3];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00acf150[sizeof(cUnk00acf150) == 0x3c ? 1 : -1];

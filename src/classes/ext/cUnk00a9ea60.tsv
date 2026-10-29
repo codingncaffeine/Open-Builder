@@ -1,0 +1,23 @@
+field c uint32_t mnRefCount
+field 10 int32_t mnPosX
+field 14 int32_t mnPosY
+field 20 bool mbActive
+field 24 uint32_t mnState
+field 28 void* mpHost
+field 2c void* mpMetrics
+field 30 void* mpFactory
+field 34 void* mpEffect
+field 38 float mfSizeX
+field 3c float mfSizeY
+field 40 bool mbFlag40
+field 41 bool mbFlag41
+field 42 bool mbFlag42
+field 43 bool mbFlag43
+field 44 bool mbFlag44
+field 4c void* mpCurve
+field 50 uint32_t mnTimer
+slot Slot04_a9ea60 void*
+slot Slot13_a9ea60 void const char* const void* bool void*
+method 0x0057f360 void Fn0057f360()
+method 0x0057f3d0 void Fn0057f3d0()
+method 0x0057f740 void Fn0057f740()

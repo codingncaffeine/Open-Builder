@@ -1,0 +1,23 @@
+field 4 cRZString mName
+field 18 bool mbKeepOpen
+field 19 bool mbParsed
+field 1c uint8_t mMapA[12]
+field 28 uint8_t mMapB[12]
+field 34 void* mpStream
+field 38 bool mbWriteMode
+slot Slot02_acf150 void void*
+slot Slot04_acf150 bool void*
+slot Slot06_acf150 bool void* void* void*
+slot Slot07_acf150 bool void* void* void*
+slot Slot08_acf150 uint32_t void* void* void* uint32_t
+slot Slot09_acf150 uint32_t void* void* void*
+slot Slot10_acf150 bool void* void* void*
+slot Slot11_acf150 bool void* void* uint32_t
+slot Slot12_acf150 bool void* void* void* uint32_t
+slot Slot14_acf150 bool void* uint32_t
+slot Slot15_acf150 bool void*
+slot Slot16_acf150 bool bool
+slot Slot17_acf150 bool bool
+slot Slot18_acf150 bool void*
+slot Slot19_acf150 bool bool
+slot Slot13_acf150 bool void* void* uint32_t

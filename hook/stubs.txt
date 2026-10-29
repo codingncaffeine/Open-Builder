@@ -12,6 +12,8 @@
 0x009eeb70 _memmove
 0x009f1870 _memset
 0x009eef04 __ftol2
+0x009ef536 _sscanf
+0x009efb59 _time
 0x009f06b2 _sprintf
 0x009f2108 __snprintf
 0x009ef5a9 _isupper
