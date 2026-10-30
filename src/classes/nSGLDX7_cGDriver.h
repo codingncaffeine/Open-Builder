@@ -122,7 +122,94 @@ public:
     virtual bool Shutdown();
     virtual bool IsDeviceReady();
     virtual bool Punt(unsigned int, void *);
-    char unknown18[0x2c8];
+    // STUB: 0x008880f0
+    bool Fn008880f0();
+    // STUB: 0x00888a30
+    bool Fn00888a30();
+    // STUB: 0x008870b0
+    void Fn008870b0();
+    // STUB: 0x008881d0
+    void Fn008881d0();
+    // STUB: 0x00887260
+    void Fn00887260();
+    // STUB: 0x008871c0
+    void Fn008871c0();
+    // STUB: 0x008872a0
+    void Fn008872a0();
+    // STUB: 0x00888e10
+    bool Fn00888e10();
+    void* mpTexMgr;
+    void* mpPrimMgr;
+    char unknown20[0xb8];
+    uint16_t mnMaxTextureStages;
+    char unknownda[0x1e];
+    uint32_t mnCaps;
+    char unknownfc[0x10];
+    void* mpModes;
+    char unknown110[0x8];
+    void* mhWnd;
+    uint32_t mnError;
+    uint32_t mnTexStage;
+    uint32_t mnTexStageCount;
+    void* mpStages;
+    void* mpStagesEnd;
+    void* mpStagesCap;
+    bool mbStagesDirty;
+    char unknown135[0x3];
+    uint32_t mn138;
+    bool mb13c;
+    char unknown13d[0x3];
+    uint32_t mnPixelStore;
+    void* mpWndProc;
+    char unknown148[0x8];
+    float mMatrix150[16];
+    uint32_t mnClearColor;
+    float mfClearDepth;
+    int32_t mnClearStencil;
+    char unknown19c[0x20];
+    uint32_t mnVertexFormat;
+    uint32_t mnVertexStride;
+    uint32_t mnVertexSize;
+    char unknown1c8[0x4];
+    bool mbInterleaved;
+    char unknown1cd[0x3];
+    void* mpVertices;
+    uint32_t mnModeCount;
+    char unknown1d8[0x8];
+    uint32_t mCurrentMode[13];
+    uint32_t mn214;
+    char unknown218[0x4];
+    void* mpDirectDraw;
+    void* mpDirect3D;
+    void* mpDevice;
+    void* mp228;
+    void* mp22c;
+    void* mp230;
+    void* mp234;
+    uint32_t mViewport[6];
+    char unknown250[0x8];
+    void* mpObject258;
+    bool mb25c;
+    bool mb25d;
+    bool mb25e;
+    bool mb25f;
+    bool mb260;
+    bool mbDeviceLost;
+    bool mbInitialised;
+    bool mbTexturesReady;
+    char unknown264[0x18];
+    void* mpBufferRegionsBegin;
+    void* mpBufferRegionsEnd;
+    void* mpBufferRegionsCap;
+    char unknown288[0x4];
+    float mMaterial[17];
+    void* mpLightsBegin;
+    void* mpLightsEnd;
+    void* mpLightsCap;
+    bool mbLighting;
+    char unknown2dd[0x1];
+    bool mbVertexDiffuse;
+    bool mbVertexSpecular;
 };
 #ifdef _MSC_VER
 typedef char ob_size_nSGLDX7_cGDriver[sizeof(nSGLDX7_cGDriver) == 0x2e0 ? 1 : -1];

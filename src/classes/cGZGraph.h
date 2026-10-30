@@ -6,6 +6,7 @@
 #include "common/types.h"
 #include "classes/cGZWin.h"
 #include "classes/cUnk00addff8.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00ade188 cGZWin
 // VTABLE: 0x00ade450 cUnk00addff8
@@ -22,10 +23,10 @@ public:
     virtual void DrawGraphData(uint32_t);
     virtual void DrawDynamicObjects(uint32_t);
     virtual void DrawTitles(uint32_t);
-    virtual uint32_t Slot160_ade188(uint32_t, uint32_t, uint32_t);
-    virtual float Slot161_ade188(uint32_t, uint32_t, uint32_t);
-    virtual void Slot162_ade188(uint32_t, uint32_t);
-    virtual void Slot163_ade188(uint32_t, uint32_t);
+    virtual int32_t Slot160_ade188(uint32_t, float, bool);
+    virtual float Slot161_ade188(uint32_t, int32_t, bool);
+    virtual int32_t Slot162_ade188(uint32_t, float);
+    virtual float Slot163_ade188(uint32_t, int32_t);
     virtual float Slot164_ade188(uint32_t);
     virtual float Slot165_ade188(uint32_t);
     virtual void Slot166_ade188(uint32_t);
@@ -102,23 +103,62 @@ public:
     virtual void* Slot54_addff8();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknowndc[0x4c];
-    uint32_t field128;
-    bool field12c;
-    bool field12d;
+    // STUB: 0x0099bdfe
+    void Fn0099bdfe();
+    char unknowndc[0x4];
+    int32_t mnGraphArea[4];
+    bool mbFontsLoaded;
+    char unknownf1[0x3];
+    cRZString mTitle;
+    int32_t mnTitleArea[4];
+    void* mpTitleFont;
+    uint32_t mnTitleFontColor;
+    int32_t mnTitleTextHeight;
+    uint32_t mnTitleAlign;
+    uint32_t mnBackgroundFillColor;
+    bool mbBackgroundFill;
+    bool mbBackgroundOutline;
     char unknown12e[0x2];
-    uint32_t field130;
-    char unknown134[0x4];
-    uint32_t field138;
-    char unknown13c[0x4];
-    uint32_t field140;
-    char unknown144[0x14];
-    uint32_t field158;
-    char unknown15c[0x34];
-    uint32_t field190;
-    char unknown194[0x8c];
-    uint32_t field220;
-    char unknown224[0x8];
+    uint32_t mnBackgroundOutlineColor;
+    bool mbGraphAreaFill;
+    char unknown135[0x3];
+    uint32_t mnGraphAreaFillColor;
+    bool mbGraphAreaOutline;
+    char unknown13d[0x3];
+    uint32_t mnGraphAreaOutlineColor;
+    void* mpBackgroundPattern;
+    void* mpGraphBackgroundPattern;
+    bool mbDrawAxes;
+    bool mbMajorTickUsage[2];
+    bool mbMinorTickUsage[2];
+    bool mbMajorTickGrid[2];
+    bool mbMinorTickGrid[2];
+    bool mbTickText[2];
+    char unknown157[0x1];
+    uint32_t mnAxisColor;
+    float mfAxisMin[2];
+    float mfAxisMax[2];
+    float mfMajorTickSpacing[2];
+    float mfMinorTickSpacing[2];
+    uint8_t mnMajorTickDecimals[2];
+    char unknown17e[0x2];
+    int32_t mnMajorTickLength[2];
+    int32_t mnMinorTickLength[2];
+    uint32_t mnTickColor;
+    uint32_t mnTickTextAlign[2];
+    int32_t mnAxisZeroPosition[2];
+    cRZString mAxisLabel[2];
+    int32_t mnAxisLabelArea[8];
+    uint32_t mnAxisLabelAlign[2];
+    void* mpAxisLabelFont[2];
+    uint32_t mnAxisLabelFontColor[2];
+    void* mpAxisTickFont[2];
+    uint32_t mnAxisTickFontColor[2];
+    uint32_t mnAxisLabelRotation[2];
+    uint32_t mnTransparentColor;
+    void* mpHitTestData;
+    uint32_t mnHitTestCapacity;
+    void* mpDynamicObjects;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZGraph[sizeof(cGZGraph) == 0x22c ? 1 : -1];

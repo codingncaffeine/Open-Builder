@@ -1,0 +1,57 @@
+field dc int32_t mnNextHandle
+field e0 uint8_t mNodeMap[0xc]
+field f8 uint8_t mVisibleNodes[0xc]
+field 104 uint8_t mSelection[0xc]
+field 110 void* mpRootNode
+field 114 void* mpDefaultFont
+field 118 uint32_t mnMaxBoxSize
+field 11c bool mbInitialized
+field 11d bool mbDirty
+field 124 uint32_t mnBackgroundColor
+field 128 uint32_t mnRowHeight
+field 130 uint32_t mnBoxSize
+field 134 uint32_t mnIconGutter
+field 138 uint32_t mnGutterX
+field 13c uint32_t mnGutterY
+field 148 uint32_t mnTreeFlags
+field 150 void* mpScrollbarH
+field 154 void* mpScrollbarV
+field 158 uint32_t mnFirstRow
+field 15c uint32_t mnLastRow
+field 160 uint32_t mnRowCount
+field 164 uint32_t mnVisibleRows
+field 168 uint32_t mnVisibleRows2
+field 16c uint32_t mnSpacingX
+field 170 uint32_t mnSpacingY
+field 174 uint32_t mnColors[4]
+field 184 int32_t mnViewRect[4]
+field 1a4 cRZString mDefaultText
+field 1b8 uint8_t mIconImages[0xc]
+method 0x009d1ee1 void* GetNodeByHandle(int32_t)
+method 0x009d3956 void InternalInit()
+method 0x009d354f void RecalculateAll()
+method 0x009d0626 void* GetNodeAtCursorPosition(int32_t, int32_t)
+method 0x009d0f85 void Fn009d0f85(void*, uint32_t, uint32_t)
+method 0x009d0fd1 void Fn009d0fd1()
+method 0x009d1735 void FlagNodeForRemovalRecursively(void*)
+method 0x009d3312 void CreateRootNode()
+field 12c uint32_t mnImageWidth
+field 140 uint32_t mnScrollX
+field 14c void* mpObject14c
+method 0x009d2fd6 void FindTreeInfo(void*, void*, uint32_t, void*)
+field 11e bool mbPending
+field 11f bool mbShowHScroll
+field 120 bool mbShowVScroll
+field 144 uint32_t mnScrollbarSize
+field 194 int32_t mnScreenRect[4]
+method 0x009d0331 void CheckForScrollbars()
+method 0x009d049b void UpdateScrollbarValues()
+method 0x009d0888 void InitializeImageList()
+method 0x009d0cb1 void DrawItem(void*, void*, int32_t, int32_t)
+method 0x009d17a8 void DrawNode(void*, void*, uint32_t, void*, uint32_t)
+method 0x009d0112 void Fn009d0112()
+method 0x009d01c0 void Fn009d01c0()
+method 0x009cfc7e void Fn009cfc7e()
+method 0x009cfcb3 void Fn009cfcb3()
+method 0x009d026e void Fn009d026e()
+field 121 bool mbBlendSelection

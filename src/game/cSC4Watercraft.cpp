@@ -1016,6 +1016,10 @@ struct Releasable53_a9dbb8 {
 };
 
 // The interface the model instances share through their virtual base (the base sits after the vtable pointer and the base pointer).
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Woverloaded-virtual"  // views of the original vtables: the overloads hide the base ones on purpose
+#endif
 struct ModelVBase_a9dbb8 {
     virtual void VPad00();
     virtual void AddRef();
@@ -1038,9 +1042,6 @@ struct ModelVBase_a9dbb8 {
 
 // A model instance: its own slots, and a virtual base reached through the base pointer at +4.
 struct ModelInst_a9dbb8 : virtual ModelVBase_a9dbb8 {
-    using ModelVBase_a9dbb8::Fn08;  // the overloads below hide these otherwise (name lookup only, no code)
-    using ModelVBase_a9dbb8::Fn15;
-    using ModelVBase_a9dbb8::Fn16;
     virtual void* Fn00();
     virtual void Fn01(void*);
     virtual void Pad02();
@@ -1061,6 +1062,9 @@ struct ModelInst_a9dbb8 : virtual ModelVBase_a9dbb8 {
     virtual void Pad17();
     virtual void Fn18(uint32_t, float);
 };
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic pop
+#endif
 
 struct StreamIn_a9dbb8 {
     virtual void Pad00();

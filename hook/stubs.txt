@@ -51,3 +51,5 @@
 0x009d7e63 ?RefCount@cUnk0090da1e@@UAEIXZ
 0x009f0ff0 _strncpy
 0x009f361f _clock
+0x009f0a20 _ceil
+0x009eff60 _floor

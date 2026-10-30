@@ -111,7 +111,97 @@ public:
     virtual bool Shutdown();
     virtual bool IsDeviceReady();
     virtual bool Punt(unsigned int, void *);
-    char unknown14[0x404];
+    // STUB: 0x008e0100
+    void Fn008e0100();
+    // STUB: 0x008e07a0
+    void Fn008e07a0(uint32_t, uint32_t, uint32_t, const void*);
+    // STUB: 0x008e1f00
+    void Fn008e1f00();
+    // STUB: 0x008db8d0
+    void Fn008db8d0();
+    // STUB: 0x008dc160
+    void Fn008dc160(uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x008ea950
+    void Fn008ea950(int32_t, int32_t, int32_t, int32_t, int32_t, int32_t, uint32_t, uint32_t, const void*, uint32_t, const void*, int32_t, int32_t, uint32_t);
+    // STUB: 0x008e1570
+    void Fn008e1570();
+    char unknown14[0x8];
+    uint32_t mnDrawCount;
+    char unknown20[0x14];
+    uint32_t mnFirst;
+    char unknown38[0x60];
+    uint32_t mnFlags;
+    uint32_t mnFlags2;
+    char unknowna0[0x1c];
+    uint32_t mnViewportX;
+    uint32_t mnViewportY;
+    uint32_t mnViewportWidth;
+    uint32_t mnViewportHeight;
+    float mModelView[16];
+    float mProjection[16];
+    float mScreenMatrix[16];
+    float mfDepthScale;
+    float mfDepthBias;
+    void* mpMatrix;
+    uint32_t mnRowLength;
+    uint32_t mnWidth;
+    uint32_t mnHeight;
+    bool mbFlag1a4;
+    char unknown1a5[0x3];
+    float mfClip[4];
+    float mfClipNear;
+    float mfClipFar;
+    float mfPolygonBias;
+    int32_t mnPolygonOffset;
+    uint32_t mnAlphaRef;
+    uint32_t mnColor;
+    bool mbDepthTest;
+    bool mbDepthMask;
+    bool mbCullFace;
+    bool mbBlend;
+    bool mbAlphaTest;
+    bool mbSmooth;
+    bool mbDirty;
+    bool mbFlag1d7;
+    bool mbState7;
+    uint8_t mbPunt1d1;
+    bool mbTexMatrix;
+    bool mbCoordGen;
+    float mTexColA[4];
+    float mTexColB[4];
+    float mTexOutA[4];
+    float mTexOutB[4];
+    uint32_t mnFormat;
+    int32_t mnStride;
+    uint32_t mnTexCoordSize;
+    const void* mpVertices;
+    uint32_t mnCoordBase;
+    uint32_t mnColorOffset;
+    bool mbHasColor;
+    bool mbDiffuseColors;
+    bool mbSpecularColors;
+    bool mbHasTexCoord;
+    uint32_t mnStage;
+    char unknown23c[0x4];
+    uint8_t mStages[0x100];
+    int32_t mnRegionLive;
+    int32_t mnRegionCount;
+    void* mpRegions;
+    char unknown34c[0x10];
+    uint8_t mTexTab[0x28];
+    void* mpDevice;
+    char unknown388[0x4];
+    void* mhWnd;
+    char unknown390[0x10];
+    uint32_t mnError;
+    void* mpModesBegin;
+    void* mpModesEnd;
+    char unknown3ac[0x4];
+    uint32_t mnMode[13];
+    char unknown3e4[0x14];
+    void* mpBuffersBegin;
+    void* mpBuffersEnd;
+    char unknown400[0x18];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00acc634[sizeof(cUnk00acc634) == 0x418 ? 1 : -1];

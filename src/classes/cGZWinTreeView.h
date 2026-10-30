@@ -6,6 +6,7 @@
 #include "common/types.h"
 #include "classes/cGZWin.h"
 #include "classes/cUnk00ae2ef0.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00ae3240 cUnk00ae2ef0
 // VTABLE: 0x00ae2fe0 cGZWin
@@ -84,14 +85,84 @@ public:
     virtual bool Slot57_ae2ef0(uint32_t);
     virtual bool Slot58_ae2ef0();
     virtual uint32_t Slot59_ae2ef0();
-    char unknowndc[0x4c];
-    uint32_t field128;
-    char unknown12c[0x4];
-    uint32_t field130;
-    uint32_t field134;
-    char unknown138[0x48];
-    uint32_t field180;
-    char unknown184[0x40];
+    // STUB: 0x009d1ee1
+    void* GetNodeByHandle(int32_t);
+    // STUB: 0x009d3956
+    void InternalInit();
+    // STUB: 0x009d354f
+    void RecalculateAll();
+    // STUB: 0x009d0626
+    void* GetNodeAtCursorPosition(int32_t, int32_t);
+    // STUB: 0x009d0f85
+    void Fn009d0f85(void*, uint32_t, uint32_t);
+    // STUB: 0x009d0fd1
+    void Fn009d0fd1();
+    // STUB: 0x009d1735
+    void FlagNodeForRemovalRecursively(void*);
+    // STUB: 0x009d3312
+    void CreateRootNode();
+    // STUB: 0x009d2fd6
+    void FindTreeInfo(void*, void*, uint32_t, void*);
+    // STUB: 0x009d0331
+    void CheckForScrollbars();
+    // STUB: 0x009d049b
+    void UpdateScrollbarValues();
+    // STUB: 0x009d0888
+    void InitializeImageList();
+    // STUB: 0x009d0cb1
+    void DrawItem(void*, void*, int32_t, int32_t);
+    // STUB: 0x009d17a8
+    void DrawNode(void*, void*, uint32_t, void*, uint32_t);
+    // STUB: 0x009d0112
+    void Fn009d0112();
+    // STUB: 0x009d01c0
+    void Fn009d01c0();
+    // STUB: 0x009cfc7e
+    void Fn009cfc7e();
+    // STUB: 0x009cfcb3
+    void Fn009cfcb3();
+    // STUB: 0x009d026e
+    void Fn009d026e();
+    int32_t mnNextHandle;
+    uint8_t mNodeMap[0xc];
+    char unknownec[0xc];
+    uint8_t mVisibleNodes[0xc];
+    uint8_t mSelection[0xc];
+    void* mpRootNode;
+    void* mpDefaultFont;
+    uint32_t mnMaxBoxSize;
+    bool mbInitialized;
+    bool mbDirty;
+    bool mbPending;
+    bool mbShowHScroll;
+    bool mbShowVScroll;
+    bool mbBlendSelection;
+    char unknown122[0x2];
+    uint32_t mnBackgroundColor;
+    uint32_t mnRowHeight;
+    uint32_t mnImageWidth;
+    uint32_t mnBoxSize;
+    uint32_t mnIconGutter;
+    uint32_t mnGutterX;
+    uint32_t mnGutterY;
+    uint32_t mnScrollX;
+    uint32_t mnScrollbarSize;
+    uint32_t mnTreeFlags;
+    void* mpObject14c;
+    void* mpScrollbarH;
+    void* mpScrollbarV;
+    uint32_t mnFirstRow;
+    uint32_t mnLastRow;
+    uint32_t mnRowCount;
+    uint32_t mnVisibleRows;
+    uint32_t mnVisibleRows2;
+    uint32_t mnSpacingX;
+    uint32_t mnSpacingY;
+    uint32_t mnColors[4];
+    int32_t mnViewRect[4];
+    int32_t mnScreenRect[4];
+    cRZString mDefaultText;
+    uint8_t mIconImages[0xc];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinTreeView[sizeof(cGZWinTreeView) == 0x1c4 ? 1 : -1];

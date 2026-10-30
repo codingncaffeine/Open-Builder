@@ -22,7 +22,7 @@ public:
     virtual bool DispatchToolIsPylonLocked();
     virtual uint32_t DispatchToolGetPylon();
     virtual void DispatchToolSetFollowCamera(uint32_t);
-    virtual void DispatchToolCanDispatch(uint32_t, uint32_t);
+    virtual bool DispatchToolCanDispatch(float, float);
     virtual uint32_t get_track_handle();
     virtual bool Slot03_a80784(void*);
     virtual bool Slot04_a80784(void*);
@@ -104,27 +104,137 @@ public:
     virtual bool Slot66_a84c10();
     virtual bool Slot67_a84c10();
     virtual bool Slot68_a84c10();
+    // STUB: 0x00427540
+    void* Fn00427540(uint32_t);
+    // STUB: 0x00427690
+    void Fn00427690();
+    // STUB: 0x00426df0
+    void PlayHomeSound(uint32_t);
+    // STUB: 0x0042aa40
+    void UpdateVariables();
+    // STUB: 0x00426ce0
+    bool DispatchCommute();
+    // STUB: 0x00427770
+    void UpdateTripVariables(int32_t, int32_t, int32_t, int32_t, bool);
+    // STUB: 0x004259e0
+    bool is_pylon_location(void*);
+    // STUB: 0x00426480
+    bool Fn00426480();
+    // STUB: 0x00427490
+    bool Fn00427490(uint32_t, uint32_t);
+    // STUB: 0x00429040
+    void CreateLuaTable();
+    // STUB: 0x00426000
+    void RemoveHomeSound();
+    // STUB: 0x00426ba0
+    bool Fn00426ba0();
+    // STUB: 0x00426fa0
+    void Fn00426fa0();
+    // STUB: 0x00424b80
+    int32_t Fn00424b80(void*);
+    // STUB: 0x00425a30
+    bool Fn00425a30();
+    // STUB: 0x00428900
+    void Die();
+    // STUB: 0x0042ca30
+    void Fn0042ca30();
+    // STUB: 0x0042ca60
+    void Spawn();
+    // STUB: 0x0042cad0
+    void Fn0042cad0();
+    // STUB: 0x0042c050
+    void Fn0042c050();
+    // STUB: 0x0042dbf0
+    void Fn0042dbf0();
+    // STUB: 0x00426760
+    float* Fn00426760(float*);
+    // STUB: 0x00428590
+    void simulate_balloons(bool);
+    // STUB: 0x0042d9e0
+    bool Fn0042d9e0();
+    // STUB: 0x0042c8e0
+    void FailCommute();
     bool fieldbc;
-    char unknownbd[0x7];
-    uint32_t fieldc4;
-    char unknownc8[0x18];
-    uint32_t fielde0;
-    char unknowne4[0x28];
-    uint32_t field10c;
-    char unknown110[0x2];
+    char unknownbd[0x3];
+    uint32_t mnState;
+    void* mpResidence;
+    char unknownc8[0x8];
+    float mfHomeX;
+    char unknownd4[0x4];
+    float mfHomeZ;
+    void* mpWorkRef;
+    void* mpJobBuilding;
+    void* mpJobOther;
+    char unknowne8[0x14];
+    int32_t mnJobSearchDays;
+    float mfLocX;
+    float mfLocY;
+    float mfLocZ;
+    uint32_t mnWealth;
+    uint16_t mnNameKind;
     bool field112;
-    bool field113;
+    bool mbMale;
     char field114[0x14];
-    bool field128;
-    char unknown129[0x3];
-    uint32_t field12c;
-    char field130[0x20];
-    uint32_t field150;
-    char unknown154[0xf1];
-    bool field245;
+    uint8_t mnAge;
+    uint8_t mnBirthMonth;
+    char unknown12a[0x2];
+    uint32_t mnNameId;
+    char field130[0x14];
+    void* mpResidenceModel;
+    bool mbResidenceShown;
+    char unknown149[0x7];
+    uint32_t mnTrackHandle;
+    uint32_t mnCommuteLength;
+    bool mbRetired;
+    char unknown159[0x3];
+    uint32_t mnRemovedFlag;
+    bool mbNeighborConnectionRemoved;
+    char unknown161[0x3];
+    int32_t mnLuaTable;
+    uint32_t mnHomeName;
+    uint32_t mnJobName;
+    uint32_t mnJobTitle;
+    char unknown174[0x4];
+    void* mpPersonalName;
+    float mfEQ;
+    float mfHQ;
+    char unknown184[0x24];
+    float mfEQHistory[6];
+    float mfHQHistory[6];
+    uint8_t mnEQIndex;
+    uint8_t mnHQIndex;
+    char unknown1da[0x2];
+    float mfEQDelta;
+    float mfHQDelta;
+    char unknown1e4[0x4];
+    void* mpGradeMap;
+    void* mpHomeSound;
+    void* mpLuaContext;
+    uint32_t mnUnknownName;
+    uint32_t mnUnemployedName;
+    uint32_t mnRetiredName;
+    char unknown200[0x4];
+    uint32_t mnModelButtonBitmapA;
+    uint32_t mnModelButtonBitmapB;
+    void* mpDispatch;
+    bool mbLocationShown;
+    char unknown211[0x3];
+    void* mpBalloonAdvices;
+    void* mpBalloonAdvicesEnd;
+    char unknown21c[0x10];
+    void* mpBalloonList;
+    void* mpBalloonEventList;
+    char unknown234[0x10];
+    bool mbToolActive;
+    bool mbPylonValid;
     char unknown246[0x2];
-    uint32_t field248;
-    char unknown24c[0x6c];
+    void* mpPylon;
+    uint32_t mnCarState[6];
+    uint32_t mnLastTripTime;
+    uint8_t mPylonTimer[0x18];
+    char unknown280[0x1c];
+    uint32_t mnLastSoundTime;
+    uint8_t mTimer[0x18];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4MySim[sizeof(cSC4MySim) == 0x2b8 ? 1 : -1];

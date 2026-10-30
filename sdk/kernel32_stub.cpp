@@ -18,4 +18,6 @@ BOOL __stdcall WriteFile(HANDLE, LPCVOID, DWORD, DWORD*, LPVOID) { return 0; }
 BOOL __stdcall CloseHandle(HANDLE) { return 0; }
 HANDLE __stdcall CreateThread(LPVOID, DWORD, LPTHREAD_START_ROUTINE, LPVOID, DWORD, DWORD*) { return 0; }
 void __stdcall Sleep(DWORD) {}
+int __stdcall FreeLibrary(HMODULE) { return 0; }
+HMODULE __stdcall GetModuleHandleA(LPCSTR) { return 0; }
 }

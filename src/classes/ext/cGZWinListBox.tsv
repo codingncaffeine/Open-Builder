@@ -1,0 +1,47 @@
+field dc void* mpEntryList
+field fc int32_t mnVisibleLines
+field 100 int32_t mnTopIndex
+field 10c bool mbShouldSort
+field 10d bool mbOutlineDrawing
+field 10e bool mbDrawSunkenRect
+field 12c int8_t mcScrollbarGutterX
+field 12d int8_t mcScrollbarGutterY
+field 12e int8_t mcTextGutterX
+field 12f int8_t mcTextGutterY
+field 130 bool mbVScrollEnabled
+field 131 bool mbHScrollEnabled
+field 164 int32_t mnEntryCount
+field f8 int32_t mnSelection
+slot GetStringFromIndex bool uint32_t void*
+slot GetIndexFromString bool void* void*
+slot GetStringAddressFromIndex bool uint32_t void*
+field e4 uint32_t mnHighlightColor
+field ec uint32_t mnColors[3]
+field 108 int32_t mnMinLineHeight
+field 114 void* mpPopupBackground
+field 118 void* mpLineItemBackground
+method 0x009c92ae void* get_scrollbar_v()
+method 0x009c92e1 void* get_scrollbar_h()
+slot SetPopupBackgroundBuffer void void*
+field e0 float mfHighlightFillAlpha
+field e8 void* mpFont
+field 124 uint32_t mnOutlineColorA
+field 128 uint32_t mnOutlineColorB
+field 10f bool mbPopup
+slot GZCharacter bool void*
+slot RemoveScrollBar void bool bool
+field 104 int32_t mnLineHeight
+field 134 void* mpScrollBarImageV
+field 13c int32_t mnScrollBarRectV[4]
+field 160 bool mbPostMessages
+slot InsertEntryAtIndex bool uint32_t void*
+field 110 bool mbFitHeight
+field 111 bool mbFitWidth
+field 138 void* mpScrollBarImageH
+slot AddScrollBar bool bool bool
+field 11c bool mbDoubleClick
+field 120 int32_t mnLastClickIndex
+field 15c void* mpClickTimer
+field 161 bool mbScrollBarCapture
+method 0x0099bdfe bool Fn0099bdfe()
+field 132 bool mbHighlightEnabled

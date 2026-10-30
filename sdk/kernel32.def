@@ -13,3 +13,5 @@ EXPORTS
   CloseHandle
   CreateThread
   Sleep
+  FreeLibrary
+  GetModuleHandleA

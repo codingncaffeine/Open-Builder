@@ -186,15 +186,15 @@ uint32_t cUnk00ac3090::Slot24_ac3090()
 }
 
 // FUNCTION: 0x00472e70
-uint32_t cUnk00ac3090::Slot04_ac3004()
-{
-    return field148;
-}
-
-// FUNCTION: 0x00472e70 nohook
 uint32_t cUnk00add578::Slot69_add348()
 {
     return mnDefaultRowHeight;
+}
+
+// FUNCTION: 0x00472e70 nohook
+uint32_t cUnk00ac3090::Slot04_ac3004()
+{
+    return field148;
 }
 
 // FUNCTION: 0x00472e80
@@ -228,21 +228,15 @@ uint32_t cGZWinGenDlg::Slot20_ae0190()
 }
 
 // FUNCTION: 0x0076b620 nohook
-uint32_t cUnk00ac3090::Slot05_ac3004()
-{
-    return field14c;
-}
-
-// FUNCTION: 0x0076b620 nohook
 uint32_t cUnk00add578::Slot28_add348()
 {
     return mnOutlineColor;
 }
 
 // FUNCTION: 0x0076b620 nohook
-uint32_t cGZGraph::Slot42_addff8()
+uint32_t cUnk00ac3090::Slot05_ac3004()
 {
-    return field220;
+    return field14c;
 }
 
 // FUNCTION: 0x0087527b nohook
@@ -314,15 +308,15 @@ void* cUnk00ac3090::Slot21_ac3090()
 }
 
 // FUNCTION: 0x00879480
-uint32_t cGZWinTreeView::Slot12_ae2ef0()
+uint32_t cUnk00ac3090::Slot25_ac3090()
 {
     return field128;
 }
 
 // FUNCTION: 0x00879480 nohook
-uint32_t cUnk00ac3090::Slot25_ac3090()
+uint32_t cGZWinTreeView::Slot12_ae2ef0()
 {
-    return field128;
+    return mnRowHeight;
 }
 
 // FUNCTION: 0x008794bf
@@ -393,15 +387,15 @@ void cGZFontSys::Slot04_a93658(uint32_t value)
 }
 
 // FUNCTION: 0x00894f6d nohook
-void cRZSystemService::Slot04_a93658(uint32_t value)
-{
-    fieldc = value;
-}
-
-// FUNCTION: 0x00894f6d nohook
 void cRZLanguageUtility::SetCountry(uint32_t value)
 {
     mnSubType = value;
+}
+
+// FUNCTION: 0x00894f6d nohook
+void cRZSystemService::Slot04_a93658(uint32_t value)
+{
+    fieldc = value;
 }
 
 // FUNCTION: 0x00894f6d nohook
@@ -411,13 +405,13 @@ void cGZWinPieMenu::Slot40_ae3338(uint32_t value)
 }
 
 // FUNCTION: 0x00894f77
-uint32_t cGZFontSys::Slot05_a93658()
+uint32_t cGZFontSys::Slot12_a93658()
 {
     return 0xdbba0;
 }
 
 // FUNCTION: 0x00894f77 nohook
-uint32_t cGZFontSys::Slot12_a93658()
+uint32_t cGZFontSys::Slot05_a93658()
 {
     return 0xdbba0;
 }
@@ -532,91 +526,19 @@ void cUnk00aceaf0::Slot04_aceb48(uint32_t value)
 }
 
 // FUNCTION: 0x0091297e nohook
-uint32_t cUnk00aceaf0::Slot26_aceb48()
-{
-    return field4;
-}
-
-// FUNCTION: 0x0091297e nohook
 uint32_t cUnk00aceaf0::Slot18_aceb48()
 {
     return field4;
 }
 
-// FUNCTION: 0x0091559a nohook
-bool cGZWinIMEServer::Slot09_adb588(uint32_t)
+// FUNCTION: 0x0091297e nohook
+uint32_t cUnk00aceaf0::Slot26_aceb48()
 {
-    return true;
-}
-
-// FUNCTION: 0x0091559a nohook
-bool cHitControlGroup::SetPitch(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0091559a nohook
-bool cHitControlGroup::Slot17_ac2b18(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0091559a nohook
-bool cHitControlGroup::Slot25_ac2b18(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0091559a nohook
-bool cPropertySetUint32XmlReader::HandleEndNamespaceDecl(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0091559a nohook
-bool cRZLanguageManager::Slot33_ad1198(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0091559a nohook
-bool cGZFontSys::Slot09_ad1a98(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0091559a nohook
-bool cUnk00ad7520::Slot18_ad7520(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0091559a nohook
-bool cRZSystemService::Slot11_a93658(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0091559a nohook
-bool cRZSystemService::Slot09_ad1a98(uint32_t)
-{
-    return true;
+    return field4;
 }
 
 // FUNCTION: 0x0091559a nohook
 bool cGZLegacyControl_4::Render(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0091559a nohook
-bool cRZCOMDllDirector::OnStart(uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0091559a nohook
-bool cFreshPlayer::SetZPos(uint32_t)
 {
     return true;
 }
@@ -628,7 +550,79 @@ bool cGZSndSegmentWavDataSource::SetDataIsValid(uint32_t)
 }
 
 // FUNCTION: 0x0091559a nohook
+bool cUnk00ad7520::Slot18_ad7520(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
+bool cRZSystemService::Slot09_ad1a98(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
+bool cRZSystemService::Slot11_a93658(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
+bool cHitControlGroup::Slot25_ac2b18(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
+bool cHitControlGroup::Slot17_ac2b18(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
+bool cGZFontSys::Slot09_ad1a98(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
+bool cHitControlGroup::SetPitch(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
+bool cRZLanguageManager::Slot33_ad1198(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
+bool cPropertySetUint32XmlReader::HandleEndNamespaceDecl(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
+bool cFreshPlayer::SetZPos(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
 bool cUnk00ae2398::GZOnCharacter(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
+bool cRZCOMDllDirector::OnStart(uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0091559a nohook
+bool cGZWinIMEServer::Slot09_adb588(uint32_t)
 {
     return true;
 }
@@ -664,13 +658,7 @@ uint32_t cRZLanguageManager::Slot32_ad1198()
 }
 
 // FUNCTION: 0x0092973b
-bool cGZStringCommandGenerator::CommandUnregistered(uint32_t, uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0092973b nohook
-bool cGZStringCommandGenerator::CommandRegistered(uint32_t, uint32_t, uint32_t)
+bool cGZUIScriptService_c::ApplyProperty(uint32_t, uint32_t, uint32_t)
 {
     return true;
 }
@@ -682,7 +670,13 @@ bool cHitControlGroup::SetPosition_2(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0092973b nohook
-bool cGZUIScriptService_c::ApplyProperty(uint32_t, uint32_t, uint32_t)
+bool cGZStringCommandGenerator::CommandRegistered(uint32_t, uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0092973b nohook
+bool cGZStringCommandGenerator::CommandUnregistered(uint32_t, uint32_t, uint32_t)
 {
     return true;
 }
@@ -694,51 +688,21 @@ bool cUnk00addd50::GZOnMouseMove(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0092b25b
-bool cUnk00ad1878::Slot22_ad1878(bool value)
-{
-    field8 = value;
-    return true;
-}
-
-// FUNCTION: 0x0092b25b nohook
 bool cGZPersistDBSerialRecord::SetFieldSint16(bool value)
 {
     field8 = value;
     return true;
 }
 
+// FUNCTION: 0x0092b25b nohook
+bool cUnk00ad1878::Slot22_ad1878(bool value)
+{
+    field8 = value;
+    return true;
+}
+
 // FUNCTION: 0x0092b33a
-bool cHitControlGroup::Slot29_ac2b18(uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0092b33a nohook
-bool cHitChannel::CopyAllRegisters(uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0092b33a nohook
-bool cHitControlGroup::Slot30_ac2b18(uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0092b33a nohook
-bool cGZDBSerialRecordAsIGZFile::Slot31_abfe50(uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0092b33a nohook
-bool cUnk00ae2398::GZOnKeyUp(uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0092b33a nohook
-bool cGZLegacyControl_4::ControlEvent(uint32_t, uint32_t)
+bool cPropertySetUint32XmlReader::HandleInternalEntityReference(uint32_t, uint32_t)
 {
     return true;
 }
@@ -750,19 +714,49 @@ bool cPropertySetUint32XmlReader::HandleStartNamespaceDecl(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0092b33a nohook
-bool cGZUIScriptService_8::ScriptLiteral(uint32_t, uint32_t)
-{
-    return true;
-}
-
-// FUNCTION: 0x0092b33a nohook
 bool cUnk00ad18d8::Slot17_ad1818(uint32_t, uint32_t)
 {
     return true;
 }
 
 // FUNCTION: 0x0092b33a nohook
-bool cPropertySetUint32XmlReader::HandleInternalEntityReference(uint32_t, uint32_t)
+bool cGZDBSerialRecordAsIGZFile::Slot31_abfe50(uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0092b33a nohook
+bool cGZLegacyControl_4::ControlEvent(uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0092b33a nohook
+bool cUnk00ae2398::GZOnKeyUp(uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0092b33a nohook
+bool cHitControlGroup::Slot29_ac2b18(uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0092b33a nohook
+bool cHitControlGroup::Slot30_ac2b18(uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0092b33a nohook
+bool cHitChannel::CopyAllRegisters(uint32_t, uint32_t)
+{
+    return true;
+}
+
+// FUNCTION: 0x0092b33a nohook
+bool cGZUIScriptService_8::ScriptLiteral(uint32_t, uint32_t)
 {
     return true;
 }
@@ -804,13 +798,13 @@ bool cPropertySetUint32XmlReader::HandleNotationDecl(uint32_t, uint32_t, uint32_
 }
 
 // FUNCTION: 0x00935ea0 nohook
-bool cGZLegacyControl::ImplementInterface(uint32_t, uint32_t, uint32_t, uint32_t)
+bool cHitControlGroup::Slot05_ac2b18(uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return true;
 }
 
 // FUNCTION: 0x00935ea0 nohook
-bool cHitControlGroup::Slot05_ac2b18(uint32_t, uint32_t, uint32_t, uint32_t)
+bool cGZLegacyControl::ImplementInterface(uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return true;
 }
@@ -822,25 +816,13 @@ void cHitMan::Slot28_ad2540(uint32_t value)
 }
 
 // FUNCTION: 0x009378bc
-bool cHitControlGroup::SetRegisterVal(uint32_t, uint32_t, uint32_t)
+bool cGZWin::GZOnMouseMove(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x009378bc nohook
-bool cGZDBSerialRecordAsIGZFile::Slot03_abfe50(uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x009378bc nohook
-bool cHitControlGroup::Slot35_ac2b18(uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x009378bc nohook
-bool cHitControlGroup::SetPosition(uint32_t, uint32_t, uint32_t)
+bool cGZWin::GZOnMouseUpR(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -852,55 +834,19 @@ bool cHitResource_cHitTrackPlayer::WriteResource_2(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x009378bc nohook
+bool cUnk00ae4910::Slot46_ae47e8(uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x009378bc nohook
 bool cHitResource_cHitTrackPlayer::ReadResource_2(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x009378bc nohook
-bool cHitTrackPlayer::Slot35_ac2b18(uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x009378bc nohook
-bool cHitControlGroup::SetVelocity(uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x009378bc nohook
-bool cGZWin::GZOnMouseUpL(uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x009378bc nohook
-bool cHitTrackPlayer::WriteResource(uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x009378bc nohook
-bool cGZPersistDBSegmentMultiPackedFiles::Slot40_ad8ca0(uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x009378bc nohook
-bool cGZDBSegmentDirectoryFiles::Slot40_ad8ca0(uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x009378bc nohook
-bool cHitChannel::Slot35_ad3fc0(uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x009378bc nohook
-bool cHitTrackPlayer::Slot07_ac2d78(uint32_t, uint32_t, uint32_t)
+bool cHitControlGroup::SetRegisterVal(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -912,19 +858,67 @@ bool cHitTrackPlayer::ReadResource(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x009378bc nohook
-bool cGZDBSegmentPackedFile::Slot37_ad8488(uint32_t, uint32_t, uint32_t)
+bool cGZPersistDBSegmentMultiPackedFiles::Slot40_ad8ca0(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x009378bc nohook
-bool cGZWin::GZOnMouseMove(uint32_t, uint32_t, uint32_t)
+bool cHitTrackPlayer::WriteResource(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x009378bc nohook
-bool cGZWin::GZOnMouseUpR(uint32_t, uint32_t, uint32_t)
+bool cHitChannel::Slot35_ad3fc0(uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x009378bc nohook
+bool cUnk00ae4910::Slot45_ae47e8(uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x009378bc nohook
+bool cHitTrackPlayer::Slot07_ac2d78(uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x009378bc nohook
+bool cHitControlGroup::SetPosition(uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x009378bc nohook
+bool cGZDBSegmentDirectoryFiles::Slot40_ad8ca0(uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x009378bc nohook
+bool cHitTrackPlayer::Slot35_ac2b18(uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x009378bc nohook
+bool cGZWin::GZOnMouseUpL(uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x009378bc nohook
+bool cHitControlGroup::Slot06_ac2b18(uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x009378bc nohook
+bool cHitControlGroup::Slot35_ac2b18(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -942,19 +936,19 @@ bool cGZWin::GZOnMouseDownL(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x009378bc nohook
-bool cUnk00ae4910::Slot46_ae47e8(uint32_t, uint32_t, uint32_t)
+bool cGZDBSegmentPackedFile::Slot37_ad8488(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x009378bc nohook
-bool cUnk00ae4910::Slot45_ae47e8(uint32_t, uint32_t, uint32_t)
+bool cGZDBSerialRecordAsIGZFile::Slot03_abfe50(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x009378bc nohook
-bool cHitControlGroup::Slot06_ac2b18(uint32_t, uint32_t, uint32_t)
+bool cHitControlGroup::SetVelocity(uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -974,493 +968,175 @@ bool cGZPersistResource::SetGroup(uint32_t value)
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot15_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot04_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot06_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot12_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot05_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot13_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot18_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot14_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot19_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot15_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot20_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot11_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot04_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot16_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot03_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot10_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot12_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot09_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot06_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot07_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot08_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot06_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad95e8::Slot05_ad9030(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot05_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot06_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9c78::Slot15_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot07_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot03_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot07_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9c78::Slot20_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot06_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9c78::Slot19_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot05_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9c78::Slot17_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot08_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9c78::Slot16_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot09_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9c78::Slot08_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot10_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9d28::Slot15_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot11_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9d80::Slot12_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot18_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9d80::Slot11_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot14_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9d80::Slot10_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot04_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9d80::Slot09_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot09_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9d80::Slot08_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot16_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9d80::Slot07_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad8fa4::Slot05_ad8fa4(uint32_t, uint32_t)
+bool cUnk00ad9d80::Slot05_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot03_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9d80::Slot04_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot20_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot19_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot17_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot12_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot03_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot04_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot05_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot10_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot06_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot09_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot07_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot08_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot08_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot09_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot10_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot11_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot08_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot13_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot14_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot15_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot16_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot17_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot18_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot19_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9ee0::Slot20_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot03_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot04_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot07_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot05_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cGZDBSerialRecordAsIGZFile::Slot23_abfe50(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot17_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot08_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot09_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot16_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot10_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot11_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot12_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot13_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot15_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot14_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot14_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot13_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot07_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cGZDBSerialRecordAsIGZFile::Slot22_abfe50(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot15_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot12_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad7cf0::Slot14_ad1878(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot16_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot17_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f38::Slot11_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot18_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot19_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e88::Slot20_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d28::Slot04_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9d80::Slot03_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
@@ -1490,7 +1166,7 @@ bool cUnk00ad9d28::Slot17_ad9b70(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d28::Slot15_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9cd0::Slot18_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
@@ -1550,7 +1226,7 @@ bool cUnk00ad9d28::Slot05_ad9b70(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d80::Slot03_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9d28::Slot04_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
@@ -1574,67 +1250,727 @@ bool cUnk00ad9cd0::Slot19_ad9b70(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot18_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9bc8::Slot18_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot16_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9bc8::Slot17_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot15_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9bc8::Slot15_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot14_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9bc8::Slot14_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot13_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9bc8::Slot13_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot12_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9bc8::Slot12_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot11_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9bc8::Slot10_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot10_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9bc8::Slot09_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot09_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9bc8::Slot08_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot07_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9bc8::Slot07_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d80::Slot19_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9bc8::Slot06_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9bc8::Slot05_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9bc8::Slot04_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9bc8::Slot03_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9bc8::Slot19_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZPersistDBSegmentMultiPackedFiles::Slot35_ad8ca0(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad95e8::Slot05_ad9030(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad8fa4::Slot05_ad8fa4(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZWinToolTip::IsPointInWindowParentCoordinates(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZWinToolTip::IsPointInWindowWindowCoordinates(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad7cf0::Slot14_ad1878(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZDBSerialRecordAsIGZFile::Slot22_abfe50(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot16_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c78::Slot13_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c78::Slot12_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c78::Slot11_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c78::Slot10_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZDBSerialRecordAsIGZFile::Slot23_abfe50(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c78::Slot07_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c78::Slot06_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c78::Slot05_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c78::Slot04_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c78::Slot03_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot20_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot18_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot17_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c78::Slot14_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot15_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot14_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot13_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot12_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot11_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9bc8::Slot16_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot09_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot08_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot07_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot06_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot05_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot04_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9c20::Slot03_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot20_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZWinListBox::Slot63_ae1560(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot16_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot15_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot14_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot13_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot12_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot11_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot10_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot09_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot08_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot07_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot06_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot05_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot04_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot03_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot17_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot19_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot18_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot17_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot16_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot15_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot14_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot13_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot12_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot11_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot10_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot09_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot08_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot07_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot06_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot13_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ac2c88::Slot30_ac2c88(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ac2c88::Slot29_ac2c88(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00adbf80::Slot03_adbf80(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZWin::GZOnKeyDown(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZWin::GZOnKeyUp(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZWin::GZOnCaptureChanged(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZWin::GZOnCommand(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot20_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot19_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot18_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot17_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot16_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot15_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot14_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot05_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot12_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot11_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot10_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot09_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot08_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot07_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot06_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot05_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot04_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f90::Slot03_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot20_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZGraph::Slot40_addff8(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot19_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9f38::Slot18_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9dd8::Slot11_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e30::Slot09_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e30::Slot08_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e30::Slot07_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e30::Slot06_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e30::Slot05_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e30::Slot03_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9dd8::Slot20_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9dd8::Slot19_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9dd8::Slot18_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
@@ -1670,7 +2006,13 @@ bool cUnk00ad9dd8::Slot13_ad9b70(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9dd8::Slot11_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e30::Slot10_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cGZWinToolTip::IsPointInWindowScreenCoordinates(uint32_t, uint32_t)
 {
     return false;
 }
@@ -1724,7 +2066,7 @@ bool cUnk00ad9d80::Slot20_ad9b70(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot06_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9d80::Slot19_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
@@ -1754,511 +2096,181 @@ bool cUnk00ad9d80::Slot14_ad9b70(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot08_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot04_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9ee0::Slot03_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot20_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot19_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot18_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot17_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot16_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot15_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot14_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot13_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot12_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot11_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot10_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cUnk00ad9e88::Slot09_ad9b70(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
 bool cUnk00ad9d80::Slot13_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d80::Slot12_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e88::Slot07_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d80::Slot11_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e88::Slot06_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d80::Slot10_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e88::Slot05_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d80::Slot09_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e88::Slot04_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d80::Slot08_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e88::Slot03_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d80::Slot07_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e30::Slot20_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d80::Slot05_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e30::Slot19_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9d80::Slot04_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e30::Slot18_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot10_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e30::Slot17_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot18_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e30::Slot16_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot07_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e30::Slot15_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot06_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e30::Slot14_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot05_ad9b70(uint32_t, uint32_t)
+bool cUnk00ad9e30::Slot12_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot04_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot03_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot19_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot18_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot17_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot16_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot15_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot14_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot13_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot12_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot09_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot09_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot08_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot07_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot06_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot05_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot04_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9bc8::Slot03_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9dd8::Slot18_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cGZPersistDBSegmentMultiPackedFiles::Slot35_ad8ca0(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9dd8::Slot19_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9dd8::Slot20_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot03_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot07_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot05_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot04_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9cd0::Slot03_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot20_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot19_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot17_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot16_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot15_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot14_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot13_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot12_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot11_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot10_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot08_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9e30::Slot05_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot06_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot05_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot04_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c78::Slot03_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot20_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot18_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot17_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot16_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot15_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot14_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot13_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot12_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9c20::Slot11_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot19_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cHitChannel::SetEffectsLevel(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cGZWin::GZOnKeyUp(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cGZWin::GZOnKeyDown(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot14_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cPropertySetUint32XmlReader::Slot03_ad221c(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00adbf80::Slot03_adbf80(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cHitControlGroup::SetRegisterVal_2(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cHitChannel::Slot36_ad3fc0(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cHitControlGroup::Slot10_ad2718(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot15_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot16_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot17_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cHitResourceFactory::Read(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot20_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cHitTrackPlayer::Slot27_ad3e48(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ac2c88::Slot30_ac2c88(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::Slot08_ad21ec(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cHitControlGroup::Slot36_ac2b18(uint32_t, uint32_t)
+bool cUnk00ad9e30::Slot11_ad9b70(uint32_t, uint32_t)
 {
     return false;
 }
@@ -2270,19 +2282,7 @@ bool cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_18
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cHitList::GetValueByIndex(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ac2c88::Slot29_ac2c88(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cHitList::GetValueByIndex_3(uint32_t, uint32_t)
+bool cHitControlGroup::Slot36_ac2b18(uint32_t, uint32_t)
 {
     return false;
 }
@@ -2294,43 +2294,49 @@ bool cHitList::SetValueByIndex(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093877e nohook
+bool cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::Slot08_ad21ec(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cHitList::GetValueByIndex_3(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
+bool cHitList::GetValueByIndex(uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093877e nohook
 bool cHitList::SetValueByIndex_3(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cGZWin::GZOnCommand(uint32_t, uint32_t)
+bool cHitControlGroup::Slot10_ad2718(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cHitTrackPlayer::Slot36_ac2b18(uint32_t, uint32_t)
+bool cHitControlGroup::SetRegisterVal_2(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cGZGraph::Slot40_addff8(uint32_t, uint32_t)
+bool cPropertySetUint32XmlReader::Slot03_ad221c(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cHitTrackPlayer::Slot30_ac2b18(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cGZWinListBox::Slot63_ae1560(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cGZWinToolTip::IsPointInWindowScreenCoordinates(uint32_t, uint32_t)
+bool cHitTrackPlayer::Slot27_ad3e48(uint32_t, uint32_t)
 {
     return false;
 }
@@ -2342,25 +2348,19 @@ bool cHitTrackPlayer::Slot29_ac2b18(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cGZWinToolTip::IsPointInWindowWindowCoordinates(uint32_t, uint32_t)
+bool cHitTrackPlayer::Slot30_ac2b18(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cGZWinToolTip::IsPointInWindowParentCoordinates(uint32_t, uint32_t)
+bool cHitTrackPlayer::Slot36_ac2b18(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot10_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot11_ad9b70(uint32_t, uint32_t)
+bool cHitChannel::Slot36_ad3fc0(uint32_t, uint32_t)
 {
     return false;
 }
@@ -2372,19 +2372,13 @@ bool cHitChannel::SetEffectsType(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cGZWin::GZOnCaptureChanged(uint32_t, uint32_t)
+bool cHitChannel::SetEffectsLevel(uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot12_ad9b70(uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093877e nohook
-bool cUnk00ad9f90::Slot13_ad9b70(uint32_t, uint32_t)
+bool cHitResourceFactory::Read(uint32_t, uint32_t)
 {
     return false;
 }
@@ -2396,31 +2390,7 @@ uint32_t cHitControlGroup::RegisterVal(uint32_t)
 }
 
 // FUNCTION: 0x00938789
-bool cHitTrackPlayer::Slot22_ac2b18(uint32_t, uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x00938789 nohook
-bool cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::Slot11_ad21ec(uint32_t, uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x00938789 nohook
 bool cUnk00ac2c88::Slot05_ac2c88(uint32_t, uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x00938789 nohook
-bool cGZWin::GZOnMouseWheel(uint32_t, uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x00938789 nohook
-bool cHitControlGroup::Slot22_ac2b18(uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -2432,13 +2402,13 @@ bool cUnk00add578::Slot99_add348(uint32_t, uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x00938789 nohook
-bool cHitTrackPlayer::UpdateArgs(uint32_t, uint32_t, uint32_t, uint32_t)
+bool cHitControlGroup::Slot11_ad2718(uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x00938789 nohook
-bool cHitControlGroup::Slot11_ad2718(uint32_t, uint32_t, uint32_t, uint32_t)
+bool cHitTrackPlayer::UpdateArgs(uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
@@ -2449,44 +2419,56 @@ bool cHitChannel::FadeVolume(uint32_t, uint32_t, uint32_t, uint32_t)
     return false;
 }
 
-// FUNCTION: 0x0093878e nohook
-bool cHitChannel::GetName(uint32_t)
+// FUNCTION: 0x00938789 nohook
+bool cGZWin::GZOnMouseWheel(uint32_t, uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x00938789 nohook
+bool cHitTrackPlayer::Slot22_ac2b18(uint32_t, uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x00938789 nohook
+bool cHitControlGroup::Slot22_ac2b18(uint32_t, uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x00938789 nohook
+bool cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::Slot11_ad21ec(uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cGZDBSDFRecord_4::Slot53_ad8d88(uint32_t)
+bool cHitResource_cHitTrackPlayer::DebugInstanceTag(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cHitList::Add(uint32_t)
+bool cHitPropertySetResource::DebugClassTag(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cUnk00ad7670::Slot03_ad7670(uint32_t)
+bool cHitPropertySetResource::DebugTypeTag(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cUnk00ad7670::Slot04_ad7670(uint32_t)
+bool cGZSndSegmentDataSourceUTalk::GetPath(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cHitTrackPlayer::Slot14_ac2d78(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cHitChannel::SetName(uint32_t)
+bool cGZSndSegmentDataSourceUTalk::SetPath(uint32_t)
 {
     return false;
 }
@@ -2504,49 +2486,31 @@ bool cHitPropertySetTrackResource::DebugClassTag(uint32_t)
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cGZPersistDBSegmentMultiPackedFiles::Slot38_ad8ca0(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::Slot09_ad21ec(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cHitResource_cHitTrackPlayer::DebugInstanceTag(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cHitPropertySetResource::DebugTypeTag(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cGZSndSegmentDataSourceUTalk::SetPath(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cUnk00ac2e28::Slot25_ac2c88(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cHitResource_cHitList::DebugTypeTag(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
 bool cHitPropertySetTrackResource::DebugInstanceTag(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cUnk00ad7670::Slot04_ad7670(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cUnk00ad7670::Slot03_ad7670(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cGZBufferResource::DebugClassTag(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cHitResource_cHitTrackPlayer::DebugClassTag(uint32_t)
 {
     return false;
 }
@@ -2558,7 +2522,7 @@ bool cHitResource_cHitTrackPlayer::DebugTypeTag(uint32_t)
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cGZDBSerialRecordAsIGZFile::Slot20_abfe50(uint32_t)
+bool cGZBufferResource::DebugTypeTag(uint32_t)
 {
     return false;
 }
@@ -2570,19 +2534,49 @@ bool cHitTrackPlayer::Slot15_ac2d78(bool)
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cHitResource_cHitList::DebugInstanceTag(uint32_t)
+bool cUnk00ad95e8::Slot53_ad8d88(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cHitResource_cHitList::DebugClassTag(uint32_t)
+bool cGZDBSerialRecordAsIGZFile::Slot20_abfe50(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cGZSndSegmentDataSourceUTalk::GetPath(uint32_t)
+bool cHitTrackPlayer::Slot14_ac2d78(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cHitTrackPlayer::Slot12_ac2d78(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cUnk00ad95e8::Slot55_ad8d88(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::Slot09_ad21ec(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cUnk00ad95e8::Slot56_ad8d88(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cHitList::Add(uint32_t)
 {
     return false;
 }
@@ -2600,13 +2594,13 @@ bool cUnk00ad7cf0::Slot55_ad8d88(uint32_t)
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cGZFontSys::RemoveFontByFile(uint32_t)
+bool cHitChannel::SetName(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cGZFontSys::Slot11_a93658(uint32_t)
+bool cHitChannel::GetName(uint32_t)
 {
     return false;
 }
@@ -2618,43 +2612,13 @@ bool cGZSndSegmentDataSourceXA::GetPath(uint32_t)
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cHitResource_cHitTrackPlayer::DebugClassTag(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
 bool cGZSndSegmentDataSourceXA::SetPath(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cGZWin::GZOnCharacter(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cGZWinOptGrp::Slot25_ae1210(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cHitControlGroup::Slot27_ac2b18(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cGZBufferResource::DebugTypeTag(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cGZWin::GZOnMouseEnter(uint32_t)
+bool cUnk00ac2e28::Slot25_ac2c88(uint32_t)
 {
     return false;
 }
@@ -2666,43 +2630,19 @@ bool cGZSndSegmentWavDataSource::GetKey(uint32_t)
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cGZWin::GZOnKillFocus(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
 bool cGZSndSegmentWavDataSource::SetKey(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cFreshDimensionPlayer::Slot03_ad4aa0(uint32_t)
+bool cHitResource_cHitList::DebugTypeTag(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cGZWin::GZOnMouseExit(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cHitControlGroup::SetCompletionNotification(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cFreshDimensionPlayer::Slot17_ad4aa0(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cHitControlGroup::SetDataSource(uint32_t)
+bool cGZDBSDFRecord_4::Slot53_ad8d88(uint32_t)
 {
     return false;
 }
@@ -2714,19 +2654,13 @@ bool cRZWinKeyAcceleratorRes::SerialWrite(uint32_t)
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cGZBufferResource::DebugClassTag(uint32_t)
+bool cGZFontSys::Slot11_a93658(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cHitControlGroup::SetMinimumDistance(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cHitControlGroup::SetMaximumDistance(uint32_t)
+bool cGZFontSys::RemoveFontByFile(uint32_t)
 {
     return false;
 }
@@ -2738,43 +2672,67 @@ bool cRZSystemCursorW95::LoadCursorA(uint32_t)
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cHitPropertySetResource::DebugClassTag(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
-bool cHitTrackPlayer::Slot12_ac2d78(uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x0093878e nohook
 bool cHitPropertySetResource::DebugInstanceTag(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cGZWinOptGrp::Slot26_ae1210(uint32_t)
+bool cHitResource_cHitList::DebugInstanceTag(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cUnk00ad7520::Slot20_ad7520(uint32_t)
+bool cGZWin::GZOnCharacter(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cUnk00ad95e8::Slot56_ad8d88(uint32_t)
+bool cGZWin::GZOnKillFocus(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cUnk00ad95e8::Slot53_ad8d88(uint32_t)
+bool cGZWin::GZOnMouseEnter(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cFreshDimensionPlayer::Slot17_ad4aa0(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cGZWin::GZOnMouseExit(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cFreshDimensionPlayer::Slot03_ad4aa0(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cHitResource_cHitList::DebugClassTag(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cGZWinOptGrp::Slot25_ae1210(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cHitControlGroup::SetDataSource(uint32_t)
 {
     return false;
 }
@@ -2786,7 +2744,43 @@ bool cUnk00ad7520::Slot05_ad7520(uint32_t)
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cUnk00ad95e8::Slot55_ad8d88(uint32_t)
+bool cHitControlGroup::Slot27_ac2b18(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cGZPersistDBSegmentMultiPackedFiles::Slot38_ad8ca0(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cGZWinOptGrp::Slot26_ae1210(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cHitControlGroup::SetCompletionNotification(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cHitControlGroup::SetMaximumDistance(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cHitControlGroup::SetMinimumDistance(uint32_t)
+{
+    return false;
+}
+
+// FUNCTION: 0x0093878e nohook
+bool cUnk00ad7520::Slot20_ad7520(uint32_t)
 {
     return false;
 }
@@ -2798,25 +2792,25 @@ bool cUnk00ad7520::Slot06_ad7520(uint32_t)
 }
 
 // FUNCTION: 0x00938793
-bool cHitTrackPlayer::Slot09_ac2d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
-{
-    return false;
-}
-
-// FUNCTION: 0x00938793 nohook
 bool cHitControlGroup::SetAll(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
 {
     return false;
 }
 
+// FUNCTION: 0x00938793 nohook
+bool cHitTrackPlayer::Slot09_ac2d78(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+{
+    return false;
+}
+
 // FUNCTION: 0x00939792 nohook
-uint32_t cHitPropertySetTrackResource::GetRefCount()
+uint32_t cHitPropertySetResource::GetRefCount()
 {
     return field4;
 }
 
 // FUNCTION: 0x00939792 nohook
-uint32_t cHitPropertySetResource::GetRefCount()
+uint32_t cHitPropertySetTrackResource::GetRefCount()
 {
     return field4;
 }
@@ -2828,15 +2822,15 @@ uint32_t cHitMan::Slot05_a93658()
 }
 
 // FUNCTION: 0x0093998f nohook
-bool cHitMan::Slot08_ad2540()
-{
-    return field21;
-}
-
-// FUNCTION: 0x0093998f nohook
 bool cGZClipboardManagerClipboard::GetChangeNotificationEnabled()
 {
     return field5;
+}
+
+// FUNCTION: 0x0093998f nohook
+bool cHitMan::Slot08_ad2540()
+{
+    return field21;
 }
 
 // FUNCTION: 0x0093aa77
@@ -2858,7 +2852,7 @@ void cHitTrackPlayer::Slot13_ac2b18(uint32_t value)
 }
 
 // FUNCTION: 0x0093e47c nohook
-void cGZPersistSurveyorWriter::WriteBoolArray(uint32_t, uint32_t, uint32_t)
+void cHitControlGroup::GetPosition(uint32_t, uint32_t, uint32_t)
 {
 }
 
@@ -2868,42 +2862,7 @@ void cHitControlGroup::GetVelocity(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093e47c nohook
-void cHitControlGroup::GetPosition(uint32_t, uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0093e47c nohook
-void cGZPersistSurveyorWriter::WriteFloat64(uint32_t, uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0093e47c nohook
-void cHitTrackPlayer::Slot06_ac2d78(uint32_t, uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0093e47c nohook
-void cGZPersistSurveyorWriter::WriteSint8Array(uint32_t, uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0093e47c nohook
 void cGZPersistSurveyorWriter::WriteFloat64Array(uint32_t, uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0093e47c nohook
-void cGZPersistSurveyorWriter::WriteUint8Array(uint32_t, uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0093e47c nohook
-void cGZPersistSurveyorWriter::WriteSint16Array(uint32_t, uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0093e47c nohook
-void cGZPersistSurveyorWriter::WriteUint16Array(uint32_t, uint32_t, uint32_t)
 {
 }
 
@@ -2913,12 +2872,47 @@ void cGZPersistSurveyorWriter::WriteFloat32Array(uint32_t, uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093e47c nohook
+void cGZPersistSurveyorWriter::WriteUint32Array(uint32_t, uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0093e47c nohook
 void cGZPersistSurveyorWriter::WriteSint32Array(uint32_t, uint32_t, uint32_t)
 {
 }
 
 // FUNCTION: 0x0093e47c nohook
-void cGZPersistSurveyorWriter::WriteUint32Array(uint32_t, uint32_t, uint32_t)
+void cGZPersistSurveyorWriter::WriteUint16Array(uint32_t, uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0093e47c nohook
+void cGZPersistSurveyorWriter::WriteSint16Array(uint32_t, uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0093e47c nohook
+void cGZPersistSurveyorWriter::WriteUint8Array(uint32_t, uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0093e47c nohook
+void cGZPersistSurveyorWriter::WriteSint8Array(uint32_t, uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0093e47c nohook
+void cHitTrackPlayer::Slot06_ac2d78(uint32_t, uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0093e47c nohook
+void cGZPersistSurveyorWriter::WriteBoolArray(uint32_t, uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0093e47c nohook
+void cGZPersistSurveyorWriter::WriteFloat64(uint32_t, uint32_t, uint32_t)
 {
 }
 
@@ -2946,6 +2940,13 @@ bool cHitResource_cHitList::Slot08_ad2620(uint32_t value)
 }
 
 // FUNCTION: 0x0094052a nohook
+bool cHitResource_cHitTrackPlayer::Slot08_ad2620(uint32_t value)
+{
+    field108 = value;
+    return true;
+}
+
+// FUNCTION: 0x0094052a nohook
 bool cHitPropertySetTrackResource::Slot08_ad2620(uint32_t value)
 {
     field1c = value;
@@ -2959,29 +2960,15 @@ bool cHitPropertySetResource::Slot08_ad2620(uint32_t value)
     return true;
 }
 
-// FUNCTION: 0x0094052a nohook
-bool cHitResource_cHitTrackPlayer::Slot08_ad2620(uint32_t value)
-{
-    field108 = value;
-    return true;
-}
-
 // FUNCTION: 0x00940536
-bool cHitPropertySetResource::Slot10_ad2620(uint32_t value)
+bool cHitResource_cHitTrackPlayer::Slot10_ad2620(uint32_t value)
 {
-    field24 = value;
+    field110 = value;
     return true;
 }
 
 // FUNCTION: 0x00940536 nohook
 bool cHitResource_cHitList::Slot10_ad2620(uint32_t value)
-{
-    field24 = value;
-    return true;
-}
-
-// FUNCTION: 0x00940536 nohook
-bool cHitPropertySetTrackResource::Slot10_ad2620(uint32_t value)
 {
     field24 = value;
     return true;
@@ -2995,9 +2982,16 @@ bool cGZPersistResource::SetType(uint32_t value)
 }
 
 // FUNCTION: 0x00940536 nohook
-bool cHitResource_cHitTrackPlayer::Slot10_ad2620(uint32_t value)
+bool cHitPropertySetTrackResource::Slot10_ad2620(uint32_t value)
 {
-    field110 = value;
+    field24 = value;
+    return true;
+}
+
+// FUNCTION: 0x00940536 nohook
+bool cHitPropertySetResource::Slot10_ad2620(uint32_t value)
+{
+    field24 = value;
     return true;
 }
 
@@ -3033,7 +3027,7 @@ bool cFreshCellPlayer::Slot15_ad4830(bool value)
 }
 
 // FUNCTION: 0x00945e47 nohook
-bool cHitPropertySetResource::Slot09_ad2620(uint32_t value)
+bool cHitResource_cHitList::Slot09_ad2620(uint32_t value)
 {
     field20 = value;
     return true;
@@ -3047,16 +3041,16 @@ bool cGZWinOptGrp::Slot23_ae1210(uint32_t value)
 }
 
 // FUNCTION: 0x00945e47 nohook
-bool cHitResource_cHitList::Slot09_ad2620(uint32_t value)
+bool cHitResource_cHitTrackPlayer::Slot09_ad2620(uint32_t value)
 {
-    field20 = value;
+    field10c = value;
     return true;
 }
 
 // FUNCTION: 0x00945e47 nohook
-bool cHitResource_cHitTrackPlayer::Slot09_ad2620(uint32_t value)
+bool cHitPropertySetResource::Slot09_ad2620(uint32_t value)
 {
-    field10c = value;
+    field20 = value;
     return true;
 }
 
@@ -3133,19 +3127,7 @@ void* cFreshPlayer::GetKey()
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cUnk00ad1878::Slot23_ad1878()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cRZTextOStream::Slot18_ad1818()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cFreshDimensionPlayer::Slot07_ad4aa0()
+bool cHitDebugInfo::Slot04_ae1d24()
 {
     return true;
 }
@@ -3157,19 +3139,31 @@ bool cGZWin::GZPaint()
 }
 
 // FUNCTION: 0x00949ade nohook
+bool cRZTextOStream::Slot18_ad1818()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cUnk00ad1878::Slot23_ad1878()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
 bool cGZPersistDBSerialRecord::Slot23_ad1818()
 {
     return true;
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cUnk00adc018::Slot05_adb588()
+bool cHitControlGroup::Slot19_ac2b18()
 {
     return true;
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cRZLanguageManager::Slot04_ae1d24()
+bool cGZDBSerialRecordAsIGZFile::Slot18_abfe50()
 {
     return true;
 }
@@ -3181,49 +3175,25 @@ bool cPropertySetUint32XmlReader::HandleStartCdataSection()
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cPropertySetUint32XmlReader::HandleEndCdataSection()
+bool cUnk00adc018::Slot05_adb588()
 {
     return true;
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cRZLanguageManager::Slot03_ae1d24()
+bool cUnk00ada628::Slot04_ada628()
 {
     return true;
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cGZWinIMEServer::Slot08_adb588()
+bool cRZLanguageManager::Slot04_ae1d24()
 {
     return true;
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cUnk00adde3c::Slot02_adde3c()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cRZLanguageUtility::Shutdown()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cUnk00add190::Slot92_add190()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cRZSystemService::Slot04_ae1d24()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cRZSystemService::Slot03_ae1d24()
+bool cUnk00ac31e4::Slot14_ac3154()
 {
     return true;
 }
@@ -3235,7 +3205,133 @@ bool cGZDBSegmentDirectoryFiles::Slot09_ad8ca0()
 }
 
 // FUNCTION: 0x00949ade nohook
+bool cHitMan::Slot07_ad2540()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cRZLanguageManager::Slot03_ae1d24()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cUnk00ac31e4::Slot09_ac3154()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cPropertySetUint32XmlReader::HandleEndCdataSection()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cHitControlGroup::Slot18_ac2b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cGZSndSegmentWavDataSource::DataIsValid()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cHitControlGroup::Slot16_ac2b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cHitControlGroup::Slot15_ac2b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cHitTrackPlayer::Slot03_ac2b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cHitControlGroup::Slot14_ac2b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cUnk00ad7520::Slot17_ad7520()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cUnk00acd5e8::Slot02_acd504()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cHitControlGroup::Slot09_ac2b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cHitControlGroup::Slot08_ac2b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cHitControlGroup::Slot07_ac2b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cHitControlGroup::Slot04_ac2b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cHitControlGroup::Slot03_ac2b18()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cRZSystemService::Slot03_ae1d24()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
 bool cRZCOMDllDirector::Slot10_ace69c()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cUnk00add190::Slot92_add190()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cFreshDimensionPlayer::Slot07_ad4aa0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cUnk00ac2c88::Slot03_ac2c88()
 {
     return true;
 }
@@ -3283,145 +3379,7 @@ bool cRZCOMDllDirector::Slot03_ace69c()
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cRZDiskRadioStation::Shutdown()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cUnk00acd5e8::Slot02_acd504()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cRZDiskRadioStation::Init()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cUnk00ac31e4::Slot09_ac3154()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cHitControlGroup::Slot15_ac2b18()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cHitControlGroup::Slot16_ac2b18()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cHitControlGroup::Slot18_ac2b18()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cHitControlGroup::Slot19_ac2b18()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cRZCursor::Shutdown()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cGZSndSegmentWavDataSource::DataIsValid()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cUnk00ac2c88::Slot03_ac2c88()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cUnk00ad7520::Slot17_ad7520()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cUnk00ada628::Slot04_ada628()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cUnk00ac31e4::Slot14_ac3154()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cHitControlGroup::Slot03_ac2b18()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cGZDBSerialRecordAsIGZFile::Slot18_abfe50()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cUnk00ac31e4::Slot07_ac3154()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cUnk00ac31e4::Slot06_ac3154()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cHitTrackPlayer::Slot03_ac2b18()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cHitMan::Slot07_ad2540()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cGZPersistDBSegmentMultiPackedFiles::Slot09_ad8ca0()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cGZFontSys::Slot06_a93658()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cHitDebugInfo::Slot04_ae1d24()
-{
-    return true;
-}
-
-// FUNCTION: 0x00949ade nohook
-bool cHitControlGroup::Slot14_ac2b18()
+bool cUnk00adde3c::Slot02_adde3c()
 {
     return true;
 }
@@ -3433,25 +3391,61 @@ bool cRZCursor::Init()
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cHitControlGroup::Slot04_ac2b18()
+bool cRZCursor::Shutdown()
 {
     return true;
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cHitControlGroup::Slot09_ac2b18()
+bool cUnk00ac31e4::Slot07_ac3154()
 {
     return true;
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cHitControlGroup::Slot08_ac2b18()
+bool cRZDiskRadioStation::Shutdown()
 {
     return true;
 }
 
 // FUNCTION: 0x00949ade nohook
-bool cHitControlGroup::Slot07_ac2b18()
+bool cRZLanguageUtility::Shutdown()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cRZSystemService::Slot04_ae1d24()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cRZDiskRadioStation::Init()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cGZWinIMEServer::Slot08_adb588()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cGZFontSys::Slot06_a93658()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cGZPersistDBSegmentMultiPackedFiles::Slot09_ad8ca0()
+{
+    return true;
+}
+
+// FUNCTION: 0x00949ade nohook
+bool cUnk00ac31e4::Slot06_ac3154()
 {
     return true;
 }
@@ -3520,19 +3514,43 @@ uint32_t cFreshDimensionPlayer::Slot20_ad4aa0()
 }
 
 // FUNCTION: 0x00949b47 nohook
-uint32_t cGZSndSegmentWavDataSource::GetPosition()
-{
-    return 0;
-}
-
-// FUNCTION: 0x00949b47 nohook
 uint32_t cHitControlGroup::EstimateRemainingPlayTime()
 {
     return 0;
 }
 
 // FUNCTION: 0x00949b47 nohook
-uint32_t cHitControlGroup::Slot11_ac2b18()
+uint32_t cFreshDimensionPlayer::Slot23_ad4aa0()
+{
+    return 0;
+}
+
+// FUNCTION: 0x00949b47 nohook
+uint32_t cFreshDimensionPlayer::Slot24_ad4aa0()
+{
+    return 0;
+}
+
+// FUNCTION: 0x00949b47 nohook
+uint32_t cFreshDimensionPlayer::Slot25_ad4aa0()
+{
+    return 0;
+}
+
+// FUNCTION: 0x00949b47 nohook
+uint32_t cHitControlGroup::Slot31_ac2b18()
+{
+    return 0;
+}
+
+// FUNCTION: 0x00949b47 nohook
+uint32_t cHitControlGroup::Slot28_ac2b18()
+{
+    return 0;
+}
+
+// FUNCTION: 0x00949b47 nohook
+uint32_t cHitControlGroup::Slot26_ac2b18()
 {
     return 0;
 }
@@ -3544,13 +3562,19 @@ uint32_t cHitControlGroup::Slot24_ac2b18()
 }
 
 // FUNCTION: 0x00949b47 nohook
-uint32_t cHitTrackPlayer::Slot11_ac2b18()
+uint32_t cFreshDimensionPlayer::Slot22_ad4aa0()
 {
     return 0;
 }
 
 // FUNCTION: 0x00949b47 nohook
-uint32_t cHitTrackPlayer::Slot05_ac2bf0()
+uint32_t cGZSndSegmentWavDataSource::GetPosition()
+{
+    return 0;
+}
+
+// FUNCTION: 0x00949b47 nohook
+uint32_t cHitTrackPlayer::Slot11_ac2b18()
 {
     return 0;
 }
@@ -3568,13 +3592,13 @@ uint32_t cHitChannel::GetSoundPriority()
 }
 
 // FUNCTION: 0x00949b47 nohook
-uint32_t cHitControlGroup::Slot26_ac2b18()
+uint32_t cHitTrackPlayer::Slot05_ac2bf0()
 {
     return 0;
 }
 
 // FUNCTION: 0x00949b47 nohook
-uint32_t cHitControlGroup::Slot31_ac2b18()
+uint32_t cHitControlGroup::Slot11_ac2b18()
 {
     return 0;
 }
@@ -3586,37 +3610,7 @@ uint32_t cGZDBSerialRecordAsIGZFile::Slot26_abfe50()
 }
 
 // FUNCTION: 0x00949b47 nohook
-uint32_t cFreshDimensionPlayer::Slot25_ad4aa0()
-{
-    return 0;
-}
-
-// FUNCTION: 0x00949b47 nohook
-uint32_t cFreshDimensionPlayer::Slot23_ad4aa0()
-{
-    return 0;
-}
-
-// FUNCTION: 0x00949b47 nohook
 uint32_t cUnk00ad7520::Slot19_ad7520()
-{
-    return 0;
-}
-
-// FUNCTION: 0x00949b47 nohook
-uint32_t cHitControlGroup::Slot28_ac2b18()
-{
-    return 0;
-}
-
-// FUNCTION: 0x00949b47 nohook
-uint32_t cFreshDimensionPlayer::Slot22_ad4aa0()
-{
-    return 0;
-}
-
-// FUNCTION: 0x00949b47 nohook
-uint32_t cFreshDimensionPlayer::Slot24_ad4aa0()
 {
     return 0;
 }
@@ -3634,42 +3628,7 @@ void* cFreshDimensionPlayer::Slot35_ad4aa0()
 }
 
 // FUNCTION: 0x00949b73 nohook
-void cGZGraph::DrawGraphData(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cGZWinTextTicker::Slot49_adda20(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cGZPersistSurveyorWriter::WriteTypeInfo(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cGZFontSys::Slot07_a93658(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00acd504::Slot01_acd504(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00ae4910::Slot48_ae47e8(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00ae4910::Slot50_ae47e8(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00ae4910::Slot52_ae47e8(uint32_t)
+void cUnk00acd504::Slot03_acd504(uint32_t)
 {
 }
 
@@ -3684,7 +3643,82 @@ void cHitControlGroup::Update(uint32_t)
 }
 
 // FUNCTION: 0x00949b73 nohook
+void cUnk00acd8a8::Slot03_acd504(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cUnk00acd504::Slot05_acd504(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cGZFontSys::Slot07_a93658(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
 void cFreshDimensionPlayer::Slot36_ad4aa0(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cUnk00acd504::Slot08_acd504(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cUnk00acd504::Slot09_acd504(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cGZPersistSurveyorWriter::WriteTypeInfo(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cHitControlGroup::Slot32_ac2b18(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cHitControlGroup::GetMaximumDistance(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cHitControlGroup::GetMinimumDistance(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cHitControlGroup::SetPower(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cGZGraph::DrawGraphData(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cHitTrackPlayer::Slot10_ac2d78(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cHitTrackPlayer::Slot11_ac2d78(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cGZWinTextTicker::Slot49_adda20(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cHitTrackPlayer::Slot13_ac2d78(uint32_t)
 {
 }
 
@@ -3704,57 +3738,22 @@ void cGZDBSerialRecordAsIGZFile::Slot28_abfe50(uint32_t)
 }
 
 // FUNCTION: 0x00949b73 nohook
-void cUnk00acd504::Slot08_acd504(uint32_t)
+void cUnk00ae4910::Slot48_ae47e8(uint32_t)
 {
 }
 
 // FUNCTION: 0x00949b73 nohook
-void cHitControlGroup::GetMaximumDistance(uint32_t)
+void cUnk00ae4910::Slot50_ae47e8(uint32_t)
 {
 }
 
 // FUNCTION: 0x00949b73 nohook
-void cHitControlGroup::GetMinimumDistance(uint32_t)
+void cUnk00acd504::Slot01_acd504(uint32_t)
 {
 }
 
 // FUNCTION: 0x00949b73 nohook
-void cHitControlGroup::Slot32_ac2b18(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00acd504::Slot05_acd504(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cHitTrackPlayer::Slot10_ac2d78(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cHitTrackPlayer::Slot11_ac2d78(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cHitControlGroup::SetPower(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cHitTrackPlayer::Slot13_ac2d78(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00acd8a8::Slot03_acd504(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cUnk00acd504::Slot09_acd504(uint32_t)
+void cUnk00ae4910::Slot52_ae47e8(uint32_t)
 {
 }
 
@@ -3773,11 +3772,6 @@ void cHitChannel::SetSoundPriority(uint32_t)
 {
 }
 
-// FUNCTION: 0x00949b73 nohook
-void cUnk00acd504::Slot03_acd504(uint32_t)
-{
-}
-
 // FUNCTION: 0x00949b76
 void cFreshDimensionPlayer::SetPause(bool value)
 {
@@ -3785,25 +3779,7 @@ void cFreshDimensionPlayer::SetPause(bool value)
 }
 
 // FUNCTION: 0x0094a5ea nohook
-bool cUnk00acd504::Slot06_acd504()
-{
-    return false;
-}
-
-// FUNCTION: 0x0094a5ea nohook
-bool cGZWinIMEServer::Slot05_adb588()
-{
-    return false;
-}
-
-// FUNCTION: 0x0094a5ea nohook
-bool cUnk00ad18d8::Slot18_ad1818()
-{
-    return false;
-}
-
-// FUNCTION: 0x0094a5ea nohook
-bool cHitControlGroup::StopCompletionNotification()
+bool cHitChannel::StopAllInstances()
 {
     return false;
 }
@@ -3815,25 +3791,7 @@ bool cUnk00ad7cf0::Slot18_ad1818()
 }
 
 // FUNCTION: 0x0094a5ea nohook
-bool cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::Slot07_ad21ec()
-{
-    return false;
-}
-
-// FUNCTION: 0x0094a5ea nohook
-bool cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::Slot06_ad21ec()
-{
-    return false;
-}
-
-// FUNCTION: 0x0094a5ea nohook
-bool cUnk00acd504::Slot02_acd504()
-{
-    return false;
-}
-
-// FUNCTION: 0x0094a5ea nohook
-bool cUnk00ac31e4::Slot08_ac3154()
+bool cHitControlGroup::Slot10_ac2b18()
 {
     return false;
 }
@@ -3845,7 +3803,7 @@ bool cHitChannel::IsFading()
 }
 
 // FUNCTION: 0x0094a5ea nohook
-bool cHitChannel::StopAllInstances()
+bool cUnk00ad18d8::Slot18_ad1818()
 {
     return false;
 }
@@ -3863,6 +3821,30 @@ bool cHitTrackPlayer::Slot16_ac2d78()
 }
 
 // FUNCTION: 0x0094a5ea nohook
+bool cGZDBSerialRecordAsIGZFile::Slot19_abfe50()
+{
+    return false;
+}
+
+// FUNCTION: 0x0094a5ea nohook
+bool cHitControlGroup::StopCompletionNotification()
+{
+    return false;
+}
+
+// FUNCTION: 0x0094a5ea nohook
+bool cUnk00ae4910::Slot47_ae47e8()
+{
+    return false;
+}
+
+// FUNCTION: 0x0094a5ea nohook
+bool cUnk00acd504::Slot02_acd504()
+{
+    return false;
+}
+
+// FUNCTION: 0x0094a5ea nohook
 bool cUnk00ae4910::Slot51_ae47e8()
 {
     return false;
@@ -3875,7 +3857,7 @@ bool cUnk00ae4910::Slot49_ae47e8()
 }
 
 // FUNCTION: 0x0094a5ea nohook
-bool cUnk00ae4910::Slot47_ae47e8()
+bool cUnk00acd504::Slot06_acd504()
 {
     return false;
 }
@@ -3887,13 +3869,25 @@ bool cHitControlGroup::Slot23_ac2b18()
 }
 
 // FUNCTION: 0x0094a5ea nohook
-bool cHitControlGroup::Slot10_ac2b18()
+bool cGZWinIMEServer::Slot05_adb588()
 {
     return false;
 }
 
 // FUNCTION: 0x0094a5ea nohook
-bool cGZDBSerialRecordAsIGZFile::Slot19_abfe50()
+bool cUnk00ac31e4::Slot08_ac3154()
+{
+    return false;
+}
+
+// FUNCTION: 0x0094a5ea nohook
+bool cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::Slot07_ad21ec()
+{
+    return false;
+}
+
+// FUNCTION: 0x0094a5ea nohook
+bool cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::Slot06_ad21ec()
 {
     return false;
 }
@@ -3923,15 +3917,15 @@ bool cFreshCellPlayer::GetHeadRelative()
 }
 
 // FUNCTION: 0x009683e0
-uint32_t cUnk00add578::Slot14_add348()
-{
-    return mnFlags;
-}
-
-// FUNCTION: 0x009683e0 nohook
 uint32_t cGZWinOutline::Slot04_ae1a28()
 {
     return fielddc;
+}
+
+// FUNCTION: 0x009683e0 nohook
+uint32_t cUnk00add578::Slot14_add348()
+{
+    return mnFlags;
 }
 
 // FUNCTION: 0x00968b67
@@ -3992,14 +3986,14 @@ void* cGZSndSegmentDataSourceUTalk::GetWaveFormat()
 }
 
 // FUNCTION: 0x0096c3cb
-bool cUnk00acd418::Slot11_acd418(uint32_t value)
+bool cGZSndSegmentDataSourceXA::SetPosition(uint32_t value)
 {
     field50 = value;
     return true;
 }
 
 // FUNCTION: 0x0096c3cb nohook
-bool cGZSndSegmentDataSourceXA::SetPosition(uint32_t value)
+bool cUnk00acd418::Slot11_acd418(uint32_t value)
 {
     field50 = value;
     return true;
@@ -4042,12 +4036,7 @@ void cGZDBSegmentPackedFile::Slot15_ad8488(uint32_t value)
 }
 
 // FUNCTION: 0x0096e960 nohook
-void cGZPersistSurveyorWriter::WriteUint32(uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0096e960 nohook
-void cGZPersistSurveyorWriter::WriteSint32(uint32_t, uint32_t)
+void cGZDBSerialRecordAsIGZFile::Slot30_abfe50(uint32_t, uint32_t)
 {
 }
 
@@ -4057,17 +4046,7 @@ void cRZLanguageManager::Slot41_ad1198(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0096e960 nohook
-void cGZPersistSurveyorWriter::WriteUint16(uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0096e960 nohook
-void cGZPersistSurveyorWriter::WriteSint16(uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0096e960 nohook
-void cGZPersistSurveyorWriter::WriteUint8(uint32_t, uint32_t)
+void cGZPersistSurveyorWriter::WriteBool(uint32_t, uint32_t)
 {
 }
 
@@ -4077,27 +4056,12 @@ void cGZPersistSurveyorWriter::WriteSint8(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0096e960 nohook
-void cGZPersistSurveyorWriter::WriteBool(uint32_t, uint32_t)
+void cGZPersistSurveyorWriter::WriteUint8(uint32_t, uint32_t)
 {
 }
 
 // FUNCTION: 0x0096e960 nohook
-void cGZPersistSurveyorWriter::WriteFloat32(uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0096e960 nohook
-void cUnk00ae4910::Slot35_ae47e8(uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0096e960 nohook
-void cGZDBSerialRecordAsIGZFile::Slot30_abfe50(uint32_t, uint32_t)
-{
-}
-
-// FUNCTION: 0x0096e960 nohook
-void cUnk00adde30::Slot01_adde30(uint32_t, uint32_t)
+void cGZPersistSurveyorWriter::WriteSint16(uint32_t, uint32_t)
 {
 }
 
@@ -4107,7 +4071,37 @@ void cGZPersistSurveyorWriter::WriteString(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0096e960 nohook
+void cGZPersistSurveyorWriter::WriteUint16(uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0096e960 nohook
+void cGZPersistSurveyorWriter::WriteFloat32(uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0096e960 nohook
+void cGZPersistSurveyorWriter::WriteSint32(uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0096e960 nohook
+void cUnk00ae4910::Slot35_ae47e8(uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0096e960 nohook
 void cGZPersistSurveyorWriter::WriteString_2(uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0096e960 nohook
+void cGZPersistSurveyorWriter::WriteUint32(uint32_t, uint32_t)
+{
+}
+
+// FUNCTION: 0x0096e960 nohook
+void cUnk00adde30::Slot01_adde30(uint32_t, uint32_t)
 {
 }
 
@@ -4131,13 +4125,13 @@ bool cGZDBSegmentDirectoryFiles::Slot23_ad8fc8()
 }
 
 // FUNCTION: 0x0097b493 nohook
-void* cGZSndSegmentWavDataSource::GetWaveFormat()
+void* cGZDBSegmentDirectoryFiles::Slot12_ad8fc8()
 {
     return field44;
 }
 
 // FUNCTION: 0x0097b493 nohook
-void* cGZDBSegmentDirectoryFiles::Slot12_ad8fc8()
+void* cGZSndSegmentWavDataSource::GetWaveFormat()
 {
     return field44;
 }
@@ -4155,13 +4149,13 @@ void* cGZDBSegmentDirectoryFiles::Slot07_ad8fc8()
 }
 
 // FUNCTION: 0x0097ce34 nohook
-uint32_t cGZFont::GetFontColor()
+uint32_t cUnk00ad95e8::Slot54_ad8d88()
 {
     return field44;
 }
 
 // FUNCTION: 0x0097ce34 nohook
-uint32_t cUnk00ad95e8::Slot54_ad8d88()
+uint32_t cGZSndSegmentDataSourceUTalk::GetDataSize()
 {
     return field44;
 }
@@ -4173,7 +4167,7 @@ uint32_t cFreshCellPlayer::Get3DPosY()
 }
 
 // FUNCTION: 0x0097ce34 nohook
-uint32_t cGZSndSegmentDataSourceUTalk::GetDataSize()
+uint32_t cGZFont::GetFontColor()
 {
     return field44;
 }
@@ -4209,15 +4203,15 @@ uint32_t cGZWinTextEdit::Slot16_adb6a8()
 }
 
 // FUNCTION: 0x00993586
-uint32_t cGZWinPieMenu::Slot16_ae3338()
-{
-    return field15c;
-}
-
-// FUNCTION: 0x00993586 nohook
 uint32_t cGZWinTextEdit::Slot18_adb6a8()
 {
     return mnTextAreaY;
+}
+
+// FUNCTION: 0x00993586 nohook
+uint32_t cGZWinPieMenu::Slot16_ae3338()
+{
+    return field15c;
 }
 
 // FUNCTION: 0x009935e3 nohook
@@ -4251,15 +4245,15 @@ bool cGZWinIMEProxy::Slot10_adb5d0()
 }
 
 // FUNCTION: 0x00993785
-uint32_t cUnk00add190::Slot09_adcdc8()
-{
-    return mnStyleFlags;
-}
-
-// FUNCTION: 0x00993785 nohook
 uint32_t cUnk00adbbf0::Slot16_adb6a8()
 {
     return mnTextAreaX;
+}
+
+// FUNCTION: 0x00993785 nohook
+uint32_t cUnk00add190::Slot09_adcdc8()
+{
+    return mnStyleFlags;
 }
 
 // FUNCTION: 0x00993797
@@ -4281,13 +4275,13 @@ uint32_t cUnk00adbbf0::Slot29_adb6a8()
 }
 
 // FUNCTION: 0x00993946
-uint32_t cUnk00adba40::Slot14_adb720()
+uint32_t cGZWinTextTicker::Slot10_ae37b4()
 {
     return field12c;
 }
 
 // FUNCTION: 0x00993946 nohook
-uint32_t cGZWinTextTicker::Slot10_ae37b4()
+uint32_t cUnk00adba40::Slot14_adb720()
 {
     return field12c;
 }
@@ -4347,15 +4341,15 @@ void cGZWinTextEdit::Slot81_adf900(uint32_t value)
 }
 
 // FUNCTION: 0x00994ee4
-uint32_t cGZWin::GetT()
-{
-    return fieldac;
-}
-
-// FUNCTION: 0x00994ee4 nohook
 uint32_t cGZWinTextEdit::Slot82_adf900()
 {
     return mnMaxUndoLevels;
+}
+
+// FUNCTION: 0x00994ee4 nohook
+uint32_t cGZWin::GetT()
+{
+    return fieldac;
 }
 
 // FUNCTION: 0x00995d93 nohook
@@ -4371,13 +4365,13 @@ uint32_t cUnk00adbf80::Slot12_adbf80()
 }
 
 // FUNCTION: 0x00995e67 nohook
-bool cHTMLDocument::IsPageLayoutDone()
+bool cGZWinIMEServer::Slot06_adb588()
 {
     return field29;
 }
 
 // FUNCTION: 0x00995e67 nohook
-bool cGZWinIMEServer::Slot06_adb588()
+bool cHTMLDocument::IsPageLayoutDone()
 {
     return field29;
 }
@@ -4402,18 +4396,6 @@ bool cGZWinGen::Slot16_adc2b0(uint32_t value)
 }
 
 // FUNCTION: 0x00999165 nohook
-uint32_t cGZFont::GetSize()
-{
-    return field38;
-}
-
-// FUNCTION: 0x00999165 nohook
-uint32_t cGZDBSegmentDirectoryFiles::Slot11_ad8fc8()
-{
-    return field38;
-}
-
-// FUNCTION: 0x00999165 nohook
 uint32_t cGZWinGen::Slot22_adc2b0()
 {
     return field110;
@@ -4425,8 +4407,20 @@ uint32_t cGZDBSegmentDirectoryFiles::Slot14_ad8ca0()
     return field3c;
 }
 
+// FUNCTION: 0x00999165 nohook
+uint32_t cGZFont::GetSize()
+{
+    return field38;
+}
+
+// FUNCTION: 0x00999165 nohook
+uint32_t cGZDBSegmentDirectoryFiles::Slot11_ad8fc8()
+{
+    return field38;
+}
+
 // FUNCTION: 0x0099b7ee nohook
-uint32_t cGZWin::GetParentWin()
+uint32_t cGZFont::GetFontBackgroundColor()
 {
     return field48;
 }
@@ -4438,21 +4432,21 @@ uint32_t cFreshCellPlayer::Get3DPosZ()
 }
 
 // FUNCTION: 0x0099b7ee nohook
-uint32_t cGZFont::GetFontBackgroundColor()
+uint32_t cGZWin::GetParentWin()
 {
     return field48;
-}
-
-// FUNCTION: 0x0099b951 nohook
-uint32_t cUnk00adc1ec::Slot40_adc078()
-{
-    return field94;
 }
 
 // FUNCTION: 0x0099b951 nohook
 uint32_t cGZWin::GetKeyboardAccelerator()
 {
     return field78;
+}
+
+// FUNCTION: 0x0099b951 nohook
+uint32_t cUnk00adc1ec::Slot40_adc078()
+{
+    return field94;
 }
 
 // FUNCTION: 0x0099bc53
@@ -4492,13 +4486,13 @@ void cGZWin::SetNotificationTarget(uint32_t value)
 }
 
 // FUNCTION: 0x0099be4c nohook
-uint32_t cGZWin::GetNotificationTarget()
+uint32_t cGZFont::GetAntialiasing()
 {
     return field4c;
 }
 
 // FUNCTION: 0x0099be4c nohook
-uint32_t cGZFont::GetAntialiasing()
+uint32_t cGZWin::GetNotificationTarget()
 {
     return field4c;
 }
@@ -4522,9 +4516,9 @@ void cGZWin::Slot47_adda20(uint32_t value)
 }
 
 // FUNCTION: 0x0099be66 nohook
-uint32_t cHitControlGroup::Slot20_ac2b18()
+uint32_t cGZWin::Slot48_adda20()
 {
-    return field14;
+    return field10;
 }
 
 // FUNCTION: 0x0099be66 nohook
@@ -4534,9 +4528,9 @@ uint32_t cUnk00adbf80::Slot10_adbf80()
 }
 
 // FUNCTION: 0x0099be66 nohook
-uint32_t cGZPersistResource::GetGroup()
+uint32_t cHitControlGroup::Slot20_ac2b18()
 {
-    return field10;
+    return field14;
 }
 
 // FUNCTION: 0x0099be66 nohook
@@ -4546,7 +4540,7 @@ uint32_t cRZSystemService::Slot05_a93658()
 }
 
 // FUNCTION: 0x0099be66 nohook
-uint32_t cGZWin::Slot48_adda20()
+uint32_t cGZPersistResource::GetGroup()
 {
     return field10;
 }
@@ -4565,15 +4559,15 @@ uint32_t cGZWin::GetInstanceID()
 }
 
 // FUNCTION: 0x0099be80
-uint32_t cGZWinPieMenu::Slot21_ae3338()
-{
-    return field174;
-}
-
-// FUNCTION: 0x0099be80 nohook
 uint32_t cGZWin::GetKeyEquivalent()
 {
     return field9c;
+}
+
+// FUNCTION: 0x0099be80 nohook
+uint32_t cGZWinPieMenu::Slot21_ae3338()
+{
+    return field174;
 }
 
 // FUNCTION: 0x0099be87
@@ -4693,13 +4687,13 @@ void cUnk00add578::Slot66_add348(uint32_t value)
 }
 
 // FUNCTION: 0x009b002d
-uint32_t cUnk00addd50::Slot11_adda20()
+uint32_t cGZWinTreeView::Slot08_ae2ef0()
 {
-    return field134;
+    return mnIconGutter;
 }
 
 // FUNCTION: 0x009b002d nohook
-uint32_t cGZWinTreeView::Slot08_ae2ef0()
+uint32_t cUnk00addd50::Slot11_adda20()
 {
     return field134;
 }
@@ -4714,7 +4708,7 @@ bool cUnk00addd50::Slot38_adda20(uint32_t value)
 // FUNCTION: 0x009b1f41
 void cGZGraph::Slot04_addff8(bool value)
 {
-    field12d = value;
+    mbBackgroundOutline = value;
 }
 
 // FUNCTION: 0x009b1f4b
@@ -4726,31 +4720,31 @@ void cRZRadio::Slot30_acc1f8(bool value)
 // FUNCTION: 0x009b1f4b nohook
 void cGZGraph::Slot03_addff8(bool value)
 {
-    field12c = value;
+    mbBackgroundFill = value;
 }
 
 // FUNCTION: 0x009b1f55
 void cGZGraph::Slot05_addff8(uint32_t value)
 {
-    field128 = value;
+    mnBackgroundFillColor = value;
 }
 
 // FUNCTION: 0x009b1f5f
 void cGZGraph::Slot06_addff8(uint32_t value)
 {
-    field130 = value;
+    mnBackgroundOutlineColor = value;
 }
 
 // FUNCTION: 0x009b1f7a
-void cGZGraph::Slot09_addff8(uint32_t value)
-{
-    field140 = value;
-}
-
-// FUNCTION: 0x009b1f7a nohook
 void cRZRadio::SetSoundSystem(uint32_t value)
 {
     field68 = value;
+}
+
+// FUNCTION: 0x009b1f7a nohook
+void cGZGraph::Slot09_addff8(uint32_t value)
+{
+    mnGraphAreaOutlineColor = value;
 }
 
 // FUNCTION: 0x009b1f84
@@ -4762,13 +4756,13 @@ void cUnk00ac2c88::Slot32_ac2c88(uint32_t value)
 // FUNCTION: 0x009b1f84 nohook
 void cGZGraph::Slot10_addff8(uint32_t value)
 {
-    field138 = value;
+    mnGraphAreaFillColor = value;
 }
 
 // FUNCTION: 0x009b22a8
 void cGZGraph::Slot31_addff8(uint32_t value)
 {
-    field190 = value;
+    mnTickColor = value;
 }
 
 // FUNCTION: 0x009b2568
@@ -4784,12 +4778,6 @@ float cGZGraph::Slot165_ade188(uint32_t)
 }
 
 // FUNCTION: 0x009b2970
-void cRZLanguageUtility::SetLanguage(uint32_t value)
-{
-    mnType = value;
-}
-
-// FUNCTION: 0x009b2970 nohook
 void cGZBarGraph::Slot04_adde50(uint32_t value)
 {
     field234 = value;
@@ -4802,36 +4790,18 @@ void cUnk00adbf80::Slot05_adbf80(uint32_t value)
 }
 
 // FUNCTION: 0x009b2970 nohook
+void cRZLanguageUtility::SetLanguage(uint32_t value)
+{
+    mnType = value;
+}
+
+// FUNCTION: 0x009b2970 nohook
 void cGZWinPieMenu::Slot38_ae3338(uint32_t value)
 {
     fielde0 = value;
 }
 
 // FUNCTION: 0x009b2c1c
-void cGZWinSlider::Slot10_ae074c(uint32_t value)
-{
-    mnMode = value;
-}
-
-// FUNCTION: 0x009b2c1c nohook
-void cGZPieGraph::Slot05_addf78(uint32_t value)
-{
-    field230 = value;
-}
-
-// FUNCTION: 0x009b2c1c nohook
-void cHitControlGroup::Slot13_ac2b18(uint32_t value)
-{
-    field8 = value;
-}
-
-// FUNCTION: 0x009b2c1c nohook
-void cUnk00adf2e8::Slot03_ade0f0(uint32_t value)
-{
-    field230 = value;
-}
-
-// FUNCTION: 0x009b2c1c nohook
 void cUnk00ad8fa4::Slot06_ad8fa4(uint32_t value)
 {
     field4 = value;
@@ -4843,34 +4813,28 @@ void cGZBarGraph::Slot03_adde50(uint32_t value)
     field230 = value;
 }
 
-// FUNCTION: 0x009c32ac nohook
-uint32_t cHitPropertySetResource::Slot06_ad2620()
+// FUNCTION: 0x009b2c1c nohook
+void cGZPieGraph::Slot05_addf78(uint32_t value)
 {
-    return field20;
+    field230 = value;
 }
 
-// FUNCTION: 0x009c32ac nohook
-uint32_t cRZCOMDllDirector::RefCount()
+// FUNCTION: 0x009b2c1c nohook
+void cUnk00adf2e8::Slot03_ade0f0(uint32_t value)
 {
-    return field8;
+    field230 = value;
 }
 
-// FUNCTION: 0x009c32ac nohook
-uint32_t cHitPropertySetTrackResource::Slot06_ad2620()
+// FUNCTION: 0x009b2c1c nohook
+void cGZWinSlider::Slot10_ae074c(uint32_t value)
 {
-    return field20;
+    mnMode = value;
 }
 
-// FUNCTION: 0x009c32ac nohook
-uint32_t cGZWinSlider::Slot07_ae074c()
+// FUNCTION: 0x009b2c1c nohook
+void cHitControlGroup::Slot13_ac2b18(uint32_t value)
 {
-    return mnMin;
-}
-
-// FUNCTION: 0x009c32ac nohook
-uint32_t cGZClipboardManagerClipboardData::GetDataType()
-{
-    return field8;
+    field8 = value;
 }
 
 // FUNCTION: 0x009c32ac nohook
@@ -4880,19 +4844,7 @@ uint32_t cHitResource_cHitTrackPlayer::Slot06_ad2620()
 }
 
 // FUNCTION: 0x009c32ac nohook
-uint32_t cHitTrackDataBlock::DataStartAddress()
-{
-    return field8;
-}
-
-// FUNCTION: 0x009c32ac nohook
-uint32_t cGZWin::GetKeyboard()
-{
-    return field8;
-}
-
-// FUNCTION: 0x009c32ac nohook
-uint32_t cUnk00adbf80::Slot04_adbf80()
+uint32_t cRZCOMDllDirector::RefCount()
 {
     return field8;
 }
@@ -4904,9 +4856,51 @@ uint32_t cUnk00ac31e4::Slot05_ac3154()
 }
 
 // FUNCTION: 0x009c32ac nohook
+uint32_t cGZWin::GetKeyboard()
+{
+    return field8;
+}
+
+// FUNCTION: 0x009c32ac nohook
+uint32_t cHitTrackDataBlock::DataStartAddress()
+{
+    return field8;
+}
+
+// FUNCTION: 0x009c32ac nohook
+uint32_t cGZWinSlider::Slot07_ae074c()
+{
+    return mnMin;
+}
+
+// FUNCTION: 0x009c32ac nohook
+uint32_t cHitPropertySetTrackResource::Slot06_ad2620()
+{
+    return field20;
+}
+
+// FUNCTION: 0x009c32ac nohook
 uint32_t cHitResource_cHitList::Slot06_ad2620()
 {
     return field20;
+}
+
+// FUNCTION: 0x009c32ac nohook
+uint32_t cUnk00adbf80::Slot04_adbf80()
+{
+    return field8;
+}
+
+// FUNCTION: 0x009c32ac nohook
+uint32_t cHitPropertySetResource::Slot06_ad2620()
+{
+    return field20;
+}
+
+// FUNCTION: 0x009c32ac nohook
+uint32_t cGZClipboardManagerClipboardData::GetDataType()
+{
+    return field8;
 }
 
 // FUNCTION: 0x009c48ce nohook
@@ -4957,43 +4951,43 @@ bool cGZWinLineInput::Slot29_ae0e80(uint32_t value)
 // FUNCTION: 0x009c879f nohook
 bool cGZWinListBox::Slot52_ae1560()
 {
-    return field10d;
+    return mbOutlineDrawing;
 }
 
 // FUNCTION: 0x009c87bf nohook
 bool cGZWinListBox::Slot54_ae1560()
 {
-    return field10e;
+    return mbDrawSunkenRect;
 }
 
 // FUNCTION: 0x009c88d4
 void cGZWinListBox::Slot17_ae1560(bool value)
 {
-    field10f = value;
+    mbPopup = value;
 }
 
 // FUNCTION: 0x009c88de nohook
 bool cGZWinListBox::Slot18_ae1560()
 {
-    return field10f;
+    return mbPopup;
 }
 
 // FUNCTION: 0x009c8a31
 void cGZWinListBox::Slot44_ae1560(bool value)
 {
-    field132 = value;
+    mbHighlightEnabled = value;
 }
 
 // FUNCTION: 0x009c8a3b nohook
 bool cGZWinListBox::Slot45_ae1560()
 {
-    return field132;
+    return mbHighlightEnabled;
 }
 
 // FUNCTION: 0x009c8f69
 uint32_t cGZWinListBox::Slot30_ae1560()
 {
-    return field164;
+    return mnEntryCount;
 }
 
 // FUNCTION: 0x009c8f69 nohook
@@ -5005,14 +4999,14 @@ uint32_t cGZFont::GetRenderer()
 // FUNCTION: 0x009c919e
 bool cGZWinListBox::Slot64_ae1560(bool value)
 {
-    field160 = value;
+    mbPostMessages = value;
     return true;
 }
 
 // FUNCTION: 0x009c91ad
 bool cGZWinListBox::Slot65_ae1560()
 {
-    return field160;
+    return mbPostMessages;
 }
 
 // FUNCTION: 0x009cbd01
@@ -5053,12 +5047,6 @@ void cGZWinMsgBox::Slot08_ae2360(uint32_t value)
 }
 
 // FUNCTION: 0x009cdc23 nohook
-uint32_t cUnk00ad7670::Slot19_ad7670()
-{
-    return field28;
-}
-
-// FUNCTION: 0x009cdc23 nohook
 uint32_t nGZLog_cService::Slot06_ad2000()
 {
     return field44;
@@ -5067,19 +5055,25 @@ uint32_t nGZLog_cService::Slot06_ad2000()
 // FUNCTION: 0x009cdc23 nohook
 uint32_t cGZWinListBox::Slot33_ae1560()
 {
-    return field100;
-}
-
-// FUNCTION: 0x009cdc23 nohook
-uint32_t cFreshPlayer::GetXPos()
-{
-    return field28;
+    return mnTopIndex;
 }
 
 // FUNCTION: 0x009cdc23 nohook
 uint32_t cGZWinMsgBox::Slot11_ae2360()
 {
     return field104;
+}
+
+// FUNCTION: 0x009cdc23 nohook
+uint32_t cUnk00ad7670::Slot19_ad7670()
+{
+    return field28;
+}
+
+// FUNCTION: 0x009cdc23 nohook
+uint32_t cFreshPlayer::GetXPos()
+{
+    return field28;
 }
 
 // FUNCTION: 0x009cdc23 nohook
@@ -5091,13 +5085,7 @@ uint32_t cRZCOMDllDirector::FrameWork()
 // FUNCTION: 0x009cdc27 nohook
 uint32_t cGZWinListBox::Slot31_ae1560()
 {
-    return field104;
-}
-
-// FUNCTION: 0x009cdc27 nohook
-uint32_t cFreshPlayer::GetYPos()
-{
-    return field2c;
+    return mnLineHeight;
 }
 
 // FUNCTION: 0x009cdc27 nohook
@@ -5106,10 +5094,16 @@ uint32_t cGZWinMsgBox::Slot12_ae2360()
     return field108;
 }
 
+// FUNCTION: 0x009cdc27 nohook
+uint32_t cFreshPlayer::GetYPos()
+{
+    return field2c;
+}
+
 // FUNCTION: 0x009cec4a nohook
 bool cGZWinListBox::Slot15_ae1560()
 {
-    return field10c;
+    return mbShouldSort;
 }
 
 // FUNCTION: 0x009cec4a nohook
@@ -5133,73 +5127,7 @@ bool cGZWinCombo::Slot22_ae28c8(uint32_t value)
 }
 
 // FUNCTION: 0x009cede1 nohook
-uint32_t cHitResource_cHitTrackPlayer::Slot07_ad2620()
-{
-    return field110;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cGZWinSlider::Slot09_ae074c()
-{
-    return mnMax;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cGZWinCombo::Slot30_ae28c8()
-{
-    return fielde4;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cHitResource_cHitList::Slot07_ad2620()
-{
-    return field24;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cGZPersistResource::GetType()
-{
-    return fieldc;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cRZSystemService::Slot03_a93658()
-{
-    return fieldc;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cGZPersistSurveyorWriter::Resource()
-{
-    return fieldc;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cGZRESIDtoExtensionMap::Size()
-{
-    return fieldc;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cGZPersistBinaryResource::Slot05_ada48c()
-{
-    return field24;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cGZFontSys::Slot03_a93658()
-{
-    return field10;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cGZCOMLibrary::GetDirector()
-{
-    return fieldc;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cUnk00ad1878::Slot20_ad1878()
+uint32_t cGZPropertySetT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::NumValues()
 {
     return fieldc;
 }
@@ -5211,31 +5139,13 @@ uint32_t cGZPersistDBSerialRecord::Slot20_ad1818()
 }
 
 // FUNCTION: 0x009cede1 nohook
-uint32_t cGZCommandParameterSet::GetParameterCount()
+uint32_t cGZPersistResource::GetType()
 {
     return fieldc;
 }
 
 // FUNCTION: 0x009cede1 nohook
-uint32_t cUnk00adbf80::Slot09_adbf80()
-{
-    return fieldc;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cHitPropertySetResource::Slot07_ad2620()
-{
-    return field24;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cGZPropertySetT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612::NumValues()
-{
-    return fieldc;
-}
-
-// FUNCTION: 0x009cede1 nohook
-uint32_t cHitPropertySetTrackResource::Slot07_ad2620()
+uint32_t cHitResource_cHitList::Slot07_ad2620()
 {
     return field24;
 }
@@ -5252,6 +5162,90 @@ uint32_t cGZClipboardManagerClipboard::GetID()
     return fieldc;
 }
 
+// FUNCTION: 0x009cede1 nohook
+uint32_t cGZFontSys::Slot03_a93658()
+{
+    return field10;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cUnk00ad1878::Slot20_ad1878()
+{
+    return fieldc;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cGZWinSlider::Slot09_ae074c()
+{
+    return mnMax;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cGZCommandParameterSet::GetParameterCount()
+{
+    return fieldc;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cHitPropertySetTrackResource::Slot07_ad2620()
+{
+    return field24;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cGZRESIDtoExtensionMap::Size()
+{
+    return fieldc;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cGZWinCombo::Slot30_ae28c8()
+{
+    return fielde4;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cUnk00adbf80::Slot09_adbf80()
+{
+    return fieldc;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cRZSystemService::Slot03_a93658()
+{
+    return fieldc;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cGZCOMLibrary::GetDirector()
+{
+    return fieldc;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cHitResource_cHitTrackPlayer::Slot07_ad2620()
+{
+    return field110;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cHitPropertySetResource::Slot07_ad2620()
+{
+    return field24;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cGZPersistBinaryResource::Slot05_ada48c()
+{
+    return field24;
+}
+
+// FUNCTION: 0x009cede1 nohook
+uint32_t cGZPersistSurveyorWriter::Resource()
+{
+    return fieldc;
+}
+
 // FUNCTION: 0x009cfbba
 uint32_t cGZWinTextTicker::Slot11_ae37b4()
 {
@@ -5261,13 +5255,7 @@ uint32_t cGZWinTextTicker::Slot11_ae37b4()
 // FUNCTION: 0x009cfbba nohook
 uint32_t cGZWinTreeView::Slot14_ae2ef0()
 {
-    return field130;
-}
-
-// FUNCTION: 0x009cfc0c
-uint32_t cGZWinTreeView::Slot18_ae2ef0()
-{
-    return field180;
+    return mnBoxSize;
 }
 
 // FUNCTION: 0x009d40be
@@ -5285,7 +5273,7 @@ void cGZWinPieMenu::Slot43_ae3338(uint32_t value)
 // FUNCTION: 0x009d415e nohook
 void cGZGraph::Slot18_addff8(uint32_t value)
 {
-    field158 = value;
+    mnAxisColor = value;
 }
 
 // FUNCTION: 0x009d416b
@@ -5331,6 +5319,12 @@ uint32_t cGZWinPieMenu::Slot24_ae3338()
 }
 
 // FUNCTION: 0x009d419d nohook
+uint32_t cGZWinPieMenu::Slot25_ae3338()
+{
+    return field13c;
+}
+
+// FUNCTION: 0x009d419d nohook
 uint32_t cGZWinIMEProxy::Slot13_adb5d0()
 {
     return field64;
@@ -5340,12 +5334,6 @@ uint32_t cGZWinIMEProxy::Slot13_adb5d0()
 uint32_t cGZWin::GetPrivateBuffer()
 {
     return field64;
-}
-
-// FUNCTION: 0x009d419d nohook
-uint32_t cGZWinPieMenu::Slot25_ae3338()
-{
-    return field13c;
 }
 
 // FUNCTION: 0x009d41a5 nohook
@@ -5361,18 +5349,6 @@ uint32_t cGZWinPieMenu::Slot27_ae3338()
 }
 
 // FUNCTION: 0x009d41a9 nohook
-uint32_t cGZWinPieMenu::Slot28_ae3338()
-{
-    return field130;
-}
-
-// FUNCTION: 0x009d41a9 nohook
-uint32_t cHitMan::Slot24_ad2540()
-{
-    return field74;
-}
-
-// FUNCTION: 0x009d41a9 nohook
 uint32_t cGZSndSegmentWavDataSource::Shutdown()
 {
     return field58;
@@ -5382,6 +5358,18 @@ uint32_t cGZSndSegmentWavDataSource::Shutdown()
 uint32_t cGZWinIMEProxy::Slot08_adb5d0()
 {
     return field58;
+}
+
+// FUNCTION: 0x009d41a9 nohook
+uint32_t cGZWinPieMenu::Slot28_ae3338()
+{
+    return field130;
+}
+
+// FUNCTION: 0x009d41a9 nohook
+uint32_t cHitMan::Slot24_ad2540()
+{
+    return field74;
 }
 
 // FUNCTION: 0x009d41ad nohook
@@ -5421,19 +5409,37 @@ void cGZWinPieMenu::Slot17_ae3338(uint32_t value)
 }
 
 // FUNCTION: 0x009d4714 nohook
+uint32_t cGZSndMgr::Slot05_ad7270()
+{
+    return field30;
+}
+
+// FUNCTION: 0x009d4714 nohook
+uint32_t cGZPersistResource::GetInstance()
+{
+    return field14;
+}
+
+// FUNCTION: 0x009d4714 nohook
 uint32_t cHTMLDocument::Body()
 {
     return field14;
 }
 
 // FUNCTION: 0x009d4714 nohook
-uint32_t cUnk00adbf80::Slot11_adbf80()
+uint32_t cGZDBSegmentPackedFile::Slot14_ad8ca0()
+{
+    return field18;
+}
+
+// FUNCTION: 0x009d4714 nohook
+uint32_t cRZSystemService::Slot12_a93658()
 {
     return field14;
 }
 
 // FUNCTION: 0x009d4714 nohook
-uint32_t cGZPersistResource::GetInstance()
+uint32_t cGZClipboardManagerClipboard::GetChangeCount()
 {
     return field14;
 }
@@ -5445,27 +5451,9 @@ uint32_t cGZWinPieMenu::Slot36_ae3338()
 }
 
 // FUNCTION: 0x009d4714 nohook
-uint32_t cGZSndMgr::Slot05_ad7270()
-{
-    return field30;
-}
-
-// FUNCTION: 0x009d4714 nohook
-uint32_t cGZClipboardManagerClipboard::GetChangeCount()
+uint32_t cUnk00adbf80::Slot11_adbf80()
 {
     return field14;
-}
-
-// FUNCTION: 0x009d4714 nohook
-uint32_t cRZSystemService::Slot12_a93658()
-{
-    return field14;
-}
-
-// FUNCTION: 0x009d4714 nohook
-uint32_t cGZDBSegmentPackedFile::Slot14_ad8ca0()
-{
-    return field18;
 }
 
 // FUNCTION: 0x009d65e6
@@ -5481,7 +5469,7 @@ void cGZWinTextTicker::Slot09_ae37b4(uint32_t value)
 }
 
 // FUNCTION: 0x009d7e63 nohook
-uint32_t cGZWinPieMenu::Slot18_ae3338()
+uint32_t cGZWinCombo::Slot10_ae28c8()
 {
     return fielddc;
 }
@@ -5493,37 +5481,13 @@ uint32_t cGZWinPieMenu::Slot08_ae3338()
 }
 
 // FUNCTION: 0x009d7e63 nohook
-uint32_t cHitResource_cHitList::GetRefCount()
-{
-    return field4;
-}
-
-// FUNCTION: 0x009d7e63 nohook
-uint32_t cGZWinScrollbar2::Slot08_ae4020()
+uint32_t cGZWinPieMenu::Slot18_ae3338()
 {
     return fielddc;
 }
 
 // FUNCTION: 0x009d7e63 nohook
-uint32_t cHitControlGroup::Slot12_ac2b18()
-{
-    return field8;
-}
-
-// FUNCTION: 0x009d7e63 nohook
-uint32_t cGZWinCombo::Slot10_ae28c8()
-{
-    return fielddc;
-}
-
-// FUNCTION: 0x009d7e63 nohook
-uint32_t cUnk00ace624::Slot04_ace624()
-{
-    return field4;
-}
-
-// FUNCTION: 0x009d7e63 nohook
-uint32_t cHitPropertySetResource::Slot05_ad2620()
+uint32_t cHitResource_cHitList::Slot05_ad2620()
 {
     return field1c;
 }
@@ -5535,27 +5499,9 @@ uint32_t cHitResource_cHitTrackPlayer::Slot05_ad2620()
 }
 
 // FUNCTION: 0x009d7e63 nohook
-uint32_t cHitList::GetRefCount()
+uint32_t cHitControlGroup::Slot12_ac2b18()
 {
-    return field4;
-}
-
-// FUNCTION: 0x009d7e63 nohook
-uint32_t cHitResource_cHitList::Slot05_ad2620()
-{
-    return field1c;
-}
-
-// FUNCTION: 0x009d7e63 nohook
-uint32_t cHitPropertySetTrackResource::Slot05_ad2620()
-{
-    return field1c;
-}
-
-// FUNCTION: 0x009d7e63 nohook
-uint32_t cGZPersistBinaryResource::Slot04_ada48c()
-{
-    return field1c;
+    return field8;
 }
 
 // FUNCTION: 0x009d7e63 nohook
@@ -5565,15 +5511,51 @@ uint32_t cGZWin::GetWindowManager()
 }
 
 // FUNCTION: 0x009d7e63 nohook
-uint32_t cGZPersistResource::GetRefCount()
+uint32_t cHitPropertySetResource::Slot05_ad2620()
+{
+    return field1c;
+}
+
+// FUNCTION: 0x009d7e63 nohook
+uint32_t cHitList::GetRefCount()
 {
     return field4;
 }
 
-// FUNCTION: 0x009d8539 nohook
-uint32_t cGZWinScrollbar2::Slot20_ae4020()
+// FUNCTION: 0x009d7e63 nohook
+uint32_t cGZPersistBinaryResource::Slot04_ada48c()
 {
-    return fieldf4;
+    return field1c;
+}
+
+// FUNCTION: 0x009d7e63 nohook
+uint32_t cHitResource_cHitList::GetRefCount()
+{
+    return field4;
+}
+
+// FUNCTION: 0x009d7e63 nohook
+uint32_t cHitPropertySetTrackResource::Slot05_ad2620()
+{
+    return field1c;
+}
+
+// FUNCTION: 0x009d7e63 nohook
+uint32_t cGZWinScrollbar2::Slot08_ae4020()
+{
+    return fielddc;
+}
+
+// FUNCTION: 0x009d7e63 nohook
+uint32_t cUnk00ace624::Slot04_ace624()
+{
+    return field4;
+}
+
+// FUNCTION: 0x009d7e63 nohook
+uint32_t cGZPersistResource::GetRefCount()
+{
+    return field4;
 }
 
 // FUNCTION: 0x009d8539 nohook
@@ -5588,26 +5570,14 @@ uint32_t cUnk00ada628::Slot13_ada628()
     return field1c;
 }
 
+// FUNCTION: 0x009d8539 nohook
+uint32_t cGZWinScrollbar2::Slot20_ae4020()
+{
+    return fieldf4;
+}
+
 // FUNCTION: 0x009d8564 nohook
 uint32_t cGZScriptTerp::GetContext()
-{
-    return field20;
-}
-
-// FUNCTION: 0x009d8564 nohook
-uint32_t cRZRadio::Slot15_acc1f8()
-{
-    return field3c;
-}
-
-// FUNCTION: 0x009d8564 nohook
-uint32_t cUnk00ada628::Slot03_ada628()
-{
-    return field20;
-}
-
-// FUNCTION: 0x009d8564 nohook
-uint32_t cUnk00ad1da0::Slot03_ad1db0()
 {
     return field20;
 }
@@ -5619,21 +5589,9 @@ uint32_t cUnk00ad1f14::Slot12_ad1f14()
 }
 
 // FUNCTION: 0x009d8564 nohook
-uint32_t cGZWinOptGrp::Slot13_ae1210()
+uint32_t cUnk00ad1da0::Slot03_ad1db0()
 {
-    return fieldf8;
-}
-
-// FUNCTION: 0x009d8564 nohook
-uint32_t cGZWinMsgBox::Slot09_ae2360()
-{
-    return fieldfc;
-}
-
-// FUNCTION: 0x009d8564 nohook
-uint32_t cGZWinListBox::Slot12_ae1560()
-{
-    return fieldf8;
+    return field20;
 }
 
 // FUNCTION: 0x009d8564 nohook
@@ -5643,9 +5601,39 @@ uint32_t nGZLog_cDefaultOutputBackEnd::Name()
 }
 
 // FUNCTION: 0x009d8564 nohook
+uint32_t cGZWinListBox::Slot12_ae1560()
+{
+    return mnSelection;
+}
+
+// FUNCTION: 0x009d8564 nohook
 uint32_t cHitTrackDataBlock::DataSize()
 {
     return field20;
+}
+
+// FUNCTION: 0x009d8564 nohook
+uint32_t cGZWinOptGrp::Slot13_ae1210()
+{
+    return fieldf8;
+}
+
+// FUNCTION: 0x009d8564 nohook
+uint32_t cUnk00ada628::Slot03_ada628()
+{
+    return field20;
+}
+
+// FUNCTION: 0x009d8564 nohook
+uint32_t cGZWinMsgBox::Slot09_ae2360()
+{
+    return fieldfc;
+}
+
+// FUNCTION: 0x009d8564 nohook
+uint32_t cRZRadio::Slot15_acc1f8()
+{
+    return field3c;
 }
 
 // FUNCTION: 0x009d8564 nohook
@@ -5655,25 +5643,7 @@ uint32_t cGZWinScrollbar2::Slot22_ae4020()
 }
 
 // FUNCTION: 0x009d858f nohook
-uint32_t cGZWinScrollbar2::Slot24_ae4020()
-{
-    return fieldfc;
-}
-
-// FUNCTION: 0x009d858f nohook
-uint32_t nGZLog_cService::Slot15_ad2000()
-{
-    return field40;
-}
-
-// FUNCTION: 0x009d858f nohook
-uint32_t cUnk00ad7670::Slot10_ad7670()
-{
-    return field24;
-}
-
-// FUNCTION: 0x009d858f nohook
-uint32_t cGZCOMLibrary::GetHandle()
+uint32_t cFreshCellPlayer::Slot03_ad4830()
 {
     return field24;
 }
@@ -5685,13 +5655,13 @@ uint32_t cRZCOMDllDirector::GZCOM()
 }
 
 // FUNCTION: 0x009d858f nohook
-uint32_t cFreshCellPlayer::Slot03_ad4830()
+uint32_t cGZWinScrollbar2::Slot24_ae4020()
 {
-    return field24;
+    return fieldfc;
 }
 
 // FUNCTION: 0x009d858f nohook
-uint32_t cRZCursor::IsLoaded()
+uint32_t cUnk00ad7670::Slot10_ad7670()
 {
     return field24;
 }
@@ -5703,15 +5673,69 @@ uint32_t cGZWinMsgBox::Slot10_ae2360()
 }
 
 // FUNCTION: 0x009d858f nohook
+uint32_t cGZCOMLibrary::GetHandle()
+{
+    return field24;
+}
+
+// FUNCTION: 0x009d858f nohook
+uint32_t nGZLog_cService::Slot15_ad2000()
+{
+    return field40;
+}
+
+// FUNCTION: 0x009d858f nohook
+uint32_t cRZCursor::IsLoaded()
+{
+    return field24;
+}
+
+// FUNCTION: 0x009d858f nohook
 uint32_t cGZWinListBox::Slot32_ae1560()
 {
-    return fieldfc;
+    return mnVisibleLines;
 }
 
 // FUNCTION: 0x009da848
 uint32_t cUnk00ae46e8::Slot27_ae47e8()
 {
     return field1d4;
+}
+
+// FUNCTION: 0x009daa18 nohook
+uint32_t cUnk00ad2830::Slot01_ad265c()
+{
+    return 1;
+}
+
+// FUNCTION: 0x009daa18 nohook
+uint32_t cUnk00ae468c::Slot02_ae468c()
+{
+    return 1;
+}
+
+// FUNCTION: 0x009daa18 nohook
+uint32_t cUnk00ae468c::Slot01_ae468c()
+{
+    return 1;
+}
+
+// FUNCTION: 0x009daa18 nohook
+uint32_t cUnk00ad2804::Slot02_ad265c()
+{
+    return 1;
+}
+
+// FUNCTION: 0x009daa18 nohook
+uint32_t cUnk00ae467c::Slot02_ae467c()
+{
+    return 1;
+}
+
+// FUNCTION: 0x009daa18 nohook
+uint32_t cUnk00ad2830::Slot02_ad265c()
+{
+    return 1;
 }
 
 // FUNCTION: 0x009daa18 nohook
@@ -5733,49 +5757,13 @@ uint32_t cUnk00ad2804::Slot01_ad265c()
 }
 
 // FUNCTION: 0x009daa18 nohook
-uint32_t cUnk00ad2804::Slot02_ad265c()
-{
-    return 1;
-}
-
-// FUNCTION: 0x009daa18 nohook
 uint32_t cUnk00ae466c::Slot02_ae466c()
 {
     return 1;
 }
 
 // FUNCTION: 0x009daa18 nohook
-uint32_t cUnk00ad2830::Slot01_ad265c()
-{
-    return 1;
-}
-
-// FUNCTION: 0x009daa18 nohook
-uint32_t cUnk00ad2830::Slot02_ad265c()
-{
-    return 1;
-}
-
-// FUNCTION: 0x009daa18 nohook
 uint32_t cUnk00ae466c::Slot01_ae466c()
-{
-    return 1;
-}
-
-// FUNCTION: 0x009daa18 nohook
-uint32_t cUnk00ae467c::Slot02_ae467c()
-{
-    return 1;
-}
-
-// FUNCTION: 0x009daa18 nohook
-uint32_t cUnk00ae468c::Slot02_ae468c()
-{
-    return 1;
-}
-
-// FUNCTION: 0x009daa18 nohook
-uint32_t cUnk00ae468c::Slot01_ae468c()
 {
     return 1;
 }
@@ -5793,7 +5781,13 @@ uint32_t cUnk00ae4910::Slot43_ae47e8()
 }
 
 // FUNCTION: 0x009db37a nohook
-uint32_t cUnk00ae4910::Slot03_ae47e8()
+uint32_t cFreshCellPlayer::Get3DPosX()
+{
+    return field40;
+}
+
+// FUNCTION: 0x009db37a nohook
+uint32_t cGZFont::GetStyle_2()
 {
     return field40;
 }
@@ -5805,7 +5799,7 @@ uint32_t cRZCursorManager::GetCursor()
 }
 
 // FUNCTION: 0x009db37a nohook
-uint32_t cFreshCellPlayer::Get3DPosX()
+uint32_t cUnk00ae4910::Slot03_ae47e8()
 {
     return field40;
 }
@@ -5816,10 +5810,10 @@ uint32_t cHitMan::Slot34_ad2540()
     return field5c;
 }
 
-// FUNCTION: 0x009db37a nohook
-uint32_t cGZFont::GetStyle_2()
+// FUNCTION: 0x009db663 nohook
+uint32_t cHitTrackPlayer::Slot12_ac2b18()
 {
-    return field40;
+    return field3c;
 }
 
 // FUNCTION: 0x009db663 nohook
@@ -5829,7 +5823,19 @@ uint32_t cFreshPlayer::GetZPos()
 }
 
 // FUNCTION: 0x009db663 nohook
+uint32_t cUnk00ae4910::Slot28_ae47e8()
+{
+    return field30;
+}
+
+// FUNCTION: 0x009db663 nohook
 uint32_t cUnk00ac2c88::Slot12_ac2c88()
+{
+    return field30;
+}
+
+// FUNCTION: 0x009db663 nohook
+uint32_t cRZLanguageManager::Slot07_ad1198()
 {
     return field30;
 }
@@ -5847,24 +5853,6 @@ uint32_t cGZCommandServer::Slot17_ad1660()
 }
 
 // FUNCTION: 0x009db663 nohook
-uint32_t cRZLanguageManager::Slot07_ad1198()
-{
-    return field30;
-}
-
-// FUNCTION: 0x009db663 nohook
-uint32_t cHitTrackPlayer::Slot12_ac2b18()
-{
-    return field3c;
-}
-
-// FUNCTION: 0x009db663 nohook
-uint32_t cUnk00ae4910::Slot28_ae47e8()
-{
-    return field30;
-}
-
-// FUNCTION: 0x009db663 nohook
 uint32_t cGZSndSegmentDataSourceUTalk::GetPosition()
 {
     return field30;
@@ -5877,19 +5865,13 @@ uint32_t cGZFont::GetType()
 }
 
 // FUNCTION: 0x009db800 nohook
-uint32_t cRZLanguageManager::Slot28_ad1198()
-{
-    return field34;
-}
-
-// FUNCTION: 0x009db800 nohook
 uint32_t cGZSndSegmentWavDataSource::GetDataSize()
 {
     return field34;
 }
 
 // FUNCTION: 0x009db800 nohook
-uint32_t cUnk00ae4910::Slot36_ae47e8()
+uint32_t cRZLanguageManager::Slot28_ad1198()
 {
     return field34;
 }
@@ -5906,14 +5888,20 @@ uint32_t cGZWinGen::Slot08_adc2b0()
     return field10c;
 }
 
+// FUNCTION: 0x009db800 nohook
+uint32_t cUnk00ae4910::Slot36_ae47e8()
+{
+    return field34;
+}
+
 // FUNCTION: 0x009e1230 nohook
-uint32_t cUnk00ae4ce4::Slot05_ae4ce4()
+uint32_t cUnk00ae4ce4::Slot04_ae4ce4()
 {
     return 0;
 }
 
 // FUNCTION: 0x009e1230 nohook
-uint32_t cUnk00ae4ce4::Slot04_ae4ce4()
+uint32_t cUnk00ae4ce4::Slot05_ae4ce4()
 {
     return 0;
 }
@@ -5930,13 +5918,13 @@ void cUnk00ae4ce4::Slot13_ae4ce4(uint32_t)
 }
 
 // FUNCTION: 0x009eb1b0
-uint32_t cUnk00ae4ce4::Slot09_ae4ce4(uint32_t)
+uint32_t cUnk00ae4ce4::Slot12_ae4ce4(uint32_t)
 {
     return 0xffffffff;
 }
 
 // FUNCTION: 0x009eb1b0 nohook
-uint32_t cUnk00ae4ce4::Slot12_ae4ce4(uint32_t)
+uint32_t cUnk00ae4ce4::Slot09_ae4ce4(uint32_t)
 {
     return 0xffffffff;
 }
@@ -5948,42 +5936,7 @@ uint32_t cUnk00ae4ce4::Slot07_ae4ce4()
 }
 
 // FUNCTION: 0x00a6d837 nohook
-void cUnk00ae4910::Slot53_ae47e8()
-{
-}
-
-// FUNCTION: 0x00a6d837 nohook
-void cUnk00ad18d8::Slot10_ad9030()
-{
-}
-
-// FUNCTION: 0x00a6d837 nohook
-void cUnk00ad7cf0::Slot10_ad9030()
-{
-}
-
-// FUNCTION: 0x00a6d837 nohook
-void cUnk00ac31e4::Slot11_ac3154()
-{
-}
-
-// FUNCTION: 0x00a6d837 nohook
-void cUnk00ac31e4::Slot12_ac3154()
-{
-}
-
-// FUNCTION: 0x00a6d837 nohook
 void cUnk00ac31e4::Slot13_ac3154()
-{
-}
-
-// FUNCTION: 0x00a6d837 nohook
-void cUnk00ac3090::Slot47_ac3090()
-{
-}
-
-// FUNCTION: 0x00a6d837 nohook
-void cHitChannel::Slot03_ad2bec()
 {
 }
 
@@ -5993,11 +5946,46 @@ void cRZDiskRadioStation::UnsetStation()
 }
 
 // FUNCTION: 0x00a6d837 nohook
+void cGZPersistCacheStrategyBasic::Init()
+{
+}
+
+// FUNCTION: 0x00a6d837 nohook
+void cUnk00ac31e4::Slot12_ac3154()
+{
+}
+
+// FUNCTION: 0x00a6d837 nohook
+void cUnk00ae4910::Slot53_ae47e8()
+{
+}
+
+// FUNCTION: 0x00a6d837 nohook
 void cUnk00acd504::Slot04_acd504()
 {
 }
 
 // FUNCTION: 0x00a6d837 nohook
-void cGZPersistCacheStrategyBasic::Init()
+void cUnk00ac31e4::Slot11_ac3154()
+{
+}
+
+// FUNCTION: 0x00a6d837 nohook
+void cUnk00ad18d8::Slot10_ad9030()
+{
+}
+
+// FUNCTION: 0x00a6d837 nohook
+void cUnk00ac3090::Slot47_ac3090()
+{
+}
+
+// FUNCTION: 0x00a6d837 nohook
+void cUnk00ad7cf0::Slot10_ad9030()
+{
+}
+
+// FUNCTION: 0x00a6d837 nohook
+void cHitChannel::Slot03_ad2bec()
 {
 }
