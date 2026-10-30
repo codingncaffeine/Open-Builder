@@ -362,7 +362,8 @@ float cSC4Simulator::Slot32_ab2e68()
 uint32_t cSC4Simulator::Slot07_ab2e68()
 {
     char* self = reinterpret_cast<char*>(this);
-    if (self + 0xe8) {
+    char* base = self + 0xe8;  // the null check a base-class conversion makes
+    if (base) {
         return OB_ADDR(self + 0xf0);
     }
     return 0;

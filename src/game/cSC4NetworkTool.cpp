@@ -918,8 +918,8 @@ struct IdSet_aa8748 {
 // FUNCTION: 0x00633ed0
 void Fn00633ed0(IdSet_aa8748* set, std::vector<uint32_t>* vec)
 {
-    uint32_t* end = vec->end();
-    for (uint32_t* p = vec->begin(); p != end; p++) {
+    std::vector<uint32_t>::iterator end = vec->end();
+    for (std::vector<uint32_t>::iterator p = vec->begin(); p != end; p++) {
         uint32_t v = *p;
         set->Insert(&v);
     }

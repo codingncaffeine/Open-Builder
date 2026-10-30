@@ -22,4 +22,14 @@ inline int ob_snprintf(char* buffer, size_t count, const char* format, ...)
 #define OB_SNPRINTF ob_snprintf
 #endif
 
+
+// _strnicmp: case-blind compare of at most count bytes; POSIX calls it strncasecmp.
+#ifdef _MSC_VER
+#include <string.h>
+#define OB_STRNICMP _strnicmp
+#else
+#include <strings.h>
+#define OB_STRNICMP strncasecmp
+#endif
+
 #endif

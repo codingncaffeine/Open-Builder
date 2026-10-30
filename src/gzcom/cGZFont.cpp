@@ -1730,12 +1730,19 @@ void Vec36_ac55d8::Fn00899513(uint32_t n, const Elem36_ac55d8* fill)
 }
 #endif
 
+#if defined(__GNUC__) && !defined(__clang__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmaybe-uninitialized"  // the original fills with an untouched stack element
+#endif
 // FUNCTION: 0x00899a73
 void Vec36_ac55d8::Fn00899a73(uint32_t n)
 {
     Elem36_ac55d8 blank;
     Fn00899513(n, &blank);
 }
+#if defined(__GNUC__) && !defined(__clang__)
+#pragma GCC diagnostic pop
+#endif
 
 struct VecU16_ac55d8 {
     uint8_t* mpBegin;

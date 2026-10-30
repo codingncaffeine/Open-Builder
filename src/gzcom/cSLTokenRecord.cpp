@@ -1,6 +1,7 @@
 #include <cstddef>
 
 #include "classes/cSLTokenRecord.h"
+#include "common/compiler.h"
 #include "gzcom/cRZString.h"
 
 // Wave 11c: cSLTokenRecord, its field-class constructors and helpers. Offsets in this file are from the object start.
@@ -620,7 +621,7 @@ void cSLTokenRecord::SetFieldResKey(uint32_t a, uint32_t b, uint32_t c)
 }
 
 // FUNCTION: 0x0097f093
-uint32_t __stdcall Fn0097f093(VStrm_ad9a88* o, uint32_t x)
+uint32_t OB_STDCALL Fn0097f093(VStrm_ad9a88* o, uint32_t x)
 {
     return o->Slot37_ad9a88(x);
 }

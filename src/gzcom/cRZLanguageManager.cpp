@@ -1736,6 +1736,10 @@ bool cRZLanguageManager::Slot29_ad1198(uint32_t country)
     return true;
 }
 
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Winfinite-recursion"  // the original calls its own slot again (through the vtable)
+#endif
 // FUNCTION: 0x009281c4
 bool cRZLanguageManager::Slot20_ad1198(uint32_t name, uint32_t out)
 {
@@ -1746,6 +1750,9 @@ bool cRZLanguageManager::Slot20_ad1198(uint32_t name, uint32_t out)
     }
     return ok;
 }
+#if defined(__GNUC__) || defined(__clang__)
+#pragma GCC diagnostic pop
+#endif
 
 // FUNCTION: 0x00929609
 void cRZLanguageManager::GetAllAvailableLanguagesIntoStringList(uint32_t list)

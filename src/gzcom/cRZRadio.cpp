@@ -349,11 +349,13 @@ void** Fn008d2c96(void** first, void** last, void* const* value, void* /*tag*/)
             return first;
         }
         ++first;
+        // fall through
     case 2:
         if (*first == *value) {
             return first;
         }
         ++first;
+        // fall through
     case 1:
         if (*first == *value) {
             return first;
@@ -916,7 +918,7 @@ uint32_t cRZRadio::Slot11_acc1f8(uint32_t callSign)
     cRZString current;
     const char* text = OB_PTR(const char, callSign);
     wanted.assign(text, text + 4);
-    current.assign("????", "????" + 4);
+    current.assign("????", &"????"[4]);
     int count = mpStationsEnd - mpStationsBegin;
     for (int i = 0; i < count; ++i) {
         static_cast<Station_acc3c0*>(mpStationsBegin[i])->V09(const_cast<char*>(current.data()));
@@ -942,7 +944,7 @@ bool cRZRadio::Slot13_acc1f8(uint32_t callSign, uint32_t info)
     }
     const char* text = OB_PTR(const char, callSign);
     wanted.assign(text, text + 4);
-    current.assign("????", "????" + 4);
+    current.assign("????", &"????"[4]);
     int count = mpStationsEnd - mpStationsBegin;
     for (int i = 0; i < count; ++i) {
         static_cast<Station_acc3c0*>(mpStationsBegin[i])->V09(const_cast<char*>(current.data()));

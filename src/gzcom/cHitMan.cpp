@@ -103,7 +103,7 @@ struct cNewTrackPlayer_ad2a40 {
 bool Fn0093790b(void* p);
 
 // The sink the hit manager reports track errors to is a plain function pointer (this+0xa8).
-typedef void(__cdecl* ErrorFn_ad2a40)(uint32_t, uint32_t);
+typedef void (*ErrorFn_ad2a40)(uint32_t, uint32_t);
 
 // The other service pointer (ids 0xfbc9cd04 / 0x7bba0cbd).
 struct cSysServPtrB_ad2a40 {

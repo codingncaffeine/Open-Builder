@@ -935,7 +935,8 @@ void List_ab19b0::Fn006c1e10Impl_ab19b0(const Entry_ab19b0& e)
 {
     ListNode_ab19b0* pos = mpNode->mpNext;
     ListNode_ab19b0* n = static_cast<ListNode_ab19b0*>(Fn0090cf54(0x34));
-    if (&n->mData) {
+    void* data = &n->mData;  // the null check placement construction makes
+    if (data) {
         n->mData.Fn006c0ae0(e);
     }
     ListNode_ab19b0* prev = pos->mpPrev;

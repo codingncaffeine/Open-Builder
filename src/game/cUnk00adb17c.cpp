@@ -1,6 +1,7 @@
 #include <cstddef>
 
 #include <cstring>
+#include "common/compiler.h"
 #include "classes/cUnk00adb17c.h"
 
 // A field of this object by its offset from the class start. In a method of a secondary base's vtable the
@@ -1258,7 +1259,7 @@ struct Map_adb17c {
 void Fn0090cf63(void* p);
 
 // GLOBAL: 0x00a80520
-extern void(__stdcall* gpImp00a80520)(uint32_t);
+extern void(OB_STDCALL* gpImp00a80520)(uint32_t);
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x0098e040 score 2

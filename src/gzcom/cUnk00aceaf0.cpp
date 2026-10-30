@@ -1,6 +1,7 @@
 #include <new>
 #include <string.h>
 #include "classes/cUnk00aceaf0.h"
+#include "common/crt.h"
 #include "gzcom/cRZString.h"
 
 // The date object as the helpers see it: a vtable pointer and the Julian day number.
@@ -312,7 +313,7 @@ void DateViewDraft_aceaf0::Fn00913131(uint32_t a, uint32_t b, uint32_t c)
     uint32_t m = 1;
     int32_t i = 0;
     do {
-        if (_strnicmp(g00b168fc[i], OB_PTR(const char, a), 3) == 0) {
+        if (OB_STRNICMP(g00b168fc[i], OB_PTR(const char, a), 3) == 0) {
             m = i + 1;
         }
         ++i;
