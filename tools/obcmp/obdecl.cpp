@@ -364,6 +364,26 @@ int main(int argc, char** argv) {
         if (v.size() <= i) v.resize(i + 1);
         v[i] = s;
     }
+    // A non-primary base whose vtable this class's copy outgrows is not the base: new virtual functions only go to the
+    // end of a class's primary vtable, so the real base there is a class the map never saw on its own (one deriving from
+    // a longer interface). That base is dropped: its vtables become subobjects this class declares slot by slot.
+    size_t droppedBases = 0;
+    for (auto& [p, rec] : recs) {
+        std::vector<std::pair<int32_t, uint32_t>> keep;
+        for (auto& [bo, b] : rec.bases) {
+            bool outgrown = false;
+            if (bo != 0)
+                if (auto bit = recs.find(b); bit != recs.end())
+                    for (auto& [xk, xv] : bit->second.layout)
+                        if (auto own = rec.layout.find(bo + xk); own != rec.layout.end() && slots.count(own->second) &&
+                            slots.count(xv) && slots[own->second].size() > slots[xv].size())
+                            outgrown = true;
+            if (outgrown) ++droppedBases;
+            else keep.push_back({bo, b});
+        }
+        rec.bases.swap(keep);
+    }
+    std::fprintf(stderr, "obdecl: %zu bases dropped (a vtable outgrown: the real base is a class never seen alone)\n", droppedBases);
     // How far past this each function reaches (obshape --extents): a class of no known size is at least as big as its
     // vtables' functions reach.
     std::map<uint32_t, uint32_t> reach;
