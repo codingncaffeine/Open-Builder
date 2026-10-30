@@ -1,0 +1,126 @@
+method 0x007e5910 void InvokeLandscapeTool(uint32_t, bool)
+method 0x007e5960 bool Fn007e5960(uint32_t, uint32_t)
+method 0x007e59b0 uint32_t Fn007e59b0()
+method 0x007e5b00 void UpdateZoomButtons()
+method 0x007e5b40 void DoTemporarySimHiddenPause()
+method 0x007e5b70 void Fn007e5b70()
+method 0x007e5bb0 void CreateProgressScreen(uint32_t)
+method 0x007e5c10 uint32_t Fn007e5c10(uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x007e5d80 uint32_t Fn007e5d80(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x007e5f40 void Fn007e5f40()
+method 0x007e5fb0 bool ToggleContourDisplay()
+method 0x007e66d0 uint32_t Fn007e66d0()
+method 0x007e67d0 uint32_t Fn007e67d0()
+method 0x007e6c60 uint32_t RecalcScrollVelocity()
+method 0x007e6da0 void InvokeZoningTool(uint32_t)
+method 0x007e6e00 void DoBudgetFailure()
+method 0x007e6e40 void Fn007e6e40()
+method 0x007e6ee0 void Fn007e6ee0()
+method 0x007e6f60 void ShowMayorSubPanel(uint32_t)
+method 0x007e70c0 void Fn007e70c0(uint32_t)
+method 0x007e7130 void Fn007e7130(uint32_t)
+method 0x007e7220 void Fn007e7220(uint32_t)
+method 0x007e7270 void Fn007e7270(uint32_t)
+method 0x007e75b0 uint32_t RunGlobalTerrainTool(int32_t)
+method 0x007e7830 void HandleAdviceLinkMessage(void*)
+method 0x007e8510 void UpdateMayorRatingBar(uint32_t)
+method 0x007e8a90 uint32_t UpdateAlertBorder()
+method 0x007e8b90 uint32_t ShowPanel(uint32_t)
+method 0x007e8ca0 uint32_t Fn007e8ca0(uint32_t)
+method 0x007e8e40 uint32_t Fn007e8e40()
+method 0x007e8f30 uint32_t Fn007e8f30(uint32_t)
+method 0x007e9090 void Fn007e9090(int32_t, int32_t)
+method 0x007e9150 void ObliterateCity(uint32_t)
+method 0x007e9780 bool Fn007e9780()
+method 0x007e97a0 void DoCityObliterated()
+method 0x007e9db0 uint32_t InvokeDisaster(uint32_t)
+method 0x007e9fa0 uint32_t Fn007e9fa0(uint32_t, uint32_t, uint32_t)
+method 0x007ea5b0 uint32_t Fn007ea5b0(uint32_t)
+method 0x007ea6e0 uint32_t Fn007ea6e0()
+method 0x007ea810 uint32_t Update24HourClockHover()
+method 0x007ea970 uint32_t UpdateBudget()
+method 0x007eaaa0 uint32_t UpdatePopulation()
+method 0x007eab60 uint32_t Fn007eab60()
+method 0x007eabf0 uint32_t Fn007eabf0()
+method 0x007eac70 uint32_t RenderCostIndicator()
+method 0x007eaeb0 uint32_t Fn007eaeb0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x007eb320 uint32_t DoEstablishCityDialog()
+method 0x007ebb20 uint32_t UpdateMissionProgress(void*, uint32_t)
+method 0x007ebf30 uint32_t DoCityEstablished()
+method 0x007ebfa0 uint32_t DoLoad(void*)
+method 0x007ec0b0 uint32_t Update24HourClock(uint32_t, uint32_t)
+method 0x007ec2d0 uint32_t Fn007ec2d0(uint32_t)
+method 0x007ec620 void Fn007ec620(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x007ec680 void DoFloraCatalogView(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x007ec6e0 void DoZoneCatalogView(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x007ec980 void AddAutomataToItemList(uint32_t, uint32_t)
+method 0x007ed0f0 uint32_t DoPostCityInit()
+method 0x007ed720 uint32_t Fn007ed720(uint32_t, uint32_t)
+method 0x007edcd0 uint32_t DoEarnedVehicleCatalogView(void*, uint32_t, void*, void*)
+method 0x007ede50 void Fn007ede50()
+method 0x007ecda0 void Fn007ecda0(void*, uint32_t)
+method 0x007edeb0 uint32_t AddGUI()
+method 0x007ef200 void RemoveGUI()
+method 0x007ef610 uint32_t Fn007ef610(uint32_t, uint32_t)
+method 0x007ef820 uint32_t ReadTunableValues()
+method 0x007efe60 uint32_t Fn007efe60(uint32_t)
+method 0x007eff40 uint32_t AddBuildingsToItemList(uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x007f06b0 uint32_t CreateBuildingMenu(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x007f0840 bool AddWinAnimationRecorder(bool)
+method 0x007f1140 uint32_t Fn007f1140()
+method 0x007f1640 bool AddBackgroundImageToRenderer()
+method 0x007f3510 bool Fn007f3510(uint32_t, uint32_t)
+method 0x007f39d0 uint32_t DoUtilitiesMenu(void*, void*)
+method 0x007f3c10 uint32_t DoTransportMenu(void*, void*)
+method 0x007f41b0 uint32_t DoPreCityInit()
+method 0x007f4690 uint32_t HandleButtonActivated(void*, void*)
+method 0x007f5f00 uint32_t Fn007f5f00(uint32_t)
+method 0x007f6010 uint32_t Fn007f6010(uint32_t)
+method 0x007f6160 void Fn007f6160()
+method 0x007f6410 uint32_t Fn007f6410()
+field f0 void* mpCamera
+field 134 uint32_t* mpInputControlsBegin
+field 138 uint32_t* mpInputControlsEnd
+field 320 void* mpViewFilter
+field 324 uint32_t mnViewLevel
+field 348 int32_t mnScrollVelX
+field 34c int32_t mnScrollVelY
+field 364 int32_t mnZoomMin
+field 368 int32_t mnZoomMax
+field 43c uint32_t mnLastBuilding
+field 440 uint32_t mnLastLot
+field 444 bool mbLastBuildingSet
+field 445 bool mbLastLotSet
+field 120 void* mpKeyAccelerator
+field f4 void* mpPicker
+field 154 void* mpSimTarget
+field 178 bool mbSimPaused
+field 18c void* mpToolbarWin
+field 1f4 int32_t mnPanel
+field 300 void* mpManagerHost
+field 32c float mfScrollScale
+field 330 bool mbScrolling
+field 334 float mfScrollSpeed
+field 338 bool mbScrollScaled
+field 339 bool mbScrollStopping
+field 33c float mfScrollVelocity
+field 40c void* mpMissionPanel
+field 1f8 void* mpSecondaryMenu
+field 200 uint32_t mnSecondaryMenu200
+field 328 uint32_t mnScrollArg328
+field 3d0 void* mpCaptionWin
+field 404 void* mpProgressScreen
+field 42c void** mpBuckets
+field 430 void** mpBucketsEnd
+field 140 void** mpPersistentBegin
+field 144 void** mpPersistentEnd
+field 3b4 uint32_t mnCostState
+field 3b8 uint32_t mnCostState2
+field 3bc float mfCostTimer
+field 3c0 int32_t mnCursorX
+field 3c4 int32_t mnCursorY
+field 3c8 int32_t mnCostX
+field 3cc int32_t mnCostY
+field 3d4 void* mpCostWin
+field 3d8 void* mpCursorTextWin
+field 3dc void* mpTipList

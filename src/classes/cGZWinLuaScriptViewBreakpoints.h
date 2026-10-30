@@ -14,7 +14,7 @@ public:
     virtual ~cGZWinLuaScriptViewBreakpoints() {}
     virtual void FinalRelease();
     virtual void PostInit();
-    virtual void Setup(uint32_t, uint32_t);
+    virtual void Setup(void*, void*);
     virtual void RefreshView();
     virtual void DoRequestClose();
     virtual bool QueryInterface(unsigned int, void **);
@@ -23,7 +23,11 @@ public:
     virtual bool DoMessage(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknown128[0x14];
+    void* mpRef128;
+    void* mpScriptView;
+    void* mpRef130;
+    void* mpRef134;
+    char unknown138[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinLuaScriptViewBreakpoints[sizeof(cGZWinLuaScriptViewBreakpoints) == 0x13c ? 1 : -1];

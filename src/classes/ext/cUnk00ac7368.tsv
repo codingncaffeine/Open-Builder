@@ -1,0 +1,12 @@
+slot Slot06_ac7368 uint32_t void* void* void*
+slot Slot07_ac7368 uint32_t void* void*
+slot Slot11_ac7368 bool uint32_t void* int32_t
+slot Slot12_ac7368 bool uint32_t void* int32_t bool
+slot Slot13_ac7368 bool uint32_t void* int32_t
+slot Slot14_ac7368 bool uint32_t void* int32_t
+slot Slot15_ac7368 bool uint32_t void* int32_t bool
+slot Slot16_ac7368 bool uint32_t void* int32_t void*
+slot Slot17_ac7368 bool uint32_t void* int32_t void*
+slot Slot18_ac7368 bool uint32_t void* void*
+slot Slot19_ac7368 void void*
+slot Slot20_ac7368 bool uint32_t void* void* void* void* void* void*

@@ -17,14 +17,17 @@ public:
     virtual void Setup(uint32_t, uint32_t);
     virtual void RefreshView();
     virtual void DoRequestClose();
-    virtual void SetCurrentCallLevel(uint32_t, uint32_t);
+    virtual void SetCurrentCallLevel(int32_t, bool);
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknown128[0x18];
+    char unknown128[0x4];
+    void* mpScriptView;
+    char unknown130[0xc];
+    int32_t mnCallLevel;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinLuaScriptViewVariables[sizeof(cGZWinLuaScriptViewVariables) == 0x140 ? 1 : -1];

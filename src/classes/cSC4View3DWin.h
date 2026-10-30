@@ -107,17 +107,237 @@ public:
     virtual void Slot60_abc9c0();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknowne4[0x10];
-    uint32_t fieldf4;
+    // STUB: 0x007e5910
+    void InvokeLandscapeTool(uint32_t, bool);
+    // STUB: 0x007e5960
+    bool Fn007e5960(uint32_t, uint32_t);
+    // STUB: 0x007e59b0
+    uint32_t Fn007e59b0();
+    // STUB: 0x007e5b00
+    void UpdateZoomButtons();
+    // STUB: 0x007e5b40
+    void DoTemporarySimHiddenPause();
+    // STUB: 0x007e5b70
+    void Fn007e5b70();
+    // STUB: 0x007e5bb0
+    void CreateProgressScreen(uint32_t);
+    // STUB: 0x007e5c10
+    uint32_t Fn007e5c10(uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x007e5d80
+    uint32_t Fn007e5d80(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x007e5f40
+    void Fn007e5f40();
+    // STUB: 0x007e5fb0
+    bool ToggleContourDisplay();
+    // STUB: 0x007e66d0
+    uint32_t Fn007e66d0();
+    // STUB: 0x007e67d0
+    uint32_t Fn007e67d0();
+    // STUB: 0x007e6c60
+    uint32_t RecalcScrollVelocity();
+    // STUB: 0x007e6da0
+    void InvokeZoningTool(uint32_t);
+    // STUB: 0x007e6e00
+    void DoBudgetFailure();
+    // STUB: 0x007e6e40
+    void Fn007e6e40();
+    // STUB: 0x007e6ee0
+    void Fn007e6ee0();
+    // STUB: 0x007e6f60
+    void ShowMayorSubPanel(uint32_t);
+    // STUB: 0x007e70c0
+    void Fn007e70c0(uint32_t);
+    // STUB: 0x007e7130
+    void Fn007e7130(uint32_t);
+    // STUB: 0x007e7220
+    void Fn007e7220(uint32_t);
+    // STUB: 0x007e7270
+    void Fn007e7270(uint32_t);
+    // STUB: 0x007e75b0
+    uint32_t RunGlobalTerrainTool(int32_t);
+    // STUB: 0x007e7830
+    void HandleAdviceLinkMessage(void*);
+    // STUB: 0x007e8510
+    void UpdateMayorRatingBar(uint32_t);
+    // STUB: 0x007e8a90
+    uint32_t UpdateAlertBorder();
+    // STUB: 0x007e8b90
+    uint32_t ShowPanel(uint32_t);
+    // STUB: 0x007e8ca0
+    uint32_t Fn007e8ca0(uint32_t);
+    // STUB: 0x007e8e40
+    uint32_t Fn007e8e40();
+    // STUB: 0x007e8f30
+    uint32_t Fn007e8f30(uint32_t);
+    // STUB: 0x007e9090
+    void Fn007e9090(int32_t, int32_t);
+    // STUB: 0x007e9150
+    void ObliterateCity(uint32_t);
+    // STUB: 0x007e9780
+    bool Fn007e9780();
+    // STUB: 0x007e97a0
+    void DoCityObliterated();
+    // STUB: 0x007e9db0
+    uint32_t InvokeDisaster(uint32_t);
+    // STUB: 0x007e9fa0
+    uint32_t Fn007e9fa0(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x007ea5b0
+    uint32_t Fn007ea5b0(uint32_t);
+    // STUB: 0x007ea6e0
+    uint32_t Fn007ea6e0();
+    // STUB: 0x007ea810
+    uint32_t Update24HourClockHover();
+    // STUB: 0x007ea970
+    uint32_t UpdateBudget();
+    // STUB: 0x007eaaa0
+    uint32_t UpdatePopulation();
+    // STUB: 0x007eab60
+    uint32_t Fn007eab60();
+    // STUB: 0x007eabf0
+    uint32_t Fn007eabf0();
+    // STUB: 0x007eac70
+    uint32_t RenderCostIndicator();
+    // STUB: 0x007eaeb0
+    uint32_t Fn007eaeb0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x007eb320
+    uint32_t DoEstablishCityDialog();
+    // STUB: 0x007ebb20
+    uint32_t UpdateMissionProgress(void*, uint32_t);
+    // STUB: 0x007ebf30
+    uint32_t DoCityEstablished();
+    // STUB: 0x007ebfa0
+    uint32_t DoLoad(void*);
+    // STUB: 0x007ec0b0
+    uint32_t Update24HourClock(uint32_t, uint32_t);
+    // STUB: 0x007ec2d0
+    uint32_t Fn007ec2d0(uint32_t);
+    // STUB: 0x007ec620
+    void Fn007ec620(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x007ec680
+    void DoFloraCatalogView(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x007ec6e0
+    void DoZoneCatalogView(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x007ec980
+    void AddAutomataToItemList(uint32_t, uint32_t);
+    // STUB: 0x007ed0f0
+    uint32_t DoPostCityInit();
+    // STUB: 0x007ed720
+    uint32_t Fn007ed720(uint32_t, uint32_t);
+    // STUB: 0x007edcd0
+    uint32_t DoEarnedVehicleCatalogView(void*, uint32_t, void*, void*);
+    // STUB: 0x007ede50
+    void Fn007ede50();
+    // STUB: 0x007ecda0
+    void Fn007ecda0(void*, uint32_t);
+    // STUB: 0x007edeb0
+    uint32_t AddGUI();
+    // STUB: 0x007ef200
+    void RemoveGUI();
+    // STUB: 0x007ef610
+    uint32_t Fn007ef610(uint32_t, uint32_t);
+    // STUB: 0x007ef820
+    uint32_t ReadTunableValues();
+    // STUB: 0x007efe60
+    uint32_t Fn007efe60(uint32_t);
+    // STUB: 0x007eff40
+    uint32_t AddBuildingsToItemList(uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x007f06b0
+    uint32_t CreateBuildingMenu(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x007f0840
+    bool AddWinAnimationRecorder(bool);
+    // STUB: 0x007f1140
+    uint32_t Fn007f1140();
+    // STUB: 0x007f1640
+    bool AddBackgroundImageToRenderer();
+    // STUB: 0x007f3510
+    bool Fn007f3510(uint32_t, uint32_t);
+    // STUB: 0x007f39d0
+    uint32_t DoUtilitiesMenu(void*, void*);
+    // STUB: 0x007f3c10
+    uint32_t DoTransportMenu(void*, void*);
+    // STUB: 0x007f41b0
+    uint32_t DoPreCityInit();
+    // STUB: 0x007f4690
+    uint32_t HandleButtonActivated(void*, void*);
+    // STUB: 0x007f5f00
+    uint32_t Fn007f5f00(uint32_t);
+    // STUB: 0x007f6010
+    uint32_t Fn007f6010(uint32_t);
+    // STUB: 0x007f6160
+    void Fn007f6160();
+    // STUB: 0x007f6410
+    uint32_t Fn007f6410();
+    char unknowne4[0xc];
+    void* mpCamera;
+    void* mpPicker;
     uint32_t fieldf8;
     char unknownfc[0x24];
-    uint32_t field120;
+    void* mpKeyAccelerator;
     char unknown124[0x2];
     bool field126;
-    char unknown127[0x1fd];
-    uint32_t field324;
-    char unknown328[0xbc];
-    char field3e4[0x64];
+    char unknown127[0xd];
+    uint32_t* mpInputControlsBegin;
+    uint32_t* mpInputControlsEnd;
+    char unknown13c[0x4];
+    void** mpPersistentBegin;
+    void** mpPersistentEnd;
+    char unknown148[0xc];
+    void* mpSimTarget;
+    char unknown158[0x20];
+    bool mbSimPaused;
+    char unknown179[0x13];
+    void* mpToolbarWin;
+    char unknown190[0x64];
+    int32_t mnPanel;
+    void* mpSecondaryMenu;
+    char unknown1fc[0x4];
+    uint32_t mnSecondaryMenu200;
+    char unknown204[0xfc];
+    void* mpManagerHost;
+    char unknown304[0x1c];
+    void* mpViewFilter;
+    uint32_t mnViewLevel;
+    uint32_t mnScrollArg328;
+    float mfScrollScale;
+    bool mbScrolling;
+    char unknown331[0x3];
+    float mfScrollSpeed;
+    bool mbScrollScaled;
+    bool mbScrollStopping;
+    char unknown33a[0x2];
+    float mfScrollVelocity;
+    char unknown340[0x8];
+    int32_t mnScrollVelX;
+    int32_t mnScrollVelY;
+    char unknown350[0x14];
+    int32_t mnZoomMin;
+    int32_t mnZoomMax;
+    char unknown36c[0x48];
+    uint32_t mnCostState;
+    uint32_t mnCostState2;
+    float mfCostTimer;
+    int32_t mnCursorX;
+    int32_t mnCursorY;
+    int32_t mnCostX;
+    int32_t mnCostY;
+    void* mpCaptionWin;
+    void* mpCostWin;
+    void* mpCursorTextWin;
+    void* mpTipList;
+    char unknown3e0[0x4];
+    char field3e4[0x20];
+    void* mpProgressScreen;
+    char unknown408[0x4];
+    void* mpMissionPanel;
+    char unknown410[0x1c];
+    void** mpBuckets;
+    void** mpBucketsEnd;
+    char unknown434[0x8];
+    uint32_t mnLastBuilding;
+    uint32_t mnLastLot;
+    bool mbLastBuildingSet;
+    bool mbLastLotSet;
+    char unknown446[0x2];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4View3DWin[sizeof(cSC4View3DWin) == 0x448 ? 1 : -1];

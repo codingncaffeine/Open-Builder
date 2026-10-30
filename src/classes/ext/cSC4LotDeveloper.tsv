@@ -1,0 +1,98 @@
+slot IsAreaDeveloped bool void*
+slot IsLotDeveloped bool void*
+field c bool mbInitialized
+field 10 int32_t mnRefCount
+field 14 void* mp14
+field 18 void* mpBuildingDevSim
+field 1c void* mpCity
+field 20 void* mpDemolition
+field 24 void* mpLotManager
+field 28 void* mpOccupantManager
+field 2c void* mpPlumbingSim
+field 30 void* mpPropManager
+field 34 void* mpPowerSim
+field 38 void* mpFloraSim
+field 3c void* mpTerrain
+field 40 int32_t mn40
+field 44 float mf44
+field 48 float mf48
+field 4c uint32_t mnCityCellsZ
+field 50 uint32_t mnCityCellsX
+field 54 void* mpTrafficSim
+field 58 void* mpBlockingFilter
+field 5c bool mb5c
+field 5d bool mb5d
+field 5e bool mb5e
+field 5f bool mb5f
+field d4 float mfd4
+field e4 float mfe4
+field d0 float mfd0
+field e8 float mfe8
+field d8 uint32_t mnLotFoundationId
+field dc uint32_t mnFoundationId
+field ec uint8_t mCurve[0x10]
+slot UpdateLotRetainingWalls void void*
+slot RemoveLotFromItsBusinessUnit void void*
+slot IsLotObjectFoundationRequired uint32_t void*
+slot IsLotFlat bool void* bool
+slot GetLotAltitudeRange float void* bool
+slot GetLotSlope float void* bool
+slot GetAreaSlope float void* bool
+slot GetOccupantSlope float void* bool
+slot IsAreaFlat bool void* bool
+slot GetAreaAltitudeRange float void* bool
+slot RemoveFoundation bool int32_t float float
+slot Slot08_ab1b98 void void* uint32_t
+slot GetOccupantSlope float void* bool
+slot RemoveBuildingFoundation void void*
+slot GetLotFoundation void void*
+slot GetOccupantCellCoverage void void* void*
+slot Slot02_ab1b98 uint32_t
+slot LevelBorderingVertices void void* float bool void*
+slot GetPositionForBuilding void void* void* void*
+slot GetPositionForLotConfigurationObject void void* void* void* void* void*
+slot UpdateLotBaseTextureOccupant void void* bool
+slot GetLotBaseTextureOccupant bool void* void* bool
+slot GetTerrainAltitudeByVertex float int32_t int32_t bool
+slot RemoveLotFoundation bool uint32_t uint32_t
+method 0x006c42d0 void RemoveLotProps(void*)
+method 0x006c4360 void Fn006c4360(void*, void*, bool)
+method 0x006c3f30 bool RemoveLotFoundation(void*)
+method 0x006c62f0 void Fn006c62f0(void*)
+slot EndDemolishLot void void*
+slot RemoveBuildingZotProp void void*
+slot GetFoundationByOccupant void void*
+slot GetLotDevelopmentCost int32_t void*
+slot GetFoundationByStandardCityCell void* uint32_t uint32_t uint32_t
+slot GetFoundationByPosition void* uint32_t float float
+slot GetLotFoundation void* void*
+slot UpdateLotFoundation void void*
+slot AddLotFoundation bool void* void* bool bool bool
+slot AddLotFoundation_2 bool void* uint32_t bool bool bool
+slot AddBuildingFoundation bool void* void*
+slot AddBuildingFoundation_2 bool void* uint32_t
+method 0x006c9780 bool RemoveLotProp(void*, uint32_t)
+slot StartDemolishLot void void*
+method 0x006c9fb0 void RemoveNetworkConnectionNodes(void*)
+method 0x006c3c50 void ClearLotBuildings(void*, uint32_t, bool, uint32_t)
+field fc uint8_t mBoundaryMap[8]
+slot RemoveBuildingZotProp void void*
+slot GetBoundaryLotTexture void void* void* void* void*
+slot IsLotObjectFoundationRequired_2 uint32_t void* void*
+slot GetAverageAreaAltitude float void* bool
+slot SetEmptyLotBaseTexture void void*
+slot SetNormalLotBaseTexture void void* void* bool
+method 0x006c9a40 void RemoveBuildingZotProp(void*, uint32_t)
+slot SetForceEmptyLotBaseTextures void bool
+slot GetFirstBuilding void* void*
+slot IsAreaFlat bool void* bool
+slot AttemptAreaLevelling uint32_t void* float bool bool float void*
+slot GetAreaAltitudeRange float void* bool
+slot GetLowestOrHighestAreaAltitude float void* bool bool
+slot GetOccupantCellCoverage void void* void*
+method 0x006c7720 void UpdateSurroundingLotFoundations(void*)
+method 0x006c8a20 void ClearLot(void*)
+slot CreateLotProp void* void* uint32_t uint32_t
+slot AddBuildingFoundation_2 bool void* uint32_t
+slot Slot09_ab1b98 void void* uint32_t
+slot LevelAreaInternalVertices uint32_t void* float bool bool void*

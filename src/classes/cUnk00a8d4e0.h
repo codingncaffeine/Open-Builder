@@ -18,7 +18,13 @@ public:
     virtual bool DoMessage(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknown128[0x2c];
+    // STUB: 0x0047aaf0
+    void Fn0047aaf0(uint32_t, uint32_t);
+    char unknown128[0x4];
+    void* mpWin12c;
+    char unknown130[0x1c];
+    uint32_t mn14c;
+    uint32_t mn150;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a8d4e0[sizeof(cUnk00a8d4e0) == 0x154 ? 1 : -1];

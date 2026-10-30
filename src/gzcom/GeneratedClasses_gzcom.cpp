@@ -354,9 +354,9 @@ void GeneratedClasses_gzcom()
     (void)new cUnk00ad9f38;
     (void)new cUnk00ad9f90;
     (void)new cGZPersistSurveyorWriter(ob_emit());
-    (void)new cGZPersistBinaryWriter(ob_emit());
-    (void)new cGZPersistASCIIWriter(ob_emit());
-    (void)new cGZPersistBinaryReader(ob_emit());
+    (void)new cGZPersistBinaryWriter;
+    (void)new cGZPersistASCIIWriter;
+    (void)new cGZPersistBinaryReader;
     (void)new cUnk00ada45c(ob_emit());
     (void)new cGZPersistBinaryResource;
     (void)new cRZStringResource;

@@ -1,0 +1,5 @@
+field 128 void* mpRef128
+field 12c void* mpScriptView
+field 130 void* mpRef130
+field 134 void* mpRef134
+slot Setup void void* void*

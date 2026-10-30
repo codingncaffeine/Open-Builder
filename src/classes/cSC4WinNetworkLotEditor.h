@@ -15,7 +15,7 @@ public:
     virtual ~cSC4WinNetworkLotEditor();
     virtual bool Slot152_a8d888(uint32_t, uint32_t, uint32_t);
     virtual bool Close(uint32_t, uint32_t);
-    virtual void WriteLotData();
+    virtual bool WriteLotData();
     virtual bool CreateNewLotConfiguration();
     virtual bool ReadLotConfigurationExemplar(uint32_t);
     virtual void GetDefaultPath(uint32_t);

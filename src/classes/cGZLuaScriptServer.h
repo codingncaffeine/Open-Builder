@@ -20,21 +20,21 @@ public:
     virtual unsigned int Release();
     virtual bool Slot09_ad1a98(uint32_t);
     virtual void Slot05_ac7368();
-    virtual uint32_t Slot06_ac7368(uint32_t, uint32_t, uint32_t);
-    virtual uint32_t Slot07_ac7368(uint32_t, uint32_t);
+    virtual uint32_t Slot06_ac7368(void*, void*, void*);
+    virtual uint32_t Slot07_ac7368(void*, void*);
     virtual bool Slot08_ac7368(uint32_t);
     virtual uint32_t Slot09_ac7368(uint32_t);
     virtual uint32_t Slot10_ac7368(uint32_t);
-    virtual void Slot11_ac7368(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot12_ac7368(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot13_ac7368(uint32_t, uint32_t, uint32_t);
-    virtual void Slot14_ac7368(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot15_ac7368(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot16_ac7368(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot17_ac7368(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot18_ac7368(uint32_t, uint32_t, uint32_t);
-    virtual void Slot19_ac7368(uint32_t);
-    virtual bool Slot20_ac7368(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot11_ac7368(uint32_t, void*, int32_t);
+    virtual bool Slot12_ac7368(uint32_t, void*, int32_t, bool);
+    virtual bool Slot13_ac7368(uint32_t, void*, int32_t);
+    virtual bool Slot14_ac7368(uint32_t, void*, int32_t);
+    virtual bool Slot15_ac7368(uint32_t, void*, int32_t, bool);
+    virtual bool Slot16_ac7368(uint32_t, void*, int32_t, void*);
+    virtual bool Slot17_ac7368(uint32_t, void*, int32_t, void*);
+    virtual bool Slot18_ac7368(uint32_t, void*, void*);
+    virtual void Slot19_ac7368(void*);
+    virtual bool Slot20_ac7368(uint32_t, void*, void*, void*, void*, void*, void*);
     virtual uint32_t Slot21_ac7368();
     virtual bool Slot22_ac7368(uint32_t);
     virtual bool Slot23_ac7368(uint32_t, uint32_t);
@@ -44,9 +44,22 @@ public:
     // STUB: 0x008b07c0
     cGZLuaScriptServer();
     explicit cGZLuaScriptServer(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknown20[0x10];
+    // STUB: 0x008aebc0
+    void PostScriptChangeMessage(int32_t, uint32_t, int32_t);
+    // STUB: 0x008aec60
+    void PostBreakpointChangedMessage(uint32_t);
+    // STUB: 0x008b42c0
+    void* Fn008b42c0(void*, void*, int32_t, bool, void*);
+    // STUB: 0x008b1b80
+    bool Fn008b1b80(void*, void*, int32_t, void*);
+    uint32_t mnRefCount;
+    bool mbInitialized;
+    char unknown25[0xb];
     uint32_t field30;
-    char unknown34[0x18];
+    void* mpManager;
+    void* mpRef38;
+    uint8_t mScriptMap[0xc];
+    void* mpCurrentThread;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZLuaScriptServer[sizeof(cGZLuaScriptServer) == 0x4c ? 1 : -1];

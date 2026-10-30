@@ -1,0 +1,26 @@
+slot InputStream void*
+slot ReadString void const char* void*
+slot SkipBytes void const char* uint32_t
+slot ReadBool bool const char*
+slot ReadSint8 int8_t const char*
+slot ReadUint8 uint8_t const char*
+slot ReadSint16 int16_t const char*
+slot ReadUint16 uint16_t const char*
+slot ReadSint32 int32_t const char*
+slot ReadUint32 uint32_t const char*
+slot ReadFloat32 float const char*
+slot ReadFloat64 double const char*
+slot ReadBoolArray void const char* char* uint32_t
+slot ReadSint8Array void const char* char* uint32_t
+slot ReadUint8Array void const char* void* uint32_t
+slot ReadSint16Array void const char* char* uint32_t
+slot ReadUint16Array void const char* char* uint32_t
+slot ReadSint32Array void const char* char* uint32_t
+slot ReadUint32Array void const char* char* uint32_t
+slot ReadFloat32Array void const char* char* uint32_t
+slot ReadFloat64Array void const char* char* uint32_t
+field 4 uint32_t mnRefCount
+slot ReadObject void const char* uint32_t void*
+slot ReadObjectRef void const char* uint32_t void*
+method - cGZPersistBinaryReader()
+method - explicit cGZPersistBinaryReader(ob_emit) {}

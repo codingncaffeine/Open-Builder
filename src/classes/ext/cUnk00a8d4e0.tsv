@@ -1,0 +1,4 @@
+method 0x0047aaf0 void Fn0047aaf0(uint32_t, uint32_t)
+field 12c void* mpWin12c
+field 14c uint32_t mn14c
+field 150 uint32_t mn150

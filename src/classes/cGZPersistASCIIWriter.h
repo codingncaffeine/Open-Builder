@@ -12,37 +12,41 @@ public:
     virtual bool QueryInterface(uint32_t, uint32_t);
     virtual uint32_t AddRef();
     virtual uint32_t Release();
-    virtual void WriteRoot(uint32_t, uint32_t);
-    virtual void WriteBool(uint32_t, uint32_t);
-    virtual void WriteSint8(uint32_t, uint32_t);
-    virtual void WriteUint8(uint32_t, uint32_t);
-    virtual void WriteSint16(uint32_t, uint32_t);
-    virtual void WriteUint16(uint32_t, uint32_t);
-    virtual void WriteSint32(uint32_t, uint32_t);
-    virtual void WriteUint32(uint32_t, uint32_t);
-    virtual void WriteFloat32(uint32_t, uint32_t);
-    virtual void WriteFloat64(uint32_t, uint32_t, uint32_t);
-    virtual void WriteBoolArray(uint32_t, uint32_t, uint32_t);
-    virtual void WriteSint8Array(uint32_t, uint32_t, uint32_t);
-    virtual void WriteUint8Array(uint32_t, uint32_t, uint32_t);
-    virtual void WriteSint16Array(uint32_t, uint32_t, uint32_t);
-    virtual void WriteUint16Array(uint32_t, uint32_t, uint32_t);
-    virtual void WriteSint32Array(uint32_t, uint32_t, uint32_t);
-    virtual void WriteUint32Array(uint32_t, uint32_t, uint32_t);
-    virtual void WriteFloat32Array(uint32_t, uint32_t, uint32_t);
-    virtual void WriteFloat64Array(uint32_t, uint32_t, uint32_t);
-    virtual void WriteString(uint32_t, uint32_t);
-    virtual void WriteString_4(uint32_t, uint32_t);
-    virtual void WriteObject(uint32_t, uint32_t);
+    virtual void WriteRoot(void*, uint32_t);
+    virtual void WriteBool(const char*, bool);
+    virtual void WriteSint8(const char*, uint32_t);
+    virtual void WriteUint8(const char*, uint32_t);
+    virtual void WriteSint16(const char*, uint32_t);
+    virtual void WriteUint16(const char*, uint32_t);
+    virtual void WriteSint32(const char*, uint32_t);
+    virtual void WriteUint32(const char*, uint32_t);
+    virtual void WriteFloat32(const char*, float);
+    virtual void WriteFloat64(const char*, double);
+    virtual void WriteBoolArray(const char*, const char*, uint32_t);
+    virtual void WriteSint8Array(const char*, const char*, uint32_t);
+    virtual void WriteUint8Array(const char*, const char*, uint32_t);
+    virtual void WriteSint16Array(const char*, const char*, uint32_t);
+    virtual void WriteUint16Array(const char*, const char*, uint32_t);
+    virtual void WriteSint32Array(const char*, const char*, uint32_t);
+    virtual void WriteUint32Array(const char*, const char*, uint32_t);
+    virtual void WriteFloat32Array(const char*, const char*, uint32_t);
+    virtual void WriteFloat64Array(const char*, const char*, uint32_t);
+    virtual void WriteString(const char*, const char*);
+    virtual void WriteString_4(const char*, void*);
+    virtual void WriteObject(const char*, void*);
     virtual void WriteObjectRef(uint32_t, uint32_t);
-    virtual void WriteObjectRef_4(uint32_t, uint32_t);
-    virtual void WriteTypeInfo(uint32_t);
-    virtual void Slot28_ada288();
+    virtual void WriteObjectRef_4(const char*, void*);
+    virtual void WriteTypeInfo(const void*);
+    virtual void* Slot28_ada288();
     virtual ~cGZPersistASCIIWriter();
-    // STUB: 0x00983314
+    // STUB: 0x009828a5
+    void WriteUint32InHex(uint32_t);
+    // STUB: 0x009828ea
+    void WriteKey(const void*);
     cGZPersistASCIIWriter();
-    explicit cGZPersistASCIIWriter(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknown4[0x2c];
+    explicit cGZPersistASCIIWriter(ob_emit) {}
+    uint32_t mnRefCount;
+    char unknown8[0x28];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZPersistASCIIWriter[sizeof(cGZPersistASCIIWriter) == 0x30 ? 1 : -1];

@@ -16,7 +16,7 @@ public:
     virtual ~cSC4WinLotConfigurationEditor();
     virtual bool Slot152_a8d888(uint32_t, uint32_t, uint32_t);
     virtual bool Close(uint32_t, uint32_t);
-    virtual void WriteLotData();
+    virtual bool WriteLotData();
     virtual bool CreateNewLotConfiguration();
     virtual bool ReadLotConfigurationExemplar(uint32_t);
     virtual void GetDefaultPath(uint32_t);
@@ -35,7 +35,222 @@ public:
     virtual bool GZOnMouseMove(uint32_t, uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknown12c[0xbc];
+    // STUB: 0x0047a890
+    bool DoEditMouseUpL(int32_t, int32_t, uint32_t);
+    // STUB: 0x0047a8c0
+    void CycleViewMode();
+    // STUB: 0x0047a8f0
+    void Fn0047a8f0(void*, int32_t, int32_t, void*, void*);
+    // STUB: 0x0047ab30
+    void Fn0047ab30(void*);
+    // STUB: 0x0047aba0
+    uint32_t DoDialogBoxGridSort(uint32_t);
+    // STUB: 0x0047ae20
+    uint32_t LoadCursors();
+    // STUB: 0x0047b0a0
+    void Fn0047b0a0();
+    // STUB: 0x0047b0d0
+    void Fn0047b0d0();
+    // STUB: 0x0047b100
+    void SetSelectedLotConfigurationObject(void*);
+    // STUB: 0x0047b310
+    void Fn0047b310(void*, void*);
+    // STUB: 0x0047b390
+    void Fn0047b390(void*);
+    // STUB: 0x0047b420
+    uint32_t Fn0047b420();
+    // STUB: 0x0047b480
+    void MoveObjectToWithinLotBounds(void*, bool);
+    // STUB: 0x0047b640
+    bool Fn0047b640(void*, bool);
+    // STUB: 0x0047b700
+    uint32_t GoTo3DView();
+    // STUB: 0x0047b890
+    uint32_t PostInit();
+    // STUB: 0x0047bb40
+    bool Fn0047bb40(void*);
+    // STUB: 0x0047bba0
+    uint32_t Fn0047bba0();
+    // STUB: 0x0047c090
+    void Fn0047c090(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x0047c150
+    uint32_t Fn0047c150();
+    // STUB: 0x0047c1a0
+    void Fn0047c1a0();
+    // STUB: 0x0047c1f0
+    uint32_t Fn0047c1f0();
+    // STUB: 0x0047c4b0
+    void Fn0047c4b0(uint32_t);
+    // STUB: 0x0047c660
+    uint32_t Fn0047c660();
+    // STUB: 0x0047c8d0
+    void Fn0047c8d0();
+    // STUB: 0x0047c930
+    void Fn0047c930();
+    // STUB: 0x0047c990
+    uint32_t Fn0047c990();
+    // STUB: 0x0047cb70
+    bool DoShowHelpUI(int32_t);
+    // STUB: 0x0047cc30
+    bool DoSelectTexturesUI(void*, void*, void*);
+    // STUB: 0x0047cf90
+    uint32_t Fn0047cf90(uint32_t, uint32_t);
+    // STUB: 0x0047d610
+    uint32_t Fn0047d610(uint32_t, uint32_t);
+    // STUB: 0x0047d6b0
+    bool Fn0047d6b0(uint32_t, uint32_t);
+    // STUB: 0x0047d8f0
+    uint32_t Fn0047d8f0();
+    // STUB: 0x0047d940
+    bool Fn0047d940();
+    // STUB: 0x0047d9c0
+    bool Fn0047d9c0(uint32_t);
+    // STUB: 0x0047da80
+    uint32_t Fn0047da80();
+    // STUB: 0x0047dc20
+    uint32_t Fn0047dc20();
+    // STUB: 0x0047ddf0
+    uint32_t DoSet3DViewSlopeUI();
+    // STUB: 0x0047e060
+    uint32_t Fn0047e060();
+    // STUB: 0x0047e5f0
+    uint32_t Fn0047e5f0(uint32_t);
+    // STUB: 0x0047e650
+    void DoSetNetworkNodePathUI(void*);
+    // STUB: 0x0047e870
+    void TriggerLotConfigurationRedraw();
+    // STUB: 0x0047e890
+    void Fn0047e890(uint32_t);
+    // STUB: 0x0047eaf0
+    void Fn0047eaf0();
+    // STUB: 0x0047ebb0
+    uint32_t Fn0047ebb0();
+    // STUB: 0x0047ed90
+    uint32_t DoRequestDeleteLotConfiguration();
+    // STUB: 0x0047f050
+    uint32_t Fn0047f050(uint32_t);
+    // STUB: 0x0047f0b0
+    uint32_t SetTitle();
+    // STUB: 0x0047f750
+    uint32_t Fn0047f750(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x0047fa80
+    uint32_t Fn0047fa80(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x0047fc50
+    void Fn0047fc50(void*);
+    // STUB: 0x00480170
+    uint32_t DeleteLotConfigurationObject(void*, bool);
+    // STUB: 0x00480310
+    uint32_t Fn00480310(uint32_t, uint32_t);
+    // STUB: 0x00480460
+    uint32_t Fn00480460();
+    // STUB: 0x00480590
+    void SetDataHasChanged(bool);
+    // STUB: 0x004805b0
+    uint32_t DoFenceMenu(int32_t, int32_t);
+    // STUB: 0x00480770
+    bool DoSetLotNameUI();
+    // STUB: 0x00480910
+    bool Fn00480910();
+    // STUB: 0x00480d10
+    uint32_t DoSetLotCompatibilitiesUI();
+    // STUB: 0x004827d0
+    bool DoSelectBuildingFamiliesUI(void*, void*);
+    // STUB: 0x00482dc0
+    bool DoSelectFloraFamiliesUI(void*, void*);
+    // STUB: 0x004832e0
+    bool DoSelectPropFamiliesUI(void*, void*, bool, bool);
+    // STUB: 0x004838c0
+    bool DoSelectLotBaseTexturesUI(void*, void*);
+    // STUB: 0x00483920
+    void DoAddNewBuilding();
+    // STUB: 0x004839a0
+    void DoAddNewFlora();
+    // STUB: 0x00483a20
+    void DoAddNewProp(bool, bool);
+    // STUB: 0x00483aa0
+    void DoAddNewLotBaseTexture();
+    // STUB: 0x00483dc0
+    uint32_t Fn00483dc0(uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00484330
+    uint32_t Fn00484330();
+    // STUB: 0x00484530
+    uint32_t Fn00484530(uint32_t, uint32_t);
+    // STUB: 0x00484700
+    uint32_t Fn00484700();
+    // STUB: 0x00484850
+    uint32_t AddNewLotConfigurationObject(int32_t, int32_t, uint32_t);
+    // STUB: 0x00484d40
+    void RotateObject(void*, uint32_t, uint32_t);
+    // STUB: 0x00484dd0
+    void MirrorObject(void*, uint32_t, uint32_t);
+    // STUB: 0x00484e10
+    uint32_t Fn00484e10(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00485040
+    void MoveObject(void*, uint32_t, uint32_t);
+    // STUB: 0x004851b0
+    void MoveObjectF(void*, float, float);
+    // STUB: 0x00485230
+    uint32_t Fn00485230(uint32_t);
+    // STUB: 0x004852a0
+    uint32_t Fn004852a0(uint32_t, uint32_t);
+    // STUB: 0x004859e0
+    bool DoEditMouseMove(int32_t, int32_t, uint32_t);
+    // STUB: 0x00485b00
+    uint32_t DoOutsideAreaMenu(int32_t, int32_t);
+    // STUB: 0x00485d60
+    bool DoSetFoundationUI(uint32_t, void*);
+    // STUB: 0x00486080
+    uint32_t SetLotSize(uint32_t, uint32_t, bool);
+    // STUB: 0x004862f0
+    uint32_t Fn004862f0(uint32_t);
+    // STUB: 0x004863f0
+    void Fn004863f0(uint32_t, uint32_t);
+    // STUB: 0x00486770
+    bool Fn00486770(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00486930
+    uint32_t DoLotFoundationMenu(int32_t, int32_t);
+    // STUB: 0x00486ba0
+    bool DoSetLotSizeUI();
+    // STUB: 0x00486d30
+    uint32_t Fn00486d30(uint32_t);
+    // STUB: 0x00487b30
+    uint32_t DoLotConfigurationObjectMenu(int32_t, int32_t, void*);
+    // STUB: 0x004893e0
+    bool Fn004893e0(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00486530
+    bool Open(void*);
+    uint8_t mbDataChanged12c;
+    char unknown12d[0xb];
+    void* mpHolder138;
+    void* mpStatus13c;
+    char unknown140[0x4];
+    uint32_t mCursor144;
+    uint32_t mCursor148;
+    uint32_t mCursor14c;
+    uint32_t mCursor150;
+    uint32_t mCursor154;
+    uint32_t mCursor158;
+    void* mpOwner15c;
+    char unknown160[0x4];
+    uint32_t mIdentity164;
+    uint8_t mKey168[0x14];
+    char unknown17c[0xc];
+    void* mpSegment188;
+    char unknown18c[0x4];
+    void* mpConfig190;
+    char unknown194[0x8];
+    uint32_t mnCursorMode19c;
+    uint8_t mVec1a0[0xc];
+    float mfScale1ac;
+    void* mpSelected1b0;
+    int32_t mnSelected1b4;
+    uint8_t mbCapturing1b8;
+    char unknown1b9[0x3];
+    float mfGrabX1bc;
+    float mfGrabY1c0;
+    char unknown1c4[0x18];
+    uint8_t mnViewMode1dc;
+    char unknown1dd[0xb];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4WinLotConfigurationEditor[sizeof(cSC4WinLotConfigurationEditor) == 0x1e8 ? 1 : -1];

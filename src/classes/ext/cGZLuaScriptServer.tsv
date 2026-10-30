@@ -1,0 +1,10 @@
+field 20 uint32_t mnRefCount
+field 3c uint8_t mScriptMap[0xc]
+field 48 void* mpCurrentThread
+method 0x008aebc0 void PostScriptChangeMessage(int32_t, uint32_t, int32_t)
+method 0x008aec60 void PostBreakpointChangedMessage(uint32_t)
+method 0x008b42c0 void* Fn008b42c0(void*, void*, int32_t, bool, void*)
+method 0x008b1b80 bool Fn008b1b80(void*, void*, int32_t, void*)
+field 34 void* mpManager
+field 24 bool mbInitialized
+field 38 void* mpRef38

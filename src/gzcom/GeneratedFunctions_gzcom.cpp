@@ -11,9 +11,6 @@
 #include "classes/cGZFont.h"
 #include "classes/cGZFontSys.h"
 #include "classes/cGZGimexFactory.h"
-#include "classes/cGZPersistASCIIWriter.h"
-#include "classes/cGZPersistBinaryReader.h"
-#include "classes/cGZPersistBinaryWriter.h"
 #include "classes/cGZPersistDBSegmentMultiPackedFiles.h"
 #include "classes/cGZPersistResourceKeyList.h"
 #include "classes/cGZPersistResourceManager.h"
@@ -453,24 +450,6 @@ cSLTokenResourceFactory* Fn009750fd()
 cGZPersistSurveyorWriter* Fn00975113()
 {
     return new cGZPersistSurveyorWriter;
-}
-
-// FUNCTION: 0x00975129
-cGZPersistBinaryReader* Fn00975129()
-{
-    return new cGZPersistBinaryReader;
-}
-
-// FUNCTION: 0x0097513f
-cGZPersistBinaryWriter* Fn0097513f()
-{
-    return new cGZPersistBinaryWriter;
-}
-
-// FUNCTION: 0x00975155
-cGZPersistASCIIWriter* Fn00975155()
-{
-    return new cGZPersistASCIIWriter;
 }
 
 // FUNCTION: 0x0097516b

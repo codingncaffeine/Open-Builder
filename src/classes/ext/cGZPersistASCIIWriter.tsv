@@ -1,0 +1,30 @@
+field 4 uint32_t mnRefCount
+slot Slot28_ada288 void*
+slot WriteBool void const char* bool
+slot WriteSint8 void const char* uint32_t
+slot WriteUint8 void const char* uint32_t
+slot WriteSint16 void const char* uint32_t
+slot WriteUint16 void const char* uint32_t
+slot WriteSint32 void const char* uint32_t
+slot WriteUint32 void const char* uint32_t
+slot WriteFloat32 void const char* float
+slot WriteFloat64 void const char* double
+slot WriteString void const char* const char*
+slot WriteString_4 void const char* void*
+slot WriteObject void const char* void*
+slot WriteTypeInfo void const void*
+slot WriteBoolArray void const char* const char* uint32_t
+slot WriteSint8Array void const char* const char* uint32_t
+slot WriteUint8Array void const char* const char* uint32_t
+slot WriteSint16Array void const char* const char* uint32_t
+slot WriteUint16Array void const char* const char* uint32_t
+slot WriteSint32Array void const char* const char* uint32_t
+slot WriteUint32Array void const char* const char* uint32_t
+slot WriteFloat32Array void const char* const char* uint32_t
+slot WriteFloat64Array void const char* const char* uint32_t
+method 0x009828a5 void WriteUint32InHex(uint32_t)
+method 0x009828ea void WriteKey(const void*)
+method - cGZPersistASCIIWriter()
+method - explicit cGZPersistASCIIWriter(ob_emit) {}
+slot WriteRoot void void* uint32_t
+slot WriteObjectRef_4 void const char* void*

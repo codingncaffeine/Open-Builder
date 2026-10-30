@@ -1,0 +1,113 @@
+slot Slot02_abab60 uint32_t
+slot GetViewportSize void void* void*
+slot SetSubpixelImageBias void float float
+slot GetShakeOffsets void void* void*
+slot SetViewportClearColor void const void*
+slot TakeSnapshot_2 bool void* bool
+slot SetZoom void int32_t
+slot GetBackgroundPicture void* void*
+slot SetBackingStoreEnabled void bool
+slot SetViewFogEnabled bool bool
+slot SetLightingEnabled bool bool
+field 10 uint32_t mnRefCount
+field 4c bool mbBorrowed
+field 50 void* mpBackgroundPicture
+field 60 bool mbBackgroundFlag
+field 68 uint32_t mnViewportW
+field 6c uint32_t mnViewportH
+field 80 float mfBiasX
+field 84 float mfBiasY
+field 88 void* mpCamera
+field 8c void* mpCameraControl
+field 94 uint32_t mnViewState
+field d8 void* mpCamera2D
+field dc uint32_t mnCameraMode
+field e8 bool mbLighting
+field e9 bool mbFog
+field 11c void* mpDrawContext
+field 1a0 bool mbClearSolid
+field 1a8 float mfClearR
+field 1ac float mfClearG
+field 1b0 float mfClearB
+field 1b4 float mfClearA
+field 258 int32_t mnShakeX
+field 25c int32_t mnShakeY
+slot BorrowRenderSystem bool
+slot SetCameraControl void void*
+field 114 void* mpViewUtilities
+field 188 void* mpViewListA
+field 18c void* mpViewListB
+field 190 void* mpViewListC
+field 194 void* mpViewListD
+method 0x007c3e10 void DrawViewListA()
+method 0x007c3e50 void DrawViewListB()
+method 0x007c3e90 void DrawViewListC()
+method 0x007c3ed0 void DrawViewListD()
+method 0x007c95b0 void Fn007c95b0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x007c9540 void Fn007c9540(uint32_t, void*, uint32_t, uint32_t)
+field 54 uint32_t mnBackgroundTexture
+field 58 int32_t mnBackgroundW
+field 5c int32_t mnBackgroundH
+field 65 bool mbBackingValid
+field 109 bool mbFullUpdateDone
+field 124 float mfQuadGridSize
+field 160 bool mbDirtyA
+field 174 bool mbDirtyB
+field 264 int32_t mnGridScale
+method 0x007c2c70 bool ClipRectToViewport(void*)
+method 0x007c8f30 void Fn007c8f30(uint32_t, void*, uint32_t, uint32_t)
+method 0x007c7310 void DoFullViewUpdate(uint32_t)
+method 0x007c6d80 void ClearDirtyRectangleQueue()
+field 288 uint32_t mnStat288
+field 28c uint32_t mnStat28c
+field 290 uint32_t mnStat290
+field 294 uint32_t mnStat294
+field 298 uint32_t mnStat298
+field 2a4 uint32_t mnStat2a4
+field 2a8 uint32_t mnStat2a8
+field 2ac uint32_t mnStat2ac
+field 2b0 uint32_t mnStat2b0
+field 2b4 uint32_t mnStat2b4
+field 2b8 uint32_t mnStat2b8
+field 2bc uint32_t mnStat2bc
+field 2c0 uint32_t mnStat2c0
+field 2c4 uint32_t mnStat2c4
+field 2c8 uint32_t mnStat2c8
+field 2cc uint32_t mnStat2cc
+field 2d0 uint32_t mnStat2d0
+field 70 uint32_t mnViewOrigin[2]
+method 0x007c2390 void* CreateQuadGrid()
+field 78 uint32_t mnViewportW2
+field 7c uint32_t mnViewportH2
+slot SetBackgroundPicture bool uint32_t uint32_t uint32_t bool
+slot TakeSnapshot bool void* bool
+field 98 uint32_t mnUICameraData
+field e0 int32_t mnOffsetE0
+field e4 int32_t mnOffsetE4
+field 15c uint32_t mnCounter15c
+method 0x007c1b30 void WorldToContainerRect(const void*, const void*, void*, int32_t)
+method 0x007c3f10 void GetModelContainerRect(void*, void*, int32_t)
+method 0x007c3230 void Fn007c3230()
+slot SetCamera void void*
+slot SetGDriver void void*
+field 90 uint32_t mnProjectionState
+field 63 bool mbBufferRegions
+field 64 bool mbBufferRegionsUsable
+field 120 void* mpQuadGrid
+method 0x007c3790 bool MoveGridElement(void*, void*)
+method 0x007c94c0 void UpdateViewportRect(void*)
+method 0x007c3c60 void SetClipRect(const void*)
+method 0x007c7370 void Fn007c7370()
+slot Pick_2 bool int32_t int32_t void* void*
+slot Pick bool int32_t int32_t void* void* void* void*
+slot SetBackgroundPicture_2 bool void* bool
+method 0x007c2b40 void UpdateGridElementObjectFlags(void*, void*)
+slot ClearViewportWithSolidColor void const void* bool bool
+field 48 void* mpRenderProps
+field 1b8 float mfClearDepth
+slot Slot67_abab60 bool void* int32_t
+slot Slot68_abab60 bool void* int32_t
+slot FindViewObject bool uint32_t
+field 198 uint32_t mnFocusedViewObject
+method 0x007c5540 bool Fn007c5540(void*)
+method 0x007c38d0 bool Fn007c38d0()

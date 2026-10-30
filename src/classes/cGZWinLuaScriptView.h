@@ -26,7 +26,53 @@ public:
     // STUB: 0x008b2ac0
     cGZWinLuaScriptView();
     explicit cGZWinLuaScriptView(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknown12c[0x3c];
+    // STUB: 0x008af280
+    void ViewCallStack(bool);
+    // STUB: 0x008af3c0
+    void ViewVariables(bool);
+    // STUB: 0x008af500
+    void ViewBreakpoints(bool);
+    // STUB: 0x008af910
+    bool Fn008af910();
+    // STUB: 0x008aff60
+    void Fn008aff60();
+    // STUB: 0x008aff20
+    int32_t Fn008aff20(uint32_t);
+    // STUB: 0x008afe40
+    void* Fn008afe40(uint32_t);
+    // STUB: 0x008afe90
+    void* Fn008afe90();
+    // STUB: 0x008afed0
+    void Fn008afed0();
+    // STUB: 0x008b0260
+    bool Fn008b0260(uint32_t);
+    // STUB: 0x008b5880
+    bool SetViewByCallLevel(int32_t);
+    // STUB: 0x008af840
+    void Fn008af840();
+    // STUB: 0x008af8a0
+    void Fn008af8a0();
+    // STUB: 0x008af930
+    void Fn008af930();
+    // STUB: 0x008b4720
+    void SetupScriptView();
+    void* mpServer;
+    void* mpListWin;
+    void* mpWin134;
+    int32_t mnScriptID;
+    void* mpWin13c;
+    void* mpWin140;
+    void* mpWin144;
+    void* mpWin148;
+    char unknown14c[0x4];
+    void* mpList;
+    int32_t mnPauseCount;
+    int32_t mnCallLevel;
+    char unknown15c[0x4];
+    bool mbEnabled;
+    bool mbRefresh;
+    char unknown162[0x2];
+    int32_t mn164;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinLuaScriptView[sizeof(cGZWinLuaScriptView) == 0x168 ? 1 : -1];

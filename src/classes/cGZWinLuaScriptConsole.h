@@ -23,7 +23,18 @@ public:
     virtual bool DoMessage(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknown12c[0x8];
+    // STUB: 0x008b09e0
+    uint32_t Fn008b09e0();
+    // STUB: 0x008b3550
+    void RefreshView();
+    // STUB: 0x008b3750
+    void Fn008b3750();
+    // STUB: 0x008b10f0
+    void Fn008b10f0();
+    // STUB: 0x008b1110
+    void Fn008b1110();
+    void* mpServer;
+    void* mpTextWin;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinLuaScriptConsole[sizeof(cGZWinLuaScriptConsole) == 0x134 ? 1 : -1];

@@ -36,7 +36,7 @@ struct OB_NOVTABLE cSC4CitySituationManager_0 {
     virtual void StartJoyride(uint32_t, uint32_t, uint32_t) = 0;
     virtual void TreatAutomatonAsGroup(uint32_t, uint32_t) = 0;
     virtual void SetMaxCSI(uint32_t) = 0;
-    virtual bool GetMaxCSI() = 0;
+    virtual uint8_t GetMaxCSI() = 0;
     virtual uint32_t GetTrackedAutomataCount() = 0;
     virtual void SetCSIVisible(uint32_t) = 0;
     virtual bool GetCSIVisible() = 0;
@@ -107,7 +107,7 @@ public:
     virtual void StartJoyride(uint32_t, uint32_t, uint32_t);
     virtual void TreatAutomatonAsGroup(uint32_t, uint32_t);
     virtual void SetMaxCSI(uint32_t);
-    virtual bool GetMaxCSI();
+    virtual uint8_t GetMaxCSI();
     virtual uint32_t GetTrackedAutomataCount();
     virtual void SetCSIVisible(uint32_t);
     virtual bool GetCSIVisible();
@@ -122,6 +122,136 @@ public:
     // STUB: 0x00529fd0
     cSC4CitySituationManager();
     explicit cSC4CitySituationManager(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
+    // STUB: 0x00524a50
+    bool Fn00524a50(uint32_t);
+    // STUB: 0x00524c40
+    void HandleStatusChanged(uint32_t);
+    // STUB: 0x00524cc0
+    uint32_t HandleActiveAutoRemoved();
+    // STUB: 0x00524cf0
+    uint32_t HandleTimeLimitReached();
+    // STUB: 0x00524df0
+    void Fn00524df0(uint32_t);
+    // STUB: 0x00524f00
+    uint32_t Fn00524f00(uint32_t, uint32_t);
+    // STUB: 0x00525070
+    void SetActiveAuto(void*);
+    // STUB: 0x00525100
+    void* GetTargetAsAutomaton();
+    // STUB: 0x00525130
+    uint32_t UpdatePursuit(float);
+    // STUB: 0x00525330
+    uint32_t EndDialog(uint32_t);
+    // STUB: 0x00525430
+    void Fn00525430(uint32_t, uint32_t);
+    // STUB: 0x005254d0
+    void InitScriptFuncRef(const char*, int32_t, void*);
+    // STUB: 0x00525640
+    bool Fn00525640(uint32_t, uint32_t);
+    // STUB: 0x005256e0
+    bool GetActivePosition(uint32_t);
+    // STUB: 0x00525800
+    uint32_t InitScriptRefs(uint32_t);
+    // STUB: 0x00526720
+    uint32_t Fn00526720(uint32_t);
+    // STUB: 0x00526960
+    bool Fn00526960(uint32_t, uint32_t);
+    // STUB: 0x00526a20
+    uint32_t Fn00526a20(uint32_t);
+    // STUB: 0x00526e60
+    uint32_t Fn00526e60();
+    // STUB: 0x00526ef0
+    float Fn00526ef0();
+    // STUB: 0x00527110
+    uint32_t Fn00527110(uint32_t);
+    // STUB: 0x00527180
+    void Fn00527180(uint32_t, uint32_t);
+    // STUB: 0x005271d0
+    void Fn005271d0(uint32_t);
+    // STUB: 0x00527320
+    void Fn00527320();
+    // STUB: 0x00527800
+    uint32_t Fn00527800();
+    // STUB: 0x00527d30
+    void Fn00527d30(uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00527ea0
+    uint32_t Fn00527ea0();
+    // STUB: 0x00528140
+    void AddCellsToCoverage(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00528360
+    uint32_t Fn00528360(uint32_t);
+    // STUB: 0x00528580
+    uint32_t SetTarget(uint32_t);
+    // STUB: 0x00528c70
+    uint32_t CheckEscapeCitySuccess(float);
+    // STUB: 0x00528ed0
+    uint32_t TrackAutomaton(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x005291c0
+    uint32_t HandleInsertAutomaton(void*);
+    // STUB: 0x005292f0
+    uint32_t CheckEvadeListSuccess(float);
+    // STUB: 0x00529560
+    uint32_t Fn00529560();
+    // STUB: 0x00529680
+    uint32_t Fn00529680();
+    // STUB: 0x005299c0
+    uint32_t InitLotCoverageCells();
+    // STUB: 0x00529af0
+    uint32_t Fn00529af0(uint32_t);
+    // STUB: 0x00529b80
+    uint32_t Fn00529b80();
+    // STUB: 0x00529fd0
+    uint32_t Fn00529fd0();
+    // STUB: 0x0052a1e0
+    uint32_t Fn0052a1e0(uint32_t, uint32_t);
+    // STUB: 0x0052a380
+    uint32_t Fn0052a380();
+    // STUB: 0x0052a650
+    void Fn0052a650(uint32_t);
+    // STUB: 0x0052a7d0
+    void HandleInsertOccupant(void*);
+    // STUB: 0x0052a830
+    uint32_t HandleRemoveAutomaton(void*);
+    // STUB: 0x0052ad00
+    uint32_t Fn0052ad00(uint32_t);
+    // STUB: 0x0052b200
+    uint32_t Fn0052b200(uint32_t);
+    // STUB: 0x0052b450
+    uint32_t Fn0052b450();
+    // STUB: 0x0052bbc0
+    bool ChooseNextTarget();
+    // STUB: 0x0052bc50
+    uint32_t CheckReachTargetSuccess(float);
+    // STUB: 0x0052bd30
+    uint32_t Fn0052bd30(uint32_t);
+    // STUB: 0x0052bf00
+    uint32_t Fn0052bf00();
+    // STUB: 0x0052bfb0
+    uint32_t Fn0052bfb0(uint32_t);
+    // STUB: 0x0052c020
+    uint32_t HandleAutomatonDisabled(void*);
+    // STUB: 0x0052c0e0
+    uint32_t HandleTargetRemoved();
+    // STUB: 0x0052c190
+    uint32_t Fn0052c190(uint32_t);
+    // STUB: 0x0052c4e0
+    uint32_t InitCoverageCells();
+    // STUB: 0x0052c8f0
+    uint32_t CheckForSuccess(float);
+    // STUB: 0x0052cc50
+    uint32_t SetupDialog(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x0052e300
+    bool DoAnimationTick(float);
+    // STUB: 0x0052e670
+    void HandleRemoveOccupant(void*);
+    // STUB: 0x0052e710
+    void HandleAutomatonMoved(void*);
+    // STUB: 0x0052e910
+    void ShowSituationPopup(uint32_t);
+    // STUB: 0x00524d10
+    void Fn00524d10(uint32_t, void*, void*);
+    // STUB: 0x00524d80
+    void SendSituationMessage(uint32_t, void*, uint32_t);
     char unknown14[0x9dc];
     bool field9f0;
     char unknown9f1[0x3];

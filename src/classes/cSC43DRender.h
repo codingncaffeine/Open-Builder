@@ -9,28 +9,28 @@
 struct OB_NOVTABLE cSC43DRender_0 {
     virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual void Slot01_abab60() = 0;
-    virtual void Slot02_abab60() = 0;
+    virtual uint32_t Slot02_abab60() = 0;
     virtual bool Init() = 0;
     virtual bool Shutdown() = 0;
     virtual void SetMapScaleFactor(uint32_t) = 0;
     virtual void SetGraphicSystem(uint32_t) = 0;
-    virtual void SetGDriver(uint32_t) = 0;
+    virtual void SetGDriver(void*) = 0;
     virtual uint32_t GetViewUtilities() = 0;
     virtual uint32_t GetLightingManager() = 0;
     virtual uint32_t GetDrawContext() = 0;
-    virtual void GetViewportSize(uint32_t, uint32_t) = 0;
+    virtual void GetViewportSize(void*, void*) = 0;
     virtual void SetViewportSize(uint32_t, uint32_t) = 0;
-    virtual void SetSubpixelImageBias(uint32_t, uint32_t) = 0;
+    virtual void SetSubpixelImageBias(float, float) = 0;
     virtual uint32_t GetCamera() = 0;
-    virtual void SetCamera(uint32_t) = 0;
+    virtual void SetCamera(void*) = 0;
     virtual uint32_t GetCameraControl() = 0;
-    virtual void SetCameraControl(uint32_t) = 0;
+    virtual void SetCameraControl(void*) = 0;
     virtual uint32_t GetProjectionMatrixEntries() = 0;
     virtual uint32_t GetViewMatrixEntries() = 0;
     virtual void ForceFullRedraw() = 0;
     virtual bool Draw() = 0;
-    virtual bool TakeSnapshot(uint32_t, uint32_t) = 0;
-    virtual bool TakeSnapshot_2(uint32_t, uint32_t) = 0;
+    virtual bool TakeSnapshot(void*, bool) = 0;
+    virtual bool TakeSnapshot_2(void*, bool) = 0;
     virtual void Set3DCameraView() = 0;
     virtual void Set2DCameraView() = 0;
     virtual void SetUICameraView() = 0;
@@ -42,7 +42,7 @@ struct OB_NOVTABLE cSC43DRender_0 {
     virtual bool AddViewObject(uint32_t, uint32_t, uint32_t) = 0;
     virtual void RemoveViewObject(uint32_t) = 0;
     virtual bool FindViewObject(uint32_t) = 0;
-    virtual void SetZoom(uint32_t) = 0;
+    virtual void SetZoom(int32_t) = 0;
     virtual void Slot36_abab60() = 0;
     virtual void Slot37_abab60() = 0;
     virtual void Slot38_abab60() = 0;
@@ -52,34 +52,34 @@ struct OB_NOVTABLE cSC43DRender_0 {
     virtual uint32_t StartScreenShake(uint32_t, uint32_t) = 0;
     virtual uint32_t StartScreenShake_2(uint32_t, uint32_t) = 0;
     virtual void StopScreenShake(uint32_t) = 0;
-    virtual void GetShakeOffsets(uint32_t, uint32_t) = 0;
-    virtual void SetViewportClearColor(uint32_t) = 0;
+    virtual void GetShakeOffsets(void*, void*) = 0;
+    virtual void SetViewportClearColor(const void*) = 0;
     virtual void ClearViewport(uint32_t) = 0;
-    virtual void ClearViewportWithSolidColor(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void ClearViewportWithSolidColor(const void*, bool, bool) = 0;
     virtual void DrawViewportRectangle(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void DrawTexturedViewportRectangle(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void EnableBackgroundPicture(bool) = 0;
-    virtual uint32_t GetBackgroundPicture(uint32_t) = 0;
-    virtual bool SetBackgroundPicture(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual bool SetBackgroundPicture_2(uint32_t, uint32_t) = 0;
+    virtual void* GetBackgroundPicture(void*) = 0;
+    virtual bool SetBackgroundPicture(uint32_t, uint32_t, uint32_t, bool) = 0;
+    virtual bool SetBackgroundPicture_2(void*, bool) = 0;
     virtual void EnableTransparentBackground(bool) = 0;
     virtual bool GetBackingStoreEnabled() = 0;
-    virtual void SetBackingStoreEnabled(uint32_t) = 0;
-    virtual void BorrowRenderSystem() = 0;
+    virtual void SetBackingStoreEnabled(bool) = 0;
+    virtual bool BorrowRenderSystem() = 0;
     virtual bool ReturnRenderSystem() = 0;
     virtual void PickTerrain(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool PickTerrain_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void PickTerrainAlways(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool PickTerrainAlways_2(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual bool Pick(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Pick_2(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Pick(int32_t, int32_t, void*, void*, void*, void*) = 0;
+    virtual bool Pick_2(int32_t, int32_t, void*, void*) = 0;
     virtual bool GetModelsInVolume(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot67_abab60(uint32_t, uint32_t) = 0;
-    virtual void Slot68_abab60(uint32_t, uint32_t) = 0;
+    virtual bool Slot67_abab60(void*, int32_t) = 0;
+    virtual bool Slot68_abab60(void*, int32_t) = 0;
     virtual bool GetViewFogEnabled() = 0;
-    virtual bool SetViewFogEnabled(uint32_t) = 0;
+    virtual bool SetViewFogEnabled(bool) = 0;
     virtual bool GetLightingEnabled() = 0;
-    virtual bool SetLightingEnabled(uint32_t) = 0;
+    virtual bool SetLightingEnabled(bool) = 0;
     virtual void GetStatsString1(uint32_t) = 0;
     virtual void GetStatsString2(uint32_t) = 0;
     virtual ~cSC43DRender_0() {}
@@ -89,7 +89,7 @@ struct OB_NOVTABLE cSC43DRender_0 {
 struct OB_NOVTABLE cSC43DRender_4 {
     virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual void Slot01_abab60() = 0;
-    virtual void Slot02_abab60() = 0;
+    virtual uint32_t Slot02_abab60() = 0;
     virtual bool Slot03_abab60_4(uint32_t);
 };
 
@@ -97,7 +97,7 @@ struct OB_NOVTABLE cSC43DRender_4 {
 struct OB_NOVTABLE cSC43DRender_8 {
     virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual void Slot01_abab60() = 0;
-    virtual void Slot02_abab60() = 0;
+    virtual uint32_t Slot02_abab60() = 0;
     virtual uint32_t Write(uint32_t);
     virtual void Read(uint32_t);
     virtual uint32_t GetGZCLSID();
@@ -112,28 +112,28 @@ public:
     virtual ~cSC43DRender();
     virtual bool QueryInterface(uint32_t, uint32_t);
     virtual void Slot01_abab60();
-    virtual void Slot02_abab60();
+    virtual uint32_t Slot02_abab60();
     virtual bool Init();
     virtual bool Shutdown();
     virtual void SetMapScaleFactor(uint32_t);
     virtual void SetGraphicSystem(uint32_t);
-    virtual void SetGDriver(uint32_t);
+    virtual void SetGDriver(void*);
     virtual uint32_t GetViewUtilities();
     virtual uint32_t GetLightingManager();
     virtual uint32_t GetDrawContext();
-    virtual void GetViewportSize(uint32_t, uint32_t);
+    virtual void GetViewportSize(void*, void*);
     virtual void SetViewportSize(uint32_t, uint32_t);
-    virtual void SetSubpixelImageBias(uint32_t, uint32_t);
+    virtual void SetSubpixelImageBias(float, float);
     virtual uint32_t GetCamera();
-    virtual void SetCamera(uint32_t);
+    virtual void SetCamera(void*);
     virtual uint32_t GetCameraControl();
-    virtual void SetCameraControl(uint32_t);
+    virtual void SetCameraControl(void*);
     virtual uint32_t GetProjectionMatrixEntries();
     virtual uint32_t GetViewMatrixEntries();
     virtual void ForceFullRedraw();
     virtual bool Draw();
-    virtual bool TakeSnapshot(uint32_t, uint32_t);
-    virtual bool TakeSnapshot_2(uint32_t, uint32_t);
+    virtual bool TakeSnapshot(void*, bool);
+    virtual bool TakeSnapshot_2(void*, bool);
     virtual void Set3DCameraView();
     virtual void Set2DCameraView();
     virtual void SetUICameraView();
@@ -145,7 +145,7 @@ public:
     virtual bool AddViewObject(uint32_t, uint32_t, uint32_t);
     virtual void RemoveViewObject(uint32_t);
     virtual bool FindViewObject(uint32_t);
-    virtual void SetZoom(uint32_t);
+    virtual void SetZoom(int32_t);
     virtual void Slot36_abab60();
     virtual void Slot37_abab60();
     virtual void Slot38_abab60();
@@ -155,56 +155,170 @@ public:
     virtual uint32_t StartScreenShake(uint32_t, uint32_t);
     virtual uint32_t StartScreenShake_2(uint32_t, uint32_t);
     virtual void StopScreenShake(uint32_t);
-    virtual void GetShakeOffsets(uint32_t, uint32_t);
-    virtual void SetViewportClearColor(uint32_t);
+    virtual void GetShakeOffsets(void*, void*);
+    virtual void SetViewportClearColor(const void*);
     virtual void ClearViewport(uint32_t);
-    virtual void ClearViewportWithSolidColor(uint32_t, uint32_t, uint32_t);
+    virtual void ClearViewportWithSolidColor(const void*, bool, bool);
     virtual void DrawViewportRectangle(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void DrawTexturedViewportRectangle(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void EnableBackgroundPicture(bool);
-    virtual uint32_t GetBackgroundPicture(uint32_t);
-    virtual bool SetBackgroundPicture(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool SetBackgroundPicture_2(uint32_t, uint32_t);
+    virtual void* GetBackgroundPicture(void*);
+    virtual bool SetBackgroundPicture(uint32_t, uint32_t, uint32_t, bool);
+    virtual bool SetBackgroundPicture_2(void*, bool);
     virtual void EnableTransparentBackground(bool);
     virtual bool GetBackingStoreEnabled();
-    virtual void SetBackingStoreEnabled(uint32_t);
-    virtual void BorrowRenderSystem();
+    virtual void SetBackingStoreEnabled(bool);
+    virtual bool BorrowRenderSystem();
     virtual bool ReturnRenderSystem();
     virtual void PickTerrain(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool PickTerrain_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void PickTerrainAlways(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool PickTerrainAlways_2(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Pick(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Pick_2(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Pick(int32_t, int32_t, void*, void*, void*, void*);
+    virtual bool Pick_2(int32_t, int32_t, void*, void*);
     virtual bool GetModelsInVolume(uint32_t, uint32_t, uint32_t);
-    virtual void Slot67_abab60(uint32_t, uint32_t);
-    virtual void Slot68_abab60(uint32_t, uint32_t);
+    virtual bool Slot67_abab60(void*, int32_t);
+    virtual bool Slot68_abab60(void*, int32_t);
     virtual bool GetViewFogEnabled();
-    virtual bool SetViewFogEnabled(uint32_t);
+    virtual bool SetViewFogEnabled(bool);
     virtual bool GetLightingEnabled();
-    virtual bool SetLightingEnabled(uint32_t);
+    virtual bool SetLightingEnabled(bool);
     virtual void GetStatsString1(uint32_t);
     virtual void GetStatsString2(uint32_t);
     // STUB: 0x007c9b10
     cSC43DRender();
     explicit cSC43DRender(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknownc[0x41];
+    // STUB: 0x007c3e10
+    void DrawViewListA();
+    // STUB: 0x007c3e50
+    void DrawViewListB();
+    // STUB: 0x007c3e90
+    void DrawViewListC();
+    // STUB: 0x007c3ed0
+    void DrawViewListD();
+    // STUB: 0x007c95b0
+    void Fn007c95b0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x007c9540
+    void Fn007c9540(uint32_t, void*, uint32_t, uint32_t);
+    // STUB: 0x007c2c70
+    bool ClipRectToViewport(void*);
+    // STUB: 0x007c8f30
+    void Fn007c8f30(uint32_t, void*, uint32_t, uint32_t);
+    // STUB: 0x007c7310
+    void DoFullViewUpdate(uint32_t);
+    // STUB: 0x007c6d80
+    void ClearDirtyRectangleQueue();
+    // STUB: 0x007c2390
+    void* CreateQuadGrid();
+    // STUB: 0x007c1b30
+    void WorldToContainerRect(const void*, const void*, void*, int32_t);
+    // STUB: 0x007c3f10
+    void GetModelContainerRect(void*, void*, int32_t);
+    // STUB: 0x007c3230
+    void Fn007c3230();
+    // STUB: 0x007c3790
+    bool MoveGridElement(void*, void*);
+    // STUB: 0x007c94c0
+    void UpdateViewportRect(void*);
+    // STUB: 0x007c3c60
+    void SetClipRect(const void*);
+    // STUB: 0x007c7370
+    void Fn007c7370();
+    // STUB: 0x007c2b40
+    void UpdateGridElementObjectFlags(void*, void*);
+    // STUB: 0x007c5540
+    bool Fn007c5540(void*);
+    // STUB: 0x007c38d0
+    bool Fn007c38d0();
+    char unknownc[0x4];
+    uint32_t mnRefCount;
+    char unknown14[0x34];
+    void* mpRenderProps;
+    bool mbBorrowed;
     bool field4d;
-    char unknown4e[0x14];
+    char unknown4e[0x2];
+    void* mpBackgroundPicture;
+    uint32_t mnBackgroundTexture;
+    int32_t mnBackgroundW;
+    int32_t mnBackgroundH;
+    bool mbBackgroundFlag;
+    char unknown61[0x1];
     bool field62;
-    char unknown63[0x25];
-    uint32_t field88;
-    uint32_t field8c;
-    char unknown90[0x58];
-    bool fielde8;
-    bool fielde9;
-    char unknownea[0x2a];
-    uint32_t field114;
+    bool mbBufferRegions;
+    bool mbBufferRegionsUsable;
+    bool mbBackingValid;
+    char unknown66[0x2];
+    uint32_t mnViewportW;
+    uint32_t mnViewportH;
+    uint32_t mnViewOrigin[2];
+    uint32_t mnViewportW2;
+    uint32_t mnViewportH2;
+    float mfBiasX;
+    float mfBiasY;
+    void* mpCamera;
+    void* mpCameraControl;
+    uint32_t mnProjectionState;
+    uint32_t mnViewState;
+    uint32_t mnUICameraData;
+    char unknown9c[0x3c];
+    void* mpCamera2D;
+    uint32_t mnCameraMode;
+    int32_t mnOffsetE0;
+    int32_t mnOffsetE4;
+    bool mbLighting;
+    bool mbFog;
+    char unknownea[0x1f];
+    bool mbFullUpdateDone;
+    char unknown10a[0xa];
+    void* mpViewUtilities;
     uint32_t field118;
-    uint32_t field11c;
-    char unknown120[0x144];
-    uint32_t field264;
-    char unknown268[0x80];
+    void* mpDrawContext;
+    void* mpQuadGrid;
+    float mfQuadGridSize;
+    char unknown128[0x34];
+    uint32_t mnCounter15c;
+    bool mbDirtyA;
+    char unknown161[0x13];
+    bool mbDirtyB;
+    char unknown175[0x13];
+    void* mpViewListA;
+    void* mpViewListB;
+    void* mpViewListC;
+    void* mpViewListD;
+    uint32_t mnFocusedViewObject;
+    char unknown19c[0x4];
+    bool mbClearSolid;
+    char unknown1a1[0x7];
+    float mfClearR;
+    float mfClearG;
+    float mfClearB;
+    float mfClearA;
+    float mfClearDepth;
+    char unknown1bc[0x9c];
+    int32_t mnShakeX;
+    int32_t mnShakeY;
+    char unknown260[0x4];
+    int32_t mnGridScale;
+    char unknown268[0x20];
+    uint32_t mnStat288;
+    uint32_t mnStat28c;
+    uint32_t mnStat290;
+    uint32_t mnStat294;
+    uint32_t mnStat298;
+    char unknown29c[0x8];
+    uint32_t mnStat2a4;
+    uint32_t mnStat2a8;
+    uint32_t mnStat2ac;
+    uint32_t mnStat2b0;
+    uint32_t mnStat2b4;
+    uint32_t mnStat2b8;
+    uint32_t mnStat2bc;
+    uint32_t mnStat2c0;
+    uint32_t mnStat2c4;
+    uint32_t mnStat2c8;
+    uint32_t mnStat2cc;
+    uint32_t mnStat2d0;
+    char unknown2d4[0x14];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC43DRender[sizeof(cSC43DRender) == 0x2e8 ? 1 : -1];
