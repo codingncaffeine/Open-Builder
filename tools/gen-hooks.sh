@@ -204,7 +204,8 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       head = substr(text, 1, open - 1); params = substr(text, open + 1, rparen - open - 1)
       isconst = (substr(text, rparen + 1) ~ /^[ \t]*const/)
       n = split(trim(head), w, " "); qualified = w[n]; sub(/^[*&]+/, "", qualified)
-      if (qualified !~ /::/ && nsname != "") qualified = nsname "::" qualified
+      if (qualified !~ /::/ && text ~ /^ [ \t]/ && cls != "") qualified = cls "::" qualified
+      else if (qualified !~ /::/ && nsname != "") qualified = nsname "::" qualified
       k = key(qualified, params, isconst)
       if (!(k in sym) && named[qualified] == 1) sym[k] = byname[qualified]
       if (!(k in sym)) { printf "gen-hooks: %s: no compiled function for %s (%s)\n", src, k, address > "/dev/stderr"; bad = 1; pending = 0; next }

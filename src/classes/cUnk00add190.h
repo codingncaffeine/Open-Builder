@@ -111,7 +111,7 @@ public:
     virtual bool Slot76_adcdc8(uint32_t);
     virtual bool Slot77_adcdc8(uint32_t);
     virtual bool Slot78_adcdc8();
-    virtual bool Slot79_adcdc8(uint32_t);
+    virtual bool Slot79_adcdc8(bool);
     virtual uint32_t Slot80_adcdc8();
     virtual bool Slot81_adcdc8(uint32_t);
     virtual void Slot82_adcdc8();
@@ -190,12 +190,12 @@ public:
     void* mpObj238;
     uint32_t maGroup0[6];
     char unknown254[0x1];
-    uint8_t mbGroup0Flag;
+    int8_t mbGroup0Flag;
     char unknown256[0x6];
     void* mpObj25c;
     uint32_t maGroup1[6];
     char unknown278[0x1];
-    uint8_t mbGroup1Flag;
+    int8_t mbGroup1Flag;
     char unknown27a[0xa];
     uint32_t maGroup2[6];
     char unknown29c[0x2];
@@ -204,7 +204,7 @@ public:
     void* mpObj2a4;
     uint32_t maGroup3[6];
     char unknown2c0[0x1];
-    uint8_t mbGroup3Flag;
+    int8_t mbGroup3Flag;
     uint8_t mb2c2;
     char unknown2c3[0x5];
     void* mpFont2c8;
@@ -214,7 +214,7 @@ public:
     void* mapObj2f0[4];
     uint32_t mn300;
     uint32_t mn304;
-    uint8_t mb308;
+    bool mb308;
     uint8_t mb309;
     char unknown30a[0x2];
     uint32_t mnColor;

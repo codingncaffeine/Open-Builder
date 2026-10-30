@@ -371,6 +371,18 @@ struct ComPtr_ac47ec {
     NOINLINE_ac47ec ComPtr_ac47ec* Fn00886ef0(Unknown_ac47ec* p);
 };
 
+// The driver maps a failed Direct3D call to its error code: 0 for a lost surface, 1 for anything else. A switch in an
+// inline function (the result comes back through eax).
+static inline uint32_t ErrorFromHr_ac47ec(uint32_t hr)
+{
+    switch (hr) {
+    case 0x887601c2u:
+        return 0;
+    default:
+        return 1;
+    }
+}
+
 #define TM_ac47ec reinterpret_cast<TexMgr_ac47ec*>(mpTexMgr)
 #define PM_ac47ec reinterpret_cast<PrimMgr_ac47ec*>(mpPrimMgr)
 #define DEV_ac47ec reinterpret_cast<Device7_ac47ec*>(mpDevice)
@@ -1092,48 +1104,42 @@ bool nSGLDX7_cGDriver::Slot08_ac34cc(uint32_t id)
 }
 #endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00883710 score 10 (the error idiom stores the setne result through eax)
+// FUNCTION: 0x00883710
 void nSGLDX7_cGDriver::PolygonOffset(int32_t offset)
 {
     uint32_t hr = PM_ac47ec->Fn00889de0();
     if (hr) {
-        mnError = hr != 0x887601c2;
+        mnError = ErrorFromHr_ac47ec(hr);
     }
     hr = DEV_ac47ec->SetRenderState(47, offset);
     if (hr) {
-        mnError = hr != 0x887601c2;
+        mnError = ErrorFromHr_ac47ec(hr);
     }
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00882e00 score 7 (same idiom)
+// FUNCTION: 0x00882e00
 void nSGLDX7_cGDriver::StencilMask(uint32_t mask)
 {
     if (MODE_ac47ec->mbStencil) {
         PM_ac47ec->Fn00889de0();
         uint32_t hr = DEV_ac47ec->SetRenderState(59, mask);
         if (hr) {
-            mnError = hr != 0x887601c2;
+            mnError = ErrorFromHr_ac47ec(hr);
         }
     } else {
         mnError = 3;
     }
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x008830a0 score 5 (same idiom)
+// FUNCTION: 0x008830a0
 void nSGLDX7_cGDriver::TexEnv(uint32_t, uint32_t, const float* values)
 {
     PM_ac47ec->Fn00889de0();
     uint32_t hr = DEV_ac47ec->SetRenderState(60, Fn00881ab0(values[0], values[1], values[2], values[3]));
     if (hr) {
-        mnError = hr != 0x887601c2;
+        mnError = ErrorFromHr_ac47ec(hr);
     }
 }
-#endif
 
 // FUNCTION: 0x00882f60
 void nSGLDX7_cGDriver::AlphaFunc(uint32_t test, float reference)
@@ -1270,25 +1276,23 @@ void nSGLDX7_cGDriver::TexStageCombine(eGDTextureStageCombineOperand parameter, 
     }
 }
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00883fa0 score 10 (same idiom)
+// FUNCTION: 0x00883fa0
 void nSGLDX7_cGDriver::Slot04_ac3508(uint32_t light, bool enable)
 {
     uint32_t hr = PM_ac47ec->Fn00889de0();
     if (hr) {
-        mnError = hr != 0x887601c2;
+        mnError = ErrorFromHr_ac47ec(hr);
     }
     hr = DEV_ac47ec->LightEnable(light, enable);
     if (hr) {
-        mnError = hr != 0x887601c2;
+        mnError = ErrorFromHr_ac47ec(hr);
     }
 }
-#endif
 
 // A failed Direct3D call sets the error: 1 for a real failure, 0 for a lost surface.
 #define CHECK_ac47ec(hr) \
     if (hr) { \
-        mnError = (hr) != 0x887601c2; \
+        mnError = ErrorFromHr_ac47ec(hr); \
     }
 
 // FUNCTION: 0x00884ef0
@@ -1381,7 +1385,7 @@ bool nSGLDX7_cGDriver::IsEnabled(uint32_t cap)
 #endif
 
 #ifdef OB_DRAFTS
-// CLOSE: 0x00883100 score 31 (error idiom through eax)
+// CLOSE: 0x00883100 score 24 (error idiom through eax)
 void nSGLDX7_cGDriver::Fog(uint32_t parameter, uint32_t value)
 {
     PM_ac47ec->Fn00889de0();
@@ -1430,7 +1434,7 @@ void nSGLDX7_cGDriver::Fog(uint32_t parameter, const float* values)
 #endif
 
 #ifdef OB_DRAFTS
-// CLOSE: 0x00882d50 score 37 (error idiom through eax)
+// CLOSE: 0x00882d50 score 24 (error idiom through eax)
 void nSGLDX7_cGDriver::StencilFunc(uint32_t test, int32_t reference, uint32_t mask)
 {
     if (MODE_ac47ec->mbStencil) {
@@ -1448,7 +1452,7 @@ void nSGLDX7_cGDriver::StencilFunc(uint32_t test, int32_t reference, uint32_t ma
 #endif
 
 #ifdef OB_DRAFTS
-// CLOSE: 0x00882e50 score 43 (error idiom through eax)
+// CLOSE: 0x00882e50 score 28 (error idiom through eax)
 void nSGLDX7_cGDriver::StencilOp(uint32_t fail, uint32_t depthFail, uint32_t pass)
 {
     if (MODE_ac47ec->mbStencil) {
@@ -1466,7 +1470,7 @@ void nSGLDX7_cGDriver::StencilOp(uint32_t fail, uint32_t depthFail, uint32_t pas
 #endif
 
 #ifdef OB_DRAFTS
-// CLOSE: 0x00883550 score 41 (error idiom through eax)
+// CLOSE: 0x00883550 score 35 (error idiom through eax)
 void nSGLDX7_cGDriver::TexStageCoord(uint32_t coord)
 {
     uint32_t index = coord & 7;
@@ -1517,8 +1521,7 @@ void nSGLDX7_cGDriver::GetViewport(int32_t* viewport)
 }
 #endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00883760 score 10 (error idiom through eax)
+// FUNCTION: 0x00883760
 void nSGLDX7_cGDriver::SetViewport()
 {
     uint32_t hr = PM_ac47ec->Fn00889de0();
@@ -1530,7 +1533,6 @@ void nSGLDX7_cGDriver::SetViewport()
     LoadMatrix(mMatrix150);
     mn214 = saved;
 }
-#endif
 
 // STUB: 0x008d0370
 uint32_t Fn008d0370(uint32_t format);
@@ -1553,8 +1555,7 @@ void nSGLDX7_cGDriver::InterleavedArrays(uint32_t format, int32_t stride, const 
 }
 #endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00883f30 score 12 (error idiom through eax)
+// FUNCTION: 0x00883f30
 void nSGLDX7_cGDriver::Slot03_ac3508(bool enable)
 {
     if (mbLighting != enable) {
@@ -1565,7 +1566,6 @@ void nSGLDX7_cGDriver::Slot03_ac3508(bool enable)
         CHECK_ac47ec(hr);
     }
 }
-#endif
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x00885330 score 37 (register allocation (ebx vs esi) of the vector walk)
@@ -1705,8 +1705,7 @@ void nSGLDX7_cGDriver::TexParameter(uint32_t, uint32_t parameter, int32_t value)
 }
 #endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00883240 score 12 (error idiom through eax)
+// FUNCTION: 0x00883240
 void nSGLDX7_cGDriver::ColorMultiplier(float r, float g, float b)
 {
     PM_ac47ec->Fn00889de0();
@@ -1722,10 +1721,8 @@ void nSGLDX7_cGDriver::ColorMultiplier(float r, float g, float b)
     uint32_t hr = DEV_ac47ec->SetRenderState(139, Fn00881ab0(r, g, b, 1.0f));
     CHECK_ac47ec(hr);
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00883310 score 16 (error idiom through eax)
+// FUNCTION: 0x00883310
 void nSGLDX7_cGDriver::AlphaMultiplier(float alpha)
 {
     PM_ac47ec->Fn00889de0();
@@ -1743,10 +1740,8 @@ void nSGLDX7_cGDriver::AlphaMultiplier(float alpha)
         DEV_ac47ec->SetRenderState(145, 1);
     }
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00884000 score 10 (error idiom through eax)
+// FUNCTION: 0x00884000
 void nSGLDX7_cGDriver::Slot05_ac3508(float r, float g, float b, float)
 {
     float fr = r + 49152.0f;
@@ -1763,10 +1758,8 @@ void nSGLDX7_cGDriver::Slot05_ac3508(float r, float g, float b, float)
     hr = DEV_ac47ec->SetRenderState(139, color);
     CHECK_ac47ec(hr);
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x008840d0 score 10 (error idiom through eax)
+// FUNCTION: 0x008840d0
 void nSGLDX7_cGDriver::Slot11_ac3508(uint32_t parameter, uint32_t values)
 {
     const float* v = OB_PTR(const float, values);
@@ -1804,10 +1797,8 @@ void nSGLDX7_cGDriver::Slot11_ac3508(uint32_t parameter, uint32_t values)
     hr = DEV_ac47ec->SetMaterial(MAT_ac47ec);
     CHECK_ac47ec(hr);
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00884200 score 14 (error idiom through eax)
+// FUNCTION: 0x00884200
 void nSGLDX7_cGDriver::Slot10_ac3508(uint32_t ambient, uint32_t diffuse, uint32_t specular, uint32_t emissive, uint32_t power)
 {
     const float* pAmbient = OB_PTR(const float, ambient);
@@ -1839,7 +1830,7 @@ void nSGLDX7_cGDriver::Slot10_ac3508(uint32_t ambient, uint32_t diffuse, uint32_
         MAT_ac47ec->mEmissive[3] = pEmissive[3];
     }
     float fPower = *reinterpret_cast<float*>(&power);
-    if (!(fPower < 0.0f)) {
+    if (fPower >= 0.0f) {
         MAT_ac47ec->mfPower = fPower;
     }
     uint32_t hr = PM_ac47ec->Fn00889de0();
@@ -1847,10 +1838,9 @@ void nSGLDX7_cGDriver::Slot10_ac3508(uint32_t ambient, uint32_t diffuse, uint32_
     hr = DEV_ac47ec->SetMaterial(MAT_ac47ec);
     CHECK_ac47ec(hr);
 }
-#endif
 
 #ifdef OB_DRAFTS
-// CLOSE: 0x00886b90 score 41 (register allocation; the temp light local)
+// CLOSE: 0x00886b90 score 37 (register allocation; the temp light local)
 void nSGLDX7_cGDriver::Slot07_ac3508(uint32_t light, uint32_t parameter, uint32_t values)
 {
     if (LIGHTS_ac47ec->size() <= light) {
@@ -1887,7 +1877,7 @@ void nSGLDX7_cGDriver::Slot07_ac3508(uint32_t light, uint32_t parameter, uint32_
 #endif
 
 #ifdef OB_DRAFTS
-// CLOSE: 0x00886ca0 score 37 (register allocation; the temp light local)
+// CLOSE: 0x00886ca0 score 33 (register allocation; the temp light local)
 void nSGLDX7_cGDriver::Slot06_ac3508(uint32_t light, const void* ambient, const void* diffuse, const void* specular)
 {
     if (LIGHTS_ac47ec->size() <= light) {
@@ -2860,7 +2850,7 @@ bool nSGLDX7_cGDriver::QueryInterface(uint32_t iid, void** object)
 #endif
 
 #ifdef OB_DRAFTS
-// CLOSE: 0x008837e0 score 20 (register allocation of the clamps)
+// CLOSE: 0x008837e0 score 2 (register allocation of the clamps)
 void nSGLDX7_cGDriver::SetViewport(int32_t x, int32_t y, int32_t width, int32_t height)
 {
     uint32_t hr = PM_ac47ec->Fn00889de0();
@@ -2899,8 +2889,7 @@ void nSGLDX7_cGDriver::SetViewport(int32_t x, int32_t y, int32_t width, int32_t 
 }
 #endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00883600 score 21 (negation order and register allocation)
+// FUNCTION: 0x00883600
 void nSGLDX7_cGDriver::TexStageMatrix(const float* matrix, uint32_t dimensions, uint32_t count, uint32_t flags)
 {
     uint32_t hr = PM_ac47ec->Fn00889de0();
@@ -2908,12 +2897,7 @@ void nSGLDX7_cGDriver::TexStageMatrix(const float* matrix, uint32_t dimensions, 
     if (matrix && !Fn00881970(matrix)) {
         float m[16];
         std::memcpy(m, matrix, sizeof m);
-        if (dimensions == 3 && !(flags & 1)) {
-            m[8] = -m[8];
-            m[9] = -m[9];
-            m[10] = -m[10];
-            m[11] = -m[11];
-        } else if (dimensions == 4 && (flags & 1)) {
+        if ((dimensions == 3 && !(flags & 1)) || (dimensions == 4 && (flags & 1))) {
             m[8] = -m[8];
             m[9] = -m[9];
             m[10] = -m[10];
@@ -2929,7 +2913,6 @@ void nSGLDX7_cGDriver::TexStageMatrix(const float* matrix, uint32_t dimensions, 
     }
     DEV_ac47ec->SetTextureStageState(mnTexStage, 24, 0);
 }
-#endif
 
 // FUNCTION: 0x00884a70
 void nSGLDX7_cGDriver::SetCombiner(const cGDCombiner& combiner, uint32_t stage)
@@ -3405,14 +3388,14 @@ uint32_t nSGLDX7_cGDriver::CountVideoModes() const
 
 // Ends the scene and tears the device down: textures, the stage list, the draw lists and every Direct3D object.
 #ifdef OB_DRAFTS
-// CLOSE: 0x008881d0 score 78 (vector erase inline, register order)
+// CLOSE: 0x008881d0 score 65 (vector erase inline, register order)
 void nSGLDX7_cGDriver::Fn008881d0()
 {
     if (mb260) {
         if (mpDevice) {
             uint32_t hr = DEV_ac47ec->EndScene();
             if (hr) {
-                mnError = hr != 0x887601c2;
+                mnError = ErrorFromHr_ac47ec(hr);
             }
         }
         mb260 = false;
@@ -3432,14 +3415,14 @@ void nSGLDX7_cGDriver::Fn008881d0()
 #endif
 
 #ifdef OB_DRAFTS
-// CLOSE: 0x00888f50 score 124 (window creation sequence; Win32 import names guessed from the call shapes)
+// CLOSE: 0x00888f50 score 123 (window creation sequence; Win32 import names guessed from the call shapes)
 void nSGLDX7_cGDriver::SetVideoMode(int32_t index, void* window, bool fullScreen, bool force)
 {
     if (mb260) {
         if (mpDevice) {
             uint32_t hr = DEV_ac47ec->EndScene();
             if (hr) {
-                mnError = hr != 0x887601c2;
+                mnError = ErrorFromHr_ac47ec(hr);
             }
             mb260 = false;
         }
@@ -3518,7 +3501,7 @@ struct BltSurface_ac47ec {
 
 // Copies a rectangle of a buffer region's surface back to the screen buffer it was read from.
 #ifdef OB_DRAFTS
-// CLOSE: 0x008855f0 score 193 (inline vector index checks and register order)
+// CLOSE: 0x008855f0 score 194 (inline vector index checks and register order)
 bool nSGLDX7_cGDriver::Slot07_ac34cc(uint32_t id, uint32_t sourceX, uint32_t sourceY, uint32_t width, uint32_t height, uint32_t destX, uint32_t destY)
 {
     if (mbDeviceLost == 0 && static_cast<int32_t>(sourceX) >= 0 && static_cast<int32_t>(sourceY) >= 0) {
@@ -3532,7 +3515,7 @@ bool nSGLDX7_cGDriver::Slot07_ac34cc(uint32_t id, uint32_t sourceX, uint32_t sou
             BufferRegion_ac47ec* region = &begin[index];
             uint32_t hr = PM_ac47ec->Fn00889de0();
             if (hr) {
-                mnError = hr != 0x887601c2;
+                mnError = ErrorFromHr_ac47ec(hr);
             }
             if (region->mpSurface && mp230) {
                 BltSurface_ac47ec* target;
@@ -3568,14 +3551,14 @@ bool nSGLDX7_cGDriver::Slot07_ac34cc(uint32_t id, uint32_t sourceX, uint32_t sou
 
 // Copies a rectangle of a screen buffer into a buffer region's surface.
 #ifdef OB_DRAFTS
-// CLOSE: 0x008853b0 score 220 (inline vector index checks and register order)
+// CLOSE: 0x008853b0 score 221 (inline vector index checks and register order)
 bool nSGLDX7_cGDriver::Slot06_ac34cc(uint32_t id, uint32_t sourceX, uint32_t sourceY, uint32_t width, uint32_t height, uint32_t destX, uint32_t destY)
 {
     if (mbDeviceLost == 0 && static_cast<int32_t>(sourceX) >= 0 && static_cast<int32_t>(sourceY) >= 0 &&
         width + sourceX <= mViewport[2] && height + sourceY <= mViewport[3]) {
         uint32_t hr = PM_ac47ec->Fn00889de0();
         if (hr) {
-            mnError = hr != 0x887601c2;
+            mnError = ErrorFromHr_ac47ec(hr);
         }
         BufferRegion_ac47ec* region = &reinterpret_cast<BufferRegion_ac47ec*>(mpBufferRegionsBegin)[id - 1];
         if (region->mpSurface) {
@@ -3776,7 +3759,7 @@ uint32_t nSGLDX7_cGDriver::Slot04_ac34cc(uint32_t which)
 // Draws `count` vertices of the interleaved array: brings the dirty texture stages up to date, then hands the
 // primitive to the primitive manager (strips, fans and quads are turned into triangle lists first).
 #ifdef OB_DRAFTS
-// CLOSE: 0x008857e0 score 144 (stage loop and primitive switch layout)
+// CLOSE: 0x008857e0 score 143 (stage loop and primitive switch layout)
 void nSGLDX7_cGDriver::DrawArrays(uint32_t mode, int32_t first, int32_t count)
 {
     uint32_t stage = 0;
@@ -3845,7 +3828,7 @@ void nSGLDX7_cGDriver::DrawArrays(uint32_t mode, int32_t first, int32_t count)
         break;
     }
     if (hr) {
-        mnError = hr != 0x887601c2;
+        mnError = ErrorFromHr_ac47ec(hr);
     }
 }
 #endif
@@ -3853,7 +3836,7 @@ void nSGLDX7_cGDriver::DrawArrays(uint32_t mode, int32_t first, int32_t count)
 // Draws `count` indexed vertices: like DrawArrays, with the indices converted to 16-bit ones and the vertex range
 // worked out from the smallest and largest index.
 #ifdef OB_DRAFTS
-// CLOSE: 0x00885a00 score 480 (stage loop and nested index-type switches)
+// CLOSE: 0x00885a00 score 439 (stage loop and nested index-type switches)
 void nSGLDX7_cGDriver::DrawElements(uint32_t mode, int32_t count, uint32_t indexType, const void* indices)
 {
     uint32_t stage = 0;
@@ -3954,7 +3937,7 @@ void nSGLDX7_cGDriver::DrawElements(uint32_t mode, int32_t count, uint32_t index
     }
     uint32_t hr = PM_ac47ec->Fn00889e00(mnVertexFormat, primitive, mnVertexStride, minIndex, maxIndex - minIndex + 1, vertices, indexCount, converted);
     if (hr) {
-        mnError = hr != 0x887601c2;
+        mnError = ErrorFromHr_ac47ec(hr);
     }
 }
 #endif
@@ -4077,7 +4060,7 @@ Unknown_ac47ec* Fn0088b440();
 // when it is back it takes the objects over again and re-applies the states; the notifications it posts to the
 // framework on those changes are not reproduced.
 #ifdef OB_DRAFTS
-// CLOSE: 0x00884ba0 score 310 (device-lost notification posting not reproduced; COM call setup)
+// CLOSE: 0x00884ba0 score 307 (device-lost notification posting not reproduced; COM call setup)
 void nSGLDX7_cGDriver::Flush()
 {
     int32_t cooperative = reinterpret_cast<CoopCheck_ac47ec*>(mpDirectDraw)->TestCooperativeLevel();
@@ -4110,7 +4093,7 @@ void nSGLDX7_cGDriver::Flush()
     if (!mbDeviceLost) {
         uint32_t hr = PM_ac47ec->Fn00889de0();
         if (static_cast<int32_t>(hr) < 0) {
-            mnError = hr != 0x887601c2;
+            mnError = ErrorFromHr_ac47ec(hr);
         }
         Fn00887260();
         reinterpret_cast<HostDevice_ac47ec*>(mpObject258)->Present(0);
@@ -4155,7 +4138,7 @@ Tex_ac47ec* Fn0088aaf0(Tex_ac47ec* first, Tex_ac47ec* last, Tex_ac47ec* result, 
 Tex_ac47ec* Fn0088ab70(Tex_ac47ec* first, uint32_t count, const Tex_ac47ec* value, const void* tag);
 
 #ifdef OB_DRAFTS
-// CLOSE: 0x0088af90 score 0 (unscored)
+// CLOSE: 0x0088af90 score 43 (unscored)
 void TexVec_ac47ec::Fn0088af90Draft_ac47ec(Tex_ac47ec* pos, const Tex_ac47ec* value, const void* tag, uint32_t count, uint32_t atEnd)
 {
     uint32_t oldSize = size();

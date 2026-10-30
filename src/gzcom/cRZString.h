@@ -21,6 +21,7 @@ public:
     cRZString(const std::string& source);
     // The copy constructor, and a substring of another string.
     cRZString(const cRZString& source, size_t position = 0, size_t count = npos);
+    // FUNCTION: 0x00414250 nohook (the body is shared: the linker folded it with others)
     virtual ~cRZString() {}
 
     bool QueryInterface(uint32_t riid, void** ppvObj);

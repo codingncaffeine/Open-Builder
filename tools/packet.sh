@@ -254,7 +254,9 @@ else
       FILENAME ~ /calls$/ { callee[$1] = callee[$1] " " $2; callers[$2] = callers[$2] " " $1; next }
       FILENAME ~ /virtual$/ { virt[$1] = 1; next }
       FILENAME ~ /stubbed$/ { owned[$1] = 1; next }
-      FILENAME ~ /triage/ { a = sprintf("%08x", strtonum("0x" $1)); if ($3 == "code") todo[a] = $2; next }
+      # sizes.tsv: the function list corrected where it ends a function early (triage.tsv has the uncorrected sizes)
+      FILENAME ~ /sizes.tsv$/ { real[sprintf("%08x", strtonum("0x" $1))] = strtonum("0x" $2); next }
+      FILENAME ~ /triage/ { a = sprintf("%08x", strtonum("0x" $1)); if ($3 == "code") todo[a] = (a in real) ? real[a] : $2; next }
       { set[$2] = 1; level[$2] = 0 }
       END {
         for (round = 1; round <= 2; round++)
@@ -270,7 +272,7 @@ else
               set[c] = 1; level[c] = round; print c "\t" todo[c]
             }
           }
-      }' "$work/calls" "$work/virtual" "$work/stubbed" re/map/triage.tsv "$work/$cls" | sort -u >"$work/$cls.helpers"
+      }' "$work/calls" "$work/virtual" "$work/stubbed" $([[ $sizes == *sizes.tsv ]] && echo "$sizes") re/map/triage.tsv "$work/$cls" | sort -u >"$work/$cls.helpers"
     while IFS=$'\t' read -r a size; do
       name="$(macname "$a")"
       printf '0x%s\t%s\t%s\t%s\thelper %s\t%s\n' "$a" "$size" "$folder" "${name:-Fn$a}" "$(shapeof "$a")" "$(thisness "$a" "$size")"

@@ -52,7 +52,7 @@ public:
     virtual bool Slot14_a84c10(uint32_t);
     virtual void Slot15_a84c10(uint32_t);
     virtual bool Slot16_a84c10();
-    virtual bool Slot17_a84c10();
+    virtual uint8_t Slot17_a84c10();
     virtual bool Slot18_a84c10();
     virtual uint32_t Slot19_a84c10();
     virtual bool Slot20_a84c10();

@@ -1057,7 +1057,7 @@ bool cUnk00add190::Slot37_adcdc8(uint32_t a)
 // FUNCTION: 0x009a0389
 bool cUnk00add190::Slot47_adcdc8(uint32_t a)
 {
-    mbGroup0Flag = static_cast<uint8_t>(a);
+    mbGroup0Flag = static_cast<int8_t>(a);
     mbDirty = true;
     InvalidateSelfAndParents();
     return true;
@@ -1066,7 +1066,7 @@ bool cUnk00add190::Slot47_adcdc8(uint32_t a)
 // FUNCTION: 0x009a0436
 bool cUnk00add190::Slot53_adcdc8(uint32_t a)
 {
-    mbGroup1Flag = static_cast<uint8_t>(a);
+    mbGroup1Flag = static_cast<int8_t>(a);
     mbDirty = true;
     InvalidateSelfAndParents();
     return true;
@@ -1075,7 +1075,7 @@ bool cUnk00add190::Slot53_adcdc8(uint32_t a)
 // FUNCTION: 0x009a04e3
 bool cUnk00add190::Slot59_adcdc8(uint32_t a)
 {
-    mbGroup3Flag = static_cast<uint8_t>(a);
+    mbGroup3Flag = static_cast<int8_t>(a);
     mbDirty = true;
     InvalidateSelfAndParents();
     return true;
@@ -1208,9 +1208,8 @@ bool cUnk00add190::Slot35_adcdc8(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x009a075b
-bool cUnk00add190::Slot79_adcdc8(uint32_t a)
+bool cUnk00add190::Slot79_adcdc8(bool v)
 {
-    uint8_t v = static_cast<uint8_t>(a);
     if (v != mb308) {
         mbDirty = true;
         mb308 = v;

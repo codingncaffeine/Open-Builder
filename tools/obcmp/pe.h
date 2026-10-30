@@ -257,7 +257,9 @@ inline std::vector<std::string> tokenize(const Side& side, uint32_t va, uint32_t
                     tok += refer(target & 0xffffffffu);
                 } else {
                     uint64_t v = op.imm.value.u & 0xffffffffu;
-                    tok += side.img->contains(v) || side.names->count(uint32_t(v)) ? refer(v) : hex(v);
+                    // The image base itself is a number, not a reference (our DLL sits at 0x10000000, a common flag value).
+                    bool inImage = side.img->contains(v) && v != side.img->base;
+                    tok += inImage || side.names->count(uint32_t(v)) ? refer(v) : hex(v);
                 }
                 break;
             }

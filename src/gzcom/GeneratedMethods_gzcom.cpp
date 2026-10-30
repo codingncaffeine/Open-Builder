@@ -186,15 +186,15 @@ uint32_t cUnk00ac3090::Slot24_ac3090()
 }
 
 // FUNCTION: 0x00472e70
-uint32_t cUnk00add578::Slot69_add348()
-{
-    return mnDefaultRowHeight;
-}
-
-// FUNCTION: 0x00472e70 nohook
 uint32_t cUnk00ac3090::Slot04_ac3004()
 {
     return field148;
+}
+
+// FUNCTION: 0x00472e70 nohook
+uint32_t cUnk00add578::Slot69_add348()
+{
+    return mnDefaultRowHeight;
 }
 
 // FUNCTION: 0x00472e80

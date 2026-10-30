@@ -1731,6 +1731,13 @@ void cSC4MySim::Slot33_a84c10()
     mbResidenceShown = false;
 }
 
+// GetAge in the reference build
+// FUNCTION: 0x00424cb0
+uint8_t cSC4MySim::Slot17_a84c10()
+{
+    return mnAge;
+}
+
 // FUNCTION: 0x00424cd0
 bool cSC4MySim::Slot29_a84c10(uint32_t a)
 {

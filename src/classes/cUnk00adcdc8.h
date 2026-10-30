@@ -87,7 +87,7 @@ public:
     virtual bool Slot76_adcdc8(uint32_t) = 0;
     virtual bool Slot77_adcdc8(uint32_t) = 0;
     virtual bool Slot78_adcdc8() = 0;
-    virtual bool Slot79_adcdc8(uint32_t) = 0;
+    virtual bool Slot79_adcdc8(bool) = 0;
     virtual uint32_t Slot80_adcdc8() = 0;
     virtual bool Slot81_adcdc8(uint32_t) = 0;
     virtual void Slot82_adcdc8() = 0;

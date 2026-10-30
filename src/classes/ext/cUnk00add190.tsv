@@ -7,11 +7,11 @@ field 1fc uint32_t mn1fc
 field 224 uint32_t mn224
 field 230 uint32_t mn230
 field 23c uint32_t maGroup0[6]
-field 255 uint8_t mbGroup0Flag
+field 255 int8_t mbGroup0Flag
 field 260 uint32_t maGroup1[6]
-field 279 uint8_t mbGroup1Flag
+field 279 int8_t mbGroup1Flag
 field 2a8 uint32_t maGroup3[6]
-field 2c1 uint8_t mbGroup3Flag
+field 2c1 int8_t mbGroup3Flag
 field 300 uint32_t mn300
 field 304 uint32_t mn304
 field 309 uint8_t mb309
@@ -24,7 +24,7 @@ field 198 uint32_t mn198
 field 1a0 cRZString mStr1a0
 field 1b4 cRZString mStr1b4
 field 1c8 cRZString mStr1c8
-field 308 uint8_t mb308
+field 308 bool mb308
 slot Slot90_add190 bool void*
 field ec void* mpObjEc
 field 104 void* mpObj104

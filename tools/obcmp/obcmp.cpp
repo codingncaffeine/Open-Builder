@@ -123,6 +123,20 @@ int main(int argc, char** argv) {
         }
     }
 
+    // Our code reads the original's globals at their own addresses: a number on our side, "addr" on the original's
+    // when nothing names it (a field of a global struct, gB0a8c8+4). Every such address our functions use is named
+    // the same on both sides, so the same global compares equal and another one still differs.
+    for (const Pair& p : pairs) {
+        for (const std::string& t : tokenize({&rebuilt, &newNames}, p.newVa, p.newSize)) {
+            for (size_t at = t.find("0x"); at != std::string::npos; at = t.find("0x", at + 2)) {
+                uint64_t v = std::strtoull(t.c_str() + at + 2, nullptr, 16);
+                if (!orig.contains(v) || v == orig.base || rebuilt.contains(v) || origNames.count(uint32_t(v)))
+                    continue;
+                origNames[uint32_t(v)] = newNames[uint32_t(v)] = "g_" + hex(v);
+            }
+        }
+    }
+
     double weighted = 0;
     size_t total = 0, exact = 0;
     for (const Pair& p : pairs) {
