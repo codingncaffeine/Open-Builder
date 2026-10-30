@@ -21,3 +21,5 @@ slot Slot17_acf150 bool bool
 slot Slot18_acf150 bool void*
 slot Slot19_acf150 bool bool
 slot Slot13_acf150 bool void* void* uint32_t
+method 0x0091cee3 void Construct(void*)
+method 0x0091cde3 void Fn0091cde3()

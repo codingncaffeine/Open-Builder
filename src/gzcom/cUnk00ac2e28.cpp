@@ -417,7 +417,7 @@ bool cUnk00ac2e28::Slot42_ac2c88()
             *p = 0;
         }
     }
-    void** q = reinterpret_cast<void**>(&field80);
+    void** q = reinterpret_cast<void**>(maBuffers);
     for (int32_t n = 8; n != 0; --n, ++q) {
         if (*q) {
             static_cast<cCom_ac2e28*>(*q)->Release();
@@ -435,13 +435,13 @@ bool cUnk00ac2e28::Slot49_ac2c88(uint32_t a)
     }
     DsDesc_ac2e28* d = reinterpret_cast<DsDesc_ac2e28*>(a);
     if (d) {
-        if (static_cast<int32_t>(field60) < 0x40) {
+        if (static_cast<int32_t>(mnBits) < 0x40) {
             d->dwFlags = (d->dwFlags & ~4u) | 8u;
         } else {
             d->dwFlags &= ~8u;
         }
         d->dwFlags = (d->dwFlags & ~0x40u) | 0x20010u;
-        void** bufs = reinterpret_cast<void**>(&field80);
+        void** bufs = reinterpret_cast<void**>(maBuffers);
         uint32_t hr = gpB54088->CreateSoundBuffer(d, bufs, 0);
         Fn00949ade(hr);
         if (hr != 0) {
@@ -466,14 +466,14 @@ bool cUnk00ac2e28::Slot49_ac2c88(uint32_t a)
     local.dwBufferBytes = U32At_ac2e28(this, 0xa0);
     local.dwSize = 0x24;
     local.dwReserved = 0;
-    local.lpwfxFormat = &fielda4;
-    if (static_cast<int32_t>(field60) < 0x40) {
+    local.lpwfxFormat = mFormat;
+    if (static_cast<int32_t>(mnBits) < 0x40) {
         flags = (flags & ~4u) | 8u;
     } else {
         flags &= ~8u;
     }
     local.dwFlags = flags;
-    void** bufs = reinterpret_cast<void**>(&field80);
+    void** bufs = reinterpret_cast<void**>(maBuffers);
     uint32_t hr = gpB54088->CreateSoundBuffer(&local, bufs, 0);
     Fn00949ade(hr);
     if (hr == 0) {
@@ -619,8 +619,8 @@ bool cUnk00ac2e28::Slot50_ac2c88(uint32_t a)
         }
     }
     RecOf_ac2e28(this)->Fn00969fea(&handle);
-    *reinterpret_cast<Fmt_ac2e28*>(&fielda4) = *RecOf_ac2e28(this)->mpSource->GetFormat();
-    if (field80 != 0) {
+    *reinterpret_cast<Fmt_ac2e28*>(mFormat) = *RecOf_ac2e28(this)->mpSource->GetFormat();
+    if (maBuffers[0] != 0) {
         Slot42_ac2c88();
     }
     RecOf_ac2e28(this)->mn04 = (U32At_ac2e28(this, 0xac) / 8 * 512 / 128) * U32At_ac2e28(this, 0xc0) * 6;
@@ -638,8 +638,8 @@ bool cUnk00ac2e28::Slot50_ac2c88(uint32_t a)
     desc.dwSize = sizeof(desc);
     desc.dwFlags = 0x100e0;
     desc.dwBufferBytes = RecOf_ac2e28(this)->mn04;
-    desc.lpwfxFormat = &fielda4;
-    desc.dwFlags = ((static_cast<uint32_t>(static_cast<int32_t>(field60) < 0x40) * 8u + 0x100e0u) & ~0x40u) | 0x20010u;
+    desc.lpwfxFormat = mFormat;
+    desc.dwFlags = ((static_cast<uint32_t>(static_cast<int32_t>(mnBits) < 0x40) * 8u + 0x100e0u) & ~0x40u) | 0x20010u;
     void** bufs = &mpDs3D[0] - 23;
     uint32_t hr = gpB54088->CreateSoundBuffer(&desc, bufs, 0);
     if (hr != 0) {

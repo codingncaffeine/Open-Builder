@@ -30,6 +30,10 @@ public:
     virtual bool Slot17_acf150(bool);
     virtual bool Slot18_acf150(void*);
     virtual bool Slot19_acf150(bool);
+    // STUB: 0x0091cee3
+    void Construct(void*);
+    // STUB: 0x0091cde3
+    void Fn0091cde3();
     cRZString mName;
     bool mbKeepOpen;
     bool mbParsed;
