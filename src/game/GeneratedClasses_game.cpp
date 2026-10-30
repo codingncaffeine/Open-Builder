@@ -14,6 +14,7 @@
 #include "classes/cGZDate.h"
 #include "classes/cUnk00a829ac.h"
 #include "classes/cRZCmdLine.h"
+#include "classes/cSC4AdvisorSystem.h"
 #include "classes/cSC4AdvisorTraffic.h"
 #include "classes/cUnk00a83548.h"
 #include "classes/cUnk00a83ac0.h"
@@ -39,6 +40,7 @@
 #include "classes/cUnk00a85f40.h"
 #include "classes/cUnk00a85ff8.h"
 #include "classes/cUnk00a8615c.h"
+#include "classes/cSC4TutorialSystem.h"
 #include "classes/cUnk00a86258.h"
 #include "classes/cSC4TutorialTask.h"
 #include "classes/cUnk00a86364.h"
@@ -47,6 +49,7 @@
 #include "classes/cUnk00a86674.h"
 #include "classes/cUnk00a86690.h"
 #include "classes/cSC4AnimationTickManager.h"
+#include "classes/cSC4App.h"
 #include "classes/cSCStringDetokenizerDefault.h"
 #include "classes/cSC4BuildingOccupant.h"
 #include "classes/cGZPersistResourceKeyFilter.h"
@@ -253,6 +256,7 @@
 #include "classes/cSC4AudioListener.h"
 #include "classes/cSC4AudioPreferencesWinProc.h"
 #include "classes/cUnk00a942b8.h"
+#include "classes/cSC4AudioScapeManager.h"
 #include "classes/cUnk00a94428.h"
 #include "classes/cUnk00a944bc.h"
 #include "classes/cSC4Aircraft.h"
@@ -279,12 +283,14 @@
 #include "classes/cUnk00a960bc.h"
 #include "classes/cUnk00a96134.h"
 #include "classes/cUnk00a96138.h"
+#include "classes/cSC4AutomataScriptSystem.h"
 #include "classes/cUnk00a96c0c.h"
 #include "classes/cSC4Blimp.h"
 #include "classes/cSC4MassTransitTrain.h"
 #include "classes/cUnk00a97910.h"
 #include "classes/cUnk00a97d94.h"
 #include "classes/cUnk00a97de4.h"
+#include "classes/cSC4CitySituationManager.h"
 #include "classes/cUnk00a985b0.h"
 #include "classes/cSC4FireTruck.h"
 #include "classes/cUnk00a98b60.h"
@@ -700,6 +706,7 @@
 #include "classes/cSC4CameraControl.h"
 #include "classes/cSC4ConfigRuleManager.h"
 #include "classes/cSC4LightingManager.h"
+#include "classes/cUnk00abb614.h"
 #include "classes/cUnk00abb648.h"
 #include "classes/cUnk00abb6c0.h"
 #include "classes/cUnk00abbed8.h"
@@ -714,6 +721,7 @@
 #include "classes/cUnk00abbf84.h"
 #include "classes/cUnk00abbf94.h"
 #include "classes/cSC4ToolTipManager.h"
+#include "classes/cSC4View3DWin.h"
 #include "classes/cS3DCamera.h"
 #include "classes/cUnk00abd324.h"
 #include "classes/cUnk00abd388.h"
@@ -927,6 +935,7 @@ void GeneratedClasses_game()
     (void)new cGZDate;
     (void)new cUnk00a829ac;
     (void)new cRZCmdLine;
+    (void)new cSC4AdvisorSystem(ob_emit());
     (void)new cSC4AdvisorTraffic;
     (void)new cUnk00a83548;
     (void)new cUnk00a83ac0;
@@ -952,6 +961,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a85f40;
     (void)new cUnk00a85ff8;
     (void)new cUnk00a8615c;
+    (void)new cSC4TutorialSystem(ob_emit());
     (void)new cUnk00a86258;
     (void)new cSC4TutorialTask;
     (void)new cUnk00a86364;
@@ -960,6 +970,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a86674;
     (void)new cUnk00a86690;
     (void)new cSC4AnimationTickManager;
+    (void)new cSC4App;
     (void)new cSCStringDetokenizerDefault;
     (void)new cSC4BuildingOccupant;
     (void)new cGZPersistResourceKeyFilter;
@@ -1166,6 +1177,7 @@ void GeneratedClasses_game()
     (void)new cSC4AudioListener;
     (void)new cSC4AudioPreferencesWinProc;
     (void)new cUnk00a942b8;
+    (void)new cSC4AudioScapeManager;
     (void)new cUnk00a94428;
     (void)new cUnk00a944bc;
     (void)new cSC4Aircraft(ob_emit());
@@ -1192,12 +1204,14 @@ void GeneratedClasses_game()
     (void)new cUnk00a960bc;
     (void)new cUnk00a96134;
     (void)new cUnk00a96138;
+    (void)new cSC4AutomataScriptSystem(ob_emit());
     (void)new cUnk00a96c0c;
     (void)new cSC4Blimp;
     (void)new cSC4MassTransitTrain;
     (void)new cUnk00a97910;
     (void)new cUnk00a97d94;
     (void)new cUnk00a97de4;
+    (void)new cSC4CitySituationManager(ob_emit());
     (void)new cUnk00a985b0;
     (void)new cSC4FireTruck(ob_emit());
     (void)new cUnk00a98b60;
@@ -1613,6 +1627,7 @@ void GeneratedClasses_game()
     (void)new cSC4CameraControl(ob_emit());
     (void)new cSC4ConfigRuleManager(ob_emit());
     (void)new cSC4LightingManager;
+    (void)new cUnk00abb614;
     (void)new cUnk00abb648;
     (void)new cUnk00abb6c0;
     (void)new cUnk00abbed8;
@@ -1627,6 +1642,7 @@ void GeneratedClasses_game()
     (void)new cUnk00abbf84;
     (void)new cUnk00abbf94;
     (void)new cSC4ToolTipManager;
+    (void)new cSC4View3DWin;
     (void)new cS3DCamera;
     (void)new cUnk00abd324;
     (void)new cUnk00abd388;

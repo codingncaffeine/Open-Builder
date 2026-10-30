@@ -16,14 +16,17 @@
 #include "classes/cSC424HourClock.h"
 #include "classes/cSC43DRender.h"
 #include "classes/cSC4Advice.h"
+#include "classes/cSC4AdvisorSystem.h"
 #include "classes/cSC4Aircraft.h"
 #include "classes/cSC4AuraSimulator.h"
 #include "classes/cSC4AutomataControllerManager.h"
 #include "classes/cSC4AutomataGenerator.h"
+#include "classes/cSC4AutomataScriptSystem.h"
 #include "classes/cSC4BudgetSimulator.h"
 #include "classes/cSC4BuildingDevelopmentSimulator.h"
 #include "classes/cSC4CameraControl.h"
 #include "classes/cSC4City.h"
+#include "classes/cSC4CitySituationManager.h"
 #include "classes/cSC4CivicBuildingSimulator.h"
 #include "classes/cSC4CommercialSimulator.h"
 #include "classes/cSC4ConfigRuleManager.h"
@@ -68,6 +71,7 @@
 #include "classes/cSC4Simulator.h"
 #include "classes/cSC4TractDeveloper.h"
 #include "classes/cSC4TrafficNetworkMap.h"
+#include "classes/cSC4TutorialSystem.h"
 #include "classes/cSC4ZoneManager.h"
 #include "classes/cSCResKeyTableEntryView.h"
 #include "classes/cSCResourceCatalogView.h"
@@ -111,12 +115,6 @@ uint32_t Fn0041783a()
     return 0x417822;
 }
 
-// FUNCTION: 0x00418630
-uint32_t Fn00418630()
-{
-    return 0x4a0dd616;
-}
-
 // FUNCTION: 0x00424eba
 uint32_t Fn00424eba()
 {
@@ -127,12 +125,6 @@ uint32_t Fn00424eba()
 uint32_t Fn0043035a()
 {
     return 0x430342;
-}
-
-// FUNCTION: 0x0043f640
-uint32_t Fn0043f640()
-{
-    return 0xaa3836fb;
 }
 
 // FUNCTION: 0x0044960a
@@ -195,28 +187,10 @@ uint32_t Fn004f2069()
     return 0x4f206f;
 }
 
-// FUNCTION: 0x004f6230
-uint32_t Fn004f6230()
-{
-    return 0x80000000;
-}
-
 // FUNCTION: 0x004f84fb
 uint32_t Fn004f84fb()
 {
     return 0x4f8457;
-}
-
-// FUNCTION: 0x00520050
-uint32_t Fn00520050()
-{
-    return 0x4a1b664e;
-}
-
-// FUNCTION: 0x005274e0
-uint32_t Fn005274e0()
-{
-    return 0xbb14381;
 }
 
 // FUNCTION: 0x0053cf90
@@ -891,12 +865,6 @@ uint32_t Fn0082be70()
     return 0xae6320e;
 }
 
-// FUNCTION: 0x00875293
-uint32_t Fn00875293()
-{
-    return 0x7a120;
-}
-
 // FUNCTION: 0x00878b81
 uint32_t Fn00878b81()
 {
@@ -1167,6 +1135,18 @@ cSC4Advice* Fn00408a50()
     return new cSC4Advice;
 }
 
+// FUNCTION: 0x0041b220
+cSC4AdvisorSystem* Fn0041b220()
+{
+    return new cSC4AdvisorSystem;
+}
+
+// FUNCTION: 0x0043f760
+cSC4TutorialSystem* Fn0043f760()
+{
+    return new cSC4TutorialSystem;
+}
+
 // FUNCTION: 0x00445c80
 cSC424HourClock* Fn00445c80()
 {
@@ -1315,6 +1295,18 @@ cSC4AutomataGenerator* Fn00514860()
 cUnk00a95f00* Fn00514880()
 {
     return new cUnk00a95f00;
+}
+
+// FUNCTION: 0x005148a0
+cSC4AutomataScriptSystem* Fn005148a0()
+{
+    return new cSC4AutomataScriptSystem;
+}
+
+// FUNCTION: 0x005148c0
+cSC4CitySituationManager* Fn005148c0()
+{
+    return new cSC4CitySituationManager;
 }
 
 // FUNCTION: 0x0057ff00
