@@ -37,6 +37,7 @@ fi
 names=()
 if [[ -s src/classes/names.tsv ]]; then
   names=(--names src/classes/names.tsv)
+  [[ -s src/classes/methods.tsv ]] && names+=(--methods src/classes/methods.tsv)
   before=()
   [[ -s "$work/names-applied.tsv" ]] && before=(--names-before "$work/names-applied.tsv")
   "$bin/obdecl" "$work/classes.tsv" "$work/slots.tsv" "$work/deleting.tsv" "$work/known.tsv" --purecall 0x5d4a10 --libraries re/map/libraries.tsv \

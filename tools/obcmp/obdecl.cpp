@@ -3,7 +3,7 @@
 //
 //   obdecl <classes.tsv> <slots.tsv> <deleting.tsv> <known.tsv> [--purecall ADDR] [--src DIR] [--out DIR]
 //          [--report FILE] [--exclude FILE] [--shapes shapes.tsv] [--extents extents.tsv]
-//          [--names FILE] [--names-before FILE] [--rename-map FILE] [--slot-names FILE] [--slot-names-before FILE]
+//          [--names FILE] [--methods FILE] [--names-before FILE] [--rename-map FILE] [--slot-names FILE] [--slot-names-before FILE]
 //
 // --slot-names writes "vtable slot name" for every slot of every written class; given back as --slot-names-before
 // on the next run, every generated name that moved (its identity's root changed) goes into --rename-map too.
@@ -225,10 +225,13 @@ bool parseDemangled(const std::string& d, std::string& name, std::string& decl, 
 // Names of classes and of the slots they introduce (src/classes/names.tsv, from tools/names/freeze.sh):
 //   class <vtable> <name>
 //   slot <vtable> <index> <name>
+//   method <address> <class> <name> [const]   a non-virtual member function (src/classes/methods.tsv, --methods)
 // A class or slot without a line keeps the generated name (cUnk<primary vtable>, SlotNN_<tag>).
 struct Names {
     std::map<uint32_t, std::string> classes;
     std::map<std::pair<uint32_t, size_t>, std::string> slots;
+    struct Method { std::string cls, name; bool isConst = false; };
+    std::map<uint32_t, Method> methods;  // function -> its class and name
 };
 
 bool isIdentifier(const std::string& s) {
@@ -256,6 +259,10 @@ Names readNames(const std::string& path) {
         if (!(ss >> kw) || kw[0] == '#') continue;
         if (kw == "class" && ss >> a >> b && isIdentifier(b)) n.classes[parseHex(a)] = b;
         else if (kw == "slot" && ss >> a >> b >> c && isIdentifier(c)) n.slots[{parseHex(a), size_t(std::stoul(b))}] = c;
+        else if (kw == "method" && ss >> a >> b >> c && isIdentifier(b) && isIdentifier(c)) {
+            std::string q;
+            n.methods[parseHex(a)] = {b, c, ss >> q && q == "const"};
+        }
         else std::fprintf(stderr, "obdecl: %s:%d: not a name line, skipped\n", path.c_str(), ln);
     }
     return n;
@@ -275,7 +282,7 @@ int main(int argc, char** argv) {
     std::vector<std::string> pos;
     std::string srcDir = "src", outDir = "src/classes", reportPath, excludePath, shapesPath, extentsPath, only, librariesPath;
     bool inferMajority = false;  // --infer-majority: slot signatures from the majority of their implementations
-    std::string namesPath, namesBeforePath, renameMapPath, slotNamesPath, slotNamesBeforePath;
+    std::string namesPath, methodsPath, namesBeforePath, renameMapPath, slotNamesPath, slotNamesBeforePath;
     uint32_t purecall = 0;
     for (int i = 1; i < argc; ++i) {
         std::string a = argv[i];
@@ -294,6 +301,7 @@ int main(int argc, char** argv) {
         else if (a == "--extents") extentsPath = value();
         else if (a == "--only") only = value();
         else if (a == "--names") namesPath = value();
+        else if (a == "--methods") methodsPath = value();
         else if (a == "--names-before") namesBeforePath = value();
         else if (a == "--rename-map") renameMapPath = value();
         else if (a == "--slot-names") slotNamesPath = value();
@@ -314,6 +322,7 @@ int main(int argc, char** argv) {
         while (ex >> a) excluded.insert(parseHex(a));
     }
     Names names = readNames(namesPath), before = readNames(namesBeforePath);
+    names.methods = readNames(methodsPath).methods;
     std::map<std::string, std::string> renames;  // a name under --names-before → under --names
     std::map<std::pair<uint32_t, int>, std::string> slotBefore;  // --slot-names-before: (vtable, slot) → its last name
     if (!slotNamesBeforePath.empty())
@@ -366,7 +375,9 @@ int main(int argc, char** argv) {
     }
     // A non-primary base whose vtable this class's copy outgrows is not the base: new virtual functions only go to the
     // end of a class's primary vtable, so the real base there is a class the map never saw on its own (one deriving from
-    // a longer interface). That base is dropped: its vtables become subobjects this class declares slot by slot.
+    // a longer interface). Nor is one whose vtable is longer than this class's copy (a class never has fewer slots than
+    // its base: the real base derives from a shorter interface). That base is dropped: its vtables become subobjects
+    // this class declares slot by slot.
     size_t droppedBases = 0;
     for (auto& [p, rec] : recs) {
         std::vector<std::pair<int32_t, uint32_t>> keep;
@@ -376,14 +387,14 @@ int main(int argc, char** argv) {
                 if (auto bit = recs.find(b); bit != recs.end())
                     for (auto& [xk, xv] : bit->second.layout)
                         if (auto own = rec.layout.find(bo + xk); own != rec.layout.end() && slots.count(own->second) &&
-                            slots.count(xv) && slots[own->second].size() > slots[xv].size())
+                            slots.count(xv) && slots[own->second].size() != slots[xv].size())
                             outgrown = true;
             if (outgrown) ++droppedBases;
             else keep.push_back({bo, b});
         }
         rec.bases.swap(keep);
     }
-    std::fprintf(stderr, "obdecl: %zu bases dropped (a vtable outgrown: the real base is a class never seen alone)\n", droppedBases);
+    std::fprintf(stderr, "obdecl: %zu bases dropped (a vtable outgrown or longer: the real base is a class never seen alone)\n", droppedBases);
     // How far past this each function reaches (obshape --extents): a class of no known size is at least as big as its
     // vtables' functions reach.
     std::map<uint32_t, uint32_t> reach;
@@ -1327,14 +1338,20 @@ int main(int argc, char** argv) {
         std::string holder;  // the field's, if it uses one
         uint32_t off = 0;
         std::string ret;     // the return statement, if any
+        bool member = false; // a non-virtual member (names.tsv "method"): its own name and signature, not a slot's
+        std::string name;
+        Sig sig;
+        bool isConst = false;
     };
     std::vector<Body> bodies;
     std::set<std::pair<std::string, int>> bodyTaken;
+    std::map<uint32_t, std::string> refused;  // OB_DEBUG_METHODS: why a one-line slot got no body
     for (uint32_t p : writes)
         for (auto& d : models[p].decls) {
             int root = find(d.ident);
             auto sit = sigs.find(root);
             auto shit = shapes.find(d.function);
+            if (shit != shapes.end()) refused[d.function] = sit == sigs.end() ? "no signature" : !sit->second.bodies ? "evidence disagrees" : "kind or type";
             if (sit == sigs.end() || !sit->second.bodies || shit == shapes.end()) continue;
             const Sig& sig = sit->second;
             const Shape& s = shit->second;
@@ -1357,7 +1374,9 @@ int main(int argc, char** argv) {
             } else {
                 continue;
             }
+            refused[d.function] = "identity has a body";
             if (!bodyTaken.insert({d.owner, root}).second) continue;
+            refused[d.function] = "field not placed";
             if (char use = useOf(s)) {
                 if (!place(p, d.owner, uint32_t(d.thisOff) + parseHex(s.detail[1]), b.holder, b.off)) continue;
                 regions[b.holder].uses[b.off].insert(use);
@@ -1449,6 +1468,71 @@ int main(int argc, char** argv) {
         }
     }
 
+    // Non-virtual members named by the reference build (names.tsv "method"): a one-line body that is no slot's, written
+    // nowhere by hand and no library's is declared in its class, with the signature its own code shows (the bytes it
+    // pops are dword arguments, a setter's the size it stores), unless the name is taken in the class or its bases.
+    std::set<uint32_t> slotFns;
+    for (auto& [p, m] : models)
+        for (auto& d : m.decls) slotFns.insert(d.function);
+    {
+        std::map<std::string, uint32_t> byName;
+        for (uint32_t p : writes) byName[models[p].name] = p;
+        std::map<uint32_t, std::set<std::string>> taken;  // class -> names declared in it or its bases
+        std::function<void(uint32_t, std::set<std::string>&)> namesIn = [&](uint32_t c, std::set<std::string>& out) {
+            for (auto& [o, ids] : models[c].ids)
+                for (int id : ids)
+                    if (id >= 0) out.insert(nameOf(id).name);
+            for (auto& s : models[c].subs)
+                if (s.base && models.count(s.base)) namesIn(s.base, out);
+        };
+        std::map<std::pair<uint32_t, std::string>, int> uses;  // two functions of one name: overloads, written by neither
+        for (auto& [fn, mt] : names.methods)
+            if (byName.count(mt.cls)) ++uses[{byName[mt.cls], mt.name}];
+        const bool trace = std::getenv("OB_DEBUG_METHODS") != nullptr;
+        for (auto& [fn, mt] : names.methods) {
+            auto pit = byName.find(mt.cls);
+            auto shit = shapes.find(fn);
+            if (trace && pit != byName.end() && shit != shapes.end() && shit->second.kind != "-")
+                std::fprintf(stderr, "method %s %s::%s %s%s%s%s\n", hex8(fn).c_str(), mt.cls.c_str(), mt.name.c_str(), shit->second.kind.c_str(),
+                             slotFns.count(fn) ? " slot" : "", annotated.count(fn) || stubbed.count(fn) ? " annotated" : "",
+                             libraries.count(fn) ? " library" : "");
+            if (pit == byName.end() || shit == shapes.end()) continue;
+            if (slotFns.count(fn) || annotated.count(fn) || stubbed.count(fn) || libraries.count(fn)) continue;
+            uint32_t p = pit->second;
+            if (uses[{p, mt.name}] != 1) continue;
+            if (!taken.count(p)) {
+                namesIn(p, taken[p]);
+                for (auto& [a, decl] : extMethods[p]) taken[p].insert(decl.substr(0, decl.find('(')).substr(decl.substr(0, decl.find('(')).find_last_of(" *&") + 1));
+            }
+            if (taken[p].count(mt.name) || mt.name == models[p].name) continue;
+            const Shape& s = shit->second;
+            if (s.pops.empty() || !std::all_of(s.pops.begin(), s.pops.end(), ::isdigit) || std::stoi(s.pops) % 4) continue;
+            Body b;
+            b.fn = fn, b.cls = p, b.owner = models[p].name, b.root = -1, b.shape = &s;
+            b.member = true, b.name = mt.name, b.isConst = mt.isConst;
+            b.sig.ret = retOf(s);
+            b.sig.args.assign(size_t(std::stoi(s.pops) / 4), 'd');
+            if (s.kind == "empty" || s.kind == "get") {
+                if (s.kind == "get" && useOf(s) == '!') continue;
+            } else if (s.kind == "this") {
+                b.ret = "return this;";
+            } else if (s.kind == "const") {
+                if (!returnOf(s.detail[0], parseHex(s.detail[1]), b.sig.ret, b.ret)) continue;
+            } else if (s.kind == "set" || s.kind == "setconst") {
+                size_t at = std::stoul(s.detail[2]);
+                if (at >= b.sig.args.size()) continue;
+                b.sig.args[at] = s.detail[0][0];
+                if (s.kind == "setconst" && !returnOf(s.detail[3], parseHex(s.detail[4]), b.sig.ret, b.ret)) continue;
+            } else {
+                continue;
+            }
+            if (char use = useOf(s)) {
+                if (!place(p, b.owner, parseHex(s.detail[1]), b.holder, b.off)) continue;
+                regions[b.holder].uses[b.off].insert(use);
+            }
+            bodies.push_back(b);
+        }
+    }
     // Fields: one kind of access per offset (a byte read as bool and as unsigned is bool), naturally aligned, inside the
     // holder's own data and overlapping nothing; an address-taken member runs up to the next field.
     for (auto& [h, r] : regions) {
@@ -1493,22 +1577,27 @@ int main(int argc, char** argv) {
     {
         std::vector<Body> keep;
         for (auto& b : bodies) {
+            refused[b.fn] = "field conflict";
             if (!b.holder.empty() && !regions[b.holder].fields.count(b.off)) continue;
+            refused[b.fn] = "field type";
             // a field named by hand as a pointer: the generated getter or setter of an integer would need a cast,
             // so the method stays the original's (a stub) until its signature says pointer
             if (!b.holder.empty()) {
                 const Field& fd = regions[b.holder].fields[b.off];
                 bool pointer = !fd.type.empty() && fd.type.back() == '*' && fd.name.find('[') == std::string::npos;
                 bool address = b.shape->kind == "get" && b.shape->detail[0] == "a";
-                if (pointer && !address && (b.shape->kind != "get" || sigs[b.root].ret != 'P')) continue;
+                if (pointer && !address && (b.shape->kind != "get" || (b.member ? b.sig : sigs[b.root]).ret != 'P')) continue;
                 // a float field moved as a dword (its bits through eax): a body would convert int <-> float
                 if (fd.type == "float" && fd.name.find('[') == std::string::npos && !address && b.shape->detail[0] != "f")
                     continue;
             }
+            refused.erase(b.fn);
             keep.push_back(b);
-            bodied.insert({b.owner, b.root});
+            if (!b.member) bodied.insert({b.owner, b.root});
         }
         bodies.swap(keep);
+        if (std::getenv("OB_DEBUG_METHODS"))
+            for (auto& [fn, why] : refused) std::fprintf(stderr, "refused %s %s\n", hex8(fn).c_str(), why.c_str());
     }
     std::set<std::string> fieldIncludes;  // the headers the class-typed fields of the header being written need
     // The members of a holder's own data from start to end: its fields, and padding between them.
@@ -1668,6 +1757,12 @@ int main(int argc, char** argv) {
             if (a != "-") lines.push_back("// STUB: 0x" + hex8(parseHex(a)));
             lines.push_back(decl.back() == '}' ? decl : decl + ";");  // a body written inline (an empty constructor) takes no ';'
         }
+        for (auto& b : bodies) {
+            if (!b.member || b.cls != p) continue;
+            std::string params;
+            for (size_t i = 0; i < b.sig.args.size(); ++i) params += (i ? ", " : "") + argType(b.sig.args[i]).first;
+            lines.push_back(retType(b.sig.ret).first + " " + b.name + "(" + params + ")" + (b.isConst ? " const" : "") + ";");
+        }
         // a base's virtual operator= stays visible beside the implicit copy assignment (no code changes)
         for (auto& s : m.subs) {
             if (!s.base) continue;
@@ -1786,8 +1881,8 @@ int main(int argc, char** argv) {
              "// compiler turns back into the same instructions.\n";
         for (auto& i : includes) f << "#include \"" << i << "\"\n";
         for (const Body* b : list) {
-            const Ident& id = idents[b->root];
-            const Sig& sig = sigs[b->root];
+            const Sig& sig = b->member ? b->sig : sigs[b->root];
+            const std::string& name = b->member ? b->name : idents[b->root].name;
             const Shape& s = *b->shape;
             int value = s.kind == "set" || s.kind == "setconst" ? std::stoi(s.detail[2]) : -1;
             std::string params, field;
@@ -1807,7 +1902,7 @@ int main(int argc, char** argv) {
             // each is annotated (and scored), the first hooked, when the original has room for the jump.
             bool hook = !annotated.count(b->fn) && fnTaken.insert(b->fn).second && b->shape->room >= 5;
             f << "// FUNCTION: 0x" << hex8(b->fn) << (hook ? "" : " nohook") << "\n";
-            f << retType(sig.ret).first << " " << b->owner << "::" << id.name << "(" << params << ")\n{\n";
+            f << retType(sig.ret).first << " " << b->owner << "::" << name << "(" << params << ")" << (b->isConst ? " const" : "") << "\n{\n";
             if (value >= 0) f << "    " << field << " = value;\n";
             if (s.kind == "get") f << "    return " << field << ";\n";
             if (!b->ret.empty()) f << "    " << b->ret << "\n";
@@ -1821,9 +1916,6 @@ int main(int argc, char** argv) {
     // constant; its real name and class, when they are learned, move it into its class.
     size_t freeCount = 0;
     if (only.empty()) {
-        std::set<uint32_t> slotFns;
-        for (auto& [p, m] : models)
-            for (auto& d : m.decls) slotFns.insert(d.function);
         std::map<std::string, std::vector<std::string>> freeBodies;  // folder -> definitions
         for (auto& [fn, s] : shapes) {
             if (s.kind != "const" || s.detail.size() < 2) continue;

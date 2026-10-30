@@ -12,6 +12,7 @@ w=scratch/classes
 # the same inputs gen-classes.sh gives it: without the names a named class is not found and nothing is written
 opts=()
 [[ -s src/classes/names.tsv ]] && opts+=(--names src/classes/names.tsv)
+[[ -s src/classes/methods.tsv ]] && opts+=(--methods src/classes/methods.tsv)
 [[ -s "$w/extents.tsv" ]] && opts+=(--extents "$w/extents.tsv")
 out=$(scratch/build/obcmp/obdecl "$w/classes.tsv" "$w/slots.tsv" "$w/deleting.tsv" "$w/known.tsv" --purecall 0x5d4a10 --libraries re/map/libraries.tsv \
   --exclude "$w/exclude.txt" --shapes "$w/shapes.tsv" "${opts[@]}" --only "$cls")
