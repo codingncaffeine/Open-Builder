@@ -350,6 +350,54 @@ cRZString gB22940("traffic_accident_2");
 // STATIC-INIT: 0x00a72ad0 0x00a7b670 0x00b22b98 0x14
 cRZString gB22b98("riot_leader_%d");
 
+// STATIC-INIT: 0x00a72b70 0x00a7b6b0 0x00b22c60 0xc
+std::string gB22c60("-");
+
+// STATIC-INIT: 0x00a72ba0 0x00a7b6d0 0x00b22c6c 0xc
+std::string gB22c6c("-+");
+
+// STATIC-INIT: 0x00a72bd0 0x00a7b6f0 0x00b22c78 0xc
+std::string gB22c78("#");
+
+// STATIC-INIT: 0x00a72c00 0x00a7b710 0x00b22c84 0xc
+std::string gB22c84(" \011\012\015");
+
+// STATIC-INIT: 0x00a72c30 0x00a7b730 0x00b22c90 0xc
+std::string gB22c90("'\042");
+
+// STATIC-INIT: 0x00a72c60 0x00a7b750 0x00b22c9c 0xc
+std::string gB22c9c("[({");
+
+// STATIC-INIT: 0x00a72c90 0x00a7b770 0x00b22ca8 0xc
+std::string gB22ca8("])}");
+
+// STATIC-INIT: 0x00a72cc0 0x00a7b790 0x00b22cb4 0xc
+std::string gB22cb4("$");
+
+// STATIC-INIT: 0x00a72cf0 0x00a7b7d0 0x00b22cc4 0xc
+std::string gB22cc4("-");
+
+// STATIC-INIT: 0x00a72d20 0x00a7b7f0 0x00b22cd0 0xc
+std::string gB22cd0("-+");
+
+// STATIC-INIT: 0x00a72d50 0x00a7b810 0x00b22cdc 0xc
+std::string gB22cdc("#");
+
+// STATIC-INIT: 0x00a72d80 0x00a7b830 0x00b22ce8 0xc
+std::string gB22ce8(" \011\012\015");
+
+// STATIC-INIT: 0x00a72db0 0x00a7b850 0x00b22cf4 0xc
+std::string gB22cf4("'\042");
+
+// STATIC-INIT: 0x00a72de0 0x00a7b870 0x00b22d00 0xc
+std::string gB22d00("[({");
+
+// STATIC-INIT: 0x00a72e10 0x00a7b890 0x00b22d0c 0xc
+std::string gB22d0c("])}");
+
+// STATIC-INIT: 0x00a72e40 0x00a7b8b0 0x00b22d18 0xc
+std::string gB22d18("$");
+
 // STATIC-INIT: 0x00a732d0 0x00a7b9b0 0x00b22f18 0x14
 cRZString gB22f18("iexplore.exe");
 
@@ -361,6 +409,102 @@ cRZString gB22f40("aol.exe");
 
 // STATIC-INIT: 0x00a73620 0x00a7bc10 0x00b23180 0x14
 cRZString gB23180("fx_");
+
+// STATIC-INIT: 0x00a73900 0x00a7be40 0x00b43c2c 0xc
+std::string gB43c2c("-");
+
+// STATIC-INIT: 0x00a73930 0x00a7be60 0x00b43c38 0xc
+std::string gB43c38("-+");
+
+// STATIC-INIT: 0x00a73960 0x00a7be80 0x00b43c44 0xc
+std::string gB43c44("#");
+
+// STATIC-INIT: 0x00a73990 0x00a7bea0 0x00b43c50 0xc
+std::string gB43c50(" \011\012\015");
+
+// STATIC-INIT: 0x00a739c0 0x00a7bec0 0x00b43c5c 0xc
+std::string gB43c5c("'\042");
+
+// STATIC-INIT: 0x00a739f0 0x00a7bee0 0x00b43c68 0xc
+std::string gB43c68("[({");
+
+// STATIC-INIT: 0x00a73a20 0x00a7bf00 0x00b43c74 0xc
+std::string gB43c74("])}");
+
+// STATIC-INIT: 0x00a73a50 0x00a7bf20 0x00b43c80 0xc
+std::string gB43c80("$");
+
+// STATIC-INIT: 0x00a74170 0x00a7c940 0x00b46950 0xc
+std::string gB46950("-");
+
+// STATIC-INIT: 0x00a741a0 0x00a7c960 0x00b4695c 0xc
+std::string gB4695c("-+");
+
+// STATIC-INIT: 0x00a741d0 0x00a7c980 0x00b46968 0xc
+std::string gB46968("#");
+
+// STATIC-INIT: 0x00a74200 0x00a7c9a0 0x00b46974 0xc
+std::string gB46974(" \011\012\015");
+
+// STATIC-INIT: 0x00a74230 0x00a7c9c0 0x00b46980 0xc
+std::string gB46980("'\042");
+
+// STATIC-INIT: 0x00a74260 0x00a7c9e0 0x00b4698c 0xc
+std::string gB4698c("[({");
+
+// STATIC-INIT: 0x00a74290 0x00a7ca00 0x00b46998 0xc
+std::string gB46998("])}");
+
+// STATIC-INIT: 0x00a742c0 0x00a7ca20 0x00b469a4 0xc
+std::string gB469a4("$");
+
+// STATIC-INIT: 0x00a742f0 0x00a7ca40 0x00b479c0 0xc
+std::string gB479c0("-");
+
+// STATIC-INIT: 0x00a74320 0x00a7ca60 0x00b479cc 0xc
+std::string gB479cc("-+");
+
+// STATIC-INIT: 0x00a74350 0x00a7ca80 0x00b479d8 0xc
+std::string gB479d8("#");
+
+// STATIC-INIT: 0x00a74380 0x00a7caa0 0x00b479e4 0xc
+std::string gB479e4(" \011\012\015");
+
+// STATIC-INIT: 0x00a743b0 0x00a7cac0 0x00b479f0 0xc
+std::string gB479f0("'\042");
+
+// STATIC-INIT: 0x00a743e0 0x00a7cae0 0x00b479fc 0xc
+std::string gB479fc("[({");
+
+// STATIC-INIT: 0x00a74410 0x00a7cb00 0x00b47a08 0xc
+std::string gB47a08("])}");
+
+// STATIC-INIT: 0x00a74440 0x00a7cb20 0x00b47a14 0xc
+std::string gB47a14("$");
+
+// STATIC-INIT: 0x00a74780 0x00a7cc80 0x00b47ac0 0xc
+std::string gB47ac0("-");
+
+// STATIC-INIT: 0x00a747b0 0x00a7cca0 0x00b47acc 0xc
+std::string gB47acc("-+");
+
+// STATIC-INIT: 0x00a747e0 0x00a7ccc0 0x00b47ad8 0xc
+std::string gB47ad8("#");
+
+// STATIC-INIT: 0x00a74810 0x00a7cce0 0x00b47ae4 0xc
+std::string gB47ae4(" \011\012\015");
+
+// STATIC-INIT: 0x00a74840 0x00a7cd00 0x00b47af0 0xc
+std::string gB47af0("'\042");
+
+// STATIC-INIT: 0x00a74870 0x00a7cd20 0x00b47afc 0xc
+std::string gB47afc("[({");
+
+// STATIC-INIT: 0x00a748a0 0x00a7cd40 0x00b47b08 0xc
+std::string gB47b08("])}");
+
+// STATIC-INIT: 0x00a748d0 0x00a7cd60 0x00b47b14 0xc
+std::string gB47b14("$");
 
 // STATIC-INIT: 0x00a74900 0x00a7cd80 0x00b47b20 0x14
 cRZString gB47b20("include");
@@ -718,6 +862,78 @@ cRZString gB4e180("no_edge_scroll");
 
 // STATIC-INIT: 0x00a77030 0x00a7e970 0x00b4e194 0x14
 cRZString gB4e194("csi");
+
+// STATIC-INIT: 0x00a770e0 0x00a7ea20 0x00b4e274 0xc
+std::string gB4e274("-");
+
+// STATIC-INIT: 0x00a77110 0x00a7ea40 0x00b4e280 0xc
+std::string gB4e280("-+");
+
+// STATIC-INIT: 0x00a77140 0x00a7ea60 0x00b4e28c 0xc
+std::string gB4e28c("#");
+
+// STATIC-INIT: 0x00a77170 0x00a7ea80 0x00b4e298 0xc
+std::string gB4e298(" \011\012\015");
+
+// STATIC-INIT: 0x00a771a0 0x00a7eaa0 0x00b4e2a4 0xc
+std::string gB4e2a4("'\042");
+
+// STATIC-INIT: 0x00a771d0 0x00a7eac0 0x00b4e2b0 0xc
+std::string gB4e2b0("[({");
+
+// STATIC-INIT: 0x00a77200 0x00a7eae0 0x00b4e2bc 0xc
+std::string gB4e2bc("])}");
+
+// STATIC-INIT: 0x00a77230 0x00a7eb00 0x00b4e2c8 0xc
+std::string gB4e2c8("$");
+
+// STATIC-INIT: 0x00a77290 0x00a7ec40 0x00b4e3c8 0xc
+std::string gB4e3c8("-");
+
+// STATIC-INIT: 0x00a772c0 0x00a7ec60 0x00b4e3d4 0xc
+std::string gB4e3d4("-+");
+
+// STATIC-INIT: 0x00a772f0 0x00a7ec80 0x00b4e3e0 0xc
+std::string gB4e3e0("#");
+
+// STATIC-INIT: 0x00a77320 0x00a7eca0 0x00b4e3ec 0xc
+std::string gB4e3ec(" \011\012\015");
+
+// STATIC-INIT: 0x00a77350 0x00a7ecc0 0x00b4e3f8 0xc
+std::string gB4e3f8("'\042");
+
+// STATIC-INIT: 0x00a77380 0x00a7ece0 0x00b4e404 0xc
+std::string gB4e404("[({");
+
+// STATIC-INIT: 0x00a773b0 0x00a7ed00 0x00b4e410 0xc
+std::string gB4e410("])}");
+
+// STATIC-INIT: 0x00a773e0 0x00a7ed20 0x00b4e41c 0xc
+std::string gB4e41c("$");
+
+// STATIC-INIT: 0x00a77410 0x00a7ed40 0x00b4e440 0xc
+std::string gB4e440("-");
+
+// STATIC-INIT: 0x00a77440 0x00a7ed60 0x00b4e44c 0xc
+std::string gB4e44c("-+");
+
+// STATIC-INIT: 0x00a77470 0x00a7ed80 0x00b4e458 0xc
+std::string gB4e458("#");
+
+// STATIC-INIT: 0x00a774a0 0x00a7eda0 0x00b4e464 0xc
+std::string gB4e464(" \011\012\015");
+
+// STATIC-INIT: 0x00a774d0 0x00a7edc0 0x00b4e470 0xc
+std::string gB4e470("'\042");
+
+// STATIC-INIT: 0x00a77500 0x00a7ede0 0x00b4e47c 0xc
+std::string gB4e47c("[({");
+
+// STATIC-INIT: 0x00a77530 0x00a7ee00 0x00b4e488 0xc
+std::string gB4e488("])}");
+
+// STATIC-INIT: 0x00a77560 0x00a7ee20 0x00b4e494 0xc
+std::string gB4e494("$");
 
 // STATIC-INIT: 0x00a77590 0x00a7ee40 0x00b4e4a0 0x14
 cRZString gB4e4a0("tutorialtasks");
