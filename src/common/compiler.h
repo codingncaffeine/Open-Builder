@@ -16,4 +16,10 @@
 #define OB_STDCALL
 #endif
 
+// A pointer that arrives as a 32-bit integer (a slot or field not typed yet), and the way back. Macros on purpose:
+// the 2003 compiler evaluates an inlined function call before the other arguments of the call it sits in, which
+// swaps the registers the original's code uses; a cast expression is evaluated in place.
+#define OB_PTR(Type, value) reinterpret_cast<Type*>(static_cast<uintptr_t>(value))
+#define OB_ADDR(p) static_cast<uint32_t>(reinterpret_cast<uintptr_t>(p))
+
 #endif

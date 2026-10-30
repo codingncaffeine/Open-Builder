@@ -3,6 +3,10 @@
 //
 //   obdecl <classes.tsv> <slots.tsv> <deleting.tsv> <known.tsv> [--purecall ADDR] [--src DIR] [--out DIR]
 //          [--report FILE] [--exclude FILE] [--shapes shapes.tsv] [--extents extents.tsv]
+//          [--names FILE] [--names-before FILE] [--rename-map FILE] [--slot-names FILE] [--slot-names-before FILE]
+//
+// --slot-names writes "vtable slot name" for every slot of every written class; given back as --slot-names-before
+// on the next run, every generated name that moved (its identity's root changed) goes into --rename-map too.
 //
 // classes.tsv, slots.tsv, deleting.tsv: obclass output. known.tsv: the slots of the classes declared by hand
 // (tools/known-slots.sh), which generated classes derive from by name; hand classes are found by their
@@ -119,6 +123,7 @@ struct Ident {
     std::string name, decl, tail;  // "Slot03_a80710", "void Slot03_a80710()", decorated after "@Class@@"
     bool fixed = false;            // a hand class's: name and signature given
     bool dtor = false;
+    std::map<uint32_t, int> at;    // vtable -> the slot this identity holds there: one method has ONE slot per vtable
 };
 
 // A function a class declares (overrides or introduces), standing for one of the original's.
@@ -269,7 +274,7 @@ std::string methodName(const Names& n, uint32_t vtable, size_t index, const std:
 int main(int argc, char** argv) {
     std::vector<std::string> pos;
     std::string srcDir = "src", outDir = "src/classes", reportPath, excludePath, shapesPath, extentsPath, only;
-    std::string namesPath, namesBeforePath, renameMapPath;
+    std::string namesPath, namesBeforePath, renameMapPath, slotNamesPath, slotNamesBeforePath;
     uint32_t purecall = 0;
     for (int i = 1; i < argc; ++i) {
         std::string a = argv[i];
@@ -288,6 +293,8 @@ int main(int argc, char** argv) {
         else if (a == "--names") namesPath = value();
         else if (a == "--names-before") namesBeforePath = value();
         else if (a == "--rename-map") renameMapPath = value();
+        else if (a == "--slot-names") slotNamesPath = value();
+        else if (a == "--slot-names-before") slotNamesBeforePath = value();
         else pos.push_back(a);
     }
     if (pos.size() != 4) {
@@ -305,6 +312,10 @@ int main(int argc, char** argv) {
     }
     Names names = readNames(namesPath), before = readNames(namesBeforePath);
     std::map<std::string, std::string> renames;  // a name under --names-before → under --names
+    std::map<std::pair<uint32_t, int>, std::string> slotBefore;  // --slot-names-before: (vtable, slot) → its last name
+    if (!slotNamesBeforePath.empty())
+        for (auto& r : readTsv(slotNamesBeforePath))
+            if (r.size() >= 3) slotBefore[{parseHex(r[0]), std::stoi(r[1])}] = r[2];
     std::map<uint32_t, Record> recs;
     std::map<uint32_t, uint32_t> vtableClass;  // vtable -> primary of its class
     for (auto& r : readTsv(pos[0])) {
@@ -452,6 +463,7 @@ int main(int argc, char** argv) {
 
     // Sizes implied by derived classes: a base followed by another subobject ends where that one starts.
     std::map<uint32_t, std::set<uint32_t>> implied;
+    std::map<uint32_t, std::map<uint32_t, int>> impliedVotes;  // base -> size -> how many derived classes say so
     auto covered = [&](const Record& r, int32_t k) {
         for (auto& [bo, b] : r.bases) {
             auto it = recs.find(b);
@@ -466,7 +478,25 @@ int main(int argc, char** argv) {
             if (!covered(r, k)) subs.push_back({k, 0});
         std::sort(subs.begin(), subs.end());
         for (size_t i = 0; i + 1 < subs.size(); ++i)
-            if (subs[i].second) implied[subs[i].second].insert(uint32_t(subs[i + 1].first - subs[i].first));
+            if (subs[i].second) {
+                implied[subs[i].second].insert(uint32_t(subs[i + 1].first - subs[i].first));
+                impliedVotes[subs[i].second][uint32_t(subs[i + 1].first - subs[i].first)]++;
+            }
+    }
+    // The room a class of known size leaves its LAST base: that base is no bigger. (A base's reach — how far its own
+    // methods read past this — is a lower bound for the class owning that vtable, not for an interface that looks
+    // like it; where a derived class leaves less room, the room wins.)
+    std::map<uint32_t, uint32_t> roomCap;
+    for (auto& [p, r] : recs) {
+        if (r.virtualBases || r.bases.empty()) continue;
+        uint32_t size = r.size;
+        if (!size && implied.count(p) && implied[p].size() == 1) size = *implied[p].begin();
+        if (!size) continue;
+        auto last = std::prev(r.bases.end());
+        if (last->first < 0 || uint32_t(last->first) >= size) continue;
+        uint32_t room = size - uint32_t(last->first);
+        auto it = roomCap.find(last->second);
+        if (it == roomCap.end() || room < it->second) roomCap[last->second] = room;
     }
 
     // Identities, merged by union-find.
@@ -483,15 +513,21 @@ int main(int argc, char** argv) {
         return id.parent;
     };
     std::set<int> conflicted;  // roots two different fixed names were merged into
-    auto unite = [&](int a, int b) {
+    // false = refused: the two identities hold different slots of one vtable, so they are two methods that happen to
+    // share one body (the linker folded them); the caller records the body as folded.
+    auto unite = [&](int a, int b) -> bool {
         a = find(a);
         b = find(b);
-        if (a == b) return;
+        if (a == b) return true;
+        for (auto& [v, s] : idents[b].at)
+            if (auto it = idents[a].at.find(v); it != idents[a].at.end() && it->second != s) return false;
         if (idents[a].dtor != idents[b].dtor) { conflicted.insert(a); conflicted.insert(b); }
         if (idents[a].fixed && idents[b].fixed && idents[a].decl != idents[b].decl) conflicted.insert(a);
         if (idents[b].fixed && !idents[a].fixed) std::swap(a, b);  // the fixed one is the root
         idents[b].parent = a;
+        for (auto& [v, s] : idents[b].at) idents[a].at[v] = s;
         if (conflicted.count(b)) conflicted.insert(a);
+        return true;
     };
 
     std::set<std::string> usedClassNames;  // hand classes' names, then every generated class's
@@ -568,7 +604,18 @@ int main(int argc, char** argv) {
             if (!slots.count(v)) return fail("vtable " + hex8(v) + " has no slots");
         m.size = r.size;
         if (!m.size && implied.count(primary) && implied[primary].size() == 1) m.size = *implied[primary].begin();
-        if (!m.size && implied.count(primary) && implied[primary].size() > 1) return fail("derived classes need different sizes");
+        if (!m.size && implied.count(primary) && implied[primary].size() > 1) {
+            // The derived classes disagree: one of them picked this base wrongly. The size most of them leave wins and
+            // the odd derived class fails on its own ("is N bytes, the next subobject is M on"); no majority = no size.
+            uint32_t best = 0;
+            int votes = 0, total = 0;
+            for (auto& [sz, n] : impliedVotes[primary]) {
+                total += n;
+                if (n > votes) best = sz, votes = n;
+            }
+            if (votes * 2 > total) m.size = best;
+            else return fail("derived classes need different sizes");
+        }
         // A lone vtable with no base and no size from anywhere: assumed to be an interface, just its vtable pointer.
         // Every derived class of known size checks it at compile time (the size typedef), and tools that regenerate
         // exclude a class whose check fails (--exclude).
@@ -616,6 +663,9 @@ int main(int argc, char** argv) {
                     if (s.kind != "thunk" && s.kind != "thunk-vtordisp")
                         if (auto e = reach.find(s.target); e != reach.end()) far = std::max(far, uint32_t(o) + e->second);
             far = (far + 3) & ~3u;
+            // never past the room a derived class leaves it (an interface this vtable's class implements is smaller)
+            if (implied.count(primary)) far = std::min(far, *implied[primary].begin());
+            if (auto c = roomCap.find(primary); c != roomCap.end()) far = std::min(far, c->second);
             if (far > std::max(m.size, m.end)) m.size = far, m.assumedSize = false, m.reachedSize = true;
         }
 
@@ -650,7 +700,8 @@ int main(int argc, char** argv) {
             m.decls.push_back({owner, id, fn});
             auto it = declaredFn.find(fn);
             if (it == declaredFn.end()) { declaredFn[fn] = {id, viaThunk}; return; }
-            if (viaThunk || (it->second.second && !folded_.count(fn))) unite(it->second.first, id);
+            if (viaThunk || (it->second.second && !folded_.count(fn)))
+                if (!unite(it->second.first, id)) folded_.insert(fn);
             it->second.second = it->second.second || viaThunk;
         };
         // Offset 0 first, so a thunk to a function of the primary vtable merges with that slot.
@@ -680,6 +731,7 @@ int main(int argc, char** argv) {
                     else std::snprintf(b, sizeof b, "Slot%02zu_%s", j, tag.c_str());
                     std::string nm = isDeleting ? "~" : methodName(names, v, j, b);
                     ids[j] = newIdent(nm, isDeleting);
+                    idents[ids[j]].at[v] = int(j);
                     if (!isDeleting) wasNamed[ids[j]] = methodName(before, v, j, b);
                     own[j].clear();
                 }
@@ -699,8 +751,14 @@ int main(int argc, char** argv) {
                     if (!idents[find(ids[j])].dtor) return fail("deleting destructor in a slot that is no destructor");
                     m.hasDtor = true;
                     own[j] = m.name;
-                    if (s.kind == "thunk") m.thunks.push_back({s.target, {k, j}});
-                    else if (k == 0) m.ownDeleting = s.target;
+                    if (s.kind == "thunk") {
+                        // a thunk to a SECOND deleting destructor body (the original kept a vector one beside the
+                        // scalar one in the primary slot) is not one our build makes: left to do, not annotated
+                        // (a class whose primary vtable has no destructor slot — an interface-like primary base —
+                        // shows its deleting destructor only behind such thunks: the first thunk's target is it)
+                        if (!m.ownDeleting && deleting.count(s.method)) m.ownDeleting = s.method;
+                        if (m.ownDeleting && s.method == m.ownDeleting) m.thunks.push_back({s.target, {k, j}});
+                    } else if (k == 0) m.ownDeleting = s.target;
                     continue;
                 }
                 if (s.kind == "thunk-vtordisp") return fail("vtordisp thunk");
@@ -711,7 +769,7 @@ int main(int argc, char** argv) {
                     own[j] = m.name;
                     for (size_t i = 0; i < primarySlots.size() && k != 0; ++i)
                         if (primarySlots[i].target == s.method && m.ids[0][i] >= 0) {
-                            unite(m.ids[0][i], ids[j]);
+                            if (!unite(m.ids[0][i], ids[j])) folded_.insert(s.method);
                             if (m.owner[0][i] != m.name) { m.owner[0][i] = m.name; declare(m.name, m.ids[0][i], s.method, true); }
                         }
                     if (!s.addForm) m.thunks.push_back({s.target, {k, j}});
@@ -796,14 +854,36 @@ int main(int argc, char** argv) {
                 }
         }
     }
+    // Only a generated name is unique enough to replace wherever it is written (SlotNN_<tag>); a real method name
+    // that changes (Init → Init_2) is common to many classes: reported, for a hand edit the build will point at.
+    auto generated = [](const std::string& s) {
+        return s.size() > 7 && s.rfind("Slot", 0) == 0 && std::isdigit(static_cast<unsigned char>(s[4])) &&
+               s.find('_') != std::string::npos;
+    };
+    // The name every (vtable, slot) ends up with: a generated name is its identity's root, which moves whenever the
+    // identities merge differently (a base newly declared, a merge refused), so --slot-names keeps this run's and
+    // --slot-names-before (the last run's) turns each move into a rename for the hand sources.
+    std::map<std::pair<uint32_t, int>, std::string> slotNow;
+    for (auto& [p, m] : models) {
+        if (!m.ok) continue;
+        for (auto& [k, ids] : m.ids) {
+            auto lit = m.layout.find(k);
+            if (lit == m.layout.end()) continue;
+            for (size_t j = 0; j < ids.size(); ++j)
+                if (ids[j] >= 0) slotNow[{lit->second, int(j)}] = idents[find(ids[j])].name;
+        }
+    }
+    if (!slotNamesPath.empty()) {
+        std::ofstream sn(slotNamesPath);
+        for (auto& [vj, name] : slotNow) sn << hex8(vj.first) << "\t" << vj.second << "\t" << name << "\n";
+    }
     if (!renameMapPath.empty()) {
-        // Only a generated name is unique enough to replace wherever it is written (SlotNN_<tag>); a real method name
-        // that changes (Init → Init_2) is common to many classes: reported, for a hand edit the build will point at.
         size_t byHand = 0;
-        auto generated = [](const std::string& s) {
-            return s.size() > 7 && s.rfind("Slot", 0) == 0 && std::isdigit(static_cast<unsigned char>(s[4])) &&
-                   s.find('_') != std::string::npos;
-        };
+        for (auto& [vj, old] : slotBefore) {
+            auto it = slotNow.find(vj);
+            if (it == slotNow.end() || it->second == old || !generated(old) || renames.count(old)) continue;
+            renames[old] = it->second;
+        }
         for (auto& [id, was] : wasNamed) {
             const Ident& now = idents[find(id)];
             const std::string& old = find(id) == id ? was : wasNamed.count(find(id)) ? wasNamed[find(id)] : was;

@@ -77,17 +77,7 @@ struct Iter_ad9428 {
         mpTable = table;
         mpNode = node;
     }
-    Iter_ad9428(const Iter_ad9428& o)
-    {
-        mpTable = o.mpTable;
-        mpNode = o.mpNode;
-    }
-    Iter_ad9428& operator=(const Iter_ad9428& o)
-    {
-        mpTable = o.mpTable;
-        mpNode = o.mpNode;
-        return *this;
-    }
+    // copied and assigned by the implicit members: a hand-written copy changes the matched code (load both, store both)
 
     // STUB: 0x0096f5b7
     void Next();

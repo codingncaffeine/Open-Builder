@@ -169,7 +169,7 @@ extern cSettings_ac2e28* gpB540a0;
 extern float gB11de0[11];
 
 // FUNCTION: 0x008781b7
-bool cUnk00ac2e28::QueryInterface(uint32_t iid, uint32_t out)
+bool cUnk00ac2e28::QueryInterface(uint32_t iid, void** out)
 {
     if (iid == 0x306077d2) {
         *reinterpret_cast<cUnk00ac2d78**>(out) = this;
