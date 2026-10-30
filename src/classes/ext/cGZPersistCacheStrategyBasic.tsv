@@ -1,0 +1,16 @@
+field 4 uint32_t mCacheLock[2]
+field c uint32_t mTable[5]
+field 20 uint32_t mRefLock[2]
+field 28 int32_t mnIdleCount
+field 2c bool mbGarbageCollectionActive
+field 30 void* mpKeyFilter
+field 34 uint32_t mnRefCount
+slot QueryInterface bool uint32_t void*
+slot GetResource bool void* void*
+slot CacheResource bool void* void*
+slot UncacheResource bool void*
+slot HasCachedResource bool void*
+slot CanCacheResource uint32_t void*
+slot GetCachedResourceList uint32_t void* void*
+slot GetCachedResourceListForType uint32_t void* uint32_t
+slot SetGarbageCollectionActive void bool

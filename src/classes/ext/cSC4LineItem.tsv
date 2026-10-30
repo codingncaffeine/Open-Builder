@@ -1,0 +1,25 @@
+field c cRZString mName
+field 20 uint32_t mnNameB
+field 24 uint32_t mnNameA
+field 28 bool mbNameStale
+field 30 int64_t mnSecondaryInfo
+field 38 int64_t mnFullExpenses
+field 40 int64_t mnCurrentExpenses
+field 48 int64_t mnIncome
+field 50 uint32_t mnRefCount
+field 54 uint32_t mnField54
+field 58 uint32_t mnDisplayFlags
+field 5c bool mbField5c
+field 60 cIGZUnknown* mpBudget
+field 64 uint32_t mnField64
+slot GetSecondaryInfoField int64_t
+slot SetSecondaryInfoField void int64_t
+slot GetFullExpenses int64_t
+slot GetCurrentExpenses int64_t
+slot SetFullExpenses void int64_t
+slot AddToFullExpenses void int64_t
+slot GetIncome int64_t
+slot SetIncome void int64_t
+slot AddToIncome void int64_t
+slot SetDisplayFlag void uint32_t bool
+slot GetName void void*

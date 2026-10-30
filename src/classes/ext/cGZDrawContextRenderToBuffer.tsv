@@ -1,0 +1,44 @@
+slot QueryInterface bool uint32_t void*
+slot Init bool void*
+slot Slot05_ac17d0 void void*
+slot SetClipRect void const void*
+slot SetGradientTransform void const void* float float
+slot SetBltSource bool void* float float float float void*
+slot SetBltTiling void const void*
+slot LockTarget bool void* bool
+slot SetColorTable void int32_t int32_t const void*
+slot Slot21_ac17d0 uint32_t uint32_t const void* int32_t
+slot DrawPreclippedSpanList void const void* int32_t
+slot SetAlphaBlend void int32_t
+field 4 uint32_t mnRefCount
+field 8 void* mpTarget
+field c uint32_t mnWidth
+field 10 uint32_t mnHeight
+field 14 int32_t mnClip[4]
+field 24 void* mpSource
+field 28 int32_t mnSourceX
+field 2c int32_t mnSourceY
+field 30 int32_t mnScaleX
+field 34 int32_t mnScaleY
+field 38 int32_t mnInvScaleX
+field 3c int32_t mnInvScaleY
+field 40 bool mbScaled
+field 41 bool mbAlphaBlend
+field 42 bool mbFlag42
+field 43 bool mbEnabled
+field 44 int32_t mnGradientA[4]
+field 54 int32_t mnGradientB[4]
+field 64 int32_t mnGradientC[4]
+field 74 bool mbGradient
+field 75 bool mbActive
+field 78 uint32_t mnSurface[6]
+field 90 uint32_t mnBytesPerPixel
+field 94 int32_t mnTile[4]
+field a4 bool mbTiling
+field a8 int32_t mnDestWidth
+field ac int32_t mnDestHeight
+field b0 void* mpRender
+field b4 uint32_t mnColors[4]
+field c4 uint32_t mnNatives[4]
+method 0x008308d0 void Fn008308d0(const void*, int32_t)
+slot AddRef uint32_t

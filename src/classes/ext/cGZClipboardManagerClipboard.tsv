@@ -1,0 +1,21 @@
+field 4 bool mbRunning
+field 8 uint32_t mnRefCount
+field 10 uint32_t mnSuppress
+field 18 void* mpSystem
+field 1c void* mpTreeHead
+field 20 uint32_t mnTreeCount
+field 28 uint32_t mLock[2]
+slot QueryInterface bool uint32_t void*
+slot SetChangeNotificationEnabled void bool
+slot GetAvailableClipboardDataTypes uint32_t void* void*
+slot GetClipboardData bool uint32_t uint32_t void*
+slot GetClipboardData_2 void* uint32_t
+slot SetClipboardData bool void* bool
+slot GetClipboardText bool void* void* uint32_t
+slot GetClipboardText_2 bool void*
+slot SetClipboardText bool void* uint32_t uint32_t bool
+slot SetClipboardText_2 bool void* bool
+method 0x0092268e void SendChangeNotification(bool)
+method 0x009226c9 void PostDataChangeNotification(uint32_t)
+method 0x009227d7 void Fn009227d7()
+method 0x00923cc8 void Fn00923cc8()

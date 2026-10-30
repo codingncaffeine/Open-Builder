@@ -9,7 +9,7 @@
 // SIZE 0x30
 class cGZClipboardManagerClipboard {
 public:
-    virtual bool QueryInterface(uint32_t, uint32_t);
+    virtual bool QueryInterface(uint32_t, void*);
     virtual uint32_t AddRef();
     virtual uint32_t Release();
     virtual bool Init();
@@ -17,26 +17,39 @@ public:
     virtual uint32_t GetID();
     virtual void SetID(uint32_t);
     virtual bool GetChangeNotificationEnabled();
-    virtual void SetChangeNotificationEnabled(uint32_t);
+    virtual void SetChangeNotificationEnabled(bool);
     virtual uint32_t GetChangeCount();
     virtual bool IsClipboardDataTypeAvailable(uint32_t);
-    virtual uint32_t GetAvailableClipboardDataTypes(uint32_t, uint32_t);
-    virtual bool GetClipboardData(uint32_t, uint32_t, uint32_t);
-    virtual uint32_t GetClipboardData_2(uint32_t);
-    virtual bool SetClipboardData(uint32_t, uint32_t);
+    virtual uint32_t GetAvailableClipboardDataTypes(void*, void*);
+    virtual bool GetClipboardData(uint32_t, uint32_t, void*);
+    virtual void* GetClipboardData_2(uint32_t);
+    virtual bool SetClipboardData(void*, bool);
     virtual void Clear(uint32_t);
-    virtual bool GetClipboardText(uint32_t, uint32_t, uint32_t);
-    virtual bool GetClipboardText_2(uint32_t);
-    virtual bool SetClipboardText(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool SetClipboardText_2(uint32_t, uint32_t);
+    virtual bool GetClipboardText(void*, void*, uint32_t);
+    virtual bool GetClipboardText_2(void*);
+    virtual bool SetClipboardText(void*, uint32_t, uint32_t, bool);
+    virtual bool SetClipboardText_2(void*, bool);
     virtual ~cGZClipboardManagerClipboard();
-    char unknown4[0x1];
+    // STUB: 0x0092268e
+    void SendChangeNotification(bool);
+    // STUB: 0x009226c9
+    void PostDataChangeNotification(uint32_t);
+    // STUB: 0x009227d7
+    void Fn009227d7();
+    // STUB: 0x00923cc8
+    void Fn00923cc8();
+    bool mbRunning;
     bool field5;
-    char unknown6[0x6];
+    char unknown6[0x2];
+    uint32_t mnRefCount;
     uint32_t fieldc;
-    char unknown10[0x4];
+    uint32_t mnSuppress;
     uint32_t field14;
-    char unknown18[0x18];
+    void* mpSystem;
+    void* mpTreeHead;
+    uint32_t mnTreeCount;
+    char unknown24[0x4];
+    uint32_t mLock[2];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZClipboardManagerClipboard[sizeof(cGZClipboardManagerClipboard) == 0x30 ? 1 : -1];

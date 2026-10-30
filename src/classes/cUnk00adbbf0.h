@@ -16,8 +16,8 @@ public:
     virtual ~cUnk00adbbf0() {}
     virtual void Slot30_adbbf0();
     virtual void Slot31_adbbf0();
-    virtual void Slot32_adbbf0(uint32_t);
-    virtual void Slot33_adbbf0(uint32_t);
+    virtual void Slot32_adbbf0(void*);
+    virtual void Slot33_adbbf0(void*);
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -50,8 +50,16 @@ public:
     virtual void Slot27_adb6a8(uint32_t);
     virtual uint32_t Slot28_adb6a8(uint32_t);
     virtual uint32_t Slot29_adb6a8();
-    uint32_t field298;
-    char unknown29c[0x4c];
+    uint32_t mnFlags;
+    uint32_t mnValues[8];
+    void* mpManager;
+    void* mpColors;
+    int32_t mnMode;
+    uint8_t* mpAttrBegin;
+    uint8_t* mpAttrEnd;
+    uint8_t* mpAttrCap;
+    uint32_t mnColors[4];
+    char unknown2e4[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adbbf0[sizeof(cUnk00adbbf0) == 0x2e8 ? 1 : -1];

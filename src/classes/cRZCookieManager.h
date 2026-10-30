@@ -4,6 +4,7 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00accf68
 // SIZE 0x3c
@@ -15,23 +16,39 @@ public:
     virtual uint32_t AddRef();
     virtual uint32_t Release();
     virtual void SetShouldEncryptCookieDataFile(bool);
-    virtual bool GetCookieDataFilePath(uint32_t);
-    virtual bool SetCookieDataFilePath(uint32_t);
-    virtual void AddCookie(uint32_t, uint32_t);
-    virtual void AddCookie_2(uint32_t, uint32_t);
+    virtual bool GetCookieDataFilePath(void*);
+    virtual bool SetCookieDataFilePath(void*);
+    virtual bool AddCookie(void*, void*);
+    virtual bool AddCookie_2(void*, void*);
     virtual bool RemoveAllCookies();
-    virtual bool GetCookieTextForURL(uint32_t, uint32_t);
-    virtual bool GetCookieTextForURL_2(uint32_t, uint32_t);
-    virtual uint32_t EnumCookies(uint32_t, uint32_t);
-    virtual void ParseCookieText(uint32_t, uint32_t);
-    virtual bool GetCookieDataForURL(uint32_t, uint32_t, uint32_t);
-    virtual bool GetCookieDataForURL_2(uint32_t, uint32_t, uint32_t);
+    virtual bool GetCookieTextForURL(void*, void*);
+    virtual bool GetCookieTextForURL_2(void*, void*);
+    virtual uint32_t EnumCookies(void*, void*);
+    virtual bool ParseCookieText(void*, void*);
+    virtual bool GetCookieDataForURL(void*, void*, uint32_t);
+    virtual bool GetCookieDataForURL_2(void*, void*, uint32_t);
     virtual bool ClearCookieDataFile();
-    virtual void ReadCookieDataFile();
-    virtual void WriteCookieDataFile();
-    char unknown4[0x8];
-    bool fieldc;
-    char unknownd[0x2f];
+    virtual bool ReadCookieDataFile();
+    virtual bool WriteCookieDataFile();
+    // STUB: 0x008f6e9a
+    bool Fn008f6e9a(void*, void*, uint32_t);
+    // STUB: 0x008f6813
+    bool Fn008f6813(uint32_t, void*);
+    // STUB: 0x008f6d93
+    uint32_t GetEquivalentCookieDataIndex(void*);
+    // STUB: 0x008f9a92
+    void RemoveOldestCookies(uint32_t, void*);
+    // STUB: 0x008f7752
+    void Fn008f7752(void*, void*);
+    bool mbInitialized;
+    char unknown5[0x3];
+    uint32_t mnRefCount;
+    bool mbEncryptFile;
+    char unknownd[0x3];
+    uint32_t mnMaxCookies;
+    uint32_t mLock[2];
+    uint32_t mCookies[3];
+    cRZString mCookieDataFilePath;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cRZCookieManager[sizeof(cRZCookieManager) == 0x3c ? 1 : -1];

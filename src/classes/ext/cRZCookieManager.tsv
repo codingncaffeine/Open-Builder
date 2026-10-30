@@ -1,0 +1,25 @@
+field 4 bool mbInitialized
+field 8 uint32_t mnRefCount
+field c bool mbEncryptFile
+field 10 uint32_t mnMaxCookies
+field 14 uint32_t mLock[2]
+field 1c uint32_t mCookies[3]
+field 28 cRZString mCookieDataFilePath
+method 0x008f6e9a bool Fn008f6e9a(void*, void*, uint32_t)
+method 0x008f6813 bool Fn008f6813(uint32_t, void*)
+method 0x008f6d93 uint32_t GetEquivalentCookieDataIndex(void*)
+method 0x008f9a92 void RemoveOldestCookies(uint32_t, void*)
+method 0x008f7752 void Fn008f7752(void*, void*)
+slot SetShouldEncryptCookieDataFile void bool
+slot GetCookieDataFilePath bool void*
+slot SetCookieDataFilePath bool void*
+slot AddCookie bool void* void*
+slot AddCookie_2 bool void* void*
+slot GetCookieTextForURL bool void* void*
+slot GetCookieTextForURL_2 bool void* void*
+slot EnumCookies uint32_t void* void*
+slot ParseCookieText bool void* void*
+slot GetCookieDataForURL bool void* void* uint32_t
+slot GetCookieDataForURL_2 bool void* void* uint32_t
+slot ReadCookieDataFile bool
+slot WriteCookieDataFile bool

@@ -9,30 +9,35 @@
 // SIZE 0x38
 class cGZPersistCacheStrategyBasic {
 public:
-    virtual bool QueryInterface(uint32_t, uint32_t);
+    virtual bool QueryInterface(uint32_t, void*);
     virtual uint32_t AddRef();
     virtual uint32_t Release();
     virtual void Init();
     virtual void Shutdown();
     virtual void SetKeyFilter();
     virtual uint32_t GetKeyFilter();
-    virtual bool GetResource(uint32_t, uint32_t);
-    virtual bool CacheResource(uint32_t, uint32_t);
-    virtual bool UncacheResource(uint32_t);
-    virtual bool HasCachedResource(uint32_t);
-    virtual uint32_t CanCacheResource(uint32_t);
-    virtual uint32_t GetCachedResourceList(uint32_t, uint32_t);
-    virtual uint32_t GetCachedResourceListForType(uint32_t, uint32_t);
+    virtual bool GetResource(void*, void*);
+    virtual bool CacheResource(void*, void*);
+    virtual bool UncacheResource(void*);
+    virtual bool HasCachedResource(void*);
+    virtual uint32_t CanCacheResource(void*);
+    virtual uint32_t GetCachedResourceList(void*, void*);
+    virtual uint32_t GetCachedResourceListForType(void*, uint32_t);
     virtual bool OnIdle(uint32_t);
     virtual bool IsGarbageCollectionActive();
-    virtual void SetGarbageCollectionActive(uint32_t);
+    virtual void SetGarbageCollectionActive(bool);
     virtual uint32_t ForceGarbageCollection();
     virtual void FlushCache();
     virtual ~cGZPersistCacheStrategyBasic();
     virtual bool GarbageCollect();
-    char unknown4[0x2c];
-    uint32_t field30;
-    char unknown34[0x4];
+    uint32_t mCacheLock[2];
+    uint32_t mTable[5];
+    uint32_t mRefLock[2];
+    int32_t mnIdleCount;
+    bool mbGarbageCollectionActive;
+    char unknown2d[0x3];
+    void* mpKeyFilter;
+    uint32_t mnRefCount;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZPersistCacheStrategyBasic[sizeof(cGZPersistCacheStrategyBasic) == 0x38 ? 1 : -1];

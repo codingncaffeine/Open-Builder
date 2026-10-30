@@ -4,42 +4,61 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00a8fa40
 // SIZE 0x64
 class cSC4Region {
 public:
-    virtual bool QueryInterface(uint32_t, uint32_t);
+    virtual bool QueryInterface(uint32_t, void*);
     virtual void AddRef();
-    virtual void Release();
+    virtual uint32_t Release();
     virtual void* GetName();
-    virtual void Slot04_a8fa40();
+    virtual void* Slot04_a8fa40(void*);
     virtual void* GetDirectoryName();
-    virtual void Slot06_a8fa40();
+    virtual void* Slot06_a8fa40(void*);
     virtual void LoadConfig();
     virtual bool Init();
-    virtual void Slot09_a8fa40();
+    virtual bool Slot09_a8fa40();
     virtual void Delete();
-    virtual uint32_t GetCity(uint32_t, uint32_t);
-    virtual void Slot12_a8fa40();
-    virtual void RemoveCity(uint32_t);
-    virtual void DeleteCity(uint32_t);
-    virtual void ReloadCity(uint32_t);
-    virtual bool MoveCity(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot17_a8fa40();
+    virtual void* GetCity(int32_t, int32_t);
+    virtual void Slot12_a8fa40(void*);
+    virtual void RemoveCity(void*);
+    virtual void DeleteCity(void*);
+    virtual void ReloadCity(void*);
+    virtual bool MoveCity(void*, void*, int32_t, int32_t);
+    virtual void Slot17_a8fa40(void*);
     virtual void Slot18_a8fa40();
     virtual void Slot19_a8fa40(uint32_t);
     virtual uint32_t GetBaseTerrainHeight();
-    virtual void GetWaterPrefs(uint32_t, uint32_t);
-    virtual bool ResetTutorialCity(uint32_t);
-    virtual void GetCityLocations(uint32_t);
-    virtual void GetBoundingRect(uint32_t);
+    virtual void GetWaterPrefs(void*, void*);
+    virtual bool ResetTutorialCity(int32_t);
+    virtual void GetCityLocations(void*);
+    virtual void GetBoundingRect(void*);
     virtual ~cSC4Region();
-    char unknown4[0x8];
-    char fieldc[0x14];
-    char field20[0x14];
-    uint32_t field34;
-    char unknown38[0x2c];
+    // STUB: 0x004a6b00
+    void LoadCityLocations();
+    // STUB: 0x004a6330
+    void LoadCities();
+    // STUB: 0x004a51c0
+    void MoveOverflowCitiesToDownloadDirectory();
+    bool mbInitialized;
+    char unknown5[0x3];
+    int32_t mnRefCount;
+    cRZString mName;
+    cRZString mDirectoryName;
+    uint32_t mnBaseTerrainType;
+    uint32_t mnWaterPref1;
+    uint32_t mnWaterPref2;
+    void* mpCityList;
+    void* mpLocationsBegin;
+    void* mpLocationsEnd;
+    void* mpLocationsCap;
+    uint32_t mnHashPad;
+    void* mpBucketsBegin;
+    void* mpBucketsEnd;
+    void* mpBucketsCap;
+    uint32_t mnCityCount;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4Region[sizeof(cSC4Region) == 0x64 ? 1 : -1];

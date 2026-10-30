@@ -1026,7 +1026,7 @@ int main(int argc, char** argv) {
         static const std::map<std::string, std::string> code = {
             {"void", "X"}, {"bool", "_N"}, {"uint32_t", "I"}, {"int32_t", "H"}, {"uint16_t", "G"}, {"int16_t", "F"},
             {"uint8_t", "E"}, {"int8_t", "C"}, {"float", "M"}, {"double", "N"}, {"void*", "PAX"},
-            {"const void*", "PBX"}, {"char*", "PAD"}, {"const char*", "PBD"}};
+            {"const void*", "PBX"}, {"char*", "PAD"}, {"const char*", "PBD"}, {"int64_t", "_J"}, {"uint64_t", "_K"}};
         std::map<std::string, int> byName;
         for (size_t i = 0; i < idents.size(); ++i)
             if (find(int(i)) == int(i)) byName[idents[i].name] = int(i);
@@ -1063,7 +1063,7 @@ int main(int argc, char** argv) {
                 if (types.empty()) { bad("slot needs a return type"); continue; }
                 bool known = true;
                 for (auto& x : types) known &= code.count(x) > 0;
-                if (!known) { bad("a type not in the list (void bool uint32_t int32_t uint16_t int16_t uint8_t int8_t float double void* const void* char* const char*)"); continue; }
+                if (!known) { bad("a type not in the list (void bool uint32_t int32_t uint16_t int16_t uint8_t int8_t int64_t uint64_t float double void* const void* char* const char*)"); continue; }
                 Ident& id = idents[size_t(target)];
                 std::string params, mangled;
                 std::vector<std::string> seen;

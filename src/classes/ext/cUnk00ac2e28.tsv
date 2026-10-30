@@ -1,0 +1,2 @@
+field dc void* mpDs3D[8]
+method 0x008766d8 bool Fn008766d8(void*)

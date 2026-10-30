@@ -24,7 +24,7 @@ public:
     virtual uint32_t Slot13_a9e460(uint32_t) = 0;
     virtual uint32_t Slot14_a9e460() = 0;
     virtual uint32_t Slot15_a9e460(uint32_t) = 0;
-    virtual void Slot16_a9e460() = 0;
+    virtual uint32_t Slot16_a9e460() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9e460[sizeof(cUnk00a9e460) == 0x4 ? 1 : -1];

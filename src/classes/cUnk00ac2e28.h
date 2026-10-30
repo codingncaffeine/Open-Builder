@@ -45,7 +45,9 @@ public:
     virtual bool QueryInterface(uint32_t, uint32_t);
     virtual uint32_t Slot01_ad4cf4();
     virtual void Slot02_ad4cf4();
-    char unknowndc[0x20];
+    // STUB: 0x008766d8
+    bool Fn008766d8(void*);
+    void* mpDs3D[8];
     bool fieldfc;
     char unknownfd[0x3];
 };

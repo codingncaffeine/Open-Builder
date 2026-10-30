@@ -1,0 +1,39 @@
+field 4 uint32_t mnRefCount
+field 9 bool mbWelcomed
+field 10 int32_t* mpCycleBegin
+field 14 int32_t* mpCycleEnd
+field 18 int32_t* mpCycleCap
+field 1c uint32_t mnCycleIndex
+field 20 uint32_t mnCountA
+field 24 bool mbTimerRunning
+field 28 uint8_t mTimer[0x18]
+field 40 void* mpRadio
+field 44 uint32_t mnRadioValue
+field 48 cRZString mCallSign
+field 5c cRZString mDescription
+field 70 cRZString mBasePath
+field 84 cRZString mPath0
+field 98 void* mpHead0
+field 9c void* mpIter0
+field a0 cRZString mPath1
+field b4 void* mpHead1
+field b8 void* mpIter1
+field bc cRZString mPath2
+field d0 void* mpHead2
+field d4 void* mpIter2
+field d8 cRZString mPath3
+field ec void* mpHead3
+field f0 void* mpIter3
+field f4 void* mpModifierList
+field f8 uint32_t mnModifierMode
+field fc uint32_t mnSelected
+slot QueryInterface bool uint32_t void*
+slot Release uint32_t
+slot GetStationCallSign void char*
+slot GetStationDescription void void*
+slot SetRadio bool void*
+slot Slot17_acc290 void uint32_t
+slot Slot18_acc290 void void* void* uint32_t
+slot ExpandPlayLists void void* void*
+slot SetModifierList void void*
+method 0x008d3ee0 bool Fn008d3ee0(void*)

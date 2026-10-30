@@ -8,37 +8,81 @@
 // VTABLE: 0x00ab3610
 class cSC4WeatherSimulator {
 public:
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual void Slot01_ab3610();
-    virtual void Slot02_ab3610();
-    virtual void Init();
+    virtual bool QueryInterface(uint32_t, void*);
+    virtual uint32_t Slot01_ab3610();
+    virtual uint32_t Slot02_ab3610();
+    virtual bool Init();
     virtual bool Shutdown();
     virtual bool DoPostCityInit();
     virtual float CellWidthX();
     virtual float CellWidthZ();
     virtual uint32_t CellCountX();
     virtual uint32_t CellCountZ();
-    virtual void PositionToCell(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void CellToPosition(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void CellToStandardCityCell(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void StandardCityCellToCell(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void PositionToCell(float, float, void*, void*);
+    virtual void CellToPosition(int32_t, int32_t, void*, void*);
+    virtual void CellToStandardCityCell(int32_t, int32_t, void*, void*);
+    virtual void StandardCityCellToCell(int32_t, int32_t, void*, void*);
     virtual uint32_t GetCurrentSeason();
     virtual uint32_t GetCurrentSeasonMonth();
-    virtual void UpdateMoisture(uint32_t);
-    virtual uint32_t GetMoistureValue(uint32_t, uint32_t);
-    virtual void GetMoistureValueMapPtr(uint32_t);
-    virtual uint32_t GetMoistureType(uint32_t, uint32_t);
-    virtual void Slot20_ab3610();
-    virtual float GetHumidity(uint32_t, uint32_t);
-    virtual float GetAmbientWind(uint32_t);
-    virtual void GetWindAtCell(uint32_t, uint32_t, uint32_t);
+    virtual void UpdateMoisture(void*);
+    virtual uint32_t GetMoistureValue(float, float);
+    virtual void GetMoistureValueMapPtr(void*);
+    virtual uint32_t GetMoistureType(float, float);
+    virtual void Slot20_ab3610(float, float, float, float, float);
+    virtual float GetHumidity(float, float);
+    virtual float GetAmbientWind(void*);
+    virtual float GetWindAtCell(int32_t, int32_t, void*);
     virtual ~cSC4WeatherSimulator();
-    char unknown4[0x28];
-    uint32_t field2c;
-    uint32_t field30;
-    float field34;
-    float field38;
-    char unknown3c[0xf4];
+    // STUB: 0x00725af0
+    void Fn00725af0();
+    // STUB: 0x00726400
+    void Fn00726400();
+    // STUB: 0x00729630
+    void Fn00729630(uint32_t, uint32_t);
+    // STUB: 0x00728a40
+    bool Fn00728a40(uint32_t, uint32_t);
+    // STUB: 0x00726bf0
+    void Fn00726bf0(void*);
+    char unknown4[0xc];
+    bool mbInitialized;
+    char unknown11[0x3];
+    uint32_t mnRefCount;
+    bool mbGridLoaded;
+    bool mbPostInitDone;
+    char unknown1a[0x2];
+    void* mpCity;
+    void* mpSimulator;
+    char unknown24[0x4];
+    void* mpTerrain;
+    int32_t mnCellsX;
+    int32_t mnCellsZ;
+    float mfCellW;
+    float mfCellH;
+    float mfInvW;
+    float mfInvH;
+    float mfSizeX;
+    float mfSizeZ;
+    int32_t mnStdCellX;
+    int32_t mnStdCellZ;
+    int32_t mn54;
+    char unknown58[0xc];
+    int32_t mn64;
+    char unknown68[0x8];
+    int32_t mn70;
+    uint32_t mGridA[3];
+    uint32_t mGridBits[3];
+    char unknown8c[0xc];
+    uint8_t mIterator[0x30];
+    int32_t mnC8;
+    char unknowncc[0x10];
+    uint32_t mGridMoisture[3];
+    uint32_t mGridC[3];
+    float mfF4;
+    float mfF8;
+    char unknownfc[0x28];
+    float mfWindSpeed;
+    float mfWindX;
+    float mfWindZ;
 };
 
 // SYNTHETIC: 0x00729330

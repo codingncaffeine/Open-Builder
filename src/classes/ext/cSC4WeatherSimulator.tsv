@@ -1,0 +1,52 @@
+field 10 bool mbInitialized
+field 14 uint32_t mnRefCount
+field 18 bool mbGridLoaded
+field 19 bool mbPostInitDone
+field 1c void* mpCity
+field 20 void* mpSimulator
+field 28 void* mpTerrain
+field 2c int32_t mnCellsX
+field 30 int32_t mnCellsZ
+field 34 float mfCellW
+field 38 float mfCellH
+field 3c float mfInvW
+field 40 float mfInvH
+field 44 float mfSizeX
+field 48 float mfSizeZ
+field 4c int32_t mnStdCellX
+field 50 int32_t mnStdCellZ
+field 54 int32_t mn54
+field 64 int32_t mn64
+field 70 int32_t mn70
+field 74 uint32_t mGridA[3]
+field 80 uint32_t mGridBits[3]
+field dc uint32_t mGridMoisture[3]
+field e8 uint32_t mGridC[3]
+field c8 int32_t mnC8
+field 98 uint8_t mIterator[0x30]
+field f4 float mfF4
+field f8 float mfF8
+field 124 float mfWindSpeed
+field 128 float mfWindX
+field 12c float mfWindZ
+slot Slot01_ab3610 uint32_t
+slot Slot02_ab3610 uint32_t
+slot QueryInterface bool uint32_t void*
+slot Init bool
+slot PositionToCell void float float void* void*
+slot CellToPosition void int32_t int32_t void* void*
+slot CellToStandardCityCell void int32_t int32_t void* void*
+slot StandardCityCellToCell void int32_t int32_t void* void*
+slot GetMoistureValue uint32_t float float
+slot Slot20_ab3610 void float float float float float
+slot GetMoistureValueMapPtr void void*
+slot GetMoistureType uint32_t float float
+slot GetHumidity float float float
+slot GetAmbientWind float void*
+slot GetWindAtCell float int32_t int32_t void*
+slot UpdateMoisture void void*
+method 0x00725af0 void Fn00725af0()
+method 0x00726400 void Fn00726400()
+method 0x00729630 void Fn00729630(uint32_t, uint32_t)
+method 0x00728a40 bool Fn00728a40(uint32_t, uint32_t)
+method 0x00726bf0 void Fn00726bf0(void*)

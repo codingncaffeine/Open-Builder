@@ -4,43 +4,73 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00acc290
 // SIZE 0x100
 class cRZDiskRadioStation {
 public:
-    virtual bool QueryInterface(uint32_t, uint32_t);
+    virtual bool QueryInterface(uint32_t, void*);
     virtual uint32_t AddRef();
-    virtual void Release();
+    virtual uint32_t Release();
     virtual bool Init();
     virtual bool Shutdown();
     virtual bool OnIdle();
-    virtual bool SetRadio(uint32_t);
+    virtual bool SetRadio(void*);
     virtual void SetStation();
     virtual void UnsetStation();
-    virtual void GetStationCallSign(uint32_t);
-    virtual void GetStationDescription(uint32_t);
+    virtual void GetStationCallSign(char*);
+    virtual void GetStationDescription(void*);
     virtual bool IsOnTheAir();
     virtual void Slot12_acc290(uint32_t);
     virtual void Slot13_acc290(uint32_t);
-    virtual void SetModifierList(uint32_t);
+    virtual void SetModifierList(void*);
     virtual ~cRZDiskRadioStation();
     virtual void LoadAllPlaylists();
     virtual void Slot17_acc290(uint32_t);
-    virtual void Slot18_acc290(uint32_t, uint32_t, uint32_t);
+    virtual void Slot18_acc290(void*, void*, uint32_t);
     virtual void ShuffleCycle();
     virtual bool Slot20_acc290(uint32_t);
     virtual void Slot21_acc290(uint32_t);
     virtual bool ReadCallSignFromDisk();
     virtual bool Slot23_acc290(uint32_t);
     virtual void PlayWelcome();
-    virtual void ExpandPlayLists(uint32_t, uint32_t);
+    virtual void ExpandPlayLists(void*, void*);
     virtual bool PlayNextSelectionNotOnExclusionList();
-    char unknown4[0x4];
+    // STUB: 0x008d3ee0
+    bool Fn008d3ee0(void*);
+    uint32_t mnRefCount;
     bool field8;
-    char unknown9[0xef];
-    uint32_t fieldf8;
-    uint32_t fieldfc;
+    bool mbWelcomed;
+    char unknowna[0x6];
+    int32_t* mpCycleBegin;
+    int32_t* mpCycleEnd;
+    int32_t* mpCycleCap;
+    uint32_t mnCycleIndex;
+    uint32_t mnCountA;
+    bool mbTimerRunning;
+    char unknown25[0x3];
+    uint8_t mTimer[0x18];
+    void* mpRadio;
+    uint32_t mnRadioValue;
+    cRZString mCallSign;
+    cRZString mDescription;
+    cRZString mBasePath;
+    cRZString mPath0;
+    void* mpHead0;
+    void* mpIter0;
+    cRZString mPath1;
+    void* mpHead1;
+    void* mpIter1;
+    cRZString mPath2;
+    void* mpHead2;
+    void* mpIter2;
+    cRZString mPath3;
+    void* mpHead3;
+    void* mpIter3;
+    void* mpModifierList;
+    uint32_t mnModifierMode;
+    uint32_t mnSelected;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cRZDiskRadioStation[sizeof(cRZDiskRadioStation) == 0x100 ? 1 : -1];

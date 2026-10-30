@@ -5,6 +5,7 @@
 #include "common/compiler.h"
 #include "common/types.h"
 #include "classes/cUnk00a80784.h"
+#include "gzcom/cRZString.h"
 
 // The subobject at +0x0 (vtable 0x00ab0f58): an interface or base the class map has no class for.
 struct OB_NOVTABLE cSC4LineItem_0 {
@@ -14,19 +15,19 @@ struct OB_NOVTABLE cSC4LineItem_0 {
     virtual uint32_t Slot03_ab0f58() = 0;
     virtual uint32_t Slot04_ab0f58() = 0;
     virtual void Slot05_ab0f58(uint32_t) = 0;
-    virtual void GetName(uint32_t) = 0;
+    virtual void GetName(void*) = 0;
     virtual void SetName(uint32_t, uint32_t) = 0;
-    virtual void GetSecondaryInfoField() = 0;
-    virtual void SetSecondaryInfoField(uint32_t, uint32_t) = 0;
-    virtual void GetFullExpenses() = 0;
-    virtual void GetCurrentExpenses() = 0;
-    virtual void SetFullExpenses(uint32_t, uint32_t) = 0;
-    virtual void AddToFullExpenses(uint32_t, uint32_t) = 0;
-    virtual void GetIncome() = 0;
-    virtual void SetIncome(uint32_t, uint32_t) = 0;
-    virtual void AddToIncome(uint32_t, uint32_t) = 0;
+    virtual int64_t GetSecondaryInfoField() = 0;
+    virtual void SetSecondaryInfoField(int64_t) = 0;
+    virtual int64_t GetFullExpenses() = 0;
+    virtual int64_t GetCurrentExpenses() = 0;
+    virtual void SetFullExpenses(int64_t) = 0;
+    virtual void AddToFullExpenses(int64_t) = 0;
+    virtual int64_t GetIncome() = 0;
+    virtual void SetIncome(int64_t) = 0;
+    virtual void AddToIncome(int64_t) = 0;
     virtual uint32_t GetDisplayFlags() = 0;
-    virtual void SetDisplayFlag(uint32_t, uint32_t) = 0;
+    virtual void SetDisplayFlag(uint32_t, bool) = 0;
     virtual bool IsLocalFundingItem() = 0;
     virtual ~cSC4LineItem_0() {}
 };
@@ -46,26 +47,37 @@ public:
     virtual uint32_t Slot03_ab0f58();
     virtual uint32_t Slot04_ab0f58();
     virtual void Slot05_ab0f58(uint32_t);
-    virtual void GetName(uint32_t);
+    virtual void GetName(void*);
     virtual void SetName(uint32_t, uint32_t);
-    virtual void GetSecondaryInfoField();
-    virtual void SetSecondaryInfoField(uint32_t, uint32_t);
-    virtual void GetFullExpenses();
-    virtual void GetCurrentExpenses();
-    virtual void SetFullExpenses(uint32_t, uint32_t);
-    virtual void AddToFullExpenses(uint32_t, uint32_t);
-    virtual void GetIncome();
-    virtual void SetIncome(uint32_t, uint32_t);
-    virtual void AddToIncome(uint32_t, uint32_t);
+    virtual int64_t GetSecondaryInfoField();
+    virtual void SetSecondaryInfoField(int64_t);
+    virtual int64_t GetFullExpenses();
+    virtual int64_t GetCurrentExpenses();
+    virtual void SetFullExpenses(int64_t);
+    virtual void AddToFullExpenses(int64_t);
+    virtual int64_t GetIncome();
+    virtual void SetIncome(int64_t);
+    virtual void AddToIncome(int64_t);
     virtual uint32_t GetDisplayFlags();
-    virtual void SetDisplayFlag(uint32_t, uint32_t);
+    virtual void SetDisplayFlag(uint32_t, bool);
     virtual bool IsLocalFundingItem();
-    char unknown8[0x4c];
-    uint32_t field54;
-    uint32_t field58;
-    bool field5c;
-    char unknown5d[0x7];
-    uint32_t field64;
+    char unknown8[0x4];
+    cRZString mName;
+    uint32_t mnNameB;
+    uint32_t mnNameA;
+    bool mbNameStale;
+    char unknown29[0x7];
+    int64_t mnSecondaryInfo;
+    int64_t mnFullExpenses;
+    int64_t mnCurrentExpenses;
+    int64_t mnIncome;
+    uint32_t mnRefCount;
+    uint32_t mnField54;
+    uint32_t mnDisplayFlags;
+    bool mbField5c;
+    char unknown5d[0x3];
+    cIGZUnknown* mpBudget;
+    uint32_t mnField64;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4LineItem[sizeof(cSC4LineItem) == 0x68 ? 1 : -1];

@@ -19,8 +19,8 @@ public:
     virtual ~cUnk00a9e5f4();
     virtual uint32_t Slot06_a9e5f4();
     virtual uint32_t Slot07_a9e5f4();
-    virtual bool Slot08_a9e5f4(uint32_t);
-    virtual bool Slot09_a9e5f4(uint32_t);
+    virtual bool Slot08_a9e5f4(void*);
+    virtual bool Slot09_a9e5f4(void*);
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -43,15 +43,57 @@ public:
     virtual uint32_t Slot13_a9e460(uint32_t);
     virtual uint32_t Slot14_a9e460();
     virtual uint32_t Slot15_a9e460(uint32_t);
-    virtual void Slot16_a9e460();
-    char unknown14[0xb8];
+    virtual uint32_t Slot16_a9e460();
+    // STUB: 0x00579a20
+    void* Fn00579a20(void*);
+    // STUB: 0x0057b640
+    void Fn0057b640(void*);
+    // STUB: 0x005796e0
+    void ToastOccupant(void*);
+    // STUB: 0x0057a720
+    void ProcessToastList();
+    // STUB: 0x0057a0d0
+    void UpdatePhase();
+    // STUB: 0x0057bea0
+    void UpdateAllFires();
+    // STUB: 0x0057ab20
+    void Fn0057ab20(void*);
+    // STUB: 0x0057a200
+    void Fn0057a200();
+    // STUB: 0x00579c10
+    void ReadTunableValues();
+    // STUB: 0x00579500
+    void SendIgnitionMessage(void*, bool);
+    void* mpDemolition;
+    uint8_t mRandom[0x18];
+    uint8_t mTimer[0x18];
+    void* mpFilter;
+    uint32_t mnCellsX;
+    uint32_t mnCellsZ;
+    char unknown54[0x4];
+    void* mpFlameCount;
+    char unknown5c[0x24];
+    uint32_t mnUpdateInterval;
+    uint8_t mTopFireCurve[0x10];
+    uint8_t mSideFireCurve[0x10];
+    uint8_t mFlammCurve[0x10];
+    uint8_t mIgniteCurve[0x10];
+    bool mbFlagC4;
+    bool mbInitialized;
+    char unknownc6[0x2];
+    uint32_t mnNextUpdate;
     uint32_t fieldcc;
-    char unknownd0[0xc];
-    uint32_t fielddc;
-    char unknowne0[0x4];
+    uint32_t mnCountD0;
+    uint32_t mnCountD4;
+    char unknownd8[0x4];
+    uint32_t mnFieldDC;
+    void* mpFireList;
     uint32_t fielde4;
     uint32_t fielde8;
-    char unknownec[0x14];
+    void* mpToastList;
+    void* mpToastTree;
+    uint32_t mnToastTreeSize;
+    char unknownf8[0x8];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a9e5f4[sizeof(cUnk00a9e5f4) == 0x100 ? 1 : -1];

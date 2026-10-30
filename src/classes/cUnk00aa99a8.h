@@ -13,7 +13,7 @@ class cUnk00aa99a8 : public cSC4UndergroundNetworkTool {
 public:
     virtual ~cUnk00aa99a8();
     virtual uint32_t Slot81_aaa950();
-    virtual void Slot82_aaa950(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot82_aaa950(uint32_t, void*, uint32_t, uint32_t);
     char unknown38c[0xc];
 };
 #ifdef _MSC_VER

@@ -1,0 +1,37 @@
+slot QueryInterface bool uint32_t void*
+slot Release uint32_t
+slot Slot04_a8fa40 void* void*
+slot Slot06_a8fa40 void* void*
+slot GetCity void* int32_t int32_t
+slot Slot12_a8fa40 void void*
+slot Delete void
+slot Slot09_a8fa40 bool
+slot LoadConfig void
+slot MoveCity bool void* void* int32_t int32_t
+slot ResetTutorialCity bool int32_t
+slot Slot17_a8fa40 void void*
+slot GetWaterPrefs void void* void*
+slot RemoveCity void void*
+slot DeleteCity void void*
+slot ReloadCity void void*
+slot GetCityLocations void void*
+slot GetBoundingRect void void*
+field 4 bool mbInitialized
+field 8 int32_t mnRefCount
+field c cRZString mName
+field 20 cRZString mDirectoryName
+field 34 uint32_t mnBaseTerrainType
+field 38 uint32_t mnWaterPref1
+field 3c uint32_t mnWaterPref2
+field 40 void* mpCityList
+field 44 void* mpLocationsBegin
+field 48 void* mpLocationsEnd
+field 4c void* mpLocationsCap
+field 50 uint32_t mnHashPad
+field 54 void* mpBucketsBegin
+field 58 void* mpBucketsEnd
+field 5c void* mpBucketsCap
+field 60 uint32_t mnCityCount
+method 0x004a6b00 void LoadCityLocations()
+method 0x004a6330 void LoadCities()
+method 0x004a51c0 void MoveOverflowCitiesToDownloadDirectory()

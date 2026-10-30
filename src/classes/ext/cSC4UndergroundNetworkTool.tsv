@@ -1,0 +1,11 @@
+field 368 bool mbInitialized
+field 36c float mfDepthOffset
+field 370 float mfF370
+field 374 bool mbB374
+field 378 float mfF378
+field 384 void* mpOccListA
+field 388 void* mpOccListB
+slot Slot82_aaa950 void uint32_t void* uint32_t uint32_t
+method 0x00633220 void* Fn00633220(uint32_t)
+method 0x006596c0 bool CreateNewUndergroundOccupant(void*, void*, void*, void*)
+method 0x00659240 void Fn00659240(void*, uint32_t)

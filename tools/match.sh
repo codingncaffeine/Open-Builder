@@ -46,6 +46,13 @@ awk -v textend="$textend" -v sizes="$sizes" '
   }' "$sizes" "$map" "$out/hook-pairs.txt" >"$out/pairs.tsv"
 # The stubs that lead to functions not decompiled yet name their original, so calls to them compare by target.
 awk '$1 ~ /^0001:/ && $2 ~ /^_ob_stub_[0-9a-f]{8}$/ { print substr($2, 10), $3, "stub_" substr($2, 10) }' "$map" >"$out/names.tsv"
+# A library function (STLport, the C runtime) our build compiles from the library's own source has the original's
+# decorated name: it stands for the original's copy, under the name a stub of that copy has. Where our linker folded
+# two of them into one body (identical template instances) that body stands for neither: left unnamed.
+awk -F'\t' 'FILENAME == ARGV[1] { lib[$3] = sprintf("%08x", strtonum("0x" $1)); next }
+            { split($0, f, " +") }
+            f[2] ~ /^0001:/ && (f[3] in lib) { at[f[4]] = lib[f[3]]; n[f[4]]++ }
+            END { for (a in at) if (n[a] == 1) print at[a], a, "stub_" at[a] }' re/map/libraries.tsv "$map" >>"$out/names.tsv"
 # The original's global variables (GLOBAL annotations) are at the same address on both sides: named alike.
 awk '{ a = tolower($1); sub(/^0x/, "", a); print a, a, "data_" a }' "$out/globals.txt" | sort -u >>"$out/names.tsv"
 # Vtables: "// VTABLE: 0x<address> [base]" above a class pairs the original's with ours (tools/vtable-annotations.sh);

@@ -10,7 +10,7 @@ class cSC4UndergroundNetworkTool : public cSC4NetworkTool {
 public:
     virtual ~cSC4UndergroundNetworkTool() {}
     virtual uint32_t Slot81_aaa950() = 0;
-    virtual void Slot82_aaa950(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot82_aaa950(uint32_t, void*, uint32_t, uint32_t) = 0;
     virtual bool Init();
     virtual bool Shutdown();
     virtual void Slot16_aa8748();
@@ -40,7 +40,22 @@ public:
     virtual void InsertNetworkSpecificConstraintsForCell(uint32_t);
     virtual void ReloadNetworkSpecificInfo(uint32_t);
     virtual void SetQuadTrianglesToDraw(uint32_t, uint32_t);
-    char unknown368[0x24];
+    // STUB: 0x00633220
+    void* Fn00633220(uint32_t);
+    // STUB: 0x006596c0
+    bool CreateNewUndergroundOccupant(void*, void*, void*, void*);
+    // STUB: 0x00659240
+    void Fn00659240(void*, uint32_t);
+    bool mbInitialized;
+    char unknown369[0x3];
+    float mfDepthOffset;
+    float mfF370;
+    bool mbB374;
+    char unknown375[0x3];
+    float mfF378;
+    char unknown37c[0x8];
+    void* mpOccListA;
+    void* mpOccListB;
 };
 
 #endif
