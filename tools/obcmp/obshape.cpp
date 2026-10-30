@@ -12,6 +12,7 @@
 // disagree. returns: D, B, F (a dword, a byte, a float), V (nothing), ? (unknown), from the instruction before each
 // ret. shape and detail (offsets hex, from this; types: d dword, b byte, w word, bz/bs a byte widened with zero
 // or sign extension, wz/ws the same for a word, f float, q double, a the address of a member):
+//   thunk                     an adjustor thunk (sub/add ecx,N; jmp), the compiler's own; import: a jump through the import table
 //   -                         none of these
 //   empty                     ret
 //   this                      mov eax,ecx; ret
@@ -128,7 +129,23 @@ bool constant(const std::vector<Ins>& v, size_t at, size_t& used, std::string& t
 }
 
 std::string shapeOf(const std::vector<Ins>& v, const Image& img) {
-    if (v.empty() || !isRet(v.back())) return "-";
+    if (v.empty()) return "-";
+    if (v.back().i.mnemonic == ZYDIS_MNEMONIC_JMP) {
+        size_t n = v.size();
+        const ZydisDecodedOperand& j = v.back().o[0];
+        if (n == 1 && j.type == ZYDIS_OPERAND_TYPE_MEMORY && j.mem.base == ZYDIS_REGISTER_NONE && j.mem.index == ZYDIS_REGISTER_NONE)
+            return "import";  // jmp dword ptr [import table entry]
+        auto adjusts = [](const Ins& x) {  // sub/add ecx, imm
+            return (x.i.mnemonic == ZYDIS_MNEMONIC_SUB || x.i.mnemonic == ZYDIS_MNEMONIC_ADD) && isReg(x.o[0], ZYDIS_REGISTER_ECX) && isImm(x.o[1]);
+        };
+        auto virtualBase = [](const Ins& x) {  // sub ecx, [ecx-N]: through the virtual base table
+            return x.i.mnemonic == ZYDIS_MNEMONIC_SUB && isReg(x.o[0], ZYDIS_REGISTER_ECX) && isMem(x.o[1], ZYDIS_REGISTER_ECX);
+        };
+        if (n == 2 && j.type == ZYDIS_OPERAND_TYPE_IMMEDIATE && (adjusts(v[0]) || virtualBase(v[0]))) return "thunk";
+        if (n == 3 && j.type == ZYDIS_OPERAND_TYPE_IMMEDIATE && virtualBase(v[0]) && adjusts(v[1])) return "thunk";
+        return "-";
+    }
+    if (!isRet(v.back())) return "-";
     size_t n = v.size();
     if (n == 1) return "empty";
     if (n == 2 && v[0].i.mnemonic == ZYDIS_MNEMONIC_MOV && isReg(v[0].o[0], ZYDIS_REGISTER_EAX) && isReg(v[0].o[1], ZYDIS_REGISTER_ECX))

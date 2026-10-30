@@ -273,7 +273,8 @@ std::string methodName(const Names& n, uint32_t vtable, size_t index, const std:
 
 int main(int argc, char** argv) {
     std::vector<std::string> pos;
-    std::string srcDir = "src", outDir = "src/classes", reportPath, excludePath, shapesPath, extentsPath, only;
+    std::string srcDir = "src", outDir = "src/classes", reportPath, excludePath, shapesPath, extentsPath, only, librariesPath;
+    bool inferMajority = false;  // --infer-majority: slot signatures from the majority of their implementations
     std::string namesPath, namesBeforePath, renameMapPath, slotNamesPath, slotNamesBeforePath;
     uint32_t purecall = 0;
     for (int i = 1; i < argc; ++i) {
@@ -285,6 +286,8 @@ int main(int argc, char** argv) {
         if (a == "--purecall") purecall = parseHex(value());
         else if (a == "--src") srcDir = value();
         else if (a == "--out") outDir = value();
+        else if (a == "--libraries") librariesPath = value();  // re/map/libraries.tsv: functions of the libraries (hex address first)
+        else if (a == "--infer-majority") inferMajority = true;
         else if (a == "--report") reportPath = value();
         else if (a == "--exclude") excludePath = value();
         else if (a == "--shapes") shapesPath = value();
@@ -399,6 +402,14 @@ int main(int argc, char** argv) {
     std::map<uint32_t, Hand> hands;  // by primary
     std::map<std::string, std::string> firstBase;  // class -> first base, over every header
     std::set<uint32_t> annotated;                  // functions written by hand (FUNCTION, SYNTHETIC)
+    std::set<uint32_t> stubbed;                    // functions a hand source leads to the original (STUB) or drafts (CLOSE)
+    std::set<uint32_t> libraries;                  // the libraries' functions (--libraries)
+    if (!librariesPath.empty()) {
+        std::ifstream lf(librariesPath);
+        std::string l;
+        while (std::getline(lf, l))
+            if (!l.empty() && l[0] != '#') libraries.insert(parseHex(l.substr(0, l.find('\t'))));
+    }
     for (auto& entry : fs::recursive_directory_iterator(srcDir)) {
         if (!entry.is_regular_file()) continue;
         std::string ext = entry.path().extension().string();
@@ -406,6 +417,7 @@ int main(int argc, char** argv) {
         std::string rel = fs::relative(entry.path(), srcDir).generic_string();
         if (rel.rfind(fs::relative(outDir, srcDir).generic_string() + "/", 0) == 0) continue;  // our own output
         if (entry.path().filename().string().rfind("GeneratedMethods_", 0) == 0) continue;
+        if (entry.path().filename().string().rfind("GeneratedFunctions_", 0) == 0) continue;
         std::ifstream f(entry.path());
         std::string line;
         std::vector<std::pair<uint32_t, std::string>> pending;
@@ -423,6 +435,14 @@ int main(int argc, char** argv) {
             if ((at = line.find("// SIZE 0x")) != std::string::npos) { size = parseHex(line.substr(at + 8)); continue; }
             if ((at = line.find("// FUNCTION: 0x")) != std::string::npos || (at = line.find("// SYNTHETIC: 0x")) != std::string::npos) {
                 annotated.insert(parseHex(line.substr(line.find("0x", at) + 2)));
+                continue;
+            }
+            if ((at = line.find("// STUB: 0x")) != std::string::npos) {
+                stubbed.insert(parseHex(line.substr(at + 11)));
+                continue;
+            }
+            if ((at = line.find("// CLOSE: 0x")) != std::string::npos) {  // a draft under way: its function is spoken for
+                stubbed.insert(parseHex(line.substr(at + 12)));
                 continue;
             }
             std::istringstream ss(line);
@@ -1015,7 +1035,7 @@ int main(int argc, char** argv) {
 
     // Signatures (--shapes). V void, D dword, B bool, W word, F float, Q double, P pointer; arguments d, b, w.
     struct Family {
-        std::set<std::string> pops;
+        std::map<std::string, int> pops;  // bytes popped -> how many implementations say so
         std::set<char> ret;
         std::set<char> code;  // what real-code members return (obshape), when no one-line member says
         std::map<size_t, std::set<char>> args;  // what a setter stores the argument as
@@ -1043,7 +1063,7 @@ int main(int argc, char** argv) {
             if (it == shapes.end()) continue;
             const Shape& s = it->second;
             Family& f = families[root];
-            if (s.pops != "?") f.pops.insert(s.pops);
+            if (s.pops != "?" && s.pops != "x") ++f.pops[s.pops];  // a tail jump or a mis-bounded function says nothing
             if (char r = retOf(s)) f.ret.insert(r);
             else if (s.returns == 'D' || s.returns == 'B' || s.returns == 'F') f.code.insert(s.returns);
             if (s.kind == "set" || s.kind == "setconst") f.args[std::stoul(s.detail[2])].insert(s.detail[0][0]);
@@ -1065,17 +1085,41 @@ int main(int argc, char** argv) {
         return {"uint32_t", "I"};
     };
     std::map<int, Sig> sigs;
+    size_t popVotes = 0, retMerged = 0, retConflicts = 0;
     for (auto& [root, f] : families) {
-        if (f.pops.size() != 1 || f.pops.begin()->find_first_not_of("0123456789") != std::string::npos) continue;
-        unsigned long n = std::stoul(*f.pops.begin());
+        if (f.pops.empty() || (!inferMajority && f.pops.size() != 1)) continue;
+        // The bytes popped: what most implementations agree on; a minority that disagrees keeps its one-line bodies
+        // unwritten (they would be written for the wrong argument count). Before, any disagreement left the slot as
+        // "void Name()", and every caller lost its arguments.
+        std::string best;
+        int votes = 0, total = 0;
+        for (auto& [p, n] : f.pops) {
+            total += n;
+            if (n > votes || (n == votes && std::stoul(p) > std::stoul(best))) { best = p; votes = n; }
+        }
+        unsigned long n = std::stoul(best);
         if (n % 4) continue;
         Sig s;
         s.args.assign(n / 4, 'd');
+        if (votes != total) { s.bodies = false; ++popVotes; }
+        // The return: every piece of evidence, one-line bodies and real code alike. An implementation that returns
+        // nothing loses to one that returns something (an empty default beside real overrides); a pointer or a bool
+        // beside a dword is a dword (all three come back in eax; an ext file can still narrow a slot per class).
+        // Before, two kinds of return left the slot void, and callers could not use its result at all.
         std::set<char> r = f.ret;
-        if (r == std::set<char>{'D', 'P'}) r = {'D'};  // an integer or a null pointer: both are eax
-        if (r.empty() && f.code.size() == 1) r = f.code;
+        if (inferMajority) {
+            r.insert(f.code.begin(), f.code.end());
+            if (r.size() > 1 && r.count('V')) { r.erase('V'); ++retMerged; }
+            if (r.size() > 1 && r.count('D') && (r.count('P') || r.count('B'))) {
+                if (r.count('B')) s.bodies = false;
+                r.erase('P'); r.erase('B'); ++retMerged;
+            }
+        } else {
+            if (r == std::set<char>{'D', 'P'}) r = {'D'};  // an integer or a null pointer: both are eax
+            if (r.empty() && f.code.size() == 1) r = f.code;
+        }
         if (r.size() == 1) s.ret = *r.begin();
-        else if (r.size() > 1) s.bodies = false;
+        else if (r.size() > 1) { s.bodies = false; ++retConflicts; }
         for (auto& [i, ts] : f.args) {
             if (i >= s.args.size() || ts.size() != 1) { s.bodies = false; continue; }
             s.args[i] = *ts.begin();
@@ -1098,6 +1142,7 @@ int main(int argc, char** argv) {
         id.tail = "UAE" + retType(s.ret).second + (s.args.empty() ? "X" : mangled + "@") + "Z";
         sigs[root] = s;
     }
+    std::fprintf(stderr, "obdecl: signatures: %zu by majority of pops, %zu with return evidence merged, %zu return conflicts left void\n", popVotes, retMerged, retConflicts);
 
     // Signatures corrected by hand (src/classes/ext/<class>.tsv): "slot <name> <return type> [<argument type> ...]",
     // for a slot whose evidence is missing or misleading (a function that ends in a jump pops nothing it can show).
@@ -1690,9 +1735,41 @@ int main(int argc, char** argv) {
             ++methodCount;
         }
     }
+    // Free constant functions: every function of the original whose whole body returns one constant (tools/obcmp/obshape
+    // "const") and that is no class's slot, is written nowhere by hand (FUNCTION, SYNTHETIC or STUB) and is not a
+    // library's or the other compiler's. A free function named by its address, in the folder whose flags spell the
+    // constant; its real name and class, when they are learned, move it into its class.
+    size_t freeCount = 0;
+    if (only.empty()) {
+        std::set<uint32_t> slotFns;
+        for (auto& [p, m] : models)
+            for (auto& d : m.decls) slotFns.insert(d.function);
+        std::map<std::string, std::vector<std::string>> freeBodies;  // folder -> definitions
+        for (auto& [fn, s] : shapes) {
+            if (s.kind != "const" || s.detail.size() < 2) continue;
+            if (slotFns.count(fn) || annotated.count(fn) || stubbed.count(fn) || fnTaken.count(fn)) continue;
+            if (libraries.count(fn) || (fn >= 0xa053a0 && fn < 0xa640c0)) continue;  // the image library (another compiler)
+            const std::string& t = s.detail[0];
+            char ret = t == "b" ? 'B' : t == "f" ? 'F' : 'D';
+            std::string stmt;
+            if (!returnOf(t, parseHex(s.detail[1]), ret, stmt)) continue;
+            const std::string opt = s.detail.size() > 2 ? s.detail[2] : "-";
+            std::string def = "// FUNCTION: 0x" + hex8(fn) + (s.room >= 5 ? "" : " nohook") + "\n" + retType(ret).first +
+                              " Fn" + hex8(fn) + "()\n{\n    " + stmt + "\n}\n";
+            freeBodies[opt == "O1" ? "gzcom" : "game"].push_back(def);
+            ++freeCount;
+        }
+        for (const char* group : {"game", "gzcom"}) {
+            std::ofstream f(srcDir + "/" + group + "/GeneratedFunctions_" + group + ".cpp");
+            f << "// GENERATED by tools/obcmp/obdecl: the functions of the original whose whole body returns one constant and\n"
+                 "// that belong to no declared class (tools/obcmp/obshape), named by address until their class or name is known.\n"
+                 "#include \"common/types.h\"\n";
+            for (auto& d : freeBodies[group]) f << "\n" << d;
+        }
+    }
     std::printf("classes written %zu (kept %zu edited), not written %zu; %zu SYNTHETIC, %zu VTABLE annotations; "
-                "%zu signatures, %zu one-line methods, %zu fields\n",
-                written, kept, failed, synthCount, vtCount, sigs.size(), methodCount, fieldCount);
+                "%zu signatures, %zu one-line methods, %zu fields, %zu free constant functions\n",
+                written, kept, failed, synthCount, vtCount, sigs.size(), methodCount, fieldCount, freeCount);
     std::vector<std::pair<size_t, std::string>> top;
     for (auto& [k, n] : reasons) top.push_back({n, k});
     std::sort(top.rbegin(), top.rend());
