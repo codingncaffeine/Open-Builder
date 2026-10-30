@@ -1,0 +1,47 @@
+field 14 bool mbOpen
+field 18 uint32_t mn18
+field 1c uint32_t mnFlags
+field c0 uint32_t mnC0
+field c4 uint32_t mnC4
+field c8 uint32_t mnC8
+field cc uint32_t mnCc
+field d0 uint32_t mnD0
+field f0 uint32_t mnF0
+field f4 uint32_t mnF4
+field fc uint32_t mnFc
+field 100 uint32_t mn100
+field 144 uint32_t mn144
+field 148 uint32_t mn148
+field 1c4 void* mpBuffer
+field 24 void* mpIndex
+field 14c void* mpMap
+field 185 bool mbFlag185
+slot Slot29_ad8488 bool bool
+method 0x00970030 uint32_t Fn00970030(uint32_t)
+field 158 bool mbDirty
+method 0x0096fe20 bool Fn0096fe20()
+method 0x0096ef02 bool Fn0096ef02()
+method 0x0096fb0f bool Fn0096fb0f()
+method 0x0096ef83 bool Fn0096ef83()
+method 0x0096e37b bool Fn0096e37b()
+slot Slot30_ad8488 bool uint32_t bool
+slot Slot31_ad8488 bool uint32_t bool
+method 0x0096e407 bool Fn0096e407()
+method 0x0096e49d bool Fn0096e49d()
+method 0x0096e99a void Fn0096e99a()
+method 0x0096e6f4 bool DecompressRecord(uint32_t, uint32_t, void*, void*)
+method 0x0096e617 bool DecompressData(void*, uint32_t, void*, void*)
+method 0x0096ea47 bool Fn0096ea47(uint32_t, uint32_t, void*, void*)
+method 0x0096fa6b bool Fn0096fa6b()
+method 0x0096fc95 bool Fn0096fc95()
+method 0x0096fce8 bool Fn0096fce8()
+method 0x0096ff01 bool ShouldRecordBeCompressed(void*, uint32_t)
+method 0x0096ff7e bool Fn0096ff7e(void*, uint32_t, void*)
+method 0x009708be bool Fn009708be(void*, void*, bool, bool)
+method 0x0097139c void IncrementTypeAndGroupUse(uint32_t, uint32_t, bool)
+method 0x009718b9 bool Fn009718b9()
+method 0x00972999 bool Fn00972999()
+method 0x009725fb uint32_t Fn009725fb()
+method 0x00972761 bool Fn00972761()
+field 184 bool mbFlag184
+method 0x00971617 bool Fn00971617(void*, void*)

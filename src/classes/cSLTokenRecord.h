@@ -11,7 +11,7 @@ class cSLTokenRecord {
 public:
     virtual bool QueryInterface(uint32_t, uint32_t);
     virtual uint32_t AddRef();
-    virtual void Release();
+    virtual uint32_t Release();
     virtual bool InitRead(uint32_t);
     virtual bool InitRead_2(uint32_t, uint32_t);
     virtual bool InitWriteText(uint32_t);
@@ -46,9 +46,26 @@ public:
     virtual void SetFieldString(uint32_t, uint32_t, uint32_t);
     virtual void SetFieldResKey(uint32_t, uint32_t, uint32_t);
     virtual ~cSLTokenRecord();
-    char unknown4[0xd];
-    bool field11;
-    char unknown12[0xe];
+    // STUB: 0x0097f1d4
+    bool GetField(const void*, void*);
+    // STUB: 0x009805f8
+    bool CreateField(const void*, void*);
+    // STUB: 0x00980ac9
+    bool ReadTokens(void*);
+    // STUB: 0x00980e3c
+    bool WriteTokensToSerialRecord(void*);
+    // STUB: 0x00980f87
+    void Shutdown();
+    // STUB: 0x0097f074
+    uint32_t Fn0097f074(uint32_t);
+    uint32_t mnRefCount;
+    void* mpIO;
+    uint32_t mnCookie;
+    bool mbInit;
+    bool mbText;
+    bool mbRead;
+    char unknown13[0x1];
+    uint8_t mTokens[0xc];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSLTokenRecord[sizeof(cSLTokenRecord) == 0x20 ? 1 : -1];

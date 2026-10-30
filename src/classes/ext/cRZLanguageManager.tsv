@@ -1,0 +1,4 @@
+field 24 uint8_t mAvailable[0xc]
+field 30 uint32_t mnLanguage
+field 34 uint32_t mnLanguage2
+field 38 uint8_t mUtility[0x28]

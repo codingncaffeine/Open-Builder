@@ -23,9 +23,9 @@ public:
     virtual bool Slot03_a953a8();
     virtual bool Slot04_a953a8();
     virtual bool DoAnimationTick(uint32_t, uint32_t);
-    virtual bool HandleEnterState(uint32_t);
-    virtual bool HandleExitState(uint32_t);
-    virtual bool DoPlayerDriveTick(uint32_t);
+    virtual bool HandleEnterState(void*);
+    virtual bool HandleExitState(void*);
+    virtual bool DoPlayerDriveTick(float);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
     char unknown1e4[0x8];

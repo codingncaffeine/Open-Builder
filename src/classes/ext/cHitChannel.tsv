@@ -1,0 +1,13 @@
+field 18 int32_t mnRefCount
+field 1c uint32_t mnField1c
+field 24 void* mpSnd
+field 28 void* mpField28
+field 2c void* mpSmart2c
+field 34 void* mpRegLists
+slot GetPan uint32_t
+slot GetFrequency uint32_t
+slot GetVolume uint32_t
+method 0x0093f304 bool CreateSnd()
+method 0x0093f687 bool UpdatePatch()
+method 0x0093fa5b void Fn0093fa5b(uint32_t)
+field 30 void* mpFactory

@@ -1,0 +1,72 @@
+slot SetStyle void uint32_t bool
+slot GetCodePage bool void*
+slot GetScaling void void* void*
+slot GetAdvanceScaling void void* void*
+slot GetSpacingAdjustment void void* void*
+slot GetName void void*
+slot GetFilePath void void*
+slot SetFilePath void void*
+slot Release uint32_t
+slot SetAntialiasingGammaCorrection void float
+slot SetAntialiasingSharpness void float
+field 8 int32_t mnRefCount
+field c uint8_t mPath[0x14]
+field 20 uint8_t mName[0x14]
+field 38 uint32_t mnSize
+field 3c int32_t mnHeight
+field 40 uint32_t mnStyle
+field 44 uint32_t mnFontColor
+field 48 uint32_t mnBackColor
+field 4c uint32_t mnAntialiasing
+field 54 float mfGamma
+field 58 float mfSharpness
+field 68 float mfScaleX
+field 6c float mfScaleY
+field 70 float mfAdvanceScale
+field 74 int32_t mnSpacingX
+field 78 int32_t mnSpacingY
+field 7c uint32_t mnCodePage
+field 84 int32_t mnAscent
+field dc void* mpFace
+slot GetAppropriateCachedBitmapData void*
+field 80 int32_t mnLockCount
+method 0x00896293 void Fn00896293()
+method 0x0089603d uint32_t Fn0089603d()
+method 0x00896618 uint32_t Fn00896618()
+method 0x00896636 uint32_t Fn00896636()
+slot SetRenderer void void*
+slot LockSurfaceForFontUse bool void*
+slot UnlockSurfaceForFontUse bool void*
+slot GetCharData void* uint32_t
+slot AddCharData void* uint32_t void*
+slot GetXOffset int32_t const void* uint32_t
+slot CharWidth int32_t const void* uint32_t
+slot GetAdvanceWidth int32_t const void* uint32_t
+slot SetAdvanceScaling void float float
+field 4 uint8_t mbReady
+field 8c void* mpRenderer
+method 0x0089671f uint32_t ConvertCharToUnicode(const void*, uint32_t, void*)
+method 0x008993bb void Fn008993bb()
+slot IsCharAvailable bool const void* uint32_t
+slot PreloadChars bool const void* uint32_t
+slot GetStringWidth int32_t const void* uint32_t
+slot GetStringVisibleWidth int32_t const void* uint32_t void*
+slot CalculateNumberOfLines uint32_t const void* uint32_t uint32_t
+slot CalculateWidthOfLines uint32_t const void* uint32_t uint32_t
+slot CalculateCharsToFitInWidth uint32_t const void* uint32_t uint32_t void*
+slot CalculateWordsToFitInWidth uint32_t const void* uint32_t uint32_t uint32_t uint32_t
+field ec void* mpFT
+method 0x00899bca void GetTextAsUnicode(const void*, uint32_t, void*, void*, int32_t, bool)
+slot TextArea void const void* uint32_t void*
+slot CalculateTextArea_2 void const void* uint32_t void* bool bool
+slot ReallocateSourceData bool void* uint32_t uint32_t
+slot SetScaling void float float
+method 0x0089738f uint32_t Find(const void*, uint32_t, uint32_t)
+method 0x00896425 bool Fn00896425(const void*, uint32_t)
+method 0x008963c9 uint32_t Fn008963c9(uint32_t)
+method 0x0089645a uint32_t GetSubstitutionChar(uint32_t, uint32_t)
+method 0x00899665 void MakeSubstitutedString(void*, uint32_t, void*, void*, bool)
+slot CopyGlyphToSourceData bool void* void* uint32_t uint32_t const void* uint32_t uint32_t uint32_t uint32_t
+slot DrawTextLine bool void* int32_t int32_t const void* uint32_t uint32_t uint32_t const void* void*
+method 0x0089838c void SetCurrentPalette(uint32_t, uint32_t)
+slot DrawTextParagraph bool void* const void* const void* uint32_t int32_t uint32_t uint32_t const void* void*

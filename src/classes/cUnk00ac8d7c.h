@@ -10,18 +10,18 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual uint32_t Slot03_ac8d7c() = 0;
+    virtual void* Slot03_ac8d7c() = 0;
     virtual bool Slot04_ac8d7c(uint32_t) = 0;
     virtual bool Slot05_ac8d7c() = 0;
-    virtual uint32_t Slot06_ac8d7c(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot06_ac8d7c(void*, uint32_t, uint32_t) = 0;
     virtual bool Slot07_ac8d7c(uint32_t) = 0;
-    virtual bool Slot08_ac8d7c(uint32_t, uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot09_ac8d7c(uint32_t) = 0;
+    virtual bool Slot08_ac8d7c(int32_t, int32_t, void*) = 0;
+    virtual void* Slot09_ac8d7c(int32_t) = 0;
     virtual uint32_t Slot10_ac8d7c() = 0;
     virtual uint32_t Slot11_ac8d7c() = 0;
     virtual void Slot12_ac8d7c(uint32_t) = 0;
-    virtual void Slot13_ac8d7c(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot14_ac8d7c() = 0;
+    virtual void Slot13_ac8d7c(void*, bool) = 0;
+    virtual void* Slot14_ac8d7c() = 0;
 };
 
 #endif

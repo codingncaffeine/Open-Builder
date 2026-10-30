@@ -1,0 +1,14 @@
+field 4 uint32_t mnRefCount
+field 8 void* mpIO
+field c uint32_t mnCookie
+field 10 bool mbInit
+field 11 bool mbText
+field 12 bool mbRead
+field 14 uint8_t mTokens[0xc]
+method 0x0097f1d4 bool GetField(const void*, void*)
+method 0x009805f8 bool CreateField(const void*, void*)
+method 0x00980ac9 bool ReadTokens(void*)
+method 0x00980e3c bool WriteTokensToSerialRecord(void*)
+method 0x00980f87 void Shutdown()
+slot Release uint32_t
+method 0x0097f074 uint32_t Fn0097f074(uint32_t)

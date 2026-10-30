@@ -116,6 +116,19 @@ struct Vec3Bits_aa4900 {
     }
 };
 
+// The same default as floats: copied through three registers, as the original does.
+// GLOBAL: 0x00b231a0
+extern float gfB231a0_aa4900;
+struct Vec3F_aa4900 {
+    float mValues[3];
+    Vec3F_aa4900()
+    {
+        mValues[0] = gfB231a0_aa4900;
+        mValues[1] = gfB231a0_aa4900;
+        mValues[2] = gfB231a0_aa4900;
+    }
+};
+
 // The random number source at 0x00b231b0.
 struct Rng_aa4900 {
     // STUB: 0x00913a06
@@ -1548,22 +1561,20 @@ void cOccPart_aa4868::GetCenter(float* pOut)
     pOut[2] = (mBoxMax[2] + mBoxMin[2]) * 0.5f;
 }
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x005ed220 score 6
+// FUNCTION: 0x005ed220
 void cPropOcc_aa4900::SetSize(const float* pSize)
 {
-    Vec3Bits_aa4900 center;
+    Vec3F_aa4900 center;
     cOccPart_aa4868* pOcc = OccPartOf_aa4900(this);
-    pOcc->GetCenter(reinterpret_cast<float*>(&center));
+    pOcc->GetCenter(center.mValues);
     mBoxMin[0] = 0;
     mBoxMin[1] = 0;
     mBoxMin[2] = 0;
     mBoxMax[0] = pSize[0];
     mBoxMax[1] = pSize[1];
     mBoxMax[2] = pSize[2];
-    pOcc->SetCenter(reinterpret_cast<float*>(&center));
+    pOcc->SetCenter(center.mValues);
 }
-#endif
 
 // FUNCTION: 0x005eca50
 void cPropOcc_aa4900::SetPropTimerState(uint8_t mask, bool bSet)

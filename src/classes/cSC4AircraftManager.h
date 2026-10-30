@@ -22,7 +22,7 @@ public:
     virtual bool Slot03_a8298c(uint32_t);
     virtual bool Init();
     virtual bool Shutdown();
-    virtual bool AddAutomaton(uint32_t);
+    virtual bool AddAutomaton(void*);
     virtual uint32_t Dispatch(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Dispatch_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool HandleTuningParametersChanged();

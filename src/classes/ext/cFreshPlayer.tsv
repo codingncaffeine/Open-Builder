@@ -1,0 +1,55 @@
+field 8 bool mbInitialized
+field c int32_t mnRefCount
+field 10 void* mpRandom
+field 14 int32_t mnVolume
+field 1c void* mpScore
+field 20 bool mbPlaying
+field 21 bool mbManual
+field 28 int32_t mnCol
+field 2c int32_t mnRow
+field 30 int32_t mn30
+field 34 int32_t mnZoom
+field 38 int32_t mnCellsBusy
+field 3c int32_t mn3c
+field 40 int32_t mn40
+field 44 int32_t mn44
+field 48 int32_t mn48
+field 4c int32_t mn4c
+field 50 int32_t mnPlayersBusy
+field 54 int32_t mnMaxDistCol
+field 58 int32_t mnMaxDistRow
+field 5c int32_t mnSelRow
+field 60 int32_t mnSelCol
+field 64 int32_t mn64
+field 68 int32_t mn68
+field 6c int32_t mnListenerA
+field 70 int32_t mnListenerB
+field 74 void* mpCells[4096]
+field 4088 int32_t mnPlayPercent
+field 4091 bool mbFading
+field 4094 void* mpFade
+field 40bd bool mbDivisionEnabled[9]
+slot GetMaxCellsPlaying uint32_t
+method 0x009475fb int32_t Fn009475fb(uint32_t)
+method 0x009476c3 void UpdatePlayerInfo()
+field 24 int32_t mnTempo
+slot SetManual bool bool
+slot SetDivisionEnabled bool uint32_t uint32_t bool
+field 18 void* mpTimer
+field 4074 cRZString mDataDir
+field 40a4 int32_t mnMinDistance
+field 40a8 int32_t mnMaxDistance
+field 40b4 uint32_t mnNumDivisionsX
+field 40b8 uint32_t mnNumDivisionsZ
+field 40c8 int32_t mnDivisionX[9]
+field 40ec int32_t mnDivisionY[9]
+field 4110 int32_t mnDivisionZ[9]
+method 0x00947ad9 bool CalculateCellplayer3DPosition(void*)
+slot Slot38_ad4b48 bool void*
+slot LoadScore bool void* uint32_t
+slot Init_3 bool void* void*
+slot GetDataDir bool void*
+slot SetKey void const void*
+slot GetCellPlayer void* uint32_t uint32_t uint32_t
+field 40ac uint32_t mnCurDivX
+field 40b0 uint32_t mnCurDivZ

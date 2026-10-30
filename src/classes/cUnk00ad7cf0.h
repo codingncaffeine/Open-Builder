@@ -14,9 +14,9 @@ public:
     virtual ~cUnk00ad7cf0();
     virtual void Slot57_ad7cf0(uint32_t, uint32_t, uint32_t);
     virtual void Slot58_ad7cf0(uint32_t, uint32_t, uint32_t);
-    virtual uint32_t Slot59_ad7cf0(uint32_t);
-    virtual uint32_t Slot60_ad7cf0(uint32_t);
-    virtual uint32_t Slot61_ad7cf0(uint32_t);
+    virtual void* Slot59_ad7cf0(uint32_t);
+    virtual void* Slot60_ad7cf0(uint32_t);
+    virtual void* Slot61_ad7cf0(uint32_t);
     virtual bool GetFieldFloat64_2(uint32_t);
     virtual bool GetFieldResKey(uint32_t);
     virtual bool Slot17_ad1818(uint32_t, uint32_t);
@@ -79,7 +79,8 @@ public:
     virtual uint32_t Slot01_ad9030();
     virtual uint32_t Slot02_ad9030();
     virtual void Slot10_ad9030();
-    char unknown3c[0x4];
+    uint8_t mbNoSwap;
+    char unknown3d[0x3];
 };
 
 #endif

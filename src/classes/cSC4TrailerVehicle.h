@@ -31,9 +31,9 @@ public:
     virtual bool Slot04_a953a8();
     virtual void Slot66_a953a8(uint32_t);
     virtual bool DoAnimationTick(uint32_t, uint32_t);
-    virtual bool ShouldCollide(uint32_t);
-    virtual void SetAutomataGroup(uint32_t);
-    virtual void SetPath(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool ShouldCollide(void*);
+    virtual void SetAutomataGroup(void*);
+    virtual void SetPath(void*, void*, void*, bool);
     virtual void ShowHeadlights(uint32_t, uint32_t);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);

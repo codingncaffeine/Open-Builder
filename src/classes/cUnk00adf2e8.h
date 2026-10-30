@@ -57,7 +57,17 @@ public:
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
     uint32_t field230;
-    char unknown234[0x2c];
+    void* mpValuesBegin;
+    void* mpValuesEnd;
+    void* mpValuesCap;
+    void* mpSeriesBegin;
+    void* mpSeriesEnd;
+    void* mpSeriesCap;
+    void* mpLabelsBegin;
+    void* mpLabelsEnd;
+    void* mpLabelsCap;
+    cIGZUnknown* mpFont;
+    uint32_t mnFontColor;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adf2e8[sizeof(cUnk00adf2e8) == 0x260 ? 1 : -1];

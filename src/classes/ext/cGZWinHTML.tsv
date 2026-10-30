@@ -1,0 +1,29 @@
+field ec int32_t mnOffsetX
+field f0 int32_t mnOffsetY
+field fc int32_t mnViewRect[4]
+field 11c uint32_t mnFillColor
+field 148 void* mpDocument
+field 180 uint32_t mnFlags
+field 184 int32_t mnGutter[4]
+field 1a4 void* mpVScroll
+field 1a8 void* mpHScroll
+field 1ac void* mpVScrollImage
+field 1b0 void* mpHScrollImage
+field 1b4 int32_t mnVScrollRect[4]
+field 1c4 int32_t mnHScrollRect[4]
+field 460 void* mpWWW
+field 464 uint32_t mnLoadState
+method 0x008fa57d bool PickElement(uint32_t, int32_t, int32_t)
+method 0x008fa6f3 void RemoveScrollBar(bool, bool)
+method 0x008fa776 void SetScrollBarValues(bool)
+method 0x008fa559 void Fn008fa559()
+method 0x008fbde4 bool InternalSetDocument(uint32_t, uint32_t)
+method 0x008fac01 bool SetHTMLPaintArea()
+field e0 void* mpOwner
+field e8 uint32_t mnE8
+field 164 void* mpFont164
+field 168 void* mpFont168
+field 16c cRZString mMissingImage
+field 1d8 void* mp1d8
+method 0x008fafa2 bool AddScrollBar(bool, bool)
+method 0x008fb31a bool TestForPossibleScrollBarAdditionOrRemoval()

@@ -62,6 +62,8 @@ public:
     virtual void Slot07_ac14e8(uint32_t, uint32_t);
     virtual void Slot08_ac14e8();
     virtual void Slot09_ac14e8(uint32_t);
+    // STUB: 0x0082abf0
+    uint32_t Fn0082abf0(uint32_t);
     char unknown10[0x8];
     char field18[0x18];
     uint32_t field30;

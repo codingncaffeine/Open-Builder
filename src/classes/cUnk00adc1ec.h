@@ -57,7 +57,18 @@ public:
     virtual bool Slot42_adc078(uint32_t, uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknown20[0x74];
+    // STUB: 0x00996d25
+    uint32_t getFontOrSystemFont(uint32_t);
+    bool mbInitialized;
+    char unknown21[0x3];
+    void* mpColors;
+    void* mpChild;
+    uint8_t mMapE[0x14];
+    uint8_t mMapA[0x14];
+    uint8_t mMapB[0x14];
+    uint8_t mMapC[0x14];
+    uint8_t mMapD[0x14];
+    void* mpCreators;
     uint32_t field94;
 };
 #ifdef _MSC_VER

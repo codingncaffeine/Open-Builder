@@ -1,0 +1,10 @@
+slot Slot23_a8f7f0 void uint32_t uint32_t uint32_t
+slot Slot22_a8f7f0 void uint32_t uint32_t uint32_t
+slot Slot34_a8f7f0 bool uint32_t uint32_t uint32_t uint32_t
+slot Slot42_a8f7f0 bool uint32_t uint32_t uint32_t uint32_t uint32_t
+slot GetOccupantsByStandardCityCells bool uint32_t uint32_t uint32_t uint32_t uint32_t
+slot IterateOccupantsByStandardCityCell_2 bool uint32_t uint32_t uint32_t uint32_t uint32_t
+method 0x0049dac0 void Fn0049dac0(uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x0049ee80 void* GetOccupantList(int32_t, int32_t, bool)
+method 0x0049f7c0 void* GetOccupantListFor(uint32_t, uint32_t, uint32_t)
+slot Slot20_a8f7f0 bool uint32_t

@@ -1,0 +1,30 @@
+field dc uint32_t mnDC
+field e0 uint32_t mnCursor
+field e4 uint32_t mnSelStart
+field e8 uint32_t mnSelEnd
+field ec uint32_t mnEC
+field f0 cRZString mText
+field 108 void* mpFont
+field 10c int32_t mnFontHeight
+field 110 uint32_t mnFontColor[3]
+field 11c int32_t mnOutlineStyle
+field 120 uint32_t mnOutlineColor[4]
+field 130 uint32_t mnHighlightFill
+field 134 float mfHighlightAlpha
+field 138 bool mbFilled
+field 139 bool mbEditable
+field 13c uint32_t mnCharLimit
+field 140 int8_t mnGutter[4]
+field 144 int32_t mnSoundID[3]
+method 0x0099bf14 void* GetCursorManager_ae0fb0()
+field 104 bool mbSending
+method 0x009c5f4e void send_line_input_completed_msg()
+method 0x009c5f72 void send_line_input_changed_msg()
+method 0x009c5feb void paint_outline()
+method 0x009c610b uint32_t FindTextIndexFromCursorLocation(int32_t)
+method 0x009c61d1 bool UpdateViewLocation()
+method 0x009c647a bool DeleteChar(uint32_t, uint32_t)
+method 0x009c69e0 void draw_text(int32_t, int32_t, int32_t, int32_t, uint32_t)
+method 0x009c6f14 bool InsertChar(uint32_t, uint32_t)
+method 0x0099bdfe bool GZSetCapture_ae0fb0()
+method 0x0099bdf3 void* Fn0099bdf3()

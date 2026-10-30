@@ -20,8 +20,8 @@ public:
     virtual uint32_t Slot05_a80784();
     virtual bool Slot03_a953a8();
     virtual bool Slot04_a953a8();
-    virtual bool DoStopAtStationTick(uint32_t);
-    virtual bool HandleExitNetwork(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool DoStopAtStationTick(float);
+    virtual bool HandleExitNetwork(void*, uint32_t, void*, void*);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
 };

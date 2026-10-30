@@ -6,6 +6,7 @@
 #include "common/types.h"
 #include "classes/cGZWin.h"
 #include "classes/cUnk00adda20.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00addd50 cUnk00adda20
 // VTABLE: 0x00addaf0 cGZWin
@@ -83,11 +84,58 @@ public:
     virtual void* Slot50_adda20();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknowndc[0x58];
-    uint32_t field134;
-    char unknown138[0x3c];
-    uint32_t field174;
-    char unknown178[0x3c];
+    // STUB: 0x009b13dd
+    bool set_btn_flag(int32_t, uint32_t);
+    // STUB: 0x009b101e
+    bool hide_tip();
+    // STUB: 0x009b0c08
+    bool on_layout(int32_t, int32_t);
+    // STUB: 0x009b071a
+    void Fn009b071a(uint32_t);
+    // STUB: 0x009b0b87
+    void Fn009b0b87(void*);
+    // STUB: 0x009b09b7
+    void update_text_size();
+    // STUB: 0x009b0575
+    bool btn_paint_bmp();
+    // STUB: 0x009b066c
+    bool btn_paint_flat();
+    // STUB: 0x009b1541
+    void btn_paint_label();
+    // STUB: 0x009b1ac0
+    bool show_tip();
+    uint32_t mnBtnFlags;
+    char unknowne0[0x14];
+    int16_t msLabelX;
+    int16_t msLabelY;
+    int16_t msTextX;
+    int16_t msTextY;
+    uint32_t mnAlign;
+    int16_t msAlignCode;
+    uint8_t mnMarginL;
+    uint8_t mnMarginT;
+    uint8_t mnMarginR;
+    uint8_t mnMarginB;
+    char unknown106[0x2];
+    uint32_t mpFontObj;
+    uint32_t mnFontId;
+    uint32_t mnColors[6];
+    uint32_t mnSounds[3];
+    int32_t mnMode;
+    uint32_t mnLayout;
+    int32_t mnRect[4];
+    int32_t mnLabelX;
+    int32_t mnLabelY;
+    int32_t mnLabelZ;
+    uint32_t mpBitmap;
+    cRZString mText;
+    uint32_t mnTipId;
+    uint32_t mn174;
+    int16_t msPosX;
+    int16_t msPosY;
+    uint32_t mnTextColors[3];
+    uint32_t mnFlash;
+    uint8_t mFlashTimer[0x28];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00addd50[sizeof(cUnk00addd50) == 0x1b4 ? 1 : -1];

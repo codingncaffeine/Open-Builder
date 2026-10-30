@@ -1,0 +1,6 @@
+slot Slot03_ac8d7c void*
+slot Slot06_ac8d7c uint32_t void* uint32_t uint32_t
+slot Slot08_ac8d7c bool int32_t int32_t void*
+slot Slot09_ac8d7c void* int32_t
+slot Slot13_ac8d7c void void* bool
+slot Slot14_ac8d7c void*

@@ -20,4 +20,6 @@ HANDLE __stdcall CreateThread(LPVOID, DWORD, LPTHREAD_START_ROUTINE, LPVOID, DWO
 void __stdcall Sleep(DWORD) {}
 int __stdcall FreeLibrary(HMODULE) { return 0; }
 HMODULE __stdcall GetModuleHandleA(LPCSTR) { return 0; }
+DWORD __stdcall GetUserDefaultLCID() { return 0; }
+BOOL __stdcall SetEnvironmentVariableA(LPCSTR, LPCSTR) { return 0; }
 }

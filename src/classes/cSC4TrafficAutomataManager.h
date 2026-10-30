@@ -17,25 +17,25 @@ public:
     virtual void RecalculateLeaders(uint32_t);
     virtual bool DispatchResponseAutomata(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot71_a9bd88(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot72_a9bd88(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Slot72_a9bd88(void*, void*, uint32_t, float, void*);
     virtual uint32_t Slot73_a9bd88(uint32_t);
     virtual uint32_t Slot74_a9bd88(uint32_t);
-    virtual void Slot75_a9bd88(uint32_t);
-    virtual void Slot76_a9bd88();
+    virtual float Slot75_a9bd88(uint32_t);
+    virtual void Slot76_a9bd88(float);
     virtual void Slot77_a9bd88();
     virtual void Slot78_a9bd88();
     virtual bool Slot79_a9bd88(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot80_a9bd88();
-    virtual void Slot81_a9bd88();
-    virtual void IsOffscreenEntryEdge(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot83_a9bd88();
+    virtual void Slot81_a9bd88(void*, uint32_t);
+    virtual bool IsOffscreenEntryEdge(void*, int32_t, int32_t, uint8_t);
+    virtual bool Slot83_a9bd88();
     virtual bool UpdateResponseList(uint32_t);
-    virtual uint32_t Slot85_a9bd88(uint32_t);
+    virtual void* Slot85_a9bd88(uint32_t);
     virtual float Slot86_a9bd88(uint32_t);
-    virtual float Slot87_a9bd88(uint32_t, uint32_t);
-    virtual void Slot88_a9bd88();
+    virtual float Slot87_a9bd88(void*, uint32_t);
+    virtual void Slot88_a9bd88(void*, void*, float, void*);
     virtual bool PopulateNetworkOccupantForCrimeLayer(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void GetDispatchDestinationPoint(uint32_t, uint32_t);
+    virtual bool GetDispatchDestinationPoint(void*, void*);
     virtual uint32_t Slot91_a9bd88(uint32_t, uint32_t);
     virtual bool Slot03_a80784(void*);
     virtual bool Slot04_a80784(void*);
@@ -45,14 +45,27 @@ public:
     virtual bool GetRandomCreationPoint(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Dispatch(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Dispatch_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool IsAutomatonOnscreen(uint32_t);
+    virtual bool IsAutomatonOnscreen(void*);
     virtual bool HandleRemoveNetworkOccupant(uint32_t);
-    virtual bool Slot53_a95880(uint32_t);
+    virtual bool Slot53_a95880(void*);
     virtual bool HandleRemoveOccupant(uint32_t);
     virtual void HandlePostCityInit();
     virtual void DoAnimationTick(uint32_t, uint32_t);
     virtual void ScanExemplars();
-    char unknowna88[0x38];
+    // STUB: 0x0054dd50
+    void Fn0054dd50(uint32_t, void*, uint32_t, void*);
+    // STUB: 0x004fc900
+    bool Fn004fc900(uint32_t);
+    void* mpA88;
+    uint32_t mnA8c;
+    uint32_t mnA90;
+    char unknowna94[0x8];
+    uint32_t mnA9c;
+    uint32_t mnAa0;
+    char unknownaa4[0x4];
+    void* mpRespBegin;
+    void* mpRespEnd;
+    char unknownab0[0x10];
 };
 
 // SYNTHETIC: 0x00545670

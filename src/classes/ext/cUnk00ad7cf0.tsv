@@ -1,0 +1,4 @@
+slot Slot59_ad7cf0 void* uint32_t
+slot Slot60_ad7cf0 void* uint32_t
+slot Slot61_ad7cf0 void* uint32_t
+field 3c uint8_t mbNoSwap

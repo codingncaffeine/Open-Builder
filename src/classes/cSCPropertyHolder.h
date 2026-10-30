@@ -34,7 +34,8 @@ public:
     virtual ~cSCPropertyHolder() {}
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
-    char unknown4[0x10];
+    uint32_t mnRefCount;
+    char unknown8[0xc];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSCPropertyHolder[sizeof(cSCPropertyHolder) == 0x14 ? 1 : -1];

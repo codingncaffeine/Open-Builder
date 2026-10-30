@@ -1,0 +1,27 @@
+field dc uint32_t mnWinFlags
+field e0 uint32_t mnCaptured
+field e8 uint32_t mnGutterW2
+field ec uint32_t mnGutterH2
+field f0 cGZWin* mpTitleBar
+field f4 uint32_t mnBgBlitType
+field f8 void* mpBackground
+field fc int32_t mUserRect[4]
+field 10c void* mpMsgTarget
+field 114 uint8_t mnGutterX
+field 115 uint8_t mnGutterY
+method 0x0099922f bool calc_user_area(int32_t, int32_t, void*)
+method 0x009992ae bool calc_win_area(const void*, void*)
+method 0x0099933c bool destroy_title_bar()
+method 0x009993d7 bool destroy_side_bar()
+method 0x009993f7 bool kill_self(int32_t)
+method 0x00999bdd uint32_t place_controls()
+method 0x00999c15 uint32_t calc_size_mode(int32_t, int32_t)
+method 0x00999d43 bool on_layout()
+method 0x00999eb9 bool create_side_bar()
+method 0x0099a96e bool create_title_bar()
+field e4 uint32_t mnFlagE4
+field 118 void* mpCursorRef
+field 11c uint32_t mpUserMapHead
+field 120 uint32_t mnUserMapCount
+method 0x0099bdfe bool GZSetCapture_2()
+method 0x0099bf14 void* GetCursorManager()

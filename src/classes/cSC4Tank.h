@@ -21,8 +21,8 @@ public:
     virtual bool Slot03_a953a8();
     virtual bool Slot04_a953a8();
     virtual bool Slot60_a953a8(uint32_t, uint32_t);
-    virtual bool HandleExitState(uint32_t);
-    virtual bool TranslatePlayerDriveCommands(uint32_t, uint32_t);
+    virtual bool HandleExitState(void*);
+    virtual bool TranslatePlayerDriveCommands(void*, float);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
     char unknown2b8[0xc];

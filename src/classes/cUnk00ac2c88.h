@@ -9,6 +9,7 @@
 #include "classes/cUnk00ac2bc0.h"
 #include "classes/cUnk00ac2bdc.h"
 #include "classes/cUnk00ac2bf0.h"
+#include "gzcom/cRZString.h"
 
 // The subobject at +0x0 (vtable 0x00ac2c88): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ac2c88_0 {
@@ -23,7 +24,7 @@ struct OB_NOVTABLE cUnk00ac2c88_0 {
     virtual bool Slot08_ac2c88() = 0;
     virtual void Slot09_ac2c88() = 0;
     virtual bool Slot10_ac2c88() = 0;
-    virtual void Slot11_ac2c88() = 0;
+    virtual uint32_t Slot11_ac2c88() = 0;
     virtual uint32_t Slot12_ac2c88() = 0;
     virtual void Slot13_ac2c88(uint32_t) = 0;
     virtual bool Slot14_ac2c88() = 0;
@@ -32,13 +33,13 @@ struct OB_NOVTABLE cUnk00ac2c88_0 {
     virtual void Slot17_ac2c88(uint32_t) = 0;
     virtual void Slot18_ac2c88() = 0;
     virtual uint32_t Slot19_ac2c88() = 0;
-    virtual void Slot20_ac2c88() = 0;
+    virtual uint32_t Slot20_ac2c88() = 0;
     virtual bool Slot21_ac2c88(uint32_t) = 0;
     virtual bool Slot22_ac2c88(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot23_ac2c88() = 0;
     virtual uint32_t Slot24_ac2c88() = 0;
     virtual bool Slot25_ac2c88(uint32_t) = 0;
-    virtual void Slot26_ac2c88() = 0;
+    virtual uint32_t Slot26_ac2c88() = 0;
     virtual bool Slot27_ac2c88(uint32_t) = 0;
     virtual uint32_t Slot28_ac2c88() = 0;
     virtual bool Slot29_ac2c88(uint32_t, uint32_t) = 0;
@@ -97,7 +98,7 @@ public:
     virtual bool Slot08_ac2c88();
     virtual void Slot09_ac2c88();
     virtual bool Slot10_ac2c88();
-    virtual void Slot11_ac2c88();
+    virtual uint32_t Slot11_ac2c88();
     virtual uint32_t Slot12_ac2c88();
     virtual void Slot13_ac2c88(uint32_t);
     virtual bool Slot14_ac2c88();
@@ -106,13 +107,13 @@ public:
     virtual void Slot17_ac2c88(uint32_t);
     virtual void Slot18_ac2c88();
     virtual uint32_t Slot19_ac2c88();
-    virtual void Slot20_ac2c88();
+    virtual uint32_t Slot20_ac2c88();
     virtual bool Slot21_ac2c88(uint32_t);
     virtual bool Slot22_ac2c88(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot23_ac2c88();
     virtual uint32_t Slot24_ac2c88();
     virtual bool Slot25_ac2c88(uint32_t);
-    virtual void Slot26_ac2c88();
+    virtual uint32_t Slot26_ac2c88();
     virtual bool Slot27_ac2c88(uint32_t);
     virtual uint32_t Slot28_ac2c88();
     virtual bool Slot29_ac2c88(uint32_t, uint32_t);
@@ -137,25 +138,49 @@ public:
     virtual bool Slot49_ac2c88(uint32_t);
     virtual bool Slot50_ac2c88(uint32_t);
     virtual void Slot13_ad3e48(uint32_t);
+    // STUB: 0x008760c3
+    void Fn008760c3();
+    // STUB: 0x008769cc
+    uint32_t Fn008769cc();
+    // STUB: 0x00877102
+    void Fn00877102();
+    // STUB: 0x00877177
+    void Fn00877177();
+    // STUB: 0x00877585
+    void Fn00877585();
     void* mpHandle;
     char unknown1c[0x14];
     uint32_t field30;
-    uint8_t mName[0x14];
-    char unknown48[0x3];
-    bool field4b;
-    char unknown4c[0x14];
+    cRZString mName;
+    uint8_t mbF48;
+    uint8_t mbF49;
+    uint8_t mbF4a;
+    uint8_t mbF4b;
+    uint8_t mbF4c;
+    uint8_t mbF4d;
+    uint8_t mbF4e;
+    char unknown4f[0x1];
+    int32_t mnVolume;
+    uint8_t mbF54;
+    char unknown55[0x7];
+    uint32_t mnF5c;
     int32_t mnBits;
-    uint8_t mLock[0x10];
-    char unknown74[0x8];
+    uint8_t mLock[0xc];
+    int32_t mnPlayStep;
+    int32_t mnPlayEnd;
+    void* mpListener;
     uint32_t field7c;
     uint32_t maBuffers[8];
     uint32_t mnBufferBytes;
     uint32_t mFormat[5];
     void* mpRecord;
-    char unknownbc[0x4];
+    uint8_t mbBC;
+    char unknownbd[0x3];
     uint32_t mnC0;
     uint32_t mnFlags;
-    char unknownc8[0x8];
+    uint32_t mnRefCount;
+    uint8_t mbCC;
+    char unknowncd[0x3];
     void* mpOwner;
     void* mpSinkHolder;
 };

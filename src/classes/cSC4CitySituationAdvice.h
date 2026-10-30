@@ -77,6 +77,10 @@ public:
     virtual bool Slot53_a843c8(uint32_t);
     virtual void Slot54_a843c8(uint32_t);
     virtual void Slot55_a843c8();
+    // STUB: 0x004230d0
+    uint32_t ReadUint32FromTable(const char*);
+    // STUB: 0x00424600
+    void* ReadStringFromTable(const char*);
     uint32_t fieldc4;
     float fieldc8;
     float fieldcc;

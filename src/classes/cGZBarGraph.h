@@ -60,9 +60,20 @@ public:
     virtual uint32_t Slot39_adde50();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    uint32_t field230;
-    uint32_t field234;
-    char unknown238[0x30];
+    uint32_t mnLayoutMode;
+    uint32_t mnHorizontal;
+    void* mpDataBegin;
+    void* mpDataEnd;
+    void* mpDataCap;
+    void* mpSeriesBegin;
+    void* mpSeriesEnd;
+    void* mpSeriesCap;
+    void* mpNamesBegin;
+    void* mpNamesEnd;
+    void* mpNamesCap;
+    float mfBarSpacing;
+    float mfBarWidth;
+    float mfBarWidthPct;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZBarGraph[sizeof(cGZBarGraph) == 0x268 ? 1 : -1];

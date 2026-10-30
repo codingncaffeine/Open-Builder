@@ -19,7 +19,7 @@ public:
     virtual void Slot10_aa8748(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot16_aa8748();
     virtual uint32_t Slot20_aa8748();
-    virtual void GetFailureReasonString_2(uint32_t, uint32_t);
+    virtual void GetFailureReasonString_2(uint32_t, void*);
     virtual bool DoNetworkSpecificPlacement(uint32_t, uint32_t);
     char unknown368[0x50];
 };

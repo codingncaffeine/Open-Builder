@@ -30,10 +30,10 @@ public:
     virtual bool Slot60_a953a8(uint32_t, uint32_t);
     virtual bool DoAnimationTick(uint32_t, uint32_t);
     virtual void UpdateEffects();
-    virtual bool HandleEnterState(uint32_t);
-    virtual bool HandleExitState(uint32_t);
-    virtual bool DoPlayerDriveTick(uint32_t);
-    virtual bool TranslatePlayerDriveCommands(uint32_t, uint32_t);
+    virtual bool HandleEnterState(void*);
+    virtual bool HandleExitState(void*);
+    virtual bool DoPlayerDriveTick(float);
+    virtual bool TranslatePlayerDriveCommands(void*, float);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
     char unknown1ec[0x144];

@@ -27,10 +27,10 @@ public:
     virtual bool Slot03_a953a8();
     virtual bool Slot04_a953a8();
     virtual bool DoAnimationTick(uint32_t, uint32_t);
-    virtual uint32_t GetDebugExtraText();
-    virtual bool HandleEnterState(uint32_t);
-    virtual bool DoPlayerDriveTick(uint32_t);
-    virtual bool TranslatePlayerDriveCommands(uint32_t, uint32_t);
+    virtual void* GetDebugExtraText();
+    virtual bool HandleEnterState(void*);
+    virtual bool DoPlayerDriveTick(float);
+    virtual bool TranslatePlayerDriveCommands(void*, float);
     virtual void InitGhostModel();
     virtual void ShutdownGhostModel();
     virtual void UpdateGhostModel();

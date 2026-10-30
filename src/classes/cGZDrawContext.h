@@ -14,52 +14,109 @@ public:
     virtual uint32_t Release();
     virtual void PushTransform();
     virtual void ClipReset();
-    virtual void Clip(uint32_t);
-    virtual void ClipAbsolute(uint32_t);
-    virtual void Offset(uint32_t);
-    virtual void OffsetAbsolute(uint32_t);
+    virtual void Clip(const void*);
+    virtual void ClipAbsolute(const void*);
+    virtual void Offset(const void*);
+    virtual void OffsetAbsolute(const void*);
     virtual void PopTransform();
     virtual void PushState();
     virtual void PopState();
-    virtual void Slot12_ac16c8(uint32_t);
-    virtual void Slot13_ac16c8(uint32_t);
-    virtual void Slot14_ac16c8(uint32_t);
+    virtual void Slot12_ac16c8(void*);
+    virtual void Slot13_ac16c8(void*);
+    virtual void Slot14_ac16c8(void*);
     virtual uint32_t GetTransformStackDepth();
     virtual bool IsTargetAttached();
-    virtual void SetTarget(uint32_t);
+    virtual void SetTarget(void*);
     virtual uint32_t GetEngine();
     virtual void Slot19_ac16c8();
     virtual void SetColor(uint32_t, uint32_t);
     virtual void SetColor_2(uint32_t);
-    virtual void SetAlphaBlend(uint32_t);
-    virtual void SetBltModulate(uint32_t);
-    virtual void SetAntialiasing(uint32_t);
-    virtual void SetLineThickness(uint32_t);
+    virtual void SetAlphaBlend(int32_t);
+    virtual void SetBltModulate(bool);
+    virtual void SetAntialiasing(bool);
+    virtual void SetLineThickness(float);
     virtual void ClearGradient();
     virtual void Slot27_ac16c8();
     virtual void ClearBlt();
-    virtual void SetBlt(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void SetBlt(void*, float, float, float, float);
     virtual void ClearBltTiling();
-    virtual void SetBltTiling(uint32_t);
+    virtual void SetBltTiling(const void*);
     virtual void Clear();
-    virtual void Point(uint32_t, uint32_t);
-    virtual void Line(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Fill(uint32_t);
-    virtual void Ellipse(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void FillEllipse(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Blt(uint32_t, uint32_t, uint32_t);
-    virtual void BltTiled(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void Point(int32_t, int32_t);
+    virtual void Line(int32_t, int32_t, int32_t, int32_t);
+    virtual void Fill(const void*);
+    virtual void Ellipse(int32_t, int32_t, int32_t, int32_t);
+    virtual void FillEllipse(int32_t, int32_t, int32_t, int32_t);
+    virtual void Blt(void*, const void*, const void*);
+    virtual void BltTiled(void*, const void*, const void*, int32_t, int32_t);
     virtual void Slot40_ac16c8();
     virtual bool IsSuspended();
     virtual void Slot42_ac16c8();
     virtual void Resume();
-    virtual void Slot44_ac16c8(uint32_t, uint32_t, uint32_t);
-    virtual void Slot45_ac16c8(uint32_t, uint32_t, uint32_t);
+    virtual void Slot44_ac16c8(uint32_t, const void*, uint32_t);
+    virtual void Slot45_ac16c8(uint32_t, const void*, uint32_t);
     virtual void Slot46_ac16c8();
     virtual void Slot47_ac16c8();
-    char unknown4[0x24];
-    uint32_t field28;
-    char unknown2c[0x9c];
+    // STUB: 0x0082ca40
+    void Fn0082ca40();
+    // STUB: 0x0082cae0
+    void Fn0082cae0(const void*, uint32_t);
+    // STUB: 0x0082f970
+    void Fn0082f970(const void*, uint32_t);
+    // STUB: 0x0082eba0
+    void Fn0082eba0(const void*, uint32_t);
+    // STUB: 0x0082fbe0
+    void Fn0082fbe0(const void*, uint32_t);
+    // STUB: 0x0082fa50
+    void Fn0082fa50(const void*, uint32_t);
+    // STUB: 0x0082faa0
+    void Fn0082faa0(const void*, uint32_t);
+    // STUB: 0x0082e9d0
+    void Fn0082e9d0(const void*, uint32_t);
+    // STUB: 0x0082faf0
+    void Fn0082faf0(const void*, uint32_t);
+    // STUB: 0x0082ea20
+    void Fn0082ea20(const void*, uint32_t);
+    // STUB: 0x0082fb90
+    void Fn0082fb90(const void*, uint32_t);
+    // STUB: 0x0082fb40
+    void Fn0082fb40(const void*, uint32_t);
+    uint32_t mnColor[4];
+    uint32_t mnNative[4];
+    void* mpBuffer;
+    void* mpEngine;
+    float mfOffsetX;
+    float mfOffsetY;
+    int32_t mnClip[4];
+    uint8_t mbAntialias;
+    uint8_t mbModulate;
+    char unknown46[0x2];
+    int32_t mnAlphaBlend;
+    float mfLineThickness;
+    int32_t mnLineThickness;
+    int32_t mnBaseClip[4];
+    int32_t mnBltRect[4];
+    uint8_t mbBlt;
+    uint8_t mbBltTiling;
+    char unknown76[0x2];
+    int32_t mnSuspend;
+    uint8_t* mpTransformBegin;
+    uint8_t* mpTransformEnd;
+    uint8_t* mpTransformCap;
+    uint8_t* mpStateBegin;
+    uint8_t* mpStateEnd;
+    uint8_t* mpStateCap;
+    uint8_t* mpVec94;
+    char unknown98[0x8];
+    uint8_t* mpVecA0;
+    uint8_t* mpVecA4;
+    uint8_t* mpVecA8;
+    uint8_t* mpVecAC;
+    uint8_t* mpVecB0;
+    uint8_t* mpVecB4;
+    uint8_t* mpVecB8;
+    char unknownbc[0x8];
+    int32_t mnRefCount;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZDrawContext[sizeof(cGZDrawContext) == 0xc8 ? 1 : -1];

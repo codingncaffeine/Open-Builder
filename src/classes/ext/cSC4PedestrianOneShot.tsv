@@ -1,0 +1,26 @@
+slot GetDetectCollisions bool
+slot SetDetectCollisions void bool
+slot FindLeader void*
+slot DoPathTick bool float
+slot DoStopSignTick bool float
+slot DoStopAtStationTick bool float
+slot ChooseRandomPath bool void* uint32_t
+slot HandleExitNetwork bool void* uint32_t void* void*
+slot SetPath void void* void* void* bool
+slot SetRouteInfo bool void* bool bool
+slot BeginRoute bool bool
+slot DoStateTick bool float
+slot HandleEnterState bool void*
+slot HandleExitState bool void*
+field 1e4 uint32_t mnMode1e4
+field 1e8 bool mb1e8
+field 1ec void* mpObj1ec
+field 1fc void* mpNetOcc1fc
+field 200 float mfPathOffset
+method 0x0054ea30 bool Fn0054ea30()
+method 0x00554640 void Fn00554640()
+slot UpdateOrientation void void* void*
+slot GetStopPoint bool void*
+slot GetPathKey void* void*
+field 1f0 void* mpPathSrc1f0
+field 1f4 uint32_t mnKey1f4

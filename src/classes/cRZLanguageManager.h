@@ -62,10 +62,11 @@ public:
     virtual bool Slot45_ad1198(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknown20[0x10];
-    uint32_t field30;
-    uint32_t field34;
-    char unknown38[0x28];
+    char unknown20[0x4];
+    uint8_t mAvailable[0xc];
+    uint32_t mnLanguage;
+    uint32_t mnLanguage2;
+    uint8_t mUtility[0x28];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cRZLanguageManager[sizeof(cRZLanguageManager) == 0x60 ? 1 : -1];

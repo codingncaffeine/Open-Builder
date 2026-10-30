@@ -18,8 +18,8 @@ public:
     virtual bool Init();
     virtual uint32_t Slot05_a95d90();
     virtual void Slot16_a95d90(uint32_t);
-    virtual bool HandleEnterState(uint32_t, uint32_t);
-    virtual bool HandleExitState(uint32_t, uint32_t);
+    virtual bool HandleEnterState(void*, uint32_t);
+    virtual bool HandleExitState(void*, uint32_t);
     virtual void FinalRelease();
     char unknown5c[0x10];
 };

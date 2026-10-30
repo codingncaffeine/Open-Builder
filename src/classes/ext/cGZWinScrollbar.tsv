@@ -1,0 +1,11 @@
+field 128 uint32_t mnLineCount
+field 12c uint32_t mnPageCount
+field 130 uint8_t mTimer[0x18]
+field 148 int32_t mnPressedPart
+field 14c bool mbPressedHot
+slot GetCurrentLine uint32_t
+slot GetCurrentPage uint32_t
+slot Slot162_ae0810 uint32_t
+slot Slot163_ae0810 uint32_t
+method 0x009c40f4 bool PaintBmp()
+method 0x009c4342 bool PaintFlat()

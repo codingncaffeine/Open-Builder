@@ -1,0 +1,67 @@
+slot Slot12_ac16c8 void void*
+slot Slot13_ac16c8 void void*
+slot Slot14_ac16c8 void void*
+slot Offset void const void*
+slot OffsetAbsolute void const void*
+slot Clip void const void*
+slot ClipAbsolute void const void*
+slot SetTarget void void*
+slot SetAlphaBlend void int32_t
+slot SetBltModulate void bool
+slot SetAntialiasing void bool
+slot SetLineThickness void float
+slot SetBlt void void* float float float float
+slot SetBltTiling void const void*
+slot Point void int32_t int32_t
+slot Line void int32_t int32_t int32_t int32_t
+slot Fill void const void*
+slot Ellipse void int32_t int32_t int32_t int32_t
+slot FillEllipse void int32_t int32_t int32_t int32_t
+slot Blt void void* const void* const void*
+slot BltTiled void void* const void* const void* int32_t int32_t
+slot Slot44_ac16c8 void uint32_t const void* uint32_t
+slot Slot45_ac16c8 void uint32_t const void* uint32_t
+field 4 uint32_t mnColor[4]
+field 14 uint32_t mnNative[4]
+field 24 void* mpBuffer
+field 28 void* mpEngine
+field 2c float mfOffsetX
+field 30 float mfOffsetY
+field 34 int32_t mnClip[4]
+field 44 uint8_t mbAntialias
+field 45 uint8_t mbModulate
+field 48 int32_t mnAlphaBlend
+field 4c float mfLineThickness
+field 50 int32_t mnLineThickness
+field 54 int32_t mnBaseClip[4]
+field 64 int32_t mnBltRect[4]
+field 74 uint8_t mbBlt
+field 75 uint8_t mbBltTiling
+field 78 int32_t mnSuspend
+field 7c uint8_t* mpTransformBegin
+field 80 uint8_t* mpTransformEnd
+field 84 uint8_t* mpTransformCap
+field 88 uint8_t* mpStateBegin
+field 8c uint8_t* mpStateEnd
+field 90 uint8_t* mpStateCap
+field 94 uint8_t* mpVec94
+field a0 uint8_t* mpVecA0
+field ac uint8_t* mpVecAC
+field b8 uint8_t* mpVecB8
+field c4 int32_t mnRefCount
+method 0x0082ca40 void Fn0082ca40()
+method 0x0082cae0 void Fn0082cae0(const void*, uint32_t)
+method 0x0082f970 void Fn0082f970(const void*, uint32_t)
+method 0x0082eba0 void Fn0082eba0(const void*, uint32_t)
+method 0x0082fbe0 void Fn0082fbe0(const void*, uint32_t)
+method 0x0082fa50 void Fn0082fa50(const void*, uint32_t)
+method 0x0082faa0 void Fn0082faa0(const void*, uint32_t)
+method 0x0082e9d0 void Fn0082e9d0(const void*, uint32_t)
+method 0x0082faf0 void Fn0082faf0(const void*, uint32_t)
+method 0x0082ea20 void Fn0082ea20(const void*, uint32_t)
+method 0x0082fb90 void Fn0082fb90(const void*, uint32_t)
+method 0x0082fb40 void Fn0082fb40(const void*, uint32_t)
+field a4 uint8_t* mpVecA4
+field a8 uint8_t* mpVecA8
+field b0 uint8_t* mpVecB0
+field b4 uint8_t* mpVecB4

@@ -58,10 +58,51 @@ public:
     virtual bool Slot34_ae0b00(uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknowndc[0x38];
-    uint32_t field114;
-    uint32_t field118;
-    char unknown11c[0x54];
+    // STUB: 0x0099bdfe
+    bool Fn0099bdfe();
+    // STUB: 0x009c4840
+    bool calc_mouse_pos(void*, int32_t, int32_t);
+    // STUB: 0x009c4b19
+    bool set_caption_from_value();
+    // STUB: 0x009c4e36
+    void paint_btns_flat(int32_t);
+    // STUB: 0x009c4ed7
+    void paint_btns_image(int32_t);
+    // STUB: 0x0099bc31
+    bool Fn0099bc31();
+    // STUB: 0x009c4bbc
+    void Fn009c4bbc();
+    // STUB: 0x009c4d02
+    void Fn009c4d02();
+    uint32_t mnFlags;
+    int32_t mnButtonStyle;
+    char unknowne4[0x1c];
+    int32_t mnState;
+    int32_t mnHeld;
+    int32_t mnCaptured;
+    int32_t mnMin;
+    int32_t mnMax;
+    int32_t mnValue;
+    int32_t mnStep;
+    void* mpImageSmall;
+    uint32_t mnImageId;
+    uint16_t mnImageWidth;
+    uint8_t mnButtonMode;
+    char unknown127[0x1];
+    uint32_t mnColors[3];
+    void* mpImage;
+    int32_t mnRect[4];
+    int16_t mnBtnX;
+    int16_t mnBtnY;
+    int32_t mnBtnW;
+    int32_t mnBtnH;
+    uint8_t mbFlag154;
+    uint8_t mbFlag155;
+    char unknown156[0x2];
+    uint32_t mnTextColors[4];
+    uint16_t mnMaxBtn;
+    uint16_t mnMinBtn;
+    uint32_t mnFrameColor;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinSpinner[sizeof(cGZWinSpinner) == 0x170 ? 1 : -1];

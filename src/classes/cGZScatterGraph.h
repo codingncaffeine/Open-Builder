@@ -50,7 +50,16 @@ public:
     virtual uint32_t Slot32_addef0();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknown230[0x24];
+    bool mbSwapAxes;
+    char unknown231[0x3];
+    void* mpRowsBegin;
+    void* mpRowsEnd;
+    void* mpRowsCap;
+    void* mpLooksBegin;
+    void* mpLooksEnd;
+    void* mpLooksCap;
+    cIGZUnknown* mpFont;
+    uint32_t mnFontColor;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZScatterGraph[sizeof(cGZScatterGraph) == 0x254 ? 1 : -1];

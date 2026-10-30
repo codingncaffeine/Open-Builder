@@ -25,12 +25,12 @@ public:
     virtual void Slot16_a953a8();
     virtual float Slot17_a953a8();
     virtual bool DoAnimationTick(uint32_t, uint32_t);
-    virtual bool Slot103_a95ac0(uint32_t);
-    virtual void DoStateTick(uint32_t);
-    virtual bool HandleEnterState(uint32_t);
-    virtual bool HandleExitState(uint32_t);
+    virtual bool Slot103_a95ac0(float);
+    virtual bool DoStateTick(float);
+    virtual bool HandleEnterState(void*);
+    virtual bool HandleExitState(void*);
     virtual void HandleNetworkOccupantRemoved();
-    virtual void UpdateOrientation(uint32_t, uint32_t);
+    virtual void UpdateOrientation(void*, void*);
     virtual void RecalculatePathOffset();
     virtual void SlowDownForStopLight();
     virtual bool ChooseNewDestination();

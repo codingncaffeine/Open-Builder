@@ -13,8 +13,8 @@
 class cUnk00aceaf0 : public cGZDate, public cUnk00aceb48 {
 public:
     virtual ~cUnk00aceaf0() {}
-    virtual uint32_t Slot04_aceaf0(uint32_t, uint32_t);
-    virtual uint32_t Slot05_aceaf0(uint32_t, uint32_t);
+    virtual void* Slot04_aceaf0(void*, uint32_t);
+    virtual void* Slot05_aceaf0(void*, uint32_t);
     virtual bool Slot00_aceb48(uint32_t, uint32_t);
     virtual uint32_t Slot01_aceb48();
     virtual void Slot02_aceb48();
@@ -61,7 +61,7 @@ public:
     virtual void Slot43_aceb48(uint32_t);
     virtual void Slot44_aceb48(uint32_t, uint32_t, uint32_t);
     virtual void Slot45_aceb48(uint32_t);
-    char unknownc[0x4];
+    uint32_t mnRefCount;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aceaf0[sizeof(cUnk00aceaf0) == 0x10 ? 1 : -1];

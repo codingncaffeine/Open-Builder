@@ -21,12 +21,12 @@ public:
     virtual bool Shutdown();
     virtual uint32_t Slot05_a95d90();
     virtual float GetRadius();
-    virtual void SetTemplate(uint32_t);
+    virtual void SetTemplate(void*);
     virtual void Slot16_a95d90(uint32_t);
-    virtual void Activate(uint32_t);
+    virtual void Activate(bool);
     virtual void CheckTimeOfDay(uint32_t, uint32_t);
     virtual uint32_t IsExpired();
-    virtual void DoAnimationTick(uint32_t, uint32_t, uint32_t);
+    virtual void DoAnimationTick(float, uint32_t, void*);
     char unknown5c[0x30];
     uint32_t field8c;
     char unknown90[0x10];

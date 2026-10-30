@@ -1,0 +1,36 @@
+field 20 uint32_t mNameVptr
+field 40 int32_t mnLoadCount
+field 50 uint32_t mnRefCount
+field 58 uint8_t mbPlaying
+field 5c uint32_t mnPauseFlag
+field 68 uint32_t mnDataBase
+field 6c void* mpPos1
+field 70 void* mpPos2
+field 74 void* mpPos3
+field 7c void* mpSmart7c
+field 80 void* mpSmart80
+field 98 void* mpChildList
+field 9c uint8_t mbCmpEqual
+field 9d uint8_t mbCmpGreater
+field 9e uint8_t mbCmpLess
+field a0 void* mpProvidersBegin
+field a4 void* mpProvidersEnd
+field ac void* mpHitList
+field b0 void* mpHitListB0
+field b4 void* mpSourceMapHeader
+field c0 void* mpCompletion
+slot Slot33_ad3e48 uint32_t uint32_t
+slot Slot13_ad3e48 void uint32_t
+slot Slot24_ad3e48 void uint32_t
+method 0x0093a8cb void Fn0093a8cb(uint32_t, uint32_t)
+method 0x0093a8f9 void Fn0093a8f9(uint32_t, uint32_t)
+method 0x0093ae78 bool Fn0093ae78()
+method 0x0093b508 bool UpdatePitch()
+method 0x0093b9ae bool UpdatePatch()
+method 0x0093bb6c uint32_t Fn0093bb6c(uint32_t, uint32_t)
+method 0x0093c0ec bool StartSndDependent(uint32_t)
+method 0x0093c229 void DoCommand()
+field 64 uint32_t mnSoundId
+field 88 void* mpSmart88
+field 8c void* mpField8c
+field 94 void* mpService

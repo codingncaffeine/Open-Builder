@@ -31,10 +31,10 @@ public:
     virtual bool DoAnimationTick(uint32_t, uint32_t);
     virtual bool LoadModels();
     virtual void UpdateEffects();
-    virtual bool HandleEnterState(uint32_t);
-    virtual bool HandleExitState(uint32_t);
-    virtual bool DoPlayerDriveTick(uint32_t);
-    virtual bool TranslatePlayerDriveCommands(uint32_t, uint32_t);
+    virtual bool HandleEnterState(void*);
+    virtual bool HandleExitState(void*);
+    virtual bool DoPlayerDriveTick(float);
+    virtual bool TranslatePlayerDriveCommands(void*, float);
     virtual bool PlaceSelf();
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);

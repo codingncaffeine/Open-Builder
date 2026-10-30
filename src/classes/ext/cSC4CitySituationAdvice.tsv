@@ -1,0 +1,2 @@
+method 0x004230d0 uint32_t ReadUint32FromTable(const char*)
+method 0x00424600 void* ReadStringFromTable(const char*)

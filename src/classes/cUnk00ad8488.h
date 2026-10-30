@@ -37,9 +37,9 @@ public:
     virtual uint32_t Slot26_ad8488(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot27_ad8488() = 0;
     virtual bool Slot28_ad8488() = 0;
-    virtual bool Slot29_ad8488(uint32_t) = 0;
-    virtual bool Slot30_ad8488(uint32_t, uint32_t) = 0;
-    virtual bool Slot31_ad8488(uint32_t, uint32_t) = 0;
+    virtual bool Slot29_ad8488(bool) = 0;
+    virtual bool Slot30_ad8488(uint32_t, bool) = 0;
+    virtual bool Slot31_ad8488(uint32_t, bool) = 0;
     virtual bool Slot32_ad8488(uint32_t) = 0;
     virtual void Slot33_ad8488(uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t Slot34_ad8488(uint32_t) = 0;

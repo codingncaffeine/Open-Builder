@@ -23,7 +23,7 @@ struct OB_NOVTABLE cSC4NetworkTool_0 {
     virtual void SetTraceFinal(uint32_t) = 0;
     virtual void ClearFailureReason() = 0;
     virtual bool GetFailureState() = 0;
-    virtual void GetFailureReasonString(uint32_t) = 0;
+    virtual void GetFailureReasonString(void*) = 0;
     virtual void Slot16_aa8748() = 0;
     virtual void ClearOccupantHighlights() = 0;
     virtual bool Slot18_aa8748(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
@@ -32,7 +32,7 @@ struct OB_NOVTABLE cSC4NetworkTool_0 {
     virtual void EnablePreviewUpdate(bool) = 0;
     virtual void SetAnchorPoints() = 0;
     virtual void GetDraggedCells(uint32_t) = 0;
-    virtual void Slot24_aa8748() = 0;
+    virtual void Slot24_aa8748(uint32_t) = 0;
     virtual uint32_t GetValidStepCount() = 0;
     virtual uint32_t GetStraightStepCount() = 0;
     virtual uint32_t GetTotalStepCount() = 0;
@@ -49,7 +49,7 @@ struct OB_NOVTABLE cSC4NetworkTool_0 {
     virtual bool GetMajorBridgeReferenceAltitude(uint32_t) = 0;
     virtual bool IsMajorBridgeLandBridge() = 0;
     virtual bool GetBridgeBitmapKey(uint32_t, uint32_t, uint32_t) = 0;
-    virtual bool GetPossibleNeighborConnection(uint32_t) = 0;
+    virtual bool GetPossibleNeighborConnection(void*) = 0;
     virtual uint32_t ViewInputControlId() = 0;
     virtual uint32_t CursorId() = 0;
     virtual uint32_t DirectionalCursorBase() = 0;
@@ -60,7 +60,7 @@ struct OB_NOVTABLE cSC4NetworkTool_0 {
     virtual void QueryUserForPotentialIntersections() = 0;
     virtual void Slot50_aa8748() = 0;
     virtual ~cSC4NetworkTool_0() {}
-    virtual void GetFailureReasonString_2(uint32_t, uint32_t) = 0;
+    virtual void GetFailureReasonString_2(uint32_t, void*) = 0;
     virtual bool DoNetworkSpecificPlacement(uint32_t, uint32_t) = 0;
     virtual void CreateNetworkOccupant(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot55_aa8748(uint32_t, uint32_t, uint32_t) = 0;
@@ -113,7 +113,7 @@ public:
     virtual void SetTraceFinal(uint32_t);
     virtual void ClearFailureReason();
     virtual bool GetFailureState();
-    virtual void GetFailureReasonString(uint32_t);
+    virtual void GetFailureReasonString(void*);
     virtual void Slot16_aa8748();
     virtual void ClearOccupantHighlights();
     virtual bool Slot18_aa8748(uint32_t, uint32_t, uint32_t, uint32_t);
@@ -122,7 +122,7 @@ public:
     virtual void EnablePreviewUpdate(bool);
     virtual void SetAnchorPoints();
     virtual void GetDraggedCells(uint32_t);
-    virtual void Slot24_aa8748();
+    virtual void Slot24_aa8748(uint32_t);
     virtual uint32_t GetValidStepCount();
     virtual uint32_t GetStraightStepCount();
     virtual uint32_t GetTotalStepCount();
@@ -139,7 +139,7 @@ public:
     virtual bool GetMajorBridgeReferenceAltitude(uint32_t);
     virtual bool IsMajorBridgeLandBridge();
     virtual bool GetBridgeBitmapKey(uint32_t, uint32_t, uint32_t);
-    virtual bool GetPossibleNeighborConnection(uint32_t);
+    virtual bool GetPossibleNeighborConnection(void*);
     virtual uint32_t ViewInputControlId();
     virtual uint32_t CursorId();
     virtual uint32_t DirectionalCursorBase();
@@ -149,7 +149,7 @@ public:
     virtual void GetPlacementParams(uint32_t);
     virtual void QueryUserForPotentialIntersections();
     virtual void Slot50_aa8748();
-    virtual void GetFailureReasonString_2(uint32_t, uint32_t);
+    virtual void GetFailureReasonString_2(uint32_t, void*);
     virtual bool DoNetworkSpecificPlacement(uint32_t, uint32_t);
     virtual void CreateNetworkOccupant(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot55_aa8748(uint32_t, uint32_t, uint32_t);
@@ -178,6 +178,20 @@ public:
     virtual void InsertNetworkSpecificConstraintsForCell(uint32_t);
     virtual void ReloadNetworkSpecificInfo(uint32_t);
     virtual void SetQuadTrianglesToDraw(uint32_t, uint32_t);
+    // STUB: 0x00624bf0
+    void SetTerrainHilight(int32_t);
+    // STUB: 0x00633220
+    void* Fn00633220(uint32_t);
+    // STUB: 0x00624510
+    bool Fn00624510(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00624590
+    bool Fn00624590(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00624b70
+    bool Fn00624b70(uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00623bb0
+    uint32_t Fn00623bb0(uint32_t);
+    // STUB: 0x00625860
+    void* Fn00625860(uint32_t);
     char unknown8[0x68];
     uint32_t field70;
     uint32_t field74;
@@ -186,7 +200,14 @@ public:
     uint32_t field200;
     char unknown204[0x30];
     bool field234;
-    char unknown235[0x133];
+    char unknown235[0xb];
+    uint32_t mnSizeX;
+    uint32_t mnSizeZ;
+    char unknown248[0x80];
+    float mfLimit2c8;
+    char unknown2cc[0x90];
+    uint32_t mnNetworkType;
+    char unknown360[0x8];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4NetworkTool[sizeof(cSC4NetworkTool) == 0x368 ? 1 : -1];

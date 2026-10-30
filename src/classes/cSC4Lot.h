@@ -94,24 +94,43 @@ public:
     virtual void* Slot03_ab1800();
     virtual void Slot04_ab1800();
     virtual void Slot05_ab1800(uint32_t);
-    char unknown20[0x4];
-    float field24;
-    float field28;
-    float field2c;
-    char unknown30[0x1c];
-    uint32_t field4c;
-    uint32_t field50;
-    char field54[0x24];
-    bool field78;
-    uint8_t field79;
-    char unknown7a[0x4];
+    // STUB: 0x006bf6a0
+    void Fn006bf6a0();
+    // STUB: 0x006c1a30
+    bool Fn006c1a30();
+    uint8_t mnByte20;
+    uint8_t mnByte21;
+    uint8_t mnByte22;
+    uint8_t mnByte23;
+    float mfAltitude;
+    float mfSlope;
+    float mfSlopeOld;
+    uint32_t mnLotConfigId;
+    void* mpLotConfiguration;
+    uint32_t mnLastStateChangeDay;
+    uint32_t mn3c;
+    char unknown40[0xc];
+    void* mpUnit;
+    void* mpTravelDesignate;
+    char field54[0x18];
+    float mf6c;
+    float mf70;
+    float mf74;
+    bool mbInitialized;
+    uint8_t mnFlags;
+    uint8_t mnByte7a;
+    uint8_t mnByte7b;
+    uint8_t mnByte7c;
+    uint8_t mnByte7d;
     bool field7e;
-    uint8_t field7f;
+    uint8_t mnState;
     uint8_t field80;
-    uint8_t field81;
-    uint8_t field82;
+    uint8_t mnByte81;
+    uint8_t mnByte82;
     uint8_t field83;
-    char field84[0x8];
+    char field84[0x4];
+    uint8_t mnRandomByte;
+    char unknown89[0x3];
 };
 
 // SYNTHETIC: 0x006c2260

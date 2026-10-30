@@ -144,7 +144,7 @@ struct cLayerU_a9e5f4 {
     virtual void Pad04();
     virtual void Pad05();
     virtual void Pad06();
-    virtual uint32_t Fn07(uint32_t);
+    virtual void* Fn07(uint32_t);
 };
 struct cSim_a9e5f4 {
     virtual void Pad00();
@@ -699,15 +699,15 @@ uint32_t cUnk00a9e5f4::Slot13_a9e460(uint32_t a)
 }
 
 // FUNCTION: 0x00579bd0
-void cUnk00a9e5f4::Slot11_a9e460(uint32_t a)
+void cUnk00a9e5f4::Slot11_a9e460(void* a)
 {
-    Slot08_a9e5f4(Fn00579a20(reinterpret_cast<void*>(a)));
+    Slot08_a9e5f4(Fn00579a20(a));
 }
 
 // FUNCTION: 0x00579bf0
-void cUnk00a9e5f4::Slot12_a9e460(uint32_t a)
+void cUnk00a9e5f4::Slot12_a9e460(void* a)
 {
-    Slot09_a9e5f4(Fn00579a20(reinterpret_cast<void*>(a)));
+    Slot09_a9e5f4(Fn00579a20(a));
 }
 
 // FUNCTION: 0x00579600
@@ -747,9 +747,9 @@ bool cUnk00a9e5f4::Slot03_aaaa9c(void* msg)
 }
 
 // FUNCTION: 0x00579a60
-uint32_t cUnk00a9e5f4::Slot15_a9e460(uint32_t a)
+uint32_t cUnk00a9e5f4::Slot15_a9e460(void* a)
 {
-    const int32_t* q = reinterpret_cast<const int32_t*>(a);
+    const int32_t* q = static_cast<const int32_t*>(a);
     uint32_t count = 0;
     Node_a9e5f4* head = static_cast<Node_a9e5f4*>(mpFireList);
     if (head->mpNext == head) {
@@ -769,7 +769,7 @@ uint32_t cUnk00a9e5f4::Slot15_a9e460(uint32_t a)
     return count;
 }
 // FUNCTION: 0x005793e0
-uint32_t cUnk00a9e5f4::Slot04_a9e0e4()
+void* cUnk00a9e5f4::Slot04_a9e0e4()
 {
     return reinterpret_cast<cLayerU_a9e5f4*>(gpB43cec_a9e5f4->Fn72())->Fn07(0x621cda33);
 }
@@ -975,11 +975,11 @@ bool cUnk00a9e5f4::Slot03_a9e460()
 #endif
 #ifdef OB_DRAFTS
 // CLOSE: 0x0057a7d0 score 145
-bool cUnk00a9e5f4::Slot06_a9e460(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
+bool cUnk00a9e5f4::Slot06_a9e460(void* a, bool b, uint32_t c, bool d)
 {
-    cOccProp_a9e5f4* occ = reinterpret_cast<cOccProp_a9e5f4*>(a);
+    cOccProp_a9e5f4* occ = static_cast<cOccProp_a9e5f4*>(a);
     uint32_t type = occ->Fn07();
-    if (!static_cast<uint8_t>(b) && !gpB43d5c_a9e5f4->Fn17() && gpB43d5c_a9e5f4->Fn15()) {
+    if (!b && !gpB43d5c_a9e5f4->Fn17() && gpB43d5c_a9e5f4->Fn15()) {
         return false;
     }
     if (type == 0x74758926 || type == 0xa823821e || type == 0x278128a0) {
@@ -988,7 +988,7 @@ bool cUnk00a9e5f4::Slot06_a9e460(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
         if (value == 0) {
             return false;
         }
-        if (!static_cast<uint8_t>(b)) {
+        if (!b) {
             Rect_a9e5f4 city;
             city.mnLeft = 0;
             city.mnRight = mnCellsX - 1;
@@ -1011,7 +1011,7 @@ bool cUnk00a9e5f4::Slot06_a9e460(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
         bool burning = false;
         Fn005fd390(occ->Fn06(), 0x69dbebe1, &burning);
         if (burning) {
-            if (!static_cast<uint8_t>(b)) {
+            if (!b) {
                 return false;
             }
             cBurning_a9e5f4* old;
@@ -1029,7 +1029,7 @@ bool cUnk00a9e5f4::Slot06_a9e460(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
         Tree_a9e5f4* tree = reinterpret_cast<Tree_a9e5f4*>(&mpToastTree);
         tree->Find(&it, &c);
         if (it.mpNode == tree->mpHeader) {
-            bool flag = static_cast<uint8_t>(d) && tree->mnSize != 0;
+            bool flag = d && tree->mnSize != 0;
             gpB43cec_a9e5f4->Fn72()->Fn13(static_cast<cUnk00a9e0e4*>(this), 0, 0, occ, mbFlagC4, flag);
             tree->Insert(&it, &c);
         }
@@ -1045,7 +1045,7 @@ bool cUnk00a9e5f4::Slot06_a9e460(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
         fire->Fn04(occ);
         fire->Fn14(c);
         gpB43d0c_a9e5f4->Fn20(&fire->mView, 0);
-        if (static_cast<uint8_t>(b)) {
+        if (b) {
             uint32_t flames = *static_cast<uint32_t*>(mpFlameCount);
             uint32_t level = fire->Fn07();
             if (level <= 1) {

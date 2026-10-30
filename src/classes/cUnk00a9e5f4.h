@@ -26,23 +26,23 @@ public:
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual bool Slot03_a9e0e4();
-    virtual uint32_t Slot04_a9e0e4();
+    virtual void* Slot04_a9e0e4();
     virtual uint32_t Slot05_a9e0e4();
     virtual bool Slot06_a9e0e4(uint32_t, uint32_t);
     virtual uint32_t Slot07_a9e0e4();
     virtual bool Slot03_a9e460();
     virtual void Slot04_a9e460();
     virtual bool Slot05_a9e460();
-    virtual bool Slot06_a9e460(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot06_a9e460(void*, bool, uint32_t, bool);
     virtual bool Slot07_a9e460(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot08_a9e460(uint32_t, uint32_t, uint32_t);
     virtual bool Slot09_a9e460(uint32_t, uint32_t);
     virtual bool Slot10_a9e460(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot11_a9e460(uint32_t);
-    virtual void Slot12_a9e460(uint32_t);
+    virtual void Slot11_a9e460(void*);
+    virtual void Slot12_a9e460(void*);
     virtual uint32_t Slot13_a9e460(uint32_t);
     virtual uint32_t Slot14_a9e460();
-    virtual uint32_t Slot15_a9e460(uint32_t);
+    virtual uint32_t Slot15_a9e460(void*);
     virtual uint32_t Slot16_a9e460();
     // STUB: 0x00579a20
     void* Fn00579a20(void*);

@@ -13,7 +13,7 @@
 class cGZDBSegmentDirectoryFiles : public cUnk00ad8fc8, public cUnk00ad8ca0 {
 public:
     virtual ~cGZDBSegmentDirectoryFiles();
-    virtual void DoOpenRecordForWrite(uint32_t, uint32_t);
+    virtual bool DoOpenRecordForWrite(uint32_t, uint32_t);
     virtual bool Slot27_ad93a0(uint32_t, uint32_t, uint32_t);
     virtual void BuildKeyList();
     virtual bool AddFile(uint32_t, uint32_t);
@@ -63,16 +63,33 @@ public:
     virtual bool Slot23_ad8fc8();
     virtual bool Slot24_ad8fc8(uint32_t, uint32_t);
     virtual bool Slot25_ad8fc8();
-    char unknown14[0xc];
-    char field20[0x18];
-    uint32_t field38;
-    uint32_t field3c;
-    char unknown40[0x2];
+    // STUB: 0x009796fc
+    void StartBackgroundThread();
+    // STUB: 0x00979ad2
+    void Fn00979ad2();
+    bool mbFlag14;
+    char unknown15[0x3];
+    uint32_t mnNextID;
+    uint32_t mnMode;
+    char field20[0x4];
+    const char* mpName;
+    const char* mpNameEnd;
+    char unknown2c[0x8];
+    void* mpFile;
+    uint32_t mnSegmentID;
+    uint32_t mnLastID;
+    bool mbAllowedA;
+    bool mbAllowedB;
     bool field42;
     char unknown43[0x1];
-    char field44[0x20];
+    char field44[0x14];
+    void* mpMapHead;
+    uint32_t mnMapSize;
+    char unknown60[0x4];
     bool field64;
-    char unknown65[0x4b];
+    char unknown65[0x3];
+    uint32_t mnInterval;
+    char unknown6c[0x44];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZDBSegmentDirectoryFiles[sizeof(cGZDBSegmentDirectoryFiles) == 0xb0 ? 1 : -1];

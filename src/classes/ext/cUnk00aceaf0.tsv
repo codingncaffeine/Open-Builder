@@ -1,0 +1,3 @@
+field c uint32_t mnRefCount
+slot Slot04_aceaf0 void* void* uint32_t
+slot Slot05_aceaf0 void* void* uint32_t

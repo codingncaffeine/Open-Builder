@@ -64,7 +64,23 @@ public:
     virtual void Slot42_ad88c0(uint32_t);
     virtual bool Slot43_ad88c0();
     virtual bool Slot04_ae1d24();
-    char unknown20[0x7c];
+    // STUB: 0x00972ff2
+    uint32_t Fn00972ff2();
+    // STUB: 0x00973023
+    uint32_t Fn00973023();
+    uint32_t mLock20[2];
+    char unknown28[0x10];
+    uint32_t mnFactoryCount;
+    char unknown3c[0x14];
+    uint32_t mLock50[2];
+    uint32_t mSegBegin[4];
+    uint32_t mSegEnd[4];
+    char unknown78[0x8];
+    uint32_t mLock80[2];
+    void* mpList88;
+    uint32_t mLock8c[2];
+    uint32_t mnCount94;
+    uint32_t mnValue98;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZPersistResourceManager[sizeof(cGZPersistResourceManager) == 0x9c ? 1 : -1];

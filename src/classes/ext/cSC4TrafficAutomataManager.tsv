@@ -1,0 +1,19 @@
+field a8c uint32_t mnA8c
+field a9c uint32_t mnA9c
+slot Slot85_a9bd88 void* uint32_t
+slot IsOffscreenEntryEdge bool void* int32_t int32_t uint8_t
+method 0x0054dd50 void Fn0054dd50(uint32_t, void*, uint32_t, void*)
+field a88 void* mpA88
+field a90 uint32_t mnA90
+field aa0 uint32_t mnAa0
+field aa8 void* mpRespBegin
+field aac void* mpRespEnd
+slot Slot87_a9bd88 float void* uint32_t
+slot Slot88_a9bd88 void void* void* float void*
+slot Slot72_a9bd88 void void* void* uint32_t float void*
+slot Slot75_a9bd88 float uint32_t
+slot Slot76_a9bd88 void float
+method 0x004fc900 bool Fn004fc900(uint32_t)
+slot GetDispatchDestinationPoint bool void* void*
+slot Slot81_a9bd88 void void* uint32_t
+slot Slot83_a9bd88 bool

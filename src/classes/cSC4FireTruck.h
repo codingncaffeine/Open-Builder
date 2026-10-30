@@ -24,8 +24,8 @@ public:
     virtual void Slot25_a953a8(uint32_t);
     virtual bool Slot60_a953a8(uint32_t, uint32_t);
     virtual void HandleReachedRouteDestination();
-    virtual bool HandleExitState(uint32_t);
-    virtual bool TranslatePlayerDriveCommands(uint32_t, uint32_t);
+    virtual bool HandleExitState(void*);
+    virtual bool TranslatePlayerDriveCommands(void*, float);
     virtual bool ChooseNewDestination();
     virtual uint32_t Slot192_a981e0();
     virtual float Slot193_a981e0();

@@ -1,0 +1,28 @@
+field 38 uint32_t mnRefCount
+field 44 void* mpAutomataList
+field 4d bool mbPaused
+field a18 void* mpExemplarsBegin
+field a1c void* mpExemplarsEnd
+slot CreateAutomaton void* uint32_t void* uint32_t void* void* uint32_t void*
+slot CreateAutomatonInternal void* uint32_t uint32_t void* uint32_t uint32_t
+slot AddAutomaton bool void*
+slot IsAutomatonOnscreen bool void*
+slot FindExemplarFromModelKey void* void*
+slot HandleRemoveController bool void*
+slot HandleInsertOccupant bool void*
+slot Slot53_a95880 bool void*
+method 0x0050feb0 bool Fn0050feb0(void*, uint32_t)
+field 14 float mfView14[4]
+field 24 float mfView24[4]
+field 3c uint32_t mnMaxCount
+field 40 uint32_t mnLimit40
+field 48 uint32_t mnCount48
+field 4c bool mbActive
+field a80 void* mpGroupMgr
+slot GetSourceBuildingCount uint32_t uint32_t
+slot GetSourceBuildingCountForAutomataGroup uint32_t uint32_t
+slot RemoveAutomatonInternal bool void*
+slot AddAutomatonInternal bool void*
+slot PostNotificationMessage void uint32_t uint32_t uint32_t uint32_t
+field a3c uint8_t mnMinZoom
+slot AdjustCountForAutomaton bool uint8_t

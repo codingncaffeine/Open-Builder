@@ -307,24 +307,24 @@ struct cThreadRegistry_ac9144 {
 NOINLINE_ac9144 cThreadRegistry_ac9144* Fn008bc500(lua_State* L);
 
 // FUNCTION: 0x00880a40
-uint32_t cGZLua5::Slot03_ac8d7c()
+void* cGZLua5::Slot03_ac8d7c()
 {
     cUnk00ac8bf8* thread = this;
-    return OB_ADDR(thread);
+    return thread;
 }
 
 // FUNCTION: 0x008b83e0
 void cGZLua5::Slot85_ac8bf8(uint32_t ref)
 {
-    luaL_unref(OB_PTR(lua_State, field8), -10000, static_cast<int>(ref));
+    luaL_unref(static_cast<lua_State*>(mpL), -10000, static_cast<int>(ref));
 }
 
 // FUNCTION: 0x008b96d0
-void cGZLua5::Slot13_ac8d7c(uint32_t reporter, uint32_t useDefault)
+void cGZLua5::Slot13_ac8d7c(void* reporter, bool useDefault)
 {
-    mpErrorReporter = OB_PTR(void, reporter);
+    mpErrorReporter = reporter;
     if (reporter == 0) {
-        if (*reinterpret_cast<bool*>(&useDefault)) {
+        if (useDefault) {
             mpErrorReporter = reinterpret_cast<void*>(&Fn008b9360);
         }
     }
@@ -362,21 +362,21 @@ lua_State* cThreadRegistry_ac9144::Fn008bc700(uint32_t id)
 uint32_t cGZLua5::Slot14_ac8bf8()
 {
     FpuScope_ac9144 scope;
-    return lua_gettop(OB_PTR(lua_State, field8));
+    return lua_gettop(static_cast<lua_State*>(mpL));
 }
 
 // FUNCTION: 0x008b78d0
 void cGZLua5::Slot48_ac8bf8()
 {
     FpuScope_ac9144 scope;
-    lua_pushnil(OB_PTR(lua_State, field8));
+    lua_pushnil(static_cast<lua_State*>(mpL));
 }
 
 // FUNCTION: 0x008b7c30
 void cGZLua5::Slot56_ac8bf8()
 {
     FpuScope_ac9144 scope;
-    lua_newtable(OB_PTR(lua_State, field8));
+    lua_newtable(static_cast<lua_State*>(mpL));
 }
 
 // FUNCTION: 0x008b8240
@@ -390,426 +390,423 @@ uint32_t cGZLua5::Slot82_ac8bf8(uint32_t index)
 void cGZLua5::Slot78_ac8bf8(uint32_t /*message*/)
 {
     FpuScope_ac9144 scope;
-    lua_error(OB_PTR(lua_State, field8));
+    lua_error(static_cast<lua_State*>(mpL));
 }
 
 // FUNCTION: 0x008b7d10
 void cGZLua5::Slot62_ac8bf8()
 {
     FpuScope_ac9144 scope;
-    lua_pushvalue(OB_PTR(lua_State, field8), -10000);
+    lua_pushvalue(static_cast<lua_State*>(mpL), -10000);
 }
 
 // FUNCTION: 0x008b7d60
 void cGZLua5::Slot63_ac8bf8()
 {
     FpuScope_ac9144 scope;
-    lua_pushvalue(OB_PTR(lua_State, field8), -10001);
+    lua_pushvalue(static_cast<lua_State*>(mpL), -10001);
 }
 
 // FUNCTION: 0x008b6c30
-void cGZLua5::Slot09_ac8bf8(uint32_t nresults)
+void cGZLua5::Slot09_ac8bf8(int32_t nresults)
 {
     FpuScope_ac9144 scope;
-    lua_yield(OB_PTR(lua_State, field8), nresults);
+    lua_yield(static_cast<lua_State*>(mpL), nresults);
 }
 
 // FUNCTION: 0x008b6e30
-void cGZLua5::Slot15_ac8bf8(uint32_t index)
+void cGZLua5::Slot15_ac8bf8(int32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_settop(OB_PTR(lua_State, field8), index);
+    lua_settop(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b6e80
 void cGZLua5::Slot16_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_pushvalue(OB_PTR(lua_State, field8), index);
+    lua_pushvalue(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b6ed0
 void cGZLua5::Slot17_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_remove(OB_PTR(lua_State, field8), index);
+    lua_remove(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b6f20
 void cGZLua5::Slot18_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_insert(OB_PTR(lua_State, field8), index);
+    lua_insert(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b6f70
 void cGZLua5::Slot19_ac8bf8(uint32_t count)
 {
     FpuScope_ac9144 scope;
-    lua_settop(OB_PTR(lua_State, field8), -1 - static_cast<int>(count));
+    lua_settop(static_cast<lua_State*>(mpL), -1 - static_cast<int>(count));
 }
 
 // FUNCTION: 0x008b6fc0
 void cGZLua5::Slot20_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_replace(OB_PTR(lua_State, field8), index);
+    lua_replace(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7010
-void cGZLua5::Slot21_ac8bf8(uint32_t to, uint32_t count)
+void cGZLua5::Slot21_ac8bf8(void* to, int32_t count)
 {
     FpuScope_ac9144 scope;
-    lua_xmove(OB_PTR(lua_State, field8), OB_PTR(lua_State, to), count);
+    lua_xmove(static_cast<lua_State*>(mpL), static_cast<lua_State*>(to), count);
 }
 
 // FUNCTION: 0x008b7060
 bool cGZLua5::Slot22_ac8bf8(uint32_t size)
 {
     FpuScope_ac9144 scope;
-    return lua_checkstack(OB_PTR(lua_State, field8), size) != 0;
+    return lua_checkstack(static_cast<lua_State*>(mpL), size) != 0;
 }
 
 // FUNCTION: 0x008b70b0
 uint32_t cGZLua5::Slot23_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_type(OB_PTR(lua_State, field8), index);
+    return lua_type(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7100
-uint32_t cGZLua5::Slot24_ac8bf8(uint32_t type)
+const char* cGZLua5::Slot24_ac8bf8(int32_t type)
 {
     FpuScope_ac9144 scope;
-    return OB_ADDR(lua_typename(OB_PTR(lua_State, field8), type));
+    return lua_typename(static_cast<lua_State*>(mpL), type);
 }
 
 // FUNCTION: 0x008b7150
 bool cGZLua5::Slot25_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_isnumber(OB_PTR(lua_State, field8), index) != 0;
+    return lua_isnumber(static_cast<lua_State*>(mpL), index) != 0;
 }
 
 // FUNCTION: 0x008b71a0
 bool cGZLua5::Slot26_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_isstring(OB_PTR(lua_State, field8), index) != 0;
+    return lua_isstring(static_cast<lua_State*>(mpL), index) != 0;
 }
 
 // FUNCTION: 0x008b71f0
 bool cGZLua5::Slot27_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_iscfunction(OB_PTR(lua_State, field8), index) != 0;
+    return lua_iscfunction(static_cast<lua_State*>(mpL), index) != 0;
 }
 
 // FUNCTION: 0x008b7240
 bool cGZLua5::Slot28_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_type(OB_PTR(lua_State, field8), index) == 6;
+    return lua_type(static_cast<lua_State*>(mpL), index) == 6;
 }
 
 // FUNCTION: 0x008b72a0
 bool cGZLua5::Slot29_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_type(OB_PTR(lua_State, field8), index) == 5;
+    return lua_type(static_cast<lua_State*>(mpL), index) == 5;
 }
 
 // FUNCTION: 0x008b7300
 bool cGZLua5::Slot30_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_isuserdata(OB_PTR(lua_State, field8), index) != 0;
+    return lua_isuserdata(static_cast<lua_State*>(mpL), index) != 0;
 }
 
 // FUNCTION: 0x008b7350
 bool cGZLua5::Slot31_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_type(OB_PTR(lua_State, field8), index) == 2;
+    return lua_type(static_cast<lua_State*>(mpL), index) == 2;
 }
 
 // FUNCTION: 0x008b73b0
 bool cGZLua5::Slot32_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_type(OB_PTR(lua_State, field8), index) == 1;
+    return lua_type(static_cast<lua_State*>(mpL), index) == 1;
 }
 
 // FUNCTION: 0x008b7410
 bool cGZLua5::Slot33_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_type(OB_PTR(lua_State, field8), index) == 0;
+    return lua_type(static_cast<lua_State*>(mpL), index) == 0;
 }
 
 // FUNCTION: 0x008b7470
 bool cGZLua5::Slot34_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_type(OB_PTR(lua_State, field8), index) == -1;
+    return lua_type(static_cast<lua_State*>(mpL), index) == -1;
 }
 
 // FUNCTION: 0x008b74d0
 bool cGZLua5::Slot35_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_type(OB_PTR(lua_State, field8), index) <= 0;
+    return lua_type(static_cast<lua_State*>(mpL), index) <= 0;
 }
 
 // FUNCTION: 0x008b7520
 bool cGZLua5::Slot36_ac8bf8(uint32_t index1, uint32_t index2)
 {
     FpuScope_ac9144 scope;
-    return lua_equal(OB_PTR(lua_State, field8), index1, index2) != 0;
+    return lua_equal(static_cast<lua_State*>(mpL), index1, index2) != 0;
 }
 
 // FUNCTION: 0x008b7580
 bool cGZLua5::Slot37_ac8bf8(uint32_t index1, uint32_t index2)
 {
     FpuScope_ac9144 scope;
-    return lua_rawequal(OB_PTR(lua_State, field8), index1, index2) != 0;
+    return lua_rawequal(static_cast<lua_State*>(mpL), index1, index2) != 0;
 }
 
 // FUNCTION: 0x008b75e0
 bool cGZLua5::Slot38_ac8bf8(uint32_t index1, uint32_t index2)
 {
     FpuScope_ac9144 scope;
-    return lua_lessthan(OB_PTR(lua_State, field8), index1, index2) != 0;
+    return lua_lessthan(static_cast<lua_State*>(mpL), index1, index2) != 0;
 }
 
 // FUNCTION: 0x008b7640
 uint32_t cGZLua5::Slot39_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return static_cast<uint32_t>(lua_tonumber(OB_PTR(lua_State, field8), index));
+    return static_cast<uint32_t>(lua_tonumber(static_cast<lua_State*>(mpL), index));
 }
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x008b7690 score 13
-float cGZLua5::Slot41_ac8bf8(uint32_t index)
+// FUNCTION: 0x008b7690
+double cGZLua5::Slot41_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return static_cast<float>(lua_tonumber(OB_PTR(lua_State, field8), index));
+    return lua_tonumber(static_cast<lua_State*>(mpL), index);
 }
-#endif
 
 // FUNCTION: 0x008b76f0
 bool cGZLua5::Slot42_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_toboolean(OB_PTR(lua_State, field8), index) != 0;
+    return lua_toboolean(static_cast<lua_State*>(mpL), index) != 0;
 }
 
 // FUNCTION: 0x008b7740
-uint32_t cGZLua5::Slot43_ac8bf8(uint32_t index)
+const char* cGZLua5::Slot43_ac8bf8(int32_t index)
 {
     FpuScope_ac9144 scope;
-    return OB_ADDR(lua_tostring(OB_PTR(lua_State, field8), index));
+    return lua_tostring(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7790
 uint32_t cGZLua5::Slot44_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_strlen(OB_PTR(lua_State, field8), index);
+    return lua_strlen(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b77e0
-uint32_t cGZLua5::Slot45_ac8bf8(uint32_t index)
+void* cGZLua5::Slot45_ac8bf8(int32_t index)
 {
     FpuScope_ac9144 scope;
-    return OB_ADDR(lua_tocfunction(OB_PTR(lua_State, field8), index));
+    return lua_tocfunction(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7830
-uint32_t cGZLua5::Slot46_ac8bf8(uint32_t index)
+void* cGZLua5::Slot46_ac8bf8(int32_t index)
 {
     FpuScope_ac9144 scope;
-    return OB_ADDR(lua_touserdata(OB_PTR(lua_State, field8), index));
+    return lua_touserdata(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7880
-uint32_t cGZLua5::Slot47_ac8bf8(uint32_t index)
+void* cGZLua5::Slot47_ac8bf8(int32_t index)
 {
     FpuScope_ac9144 scope;
-    return OB_ADDR(lua_tothread(OB_PTR(lua_State, field8), index));
+    return lua_tothread(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7910
-void cGZLua5::Slot49_ac8bf8(uint32_t numberLow, uint32_t /*numberHigh*/)
+void cGZLua5::Slot49_ac8bf8(double number)
 {
     FpuScope_ac9144 scope;
-    double number = *reinterpret_cast<double*>(&numberLow);
-    lua_pushnumber(OB_PTR(lua_State, field8), number);
+    lua_pushnumber(static_cast<lua_State*>(mpL), number);
 }
 
 // FUNCTION: 0x008b7960
-void cGZLua5::Slot50_ac8bf8(uint32_t string, uint32_t length)
+void cGZLua5::Slot50_ac8bf8(const char* string, uint32_t length)
 {
     FpuScope_ac9144 scope;
-    lua_pushlstring(OB_PTR(lua_State, field8), OB_PTR(const char, string), length);
+    lua_pushlstring(static_cast<lua_State*>(mpL), string, length);
 }
 
 // FUNCTION: 0x008b79b0
-void cGZLua5::Slot51_ac8bf8(uint32_t string)
+void cGZLua5::Slot51_ac8bf8(const char* string)
 {
     FpuScope_ac9144 scope;
-    lua_pushstring(OB_PTR(lua_State, field8), OB_PTR(const char, string));
+    lua_pushstring(static_cast<lua_State*>(mpL), string);
 }
 
 // FUNCTION: 0x008b7a00
-void cGZLua5::Slot52_ac8bf8(uint32_t function, uint32_t upvalues)
+void cGZLua5::Slot52_ac8bf8(void* function, uint32_t upvalues)
 {
     FpuScope_ac9144 scope;
-    lua_pushcclosure(OB_PTR(lua_State, field8), reinterpret_cast<lua_CFunction_ac9144>(OB_PTR(void, function)),
+    lua_pushcclosure(static_cast<lua_State*>(mpL), reinterpret_cast<lua_CFunction_ac9144>(function),
                      upvalues);
 }
 
 // FUNCTION: 0x008b7a50
-void cGZLua5::Slot53_ac8bf8(uint32_t value)
+void cGZLua5::Slot53_ac8bf8(bool value)
 {
     FpuScope_ac9144 scope;
-    lua_pushboolean(OB_PTR(lua_State, field8), *reinterpret_cast<bool*>(&value) != 0);
+    lua_pushboolean(static_cast<lua_State*>(mpL), value != 0);
 }
 
 // FUNCTION: 0x008b7aa0
-void cGZLua5::Slot54_ac8bf8(uint32_t pointer)
+void cGZLua5::Slot54_ac8bf8(void* pointer)
 {
     FpuScope_ac9144 scope;
-    lua_pushlightuserdata(OB_PTR(lua_State, field8), OB_PTR(void, pointer));
+    lua_pushlightuserdata(static_cast<lua_State*>(mpL), pointer);
 }
 
 // FUNCTION: 0x008b7af0
-uint32_t cGZLua5::Slot55_ac8bf8(uint32_t size)
+void* cGZLua5::Slot55_ac8bf8(uint32_t size)
 {
     FpuScope_ac9144 scope;
-    return OB_ADDR(lua_newuserdata(OB_PTR(lua_State, field8), size));
+    return lua_newuserdata(static_cast<lua_State*>(mpL), size);
 }
 
 // FUNCTION: 0x008b7b40
 void cGZLua5::Slot57_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_gettable(OB_PTR(lua_State, field8), index);
+    lua_gettable(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7b90
 void cGZLua5::Slot58_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_rawget(OB_PTR(lua_State, field8), index);
+    lua_rawget(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7be0
 void cGZLua5::Slot59_ac8bf8(uint32_t index, uint32_t n)
 {
     FpuScope_ac9144 scope;
-    lua_rawgeti(OB_PTR(lua_State, field8), index, n);
+    lua_rawgeti(static_cast<lua_State*>(mpL), index, n);
 }
 
 // FUNCTION: 0x008b7c70
 void cGZLua5::Slot60_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_getfenv(OB_PTR(lua_State, field8), index);
+    lua_getfenv(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7cc0
 uint32_t cGZLua5::Slot61_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_getmetatable(OB_PTR(lua_State, field8), index);
+    return lua_getmetatable(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7db0
 void cGZLua5::Slot64_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_settable(OB_PTR(lua_State, field8), index);
+    lua_settable(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7e00
 void cGZLua5::Slot65_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_rawset(OB_PTR(lua_State, field8), index);
+    lua_rawset(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7e50
 void cGZLua5::Slot66_ac8bf8(uint32_t index, uint32_t n)
 {
     FpuScope_ac9144 scope;
-    lua_rawseti(OB_PTR(lua_State, field8), index, n);
+    lua_rawseti(static_cast<lua_State*>(mpL), index, n);
 }
 
 // FUNCTION: 0x008b7ea0
 void cGZLua5::Slot67_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_setfenv(OB_PTR(lua_State, field8), index);
+    lua_setfenv(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7ef0
 void cGZLua5::Slot68_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    lua_setmetatable(OB_PTR(lua_State, field8), index);
+    lua_setmetatable(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7f40
 void cGZLua5::Slot69_ac8bf8(uint32_t nargs, uint32_t nresults)
 {
     FpuScope_ac9144 scope;
-    lua_call(OB_PTR(lua_State, field8), nargs, nresults);
+    lua_call(static_cast<lua_State*>(mpL), nargs, nresults);
 }
 
 // FUNCTION: 0x008b7f90
-uint32_t cGZLua5::Slot71_ac8bf8(uint32_t filename)
+uint32_t cGZLua5::Slot71_ac8bf8(const char* filename)
 {
     FpuScope_ac9144 scope;
-    return lua_dofile(OB_PTR(lua_State, field8), OB_PTR(const char, filename));
+    return lua_dofile(static_cast<lua_State*>(mpL), filename);
 }
 
 // FUNCTION: 0x008b7fe0
-uint32_t cGZLua5::Slot72_ac8bf8(uint32_t string)
+uint32_t cGZLua5::Slot72_ac8bf8(const char* string)
 {
     FpuScope_ac9144 scope;
-    return lua_dostring(OB_PTR(lua_State, field8), OB_PTR(const char, string));
+    return lua_dostring(static_cast<lua_State*>(mpL), string);
 }
 
 // FUNCTION: 0x008b8030
-uint32_t cGZLua5::Slot73_ac8bf8(uint32_t buffer, uint32_t size, uint32_t name)
+uint32_t cGZLua5::Slot73_ac8bf8(const char* buffer, uint32_t size, const char* name)
 {
     FpuScope_ac9144 scope;
-    return lua_dobuffer(OB_PTR(lua_State, field8), OB_PTR(const char, buffer), size,
-                        OB_PTR(const char, name));
+    return lua_dobuffer(static_cast<lua_State*>(mpL), buffer, size,
+                        name);
 }
 
 // FUNCTION: 0x008b8090
-uint32_t cGZLua5::Slot74_ac8bf8(uint32_t reader, uint32_t data, uint32_t name)
+uint32_t cGZLua5::Slot74_ac8bf8(void* reader, void* data, const char* name)
 {
     FpuScope_ac9144 scope;
-    return lua_load(OB_PTR(lua_State, field8), OB_PTR(void, reader), OB_PTR(void, data),
-                    OB_PTR(const char, name));
+    return lua_load(static_cast<lua_State*>(mpL), reader, data,
+                    name);
 }
 
 // FUNCTION: 0x008b8130
 uint32_t cGZLua5::Slot79_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return lua_next(OB_PTR(lua_State, field8), index);
+    return lua_next(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b8180
 void cGZLua5::Slot80_ac8bf8(uint32_t count)
 {
     FpuScope_ac9144 scope;
-    lua_concat(OB_PTR(lua_State, field8), count);
+    lua_concat(static_cast<lua_State*>(mpL), count);
 }
 
 // The Lua C functions the interface hands to the interpreter, and the debug record lua_getstack fills.
@@ -993,8 +990,8 @@ bool cGZLua5::Slot11_ac8bf8()
 {
     FpuScope_ac9144 scope;
     bool valid;
-    lua_State* L = OB_PTR(lua_State, field8);
-    if (L != 0 && reinterpret_cast<cUnk00ac8bf8**>(L)[-1] == static_cast<cUnk00ac8bf8*>(this) && field4 != 0xffffffff) {
+    lua_State* L = static_cast<lua_State*>(mpL);
+    if (L != 0 && reinterpret_cast<cUnk00ac8bf8**>(L)[-1] == static_cast<cUnk00ac8bf8*>(this) && mnThreadID != -1) {
         valid = true;
     } else {
         valid = false;
@@ -1008,9 +1005,9 @@ bool cGZLua5::Slot12_ac8bf8()
 {
     FpuScope_ac9144 scope;
     bool result;
-    if (field8) {
-        cThreadRegistry_ac9144* registry = Fn008bc500(OB_PTR(lua_State, field8));
-        if (registry && registry->Fn008bcee0(OB_PTR(lua_State, field8), field4)) {
+    if (mpL) {
+        cThreadRegistry_ac9144* registry = Fn008bc500(static_cast<lua_State*>(mpL));
+        if (registry && registry->Fn008bcee0(static_cast<lua_State*>(mpL), mnThreadID)) {
             result = true;
         } else {
             result = false;
@@ -1023,13 +1020,13 @@ bool cGZLua5::Slot12_ac8bf8()
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x008b6d70 score 6
-uint32_t cGZLua5::Slot13_ac8bf8()
+int32_t cGZLua5::Slot13_ac8bf8()
 {
     FpuScope_ac9144 scope;
-    if (field8 && field4 != 0xffffffff) {
-        cThreadRegistry_ac9144* registry = Fn008bc500(OB_PTR(lua_State, field8));
+    if (mpL && mnThreadID != -1) {
+        cThreadRegistry_ac9144* registry = Fn008bc500(static_cast<lua_State*>(mpL));
         if (registry) {
-            return registry->Fn008bc540(field4);
+            return registry->Fn008bc540(mnThreadID);
         }
     }
     return -1;
@@ -1037,57 +1034,57 @@ uint32_t cGZLua5::Slot13_ac8bf8()
 #endif
 
 // FUNCTION: 0x008b81d0
-void cGZLua5::Slot81_ac8bf8(uint32_t function, uint32_t name)
+void cGZLua5::Slot81_ac8bf8(void* function, const char* name)
 {
     FpuScope_ac9144 scope;
-    lua_pushstring(OB_PTR(lua_State, field8), OB_PTR(const char, name));
-    lua_pushcclosure(OB_PTR(lua_State, field8), reinterpret_cast<lua_CFunction_ac9144>(OB_PTR(void, function)), 0);
-    lua_settable(OB_PTR(lua_State, field8), -10001);
+    lua_pushstring(static_cast<lua_State*>(mpL), name);
+    lua_pushcclosure(static_cast<lua_State*>(mpL), reinterpret_cast<lua_CFunction_ac9144>(function), 0);
+    lua_settable(static_cast<lua_State*>(mpL), -10001);
 }
 
 // FUNCTION: 0x008b8280
-void cGZLua5::Slot87_ac8bf8(uint32_t name)
+void cGZLua5::Slot87_ac8bf8(const char* name)
 {
     FpuScope_ac9144 scope;
-    lua_pushstring(OB_PTR(lua_State, field8), OB_PTR(const char, name));
-    lua_gettable(OB_PTR(lua_State, field8), -10001);
+    lua_pushstring(static_cast<lua_State*>(mpL), name);
+    lua_gettable(static_cast<lua_State*>(mpL), -10001);
 }
 
 // FUNCTION: 0x008b82e0
-void cGZLua5::Slot86_ac8bf8(uint32_t name)
+void cGZLua5::Slot86_ac8bf8(const char* name)
 {
     FpuScope_ac9144 scope;
-    lua_pushstring(OB_PTR(lua_State, field8), OB_PTR(const char, name));
-    lua_insert(OB_PTR(lua_State, field8), -2);
-    lua_settable(OB_PTR(lua_State, field8), -10001);
+    lua_pushstring(static_cast<lua_State*>(mpL), name);
+    lua_insert(static_cast<lua_State*>(mpL), -2);
+    lua_settable(static_cast<lua_State*>(mpL), -10001);
 }
 
 // FUNCTION: 0x008b8340
 uint32_t cGZLua5::Slot83_ac8bf8()
 {
     FpuScope_ac9144 scope;
-    return luaL_ref(OB_PTR(lua_State, field8), -10000);
+    return luaL_ref(static_cast<lua_State*>(mpL), -10000);
 }
 
 // FUNCTION: 0x008b8390
 void cGZLua5::Slot84_ac8bf8(uint32_t ref)
 {
     FpuScope_ac9144 scope;
-    lua_rawgeti(OB_PTR(lua_State, field8), -10000, ref);
+    lua_rawgeti(static_cast<lua_State*>(mpL), -10000, ref);
 }
 
 // FUNCTION: 0x008b8400
-uint32_t cGZLua5::Slot88_ac8bf8(uint32_t index)
+int32_t cGZLua5::Slot88_ac8bf8(int32_t index)
 {
     FpuScope_ac9144 scope;
     int32_t tag;
-    lua_pushvalue(OB_PTR(lua_State, field8), index);
-    lua_pushvalue(OB_PTR(lua_State, field8), -1);
-    Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008be990)), 0);
-    lua_replace(OB_PTR(lua_State, field8), -3);
+    lua_pushvalue(static_cast<lua_State*>(mpL), index);
+    lua_pushvalue(static_cast<lua_State*>(mpL), -1);
+    Slot52_ac8bf8(reinterpret_cast<void*>(&Fn008be990), 0);
+    lua_replace(static_cast<lua_State*>(mpL), -3);
     if (Slot70_ac8bf8(1, 1, 0, 1) == 0) {
-        tag = static_cast<int32_t>(lua_tonumber(OB_PTR(lua_State, field8), -1));
-        lua_settop(OB_PTR(lua_State, field8), -2);
+        tag = static_cast<int32_t>(lua_tonumber(static_cast<lua_State*>(mpL), -1));
+        lua_settop(static_cast<lua_State*>(mpL), -2);
         if (tag == 0) {
             tag = -1;
         }
@@ -1098,38 +1095,38 @@ uint32_t cGZLua5::Slot88_ac8bf8(uint32_t index)
 }
 
 // FUNCTION: 0x008b84b0
-void cGZLua5::Slot89_ac8bf8(uint32_t tag, uint32_t name)
+void cGZLua5::Slot89_ac8bf8(int32_t tag, const char* name)
 {
     FpuScope_ac9144 scope;
-    Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008bec80)), 0);
-    lua_pushnumber(OB_PTR(lua_State, field8), static_cast<int32_t>(tag));
-    lua_pushstring(OB_PTR(lua_State, field8), OB_PTR(const char, name));
+    Slot52_ac8bf8(reinterpret_cast<void*>(&Fn008bec80), 0);
+    lua_pushnumber(static_cast<lua_State*>(mpL), tag);
+    lua_pushstring(static_cast<lua_State*>(mpL), name);
     if (Slot70_ac8bf8(2, 1, 0, 1) != 0) {
-        lua_pushnil(OB_PTR(lua_State, field8));
+        lua_pushnil(static_cast<lua_State*>(mpL));
     }
 }
 
 // FUNCTION: 0x008b8540
-void cGZLua5::Slot90_ac8bf8(uint32_t tag, uint32_t name)
+void cGZLua5::Slot90_ac8bf8(int32_t tag, const char* name)
 {
     FpuScope_ac9144 scope;
-    Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008bef00)), 0);
-    lua_pushnumber(OB_PTR(lua_State, field8), static_cast<int32_t>(tag));
-    lua_pushstring(OB_PTR(lua_State, field8), OB_PTR(const char, name));
-    lua_pushvalue(OB_PTR(lua_State, field8), -4);
+    Slot52_ac8bf8(reinterpret_cast<void*>(&Fn008bef00), 0);
+    lua_pushnumber(static_cast<lua_State*>(mpL), tag);
+    lua_pushstring(static_cast<lua_State*>(mpL), name);
+    lua_pushvalue(static_cast<lua_State*>(mpL), -4);
     Slot70_ac8bf8(3, 0, 0, 1);
-    lua_settop(OB_PTR(lua_State, field8), -2);
+    lua_settop(static_cast<lua_State*>(mpL), -2);
 }
 
 // FUNCTION: 0x008b85e0
-uint32_t cGZLua5::Slot91_ac8bf8()
+int32_t cGZLua5::Slot91_ac8bf8()
 {
     FpuScope_ac9144 scope;
     int32_t tag = -1;
-    Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008be930)), 0);
+    Slot52_ac8bf8(reinterpret_cast<void*>(&Fn008be930), 0);
     if (Slot70_ac8bf8(0, 1, 0, 1) == 0) {
-        tag = static_cast<int32_t>(lua_tonumber(OB_PTR(lua_State, field8), 1));
-        lua_settop(OB_PTR(lua_State, field8), -2);
+        tag = static_cast<int32_t>(lua_tonumber(static_cast<lua_State*>(mpL), 1));
+        lua_settop(static_cast<lua_State*>(mpL), -2);
         if (tag <= 0) {
             tag = -1;
         }
@@ -1141,16 +1138,16 @@ uint32_t cGZLua5::Slot91_ac8bf8()
 void cGZLua5::Slot92_ac8bf8(uint32_t tag)
 {
     FpuScope_ac9144 scope;
-    Fn008bee90(OB_PTR(lua_State, field8), tag);
+    Fn008bee90(static_cast<lua_State*>(mpL), tag);
 }
 
 // FUNCTION: 0x008b86c0
 uint32_t cGZLua5::Slot93_ac8bf8(uint32_t tag, uint32_t other)
 {
     FpuScope_ac9144 scope;
-    Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008befe0)), 0);
-    lua_pushnumber(OB_PTR(lua_State, field8), static_cast<int32_t>(tag));
-    lua_pushnumber(OB_PTR(lua_State, field8), static_cast<int32_t>(other));
+    Slot52_ac8bf8(reinterpret_cast<void*>(&Fn008befe0), 0);
+    lua_pushnumber(static_cast<lua_State*>(mpL), static_cast<int32_t>(tag));
+    lua_pushnumber(static_cast<lua_State*>(mpL), static_cast<int32_t>(other));
     Slot70_ac8bf8(2, 0, 0, 1);
     return tag;
 }
@@ -1164,38 +1161,38 @@ uint32_t cGZLua5::Slot94_ac8bf8(uint32_t tag)
 }
 
 // FUNCTION: 0x008b87a0
-void cGZLua5::Slot95_ac8bf8(uint32_t pointer, uint32_t tag)
+void cGZLua5::Slot95_ac8bf8(void* pointer, int32_t tag)
 {
     FpuScope_ac9144 scope;
-    Fn008bf100(OB_PTR(lua_State, field8), OB_PTR(void, pointer), tag);
+    Fn008bf100(static_cast<lua_State*>(mpL), pointer, tag);
 }
 
 // FUNCTION: 0x008b87f0
 uint32_t cGZLua5::Slot96_ac8bf8(uint32_t index)
 {
     FpuScope_ac9144 scope;
-    return *OB_PTR(uint32_t, Slot46_ac8bf8(index));
+    return *static_cast<uint32_t*>(Slot46_ac8bf8(index));
 }
 
 // FUNCTION: 0x008b8c20
 uint32_t cGZLua5::Slot10_ac8d7c()
 {
     FpuScope_ac9144 scope;
-    return lua_getgccount(OB_PTR(lua_State, field8));
+    return lua_getgccount(static_cast<lua_State*>(mpL));
 }
 
 // FUNCTION: 0x008b8c60
 uint32_t cGZLua5::Slot11_ac8d7c()
 {
     FpuScope_ac9144 scope;
-    return lua_getgcthreshold(OB_PTR(lua_State, field8));
+    return lua_getgcthreshold(static_cast<lua_State*>(mpL));
 }
 
 // FUNCTION: 0x008b8ca0
 void cGZLua5::Slot12_ac8d7c(uint32_t threshold)
 {
     FpuScope_ac9144 scope;
-    lua_setgcthreshold(OB_PTR(lua_State, field8), threshold);
+    lua_setgcthreshold(static_cast<lua_State*>(mpL), threshold);
 }
 
 #ifdef OB_DRAFTS
@@ -1222,24 +1219,24 @@ bool cGZLua5::QueryInterface(unsigned int iid, void** out)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x008b8e20 score 6
-bool cGZLua5::Slot07_ac8bf8(uint32_t owner, uint32_t state, uint32_t id)
+bool cGZLua5::Slot07_ac8bf8(void* owner, void* state, int32_t id)
 {
     FpuScope_ac9144 scope;
-    Unknown_ac9144* current = OB_PTR(Unknown_ac9144, owner);
-    field4 = id;
-    field8 = state;
-    Unknown_ac9144* previous = OB_PTR(Unknown_ac9144, fieldc);
+    Unknown_ac9144* current = static_cast<Unknown_ac9144*>(owner);
+    mnThreadID = id;
+    mpL = state;
+    Unknown_ac9144* previous = static_cast<Unknown_ac9144*>(mpOwner);
     if (current != previous) {
         if (current) {
             current->AddRef();
         }
-        fieldc = owner;
+        mpOwner = owner;
         if (previous) {
             previous->Release();
         }
     }
-    Slot51_ac8bf8(OB_ADDR("_ALERT"));
-    Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008b8d70)), 0);
+    Slot51_ac8bf8("_ALERT");
+    Slot52_ac8bf8(reinterpret_cast<void*>(&Fn008b8d70), 0);
     Slot65_ac8bf8(-10001);
     return true;
 }
@@ -1250,13 +1247,13 @@ bool cGZLua5::Slot07_ac8bf8(uint32_t owner, uint32_t state, uint32_t id)
 bool cGZLua5::Slot08_ac8bf8()
 {
     FpuScope_ac9144 scope;
-    Unknown_ac9144* owner = OB_PTR(Unknown_ac9144, fieldc);
-    field8 = 0;
+    Unknown_ac9144* owner = static_cast<Unknown_ac9144*>(mpOwner);
+    mpL = 0;
     if (owner) {
-        fieldc = 0;
+        mpOwner = 0;
         owner->Release();
     }
-    field4 = 0xffffffff;
+    mnThreadID = -1;
     return true;
 }
 #endif
@@ -1303,18 +1300,18 @@ void lua_close(lua_State* L);
 typedef void (*ErrorReporter_ac9144)(void* thread, int32_t status, const char* message);
 
 // FUNCTION: 0x008b9050
-uint32_t cGZLua5::Slot75_ac8bf8(uint32_t filename)
+uint32_t cGZLua5::Slot75_ac8bf8(const char* filename)
 {
     FpuScope_ac9144 scope;
-    uint32_t status = luaL_loadfile(OB_PTR(lua_State, field8), OB_PTR(const char, filename));
+    uint32_t status = luaL_loadfile(static_cast<lua_State*>(mpL), filename);
     if (status != 0) {
         if (Slot23_ac8bf8(-1) == 4) {
-            uint32_t message = Slot43_ac8bf8(-1);
-            cUnk00ac8d7c* lua = OB_PTR(cUnk00ac8d7c, Slot03_ac8bf8());
+            const char* message = Slot43_ac8bf8(-1);
+            cUnk00ac8d7c* lua = static_cast<cUnk00ac8d7c*>(Slot03_ac8bf8());
             if (lua) {
-                ErrorReporter_ac9144 reporter = reinterpret_cast<ErrorReporter_ac9144>(OB_PTR(void, lua->Slot14_ac8d7c()));
+                ErrorReporter_ac9144 reporter = reinterpret_cast<ErrorReporter_ac9144>(lua->Slot14_ac8d7c());
                 if (reporter) {
-                    reporter(reinterpret_cast<char*>(this) + 8, status, OB_PTR(const char, message));
+                    reporter(reinterpret_cast<char*>(this) + 8, status, message);
                 }
             }
         }
@@ -1323,19 +1320,19 @@ uint32_t cGZLua5::Slot75_ac8bf8(uint32_t filename)
 }
 
 // FUNCTION: 0x008b90f0
-uint32_t cGZLua5::Slot76_ac8bf8(uint32_t string)
+uint32_t cGZLua5::Slot76_ac8bf8(const char* string)
 {
     FpuScope_ac9144 scope;
-    const char* text = OB_PTR(const char, string);
-    uint32_t status = luaL_loadbuffer(OB_PTR(lua_State, field8), text, std::strlen(text), text);
+    const char* text = string;
+    uint32_t status = luaL_loadbuffer(static_cast<lua_State*>(mpL), text, std::strlen(text), text);
     if (status != 0) {
         if (Slot23_ac8bf8(-1) == 4) {
-            uint32_t message = Slot43_ac8bf8(-1);
-            cUnk00ac8d7c* lua = OB_PTR(cUnk00ac8d7c, Slot03_ac8bf8());
+            const char* message = Slot43_ac8bf8(-1);
+            cUnk00ac8d7c* lua = static_cast<cUnk00ac8d7c*>(Slot03_ac8bf8());
             if (lua) {
-                ErrorReporter_ac9144 reporter = reinterpret_cast<ErrorReporter_ac9144>(OB_PTR(void, lua->Slot14_ac8d7c()));
+                ErrorReporter_ac9144 reporter = reinterpret_cast<ErrorReporter_ac9144>(lua->Slot14_ac8d7c());
                 if (reporter) {
-                    reporter(reinterpret_cast<char*>(this) + 8, status, OB_PTR(const char, message));
+                    reporter(reinterpret_cast<char*>(this) + 8, status, message);
                 }
             }
         }
@@ -1344,19 +1341,19 @@ uint32_t cGZLua5::Slot76_ac8bf8(uint32_t string)
 }
 
 // FUNCTION: 0x008b91a0
-uint32_t cGZLua5::Slot77_ac8bf8(uint32_t buffer, uint32_t size, uint32_t name)
+uint32_t cGZLua5::Slot77_ac8bf8(const char* buffer, uint32_t size, const char* name)
 {
     FpuScope_ac9144 scope;
-    uint32_t status = luaL_loadbuffer(OB_PTR(lua_State, field8), OB_PTR(const char, buffer), size,
-                                      OB_PTR(const char, name));
+    uint32_t status = luaL_loadbuffer(static_cast<lua_State*>(mpL), buffer, size,
+                                      name);
     if (status != 0) {
         if (Slot23_ac8bf8(-1) == 4) {
-            uint32_t message = Slot43_ac8bf8(-1);
-            cUnk00ac8d7c* lua = OB_PTR(cUnk00ac8d7c, Slot03_ac8bf8());
+            const char* message = Slot43_ac8bf8(-1);
+            cUnk00ac8d7c* lua = static_cast<cUnk00ac8d7c*>(Slot03_ac8bf8());
             if (lua) {
-                ErrorReporter_ac9144 reporter = reinterpret_cast<ErrorReporter_ac9144>(OB_PTR(void, lua->Slot14_ac8d7c()));
+                ErrorReporter_ac9144 reporter = reinterpret_cast<ErrorReporter_ac9144>(lua->Slot14_ac8d7c());
                 if (reporter) {
-                    reporter(reinterpret_cast<char*>(this) + 8, status, OB_PTR(const char, message));
+                    reporter(reinterpret_cast<char*>(this) + 8, status, message);
                 }
             }
         }
@@ -1366,32 +1363,32 @@ uint32_t cGZLua5::Slot77_ac8bf8(uint32_t buffer, uint32_t size, uint32_t name)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x008b8f30 score 28
-uint32_t cGZLua5::Slot70_ac8bf8(uint32_t nargs, uint32_t nresults, uint32_t errfunc, uint32_t popMessage)
+int32_t cGZLua5::Slot70_ac8bf8(int32_t nargs, int32_t nresults, int32_t errfunc, bool popMessage)
 {
     FpuScope_ac9144 scope;
     uint32_t status;
     Slot14_ac8bf8();
-    if (errfunc == 0 && fieldc != 0 && OB_PTR(cUnk00ac8d7c, fieldc)->Slot14_ac8d7c() != 0) {
+    if (errfunc == 0 && mpOwner != 0 && static_cast<cUnk00ac8d7c*>(mpOwner)->Slot14_ac8d7c() != 0) {
         int32_t base = Slot14_ac8bf8() - nargs;
-        lua_pushlstring(OB_PTR(lua_State, field8), "_TRACEBACK", 10);
-        lua_rawget(OB_PTR(lua_State, field8), -10001);
-        lua_insert(OB_PTR(lua_State, field8), base);
-        status = lua_pcall(OB_PTR(lua_State, field8), nargs, nresults, base);
-        lua_remove(OB_PTR(lua_State, field8), base);
+        lua_pushlstring(static_cast<lua_State*>(mpL), "_TRACEBACK", 10);
+        lua_rawget(static_cast<lua_State*>(mpL), -10001);
+        lua_insert(static_cast<lua_State*>(mpL), base);
+        status = lua_pcall(static_cast<lua_State*>(mpL), nargs, nresults, base);
+        lua_remove(static_cast<lua_State*>(mpL), base);
     } else {
-        status = lua_pcall(OB_PTR(lua_State, field8), nargs, nresults, errfunc);
+        status = lua_pcall(static_cast<lua_State*>(mpL), nargs, nresults, errfunc);
     }
     if (status != 0) {
-        uint32_t message = Slot43_ac8bf8(-1);
+        const char* message = Slot43_ac8bf8(-1);
         cUnk00ac8bf8* thread = this;
-        cUnk00ac8d7c* lua = OB_PTR(cUnk00ac8d7c, thread->Slot03_ac8bf8());
+        cUnk00ac8d7c* lua = static_cast<cUnk00ac8d7c*>(thread->Slot03_ac8bf8());
         if (lua) {
-            ErrorReporter_ac9144 reporter = reinterpret_cast<ErrorReporter_ac9144>(OB_PTR(void, lua->Slot14_ac8d7c()));
+            ErrorReporter_ac9144 reporter = reinterpret_cast<ErrorReporter_ac9144>(lua->Slot14_ac8d7c());
             if (reporter) {
-                reporter(thread, status, OB_PTR(const char, message));
+                reporter(thread, status, message);
             }
         }
-        if (*reinterpret_cast<bool*>(&popMessage)) {
+        if (popMessage) {
             Slot19_ac8bf8(1);
         }
     }
@@ -1404,32 +1401,32 @@ uint32_t cGZLua5::Slot70_ac8bf8(uint32_t nargs, uint32_t nresults, uint32_t errf
 bool cGZLua5::Slot04_ac8d7c(uint32_t libraries)
 {
     FpuScope_ac9144 scope;
-    if (field8 == 0) {
+    if (mpL == 0) {
         lua_State* L = lua_open();
         if (L) {
             cThreadRegistry_ac9144* registry = reinterpret_cast<cThreadRegistry_ac9144*>(mThreadRegistry);
             if (registry->Fn008bcc50(this, L)) {
-                luaopen_base(OB_PTR(lua_State, field8));
+                luaopen_base(static_cast<lua_State*>(mpL));
                 if (libraries & 2) {
-                    luaopen_io(OB_PTR(lua_State, field8));
+                    luaopen_io(static_cast<lua_State*>(mpL));
                 }
                 if (libraries & 4) {
-                    Fn008c2470(OB_PTR(lua_State, field8));
+                    Fn008c2470(static_cast<lua_State*>(mpL));
                 }
                 if (libraries & 8) {
-                    luaopen_math(OB_PTR(lua_State, field8));
+                    luaopen_math(static_cast<lua_State*>(mpL));
                 }
                 if (libraries & 0x10) {
-                    luaopen_debug(OB_PTR(lua_State, field8));
+                    luaopen_debug(static_cast<lua_State*>(mpL));
                 }
                 if (libraries & 0x20) {
-                    Fn008bfaa0(OB_PTR(lua_State, field8));
+                    Fn008bfaa0(static_cast<lua_State*>(mpL));
                 }
                 if (libraries & 0x40) {
                     nsGZLua5CompatWithLua4::OpenLib(this);
                 }
                 nsGZLua5ThreadLib::OpenLib(this);
-                lua_settop(OB_PTR(lua_State, field8), 0);
+                lua_settop(static_cast<lua_State*>(mpL), 0);
                 return true;
             }
         }
@@ -1442,7 +1439,7 @@ bool cGZLua5::Slot04_ac8d7c(uint32_t libraries)
 bool cGZLua5::Slot05_ac8d7c()
 {
     FpuScope_ac9144 scope;
-    lua_State* L = OB_PTR(lua_State, field8);
+    lua_State* L = static_cast<lua_State*>(mpL);
     if (L) {
         reinterpret_cast<cThreadRegistry_ac9144*>(mThreadRegistry)->Fn008bd630();
         lua_close(L);
@@ -1452,13 +1449,13 @@ bool cGZLua5::Slot05_ac8d7c()
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x008b8a00 score 17
-uint32_t cGZLua5::Slot06_ac8d7c(uint32_t pThread, uint32_t flags, uint32_t classID)
+uint32_t cGZLua5::Slot06_ac8d7c(void* pThread, uint32_t flags, uint32_t classID)
 {
     FpuScope_ac9144 scope;
-    cUnk00ac8bf8** out = OB_PTR(cUnk00ac8bf8*, pThread);
+    cUnk00ac8bf8** out = static_cast<cUnk00ac8bf8**>(pThread);
     *out = 0;
     cThreadRegistry_ac9144* registry = reinterpret_cast<cThreadRegistry_ac9144*>(mThreadRegistry);
-    int32_t id = registry->Fn008bcd50(OB_PTR(lua_State, field8), flags, classID);
+    int32_t id = registry->Fn008bcd50(static_cast<lua_State*>(mpL), flags, classID);
     if (id != -1) {
         lua_State* thread = registry->Fn008bc700(id);
         *out = reinterpret_cast<cUnk00ac8bf8**>(thread)[-1];
@@ -1469,12 +1466,12 @@ uint32_t cGZLua5::Slot06_ac8d7c(uint32_t pThread, uint32_t flags, uint32_t class
 #endif
 
 // FUNCTION: 0x008b8a80
-uint32_t cGZLua5::Slot09_ac8d7c(uint32_t id)
+void* cGZLua5::Slot09_ac8d7c(int32_t id)
 {
     FpuScope_ac9144 scope;
     lua_State* thread = reinterpret_cast<cThreadRegistry_ac9144*>(mThreadRegistry)->Fn008bc700(id);
     if (thread) {
-        return OB_ADDR(reinterpret_cast<cUnk00ac8bf8**>(thread)[-1]);
+        return reinterpret_cast<cUnk00ac8bf8**>(thread)[-1];
     }
     return 0;
 }
@@ -1483,34 +1480,34 @@ uint32_t cGZLua5::Slot09_ac8d7c(uint32_t id)
 bool cGZLua5::Slot07_ac8d7c(uint32_t id)
 {
     FpuScope_ac9144 scope;
-    return reinterpret_cast<cThreadRegistry_ac9144*>(mThreadRegistry)->Fn008bcee0(OB_PTR(lua_State, field8), id);
+    return reinterpret_cast<cThreadRegistry_ac9144*>(mThreadRegistry)->Fn008bcee0(static_cast<lua_State*>(mpL), id);
 }
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x008b8b30 score 70
-bool cGZLua5::Slot08_ac8d7c(uint32_t id, uint32_t nargs, uint32_t pCount)
+bool cGZLua5::Slot08_ac8d7c(int32_t id, int32_t nargs, void* pCount)
 {
     FpuScope_ac9144 scope;
     cThreadRegistry_ac9144* registry = reinterpret_cast<cThreadRegistry_ac9144*>(mThreadRegistry);
-    int32_t top = lua_gettop(OB_PTR(lua_State, field8)) - nargs;
-    int32_t status = registry->Fn008bd040(OB_PTR(lua_State, field8), id, nargs);
+    int32_t top = lua_gettop(static_cast<lua_State*>(mpL)) - nargs;
+    int32_t status = registry->Fn008bd040(static_cast<lua_State*>(mpL), id, nargs);
     if (status != 0 && mpErrorReporter != 0) {
         lua_State* thread = registry->Fn008bc700(id);
         void* threadObject = 0;
         if (thread) {
             threadObject = reinterpret_cast<void**>(thread)[-1];
         }
-        const char* message = lua_tostring(OB_PTR(lua_State, field8), -1);
+        const char* message = lua_tostring(static_cast<lua_State*>(mpL), -1);
         if (message == 0) {
             message = "<unknown description>";
         }
         reinterpret_cast<ErrorReporter_ac9144>(mpErrorReporter)(threadObject, status, message);
     }
-    int32_t count = lua_gettop(OB_PTR(lua_State, field8)) - top;
+    int32_t count = lua_gettop(static_cast<lua_State*>(mpL)) - top;
     if (pCount == 0) {
-        lua_settop(OB_PTR(lua_State, field8), -1 - count);
+        lua_settop(static_cast<lua_State*>(mpL), -1 - count);
     } else {
-        *OB_PTR(int32_t, pCount) = count;
+        *static_cast<int32_t*>(pCount) = count;
     }
     return status == 0;
 }
@@ -1572,37 +1569,37 @@ int Fn008bea30(lua_State* L);
 bool nsGZLua5ThreadLib::OpenLib(cUnk00ac8d7c* lua)
 {
     FpuScope_ac9144 scope;
-    cUnk00ac8bf8* thread = OB_PTR(cUnk00ac8bf8, lua->Slot03_ac8d7c());
+    cUnk00ac8bf8* thread = static_cast<cUnk00ac8bf8*>(lua->Slot03_ac8d7c());
     uint32_t top = thread->Slot14_ac8bf8();
     bool result = false;
-    thread->Slot87_ac8bf8(OB_ADDR("coroutine"));
+    thread->Slot87_ac8bf8("coroutine");
     if (thread->Slot23_ac8bf8(-1) == 5) {
-        thread->Slot51_ac8bf8(OB_ADDR("resume"));
-        thread->Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Resume)), 0);
+        thread->Slot51_ac8bf8("resume");
+        thread->Slot52_ac8bf8(reinterpret_cast<void*>(&Resume), 0);
         thread->Slot65_ac8bf8(-3);
-        thread->Slot51_ac8bf8(OB_ADDR("create"));
-        thread->Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Create)), 0);
+        thread->Slot51_ac8bf8("create");
+        thread->Slot52_ac8bf8(reinterpret_cast<void*>(&Create), 0);
         thread->Slot65_ac8bf8(-3);
-        thread->Slot51_ac8bf8(OB_ADDR("wrap"));
-        thread->Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Wrap)), 0);
+        thread->Slot51_ac8bf8("wrap");
+        thread->Slot52_ac8bf8(reinterpret_cast<void*>(&Wrap), 0);
         thread->Slot65_ac8bf8(-3);
-        thread->Slot51_ac8bf8(OB_ADDR("destroy"));
-        thread->Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Destroy)), 0);
+        thread->Slot51_ac8bf8("destroy");
+        thread->Slot52_ac8bf8(reinterpret_cast<void*>(&Destroy), 0);
         thread->Slot65_ac8bf8(-3);
-        thread->Slot51_ac8bf8(OB_ADDR("valid"));
-        thread->Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Valid)), 0);
+        thread->Slot51_ac8bf8("valid");
+        thread->Slot52_ac8bf8(reinterpret_cast<void*>(&Valid), 0);
         thread->Slot65_ac8bf8(-3);
-        thread->Slot51_ac8bf8(OB_ADDR("id"));
-        thread->Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&ID)), 0);
+        thread->Slot51_ac8bf8("id");
+        thread->Slot52_ac8bf8(reinterpret_cast<void*>(&ID), 0);
         thread->Slot65_ac8bf8(-3);
-        thread->Slot51_ac8bf8(OB_ADDR("status"));
-        thread->Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Status)), 0);
+        thread->Slot51_ac8bf8("status");
+        thread->Slot52_ac8bf8(reinterpret_cast<void*>(&Status), 0);
         thread->Slot65_ac8bf8(-3);
-        thread->Slot51_ac8bf8(OB_ADDR("class"));
-        thread->Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Class)), 0);
+        thread->Slot51_ac8bf8("class");
+        thread->Slot52_ac8bf8(reinterpret_cast<void*>(&Class), 0);
         thread->Slot65_ac8bf8(-3);
-        thread->Slot51_ac8bf8(OB_ADDR("parent"));
-        thread->Slot52_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Parent)), 0);
+        thread->Slot51_ac8bf8("parent");
+        thread->Slot52_ac8bf8(reinterpret_cast<void*>(&Parent), 0);
         thread->Slot65_ac8bf8(-3);
         result = true;
     }
@@ -1614,19 +1611,19 @@ bool nsGZLua5ThreadLib::OpenLib(cUnk00ac8d7c* lua)
 bool nsGZLua5CompatWithLua4::OpenLib(cUnk00ac8d7c* lua)
 {
     FpuScope_ac9144 scope;
-    cUnk00ac8bf8* thread = OB_PTR(cUnk00ac8bf8, lua->Slot03_ac8d7c());
+    cUnk00ac8bf8* thread = static_cast<cUnk00ac8bf8*>(lua->Slot03_ac8d7c());
     if (thread) {
         thread->AddRef();
     }
-    uint32_t error = thread->Slot72_ac8bf8(OB_ADDR(gB15ffc));
+    uint32_t error = thread->Slot72_ac8bf8(gB15ffc);
     if (error == 0) {
-        thread->Slot81_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008be990)), OB_ADDR("tag"));
-        thread->Slot81_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008bee20)), OB_ADDR("settag"));
-        thread->Slot81_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008bef00)), OB_ADDR("settagmethod"));
-        thread->Slot81_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008bec80)), OB_ADDR("gettagmethod"));
-        thread->Slot81_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008be930)), OB_ADDR("newtag"));
-        thread->Slot81_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008befe0)), OB_ADDR("copytagmethods"));
-        thread->Slot81_ac8bf8(OB_ADDR(reinterpret_cast<void*>(&Fn008bea30)), OB_ADDR("globals"));
+        thread->Slot81_ac8bf8(reinterpret_cast<void*>(&Fn008be990), "tag");
+        thread->Slot81_ac8bf8(reinterpret_cast<void*>(&Fn008bee20), "settag");
+        thread->Slot81_ac8bf8(reinterpret_cast<void*>(&Fn008bef00), "settagmethod");
+        thread->Slot81_ac8bf8(reinterpret_cast<void*>(&Fn008bec80), "gettagmethod");
+        thread->Slot81_ac8bf8(reinterpret_cast<void*>(&Fn008be930), "newtag");
+        thread->Slot81_ac8bf8(reinterpret_cast<void*>(&Fn008befe0), "copytagmethods");
+        thread->Slot81_ac8bf8(reinterpret_cast<void*>(&Fn008bea30), "globals");
         thread->Release();
         return true;
     }
@@ -1710,10 +1707,10 @@ bool cThreadRegistry_ac9144::Fn008bcc50(cUnk00ac8d7c* owner, lua_State* L)
             previous->Release();
         }
     }
-    cUnk00ac8bf8* thread = OB_PTR(cUnk00ac8bf8, mpOwner->Slot03_ac8d7c());
-    if (thread->Slot07_ac8bf8(OB_ADDR(owner), OB_ADDR(L), mnNextID)) {
-        thread->Slot54_ac8bf8(OB_ADDR(L));
-        thread->Slot54_ac8bf8(OB_ADDR(this));
+    cUnk00ac8bf8* thread = static_cast<cUnk00ac8bf8*>(mpOwner->Slot03_ac8d7c());
+    if (thread->Slot07_ac8bf8(owner, L, mnNextID)) {
+        thread->Slot54_ac8bf8(L);
+        thread->Slot54_ac8bf8(this);
         thread->Slot65_ac8bf8(-10000);
         reinterpret_cast<cUnk00ac8bf8**>(L)[-1] = thread;
         ThreadRecord_ac9144 fresh;
@@ -1762,7 +1759,7 @@ int32_t cThreadRegistry_ac9144::Fn008bcd50(lua_State* L, uint32_t flags, uint32_
     }
     cUnk00ac8bf8* threadObject = 0;
     if (com->Fn03(classID, 0xeb2810f1, reinterpret_cast<void**>(&threadObject)) &&
-        threadObject->Slot07_ac8bf8(OB_ADDR(mpOwner), OB_ADDR(thread), mnNextID)) {
+        threadObject->Slot07_ac8bf8(mpOwner, thread, mnNextID)) {
         record.mpThread = thread;
         record.mnFlags = flags;
         record.mnClassID = classID;

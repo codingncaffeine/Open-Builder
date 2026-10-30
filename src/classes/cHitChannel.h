@@ -32,13 +32,13 @@ struct OB_NOVTABLE cHitChannel_0 {
     virtual bool Pause(uint32_t) = 0;
     virtual bool Unpause() = 0;
     virtual uint32_t IsPaused() = 0;
-    virtual void GetVolume() = 0;
+    virtual uint32_t GetVolume() = 0;
     virtual void SetVolume(uint32_t) = 0;
     virtual bool FadeVolume(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool IsFading() = 0;
-    virtual void GetPan() = 0;
+    virtual uint32_t GetPan() = 0;
     virtual void SetPan(uint32_t) = 0;
-    virtual void GetFrequency() = 0;
+    virtual uint32_t GetFrequency() = 0;
     virtual void SetFrequency(uint32_t) = 0;
     virtual uint32_t GetOriginalFrequency() = 0;
     virtual bool SetEffectsType(uint32_t, uint32_t) = 0;
@@ -122,13 +122,13 @@ public:
     virtual bool Pause(uint32_t);
     virtual bool Unpause();
     virtual uint32_t IsPaused();
-    virtual void GetVolume();
+    virtual uint32_t GetVolume();
     virtual void SetVolume(uint32_t);
     virtual bool FadeVolume(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool IsFading();
-    virtual void GetPan();
+    virtual uint32_t GetPan();
     virtual void SetPan(uint32_t);
-    virtual void GetFrequency();
+    virtual uint32_t GetFrequency();
     virtual void SetFrequency(uint32_t);
     virtual uint32_t GetOriginalFrequency();
     virtual bool SetEffectsType(uint32_t, uint32_t);
@@ -155,7 +155,20 @@ public:
     virtual bool SetLowPassCutoff(uint32_t);
     virtual bool SetHighPassCutoff(uint32_t);
     virtual bool SetTimeMultiplier(uint32_t);
-    char unknown18[0x20];
+    // STUB: 0x0093f304
+    bool CreateSnd();
+    // STUB: 0x0093f687
+    bool UpdatePatch();
+    // STUB: 0x0093fa5b
+    void Fn0093fa5b(uint32_t);
+    int32_t mnRefCount;
+    uint32_t mnField1c;
+    char unknown20[0x4];
+    void* mpSnd;
+    void* mpField28;
+    void* mpSmart2c;
+    void* mpFactory;
+    void* mpRegLists;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cHitChannel[sizeof(cHitChannel) == 0x38 ? 1 : -1];

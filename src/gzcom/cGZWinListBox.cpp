@@ -216,26 +216,26 @@ void cGZWinListBox::Slot41_ae1560(uint32_t a)
 }
 
 // FUNCTION: 0x009c8877
-bool cGZWinListBox::Slot58_ae1560(uint32_t a, uint32_t b)
+bool cGZWinListBox::Slot58_ae1560(void* a, void* b)
 {
-    *OB_PTR(int8_t, a) = mcScrollbarGutterX;
-    *OB_PTR(int8_t, b) = mcScrollbarGutterY;
+    *static_cast<int8_t*>(a) = mcScrollbarGutterX;
+    *static_cast<int8_t*>(b) = mcScrollbarGutterY;
     return true;
 }
 
 // FUNCTION: 0x009c88bd
-bool cGZWinListBox::Slot60_ae1560(uint32_t a, uint32_t b)
+bool cGZWinListBox::Slot60_ae1560(void* a, void* b)
 {
-    *OB_PTR(int8_t, a) = mcTextGutterX;
-    *OB_PTR(int8_t, b) = mcTextGutterY;
+    *static_cast<int8_t*>(a) = mcTextGutterX;
+    *static_cast<int8_t*>(b) = mcTextGutterY;
     return true;
 }
 
 // FUNCTION: 0x009c913e
-bool cGZWinListBox::Slot36_ae1560(uint32_t a, uint32_t b)
+bool cGZWinListBox::Slot36_ae1560(void* a, void* b)
 {
-    *OB_PTR(bool, a) = mbVScrollEnabled;
-    *OB_PTR(bool, b) = mbHScrollEnabled;
+    *static_cast<bool*>(a) = mbVScrollEnabled;
+    *static_cast<bool*>(b) = mbHScrollEnabled;
     return true;
 }
 
@@ -780,9 +780,9 @@ bool cGZWinListBox::Slot25_ae1560()
 }
 
 // FUNCTION: 0x009c88e2
-void cGZWinListBox::Slot37_ae1560(uint32_t a)
+void cGZWinListBox::Slot37_ae1560(void* a)
 {
-    cIGZUnknown* buffer = OB_PTR(cIGZUnknown, a);
+    cIGZUnknown* buffer = static_cast<cIGZUnknown*>(a);
     if (buffer) {
         buffer->AddRef();
     }
@@ -806,9 +806,9 @@ void cGZWinListBox::SetPopupBackgroundBuffer(void* a)
 }
 
 // FUNCTION: 0x009c89a4
-bool cGZWinListBox::Slot40_ae1560(uint32_t a, uint32_t b)
+bool cGZWinListBox::Slot40_ae1560(int32_t a, void* b)
 {
-    int32_t index = static_cast<int32_t>(a);
+    int32_t index = a;
     if (index < 0 || index >= 3) {
         return false;
     }
@@ -816,17 +816,17 @@ bool cGZWinListBox::Slot40_ae1560(uint32_t a, uint32_t b)
     if (color == 0xdeadbeef) {
         return false;
     }
-    *OB_PTR(uint32_t, b) = color;
+    *static_cast<uint32_t*>(b) = color;
     return true;
 }
 
 // FUNCTION: 0x009c8a09
-bool cGZWinListBox::Slot43_ae1560(uint32_t a)
+bool cGZWinListBox::Slot43_ae1560(void* a)
 {
     if (mnHighlightColor == 0xdeadbeef) {
         return false;
     }
-    *OB_PTR(uint32_t, a) = ConvertPackedRGBToNative(mnHighlightColor);
+    *static_cast<uint32_t*>(a) = ConvertPackedRGBToNative(mnHighlightColor);
     return true;
 }
 
@@ -928,9 +928,9 @@ bool cGZWinListBox::QueryInterface(unsigned int riid, void** ppvObj)
 }
 
 // FUNCTION: 0x009c8934
-void cGZWinListBox::Slot38_ae1560(uint32_t a)
+void cGZWinListBox::Slot38_ae1560(void* a)
 {
-    cIGZUnknown* font = OB_PTR(cIGZUnknown, a);
+    cIGZUnknown* font = static_cast<cIGZUnknown*>(a);
     if (font) {
         font->AddRef();
     }
@@ -961,13 +961,13 @@ void cGZWinListBox::Slot55_ae1560(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x009c87fe
-bool cGZWinListBox::Slot56_ae1560(uint32_t a, uint32_t b)
+bool cGZWinListBox::Slot56_ae1560(void* a, void* b)
 {
     if (mnOutlineColorA == 0xdeadbeef || mnOutlineColorB == 0xdeadbeef) {
         return false;
     }
-    *OB_PTR(uint32_t, a) = ConvertPackedRGBToNative(mnOutlineColorA);
-    *OB_PTR(uint32_t, b) = ConvertPackedRGBToNative(mnOutlineColorB);
+    *static_cast<uint32_t*>(a) = ConvertPackedRGBToNative(mnOutlineColorA);
+    *static_cast<uint32_t*>(b) = ConvertPackedRGBToNative(mnOutlineColorB);
     return true;
 }
 
@@ -987,9 +987,8 @@ bool cGZWinListBox::Slot39_ae1560(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x009c8a3f
-void cGZWinListBox::Slot46_ae1560(uint32_t a)
+void cGZWinListBox::Slot46_ae1560(float alpha)
 {
-    float alpha = *reinterpret_cast<float*>(&a);
     mfHighlightFillAlpha = alpha;
     if (alpha > 1.0f) {
         mfHighlightFillAlpha = 1.0f;
@@ -1026,9 +1025,9 @@ bool cGZWinListBox::GZCharacter(void* a)
 }
 
 // FUNCTION: 0x009c9e74
-bool cGZWinListBox::Slot05_ae1560(uint32_t a)
+bool cGZWinListBox::Slot05_ae1560(void* a)
 {
-    cRZString text(*OB_PTR(cIGZString, a));
+    cRZString text(*static_cast<cIGZString*>(a));
     return GZCharacter(&text);
 }
 
@@ -1050,13 +1049,13 @@ void cGZWinListBox::RemoveScrollBar(bool a, bool b)
 }
 
 // FUNCTION: 0x009c9bd7
-bool cGZWinListBox::Slot50_ae1560(uint32_t a, uint32_t b)
+bool cGZWinListBox::Slot50_ae1560(void* a, void* b)
 {
     List_ae1780* list = reinterpret_cast<List_ae1780*>(&mpEntryList);
     int32_t index = 0;
     for (Node_ae1780* node = list->mpHead->mpNext; node != list->mpHead; node = node->mpNext) {
-        if (OB_PTR(cIGZString, b)->IsEqual(node->mData.mText, true)) {
-            *OB_PTR(int32_t, a) = index;
+        if (static_cast<cIGZString*>(b)->IsEqual(node->mData.mText, true)) {
+            *static_cast<int32_t*>(a) = index;
             return true;
         }
         ++index;
@@ -1065,12 +1064,12 @@ bool cGZWinListBox::Slot50_ae1560(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x009c9ebb
-bool cGZWinListBox::Slot49_ae1560(uint32_t a, uint32_t b)
+bool cGZWinListBox::Slot49_ae1560(int32_t a, void* b)
 {
     cRZString text;
     bool found = GetStringFromIndex(a, &text);
     if (found) {
-        OB_PTR(cIGZString, b)->Copy(text);
+        static_cast<cIGZString*>(b)->Copy(text);
     }
     return found;
 }
@@ -1324,7 +1323,7 @@ bool cGZWinListBox::Slot11_ae1560(uint32_t a, uint32_t b)
     if (index != mnSelection) {
         mnSelection = index;
         if (index >= 0) {
-            if (!Slot26_ae1560(index)) {
+            if (!static_cast<uint8_t>(Slot26_ae1560(index))) {
                 Slot27_ae1560(index);
             }
         }
@@ -1339,9 +1338,9 @@ bool cGZWinListBox::Slot11_ae1560(uint32_t a, uint32_t b)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x009c98bd score 29 (same logic; the shared argument pushes sit before the branch in the original)
-bool cGZWinListBox::Slot62_ae1560(uint32_t a, uint32_t b)
+bool cGZWinListBox::Slot62_ae1560(void* a, void* b)
 {
-    cIGZUnknown* image = OB_PTR(cIGZUnknown, a);
+    cIGZUnknown* image = static_cast<cIGZUnknown*>(a);
     if (image) {
         image->AddRef();
     }
@@ -1350,7 +1349,7 @@ bool cGZWinListBox::Slot62_ae1560(uint32_t a, uint32_t b)
     }
     mpScrollBarImageV = image;
     Rect_ae1780* rect = reinterpret_cast<Rect_ae1780*>(mnScrollBarRectV);
-    *rect = *OB_PTR(Rect_ae1780, b);
+    *rect = *static_cast<Rect_ae1780*>(b);
     cScrollBar_ae1780* bar = static_cast<cScrollBar_ae1780*>(get_scrollbar_v());
     if (bar) {
         cImage_ae1780* img = static_cast<cImage_ae1780*>(mpScrollBarImageV);
@@ -1363,12 +1362,12 @@ bool cGZWinListBox::Slot62_ae1560(uint32_t a, uint32_t b)
 #endif
 
 // FUNCTION: 0x009c8f99
-uint32_t cGZWinListBox::Slot34_ae1560(uint32_t /*a*/, uint32_t b, uint32_t c)
+int32_t cGZWinListBox::Slot34_ae1560(int32_t /*a*/, int32_t b, bool c)
 {
     int32_t count = static_cast<int32_t>(Slot30_ae1560());
     if (count != 0) {
-        int32_t y = static_cast<int32_t>(b);
-        bool clip = *reinterpret_cast<bool*>(&c);
+        int32_t y = b;
+        bool clip = c;
         if (y < 0 && clip) {
             y = 0;
         }
@@ -1616,9 +1615,9 @@ bool cGZWinListBox::Slot04_ae1d24()
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x009c9aeb score 41 (same logic; the rectangle arithmetic is scheduled differently)
-void cGZWinListBox::Slot19_ae1560(uint32_t a)
+void cGZWinListBox::Slot19_ae1560(void* a)
 {
-    Rect_ae1780* rect = OB_PTR(Rect_ae1780, a);
+    Rect_ae1780* rect = static_cast<Rect_ae1780*>(a);
     reinterpret_cast<cPrim_ae1780*>(this)->GetArea(rect);
     rect->Offset(-rect->v[0], -rect->v[1]);
     rect->Deflate(mcTextGutterX, mcTextGutterY);
@@ -1630,13 +1629,13 @@ void cGZWinListBox::Slot19_ae1560(uint32_t a)
 #endif
 
 // FUNCTION: 0x009c8b24
-bool cGZWinListBox::Slot08_ae1560(uint32_t a, uint32_t b)
+bool cGZWinListBox::Slot08_ae1560(void* a, int32_t b)
 {
     int32_t count = static_cast<int32_t>(Slot30_ae1560());
     if (count == 0) {
         return false;
     }
-    int32_t index = static_cast<int32_t>(b);
+    int32_t index = b;
     if (index == -2 || index >= count) {
         index = count - 1;
     } else if (index < 0) {
@@ -1644,7 +1643,7 @@ bool cGZWinListBox::Slot08_ae1560(uint32_t a, uint32_t b)
     }
     cRZString* text;
     if (GetStringAddressFromIndex(index, &text)) {
-        text->Copy(*OB_PTR(cIGZString, a));
+        text->Copy(*static_cast<cIGZString*>(a));
         if (mbPopup) {
             if (mbFitHeight) {
                 Slot47_ae1560();
@@ -1668,7 +1667,7 @@ bool cGZWinListBox::Slot48_ae1560()
         uint32_t widest = 1;
         if (list->mpHead->mpNext != list->mpHead) {
             if (!mpFont) {
-                Slot38_ae1560(OB_ADDR(Fn00913c72()->GetFont(0x68963c4c)));
+                Slot38_ae1560(Fn00913c72()->GetFont(0x68963c4c));
             }
             for (Node_ae1780* node = list->mpHead->mpNext; node != list->mpHead; node = node->mpNext) {
                 uint32_t length = node->mData.mText.size();
@@ -1802,17 +1801,17 @@ bool cGZWinListBox::GZOnKeyDown(uint32_t a, uint32_t b)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x009c9f12 score 43 (same logic; the original keeps the count and index in registers)
-bool cGZWinListBox::Slot07_ae1560(uint32_t a, uint32_t b, uint32_t c)
+bool cGZWinListBox::Slot07_ae1560(void* a, int32_t b, uint32_t c)
 {
     int32_t count = static_cast<int32_t>(Slot30_ae1560());
-    int32_t index = static_cast<int32_t>(b);
+    int32_t index = b;
     if (index == -2 || index > count) {
         index = count;
     } else if (index < 0) {
         index = 0;
     }
     {
-        Entry_ae1780 entry(*OB_PTR(cIGZString, a), c);
+        Entry_ae1780 entry(*static_cast<cIGZString*>(a), c);
         InsertEntryAtIndex(index, &entry);
     }
     if (count == 0 && mnSelection != -1) {
@@ -1948,7 +1947,7 @@ cWM_ae1780* Fn00913c46();
 // CLOSE: 0x009c94ad score 20 (same logic; the original shares one end_dialog call tail between both exits)
 bool cGZWinListBox::GZOnMouseDownL(uint32_t a, uint32_t b, uint32_t c)
 {
-    int32_t index = static_cast<int32_t>(Slot34_ae1560(a, b, true));
+    int32_t index = Slot34_ae1560(a, b, true);
     if (GZAmCapturing()) {
         if (!IsPointInWindowWindowCoordinates(a, b)) {
             end_dialog(-1);
@@ -2079,7 +2078,7 @@ bool cGZWinListBox::Slot03_ae1d24()
     cWCM_ae1780* manager = Fn00913c72();
     if (manager) {
         if (!mpFont) {
-            Slot38_ae1560(OB_ADDR(manager->GetFont(0x68963c4c)));
+            Slot38_ae1560(manager->GetFont(0x68963c4c));
         }
         if (mnOutlineColorA == 0xdeadbeef) {
             mnOutlineColorA = ConvertNativeToPackedRGB(manager->GetColor(0xa8963fad));

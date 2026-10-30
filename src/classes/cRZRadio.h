@@ -7,6 +7,7 @@
 #include "classes/cRZSystemService.h"
 #include "classes/cUnk00a931c4.h"
 #include "classes/cUnk00acc1f8.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00acc3c0 cUnk00a93658
 // VTABLE: 0x00acc3a4 cUnk0090da1e
@@ -19,7 +20,7 @@ public:
     virtual void SetLanguageManager(uint32_t);
     virtual void SetSoundSystem(uint32_t);
     virtual bool IsFading();
-    virtual void SetupDiskStations();
+    virtual bool SetupDiskStations();
     virtual bool DoesAtLeastOneSoundEntryExistForTheGivenDirectory(uint32_t);
     virtual bool GetLanguageDirectoryName(uint32_t, uint32_t);
     virtual void FinalRelease();
@@ -62,19 +63,44 @@ public:
     virtual void Slot36_acc1f8(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknown24[0x18];
-    uint32_t field3c;
-    char unknown40[0x4];
-    bool field44;
-    char unknown45[0x1f];
-    uint32_t field64;
-    uint32_t field68;
-    char unknown6c[0x4];
-    bool field70;
-    char unknown71[0x17];
-    bool field88;
-    bool field89;
-    char unknown8a[0x6];
+    // STUB: 0x008d2bff
+    void Fn008d2bff(uint32_t, uint32_t);
+    // STUB: 0x008d2c5f
+    void Fn008d2c5f(uint32_t);
+    // STUB: 0x008d2c7d
+    void Fn008d2c7d();
+    // STUB: 0x008d3132
+    void PlaySong_Internal(void*);
+    // STUB: 0x008d3bf8
+    void Fn008d3bf8(void*);
+    bool mbInitialised;
+    char unknown25[0x3];
+    uint32_t mnRefCount;
+    uint32_t mnSettingValue;
+    void** mpStationsBegin;
+    void** mpStationsEnd;
+    void** mpStationsCap;
+    uint32_t mnVolume;
+    uint32_t mnMuteCount;
+    bool mbOn;
+    char unknown45[0x3];
+    uint32_t mnStation;
+    bool mbFlag4c;
+    bool mbFlag4d;
+    bool mbFlag4e;
+    char unknown4f[0x1];
+    cRZString mInfo;
+    void* mpLanguageManager;
+    void* mpMessages;
+    void* mpSoundSystem;
+    bool mbFading;
+    bool mbFlag71;
+    char unknown72[0x2];
+    cRZString mSongName;
+    bool mbFlag88;
+    bool mbFlag89;
+    char unknown8a[0x2];
+    uint32_t mnMaxVolume;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cRZRadio[sizeof(cRZRadio) == 0x90 ? 1 : -1];

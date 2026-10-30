@@ -27,7 +27,7 @@ public:
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual bool Slot03_a9e0e4();
-    virtual uint32_t Slot04_a9e0e4();
+    virtual void* Slot04_a9e0e4();
     virtual uint32_t Slot05_a9e0e4();
     virtual bool Slot06_a9e0e4(uint32_t, uint32_t);
     virtual uint32_t Slot07_a9e0e4();

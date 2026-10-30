@@ -11,13 +11,13 @@ class cGZFont {
 public:
     virtual bool QueryInterface(uint32_t, uint32_t);
     virtual uint32_t AddRef();
-    virtual void Release();
+    virtual uint32_t Release();
     virtual bool Init();
     virtual bool Shutdown();
-    virtual void GetName(uint32_t);
+    virtual void GetName(void*);
     virtual uint32_t GetStyle(uint32_t);
     virtual uint32_t GetStyle_2();
-    virtual void SetStyle(uint32_t, uint32_t);
+    virtual void SetStyle(uint32_t, bool);
     virtual uint32_t GetType();
     virtual uint32_t GetSize();
     virtual bool SetSize(uint32_t);
@@ -27,68 +27,109 @@ public:
     virtual uint32_t GetAntialiasing();
     virtual void SetAntialiasing(uint32_t);
     virtual float GetAntialiasingGammaCorrection();
-    virtual void SetAntialiasingGammaCorrection(uint32_t);
+    virtual void SetAntialiasingGammaCorrection(float);
     virtual float GetAntialiasingSharpness();
-    virtual void SetAntialiasingSharpness(uint32_t);
-    virtual void GetFilePath(uint32_t);
-    virtual void SetFilePath(uint32_t);
-    virtual bool GetCodePage(uint32_t);
+    virtual void SetAntialiasingSharpness(float);
+    virtual void GetFilePath(void*);
+    virtual void SetFilePath(void*);
+    virtual bool GetCodePage(void*);
     virtual bool SetCodePage(uint32_t);
     virtual bool IsCodePageAvailable(uint32_t);
     virtual bool IsCharEncodingAvailable(uint32_t);
-    virtual bool IsCharAvailable(uint32_t, uint32_t);
-    virtual bool PreloadChars(uint32_t, uint32_t);
-    virtual void GetScaling(uint32_t, uint32_t);
-    virtual void SetScaling(uint32_t, uint32_t);
-    virtual void GetAdvanceScaling(uint32_t, uint32_t);
-    virtual void SetAdvanceScaling(uint32_t, uint32_t);
-    virtual void GetSpacingAdjustment(uint32_t, uint32_t);
+    virtual bool IsCharAvailable(const void*, uint32_t);
+    virtual bool PreloadChars(const void*, uint32_t);
+    virtual void GetScaling(void*, void*);
+    virtual void SetScaling(float, float);
+    virtual void GetAdvanceScaling(void*, void*);
+    virtual void SetAdvanceScaling(float, float);
+    virtual void GetSpacingAdjustment(void*, void*);
     virtual void SetSpacingAdjustment(uint32_t, uint32_t);
     virtual uint32_t GetLineHeight();
-    virtual uint32_t CharWidth(uint32_t, uint32_t);
+    virtual int32_t CharWidth(const void*, uint32_t);
     virtual uint32_t CharHeight(uint32_t, uint32_t);
     virtual uint32_t GetSizeAboveBaseline();
     virtual uint32_t GetSizeBelowBaseline();
-    virtual uint32_t GetAdvanceWidth(uint32_t, uint32_t);
-    virtual uint32_t CalculateWordsToFitInWidth(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual uint32_t CalculateCharsToFitInWidth(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual uint32_t CalculateNumberOfLines(uint32_t, uint32_t, uint32_t);
-    virtual uint32_t CalculateWidthOfLines(uint32_t, uint32_t, uint32_t);
+    virtual int32_t GetAdvanceWidth(const void*, uint32_t);
+    virtual uint32_t CalculateWordsToFitInWidth(const void*, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual uint32_t CalculateCharsToFitInWidth(const void*, uint32_t, uint32_t, void*);
+    virtual uint32_t CalculateNumberOfLines(const void*, uint32_t, uint32_t);
+    virtual uint32_t CalculateWidthOfLines(const void*, uint32_t, uint32_t);
     virtual bool CalculateTextArea(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void CalculateTextArea_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void TextArea(uint32_t, uint32_t, uint32_t);
-    virtual uint32_t GetStringWidth(uint32_t, uint32_t);
-    virtual uint32_t GetStringVisibleWidth(uint32_t, uint32_t, uint32_t);
+    virtual void CalculateTextArea_2(const void*, uint32_t, void*, bool, bool);
+    virtual void TextArea(const void*, uint32_t, void*);
+    virtual int32_t GetStringWidth(const void*, uint32_t);
+    virtual int32_t GetStringVisibleWidth(const void*, uint32_t, void*);
     virtual uint32_t FormatForEllipsis(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool DrawTextLine(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool DrawTextParagraph(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool DrawTextLine(void*, int32_t, int32_t, const void*, uint32_t, uint32_t, uint32_t, const void*, void*);
+    virtual bool DrawTextParagraph(void*, const void*, const void*, uint32_t, int32_t, uint32_t, uint32_t, const void*, void*);
     virtual uint32_t GetRenderer();
-    virtual void SetRenderer(uint32_t);
-    virtual bool LockSurfaceForFontUse(uint32_t);
-    virtual bool UnlockSurfaceForFontUse(uint32_t);
+    virtual void SetRenderer(void*);
+    virtual bool LockSurfaceForFontUse(void*);
+    virtual bool UnlockSurfaceForFontUse(void*);
     virtual ~cGZFont();
-    virtual uint32_t GetXOffset(uint32_t, uint32_t);
-    virtual uint32_t GetAppropriateCachedBitmapData();
-    virtual uint32_t GetCharData(uint32_t);
-    virtual uint32_t AddCharData(uint32_t, uint32_t);
-    virtual bool CopyGlyphToSourceData(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool ReallocateSourceData(uint32_t, uint32_t, uint32_t);
-    char unknown4[0x30];
+    virtual int32_t GetXOffset(const void*, uint32_t);
+    virtual void* GetAppropriateCachedBitmapData();
+    virtual void* GetCharData(uint32_t);
+    virtual void* AddCharData(uint32_t, void*);
+    virtual bool CopyGlyphToSourceData(void*, void*, uint32_t, uint32_t, const void*, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool ReallocateSourceData(void*, uint32_t, uint32_t);
+    // STUB: 0x00896293
+    void Fn00896293();
+    // STUB: 0x0089603d
+    uint32_t Fn0089603d();
+    // STUB: 0x00896618
+    uint32_t Fn00896618();
+    // STUB: 0x00896636
+    uint32_t Fn00896636();
+    // STUB: 0x0089671f
+    uint32_t ConvertCharToUnicode(const void*, uint32_t, void*);
+    // STUB: 0x008993bb
+    void Fn008993bb();
+    // STUB: 0x00899bca
+    void GetTextAsUnicode(const void*, uint32_t, void*, void*, int32_t, bool);
+    // STUB: 0x0089738f
+    uint32_t Find(const void*, uint32_t, uint32_t);
+    // STUB: 0x00896425
+    bool Fn00896425(const void*, uint32_t);
+    // STUB: 0x008963c9
+    uint32_t Fn008963c9(uint32_t);
+    // STUB: 0x0089645a
+    uint32_t GetSubstitutionChar(uint32_t, uint32_t);
+    // STUB: 0x00899665
+    void MakeSubstitutedString(void*, uint32_t, void*, void*, bool);
+    // STUB: 0x0089838c
+    void SetCurrentPalette(uint32_t, uint32_t);
+    uint8_t mbReady;
+    char unknown5[0x3];
+    int32_t mnRefCount;
+    uint8_t mPath[0x14];
+    uint8_t mName[0x14];
     uint32_t field34;
-    uint32_t field38;
-    uint32_t field3c;
-    uint32_t field40;
-    uint32_t field44;
-    uint32_t field48;
-    uint32_t field4c;
+    uint32_t mnSize;
+    int32_t mnHeight;
+    uint32_t mnStyle;
+    uint32_t mnFontColor;
+    uint32_t mnBackColor;
+    uint32_t mnAntialiasing;
     char unknown50[0x4];
-    float field54;
-    float field58;
-    char unknown5c[0x20];
-    uint32_t field7c;
-    char unknown80[0xc];
-    uint32_t field8c;
-    char unknown90[0xcc];
+    float mfGamma;
+    float mfSharpness;
+    char unknown5c[0xc];
+    float mfScaleX;
+    float mfScaleY;
+    float mfAdvanceScale;
+    int32_t mnSpacingX;
+    int32_t mnSpacingY;
+    uint32_t mnCodePage;
+    int32_t mnLockCount;
+    int32_t mnAscent;
+    char unknown88[0x4];
+    void* mpRenderer;
+    char unknown90[0x4c];
+    void* mpFace;
+    char unknowne0[0xc];
+    void* mpFT;
+    char unknownf0[0x6c];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZFont[sizeof(cGZFont) == 0x15c ? 1 : -1];

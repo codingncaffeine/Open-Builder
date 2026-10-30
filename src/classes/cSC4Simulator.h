@@ -57,6 +57,24 @@ public:
     virtual void Slot33_ab2e68(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x007020e0
+    void PostMessageServerMessage(uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00702430
+    void DoSetSimSpeed(int32_t);
+    // STUB: 0x007025b0
+    void ReadSimulatorTunableValues();
+    // STUB: 0x00702a80
+    void SimulateTimePassage();
+    // STUB: 0x00702df0
+    void SimulateIdleTime();
+    // STUB: 0x00702f10
+    void Fn00702f10(uint32_t);
+    // STUB: 0x007038b0
+    void SimulateAgents();
+    // STUB: 0x00703b90
+    void Fn00703b90(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00704060
+    void Fn00704060(uint32_t, uint32_t);
     char unknown28[0x14];
     uint32_t field3c;
     uint32_t field40;

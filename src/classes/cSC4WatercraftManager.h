@@ -21,9 +21,9 @@ public:
     virtual bool Slot03_aaaa9c(void*);
     virtual bool Init();
     virtual bool Shutdown();
-    virtual bool AddAutomaton(uint32_t);
+    virtual bool AddAutomaton(void*);
     virtual bool RemoveAutomaton(uint32_t, uint32_t);
-    virtual uint32_t CreateAutomaton(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void* CreateAutomaton(uint32_t, void*, uint32_t, void*, void*, uint32_t, void*);
     virtual bool GetRandomCreationPoint(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool HandleTuningParametersChanged();
     virtual void DoAnimationTick(uint32_t, uint32_t);

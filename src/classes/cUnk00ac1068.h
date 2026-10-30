@@ -22,9 +22,9 @@ public:
     virtual bool Slot67_ac1068(uint32_t, uint32_t, uint32_t);
     virtual bool Slot68_ac1068(uint32_t, uint32_t);
     virtual bool Slot69_ac1068(uint32_t, uint32_t, uint32_t);
-    virtual void Slot03_ac0f80();
+    virtual bool Slot03_ac0f80();
     virtual bool Slot04_ac0f80(uint32_t);
-    virtual bool Slot54_ac0f80(uint32_t);
+    virtual bool Slot54_ac0f80(void*);
     uint32_t field5c;
 };
 

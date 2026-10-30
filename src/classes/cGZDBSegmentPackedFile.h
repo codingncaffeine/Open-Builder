@@ -43,9 +43,9 @@ public:
     virtual uint32_t Slot26_ad8488(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot27_ad8488();
     virtual bool Slot28_ad8488();
-    virtual bool Slot29_ad8488(uint32_t);
-    virtual bool Slot30_ad8488(uint32_t, uint32_t);
-    virtual bool Slot31_ad8488(uint32_t, uint32_t);
+    virtual bool Slot29_ad8488(bool);
+    virtual bool Slot30_ad8488(uint32_t, bool);
+    virtual bool Slot31_ad8488(uint32_t, bool);
     virtual bool Slot32_ad8488(uint32_t);
     virtual void Slot33_ad8488(uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot34_ad8488(uint32_t);
@@ -79,13 +79,83 @@ public:
     virtual bool Slot06_ad8fc8();
     virtual void Slot08_ad8fc8(uint32_t);
     virtual bool Slot09_ad8fc8(uint32_t);
-    char unknown14[0x4];
-    uint32_t field18;
-    char unknown1c[0xa4];
-    uint32_t fieldc0;
-    char unknownc4[0x84];
-    uint32_t field148;
-    char unknown14c[0x7c];
+    // STUB: 0x00970030
+    uint32_t Fn00970030(uint32_t);
+    // STUB: 0x0096fe20
+    bool Fn0096fe20();
+    // STUB: 0x0096ef02
+    bool Fn0096ef02();
+    // STUB: 0x0096fb0f
+    bool Fn0096fb0f();
+    // STUB: 0x0096ef83
+    bool Fn0096ef83();
+    // STUB: 0x0096e37b
+    bool Fn0096e37b();
+    // STUB: 0x0096e407
+    bool Fn0096e407();
+    // STUB: 0x0096e49d
+    bool Fn0096e49d();
+    // STUB: 0x0096e99a
+    void Fn0096e99a();
+    // STUB: 0x0096e6f4
+    bool DecompressRecord(uint32_t, uint32_t, void*, void*);
+    // STUB: 0x0096e617
+    bool DecompressData(void*, uint32_t, void*, void*);
+    // STUB: 0x0096ea47
+    bool Fn0096ea47(uint32_t, uint32_t, void*, void*);
+    // STUB: 0x0096fa6b
+    bool Fn0096fa6b();
+    // STUB: 0x0096fc95
+    bool Fn0096fc95();
+    // STUB: 0x0096fce8
+    bool Fn0096fce8();
+    // STUB: 0x0096ff01
+    bool ShouldRecordBeCompressed(void*, uint32_t);
+    // STUB: 0x0096ff7e
+    bool Fn0096ff7e(void*, uint32_t, void*);
+    // STUB: 0x009708be
+    bool Fn009708be(void*, void*, bool, bool);
+    // STUB: 0x0097139c
+    void IncrementTypeAndGroupUse(uint32_t, uint32_t, bool);
+    // STUB: 0x009718b9
+    bool Fn009718b9();
+    // STUB: 0x00972999
+    bool Fn00972999();
+    // STUB: 0x009725fb
+    uint32_t Fn009725fb();
+    // STUB: 0x00972761
+    bool Fn00972761();
+    // STUB: 0x00971617
+    bool Fn00971617(void*, void*);
+    bool mbOpen;
+    char unknown15[0x3];
+    uint32_t mn18;
+    uint32_t mnFlags;
+    char unknown20[0x4];
+    void* mpIndex;
+    char unknown28[0x98];
+    uint32_t mnC0;
+    uint32_t mnC4;
+    uint32_t mnC8;
+    uint32_t mnCc;
+    uint32_t mnD0;
+    char unknownd4[0x1c];
+    uint32_t mnF0;
+    uint32_t mnF4;
+    char unknownf8[0x4];
+    uint32_t mnFc;
+    uint32_t mn100;
+    char unknown104[0x40];
+    uint32_t mn144;
+    uint32_t mn148;
+    void* mpMap;
+    char unknown150[0x8];
+    bool mbDirty;
+    char unknown159[0x2b];
+    bool mbFlag184;
+    bool mbFlag185;
+    char unknown186[0x3e];
+    void* mpBuffer;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZDBSegmentPackedFile[sizeof(cGZDBSegmentPackedFile) == 0x1c8 ? 1 : -1];

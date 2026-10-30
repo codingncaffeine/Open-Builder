@@ -6,6 +6,7 @@
 #include "common/types.h"
 #include "classes/cGZWin.h"
 #include "classes/cUnk00ae0e80.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00ae0fb0 cGZWin
 // VTABLE: 0x00ae0f18 cUnk00ae0e80
@@ -63,14 +64,49 @@ public:
     virtual bool Slot37_ae0e80(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknowndc[0x40];
-    uint32_t field11c;
-    char unknown120[0x18];
-    bool field138;
-    bool field139;
+    // STUB: 0x0099bf14
+    void* GetCursorManager_ae0fb0();
+    // STUB: 0x009c5f4e
+    void send_line_input_completed_msg();
+    // STUB: 0x009c5f72
+    void send_line_input_changed_msg();
+    // STUB: 0x009c5feb
+    void paint_outline();
+    // STUB: 0x009c610b
+    uint32_t FindTextIndexFromCursorLocation(int32_t);
+    // STUB: 0x009c61d1
+    bool UpdateViewLocation();
+    // STUB: 0x009c647a
+    bool DeleteChar(uint32_t, uint32_t);
+    // STUB: 0x009c69e0
+    void draw_text(int32_t, int32_t, int32_t, int32_t, uint32_t);
+    // STUB: 0x009c6f14
+    bool InsertChar(uint32_t, uint32_t);
+    // STUB: 0x0099bdfe
+    bool GZSetCapture_ae0fb0();
+    // STUB: 0x0099bdf3
+    void* Fn0099bdf3();
+    uint32_t mnDC;
+    uint32_t mnCursor;
+    uint32_t mnSelStart;
+    uint32_t mnSelEnd;
+    uint32_t mnEC;
+    cRZString mText;
+    bool mbSending;
+    char unknown105[0x3];
+    void* mpFont;
+    int32_t mnFontHeight;
+    uint32_t mnFontColor[3];
+    int32_t mnOutlineStyle;
+    uint32_t mnOutlineColor[4];
+    uint32_t mnHighlightFill;
+    float mfHighlightAlpha;
+    bool mbFilled;
+    bool mbEditable;
     char unknown13a[0x2];
-    uint32_t field13c;
-    char unknown140[0x10];
+    uint32_t mnCharLimit;
+    int8_t mnGutter[4];
+    int32_t mnSoundID[3];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinLineInput[sizeof(cGZWinLineInput) == 0x150 ? 1 : -1];

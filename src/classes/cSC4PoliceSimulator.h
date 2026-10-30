@@ -87,6 +87,26 @@ public:
     virtual void Slot42_ab2348(uint32_t);
     virtual uint32_t Slot43_ab2348(uint32_t);
     virtual uint32_t Slot44_ab2348(uint32_t);
+    // STUB: 0x006e11f0
+    void Fn006e11f0();
+    // STUB: 0x006e06e0
+    void Fn006e06e0(void*, uint32_t);
+    // STUB: 0x006e10c0
+    void Fn006e10c0(void*, uint32_t);
+    // STUB: 0x006e1190
+    void Fn006e1190();
+    // STUB: 0x006e1240
+    void Fn006e1240();
+    // STUB: 0x006e2570
+    void Fn006e2570();
+    // STUB: 0x006e1830
+    bool UpdateStrikingState(uint32_t);
+    // STUB: 0x006e2110
+    void ReadSimulatorTunableValues();
+    // STUB: 0x006e13f0
+    uint32_t Fn006e13f0(uint32_t, uint32_t);
+    // STUB: 0x006e2610
+    void Fn006e2610(uint32_t, uint32_t);
     char unknown14[0x68];
     uint32_t field7c;
     uint32_t field80;

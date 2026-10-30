@@ -1,0 +1,16 @@
+field 14 bool mbFlag14
+field 1c uint32_t mnMode
+field 38 uint32_t mnSegmentID
+field 3c uint32_t mnLastID
+slot DoOpenRecordForWrite bool uint32_t uint32_t
+field 24 const char* mpName
+field 28 const char* mpNameEnd
+field 40 bool mbAllowedA
+field 41 bool mbAllowedB
+field 58 void* mpMapHead
+field 5c uint32_t mnMapSize
+field 68 uint32_t mnInterval
+method 0x009796fc void StartBackgroundThread()
+field 18 uint32_t mnNextID
+field 34 void* mpFile
+method 0x00979ad2 void Fn00979ad2()

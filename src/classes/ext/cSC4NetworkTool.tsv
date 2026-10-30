@@ -1,0 +1,16 @@
+slot Slot24_aa8748 void uint32_t
+method 0x00624bf0 void SetTerrainHilight(int32_t)
+field 35c uint32_t mnNetworkType
+method 0x00633220 void* Fn00633220(uint32_t)
+field 240 uint32_t mnSizeX
+field 244 uint32_t mnSizeZ
+field 2c8 float mfLimit2c8
+method 0x00624510 bool Fn00624510(uint32_t, uint32_t, uint32_t)
+method 0x00624590 bool Fn00624590(uint32_t, uint32_t, uint32_t)
+method 0x00624b70 bool Fn00624b70(uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x00623bb0 uint32_t Fn00623bb0(uint32_t)
+method 0x00625860 void* Fn00625860(uint32_t)
+slot GetPossibleNeighborConnection bool void*
+slot GetFailureReasonString void void*
+slot GetFailureReasonString_2 void uint32_t void*
+slot UpdateTerrainHeights void uint32_t

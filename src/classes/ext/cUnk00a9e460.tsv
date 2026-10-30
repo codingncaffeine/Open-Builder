@@ -1,1 +1,5 @@
 slot Slot16_a9e460 uint32_t
+slot Slot11_a9e460 void void*
+slot Slot12_a9e460 void void*
+slot Slot15_a9e460 uint32_t void*
+slot Slot06_a9e460 bool void* bool uint32_t bool

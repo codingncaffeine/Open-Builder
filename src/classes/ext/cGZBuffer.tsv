@@ -1,3 +1,27 @@
 slot Slot01_ac1400 uint32_t
 slot Slot02_ac1400 uint32_t
 slot Blt bool uint32_t uint32_t uint32_t uint32_t
+slot CreateSurfaces bool
+field c uint32_t mnColorType
+field 24 uint32_t mnTransparentColor
+field 28 uint32_t mnFlags
+field 2c uint32_t mnRefCount
+field 38 uint16_t mnLockCount
+field 44 uint32_t mnLockFlags
+slot Slot03_ac1400 bool uint32_t uint32_t uint32_t uint32_t
+slot GetColorSurfaceBits void*
+slot GetHardwareCache void*
+slot SetHardwareCache bool void*
+slot IsPixelTransparent bool uint32_t uint32_t
+slot Fill bool uint32_t uint32_t
+slot Fill_2 bool uint32_t uint32_t uint32_t uint32_t uint32_t uint32_t
+field 34 uint32_t mnShadeColor
+field 3a uint8_t mnBytesPerPixel
+field 3c void* field3c
+field 48 void* field48
+slot ConvertRGBValueToNative uint32_t uint8_t uint8_t uint8_t
+slot ConvertRGBAValueToNative uint32_t uint8_t uint8_t uint8_t uint8_t
+slot ConvertNativeValueToRGB bool uint32_t void* void* void*
+slot ConvertNativeValueToRGBA bool uint32_t void* void* void* void*
+slot GenericBufferClip bool void* void* void* const void*
+slot Slot46_ac1400 bool void* void* void*

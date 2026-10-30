@@ -18,13 +18,13 @@ public:
     virtual bool Slot03_aaaa9c(void*);
     virtual bool Init();
     virtual bool Shutdown();
-    virtual bool AddAutomaton(uint32_t);
+    virtual bool AddAutomaton(void*);
     virtual bool HandleTuningParametersChanged();
-    virtual bool Slot53_a95880(uint32_t);
+    virtual bool Slot53_a95880(void*);
     virtual bool HandleRenderPropertiesChanged();
-    virtual uint32_t Slot85_a9bd88(uint32_t);
+    virtual void* Slot85_a9bd88(uint32_t);
     virtual float Slot86_a9bd88(uint32_t);
-    virtual float Slot87_a9bd88(uint32_t, uint32_t);
+    virtual float Slot87_a9bd88(void*, uint32_t);
     char unknownac0[0x20];
 };
 #ifdef _MSC_VER

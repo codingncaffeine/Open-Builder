@@ -1,0 +1,39 @@
+field 4 int32_t mnThreadID
+field 8 void* mpL
+field c void* mpOwner
+slot Slot03_ac8bf8 void*
+slot Slot07_ac8bf8 bool void* void* int32_t
+slot Slot09_ac8bf8 void int32_t
+slot Slot15_ac8bf8 void int32_t
+slot Slot21_ac8bf8 void void* int32_t
+slot Slot24_ac8bf8 const char* int32_t
+slot Slot41_ac8bf8 double uint32_t
+slot Slot43_ac8bf8 const char* int32_t
+slot Slot45_ac8bf8 void* int32_t
+slot Slot46_ac8bf8 void* int32_t
+slot Slot47_ac8bf8 void* int32_t
+slot Slot49_ac8bf8 void double
+slot Slot50_ac8bf8 void const char* uint32_t
+slot Slot51_ac8bf8 void const char*
+slot Slot52_ac8bf8 void void* uint32_t
+slot Slot53_ac8bf8 void bool
+slot Slot54_ac8bf8 void void*
+slot Slot55_ac8bf8 void* uint32_t
+slot Slot71_ac8bf8 uint32_t const char*
+slot Slot72_ac8bf8 uint32_t const char*
+slot Slot73_ac8bf8 uint32_t const char* uint32_t const char*
+slot Slot74_ac8bf8 uint32_t void* void* const char*
+slot Slot75_ac8bf8 uint32_t const char*
+slot Slot76_ac8bf8 uint32_t const char*
+slot Slot77_ac8bf8 uint32_t const char* uint32_t const char*
+slot Slot81_ac8bf8 void void* const char*
+slot Slot86_ac8bf8 void const char*
+slot Slot87_ac8bf8 void const char*
+slot Slot89_ac8bf8 void int32_t const char*
+slot Slot90_ac8bf8 void int32_t const char*
+slot Slot91_ac8bf8 int32_t
+slot Slot95_ac8bf8 void void* int32_t
+slot Slot13_ac8bf8 int32_t
+slot Slot70_ac8bf8 int32_t int32_t int32_t int32_t bool
+slot Slot88_ac8bf8 int32_t int32_t
+slot Slot04_ac8bf8 void*

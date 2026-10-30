@@ -23,11 +23,11 @@ public:
     virtual bool Slot03_a953a8();
     virtual void* Slot50_a953a8();
     virtual bool Slot65_a953a8(uint32_t, uint32_t);
-    virtual bool HandleEnterState(uint32_t);
-    virtual bool DoPlayerDriveTick(uint32_t);
+    virtual bool HandleEnterState(void*);
+    virtual bool DoPlayerDriveTick(float);
     virtual bool DoCollideTick(uint32_t);
-    virtual bool DoPathTick(uint32_t);
-    virtual void SetPath(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool DoPathTick(float);
+    virtual void SetPath(void*, void*, void*, bool);
     virtual void HandleNetworkOccupantRemoved();
     virtual bool IsTrain();
     virtual void RecalculatePathOffset();

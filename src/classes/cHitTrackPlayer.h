@@ -38,7 +38,7 @@ struct OB_NOVTABLE cHitTrackPlayer_0 {
     virtual bool ReadResource(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool WriteResource(uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t GetRefCount() = 0;
-    virtual void Slot24_ad3e48() = 0;
+    virtual void Slot24_ad3e48(uint32_t) = 0;
     virtual bool GetSourceFilenameAndLineNum(uint32_t, uint32_t) = 0;
     virtual bool SetTrackDataEntryPoint(uint32_t) = 0;
     virtual bool Slot27_ad3e48(uint32_t, uint32_t) = 0;
@@ -47,7 +47,7 @@ struct OB_NOVTABLE cHitTrackPlayer_0 {
     virtual void SetEffectsType(uint32_t) = 0;
     virtual void SetEffectsLevel(uint32_t) = 0;
     virtual bool HandleNotifySetPropertyValue(uint32_t) = 0;
-    virtual void Slot33_ad3e48() = 0;
+    virtual uint32_t Slot33_ad3e48(uint32_t) = 0;
 };
 
 // VTABLE: 0x00ad3e48 cHitTrackPlayer_0
@@ -146,7 +146,7 @@ public:
     virtual bool CurrentPlayPosition(uint32_t);
     virtual bool ReadResource(uint32_t, uint32_t, uint32_t);
     virtual bool WriteResource(uint32_t, uint32_t, uint32_t);
-    virtual void Slot24_ad3e48();
+    virtual void Slot24_ad3e48(uint32_t);
     virtual bool GetSourceFilenameAndLineNum(uint32_t, uint32_t);
     virtual bool SetTrackDataEntryPoint(uint32_t);
     virtual bool Slot27_ad3e48(uint32_t, uint32_t);
@@ -155,11 +155,61 @@ public:
     virtual void SetEffectsType(uint32_t);
     virtual void SetEffectsLevel(uint32_t);
     virtual bool HandleNotifySetPropertyValue(uint32_t);
-    virtual void Slot33_ad3e48();
+    virtual uint32_t Slot33_ad3e48(uint32_t);
     virtual uint32_t GetRefCount();
-    char unknown20[0x1c];
+    // STUB: 0x0093a8cb
+    void Fn0093a8cb(uint32_t, uint32_t);
+    // STUB: 0x0093a8f9
+    void Fn0093a8f9(uint32_t, uint32_t);
+    // STUB: 0x0093ae78
+    bool Fn0093ae78();
+    // STUB: 0x0093b508
+    bool UpdatePitch();
+    // STUB: 0x0093b9ae
+    bool UpdatePatch();
+    // STUB: 0x0093bb6c
+    uint32_t Fn0093bb6c(uint32_t, uint32_t);
+    // STUB: 0x0093c0ec
+    bool StartSndDependent(uint32_t);
+    // STUB: 0x0093c229
+    void DoCommand();
+    uint32_t mNameVptr;
+    char unknown24[0x18];
     uint32_t field3c;
-    char unknown40[0x84];
+    int32_t mnLoadCount;
+    char unknown44[0xc];
+    uint32_t mnRefCount;
+    char unknown54[0x4];
+    uint8_t mbPlaying;
+    char unknown59[0x3];
+    uint32_t mnPauseFlag;
+    char unknown60[0x4];
+    uint32_t mnSoundId;
+    uint32_t mnDataBase;
+    void* mpPos1;
+    void* mpPos2;
+    void* mpPos3;
+    char unknown78[0x4];
+    void* mpSmart7c;
+    void* mpSmart80;
+    char unknown84[0x4];
+    void* mpSmart88;
+    void* mpField8c;
+    char unknown90[0x4];
+    void* mpService;
+    void* mpChildList;
+    uint8_t mbCmpEqual;
+    uint8_t mbCmpGreater;
+    uint8_t mbCmpLess;
+    char unknown9f[0x1];
+    void* mpProvidersBegin;
+    void* mpProvidersEnd;
+    char unknowna8[0x4];
+    void* mpHitList;
+    void* mpHitListB0;
+    void* mpSourceMapHeader;
+    char unknownb8[0x8];
+    void* mpCompletion;
     bool fieldc4;
     char unknownc5[0x3f];
 };

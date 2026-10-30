@@ -14,16 +14,16 @@ public:
     virtual bool Slot03_a9e460() = 0;
     virtual void Slot04_a9e460() = 0;
     virtual bool Slot05_a9e460() = 0;
-    virtual bool Slot06_a9e460(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot06_a9e460(void*, bool, uint32_t, bool) = 0;
     virtual bool Slot07_a9e460(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot08_a9e460(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Slot09_a9e460(uint32_t, uint32_t) = 0;
     virtual bool Slot10_a9e460(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot11_a9e460(uint32_t) = 0;
-    virtual void Slot12_a9e460(uint32_t) = 0;
+    virtual void Slot11_a9e460(void*) = 0;
+    virtual void Slot12_a9e460(void*) = 0;
     virtual uint32_t Slot13_a9e460(uint32_t) = 0;
     virtual uint32_t Slot14_a9e460() = 0;
-    virtual uint32_t Slot15_a9e460(uint32_t) = 0;
+    virtual uint32_t Slot15_a9e460(void*) = 0;
     virtual uint32_t Slot16_a9e460() = 0;
 };
 #ifdef _MSC_VER

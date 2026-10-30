@@ -19,11 +19,11 @@ public:
     virtual void MovePagePrevious();
     virtual void MovePageNext();
     virtual bool DoCursorPositionHitTest(uint32_t, uint32_t, uint32_t);
-    virtual void Slot162_ae0810();
-    virtual void Slot163_ae0810();
-    virtual void GetCurrentLine();
+    virtual uint32_t Slot162_ae0810();
+    virtual uint32_t Slot163_ae0810();
+    virtual uint32_t GetCurrentLine();
     virtual uint32_t GetValueOfGivenLine(uint32_t);
-    virtual void GetCurrentPage();
+    virtual uint32_t GetCurrentPage();
     virtual uint32_t GetValueOfGivenPage(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
@@ -53,7 +53,16 @@ public:
     virtual void Slot17_ae0ab0(uint32_t, uint32_t, uint32_t);
     virtual bool Slot18_ae0ab0(uint32_t, uint32_t, uint32_t);
     virtual bool Slot19_ae0ab0(uint32_t);
-    char unknown128[0x28];
+    // STUB: 0x009c40f4
+    bool PaintBmp();
+    // STUB: 0x009c4342
+    bool PaintFlat();
+    uint32_t mnLineCount;
+    uint32_t mnPageCount;
+    uint8_t mTimer[0x18];
+    int32_t mnPressedPart;
+    bool mbPressedHot;
+    char unknown14d[0x3];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinScrollbar[sizeof(cGZWinScrollbar) == 0x150 ? 1 : -1];

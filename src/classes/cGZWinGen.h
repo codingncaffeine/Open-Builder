@@ -61,12 +61,48 @@ public:
     virtual void Slot49_adda20(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknowndc[0x18];
-    uint32_t fieldf4;
-    char unknownf8[0x14];
-    uint32_t field10c;
+    // STUB: 0x0099922f
+    bool calc_user_area(int32_t, int32_t, void*);
+    // STUB: 0x009992ae
+    bool calc_win_area(const void*, void*);
+    // STUB: 0x0099933c
+    bool destroy_title_bar();
+    // STUB: 0x009993d7
+    bool destroy_side_bar();
+    // STUB: 0x009993f7
+    bool kill_self(int32_t);
+    // STUB: 0x00999bdd
+    uint32_t place_controls();
+    // STUB: 0x00999c15
+    uint32_t calc_size_mode(int32_t, int32_t);
+    // STUB: 0x00999d43
+    bool on_layout();
+    // STUB: 0x00999eb9
+    bool create_side_bar();
+    // STUB: 0x0099a96e
+    bool create_title_bar();
+    // STUB: 0x0099bdfe
+    bool GZSetCapture_2();
+    // STUB: 0x0099bf14
+    void* GetCursorManager();
+    uint32_t mnWinFlags;
+    uint32_t mnCaptured;
+    uint32_t mnFlagE4;
+    uint32_t mnGutterW2;
+    uint32_t mnGutterH2;
+    cGZWin* mpTitleBar;
+    uint32_t mnBgBlitType;
+    void* mpBackground;
+    int32_t mUserRect[4];
+    void* mpMsgTarget;
     uint32_t field110;
-    char unknown114[0x14];
+    uint8_t mnGutterX;
+    uint8_t mnGutterY;
+    char unknown116[0x2];
+    void* mpCursorRef;
+    uint32_t mpUserMapHead;
+    uint32_t mnUserMapCount;
+    char unknown124[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinGen[sizeof(cGZWinGen) == 0x128 ? 1 : -1];

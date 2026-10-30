@@ -193,183 +193,183 @@ bool cGZLua5Thread::QueryInterface(unsigned int iid, void** out)
 uint32_t cGZLua5Thread::Slot23_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_type(PTR_ac8f54(lua_State, field8), index);
+    return lua_type(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7100
-uint32_t cGZLua5Thread::Slot24_ac8bf8(uint32_t type)
+const char* cGZLua5Thread::Slot24_ac8bf8(int32_t type)
 {
     FpuScope_ac8f54 scope;
-    return ADDR_ac8f54(lua_typename(PTR_ac8f54(lua_State, field8), type));
+    return lua_typename(static_cast<lua_State*>(mpL), type);
 }
 
 // FUNCTION: 0x008b7740
-uint32_t cGZLua5Thread::Slot43_ac8bf8(uint32_t index)
+const char* cGZLua5Thread::Slot43_ac8bf8(int32_t index)
 {
     FpuScope_ac8f54 scope;
-    return ADDR_ac8f54(lua_tostring(PTR_ac8f54(lua_State, field8), index));
+    return lua_tostring(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7790
 uint32_t cGZLua5Thread::Slot44_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_strlen(PTR_ac8f54(lua_State, field8), index);
+    return lua_strlen(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b77e0
-uint32_t cGZLua5Thread::Slot45_ac8bf8(uint32_t index)
+void* cGZLua5Thread::Slot45_ac8bf8(int32_t index)
 {
     FpuScope_ac8f54 scope;
-    return ADDR_ac8f54(lua_tocfunction(PTR_ac8f54(lua_State, field8), index));
+    return lua_tocfunction(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7830
-uint32_t cGZLua5Thread::Slot46_ac8bf8(uint32_t index)
+void* cGZLua5Thread::Slot46_ac8bf8(int32_t index)
 {
     FpuScope_ac8f54 scope;
-    return ADDR_ac8f54(lua_touserdata(PTR_ac8f54(lua_State, field8), index));
+    return lua_touserdata(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7880
-uint32_t cGZLua5Thread::Slot47_ac8bf8(uint32_t index)
+void* cGZLua5Thread::Slot47_ac8bf8(int32_t index)
 {
     FpuScope_ac8f54 scope;
-    return ADDR_ac8f54(lua_tothread(PTR_ac8f54(lua_State, field8), index));
+    return lua_tothread(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7af0
-uint32_t cGZLua5Thread::Slot55_ac8bf8(uint32_t size)
+void* cGZLua5Thread::Slot55_ac8bf8(uint32_t size)
 {
     FpuScope_ac8f54 scope;
-    return ADDR_ac8f54(lua_newuserdata(PTR_ac8f54(lua_State, field8), size));
+    return lua_newuserdata(static_cast<lua_State*>(mpL), size);
 }
 
 // FUNCTION: 0x008b7cc0
 uint32_t cGZLua5Thread::Slot61_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_getmetatable(PTR_ac8f54(lua_State, field8), index);
+    return lua_getmetatable(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7f90
-uint32_t cGZLua5Thread::Slot71_ac8bf8(uint32_t filename)
+uint32_t cGZLua5Thread::Slot71_ac8bf8(const char* filename)
 {
     FpuScope_ac8f54 scope;
-    return lua_dofile(PTR_ac8f54(lua_State, field8), PTR_ac8f54(const char, filename));
+    return lua_dofile(static_cast<lua_State*>(mpL), filename);
 }
 
 // FUNCTION: 0x008b7fe0
-uint32_t cGZLua5Thread::Slot72_ac8bf8(uint32_t string)
+uint32_t cGZLua5Thread::Slot72_ac8bf8(const char* string)
 {
     FpuScope_ac8f54 scope;
-    return lua_dostring(PTR_ac8f54(lua_State, field8), PTR_ac8f54(const char, string));
+    return lua_dostring(static_cast<lua_State*>(mpL), string);
 }
 
 // FUNCTION: 0x008b8130
 uint32_t cGZLua5Thread::Slot79_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_next(PTR_ac8f54(lua_State, field8), index);
+    return lua_next(static_cast<lua_State*>(mpL), index);
 }
 
 // FUNCTION: 0x008b7640
 uint32_t cGZLua5Thread::Slot39_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return static_cast<uint32_t>(lua_tonumber(PTR_ac8f54(lua_State, field8), index));
+    return static_cast<uint32_t>(lua_tonumber(static_cast<lua_State*>(mpL), index));
 }
 
 // FUNCTION: 0x008b7060
 bool cGZLua5Thread::Slot22_ac8bf8(uint32_t size)
 {
     FpuScope_ac8f54 scope;
-    return lua_checkstack(PTR_ac8f54(lua_State, field8), size) != 0;
+    return lua_checkstack(static_cast<lua_State*>(mpL), size) != 0;
 }
 
 // FUNCTION: 0x008b7150
 bool cGZLua5Thread::Slot25_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_isnumber(PTR_ac8f54(lua_State, field8), index) != 0;
+    return lua_isnumber(static_cast<lua_State*>(mpL), index) != 0;
 }
 
 // FUNCTION: 0x008b71a0
 bool cGZLua5Thread::Slot26_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_isstring(PTR_ac8f54(lua_State, field8), index) != 0;
+    return lua_isstring(static_cast<lua_State*>(mpL), index) != 0;
 }
 
 // FUNCTION: 0x008b71f0
 bool cGZLua5Thread::Slot27_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_iscfunction(PTR_ac8f54(lua_State, field8), index) != 0;
+    return lua_iscfunction(static_cast<lua_State*>(mpL), index) != 0;
 }
 
 // FUNCTION: 0x008b7300
 bool cGZLua5Thread::Slot30_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_isuserdata(PTR_ac8f54(lua_State, field8), index) != 0;
+    return lua_isuserdata(static_cast<lua_State*>(mpL), index) != 0;
 }
 
 // FUNCTION: 0x008b74d0
 bool cGZLua5Thread::Slot35_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_type(PTR_ac8f54(lua_State, field8), index) <= 0;
+    return lua_type(static_cast<lua_State*>(mpL), index) <= 0;
 }
 
 // FUNCTION: 0x008b76f0
 bool cGZLua5Thread::Slot42_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_toboolean(PTR_ac8f54(lua_State, field8), index) != 0;
+    return lua_toboolean(static_cast<lua_State*>(mpL), index) != 0;
 }
 
 // FUNCTION: 0x008b7240
 bool cGZLua5Thread::Slot28_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_type(PTR_ac8f54(lua_State, field8), index) == 6;
+    return lua_type(static_cast<lua_State*>(mpL), index) == 6;
 }
 
 // FUNCTION: 0x008b72a0
 bool cGZLua5Thread::Slot29_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_type(PTR_ac8f54(lua_State, field8), index) == 5;
+    return lua_type(static_cast<lua_State*>(mpL), index) == 5;
 }
 
 // FUNCTION: 0x008b7350
 bool cGZLua5Thread::Slot31_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_type(PTR_ac8f54(lua_State, field8), index) == 2;
+    return lua_type(static_cast<lua_State*>(mpL), index) == 2;
 }
 
 // FUNCTION: 0x008b7470
 bool cGZLua5Thread::Slot34_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_type(PTR_ac8f54(lua_State, field8), index) == -1;
+    return lua_type(static_cast<lua_State*>(mpL), index) == -1;
 }
 
 // FUNCTION: 0x008b8030
-uint32_t cGZLua5Thread::Slot73_ac8bf8(uint32_t buffer, uint32_t size, uint32_t name)
+uint32_t cGZLua5Thread::Slot73_ac8bf8(const char* buffer, uint32_t size, const char* name)
 {
     FpuScope_ac8f54 scope;
-    return lua_dobuffer(PTR_ac8f54(lua_State, field8), PTR_ac8f54(const char, buffer), size, PTR_ac8f54(const char, name));
+    return lua_dobuffer(static_cast<lua_State*>(mpL), buffer, size, name);
 }
 
 // FUNCTION: 0x008b8090
-uint32_t cGZLua5Thread::Slot74_ac8bf8(uint32_t reader, uint32_t data, uint32_t name)
+uint32_t cGZLua5Thread::Slot74_ac8bf8(void* reader, void* data, const char* name)
 {
     FpuScope_ac8f54 scope;
-    return lua_load(PTR_ac8f54(lua_State, field8), PTR_ac8f54(void, reader), PTR_ac8f54(void, data),
-                    PTR_ac8f54(const char, name));
+    return lua_load(static_cast<lua_State*>(mpL), reader, data,
+                    name);
 }
 
 #ifdef OB_DRAFTS
@@ -377,69 +377,67 @@ uint32_t cGZLua5Thread::Slot74_ac8bf8(uint32_t reader, uint32_t data, uint32_t n
 bool cGZLua5Thread::Slot08_ac8bf8()
 {
     FpuScope_ac8f54 scope;
-    field8 = 0;
-    if (fieldc) {
-        Unknown_ac8f54* owner = PTR_ac8f54(Unknown_ac8f54, fieldc);
-        fieldc = 0;
+    mpL = 0;
+    if (mpOwner) {
+        Unknown_ac8f54* owner = static_cast<Unknown_ac8f54*>(mpOwner);
+        mpOwner = 0;
         owner->Release();
     }
-    field4 = 0xffffffff;
+    mnThreadID = -1;
     return true;
 }
 #endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x008b7690 score 13
-float cGZLua5Thread::Slot41_ac8bf8(uint32_t index)
+// FUNCTION: 0x008b7690
+double cGZLua5Thread::Slot41_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return static_cast<float>(lua_tonumber(PTR_ac8f54(lua_State, field8), index));
+    return lua_tonumber(static_cast<lua_State*>(mpL), index);
 }
-#endif
 
 // FUNCTION: 0x008b7520
 bool cGZLua5Thread::Slot36_ac8bf8(uint32_t index1, uint32_t index2)
 {
     FpuScope_ac8f54 scope;
-    return lua_equal(PTR_ac8f54(lua_State, field8), index1, index2) != 0;
+    return lua_equal(static_cast<lua_State*>(mpL), index1, index2) != 0;
 }
 
 // FUNCTION: 0x008b7580
 bool cGZLua5Thread::Slot37_ac8bf8(uint32_t index1, uint32_t index2)
 {
     FpuScope_ac8f54 scope;
-    return lua_rawequal(PTR_ac8f54(lua_State, field8), index1, index2) != 0;
+    return lua_rawequal(static_cast<lua_State*>(mpL), index1, index2) != 0;
 }
 
 // FUNCTION: 0x008b75e0
 bool cGZLua5Thread::Slot38_ac8bf8(uint32_t index1, uint32_t index2)
 {
     FpuScope_ac8f54 scope;
-    return lua_lessthan(PTR_ac8f54(lua_State, field8), index1, index2) != 0;
+    return lua_lessthan(static_cast<lua_State*>(mpL), index1, index2) != 0;
 }
 
 // FUNCTION: 0x008b7410
 bool cGZLua5Thread::Slot33_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_type(PTR_ac8f54(lua_State, field8), index) == 0;
+    return lua_type(static_cast<lua_State*>(mpL), index) == 0;
 }
 
 // FUNCTION: 0x008b73b0
 bool cGZLua5Thread::Slot32_ac8bf8(uint32_t index)
 {
     FpuScope_ac8f54 scope;
-    return lua_type(PTR_ac8f54(lua_State, field8), index) == 1;
+    return lua_type(static_cast<lua_State*>(mpL), index) == 1;
 }
 
 // FUNCTION: 0x008b6d70
-uint32_t cGZLua5Thread::Slot13_ac8bf8()
+int32_t cGZLua5Thread::Slot13_ac8bf8()
 {
     FpuScope_ac8f54 scope;
-    if (field8 && field4 != 0xffffffff) {
-        cThreadRegistry_ac8f54* registry = Fn008bc500(PTR_ac8f54(lua_State, field8));
+    if (mpL && mnThreadID != -1) {
+        cThreadRegistry_ac8f54* registry = Fn008bc500(static_cast<lua_State*>(mpL));
         if (registry) {
-            return registry->Fn008bc540(field4);
+            return registry->Fn008bc540(mnThreadID);
         }
     }
     return -1;
@@ -450,9 +448,9 @@ bool cGZLua5Thread::Slot12_ac8bf8()
 {
     FpuScope_ac8f54 scope;
     bool result;
-    if (field8) {
-        cThreadRegistry_ac8f54* registry = Fn008bc500(PTR_ac8f54(lua_State, field8));
-        if (registry && registry->Fn008bcee0(PTR_ac8f54(lua_State, field8), field4)) {
+    if (mpL) {
+        cThreadRegistry_ac8f54* registry = Fn008bc500(static_cast<lua_State*>(mpL));
+        if (registry && registry->Fn008bcee0(static_cast<lua_State*>(mpL), mnThreadID)) {
             result = true;
         } else {
             result = false;
@@ -463,14 +461,14 @@ bool cGZLua5Thread::Slot12_ac8bf8()
 }
 
 // FUNCTION: 0x008b85e0
-uint32_t cGZLua5Thread::Slot91_ac8bf8()
+int32_t cGZLua5Thread::Slot91_ac8bf8()
 {
     FpuScope_ac8f54 scope;
     int32_t tag = -1;
-    Slot52_ac8bf8(ADDR_ac8f54(reinterpret_cast<void*>(&Fn008be930)), 0);
+    Slot52_ac8bf8(reinterpret_cast<void*>(&Fn008be930), 0);
     if (Slot70_ac8bf8(0, 1, 0, 1) == 0) {
-        tag = static_cast<int32_t>(lua_tonumber(PTR_ac8f54(lua_State, field8), 1));
-        lua_settop(PTR_ac8f54(lua_State, field8), -2);
+        tag = static_cast<int32_t>(lua_tonumber(static_cast<lua_State*>(mpL), 1));
+        lua_settop(static_cast<lua_State*>(mpL), -2);
         if (tag <= 0) {
             tag = -1;
         }
@@ -479,17 +477,17 @@ uint32_t cGZLua5Thread::Slot91_ac8bf8()
 }
 
 // FUNCTION: 0x008b8400
-uint32_t cGZLua5Thread::Slot88_ac8bf8(uint32_t index)
+int32_t cGZLua5Thread::Slot88_ac8bf8(int32_t index)
 {
     FpuScope_ac8f54 scope;
     int32_t tag;
-    lua_pushvalue(PTR_ac8f54(lua_State, field8), index);
-    lua_pushvalue(PTR_ac8f54(lua_State, field8), -1);
-    Slot52_ac8bf8(ADDR_ac8f54(reinterpret_cast<void*>(&Fn008be990)), 0);
-    lua_replace(PTR_ac8f54(lua_State, field8), -3);
+    lua_pushvalue(static_cast<lua_State*>(mpL), index);
+    lua_pushvalue(static_cast<lua_State*>(mpL), -1);
+    Slot52_ac8bf8(reinterpret_cast<void*>(&Fn008be990), 0);
+    lua_replace(static_cast<lua_State*>(mpL), -3);
     if (Slot70_ac8bf8(1, 1, 0, 1) == 0) {
-        tag = static_cast<int32_t>(lua_tonumber(PTR_ac8f54(lua_State, field8), -1));
-        lua_settop(PTR_ac8f54(lua_State, field8), -2);
+        tag = static_cast<int32_t>(lua_tonumber(static_cast<lua_State*>(mpL), -1));
+        lua_settop(static_cast<lua_State*>(mpL), -2);
         if (tag == 0) {
             tag = -1;
         }
@@ -501,42 +499,42 @@ uint32_t cGZLua5Thread::Slot88_ac8bf8(uint32_t index)
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x008b8e20 score 6
-bool cGZLua5Thread::Slot07_ac8bf8(uint32_t owner, uint32_t state, uint32_t id)
+bool cGZLua5Thread::Slot07_ac8bf8(void* owner, void* state, int32_t id)
 {
     FpuScope_ac8f54 scope;
-    Unknown_ac8f54* current = PTR_ac8f54(Unknown_ac8f54, owner);
-    field4 = id;
-    field8 = state;
-    if (current != PTR_ac8f54(Unknown_ac8f54, fieldc)) {
-        Unknown_ac8f54* previous = PTR_ac8f54(Unknown_ac8f54, fieldc);
+    Unknown_ac8f54* current = static_cast<Unknown_ac8f54*>(owner);
+    mnThreadID = id;
+    mpL = state;
+    if (current != static_cast<Unknown_ac8f54*>(mpOwner)) {
+        Unknown_ac8f54* previous = static_cast<Unknown_ac8f54*>(mpOwner);
         if (current) {
             current->AddRef();
         }
-        fieldc = owner;
+        mpOwner = owner;
         if (previous) {
             previous->Release();
         }
     }
-    Slot51_ac8bf8(ADDR_ac8f54("_ALERT"));
-    Slot52_ac8bf8(ADDR_ac8f54(reinterpret_cast<void*>(&Fn008b8d70)), 0);
+    Slot51_ac8bf8("_ALERT");
+    Slot52_ac8bf8(reinterpret_cast<void*>(&Fn008b8d70), 0);
     Slot65_ac8bf8(-10001);
     return true;
 }
 #endif
 
 // FUNCTION: 0x008b9050
-uint32_t cGZLua5Thread::Slot75_ac8bf8(uint32_t filename)
+uint32_t cGZLua5Thread::Slot75_ac8bf8(const char* filename)
 {
     FpuScope_ac8f54 scope;
-    uint32_t status = luaL_loadfile(PTR_ac8f54(lua_State, field8), PTR_ac8f54(const char, filename));
+    uint32_t status = luaL_loadfile(static_cast<lua_State*>(mpL), filename);
     if (status != 0) {
         if (Slot23_ac8bf8(-1) == 4) {
-            uint32_t message = Slot43_ac8bf8(-1);
-            cUnk00ac8d7c* lua = PTR_ac8f54(cUnk00ac8d7c, Slot03_ac8bf8());
+            const char* message = Slot43_ac8bf8(-1);
+            cUnk00ac8d7c* lua = static_cast<cUnk00ac8d7c*>(Slot03_ac8bf8());
             if (lua) {
-                ErrorReporter_ac8f54 reporter = reinterpret_cast<ErrorReporter_ac8f54>(static_cast<uintptr_t>(lua->Slot14_ac8d7c()));
+                ErrorReporter_ac8f54 reporter = reinterpret_cast<ErrorReporter_ac8f54>(lua->Slot14_ac8d7c());
                 if (reporter) {
-                    reporter(reinterpret_cast<char*>(this) + 8, status, PTR_ac8f54(const char, message));
+                    reporter(reinterpret_cast<char*>(this) + 8, status, message);
                 }
             }
         }
@@ -545,19 +543,19 @@ uint32_t cGZLua5Thread::Slot75_ac8bf8(uint32_t filename)
 }
 
 // FUNCTION: 0x008b90f0
-uint32_t cGZLua5Thread::Slot76_ac8bf8(uint32_t string)
+uint32_t cGZLua5Thread::Slot76_ac8bf8(const char* string)
 {
     FpuScope_ac8f54 scope;
-    const char* text = PTR_ac8f54(const char, string);
-    uint32_t status = luaL_loadbuffer(PTR_ac8f54(lua_State, field8), text, std::strlen(text), text);
+    const char* text = string;
+    uint32_t status = luaL_loadbuffer(static_cast<lua_State*>(mpL), text, std::strlen(text), text);
     if (status != 0) {
         if (Slot23_ac8bf8(-1) == 4) {
-            uint32_t message = Slot43_ac8bf8(-1);
-            cUnk00ac8d7c* lua = PTR_ac8f54(cUnk00ac8d7c, Slot03_ac8bf8());
+            const char* message = Slot43_ac8bf8(-1);
+            cUnk00ac8d7c* lua = static_cast<cUnk00ac8d7c*>(Slot03_ac8bf8());
             if (lua) {
-                ErrorReporter_ac8f54 reporter = reinterpret_cast<ErrorReporter_ac8f54>(static_cast<uintptr_t>(lua->Slot14_ac8d7c()));
+                ErrorReporter_ac8f54 reporter = reinterpret_cast<ErrorReporter_ac8f54>(lua->Slot14_ac8d7c());
                 if (reporter) {
-                    reporter(reinterpret_cast<char*>(this) + 8, status, PTR_ac8f54(const char, message));
+                    reporter(reinterpret_cast<char*>(this) + 8, status, message);
                 }
             }
         }
@@ -566,19 +564,19 @@ uint32_t cGZLua5Thread::Slot76_ac8bf8(uint32_t string)
 }
 
 // FUNCTION: 0x008b91a0
-uint32_t cGZLua5Thread::Slot77_ac8bf8(uint32_t buffer, uint32_t size, uint32_t name)
+uint32_t cGZLua5Thread::Slot77_ac8bf8(const char* buffer, uint32_t size, const char* name)
 {
     FpuScope_ac8f54 scope;
-    uint32_t status = luaL_loadbuffer(PTR_ac8f54(lua_State, field8), PTR_ac8f54(const char, buffer), size,
-                                      PTR_ac8f54(const char, name));
+    uint32_t status = luaL_loadbuffer(static_cast<lua_State*>(mpL), buffer, size,
+                                      name);
     if (status != 0) {
         if (Slot23_ac8bf8(-1) == 4) {
-            uint32_t message = Slot43_ac8bf8(-1);
-            cUnk00ac8d7c* lua = PTR_ac8f54(cUnk00ac8d7c, Slot03_ac8bf8());
+            const char* message = Slot43_ac8bf8(-1);
+            cUnk00ac8d7c* lua = static_cast<cUnk00ac8d7c*>(Slot03_ac8bf8());
             if (lua) {
-                ErrorReporter_ac8f54 reporter = reinterpret_cast<ErrorReporter_ac8f54>(static_cast<uintptr_t>(lua->Slot14_ac8d7c()));
+                ErrorReporter_ac8f54 reporter = reinterpret_cast<ErrorReporter_ac8f54>(lua->Slot14_ac8d7c());
                 if (reporter) {
-                    reporter(reinterpret_cast<char*>(this) + 8, status, PTR_ac8f54(const char, message));
+                    reporter(reinterpret_cast<char*>(this) + 8, status, message);
                 }
             }
         }
@@ -588,32 +586,32 @@ uint32_t cGZLua5Thread::Slot77_ac8bf8(uint32_t buffer, uint32_t size, uint32_t n
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x008b8f30 score 28
-uint32_t cGZLua5Thread::Slot70_ac8bf8(uint32_t nargs, uint32_t nresults, uint32_t errfunc, uint32_t popMessage)
+int32_t cGZLua5Thread::Slot70_ac8bf8(int32_t nargs, int32_t nresults, int32_t errfunc, bool popMessage)
 {
     FpuScope_ac8f54 scope;
     uint32_t status;
     Slot14_ac8bf8();
-    if (errfunc == 0 && fieldc != 0 && PTR_ac8f54(cUnk00ac8d7c, fieldc)->Slot14_ac8d7c() != 0) {
+    if (errfunc == 0 && mpOwner != 0 && static_cast<cUnk00ac8d7c*>(mpOwner)->Slot14_ac8d7c() != 0) {
         int32_t base = Slot14_ac8bf8() - nargs;
-        lua_pushlstring(PTR_ac8f54(lua_State, field8), "_TRACEBACK", 10);
-        lua_rawget(PTR_ac8f54(lua_State, field8), -10001);
-        lua_insert(PTR_ac8f54(lua_State, field8), base);
-        status = lua_pcall(PTR_ac8f54(lua_State, field8), nargs, nresults, base);
-        lua_remove(PTR_ac8f54(lua_State, field8), base);
+        lua_pushlstring(static_cast<lua_State*>(mpL), "_TRACEBACK", 10);
+        lua_rawget(static_cast<lua_State*>(mpL), -10001);
+        lua_insert(static_cast<lua_State*>(mpL), base);
+        status = lua_pcall(static_cast<lua_State*>(mpL), nargs, nresults, base);
+        lua_remove(static_cast<lua_State*>(mpL), base);
     } else {
-        status = lua_pcall(PTR_ac8f54(lua_State, field8), nargs, nresults, errfunc);
+        status = lua_pcall(static_cast<lua_State*>(mpL), nargs, nresults, errfunc);
     }
     if (status != 0) {
-        uint32_t message = Slot43_ac8bf8(-1);
+        const char* message = Slot43_ac8bf8(-1);
         cUnk00ac8bf8* thread = this;
-        cUnk00ac8d7c* lua = PTR_ac8f54(cUnk00ac8d7c, thread->Slot03_ac8bf8());
+        cUnk00ac8d7c* lua = static_cast<cUnk00ac8d7c*>(thread->Slot03_ac8bf8());
         if (lua) {
-            ErrorReporter_ac8f54 reporter = reinterpret_cast<ErrorReporter_ac8f54>(static_cast<uintptr_t>(lua->Slot14_ac8d7c()));
+            ErrorReporter_ac8f54 reporter = reinterpret_cast<ErrorReporter_ac8f54>(lua->Slot14_ac8d7c());
             if (reporter) {
-                reporter(thread, status, PTR_ac8f54(const char, message));
+                reporter(thread, status, message);
             }
         }
-        if (*reinterpret_cast<bool*>(&popMessage)) {
+        if (popMessage) {
             Slot19_ac8bf8(1);
         }
     }

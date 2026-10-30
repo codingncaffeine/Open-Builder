@@ -7,6 +7,7 @@
 #include "classes/cGZWin.h"
 #include "classes/cUnk00aaaa9c.h"
 #include "classes/cUnk00accfb8.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00acd0d8 cGZWin
 // VTABLE: 0x00acd050 cUnk00accfb8
@@ -61,10 +62,51 @@ public:
     virtual void Slot33_accfb8(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknowne0[0xa0];
-    uint32_t field180;
-    char unknown184[0x2e0];
-    uint32_t field464;
+    // STUB: 0x008fa57d
+    bool PickElement(uint32_t, int32_t, int32_t);
+    // STUB: 0x008fa6f3
+    void RemoveScrollBar(bool, bool);
+    // STUB: 0x008fa776
+    void SetScrollBarValues(bool);
+    // STUB: 0x008fa559
+    void Fn008fa559();
+    // STUB: 0x008fbde4
+    bool InternalSetDocument(uint32_t, uint32_t);
+    // STUB: 0x008fac01
+    bool SetHTMLPaintArea();
+    // STUB: 0x008fafa2
+    bool AddScrollBar(bool, bool);
+    // STUB: 0x008fb31a
+    bool TestForPossibleScrollBarAdditionOrRemoval();
+    void* mpOwner;
+    char unknowne4[0x4];
+    uint32_t mnE8;
+    int32_t mnOffsetX;
+    int32_t mnOffsetY;
+    char unknownf4[0x8];
+    int32_t mnViewRect[4];
+    char unknown10c[0x10];
+    uint32_t mnFillColor;
+    char unknown120[0x28];
+    void* mpDocument;
+    char unknown14c[0x18];
+    void* mpFont164;
+    void* mpFont168;
+    cRZString mMissingImage;
+    uint32_t mnFlags;
+    int32_t mnGutter[4];
+    char unknown194[0x10];
+    void* mpVScroll;
+    void* mpHScroll;
+    void* mpVScrollImage;
+    void* mpHScrollImage;
+    int32_t mnVScrollRect[4];
+    int32_t mnHScrollRect[4];
+    char unknown1d4[0x4];
+    void* mp1d8;
+    char unknown1dc[0x284];
+    void* mpWWW;
+    uint32_t mnLoadState;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinHTML[sizeof(cGZWinHTML) == 0x468 ? 1 : -1];

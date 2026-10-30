@@ -1,0 +1,98 @@
+field 110 void** mpModelsBegin
+field 114 void** mpModelsEnd
+field 11c uint32_t mnAnimKeyType
+field 120 uint32_t mnAnimKeyGroup
+field 124 uint32_t mnAnimKeyInstance
+field 128 uint32_t mn128
+field 12c void* mpLight12c
+field 170 float mfVec170X
+field 174 float mfVec170Y
+field 178 float mfVec170Z
+field 188 void* mpCallbacks
+field 1c0 float mf1c0
+field 1c4 uint32_t mnGroupId
+field 1c8 void* mpVec1c8Begin
+field 1cc void* mpVec1c8End
+field 1d4 uint32_t mnSfxId1d4
+field 1d8 uint32_t mnSfxKind1d8
+field 1dc bool mbActiveSound1dc
+field 1e0 float mf1e0
+field 40 float mfPosX
+field 44 float mfPosY
+field 48 float mfPosZ
+field 4c float mfDestX
+field 50 float mfDestY
+field 54 float mfDestZ
+field 58 float mfVec58X
+field 5c float mfVec58Y
+field 60 float mfVec58Z
+field 64 float mfPosOldX
+field 68 float mfPosOldY
+field 6c float mfPosOldZ
+field 70 float mfDirOldX
+field 74 float mfDirOldY
+field 78 float mfDirOldZ
+field 7c float mfLength
+field 84 uint32_t mnAutomataFlags
+field 8c uint32_t mnSfx8c
+field 98 void* mpLinked98
+field 9c uint32_t mn9c
+field a0 uint32_t mnA0
+field a4 uint32_t mnA4
+field b4 void** mpStateBegin
+field b8 void** mpStateEnd
+field bc void** mpStateCap
+field c0 void* mpPathBegin
+field c4 void* mpPathEnd
+field cc void* mpGhost
+field d0 void* mpLight0xd0
+method 0x005094a0 void PositionModelInstance(void*)
+method 0x0050b400 bool RemoveModelInstance(void*)
+method 0x0050d580 void ApplyAutomataGroup()
+method 0x0050d870 void Fn0050d870()
+method 0x0050e4d0 void* AddModelInstance(void*)
+method 0x0050e620 void ReplaceModelInstance(void*, void*)
+method 0x0050ebb0 void InitEffectsList()
+method 0x00510910 bool Fn00510910(uint32_t)
+slot GetMarkedForRemove bool
+slot GetSelfControlling bool
+slot GetReachedDestination bool
+slot GetSpecialRouteFlag bool
+slot Slot80_a95ac0 void uint32_t uint32_t
+slot Slot76_a95ac0 uint32_t void*
+slot GetModelInstance void*
+slot SetMarkedForRemove void bool
+slot SetSpecialRouteFlag void bool
+slot SetSelfControlling void bool
+slot SetTransform bool void*
+slot GetChaseVector bool void*
+slot ShouldCollide bool void*
+slot EnableActiveSound void bool
+slot Slot96_a95ac0 void uint32_t void*
+slot PlaceInOccupantManager bool bool
+slot SetSpeedFromBehaviorTemplate void void*
+slot SetAutomataGroup void void*
+slot DoPlopJumpTick bool float
+slot Slot103_a95ac0 bool float
+slot LoadAuxiliaryModel bool uint32_t void*
+slot UpdateOpacity void float
+slot DoAttachAnimTick bool float
+slot Slot70_a95ac0 bool bool
+slot HandleRemoveController bool void*
+slot PostInit bool
+slot CreateAutomataState void* uint32_t
+slot GetDebugExtraText void*
+slot FinishMove void bool bool
+slot DoMagnetTick bool float
+slot UpdateActiveSound void float
+slot DoPlayerDriveTick bool float
+slot UpdateGhostModel void
+slot GetDebugFlagsText void*
+field 3c bool mb3c
+slot HandleExitState bool void*
+slot HandleEnterState bool void*
+slot DoStateTick bool float
+field 94 float mf94
+method 0x0050d6a0 void Fn0050d6a0()
+slot TranslatePlayerDriveCommands bool void* float
+field b0 void* mpLeader

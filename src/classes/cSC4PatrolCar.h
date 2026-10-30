@@ -24,9 +24,9 @@ public:
     virtual bool Slot04_a953a8();
     virtual void Slot25_a953a8(uint32_t);
     virtual void HandleReachedRouteDestination();
-    virtual void DoStateTick(uint32_t);
-    virtual bool HandleEnterState(uint32_t);
-    virtual bool HandleExitState(uint32_t);
+    virtual bool DoStateTick(float);
+    virtual bool HandleEnterState(void*);
+    virtual bool HandleExitState(void*);
     virtual bool CloseEnoughToDispatchDestination();
     virtual uint32_t Slot192_a981e0();
     virtual float Slot193_a981e0();

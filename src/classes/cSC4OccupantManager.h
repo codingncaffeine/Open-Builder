@@ -29,10 +29,10 @@ struct OB_NOVTABLE cSC4OccupantManager_0 {
     virtual void PositionToOccupantManagerCell(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void StandardCityCellToPosition(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void PositionToStandardCityCell(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot20_a8f7f0() = 0;
+    virtual bool Slot20_a8f7f0(uint32_t) = 0;
     virtual bool RemoveOccupant(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot22_a8f7f0() = 0;
-    virtual void Slot23_a8f7f0() = 0;
+    virtual void Slot22_a8f7f0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot23_a8f7f0(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool MoveOccupant(uint32_t, uint32_t) = 0;
     virtual bool IsCellEmpty(uint32_t, uint32_t) = 0;
     virtual uint32_t GetBoundingCells(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
@@ -43,20 +43,20 @@ struct OB_NOVTABLE cSC4OccupantManager_0 {
     virtual bool GetFirstOccupant_2(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool GetFirstOccupantByStandardCityCell(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool GetFirstOccupantByStandardCityCell_2(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot34_a8f7f0() = 0;
+    virtual bool Slot34_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool GetFirstOccupantByStandardCityCells(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool GetOccupantsByBBox(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool GetOccupantsByBBox_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool GetOccupantsByOccupantManagerCells(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool GetOccupantsByOccupantManagerCells_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void GetOccupantsByStandardCityCells(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool GetOccupantsByStandardCityCells(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool GetOccupantsByStandardCityCells_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot42_a8f7f0() = 0;
+    virtual bool Slot42_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool IterateOccupantsByBBox(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool IterateOccupants(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool IterateOccupants_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool IterateOccupantsByStandardCityCell(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void IterateOccupantsByStandardCityCell_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool IterateOccupantsByStandardCityCell_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void ReleaseOccupantList(uint32_t) = 0;
     virtual ~cSC4OccupantManager_0() {}
 };
@@ -92,10 +92,10 @@ public:
     virtual void PositionToOccupantManagerCell(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void StandardCityCellToPosition(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void PositionToStandardCityCell(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot20_a8f7f0();
+    virtual bool Slot20_a8f7f0(uint32_t);
     virtual bool RemoveOccupant(uint32_t, uint32_t, uint32_t);
-    virtual void Slot22_a8f7f0();
-    virtual void Slot23_a8f7f0();
+    virtual void Slot22_a8f7f0(uint32_t, uint32_t, uint32_t);
+    virtual void Slot23_a8f7f0(uint32_t, uint32_t, uint32_t);
     virtual bool MoveOccupant(uint32_t, uint32_t);
     virtual bool IsCellEmpty(uint32_t, uint32_t);
     virtual uint32_t GetBoundingCells(uint32_t, uint32_t, uint32_t, uint32_t);
@@ -106,21 +106,27 @@ public:
     virtual bool GetFirstOccupant_2(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool GetFirstOccupantByStandardCityCell(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool GetFirstOccupantByStandardCityCell_2(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot34_a8f7f0();
+    virtual bool Slot34_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool GetFirstOccupantByStandardCityCells(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool GetOccupantsByBBox(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool GetOccupantsByBBox_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool GetOccupantsByOccupantManagerCells(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool GetOccupantsByOccupantManagerCells_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void GetOccupantsByStandardCityCells(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool GetOccupantsByStandardCityCells(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool GetOccupantsByStandardCityCells_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot42_a8f7f0();
+    virtual bool Slot42_a8f7f0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool IterateOccupantsByBBox(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool IterateOccupants(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool IterateOccupants_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool IterateOccupantsByStandardCityCell(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void IterateOccupantsByStandardCityCell_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool IterateOccupantsByStandardCityCell_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void ReleaseOccupantList(uint32_t);
+    // STUB: 0x0049dac0
+    void Fn0049dac0(uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x0049ee80
+    void* GetOccupantList(int32_t, int32_t, bool);
+    // STUB: 0x0049f7c0
+    void* GetOccupantListFor(uint32_t, uint32_t, uint32_t);
     char unknownc[0x90];
 };
 #ifdef _MSC_VER

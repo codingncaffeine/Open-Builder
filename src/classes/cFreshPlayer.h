@@ -5,6 +5,7 @@
 #include "common/compiler.h"
 #include "common/types.h"
 #include "classes/cUnk00a943c0.h"
+#include "gzcom/cRZString.h"
 
 // The subobject at +0x0 (vtable 0x00ad4b48): an interface or base the class map has no class for.
 struct OB_NOVTABLE cFreshPlayer_0 {
@@ -13,7 +14,7 @@ struct OB_NOVTABLE cFreshPlayer_0 {
     virtual unsigned int Release() = 0;
     virtual bool Init(uint32_t) = 0;
     virtual bool Slot04_ad4b48() = 0;
-    virtual bool LoadScore(uint32_t, uint32_t) = 0;
+    virtual bool LoadScore(void*, uint32_t) = 0;
     virtual uint32_t GetScore(uint32_t) = 0;
     virtual bool Shutdown() = 0;
     virtual bool Play() = 0;
@@ -29,32 +30,32 @@ struct OB_NOVTABLE cFreshPlayer_0 {
     virtual uint32_t GetYPos() = 0;
     virtual uint32_t GetXPos() = 0;
     virtual uint32_t GetZoom() = 0;
-    virtual bool SetManual(uint32_t) = 0;
+    virtual bool SetManual(bool) = 0;
     virtual uint32_t GetFirstSelectableRow() = 0;
     virtual uint32_t GetLastSelectableRow() = 0;
     virtual uint32_t GetFirstSelectableColumn() = 0;
     virtual uint32_t GetLastSelectableColumn() = 0;
-    virtual uint32_t GetCellPlayer(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void* GetCellPlayer(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool Reseed(uint32_t) = 0;
     virtual bool SetHeadRelative(bool) = 0;
     virtual bool SetMinMaxDistance(uint32_t, uint32_t) = 0;
     virtual bool SetNumDivisionsX(uint32_t) = 0;
     virtual bool SetNumDivisionsZ(uint32_t) = 0;
-    virtual bool SetDivisionEnabled(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool SetDivisionEnabled(uint32_t, uint32_t, bool) = 0;
     virtual bool SetDivision3DPosition(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void SetKey(uint32_t) = 0;
+    virtual void SetKey(const void*) = 0;
     virtual void* GetKey() = 0;
     virtual void SetExternalSoundSystemInterface() = 0;
     virtual ~cFreshPlayer_0() {}
-    virtual void Slot38_ad4b48(uint32_t) = 0;
+    virtual bool Slot38_ad4b48(void*) = 0;
     virtual bool Init_2(uint32_t, uint32_t) = 0;
-    virtual bool Init_3(uint32_t, uint32_t) = 0;
+    virtual bool Init_3(void*, void*) = 0;
     virtual void Play_2(uint32_t) = 0;
     virtual void StopFade() = 0;
     virtual bool SetVolumeNoLock(uint32_t) = 0;
     virtual bool SetZPos(uint32_t) = 0;
     virtual uint32_t GetZPos() = 0;
-    virtual bool GetDataDir(uint32_t) = 0;
+    virtual bool GetDataDir(void*) = 0;
     virtual bool SetSelectionAreaMaxDistances(uint32_t, uint32_t) = 0;
     virtual bool GetSelectionAreaMaxDistances(uint32_t, uint32_t) = 0;
     virtual void SetStressLevel(uint32_t) = 0;
@@ -72,7 +73,7 @@ struct OB_NOVTABLE cFreshPlayer_0 {
     virtual uint32_t NumCellsPlaying() = 0;
     virtual bool ShowUsage() = 0;
     virtual uint32_t GetMinCellsPlaying() = 0;
-    virtual void GetMaxCellsPlaying() = 0;
+    virtual uint32_t GetMaxCellsPlaying() = 0;
 };
 
 // VTABLE: 0x00ad4b48 cFreshPlayer_0
@@ -87,7 +88,7 @@ public:
     virtual void Slot13_ad3e48(uint32_t);
     virtual bool Init(uint32_t);
     virtual bool Slot04_ad4b48();
-    virtual bool LoadScore(uint32_t, uint32_t);
+    virtual bool LoadScore(void*, uint32_t);
     virtual uint32_t GetScore(uint32_t);
     virtual bool Shutdown();
     virtual bool Play();
@@ -103,31 +104,31 @@ public:
     virtual uint32_t GetYPos();
     virtual uint32_t GetXPos();
     virtual uint32_t GetZoom();
-    virtual bool SetManual(uint32_t);
+    virtual bool SetManual(bool);
     virtual uint32_t GetFirstSelectableRow();
     virtual uint32_t GetLastSelectableRow();
     virtual uint32_t GetFirstSelectableColumn();
     virtual uint32_t GetLastSelectableColumn();
-    virtual uint32_t GetCellPlayer(uint32_t, uint32_t, uint32_t);
+    virtual void* GetCellPlayer(uint32_t, uint32_t, uint32_t);
     virtual bool Reseed(uint32_t);
     virtual bool SetHeadRelative(bool);
     virtual bool SetMinMaxDistance(uint32_t, uint32_t);
     virtual bool SetNumDivisionsX(uint32_t);
     virtual bool SetNumDivisionsZ(uint32_t);
-    virtual bool SetDivisionEnabled(uint32_t, uint32_t, uint32_t);
+    virtual bool SetDivisionEnabled(uint32_t, uint32_t, bool);
     virtual bool SetDivision3DPosition(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void SetKey(uint32_t);
+    virtual void SetKey(const void*);
     virtual void* GetKey();
     virtual void SetExternalSoundSystemInterface();
-    virtual void Slot38_ad4b48(uint32_t);
+    virtual bool Slot38_ad4b48(void*);
     virtual bool Init_2(uint32_t, uint32_t);
-    virtual bool Init_3(uint32_t, uint32_t);
+    virtual bool Init_3(void*, void*);
     virtual void Play_2(uint32_t);
     virtual void StopFade();
     virtual bool SetVolumeNoLock(uint32_t);
     virtual bool SetZPos(uint32_t);
     virtual uint32_t GetZPos();
-    virtual bool GetDataDir(uint32_t);
+    virtual bool GetDataDir(void*);
     virtual bool SetSelectionAreaMaxDistances(uint32_t, uint32_t);
     virtual bool GetSelectionAreaMaxDistances(uint32_t, uint32_t);
     virtual void SetStressLevel(uint32_t);
@@ -145,21 +146,64 @@ public:
     virtual uint32_t NumCellsPlaying();
     virtual bool ShowUsage();
     virtual uint32_t GetMinCellsPlaying();
-    virtual void GetMaxCellsPlaying();
-    char unknown8[0x14];
-    uint32_t field1c;
-    bool field20;
-    char unknown21[0x7];
-    uint32_t field28;
-    uint32_t field2c;
-    uint32_t field30;
-    uint32_t field34;
-    char unknown38[0x4054];
+    virtual uint32_t GetMaxCellsPlaying();
+    // STUB: 0x009475fb
+    int32_t Fn009475fb(uint32_t);
+    // STUB: 0x009476c3
+    void UpdatePlayerInfo();
+    // STUB: 0x00947ad9
+    bool CalculateCellplayer3DPosition(void*);
+    bool mbInitialized;
+    char unknown9[0x3];
+    int32_t mnRefCount;
+    void* mpRandom;
+    int32_t mnVolume;
+    void* mpTimer;
+    void* mpScore;
+    bool mbPlaying;
+    bool mbManual;
+    char unknown22[0x2];
+    int32_t mnTempo;
+    int32_t mnCol;
+    int32_t mnRow;
+    int32_t mn30;
+    int32_t mnZoom;
+    int32_t mnCellsBusy;
+    int32_t mn3c;
+    int32_t mn40;
+    int32_t mn44;
+    int32_t mn48;
+    int32_t mn4c;
+    int32_t mnPlayersBusy;
+    int32_t mnMaxDistCol;
+    int32_t mnMaxDistRow;
+    int32_t mnSelRow;
+    int32_t mnSelCol;
+    int32_t mn64;
+    int32_t mn68;
+    int32_t mnListenerA;
+    int32_t mnListenerB;
+    void* mpCells[4096];
+    cRZString mDataDir;
+    int32_t mnPlayPercent;
     uint32_t field408c;
     bool field4090;
-    char unknown4091[0x2b];
+    bool mbFading;
+    char unknown4092[0x2];
+    void* mpFade;
+    char unknown4098[0xc];
+    int32_t mnMinDistance;
+    int32_t mnMaxDistance;
+    uint32_t mnCurDivX;
+    uint32_t mnCurDivZ;
+    uint32_t mnNumDivisionsX;
+    uint32_t mnNumDivisionsZ;
     bool field40bc;
-    char unknown40bd[0x77];
+    bool mbDivisionEnabled[9];
+    char unknown40c6[0x2];
+    int32_t mnDivisionX[9];
+    int32_t mnDivisionY[9];
+    int32_t mnDivisionZ[9];
     char field4134[0x10];
 };
 #ifdef _MSC_VER

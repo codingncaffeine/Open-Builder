@@ -247,6 +247,8 @@ struct NodeRef_add578 {
 // A value whose first word is its key.
 struct KeyValue_add578 {
     int32_t mnKey;
+    KeyValue_add578() {}
+    KeyValue_add578(int32_t key) : mnKey(key) {}
 };
 
 // A node whose key follows the tree links.
@@ -3839,45 +3841,39 @@ bool Matrix_add578::RemoveCell(int32_t column, int32_t row, void* old)
 }
 
 // A cell as the cell tree stores it: key, column and value.
-struct CellEntry_add578 {
-    int32_t mnKey;
+struct CellEntry_add578 : public KeyValue_add578 {
     int32_t mnColumn;
     void* mpValue;
+    CellEntry_add578(int32_t column, void* value) : KeyValue_add578(column), mnColumn(column), mpValue(value) {}
 };
 
 #ifdef OB_DRAFTS
-// CLOSE: 0x009ac157 score 117
+// CLOSE: 0x009ac157 score 27
 bool Matrix_add578::InsertCell(int32_t column, int32_t row, void* value, void* old)
 {
-    if (row < mnMinRow || column < mnMinColumn || row > mnMaxRow || column > mnMaxColumn) {
+    int32_t r = row;
+    int32_t c = column;
+    if (r < mnMinRow || c < mnMinColumn || r > mnMaxRow || c > mnMaxColumn) {
         return false;
     }
     TreeNode_add578* rowNode = mRows.Find(row);
-    if (rowNode == mRows.mpHeader) {
-        RowPair_add578 pair(row, MatrixRow_add578(row));
-        InsertResult_add578 inserted = mRows.Fn009abc11(reinterpret_cast<const KeyValue_add578&>(pair));
-        CellEntry_add578 entry;
-        entry.mpValue = *static_cast<void**>(value);
-        entry.mnKey = column;
-        entry.mnColumn = column;
-        static_cast<RowNode_add578*>(inserted.mpNode)->mRow.mCells.Fn009a954e(reinterpret_cast<const KeyValue_add578&>(entry));
-        mnCellCount++;
-    } else {
+    if (rowNode != mRows.mpHeader) {
         CellsTree_add578* cells = &static_cast<RowNode_add578*>(rowNode)->mRow.mCells;
         TreeNode_add578* cell = cells->Find(column);
-        if (cell == cells->mpHeader) {
-            CellEntry_add578 entry;
-            entry.mpValue = *static_cast<void**>(value);
-            entry.mnKey = column;
-            entry.mnColumn = column;
-            cells->Fn009a954e(reinterpret_cast<const KeyValue_add578&>(entry));
-            mnCellCount++;
-        } else {
+        if (cell != cells->mpHeader) {
             if (old) {
                 *static_cast<void**>(old) = static_cast<CellNode_add578*>(cell)->mpValue;
             }
             static_cast<CellNode_add578*>(cell)->mpValue = *static_cast<void**>(value);
+        } else {
+            cells->Fn009a954e(CellEntry_add578(c, *static_cast<void**>(value)));
+            mnCellCount++;
         }
+    } else {
+        RowPair_add578 pair(r, MatrixRow_add578(r));
+        InsertResult_add578 inserted = mRows.Fn009abc11(reinterpret_cast<const KeyValue_add578&>(pair));
+        static_cast<RowNode_add578*>(inserted.mpNode)->mRow.mCells.Fn009a954e(CellEntry_add578(c, *static_cast<void**>(value)));
+        mnCellCount++;
     }
     return true;
 }

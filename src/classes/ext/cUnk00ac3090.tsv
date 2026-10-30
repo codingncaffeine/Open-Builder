@@ -1,0 +1,44 @@
+field 80 uint32_t mnRefCount
+field 84 void* mpList84
+field 88 void* mpTree88
+field 94 void* mpMap94
+field a8 void* mpList_a8
+field ac void* mpList_ac
+field b0 void* mpList_b0
+field b4 void* mpList_b4
+field b8 bool mbB8
+field bc uint32_t mnBc
+field c0 uint32_t mnC0
+field c4 uint32_t mnC4
+field d0 bool mbD0
+field d1 bool mbD1
+field d2 bool mbD2
+field d3 bool mbD3
+field d4 bool mbD4
+field d8 int32_t mnD8
+field dc int32_t mnDc
+field 124 bool mbHave124
+field 12c void* mpObj12c
+field 130 void* mpObj130
+field 134 void* mpObj134
+field 138 uint32_t mnDebugLevel
+field 140 bool mbHave140
+field 144 uint32_t mnValue144
+slot Slot03_ac3090 bool void*
+slot Slot04_ac3090 bool void*
+slot Slot06_ac3090 bool void* uint32_t uint32_t
+slot Slot07_ac3090 bool void*
+slot Slot08_ac3090 bool void*
+slot Slot09_ac3090 bool void*
+slot Slot10_ac3090 bool void*
+slot Slot11_ac3090 bool void*
+slot Slot12_ac3090 bool void*
+slot Slot31_ac3090 void*
+slot Slot32_ac3090 void*
+slot Slot33_ac3090 void*
+slot Slot34_ac3090 bool uint32_t uint32_t void*
+slot Slot35_ac3090 bool uint32_t void*
+slot Slot38_ac3090 void void*
+method 0x00879ace void Fn00879ace(void*, bool)
+method 0x0087a466 bool Fn0087a466()
+method 0x0087a178 void Fn0087a178(void*)

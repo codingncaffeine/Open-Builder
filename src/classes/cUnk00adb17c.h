@@ -111,6 +111,8 @@ public:
     virtual bool Slot23_adaf30();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x0098fbe0
+    bool Fn0098fbe0();
     char unknown30[0x10];
     bool field40;
     char unknown41[0x3b];

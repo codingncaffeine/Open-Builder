@@ -1,0 +1,45 @@
+field 8 bool mbInitialised
+field c void* mpOccupant
+field 10 void* mpTemplate
+field 14 float mfPosX
+field 18 float mfPosY
+field 1c float mfPosZ
+field 20 uint32_t mnRefCount
+field 24 bool mbFlag24
+field 25 bool mbFlag25
+field 26 bool mbFlag26
+field 27 bool mbFlag27
+field 28 uint32_t mnStrVtbl28
+field 2c char* mpStrBegin
+field 30 char* mpStrEnd
+field 3c uint32_t mnSfxId
+field 40 uint32_t mnFlags
+field 44 void* mpAutomata
+field 48 uint32_t mnAutomataCount
+field 4c void* mpScriptSystem
+field 50 float mfAge
+field 54 float mfLifetime
+field 58 float mfAnimTime
+slot GetPosition void void*
+slot Slot12_a95d90 bool uint32_t
+slot Slot13_a95d90 void uint32_t bool
+slot SetOccupant void void*
+slot SetTemplate void void*
+slot SetPosition void void*
+slot Activate void bool
+slot GetOccupantBoundingBox void void* void*
+slot GetBoundingBox void void* void*
+slot GetLotFacingPoint void void*
+slot IsPointWithinRadius bool void* void*
+slot GetTemplateName void*
+slot HandleStateTick bool void* uint32_t uint32_t
+slot HandleEnterState bool void* uint32_t
+slot HandleExitState bool void* uint32_t
+slot HandleRemoveAutomaton bool void*
+slot GetBehaviorTemplate void* float void*
+method 0x00515770 void PlaySFX(bool)
+method 0x00515d20 void* GetOccupantLot()
+method 0x00517f80 void Fn00517f80()
+method 0x00514e70 bool Fn00514e70(void*, void*, void*)
+slot DoAnimationTick void float uint32_t void*
+slot IsTickable bool
