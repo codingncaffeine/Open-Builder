@@ -3,6 +3,42 @@
 // their instructions. tools/match.sh pairs each STATIC-INIT with this object's _$E<n> functions, in order.
 #include "gzcom/cRZString.h"
 
+// GLOBAL: 0x00b07f54
+extern float gB07f54[3];
+
+// GLOBAL: 0x00b0a738
+extern float gB0a738[3];
+
+// GLOBAL: 0x00b0d804
+extern float gB0d804;
+
+// GLOBAL: 0x00b0edb8
+extern float gB0edb8[3];
+
+// GLOBAL: 0x00b0eec8
+extern float gB0eec8[3];
+
+// GLOBAL: 0x00b0efe0
+extern float gB0efe0[3];
+
+// GLOBAL: 0x00b0f0e8
+extern float gB0f0e8[3];
+
+// GLOBAL: 0x00b0f1f0
+extern float gB0f1f0[3];
+
+// GLOBAL: 0x00b0f2f8
+extern float gB0f2f8[3];
+
+// GLOBAL: 0x00b0f400
+extern float gB0f400[3];
+
+// GLOBAL: 0x00b0f510
+extern float gB0f510[3];
+
+// GLOBAL: 0x00b0f618
+extern float gB0f618[3];
+
 namespace ob_statics {
 
 // STATIC-INIT: 0x00a6ffe0 0x00a79aa0 0x00b20860 0x14
@@ -332,6 +368,9 @@ cRZString gB213e4("sc4://tutorial");
 // STATIC-INIT: 0x00a71b70 0x00a7acd0 0x00b213f8 0x14
 cRZString gB213f8("tutorial_default_decal_color");
 
+// STATIC-INIT: 0x00a71c30 - 0x00b215ec 0xc
+float gB215ec[3] = { gB07f54[0] * 0.5f, gB07f54[1] * 0.5f, gB07f54[2] * 0.5f };
+
 // STATIC-INIT: 0x00a71f80 0x00a7b0c0 0x00b2185c 0x14
 cRZString gB2185c("Query");
 
@@ -397,6 +436,30 @@ std::string gB22d0c("])}");
 
 // STATIC-INIT: 0x00a72e40 0x00a7b8b0 0x00b22d18 0xc
 std::string gB22d18("$");
+
+// STATIC-INIT: 0x00a730d0 - 0x00b22ec4 0xc
+float gB22ec4[3] = { gB0a738[0] * 0.5f, gB0a738[1] * 0.5f, gB0a738[2] * 0.5f };
+
+// STATIC-INIT: 0x00a73110 - 0x00b22ee4 0xc
+float gB22ee4[3] = { gB0a738[0] * 0.05f, gB0a738[1] * 0.05f, gB0a738[2] * 0.05f };
+
+// STATIC-INIT: 0x00a73150 - 0x00b22ef4 0xc
+float gB22ef4[3] = { gB0a738[0] * 0.1f, gB0a738[1] * 0.1f, gB0a738[2] * 0.1f };
+
+// STATIC-INIT: 0x00a73190 - 0x00b22eac 0xc
+float gB22eac[3] = { gB0a738[0] * 0.25f, gB0a738[1] * 0.25f, gB0a738[2] * 0.25f };
+
+// STATIC-INIT: 0x00a731d0 - 0x00b22e90 0xc
+float gB22e90[3] = { gB0a738[0] * 0.5f, gB0a738[1] * 0.5f, gB0a738[2] * 0.5f };
+
+// STATIC-INIT: 0x00a73210 - 0x00b22ed4 0xc
+float gB22ed4[3] = { gB0a738[0] * 0.75f, gB0a738[1] * 0.75f, gB0a738[2] * 0.75f };
+
+// STATIC-INIT: 0x00a73250 - 0x00b22eb8 0xc
+float gB22eb8[3] = { gB0a738[0] * 0.9f, gB0a738[1] * 0.9f, gB0a738[2] * 0.9f };
+
+// STATIC-INIT: 0x00a73290 - 0x00b22ea0 0xc
+float gB22ea0[3] = { gB0a738[0] * 0.95f, gB0a738[1] * 0.95f, gB0a738[2] * 0.95f };
 
 // STATIC-INIT: 0x00a732d0 0x00a7b9b0 0x00b22f18 0x14
 cRZString gB22f18("iexplore.exe");
@@ -520,6 +583,9 @@ cRZString gB490b8("garbage_out");
 
 // STATIC-INIT: 0x00a74d60 0x00a7d1c0 0x00b490cc 0x14
 cRZString gB490cc("garbage_attract");
+
+// STATIC-INIT: 0x00a752b0 - 0x00b4d5ec 0x4
+float gB4d5ec = gB0d804 * 0.7f;
 
 // STATIC-INIT: 0x00a752e0 0x00a7d710 0x00b4d5f8 0x14
 cRZString gB4d5f8("tutorialtasks");
@@ -1000,5 +1066,221 @@ cRZString gB4e630("no_edge_scroll");
 
 // STATIC-INIT: 0x00a77ad0 0x00a7f0e0 0x00b4e644 0x14
 cRZString gB4e644("csi");
+
+// STATIC-INIT: 0x00a77c70 - 0x00b4fc5c 0xc
+float gB4fc5c[3] = { gB0edb8[0] * 0.5f, gB0edb8[1] * 0.5f, gB0edb8[2] * 0.5f };
+
+// STATIC-INIT: 0x00a77cb0 - 0x00b4fc7c 0xc
+float gB4fc7c[3] = { gB0edb8[0] * 0.05f, gB0edb8[1] * 0.05f, gB0edb8[2] * 0.05f };
+
+// STATIC-INIT: 0x00a77cf0 - 0x00b4fc8c 0xc
+float gB4fc8c[3] = { gB0edb8[0] * 0.1f, gB0edb8[1] * 0.1f, gB0edb8[2] * 0.1f };
+
+// STATIC-INIT: 0x00a77d30 - 0x00b4fc44 0xc
+float gB4fc44[3] = { gB0edb8[0] * 0.25f, gB0edb8[1] * 0.25f, gB0edb8[2] * 0.25f };
+
+// STATIC-INIT: 0x00a77d70 - 0x00b4fc28 0xc
+float gB4fc28[3] = { gB0edb8[0] * 0.5f, gB0edb8[1] * 0.5f, gB0edb8[2] * 0.5f };
+
+// STATIC-INIT: 0x00a77db0 - 0x00b4fc6c 0xc
+float gB4fc6c[3] = { gB0edb8[0] * 0.75f, gB0edb8[1] * 0.75f, gB0edb8[2] * 0.75f };
+
+// STATIC-INIT: 0x00a77df0 - 0x00b4fc50 0xc
+float gB4fc50[3] = { gB0edb8[0] * 0.9f, gB0edb8[1] * 0.9f, gB0edb8[2] * 0.9f };
+
+// STATIC-INIT: 0x00a77e30 - 0x00b4fc38 0xc
+float gB4fc38[3] = { gB0edb8[0] * 0.95f, gB0edb8[1] * 0.95f, gB0edb8[2] * 0.95f };
+
+// STATIC-INIT: 0x00a77e70 - 0x00b4fce0 0xc
+float gB4fce0[3] = { gB0eec8[0] * 0.5f, gB0eec8[1] * 0.5f, gB0eec8[2] * 0.5f };
+
+// STATIC-INIT: 0x00a77eb0 - 0x00b4fd00 0xc
+float gB4fd00[3] = { gB0eec8[0] * 0.05f, gB0eec8[1] * 0.05f, gB0eec8[2] * 0.05f };
+
+// STATIC-INIT: 0x00a77ef0 - 0x00b4fd10 0xc
+float gB4fd10[3] = { gB0eec8[0] * 0.1f, gB0eec8[1] * 0.1f, gB0eec8[2] * 0.1f };
+
+// STATIC-INIT: 0x00a77f30 - 0x00b4fcc8 0xc
+float gB4fcc8[3] = { gB0eec8[0] * 0.25f, gB0eec8[1] * 0.25f, gB0eec8[2] * 0.25f };
+
+// STATIC-INIT: 0x00a77f70 - 0x00b4fcac 0xc
+float gB4fcac[3] = { gB0eec8[0] * 0.5f, gB0eec8[1] * 0.5f, gB0eec8[2] * 0.5f };
+
+// STATIC-INIT: 0x00a77fb0 - 0x00b4fcf0 0xc
+float gB4fcf0[3] = { gB0eec8[0] * 0.75f, gB0eec8[1] * 0.75f, gB0eec8[2] * 0.75f };
+
+// STATIC-INIT: 0x00a77ff0 - 0x00b4fcd4 0xc
+float gB4fcd4[3] = { gB0eec8[0] * 0.9f, gB0eec8[1] * 0.9f, gB0eec8[2] * 0.9f };
+
+// STATIC-INIT: 0x00a78030 - 0x00b4fcbc 0xc
+float gB4fcbc[3] = { gB0eec8[0] * 0.95f, gB0eec8[1] * 0.95f, gB0eec8[2] * 0.95f };
+
+// STATIC-INIT: 0x00a78070 - 0x00b4fd64 0xc
+float gB4fd64[3] = { gB0efe0[0] * 0.5f, gB0efe0[1] * 0.5f, gB0efe0[2] * 0.5f };
+
+// STATIC-INIT: 0x00a780b0 - 0x00b4fd84 0xc
+float gB4fd84[3] = { gB0efe0[0] * 0.05f, gB0efe0[1] * 0.05f, gB0efe0[2] * 0.05f };
+
+// STATIC-INIT: 0x00a780f0 - 0x00b4fd94 0xc
+float gB4fd94[3] = { gB0efe0[0] * 0.1f, gB0efe0[1] * 0.1f, gB0efe0[2] * 0.1f };
+
+// STATIC-INIT: 0x00a78130 - 0x00b4fd4c 0xc
+float gB4fd4c[3] = { gB0efe0[0] * 0.25f, gB0efe0[1] * 0.25f, gB0efe0[2] * 0.25f };
+
+// STATIC-INIT: 0x00a78170 - 0x00b4fd30 0xc
+float gB4fd30[3] = { gB0efe0[0] * 0.5f, gB0efe0[1] * 0.5f, gB0efe0[2] * 0.5f };
+
+// STATIC-INIT: 0x00a781b0 - 0x00b4fd74 0xc
+float gB4fd74[3] = { gB0efe0[0] * 0.75f, gB0efe0[1] * 0.75f, gB0efe0[2] * 0.75f };
+
+// STATIC-INIT: 0x00a781f0 - 0x00b4fd58 0xc
+float gB4fd58[3] = { gB0efe0[0] * 0.9f, gB0efe0[1] * 0.9f, gB0efe0[2] * 0.9f };
+
+// STATIC-INIT: 0x00a78230 - 0x00b4fd40 0xc
+float gB4fd40[3] = { gB0efe0[0] * 0.95f, gB0efe0[1] * 0.95f, gB0efe0[2] * 0.95f };
+
+// STATIC-INIT: 0x00a78270 - 0x00b4fe04 0xc
+float gB4fe04[3] = { gB0f0e8[0] * 0.5f, gB0f0e8[1] * 0.5f, gB0f0e8[2] * 0.5f };
+
+// STATIC-INIT: 0x00a782b0 - 0x00b4fe30 0xc
+float gB4fe30[3] = { gB0f0e8[0] * 0.05f, gB0f0e8[1] * 0.05f, gB0f0e8[2] * 0.05f };
+
+// STATIC-INIT: 0x00a782f0 - 0x00b4fe40 0xc
+float gB4fe40[3] = { gB0f0e8[0] * 0.1f, gB0f0e8[1] * 0.1f, gB0f0e8[2] * 0.1f };
+
+// STATIC-INIT: 0x00a78330 - 0x00b4fdec 0xc
+float gB4fdec[3] = { gB0f0e8[0] * 0.25f, gB0f0e8[1] * 0.25f, gB0f0e8[2] * 0.25f };
+
+// STATIC-INIT: 0x00a78370 - 0x00b4fdd0 0xc
+float gB4fdd0[3] = { gB0f0e8[0] * 0.5f, gB0f0e8[1] * 0.5f, gB0f0e8[2] * 0.5f };
+
+// STATIC-INIT: 0x00a783b0 - 0x00b4fe1c 0xc
+float gB4fe1c[3] = { gB0f0e8[0] * 0.75f, gB0f0e8[1] * 0.75f, gB0f0e8[2] * 0.75f };
+
+// STATIC-INIT: 0x00a783f0 - 0x00b4fdf8 0xc
+float gB4fdf8[3] = { gB0f0e8[0] * 0.9f, gB0f0e8[1] * 0.9f, gB0f0e8[2] * 0.9f };
+
+// STATIC-INIT: 0x00a78430 - 0x00b4fde0 0xc
+float gB4fde0[3] = { gB0f0e8[0] * 0.95f, gB0f0e8[1] * 0.95f, gB0f0e8[2] * 0.95f };
+
+// STATIC-INIT: 0x00a78500 - 0x00b4fea4 0xc
+float gB4fea4[3] = { gB0f1f0[0] * 0.5f, gB0f1f0[1] * 0.5f, gB0f1f0[2] * 0.5f };
+
+// STATIC-INIT: 0x00a78540 - 0x00b4fec4 0xc
+float gB4fec4[3] = { gB0f1f0[0] * 0.05f, gB0f1f0[1] * 0.05f, gB0f1f0[2] * 0.05f };
+
+// STATIC-INIT: 0x00a78580 - 0x00b4fed4 0xc
+float gB4fed4[3] = { gB0f1f0[0] * 0.1f, gB0f1f0[1] * 0.1f, gB0f1f0[2] * 0.1f };
+
+// STATIC-INIT: 0x00a785c0 - 0x00b4fe8c 0xc
+float gB4fe8c[3] = { gB0f1f0[0] * 0.25f, gB0f1f0[1] * 0.25f, gB0f1f0[2] * 0.25f };
+
+// STATIC-INIT: 0x00a78600 - 0x00b4fe70 0xc
+float gB4fe70[3] = { gB0f1f0[0] * 0.5f, gB0f1f0[1] * 0.5f, gB0f1f0[2] * 0.5f };
+
+// STATIC-INIT: 0x00a78640 - 0x00b4feb4 0xc
+float gB4feb4[3] = { gB0f1f0[0] * 0.75f, gB0f1f0[1] * 0.75f, gB0f1f0[2] * 0.75f };
+
+// STATIC-INIT: 0x00a78680 - 0x00b4fe98 0xc
+float gB4fe98[3] = { gB0f1f0[0] * 0.9f, gB0f1f0[1] * 0.9f, gB0f1f0[2] * 0.9f };
+
+// STATIC-INIT: 0x00a786c0 - 0x00b4fe80 0xc
+float gB4fe80[3] = { gB0f1f0[0] * 0.95f, gB0f1f0[1] * 0.95f, gB0f1f0[2] * 0.95f };
+
+// STATIC-INIT: 0x00a78700 - 0x00b4ff2c 0xc
+float gB4ff2c[3] = { gB0f2f8[0] * 0.5f, gB0f2f8[1] * 0.5f, gB0f2f8[2] * 0.5f };
+
+// STATIC-INIT: 0x00a78740 - 0x00b4ff4c 0xc
+float gB4ff4c[3] = { gB0f2f8[0] * 0.05f, gB0f2f8[1] * 0.05f, gB0f2f8[2] * 0.05f };
+
+// STATIC-INIT: 0x00a78780 - 0x00b4ff5c 0xc
+float gB4ff5c[3] = { gB0f2f8[0] * 0.1f, gB0f2f8[1] * 0.1f, gB0f2f8[2] * 0.1f };
+
+// STATIC-INIT: 0x00a787c0 - 0x00b4ff14 0xc
+float gB4ff14[3] = { gB0f2f8[0] * 0.25f, gB0f2f8[1] * 0.25f, gB0f2f8[2] * 0.25f };
+
+// STATIC-INIT: 0x00a78800 - 0x00b4fef8 0xc
+float gB4fef8[3] = { gB0f2f8[0] * 0.5f, gB0f2f8[1] * 0.5f, gB0f2f8[2] * 0.5f };
+
+// STATIC-INIT: 0x00a78840 - 0x00b4ff3c 0xc
+float gB4ff3c[3] = { gB0f2f8[0] * 0.75f, gB0f2f8[1] * 0.75f, gB0f2f8[2] * 0.75f };
+
+// STATIC-INIT: 0x00a78880 - 0x00b4ff20 0xc
+float gB4ff20[3] = { gB0f2f8[0] * 0.9f, gB0f2f8[1] * 0.9f, gB0f2f8[2] * 0.9f };
+
+// STATIC-INIT: 0x00a788c0 - 0x00b4ff08 0xc
+float gB4ff08[3] = { gB0f2f8[0] * 0.95f, gB0f2f8[1] * 0.95f, gB0f2f8[2] * 0.95f };
+
+// STATIC-INIT: 0x00a78900 - 0x00b4ffbc 0xc
+float gB4ffbc[3] = { gB0f400[0] * 0.5f, gB0f400[1] * 0.5f, gB0f400[2] * 0.5f };
+
+// STATIC-INIT: 0x00a78940 - 0x00b4ffdc 0xc
+float gB4ffdc[3] = { gB0f400[0] * 0.05f, gB0f400[1] * 0.05f, gB0f400[2] * 0.05f };
+
+// STATIC-INIT: 0x00a78980 - 0x00b4ffec 0xc
+float gB4ffec[3] = { gB0f400[0] * 0.1f, gB0f400[1] * 0.1f, gB0f400[2] * 0.1f };
+
+// STATIC-INIT: 0x00a789c0 - 0x00b4ffa4 0xc
+float gB4ffa4[3] = { gB0f400[0] * 0.25f, gB0f400[1] * 0.25f, gB0f400[2] * 0.25f };
+
+// STATIC-INIT: 0x00a78a00 - 0x00b4ff88 0xc
+float gB4ff88[3] = { gB0f400[0] * 0.5f, gB0f400[1] * 0.5f, gB0f400[2] * 0.5f };
+
+// STATIC-INIT: 0x00a78a40 - 0x00b4ffcc 0xc
+float gB4ffcc[3] = { gB0f400[0] * 0.75f, gB0f400[1] * 0.75f, gB0f400[2] * 0.75f };
+
+// STATIC-INIT: 0x00a78a80 - 0x00b4ffb0 0xc
+float gB4ffb0[3] = { gB0f400[0] * 0.9f, gB0f400[1] * 0.9f, gB0f400[2] * 0.9f };
+
+// STATIC-INIT: 0x00a78ac0 - 0x00b4ff98 0xc
+float gB4ff98[3] = { gB0f400[0] * 0.95f, gB0f400[1] * 0.95f, gB0f400[2] * 0.95f };
+
+// STATIC-INIT: 0x00a78b10 - 0x00b50044 0xc
+float gB50044[3] = { gB0f510[0] * 0.5f, gB0f510[1] * 0.5f, gB0f510[2] * 0.5f };
+
+// STATIC-INIT: 0x00a78b50 - 0x00b50064 0xc
+float gB50064[3] = { gB0f510[0] * 0.05f, gB0f510[1] * 0.05f, gB0f510[2] * 0.05f };
+
+// STATIC-INIT: 0x00a78b90 - 0x00b50074 0xc
+float gB50074[3] = { gB0f510[0] * 0.1f, gB0f510[1] * 0.1f, gB0f510[2] * 0.1f };
+
+// STATIC-INIT: 0x00a78bd0 - 0x00b5002c 0xc
+float gB5002c[3] = { gB0f510[0] * 0.25f, gB0f510[1] * 0.25f, gB0f510[2] * 0.25f };
+
+// STATIC-INIT: 0x00a78c10 - 0x00b50010 0xc
+float gB50010[3] = { gB0f510[0] * 0.5f, gB0f510[1] * 0.5f, gB0f510[2] * 0.5f };
+
+// STATIC-INIT: 0x00a78c50 - 0x00b50054 0xc
+float gB50054[3] = { gB0f510[0] * 0.75f, gB0f510[1] * 0.75f, gB0f510[2] * 0.75f };
+
+// STATIC-INIT: 0x00a78c90 - 0x00b50038 0xc
+float gB50038[3] = { gB0f510[0] * 0.9f, gB0f510[1] * 0.9f, gB0f510[2] * 0.9f };
+
+// STATIC-INIT: 0x00a78cd0 - 0x00b50020 0xc
+float gB50020[3] = { gB0f510[0] * 0.95f, gB0f510[1] * 0.95f, gB0f510[2] * 0.95f };
+
+// STATIC-INIT: 0x00a78d10 - 0x00b500c8 0xc
+float gB500c8[3] = { gB0f618[0] * 0.5f, gB0f618[1] * 0.5f, gB0f618[2] * 0.5f };
+
+// STATIC-INIT: 0x00a78d50 - 0x00b500e8 0xc
+float gB500e8[3] = { gB0f618[0] * 0.05f, gB0f618[1] * 0.05f, gB0f618[2] * 0.05f };
+
+// STATIC-INIT: 0x00a78d90 - 0x00b500f8 0xc
+float gB500f8[3] = { gB0f618[0] * 0.1f, gB0f618[1] * 0.1f, gB0f618[2] * 0.1f };
+
+// STATIC-INIT: 0x00a78dd0 - 0x00b500b0 0xc
+float gB500b0[3] = { gB0f618[0] * 0.25f, gB0f618[1] * 0.25f, gB0f618[2] * 0.25f };
+
+// STATIC-INIT: 0x00a78e10 - 0x00b50094 0xc
+float gB50094[3] = { gB0f618[0] * 0.5f, gB0f618[1] * 0.5f, gB0f618[2] * 0.5f };
+
+// STATIC-INIT: 0x00a78e50 - 0x00b500d8 0xc
+float gB500d8[3] = { gB0f618[0] * 0.75f, gB0f618[1] * 0.75f, gB0f618[2] * 0.75f };
+
+// STATIC-INIT: 0x00a78e90 - 0x00b500bc 0xc
+float gB500bc[3] = { gB0f618[0] * 0.9f, gB0f618[1] * 0.9f, gB0f618[2] * 0.9f };
+
+// STATIC-INIT: 0x00a78ed0 - 0x00b500a4 0xc
+float gB500a4[3] = { gB0f618[0] * 0.95f, gB0f618[1] * 0.95f, gB0f618[2] * 0.95f };
 
 }  // namespace ob_statics
