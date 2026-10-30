@@ -46,6 +46,8 @@ if [[ -s src/classes/names.tsv ]]; then
   tools/names/apply-rename.sh "$work/rename.tsv"
   cp src/classes/names.tsv "$work/names-applied.tsv"
 fi
+# the global objects whose initializers and teardowns follow from their definitions (src/game/GeneratedStatics_game.cpp)
+python3 -I tools/gen-statics.py
 : >"$work/exclude.txt"
 for round in 1 2 3 4 5 6; do
   # only what obdecl wrote: headers it marked GENERATED (an edited header and src/classes/ext/ are kept)

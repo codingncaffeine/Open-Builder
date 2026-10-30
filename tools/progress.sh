@@ -10,7 +10,10 @@ cd "$(dirname "$0")/.."
 # The image library's code, built with the Intel C++ compiler 6.0 (its build strings name jpeg, png, zlib and its
 # own common code): the 2003 compiler cannot match it, so it is counted apart.
 intel_lo=0xa053a0 intel_hi=0xa640c0
-grep -rhoE '// (FUNCTION|SYNTHETIC): 0x[0-9a-fA-F]+' src | awk '{print tolower(substr($3, 3))}' | sort -u >"${TMPDIR:-/tmp}/ob-done.$$"
+# (and the initializer and teardown of a global object, "// STATIC-INIT: 0x<init> 0x<teardown> ...": tools/gen-statics.py)
+{ grep -rhoE '// (FUNCTION|SYNTHETIC): 0x[0-9a-fA-F]+' src | awk '{print tolower(substr($3, 3))}'
+  grep -rhoE '// STATIC-INIT: 0x[0-9a-fA-F]+ 0x[0-9a-fA-F]+' src | awk '{print tolower(substr($3, 3)); print tolower(substr($4, 3))}'
+} | sort -u >"${TMPDIR:-/tmp}/ob-done.$$"
 trap 'rm -f "${TMPDIR:-/tmp}/ob-done.$$"' EXIT
 # the compiler's own functions (adjustor thunks, import jumps), when the class generator has run (tools/gen-classes.sh)
 shapes=(); [[ -f scratch/classes/shapes.tsv ]] && shapes=(scratch/classes/shapes.tsv)

@@ -1,0 +1,128 @@
+#!/usr/bin/env python3
+# Writes src/game/GeneratedStatics_game.cpp: the global objects of the original whose construction and destruction
+# the compiler wrote as a pair of functions (the dynamic initializer, which constructs the object and registers the
+# other with atexit, and the teardown it registers), found in the original by their exact instructions.
+#   tools/gen-statics.py
+# One family so far: a global cRZString made from a string literal, as the game's flags (/O2) compile it
+# (`cRZString g("...")`: the string's range constructor inline, the vtable stored, the reference count zeroed):
+#   push ecx; lea eax,[esp+3]; push eax; push END; push BEGIN; mov ecx,G+4; call _M_range_initialize<const char*>
+#   push TEARDOWN; mov [G],cRZString vtable; mov [G+0x10],0; call atexit; add esp,8; ret
+# and the teardown, ~cRZString inline:
+#   mov eax,[G+4]; test eax,eax; mov [G],cRZString vtable; je +7; push eax; call __stl_delete; pop ecx; ret
+# Each definition is annotated "// STATIC-INIT: 0x<initializer> 0x<teardown> <global> <size>": tools/match.sh pairs
+# them with the compiler's _$E<n> functions of the object file, in order. The objects live in namespace ob_statics,
+# so that the hook build's references to the original's variables (GLOBAL annotations) still reach the original's.
+import os
+import re
+import struct
+import sys
+
+root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+os.chdir(root)
+EXE = "scratch/testbed/game/Apps/SimCity 4.exe"
+OUT = "src/game/GeneratedStatics_game.cpp"
+
+RANGE_INIT = 0x407FA0   # basic_string<char>::_M_range_initialize<const char*>
+RZSTRING_VTABLE = 0xA80810
+ATEXIT = 0x9EF059
+STL_DELETE = 0x90CF63
+
+
+def sections(data):
+    pe = struct.unpack_from("<I", data, 0x3C)[0]
+    count = struct.unpack_from("<H", data, pe + 6)[0]
+    opt = struct.unpack_from("<H", data, pe + 20)[0]
+    base = struct.unpack_from("<I", data, pe + 24 + 28)[0]
+    out = []
+    at = pe + 24 + opt
+    for _ in range(count):
+        name = data[at:at + 8].rstrip(b"\0").decode()
+        vsize, va, rawsize, raw = struct.unpack_from("<IIII", data, at + 8)
+        out.append((name, base + va, max(vsize, rawsize), raw))
+        at += 40
+    return out
+
+
+data = open(EXE, "rb").read()
+secs = sections(data)
+
+
+def offset(va):
+    for _, start, size, raw in secs:
+        if start <= va < start + size:
+            return raw + va - start
+    return None
+
+
+def dword(va):
+    o = offset(va)
+    return None if o is None else struct.unpack_from("<I", data, o)[0]
+
+
+def rel(va):  # the target of the call whose rel32 operand is at va
+    return (va + 4 + struct.unpack_from("<i", data, offset(va))[0]) & 0xFFFFFFFF
+
+
+# Functions already written or spoken for by hand: never generated again.
+taken = set()
+pat = re.compile(r"// (?:FUNCTION|SYNTHETIC|STUB|CLOSE): 0x([0-9a-fA-F]+)")
+for d, _, files in os.walk("src"):
+    for f in files:
+        if f.endswith((".cpp", ".h")) and os.path.join(d, f) != OUT:
+            for m in pat.finditer(open(os.path.join(d, f), errors="replace").read()):
+                taken.add(int(m.group(1), 16))
+
+text = next(s for s in secs if s[0] == ".text")
+tbase = text[1] - text[3]  # va = file offset + tbase within .text
+init = re.compile(rb"\x51\x8d\x44\x24\x03\x50\x68(.{4})\x68(.{4})\xb9(.{4})\xe8.{4}\x68(.{4})\xc7\x05(.{4})(.{4})"
+                  rb"\xc7\x05(.{4})\x00\x00\x00\x00\xe8.{4}\x83\xc4\x08\xc3", re.S)
+
+
+def literal(b):  # a C++ literal the compiler stores as these bytes (octal escapes: no hex run-on, no trigraphs)
+    s = ""
+    for c in b:
+        ch = chr(c)
+        s += ch if 0x20 <= c < 0x7F and ch not in "\"\\?" else "\\%03o" % c
+    return '"' + s + '"'
+
+
+defs = []
+skipped = 0
+held = 0
+for m in init.finditer(data, text[3], text[3] + text[2]):
+    fn = m.start() + tbase
+    end, begin, g4, td, g, vt, g10 = (struct.unpack("<I", x)[0] for x in m.groups())
+    if g4 != g + 4 or g10 != g + 0x10 or vt != RZSTRING_VTABLE:
+        continue
+    if rel(fn + 0x16) != RANGE_INIT or rel(fn + 0x34) != ATEXIT:
+        continue
+    o = offset(td)
+    want = (b"\xa1" + struct.pack("<I", g + 4) + b"\x85\xc0\xc7\x05" + struct.pack("<II", g, RZSTRING_VTABLE) +
+            b"\x74\x07\x50\xe8")
+    if o is None or data[o:o + len(want)] != want or data[o + 25:o + 27] != b"\x59\xc3" or rel(td + 21) != STL_DELETE:
+        skipped += 1
+        continue
+    lo, hi = offset(begin), offset(end)
+    if lo is None or hi is None or hi < lo or data[hi] != 0 or 0 in data[lo:hi]:
+        skipped += 1
+        continue
+    if fn in taken or td in taken:
+        continue
+    # literals that name other products (registry paths, font faces) wait for a decision on what may be published
+    if b"HKEY_" in data[lo:hi] or b"FACE=" in data[lo:hi]:
+        held += 1
+        continue
+    defs.append((fn, td, g, literal(data[lo:hi])))
+
+defs.sort()
+with open(OUT + ".new", "w") as f:
+    f.write("// GENERATED by tools/gen-statics.py: the original's global objects whose construction and destruction the\n"
+            "// compiler wrote as functions (the dynamic initializer and the teardown it registers with atexit), found by\n"
+            "// their instructions. tools/match.sh pairs each STATIC-INIT with this object's _$E<n> functions, in order.\n"
+            "#include \"gzcom/cRZString.h\"\n\n"
+            "namespace ob_statics {\n")
+    for fn, td, g, lit in defs:
+        f.write("\n// STATIC-INIT: 0x%08x 0x%08x 0x%08x 0x14\ncRZString g%s(%s);\n" % (fn, td, g, ('%x' % g).capitalize(), lit))
+    f.write("\n}  // namespace ob_statics\n")
+os.replace(OUT + ".new", OUT)
+print("gen-statics: %d global strings (%d functions), %d near misses skipped, %d held back" % (len(defs), 2 * len(defs), skipped, held))

@@ -44,6 +44,29 @@ awk -v textend="$textend" -v sizes="$sizes" '
     if (!(o in size)) { print "# no size for " o > "/dev/stderr"; next }
     printf "%s %s %x %x %s\n", o, size[o], r, rs, nm
   }' "$sizes" "$map" "$out/hook-pairs.txt" >"$out/pairs.tsv"
+# The global objects of tools/gen-statics.py: the k-th STATIC-INIT of an object file pairs the original's initializer
+# and teardown with that object's _$E<3k+1> and _$E<3k+2> (the compiler numbers an initializer, its teardown and the
+# pointer to the initializer in a row); ours run to the next symbol.
+for src in $(grep -rl '^// STATIC-INIT: 0x' src --include=*.cpp | sort); do
+  obj=$(basename "$src" .cpp).obj
+  awk -v obj="$obj" -v textend="$textend" -v sizes="$sizes" '
+    FILENAME == sizes { size[sprintf("%x", strtonum("0x" $1))] = $2; next }
+    FILENAME ~ /version.map$/ {
+      if ($1 ~ /^0001:/ && $3 ~ /^[0-9a-f]{8}$/) { n++; va[n] = strtonum("0x" $3); f = $NF; sub(/\r$/, "", f); if ($2 ~ /^_\$E[0-9]+$/ && f == obj) e[substr($2, 4)] = va[n] }
+      next
+    }
+    /^\/\/ STATIC-INIT: 0x/ {
+      k++
+      for (w = 0; w < 2; w++) {
+        o = sprintf("%x", strtonum($(3 + w))); r = e[3 * (k - 1) + 1 + w]
+        if (!r) { print "match: no _$E" 3 * (k - 1) + 1 + w " in " obj > "/dev/stderr"; continue }
+        rs = textend - r
+        for (i = 1; i <= n; i++) if (va[i] > r && va[i] - r < rs) rs = va[i] - r
+        if (!(o in size)) { print "# no size for " o > "/dev/stderr"; continue }
+        printf "%s %s %x %x %s\n", o, size[o], r, rs, (w ? "teardown_" : "init_") $5
+      }
+    }' "$sizes" "$map" "$src" >>"$out/pairs.tsv"
+done
 # The stubs that lead to functions not decompiled yet name their original, so calls to them compare by target.
 awk '$1 ~ /^0001:/ && $2 ~ /^_ob_stub_[0-9a-f]{8}$/ { print substr($2, 10), $3, "stub_" substr($2, 10) }' "$map" >"$out/names.tsv"
 # A library function (STLport, the C runtime) our build compiles from the library's own source has the original's
@@ -57,6 +80,17 @@ awk -F'\t' 'FILENAME == ARGV[1] { lib[$3] = sprintf("%08x", strtonum("0x" $1)); 
             END { for (a in at) if (n[a] == 1 && places[sym[a]] == 1) print at[a], a, "stub_" at[a] }' re/map/libraries.tsv "$map" >>"$out/names.tsv"
 # The original's global variables (GLOBAL annotations) are at the same address on both sides: named alike.
 awk '{ a = tolower($1); sub(/^0x/, "", a); print a, a, "data_" a }' "$out/globals.txt" | sort -u >>"$out/names.tsv"
+# A global object tools/gen-statics.py defines (ob_statics::g<address>, STATIC-INIT size) stands for the original's at
+# that address: every dword of it named alike on both sides.
+awk 'FILENAME ~ /version.map$/ {
+       if ($2 ~ /^\?g[0-9A-Fa-f]+@ob_statics@@/ && $3 ~ /^[0-9a-f]{8}$/) { nm = $2; sub(/^\?g/, "", nm); sub(/@.*/, "", nm); ours[tolower(nm)] = strtonum("0x" $3) }
+       next
+     }
+     /^\/\/ STATIC-INIT: 0x/ {
+       g = strtonum($5); key = sprintf("%x", g)
+       # and the original address too, where a decompiled function reaches the variable itself (GLOBAL)
+       if (key in ours) for (k = 0; k < strtonum($6); k += 4) printf "%x %x g_0x%x\n%x %x g_0x%x\n", g + k, ours[key] + k, g + k, g + k, g + k, g + k
+     }' "$map" $(grep -rl '^// STATIC-INIT: 0x' src --include=*.cpp | sort) >>"$out/names.tsv"
 # Vtables: "// VTABLE: 0x<address> [base]" above a class pairs the original's with ours (tools/vtable-annotations.sh);
 # our slot count runs to the next symbol in the map at most.
 tools/vtable-annotations.sh >"$out/vtable-annotations.txt"
