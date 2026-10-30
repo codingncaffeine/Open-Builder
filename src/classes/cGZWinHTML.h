@@ -59,8 +59,8 @@ public:
     virtual void Slot31_accfb8(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot32_accfb8(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot33_accfb8(uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowne0[0xa0];
     uint32_t field180;
     char unknown184[0x2e0];

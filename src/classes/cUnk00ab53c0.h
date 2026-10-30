@@ -12,7 +12,7 @@
 // SIZE 0x1c
 class cUnk00ab53c0 : public cUnk00a83524, public cUnk00ace624 {
 public:
-    virtual ~cUnk00ab53c0() {}
+    virtual ~cUnk00ab53c0();
     virtual uint32_t Slot05_ab53c0(uint32_t);
     virtual void Slot06_ab53c0();
     virtual void Slot07_ab53c0();

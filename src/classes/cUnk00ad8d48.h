@@ -17,8 +17,10 @@ public:
     virtual bool Slot04_ad9030(uint32_t, uint32_t) = 0;
     virtual bool Slot05_ad9030(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot03_ad9030() = 0;
-    virtual bool Slot56_ad8d88(uint32_t) = 0;
+    virtual bool Slot53_ad8d88(uint32_t) = 0;
     virtual uint32_t Slot54_ad8d88() = 0;
+    virtual bool Slot55_ad8d88(uint32_t) = 0;
+    virtual bool Slot56_ad8d88(uint32_t) = 0;
     virtual ~cUnk00ad8d48();
     virtual void Slot14_ad8d48(uint32_t);
     virtual void Slot15_ad8d48(uint16_t);

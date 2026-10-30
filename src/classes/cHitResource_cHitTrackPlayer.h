@@ -7,10 +7,28 @@
 #include "classes/cHitTrackPlayer.h"
 #include "classes/cUnk00ad2620.h"
 
-// Between cUnk00ad2620 and cHitResource_cHitTrackPlayer at +0x104: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cHitResource_cHitTrackPlayer_104 : public cUnk00ad2620 {
+// VTABLE: 0x00ad4268 cHitTrackPlayer_0
+// VTABLE: 0x00ad4244 cUnk00ad2bc8
+// VTABLE: 0x00ad4200 cUnk00ac2d78
+// VTABLE: 0x00ad4168 cUnk00ac2b18
+// VTABLE: 0x00ad4158 cUnk00ad2bec
+// VTABLE: 0x00ad4148 cUnk00a943c0
+// VTABLE: 0x00ad4128 cUnk00ad2bfc
+// VTABLE: 0x00ad4110 cUnk00ac2bf0
+// VTABLE: 0x00ad42fc cUnk00ad2620
+// SIZE 0x114
+class cHitResource_cHitTrackPlayer : public cHitTrackPlayer, public cUnk00ad2620 {
+public:
+    virtual ~cHitResource_cHitTrackPlayer();
+    virtual bool DebugInstanceTag(uint32_t);
+    virtual bool DebugClassTag(uint32_t);
+    virtual bool DebugTypeTag(uint32_t);
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual void Slot03_ad2620(uint32_t);
     virtual bool Slot04_ad2620(uint32_t);
+    virtual uint32_t Slot05_ad2620();
     virtual uint32_t Slot06_ad2620();
     virtual uint32_t Slot07_ad2620();
     virtual bool Slot08_ad2620(uint32_t);
@@ -20,29 +38,9 @@ struct OB_NOVTABLE cHitResource_cHitTrackPlayer_104 : public cUnk00ad2620 {
     virtual uint32_t GetRefCount();
     virtual bool ReadResource_2(uint32_t, uint32_t, uint32_t);
     virtual bool WriteResource_2(uint32_t, uint32_t, uint32_t);
-};
-
-// VTABLE: 0x00ad4268 cHitTrackPlayer_0
-// VTABLE: 0x00ad4244 cUnk00ad2bc8
-// VTABLE: 0x00ad4200 cUnk00ac2d78
-// VTABLE: 0x00ad4168 cUnk00ac2b18
-// VTABLE: 0x00ad4158 cUnk00ad2bec
-// VTABLE: 0x00ad4148 cUnk00a943c0
-// VTABLE: 0x00ad4128 cUnk00ad2bfc
-// VTABLE: 0x00ad4110 cUnk00ac2bf0
-// VTABLE: 0x00ad42fc cHitResource_cHitTrackPlayer_104
-// SIZE 0x114
-class cHitResource_cHitTrackPlayer : public cHitTrackPlayer, public cHitResource_cHitTrackPlayer_104 {
-public:
-    virtual ~cHitResource_cHitTrackPlayer();
-    virtual bool DebugInstanceTag(uint32_t);
-    virtual bool DebugClassTag(uint32_t);
-    virtual bool DebugTypeTag(uint32_t);
-    virtual uint32_t GetRefCount();
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad4cf4();
-    virtual void Slot02_ad4cf4();
-    char unknown108[0xc];
+    uint32_t field108;
+    uint32_t field10c;
+    uint32_t field110;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cHitResource_cHitTrackPlayer[sizeof(cHitResource_cHitTrackPlayer) == 0x114 ? 1 : -1];
@@ -55,73 +53,73 @@ typedef char ob_size_cHitResource_cHitTrackPlayer[sizeof(cHitResource_cHitTrackP
 // cHitResource_cHitTrackPlayer::QueryInterface`adjustor{4}'
 
 // SYNTHETIC: 0x009403bf
-// cHitResource_cHitTrackPlayer::Slot01_ad4cf4`adjustor{4}'
+// cHitResource_cHitTrackPlayer::AddRef`adjustor{4}'
 
 // SYNTHETIC: 0x009403c7
-// cHitResource_cHitTrackPlayer::Slot02_ad4cf4`adjustor{4}'
+// cHitResource_cHitTrackPlayer::Release`adjustor{4}'
 
 // SYNTHETIC: 0x009403cf
 // cHitResource_cHitTrackPlayer::QueryInterface`adjustor{8}'
 
 // SYNTHETIC: 0x009403d7
-// cHitResource_cHitTrackPlayer::Slot01_ad4cf4`adjustor{8}'
+// cHitResource_cHitTrackPlayer::AddRef`adjustor{8}'
 
 // SYNTHETIC: 0x009403df
-// cHitResource_cHitTrackPlayer::Slot02_ad4cf4`adjustor{8}'
+// cHitResource_cHitTrackPlayer::Release`adjustor{8}'
 
 // SYNTHETIC: 0x009403e7
 // cHitResource_cHitTrackPlayer::QueryInterface`adjustor{12}'
 
 // SYNTHETIC: 0x009403ef
-// cHitResource_cHitTrackPlayer::Slot01_ad4cf4`adjustor{12}'
+// cHitResource_cHitTrackPlayer::AddRef`adjustor{12}'
 
 // SYNTHETIC: 0x009403f7
-// cHitResource_cHitTrackPlayer::Slot02_ad4cf4`adjustor{12}'
+// cHitResource_cHitTrackPlayer::Release`adjustor{12}'
 
 // SYNTHETIC: 0x009403ff
 // cHitResource_cHitTrackPlayer::QueryInterface`adjustor{16}'
 
 // SYNTHETIC: 0x00940407
-// cHitResource_cHitTrackPlayer::Slot01_ad4cf4`adjustor{16}'
+// cHitResource_cHitTrackPlayer::AddRef`adjustor{16}'
 
 // SYNTHETIC: 0x0094040f
-// cHitResource_cHitTrackPlayer::Slot02_ad4cf4`adjustor{16}'
+// cHitResource_cHitTrackPlayer::Release`adjustor{16}'
 
 // SYNTHETIC: 0x00940417
 // cHitResource_cHitTrackPlayer::QueryInterface`adjustor{20}'
 
 // SYNTHETIC: 0x0094041f
-// cHitResource_cHitTrackPlayer::Slot01_ad4cf4`adjustor{20}'
+// cHitResource_cHitTrackPlayer::AddRef`adjustor{20}'
 
 // SYNTHETIC: 0x00940427
-// cHitResource_cHitTrackPlayer::Slot02_ad4cf4`adjustor{20}'
+// cHitResource_cHitTrackPlayer::Release`adjustor{20}'
 
 // SYNTHETIC: 0x0094042f
 // cHitResource_cHitTrackPlayer::QueryInterface`adjustor{24}'
 
 // SYNTHETIC: 0x00940437
-// cHitResource_cHitTrackPlayer::Slot01_ad4cf4`adjustor{24}'
+// cHitResource_cHitTrackPlayer::AddRef`adjustor{24}'
 
 // SYNTHETIC: 0x0094043f
-// cHitResource_cHitTrackPlayer::Slot02_ad4cf4`adjustor{24}'
+// cHitResource_cHitTrackPlayer::Release`adjustor{24}'
 
 // SYNTHETIC: 0x00940447
 // cHitResource_cHitTrackPlayer::QueryInterface`adjustor{28}'
 
 // SYNTHETIC: 0x0094044f
-// cHitResource_cHitTrackPlayer::Slot01_ad4cf4`adjustor{28}'
+// cHitResource_cHitTrackPlayer::AddRef`adjustor{28}'
 
 // SYNTHETIC: 0x00940457
-// cHitResource_cHitTrackPlayer::Slot02_ad4cf4`adjustor{28}'
+// cHitResource_cHitTrackPlayer::Release`adjustor{28}'
 
 // SYNTHETIC: 0x0094045f
 // cHitResource_cHitTrackPlayer::QueryInterface`adjustor{260}'
 
 // SYNTHETIC: 0x0094046a
-// cHitResource_cHitTrackPlayer::Slot01_ad4cf4`adjustor{260}'
+// cHitResource_cHitTrackPlayer::AddRef`adjustor{260}'
 
 // SYNTHETIC: 0x00940475
-// cHitResource_cHitTrackPlayer::Slot02_ad4cf4`adjustor{260}'
+// cHitResource_cHitTrackPlayer::Release`adjustor{260}'
 
 // SYNTHETIC: 0x00940480
 // cHitResource_cHitTrackPlayer::GetRefCount`adjustor{260}'

@@ -12,7 +12,7 @@
 // SIZE 0x5c
 class cFreshCellPlayer : public cUnk00ad4830, public cUnk00ad8fa4 {
 public:
-    virtual ~cFreshCellPlayer() {}
+    virtual ~cFreshCellPlayer();
     virtual bool GetHeadRelative();
     virtual uint32_t Get3DPosX();
     virtual uint32_t Get3DPosY();
@@ -51,6 +51,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cFreshCellPlayer[sizeof(cFreshCellPlayer) == 0x5c ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00945cd2
+// cFreshCellPlayer::`scalar deleting dtor'
 
 // SYNTHETIC: 0x009459a7
 // cFreshCellPlayer::Slot00_ad4830`adjustor{4}'

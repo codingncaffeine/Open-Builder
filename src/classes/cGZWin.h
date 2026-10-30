@@ -13,43 +13,43 @@ public:
     virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool DoMessage(uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     virtual uint32_t GetWindowManager();
     virtual bool SetWindowManager(uint32_t);
     virtual uint32_t GetKeyboard();
     virtual bool SetKeyboard(uint32_t);
-    virtual void Slot10_adc8d8();
+    virtual void* Slot10_adc8d8();
     virtual uint32_t GetParentWin();
     virtual bool SetParentWin(uint32_t);
     virtual uint32_t GetChildCount();
-    virtual void Slot14_adc8d8();
-    virtual void Slot15_adc8d8();
-    virtual void Slot16_adc8d8();
+    virtual void Slot14_adc8d8(void*);
+    virtual bool Slot15_adc8d8(void*);
+    virtual bool Slot16_adc8d8(uint32_t);
     virtual bool ChildDeleteAbsolute(uint32_t);
     virtual bool ChildDeleteAll();
     virtual bool ChildExists(uint32_t);
-    virtual bool ChildExists_2(uint32_t);
+    virtual bool ChildExists_2(void*);
     virtual bool IsWinInParentChain(uint32_t);
     virtual bool IsWinInChildChain(uint32_t);
-    virtual void PullToFront();
-    virtual void SendToBack();
+    virtual bool PullToFront();
+    virtual bool SendToBack();
     virtual void ChildToFront(uint32_t);
-    virtual bool ChildToFront_2(uint32_t);
-    virtual bool ChildToBack(uint32_t);
+    virtual bool ChildToFront_2(void*);
+    virtual bool ChildToBack(void*);
     virtual bool ChildStepFront(uint32_t);
     virtual bool ChildStepBack(uint32_t);
-    virtual bool MoveRelativeTo(uint32_t, uint32_t);
-    virtual bool ChildMoveRelative(uint32_t, uint32_t, uint32_t);
-    virtual bool EnumChildren(uint32_t, uint32_t, uint32_t);
-    virtual bool SortChildren(uint32_t, uint32_t, uint32_t);
-    virtual uint32_t GetChildWindowFromID(uint32_t);
-    virtual uint32_t GetChildWindowFromIDRecursive(uint32_t);
+    virtual bool MoveRelativeTo(void*, uint32_t);
+    virtual bool ChildMoveRelative(void*, void*, uint32_t);
+    virtual bool EnumChildren(uint32_t, void*, void*);
+    virtual bool SortChildren(void*, void*, uint32_t);
+    virtual void* GetChildWindowFromID(uint32_t);
+    virtual void* GetChildWindowFromIDRecursive(uint32_t);
     virtual bool GetChildAs(uint32_t, uint32_t, uint32_t);
     virtual bool GetChildAsRecursive(uint32_t, uint32_t, uint32_t);
-    virtual void Slot38_adc8d8();
-    virtual uint32_t GetChildWindowFromPoint(uint32_t, uint32_t);
-    virtual uint32_t GetChildWindowFromCursorPoint(uint32_t, uint32_t);
+    virtual void* Slot38_adc8d8(int32_t, int32_t);
+    virtual void* GetChildWindowFromPoint(uint32_t, uint32_t);
+    virtual void* GetChildWindowFromCursorPoint(uint32_t, uint32_t);
     virtual uint32_t GetW();
     virtual uint32_t GetH();
     virtual uint32_t GetL();
@@ -68,8 +68,8 @@ public:
     virtual void GZWinMoveTo(uint32_t, uint32_t);
     virtual void GZWinOffset(uint32_t, uint32_t);
     virtual uint32_t FitRectToWindow(uint32_t, uint32_t);
-    virtual void ScreenToWindowCoordinates(uint32_t, uint32_t);
-    virtual void WindowToScreenCoordinates(uint32_t, uint32_t);
+    virtual void ScreenToWindowCoordinates(void*, void*);
+    virtual void WindowToScreenCoordinates(void*, void*);
     virtual bool WindowToWindowCoordinates(uint32_t, uint32_t, uint32_t);
     virtual bool IsPointInWindowScreenCoordinates(uint32_t, uint32_t);
     virtual uint32_t Slot48_adda20();
@@ -91,7 +91,7 @@ public:
     virtual void SetKeyEquivalent(uint32_t);
     virtual uint32_t CheckKeyEquivalent(uint32_t, uint32_t);
     virtual uint32_t MakeKeyEquivalent(uint32_t, uint32_t);
-    virtual uint32_t IsChildKeyEquivalent(uint32_t, uint32_t);
+    virtual void* IsChildKeyEquivalent(uint32_t, uint32_t);
     virtual bool ProcessCursorMessage(uint32_t);
     virtual void UpdateCursor();
     virtual void SetCursor(uint32_t, uint32_t);
@@ -122,9 +122,9 @@ public:
     virtual void GetFadeEffectPeriod(uint32_t, uint32_t);
     virtual void Slot111_adc8d8(uint32_t);
     virtual void GetShadeColor(uint32_t);
-    virtual bool GetParam(uint32_t, uint32_t);
-    virtual bool SetParam(uint32_t, uint32_t);
-    virtual bool EnumParams(uint32_t, uint32_t);
+    virtual bool GetParam(uint32_t, void*);
+    virtual bool SetParam(uint32_t, void*);
+    virtual bool EnumParams(void*, void*);
     virtual bool AddMessageFilter(uint32_t);
     virtual bool RemoveMessageFilter(uint32_t);
     virtual void Slot118_adc8d8(uint32_t);
@@ -160,9 +160,45 @@ public:
     virtual ~cGZWin();
     virtual void is_point_transparent(uint32_t, uint32_t);
     virtual bool create_private_buffer(uint32_t, uint32_t);
+    // STUB: 0x0099b7bd
+    void InvalidateAllParents();
+    // STUB: 0x0099c9df
+    void SetFocusTo(void*);
+    // STUB: 0x0099ba3e
+    bool fill_private_buffer_with_transparent_color();
+    // STUB: 0x0099ba92
+    bool set_private_buffer_transparency(bool);
+    // STUB: 0x0099c20d
+    bool fade_in_progress();
+    // STUB: 0x0099caad
+    void set_fade_state(uint8_t, int32_t);
+    // STUB: 0x0099bc31
+    bool get_init_flag();
+    // STUB: 0x0099bc3f
+    void set_init_flag(bool);
+    // STUB: 0x0099d3d2
+    void unlock_child_list_read(void*);
+    // STUB: 0x0099e08f
+    void* lock_child_list_write();
+    // STUB: 0x0099d645
+    bool child_private_buffers(bool);
+    // STUB: 0x0099e2bd
+    bool child_remove_absolute(void*);
+    // STUB: 0x0099d938
+    void Fn0099d938();
+    // STUB: 0x0099c7ba
+    bool recalc_blt_area();
+    // STUB: 0x0099be0a
+    bool GZAmCapturing();
+    // STUB: 0x0099be1e
+    void GZReleaseCapture();
+    // STUB: 0x0099bde4
+    void GZSetCapture();
+    // STUB: 0x0099c026
+    void fade_advance();
     uint32_t field4;
     uint32_t field8;
-    char unknownc[0x4];
+    uint32_t mnRefCount;
     uint32_t field10;
     char field14[0x10];
     char field24[0x24];
@@ -172,15 +208,21 @@ public:
     uint32_t field64;
     uint32_t field68;
     uint32_t field6c;
-    char unknown70[0x8];
+    bool mbInvalid;
+    bool mbDeferStrategy;
+    char unknown72[0x2];
+    uint32_t mpCursor;
     uint32_t field78;
-    char unknown7c[0x20];
+    char unknown7c[0x18];
+    int32_t mnFadeInTime;
+    int32_t mnFadeOutTime;
     uint32_t field9c;
     char unknowna0[0xc];
     uint32_t fieldac;
     uint32_t fieldb0;
     uint32_t fieldb4;
-    char unknownb8[0x14];
+    char unknownb8[0x10];
+    uint32_t mnFlags;
     uint32_t fieldcc;
     uint32_t fieldd0;
     uint32_t fieldd4;

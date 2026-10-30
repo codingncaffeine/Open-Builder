@@ -16,7 +16,7 @@
 // SIZE 0x418
 class cUnk00acc634 : public cUnk00ac34cc, public cUnk00ac34f8, public cIGZGDriver, public cUnk00ace624 {
 public:
-    virtual ~cUnk00acc634() {}
+    virtual ~cUnk00acc634();
     virtual bool Slot11_acc634();
     virtual uint32_t Slot12_acc634();
     virtual uint32_t AddRef();
@@ -116,6 +116,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00acc634[sizeof(cUnk00acc634) == 0x418 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x008dcd60
+// cUnk00acc634::`scalar deleting dtor'
 
 // SYNTHETIC: 0x008dcbf0
 // cUnk00acc634::QueryInterface`adjustor{4}'

@@ -1,0 +1,233 @@
+field 84 uint32_t mnAutomataFlags
+slot GetDisabled bool
+slot GetMarkedForRemove bool
+slot GetSelfControlling bool
+slot GetReachedDestination bool
+slot GetSpecialRouteFlag bool
+field 40 float mfPosX
+field 44 float mfPosY
+field 48 float mfPosZ
+field 4c float mfDestX
+field 50 float mfDestY
+field 54 float mfDestZ
+field 58 float mfVec58X
+field 5c float mfVec58Y
+field 60 float mfVec58Z
+field 110 void** mpModelsBegin
+field 114 void** mpModelsEnd
+field b4 void** mpStateBegin
+field b8 void** mpStateEnd
+slot Slot15_a9dbb8 bool void*
+slot SetVisible void void*
+slot GetTransform void void*
+slot GetDestination void void*
+slot Slot80_a9dbb8 void uint32_t uint32_t
+slot Slot76_a9dbb8 uint32_t void*
+slot GetModelInstance void*
+slot GetState void*
+slot PrevState void* void*
+slot PlayAnimByName void void*
+slot Write bool void*
+slot Slot30_a9dbb8_4 void uint32_t
+slot Slot26_a9dbb8_4 void void*
+field 24 void* mpDefaultExemplar
+method 0x00505d80 bool Fn00505d80(uint32_t, void*)
+method 0x0050e620 void ReplaceModelInstance(void*, void*)
+slot QueryInterface bool uint32_t void*
+slot SetDefaultExemplar void void*
+slot PlayAnim_2 bool void*
+slot FindState void* uint32_t
+slot Slot07_a9dbb8_c bool uint32_t uint32_t
+slot Slot08_a9dbb8_c bool uint32_t uint32_t
+slot Slot05_a9dbb8_c bool uint32_t uint32_t uint32_t
+slot Slot06_a9dbb8_c bool uint32_t uint32_t uint32_t
+slot Slot09_a9dbb8_c void* uint32_t
+slot Slot25_a9dbb8_4 bool void*
+slot Slot21_a9dbb8_4 void void*
+field 1c4 uint32_t mnGroupId
+field 188 void* mpCallbacks
+field 280 void* mpObj280
+field 284 void* mpObj284
+field b0 void* mpLeader
+method 0x00567e80 void Fn00567e80()
+slot SetSpeed void float float
+slot Slot10_a9dbb8_4 void void* void*
+slot Read bool void*
+slot SetAutomataFlag void uint32_t bool
+slot SetMarkedForRemove void bool
+slot SetSpecialRouteFlag void bool
+slot SetSelfControlling void bool
+slot SetLeader void void*
+slot GetLeader void*
+slot GetAutomataGroup void*
+slot RemoveCallback void void*
+slot AddCallback void void*
+slot HandleExitState void void*
+field 7c float mfLength
+field cc void* mpGhost
+field 11c uint32_t mnAnimKeyType
+field 120 uint32_t mnAnimKeyGroup
+field 124 uint32_t mnAnimKeyInstance
+field 12c void* mpLight12c
+slot GetCollidePosition void void*
+slot SetTransform bool void*
+slot PlayAnim bool uint32_t
+slot GetChaseVector bool void*
+slot Slot20_a9dbb8_4 void*
+slot Slot18_a9dbb8_4 void bool bool
+slot Slot06_a9dbb8_4 void*
+field 2f4 float mfMoveFromX
+field 2f8 float mfMoveFromY
+field 2fc float mfMoveFromZ
+field 30c float mfMoveToX
+field 310 float mfMoveToY
+field 314 float mfMoveToZ
+field 8c uint32_t mnSfx8c
+field c0 void* mpPathBegin
+field c4 void* mpPathEnd
+field 1c8 void* mpVec1c8Begin
+field 1cc void* mpVec1c8End
+field 1dc bool mbActiveSound1dc
+method 0x005080c0 void AutomatonMoveTo(void*, void*)
+method 0x0050d6a0 void Fn0050d6a0()
+slot AsOccupant_2 void*
+slot ShouldCollide bool void*
+slot StopSFX bool uint32_t
+slot Slot60_a9dbb8 bool uint32_t bool
+slot SetOrientation void bool
+slot SetState bool uint32_t uint32_t uint32_t uint32_t uint32_t uint32_t uint32_t
+slot EnableActiveSound void bool
+slot Slot09_a9dbb8 void bool
+slot Slot96_a9dbb8 void uint32_t void*
+slot MoveTo void void* void*
+slot SetDestination void void*
+slot Slot33_a9dbb8_4 uint32_t
+slot PlaceInRenderer bool bool
+slot Slot03_a9dbb8_c bool uint32_t
+slot SetSpeedFromBehaviorTemplate void void*
+slot SetOpacity void float float
+slot PushBehavior bool void* uint32_t
+slot PushState bool uint32_t uint32_t float uint32_t uint32_t uint32_t void*
+slot SetState bool uint32_t uint32_t float uint32_t uint32_t uint32_t void*
+slot HandleEnterState bool void*
+slot Slot76_a9dbb8 uint32_t void*
+slot SetBehavior void void* uint32_t
+field 170 float mfVec170X
+field 174 float mfVec170Y
+field 178 float mfVec170Z
+field 1c0 float mf1c0
+method 0x0050d870 void Fn0050d870()
+method 0x0050d580 void ApplyAutomataGroup()
+slot SetAutomataGroup void void*
+slot DoPlopJumpTick bool float
+slot Slot103_a9dbb8 bool float
+method 0x0050e4d0 void* AddModelInstance(void*)
+method 0x005094a0 void PositionModelInstance(void*)
+slot LoadAuxiliaryModel bool uint32_t void*
+slot Slot22_a9dbb8 bool void* uint32_t bool float
+slot GetOrientation void void*
+slot UpdateOpacity void float
+slot StartSFX bool uint32_t
+slot Slot20_a9dbb8_c void void* void*
+slot Slot19_a9dbb8_c void void* void* void*
+slot Slot04_a9dbb8_c bool void*
+slot Slot13_a9dbb8_c void uint32_t uint32_t uint32_t
+slot Slot12_a9dbb8_c void uint32_t uint32_t uint32_t
+slot Slot11_a9dbb8_c void uint32_t uint32_t uint32_t
+slot Slot10_a9dbb8_c void uint32_t uint32_t uint32_t uint32_t
+slot Slot14_a9dbb8_c void void* uint32_t void*
+slot Slot16_a9dbb8_c void void* void*
+slot Slot15_a9dbb8_c void void* void*
+slot Slot32_a9dbb8_4 bool uint32_t
+slot Slot05_a9dbb8 void*
+slot Slot17_a9dbb8_4 void uint32_t bool
+slot Slot24_a9dbb8_4 bool void*
+slot Slot23_a9dbb8_4 void uint32_t
+field 64 float mfPosOldX
+field 68 float mfPosOldY
+field 6c float mfPosOldZ
+field 70 float mfDirOldX
+field 74 float mfDirOldY
+field 78 float mfDirOldZ
+slot DoAttachAnimTick bool float
+slot Slot70_a9dbb8 bool bool
+slot Slot29_a9dbb8_4 void uint32_t
+slot Slot31_a9dbb8_4 void uint32_t
+field 24c void* mpLot24c
+field 274 bool mbDocking274
+field 2b0 bool mb2b0
+method 0x0056d4d0 void EndDocking()
+method 0x005698e0 bool Fn005698e0()
+method 0x005681b0 bool Fn005681b0()
+slot Slot11_a9dbb8_4 void void*
+field 3c bool mb3c
+field 98 void* mpLinked98
+field 288 bool mb288
+field 289 bool mb289
+field bc void** mpStateCap
+method 0x0056f700 void Fn0056f700()
+method 0x0050e3f0 bool AutomatonHandleExitState(void*)
+slot HandleRemoveController bool void*
+slot HandleExitState void void*
+slot PostInit bool
+slot PushState bool uint32_t void* float uint8_t uint32_t uint32_t void*
+slot SetState bool uint32_t void* float uint8_t uint32_t uint32_t void*
+slot PushBehavior bool void* void*
+slot SetBehavior void void* void*
+slot CreateAutomataState void* uint32_t
+field 2bc float mf2bc
+field 2c0 float mf2c0
+field 2dc float mfSpeed2dc
+field 2e0 float mfTurn2e0
+method 0x00570270 void Fn00570270(float)
+method 0x00572770 bool DoDockingTick(float)
+method 0x005694b0 void Fn005694b0(float)
+method 0x0056bd80 bool Fn0056bd80(float)
+method 0x005704d0 void Fn005704d0()
+method 0x00508aa0 bool AutomatonDoStateTick(float)
+slot DoStateTick bool float
+slot GetDebugExtraText void*
+field 128 uint32_t mn128
+slot Remove bool void*
+slot AddRegEffect void void* void*
+slot FinishMove void bool bool
+field 1d4 uint32_t mnSfxId1d4
+field 1d8 uint32_t mnSfxKind1d8
+field 1e0 float mf1e0
+slot DoMagnetTick bool float
+slot UpdateActiveSound void float
+field a4 uint32_t mnA4
+field a0 uint32_t mnA0
+field 9c uint32_t mn9c
+field 350 float mf350
+field 3d0 float mf3d0
+method 0x00508c50 void AutomatonDoPlayerDriveTick(float)
+method 0x0056c430 void MovementPositionNew(const float*)
+method 0x0056c090 bool Fn0056c090()
+slot DoPlayerDriveTick bool float
+field 394 uint32_t mn394
+field 2cb bool mb2cb
+method 0x00511450 bool AutomatonHandleEnterState(void*)
+field 2d8 bool mb2d8
+method 0x00567310 void Fn00567310()
+slot DoMessage uint32_t void*
+field 1e4 void* mpLot1e4
+field 215 bool mb215
+field 218 void* mpLot218
+field 249 bool mb249
+field 27d bool mb27d
+field 318 void* mp318
+field db0 void* mpObjDb0
+field db4 void* mpObjDb4
+field db8 void* mpObjDb8
+field dbc void* mpObjDbc
+field dc0 void* mpObjDc0
+field dc4 void* mpObjDc4
+method 0x0050ba50 void Fn0050ba50()
+field d0 void* mpLight0xd0
+slot UpdateGhostModel void
+slot GetDebugFlagsText void*
+field 2b2 bool mb2b2
+method 0x0056efe0 void Fn0056efe0()
+method 0x0056af90 void Fn0056af90(float)
+method 0x0056a440 void Fn0056a440()

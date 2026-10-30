@@ -10,8 +10,8 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_aa6ca0() = 0;
-    virtual void Slot04_aa6ca0() = 0;
+    virtual void Slot03_aa6ca0(uint32_t) = 0;
+    virtual uint32_t Slot04_aa6ca0() = 0;
 };
 
 #endif

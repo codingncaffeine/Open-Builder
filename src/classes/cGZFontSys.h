@@ -8,11 +8,11 @@
 
 // The subobject at +0x0 (vtable 0x00ac5488): an interface or base the class map has no class for.
 struct OB_NOVTABLE cGZFontSys_0 {
-    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ac5488() = 0;
-    virtual void Slot02_ac5488() = 0;
-    virtual bool Slot03_ac5488() = 0;
-    virtual bool Slot04_ac5488() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_ae1d24() = 0;
+    virtual bool Slot04_ae1d24() = 0;
     virtual bool SetDefaultCodePage(uint32_t) = 0;
     virtual void SetDefaultFontRenderer(uint32_t) = 0;
     virtual void SetDefaultFontAntialiasing(uint32_t) = 0;
@@ -41,19 +41,17 @@ struct OB_NOVTABLE cGZFontSys_0 {
 class cGZFontSys : public cGZFontSys_0, public cUnk00a93658 {
 public:
     virtual ~cGZFontSys();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual uint32_t Slot03_a93658();
     virtual void Slot04_a93658(uint32_t);
     virtual uint32_t Slot05_a93658();
     virtual bool Slot06_a93658();
     virtual void Slot07_a93658(uint32_t);
-    virtual bool Slot10_a93658(uint32_t);
     virtual bool Slot11_a93658(uint32_t);
     virtual uint32_t Slot12_a93658();
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ac5488();
-    virtual void Slot02_ac5488();
-    virtual bool Slot03_ac5488();
-    virtual bool Slot04_ac5488();
+    virtual bool Slot09_ad1a98(uint32_t);
     virtual bool SetDefaultCodePage(uint32_t);
     virtual void SetDefaultFontRenderer(uint32_t);
     virtual void SetDefaultFontAntialiasing(uint32_t);
@@ -73,6 +71,8 @@ public:
     virtual uint32_t EnumerateFontSubstitutions(uint32_t, uint32_t, uint32_t);
     virtual bool IsFontAvailable(uint32_t, uint32_t, uint32_t);
     virtual bool IsSubstitutionAvailable(uint32_t, uint32_t);
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknown8[0x8];
     uint32_t field10;
     uint32_t field14;
@@ -91,15 +91,15 @@ typedef char ob_size_cGZFontSys[sizeof(cGZFontSys) == 0x70 ? 1 : -1];
 // cGZFontSys::QueryInterface`adjustor{4}'
 
 // SYNTHETIC: 0x009359bd
-// cGZFontSys::Slot01_ac5488`adjustor{4}'
+// cGZFontSys::AddRef`adjustor{4}'
 
 // SYNTHETIC: 0x00894f85
-// cGZFontSys::Slot02_ac5488`adjustor{4}'
+// cGZFontSys::Release`adjustor{4}'
 
 // SYNTHETIC: 0x00895f2e
-// cGZFontSys::Slot03_ac5488`adjustor{4}'
+// cGZFontSys::Slot03_ae1d24`adjustor{4}'
 
 // SYNTHETIC: 0x00895260
-// cGZFontSys::Slot04_ac5488`adjustor{4}'
+// cGZFontSys::Slot04_ae1d24`adjustor{4}'
 
 #endif

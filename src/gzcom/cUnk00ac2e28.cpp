@@ -173,7 +173,7 @@ bool cUnk00ac2e28::QueryInterface(uint32_t iid, void** out)
 {
     if (iid == 0x306077d2) {
         *reinterpret_cast<cUnk00ac2d78**>(out) = this;
-        Slot01_ad4cf4();
+        AddRef();
         return true;
     }
     return cUnk00ac2c88::QueryInterface(iid, out);

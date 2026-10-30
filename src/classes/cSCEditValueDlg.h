@@ -12,7 +12,7 @@ class cSCEditValueDlg : public cGZWin {
 public:
     virtual ~cSCEditValueDlg() {}
     virtual bool GZPaint();
-    virtual bool Slot04_adb6a8();
+    virtual bool Slot03_ae1d24();
     char unknownd8[0x28];
 };
 #ifdef _MSC_VER

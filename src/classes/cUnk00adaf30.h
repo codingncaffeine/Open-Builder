@@ -8,30 +8,30 @@
 // SIZE 0x4
 class cUnk00adaf30 {
 public:
-    virtual void Slot00_adaf30() = 0;
-    virtual void Slot01_adaf30() = 0;
-    virtual void Slot02_adaf30() = 0;
-    virtual void Slot03_adaf30() = 0;
-    virtual void Slot04_adaf30() = 0;
-    virtual void Slot05_adaf30() = 0;
-    virtual void Slot06_adaf30() = 0;
-    virtual void Slot07_adaf30() = 0;
-    virtual void Slot08_adaf30() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual uint32_t Slot03_adaf30() = 0;
+    virtual uint32_t Slot04_adaf30() = 0;
+    virtual uint32_t Slot05_adaf30(uint32_t) = 0;
+    virtual uint32_t Slot06_adaf30(uint32_t) = 0;
+    virtual void Slot07_adaf30(uint32_t) = 0;
+    virtual void Slot08_adaf30(uint32_t) = 0;
     virtual void Slot09_adaf30() = 0;
-    virtual void Slot10_adaf30() = 0;
-    virtual void Slot11_adaf30() = 0;
+    virtual bool Slot10_adaf30(uint32_t, uint32_t) = 0;
+    virtual bool Slot11_adaf30(uint32_t, uint32_t) = 0;
     virtual void Slot12_adaf30() = 0;
-    virtual void Slot13_adaf30() = 0;
+    virtual bool Slot13_adaf30(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot14_adaf30() = 0;
-    virtual void Slot15_adaf30() = 0;
+    virtual void Slot15_adaf30(uint32_t) = 0;
     virtual void Slot16_adaf30() = 0;
-    virtual void Slot17_adaf30() = 0;
-    virtual void Slot18_adaf30() = 0;
-    virtual void Slot19_adaf30() = 0;
-    virtual void Slot20_adaf30() = 0;
-    virtual void Slot21_adaf30() = 0;
-    virtual void Slot22_adaf30() = 0;
-    virtual void Slot23_adaf30() = 0;
+    virtual void Slot17_adaf30(uint32_t) = 0;
+    virtual void Slot18_adaf30(uint32_t, uint32_t) = 0;
+    virtual bool Slot19_adaf30() = 0;
+    virtual float Slot20_adaf30() = 0;
+    virtual void Slot21_adaf30(uint32_t) = 0;
+    virtual void Slot22_adaf30(bool) = 0;
+    virtual bool Slot23_adaf30() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adaf30[sizeof(cUnk00adaf30) == 0x4 ? 1 : -1];

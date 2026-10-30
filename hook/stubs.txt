@@ -49,3 +49,5 @@
 0x009457c6 ?QueryInterface@cUnk0090da1e@@UAE_NIPAPAX@Z
 0x00968b60 ?AddRef@cUnk0090da1e@@UAEIXZ
 0x009d7e63 ?RefCount@cUnk0090da1e@@UAEIXZ
+0x009f0ff0 _strncpy
+0x009f361f _clock

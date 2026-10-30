@@ -585,14 +585,18 @@ inline Font_adbbf0* FontOf_adbbf0(cUnk00adbbf0* p)
     return *reinterpret_cast<Font_adbbf0**>(reinterpret_cast<char*>(p) + 0x1a8);
 }
 
+// The text's std::string (inside the base's cRZString mText, 4 bytes in, at +0xe0) seen as the begin/end/capacity
+// record. Plain pointer arithmetic: an upcast to the string base makes the compiler null-check the address.
+#define TEXT_adbbf0(p) reinterpret_cast<Text_adbbf0*>(reinterpret_cast<char*>(&(p)->mText) + 4)
+
 inline const char* TextBegin_adbbf0(cUnk00adbbf0* p)
 {
-    return reinterpret_cast<const char*>(static_cast<uintptr_t>(p->fielde0));
+    return TEXT_adbbf0(p)->mpBegin;
 }
 
 inline const char* TextEnd_adbbf0(cUnk00adbbf0* p)
 {
-    return reinterpret_cast<const char*>(static_cast<uintptr_t>(*reinterpret_cast<uint32_t*>(p->unknowne4)));
+    return TEXT_adbbf0(p)->mpEnd;
 }
 
 // FUNCTION: 0x0094bc5d
@@ -689,7 +693,7 @@ uint32_t cUnk00adbbf0::Slot28_adb6a8(uint32_t mask)
 // FUNCTION: 0x00994cf8
 uint32_t cUnk00adbbf0::Slot24_adb6a8()
 {
-    return reinterpret_cast<Text_adbbf0*>(&fielde0)->size();
+    return TEXT_adbbf0(this)->size();
 }
 
 // FUNCTION: 0x00994b08
@@ -700,7 +704,7 @@ void cUnk00adbbf0::Slot33_adbbf0(void* arg)
     if (p) {
         int32_t pos = 0;
         for (; i < p->mnCursor; i++) {
-            Text_adbbf0* text = reinterpret_cast<Text_adbbf0*>(&fielde0);
+            Text_adbbf0* text = TEXT_adbbf0(this);
             const char* begin = text->mpBegin;
             pos += RZCharacterSize(begin + pos, (text->mpEnd - begin) - pos, kRZEncodingString);
         }
@@ -709,7 +713,7 @@ void cUnk00adbbf0::Slot33_adbbf0(void* arg)
 }
 
 // FUNCTION: 0x00993ea8
-bool cUnk00adbbf0::Slot04_adb6a8()
+bool cUnk00adbbf0::Slot03_ae1d24()
 {
     Win_adbbf0* win = WinOf_adbbf0(this);
     if (!win->Fn0099bc31()) {
@@ -718,7 +722,7 @@ bool cUnk00adbbf0::Slot04_adb6a8()
         Slot76_adf900(0x200);
         Slot78_adf900(0x10);
         Slot78_adf900(1);
-        *(unknown1d4 + 0x54) = 1;
+        mbCaretVisible = true;  // +0x228
         Slot78_adf900(0x1000);
         Slot17_adb6a8(0);
         Prim_adbbf0_Of(this)->Fn19(0);
@@ -728,7 +732,7 @@ bool cUnk00adbbf0::Slot04_adb6a8()
                 Prim_adbbf0_Of(this)->Fn07(factory.mp->Fn05(0x68963c4c));
             }
         }
-        cGZWinTextEdit::Slot04_adb6a8();
+        cGZWinTextEdit::Slot03_ae1d24();
         Owner_adbbf0* owner = reinterpret_cast<Owner_adbbf0*>(static_cast<uintptr_t>(field4));
         reinterpret_cast<Slot_adbbf0*>(&mpManager)->Assign(owner->Fn36());
         MgrRef_adbbf0* mgr = reinterpret_cast<MgrRef_adbbf0*>(&mpManager);
@@ -749,7 +753,7 @@ bool cUnk00adbbf0::Slot04_adb6a8()
 }
 
 // FUNCTION: 0x00994005
-bool cUnk00adbbf0::Slot05_adb6a8()
+bool cUnk00adbbf0::Slot04_ae1d24()
 {
     Win_adbbf0* win = WinOf_adbbf0(this);
     if (win->Fn0099bc31()) {
@@ -769,7 +773,7 @@ bool cUnk00adbbf0::Slot05_adb6a8()
             notifier.mp->Fn06(win, 0x2ac44c1b);
         }
     }
-    return cGZWinTextEdit::Slot05_adb6a8();
+    return cGZWinTextEdit::Slot04_ae1d24();
 }
 
 // FUNCTION: 0x009940aa
@@ -903,7 +907,7 @@ bool cUnk00adbbf0::GZPaint()
         i = 0;
         n = mpAttrEnd - mpAttrBegin;
         for (; i < n; i++) {
-            Text_adbbf0* text = reinterpret_cast<Text_adbbf0*>(&fielde0);
+            Text_adbbf0* text = TEXT_adbbf0(this);
             len = RZCharacterSize(text->mpBegin + pos, text->size() - pos, kRZEncodingString);
             if (mpAttrBegin[i]) {
                 EditOf_adbbf0(this)->Fn61(&x1, &y1, pos);
@@ -953,7 +957,7 @@ void cUnk00adbbf0::Slot32_adbbf0(void* arg)
             cRZString text;
             RZEncodingToString(wide.c_str(), wide.size(), kRZEncodingUTF16, text);
             int32_t width = FontOf_adbbf0(this)->Fn48(text.c_str(), text.size());
-            SetH(width + field158 * 2 + 4);
+            SetH(width + mnTextAreaX * 2 + 4);
             EditOf_adbbf0(this)->Fn48(&text, 0);
         }
         if (p->mpAttrs) {

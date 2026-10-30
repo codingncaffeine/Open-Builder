@@ -14,7 +14,7 @@
 // SIZE 0xc0
 class cSC4Advice : public cUnk00a80710, public cUnk0090da1e, public cUnk00a80784 {
 public:
-    virtual ~cSC4Advice() {}
+    virtual ~cSC4Advice();
     virtual void IsCurrent();
     virtual bool refresh_text();
     virtual bool Slot03_a80710(uint32_t);
@@ -75,6 +75,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4Advice[sizeof(cSC4Advice) == 0xc0 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x0043ec10
+// cSC4Advice::`scalar deleting dtor'
 
 // SYNTHETIC: 0x00408720
 // cSC4Advice::QueryInterface`adjustor{4}'

@@ -21,8 +21,8 @@ public:
     virtual bool DoMessage(uint32_t);
     virtual bool GZOnKeyDown(uint32_t, uint32_t);
     virtual bool GZOnMouseDownR(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknown110[0x10];
 };
 #ifdef _MSC_VER

@@ -9,9 +9,9 @@
 // SIZE 0x18
 class cGZPropertySetT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612 {
 public:
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad4cf4();
-    virtual void Slot02_ad4cf4();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual bool SetValue(uint32_t, uint32_t);
     virtual bool ClearValue(uint32_t);
     virtual void Slot05_ad27d4();
@@ -21,7 +21,8 @@ public:
     virtual bool HasValue(uint32_t);
     virtual uint32_t NumValues();
     virtual ~cGZPropertySetT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612();
-    char unknown4[0x8];
+    uint32_t field4;
+    char unknown8[0x4];
     uint32_t fieldc;
     char unknown10[0x8];
 };

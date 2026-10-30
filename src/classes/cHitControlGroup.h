@@ -8,9 +8,9 @@
 
 // The subobject at +0x0 (vtable 0x00ad2718): an interface or base the class map has no class for.
 struct OB_NOVTABLE cHitControlGroup_0 {
-    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ad4cf4() = 0;
-    virtual void Slot02_ad4cf4() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual void AddTrack(uint32_t) = 0;
     virtual uint32_t AsIGZSnd() = 0;
     virtual ~cHitControlGroup_0() {}
@@ -46,6 +46,9 @@ struct OB_NOVTABLE cHitControlGroup_0 {
 class cHitControlGroup : public cHitControlGroup_0, public cUnk00ac2b18 {
 public:
     virtual ~cHitControlGroup();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual bool Slot03_ac2b18();
     virtual bool Slot04_ac2b18();
     virtual bool Slot05_ac2b18(uint32_t, uint32_t, uint32_t, uint32_t);
@@ -106,9 +109,6 @@ public:
     virtual bool SetCompletionNotification(uint32_t);
     virtual bool StopCompletionNotification();
     virtual uint32_t EstimateRemainingPlayTime();
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad4cf4();
-    virtual void Slot02_ad4cf4();
     uint32_t field8;
     char unknownc[0x8];
     uint32_t field14;
@@ -125,9 +125,9 @@ typedef char ob_size_cHitControlGroup[sizeof(cHitControlGroup) == 0x38 ? 1 : -1]
 // cHitControlGroup::QueryInterface`adjustor{4}'
 
 // SYNTHETIC: 0x009359bd
-// cHitControlGroup::Slot01_ad4cf4`adjustor{4}'
+// cHitControlGroup::AddRef`adjustor{4}'
 
 // SYNTHETIC: 0x009387c5
-// cHitControlGroup::Slot02_ad4cf4`adjustor{4}'
+// cHitControlGroup::Release`adjustor{4}'
 
 #endif

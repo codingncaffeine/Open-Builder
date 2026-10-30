@@ -44,7 +44,9 @@
 #include "classes/cUnk00a86640.h"
 #include "classes/cUnk00a86674.h"
 #include "classes/cUnk00a86690.h"
+#include "classes/cSC4AnimationTickManager.h"
 #include "classes/cSCStringDetokenizerDefault.h"
+#include "classes/cSC4BuildingOccupant.h"
 #include "classes/cGZPersistResourceKeyFilter.h"
 #include "classes/cUnk00a87578.h"
 #include "classes/cSC4CityDetailManager.h"
@@ -69,7 +71,13 @@
 #include "classes/cUnk00a881e8.h"
 #include "classes/cSC4NetworkConstructionCrew.h"
 #include "classes/cSC4FeatureManager.h"
+#include "classes/cSC4FireOccupant.h"
+#include "classes/cSC4FloraOccupant.h"
 #include "classes/cUnk00a8c970.h"
+#include "classes/cUnk00a8ca7c.h"
+#include "classes/cUnk00a8cafc.h"
+#include "classes/cSC4GameDataRegistry.h"
+#include "classes/cUnk00a8ce28.h"
 #include "classes/cSC4LotConfiguration.h"
 #include "classes/cUnk00a8d260.h"
 #include "classes/cUnk00a8d424.h"
@@ -96,6 +104,7 @@
 #include "classes/cUnk00a8f9cc.h"
 #include "classes/cSC4Region.h"
 #include "classes/cUnk00a8fad4.h"
+#include "classes/cSC4ToxicOccupant.h"
 #include "classes/cUnk00a8fe14.h"
 #include "classes/cUnk00a8fe48.h"
 #include "classes/cSC4ViewInputControlEffectDisaster.h"
@@ -133,9 +142,11 @@
 #include "classes/cUnk00a92eb8.h"
 #include "classes/cUnk00a92ec0.h"
 #include "classes/cWinSC4App.h"
+#include "classes/cUnk00a93284.h"
 #include "classes/cUnk00a932ec.h"
 #include "classes/cSC4AudioAmbienceLayer.h"
 #include "classes/cSC4AudioAmbienceManagerOccupantFilter.h"
+#include "classes/cUnk00a9378c.h"
 #include "classes/cUnk00a937d0.h"
 #include "classes/cUnk00a937e8.h"
 #include "classes/cUnk00a93800.h"
@@ -224,14 +235,19 @@
 #include "classes/cUnk00a94068.h"
 #include "classes/cUnk00a940a4.h"
 #include "classes/cUnk00a940e4.h"
+#include "classes/cUnk00a94164.h"
+#include "classes/cUnk00a941e8.h"
 #include "classes/cUnk00a94200.h"
 #include "classes/cSC4AudioListener.h"
 #include "classes/cSC4AudioPreferencesWinProc.h"
 #include "classes/cUnk00a942b8.h"
 #include "classes/cUnk00a94428.h"
 #include "classes/cUnk00a944bc.h"
+#include "classes/cSC4Aircraft.h"
 #include "classes/cSC4AircraftManager.h"
 #include "classes/cUnk00a949b8.h"
+#include "classes/cUnk00a94b38.h"
+#include "classes/cUnk00a94fb0.h"
 #include "classes/cUnk00a95384.h"
 #include "classes/cUnk00a95390.h"
 #include "classes/cUnk00a9539c.h"
@@ -251,18 +267,37 @@
 #include "classes/cUnk00a96134.h"
 #include "classes/cUnk00a96138.h"
 #include "classes/cUnk00a96c0c.h"
+#include "classes/cSC4Blimp.h"
+#include "classes/cSC4MassTransitTrain.h"
+#include "classes/cUnk00a97910.h"
 #include "classes/cUnk00a97d94.h"
 #include "classes/cUnk00a97de4.h"
 #include "classes/cUnk00a985b0.h"
+#include "classes/cSC4FireTruck.h"
+#include "classes/cUnk00a98b60.h"
+#include "classes/cSC4Helicopter.h"
+#include "classes/cUnk00a99588.h"
+#include "classes/cSC4Tank.h"
 #include "classes/cUnk00a99d34.h"
 #include "classes/cSC4PathInfo.h"
 #include "classes/cUnk00a99f48.h"
+#include "classes/cSC4PatrolCar.h"
 #include "classes/cSC4PedestrianManager.h"
+#include "classes/cSC4Pedestrian.h"
+#include "classes/cUnk00a9ab50.h"
+#include "classes/cUnk00a9afc8.h"
+#include "classes/cUnk00a9b488.h"
 #include "classes/cUnk00a9b768.h"
+#include "classes/cSC4Ambulance.h"
 #include "classes/cSC4TrafficAutomataManager.h"
+#include "classes/cSC4TrailerVehicle.h"
+#include "classes/cSC4TrainCar.h"
+#include "classes/cSC4Train.h"
 #include "classes/cSC4VehicleManager.h"
+#include "classes/cSC4Vehicle.h"
 #include "classes/cUnk00a9d894.h"
 #include "classes/cUnk00a9d974.h"
+#include "classes/cSC4ViewInputControlPlayerDrive.h"
 #include "classes/cSC4Watercraft.h"
 #include "classes/cSC4WatercraftManager.h"
 #include "classes/cSC4DisasterManagerEarthquake.h"
@@ -285,6 +320,7 @@
 #include "classes/cUnk00a9eaa0.h"
 #include "classes/cSC4ViewInputControlTorch.h"
 #include "classes/cUnk00a9ec1c.h"
+#include "classes/cUnk00a9ecd8.h"
 #include "classes/cUnk00a9ed74.h"
 #include "classes/cUnk00a9eda4.h"
 #include "classes/cUnk00a9edd0.h"
@@ -371,6 +407,7 @@
 #include "classes/cUnk00aa0ac0.h"
 #include "classes/cSC4GeometrySourcedParticlesEffect.h"
 #include "classes/cSC4ModelBasedParticlesEffect.h"
+#include "classes/cUnk00aa0da0.h"
 #include "classes/cUnk00aa0e28.h"
 #include "classes/cSC4ParticlesEffect.h"
 #include "classes/cUnk00aa0f48.h"
@@ -383,6 +420,7 @@
 #include "classes/cUnk00aa1118.h"
 #include "classes/cUnk00aa1170.h"
 #include "classes/cUnk00aa1344.h"
+#include "classes/cUnk00aa1408.h"
 #include "classes/cGZWinCommandSystemSupport.h"
 #include "classes/cGZToolCommandSystemSupport.h"
 #include "classes/cGZMiscCommandSystemSupport.h"
@@ -391,13 +429,17 @@
 #include "classes/cSC4DBSegment.h"
 #include "classes/cSC4COMSerializer.h"
 #include "classes/cSC4Demand.h"
+#include "classes/cSC4FoundationOccupant.h"
 #include "classes/cUnk00aa2a3c.h"
 #include "classes/cUnk00aa2a60.h"
+#include "classes/cSC4GlyphTextureManager.h"
 #include "classes/cUnk00aa2af4.h"
 #include "classes/cUnk00aa2b00.h"
 #include "classes/cUnk00aa2b0c.h"
 #include "classes/cUnk00aa2b10.h"
 #include "classes/cUnk00aa2b5c.h"
+#include "classes/cSC4LotBaseTextureOccupant.h"
+#include "classes/cSC4LotRetainingWallOccupant.h"
 #include "classes/cUnk00aa3fd4.h"
 #include "classes/cUnk00aa3fe4.h"
 #include "classes/cUnk00aa3ff4.h"
@@ -407,6 +449,7 @@
 #include "classes/cUnk00aa4034.h"
 #include "classes/cUnk00aa4044.h"
 #include "classes/cUnk00aa4060.h"
+#include "classes/cSC4Occupant.h"
 #include "classes/cUnk00aa42c8.h"
 #include "classes/cUnk00aa42fc.h"
 #include "classes/cUnk00aa4330.h"
@@ -415,11 +458,18 @@
 #include "classes/cUnk00aa44ac.h"
 #include "classes/cUnk00aa44c4.h"
 #include "classes/cUnk00aa45b0.h"
+#include "classes/cUnk00aa4790.h"
+#include "classes/cSC4PropOccupant.h"
+#include "classes/cUnk00aa4d28.h"
+#include "classes/cSC4PropOccupantVisualEffect.h"
 #include "classes/cSC4ScriptServiceResourceFactory.h"
+#include "classes/cSC4TextDecalOccupant.h"
 #include "classes/cSCEditValueDlg.h"
 #include "classes/cUnk00aa5b80.h"
 #include "classes/cSC4ViewInputControl.h"
 #include "classes/cUnk00aa6c44.h"
+#include "classes/cSCPropertyHolder.h"
+#include "classes/cSCExemplarPropertyHolder.h"
 #include "classes/cSCStringDetokenizer.h"
 #include "classes/cUnk00aa6e54.h"
 #include "classes/cSLWinLocationSaver.h"
@@ -441,6 +491,7 @@
 #include "classes/cUnk00aa8eb4.h"
 #include "classes/cUnk00aa9140.h"
 #include "classes/cUnk00aa99a8.h"
+#include "classes/cSC4PowerLineOccupant.h"
 #include "classes/cSC4PowerLineTool.h"
 #include "classes/cUnk00aaa5c0.h"
 #include "classes/cUnk00aaaa9c.h"
@@ -467,6 +518,7 @@
 #include "classes/cSC4ResourceLibCOMDirector.h"
 #include "classes/cGZWinDlg.h"
 #include "classes/cSCColorSequenceEntryView.h"
+#include "classes/cSCExemplarCache.h"
 #include "classes/cGZPersistResourceKeyList.h"
 #include "classes/cSCExemplarResourceView.h"
 #include "classes/cSCGeneralResponseCurveEntryView.h"
@@ -484,6 +536,8 @@
 #include "classes/nSCRes_cArrayCreateCommand.h"
 #include "classes/cUnk00aaeef8.h"
 #include "classes/cUnk00aaef2c.h"
+#include "classes/cUnk00aaeff8.h"
+#include "classes/cUnk00aaf0d0.h"
 #include "classes/nSCRes_cFileParser.h"
 #include "classes/cSCResFilterFixedGroupAndTypeId.h"
 #include "classes/cUnk00aaf510.h"
@@ -504,13 +558,18 @@
 #include "classes/cUnk00ab15dc.h"
 #include "classes/cUnk00ab1610.h"
 #include "classes/cUnk00ab1830.h"
+#include "classes/cUnk00ab18dc.h"
+#include "classes/cSC4Lot.h"
 #include "classes/cUnk00ab1b28.h"
+#include "classes/cSC4NeighborDeal.h"
+#include "classes/cSC4NeighborConnection.h"
 #include "classes/cSC4PathFinder.h"
 #include "classes/cSC4PoliceSimulator.h"
 #include "classes/cUnk00ab2760.h"
 #include "classes/cUnk00ab27dc.h"
 #include "classes/cSC4WealthRequester.h"
 #include "classes/cUnk00ab2d34.h"
+#include "classes/cSC4Simulator.h"
 #include "classes/cUnk00ab30dc.h"
 #include "classes/cUnk00ab33a4.h"
 #include "classes/cUnk00ab33bc.h"
@@ -614,13 +673,36 @@
 #include "classes/cS3DCamera.h"
 #include "classes/cUnk00abd324.h"
 #include "classes/cUnk00abd388.h"
+#include "classes/cS3DMaterialManager.h"
 #include "classes/cS3DMeshAndMaterial.h"
 #include "classes/cUnk00abd594.h"
 #include "classes/cS3DResModel.h"
 #include "classes/cUnk00abd6b4.h"
 #include "classes/cUnk00abd6fc.h"
 #include "classes/cUnk00abd714.h"
+#include "classes/cS3DTextureBindingFactory.h"
 #include "classes/cUnk00abd92c.h"
+#include "classes/cUnk00abd9d8.h"
+#include "classes/cUnk00abdaf8.h"
+#include "classes/cUnk00abdc18.h"
+#include "classes/cSC4OrdinanceFreeClinics.h"
+#include "classes/cUnk00abde58.h"
+#include "classes/cUnk00abdf78.h"
+#include "classes/cSC4OrdinanceLegalizeGambling.h"
+#include "classes/cUnk00abe1b8.h"
+#include "classes/cUnk00abe2d8.h"
+#include "classes/cUnk00abe3f8.h"
+#include "classes/cUnk00abe518.h"
+#include "classes/cUnk00abe638.h"
+#include "classes/cSC4OrdinanceProReadingCampaign.h"
+#include "classes/cUnk00abe878.h"
+#include "classes/cUnk00abea10.h"
+#include "classes/cUnk00abebc8.h"
+#include "classes/cUnk00abece8.h"
+#include "classes/cUnk00abee08.h"
+#include "classes/cUnk00abef28.h"
+#include "classes/cUnk00abf048.h"
+#include "classes/cUnk00abf168.h"
 #include "classes/cUnk00abf478.h"
 #include "classes/cUnk00abf5a8.h"
 #include "classes/cUnk00abf64c.h"
@@ -629,6 +711,7 @@
 #include "classes/cRZFile.h"
 #include "classes/cUnk00ac003c.h"
 #include "classes/cRZNetCommandGenerator.h"
+#include "classes/cUnk00ac0360.h"
 #include "classes/cUnk00ac0548.h"
 #include "classes/cUnk00ac0f80.h"
 #include "classes/cUnk00ac1068.h"
@@ -637,6 +720,7 @@
 #include "classes/cUnk00ac14bc.h"
 #include "classes/cGZDrawContextAsBuffer.h"
 #include "classes/cUnk00ac162c.h"
+#include "classes/cGZDrawSystem.h"
 #include "classes/cGZDrawContext.h"
 #include "classes/cGZDrawContextRenderToBuffer.h"
 #include "classes/cUnk00ac182c.h"
@@ -664,6 +748,7 @@
 #include "classes/cGZWinLuaScriptViewCallStack.h"
 #include "classes/cGZWinLuaScriptViewVariables.h"
 #include "classes/cGZWinLuaScriptViewBreakpoints.h"
+#include "classes/cGZLuaScriptServer.h"
 #include "classes/cGZWinLuaScriptView.h"
 #include "classes/cUnk00ac8be0.h"
 #include "classes/cGZLua5Thread.h"
@@ -698,7 +783,6 @@
 #include "classes/cUnk00ace264.h"
 #include "classes/cUnk00ace2bc.h"
 #include "classes/cUnk00ace2ec.h"
-#include "classes/cGZGimexFactory.h"
 #include "classes/cUnk00ace614.h"
 #include "classes/cUnk00ace61c.h"
 #include "classes/cRZMessage2Standard.h"
@@ -708,7 +792,6 @@
 #include "classes/cUnk00ad2804.h"
 #include "classes/cUnk00ad2830.h"
 #include "classes/cGZScriptCOMDirector.h"
-#include "classes/cFreshCellPlayer.h"
 #include "classes/cFreshCell.h"
 #include "classes/cUnk00ad538c.h"
 #include "classes/cUnk00ad5398.h"
@@ -717,41 +800,33 @@
 #include "classes/cGZSoundCOMDirector.h"
 #include "classes/cUnk00ad725c.h"
 #include "classes/cGZSndEventStd.h"
-#include "classes/cGZDBSegmentPackedFile.h"
+#include "classes/cUnk00ad80e8.h"
+#include "classes/cUnk00ad82e8.h"
+#include "classes/cUnk00ad8628.h"
 #include "classes/cGZResourceCOMDirectorW32.h"
 #include "classes/cUnk00ad8b14.h"
 #include "classes/cUnk00ad8b44.h"
 #include "classes/cGZResManCOMDirector.h"
 #include "classes/cGZPersistBufferResourceFactory.h"
-#include "classes/cGZDBSegmentDirectoryFiles.h"
-#include "classes/cUnk00ad95e8.h"
 #include "classes/cRZCursorResourceFactory.h"
 #include "classes/cSLTokenSerialRecordIO_Text.h"
-#include "classes/cRZWinKeyAcceleratorRes.h"
+#include "classes/cGZAlphaBlt.h"
 #include "classes/cGZCanvasMessage.h"
 #include "classes/cGZMouseMessage.h"
 #include "classes/cGZKeyMessage.h"
+#include "classes/cGZGraphicSystemW32.h"
+#include "classes/cGZCanvasW32.h"
 #include "classes/cUnk00adaf90.h"
 #include "classes/cGZBufferSimGLCache.h"
 #include "classes/cGZScreenBuffer.h"
 #include "classes/cUnk00adb4dc.h"
 #include "classes/cUnk00adb500.h"
-#include "classes/cUnk00adba40.h"
-#include "classes/cUnk00adbbf0.h"
 #include "classes/cGZWinCOMDirector.h"
 #include "classes/cUnk00adcb38.h"
-#include "classes/cUnk00add190.h"
-#include "classes/cUnk00add578.h"
-#include "classes/cUnk00addd50.h"
 #include "classes/cUnk00ade0d4.h"
 #include "classes/cUnk00ade0dc.h"
 #include "classes/cUnk00ade0e4.h"
-#include "classes/cGZWinOutline.h"
 #include "classes/cUnk00ae2c90.h"
-#include "classes/cGZWinTreeView.h"
-#include "classes/cGZWinTextTicker.h"
-#include "classes/cGZWinFolderRow.h"
-#include "classes/cGZWinFolders.h"
 #include "classes/cGZWin32COMDirector.h"
 #include "classes/cUnk00ae466c.h"
 #include "classes/cUnk00ae467c.h"
@@ -837,7 +912,9 @@ void GeneratedClasses_game()
     (void)new cUnk00a86640;
     (void)new cUnk00a86674;
     (void)new cUnk00a86690;
+    (void)new cSC4AnimationTickManager;
     (void)new cSCStringDetokenizerDefault;
+    (void)new cSC4BuildingOccupant;
     (void)new cGZPersistResourceKeyFilter;
     (void)new cUnk00a87578;
     (void)new cSC4CityDetailManager;
@@ -862,7 +939,13 @@ void GeneratedClasses_game()
     (void)new cUnk00a881e8;
     (void)new cSC4NetworkConstructionCrew;
     (void)new cSC4FeatureManager;
+    (void)new cSC4FireOccupant;
+    (void)new cSC4FloraOccupant;
     (void)new cUnk00a8c970;
+    (void)new cUnk00a8ca7c;
+    (void)new cUnk00a8cafc;
+    (void)new cSC4GameDataRegistry;
+    (void)new cUnk00a8ce28;
     (void)new cSC4LotConfiguration;
     (void)new cUnk00a8d260;
     (void)new cUnk00a8d424;
@@ -889,6 +972,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a8f9cc;
     (void)new cSC4Region;
     (void)new cUnk00a8fad4;
+    (void)new cSC4ToxicOccupant;
     (void)new cUnk00a8fe14;
     (void)new cUnk00a8fe48;
     (void)new cSC4ViewInputControlEffectDisaster;
@@ -926,9 +1010,11 @@ void GeneratedClasses_game()
     (void)new cUnk00a92eb8;
     (void)new cUnk00a92ec0;
     (void)new cWinSC4App;
+    (void)new cUnk00a93284;
     (void)new cUnk00a932ec;
     (void)new cSC4AudioAmbienceLayer;
     (void)new cSC4AudioAmbienceManagerOccupantFilter;
+    (void)new cUnk00a9378c;
     (void)new cUnk00a937d0;
     (void)new cUnk00a937e8;
     (void)new cUnk00a93800;
@@ -1017,14 +1103,19 @@ void GeneratedClasses_game()
     (void)new cUnk00a94068;
     (void)new cUnk00a940a4;
     (void)new cUnk00a940e4;
+    (void)new cUnk00a94164;
+    (void)new cUnk00a941e8;
     (void)new cUnk00a94200;
     (void)new cSC4AudioListener;
     (void)new cSC4AudioPreferencesWinProc;
     (void)new cUnk00a942b8;
     (void)new cUnk00a94428;
     (void)new cUnk00a944bc;
+    (void)new cSC4Aircraft;
     (void)new cSC4AircraftManager;
     (void)new cUnk00a949b8;
+    (void)new cUnk00a94b38;
+    (void)new cUnk00a94fb0;
     (void)new cUnk00a95384;
     (void)new cUnk00a95390;
     (void)new cUnk00a9539c;
@@ -1044,18 +1135,37 @@ void GeneratedClasses_game()
     (void)new cUnk00a96134;
     (void)new cUnk00a96138;
     (void)new cUnk00a96c0c;
+    (void)new cSC4Blimp;
+    (void)new cSC4MassTransitTrain;
+    (void)new cUnk00a97910;
     (void)new cUnk00a97d94;
     (void)new cUnk00a97de4;
     (void)new cUnk00a985b0;
+    (void)new cSC4FireTruck;
+    (void)new cUnk00a98b60;
+    (void)new cSC4Helicopter;
+    (void)new cUnk00a99588;
+    (void)new cSC4Tank;
     (void)new cUnk00a99d34;
     (void)new cSC4PathInfo;
     (void)new cUnk00a99f48;
+    (void)new cSC4PatrolCar;
     (void)new cSC4PedestrianManager;
+    (void)new cSC4Pedestrian;
+    (void)new cUnk00a9ab50;
+    (void)new cUnk00a9afc8;
+    (void)new cUnk00a9b488;
     (void)new cUnk00a9b768;
+    (void)new cSC4Ambulance;
     (void)new cSC4TrafficAutomataManager;
+    (void)new cSC4TrailerVehicle;
+    (void)new cSC4TrainCar;
+    (void)new cSC4Train;
     (void)new cSC4VehicleManager;
+    (void)new cSC4Vehicle;
     (void)new cUnk00a9d894;
     (void)new cUnk00a9d974;
+    (void)new cSC4ViewInputControlPlayerDrive;
     (void)new cSC4Watercraft;
     (void)new cSC4WatercraftManager;
     (void)new cSC4DisasterManagerEarthquake;
@@ -1078,6 +1188,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a9eaa0;
     (void)new cSC4ViewInputControlTorch;
     (void)new cUnk00a9ec1c;
+    (void)new cUnk00a9ecd8;
     (void)new cUnk00a9ed74;
     (void)new cUnk00a9eda4;
     (void)new cUnk00a9edd0;
@@ -1164,6 +1275,7 @@ void GeneratedClasses_game()
     (void)new cUnk00aa0ac0;
     (void)new cSC4GeometrySourcedParticlesEffect;
     (void)new cSC4ModelBasedParticlesEffect;
+    (void)new cUnk00aa0da0;
     (void)new cUnk00aa0e28;
     (void)new cSC4ParticlesEffect;
     (void)new cUnk00aa0f48;
@@ -1176,6 +1288,7 @@ void GeneratedClasses_game()
     (void)new cUnk00aa1118;
     (void)new cUnk00aa1170;
     (void)new cUnk00aa1344;
+    (void)new cUnk00aa1408;
     (void)new cGZWinCommandSystemSupport;
     (void)new cGZToolCommandSystemSupport;
     (void)new cGZMiscCommandSystemSupport;
@@ -1184,13 +1297,17 @@ void GeneratedClasses_game()
     (void)new cSC4DBSegment;
     (void)new cSC4COMSerializer;
     (void)new cSC4Demand;
+    (void)new cSC4FoundationOccupant;
     (void)new cUnk00aa2a3c;
     (void)new cUnk00aa2a60;
+    (void)new cSC4GlyphTextureManager;
     (void)new cUnk00aa2af4;
     (void)new cUnk00aa2b00;
     (void)new cUnk00aa2b0c;
     (void)new cUnk00aa2b10;
     (void)new cUnk00aa2b5c;
+    (void)new cSC4LotBaseTextureOccupant;
+    (void)new cSC4LotRetainingWallOccupant;
     (void)new cUnk00aa3fd4;
     (void)new cUnk00aa3fe4;
     (void)new cUnk00aa3ff4;
@@ -1200,6 +1317,7 @@ void GeneratedClasses_game()
     (void)new cUnk00aa4034;
     (void)new cUnk00aa4044;
     (void)new cUnk00aa4060;
+    (void)new cSC4Occupant;
     (void)new cUnk00aa42c8;
     (void)new cUnk00aa42fc;
     (void)new cUnk00aa4330;
@@ -1208,11 +1326,18 @@ void GeneratedClasses_game()
     (void)new cUnk00aa44ac;
     (void)new cUnk00aa44c4;
     (void)new cUnk00aa45b0;
+    (void)new cUnk00aa4790;
+    (void)new cSC4PropOccupant;
+    (void)new cUnk00aa4d28;
+    (void)new cSC4PropOccupantVisualEffect;
     (void)new cSC4ScriptServiceResourceFactory;
+    (void)new cSC4TextDecalOccupant;
     (void)new cSCEditValueDlg;
     (void)new cUnk00aa5b80;
     (void)new cSC4ViewInputControl;
     (void)new cUnk00aa6c44;
+    (void)new cSCPropertyHolder;
+    (void)new cSCExemplarPropertyHolder;
     (void)new cSCStringDetokenizer;
     (void)new cUnk00aa6e54;
     (void)new cSLWinLocationSaver;
@@ -1234,6 +1359,7 @@ void GeneratedClasses_game()
     (void)new cUnk00aa8eb4;
     (void)new cUnk00aa9140;
     (void)new cUnk00aa99a8;
+    (void)new cSC4PowerLineOccupant;
     (void)new cSC4PowerLineTool;
     (void)new cUnk00aaa5c0;
     (void)new cUnk00aaaa9c;
@@ -1260,6 +1386,7 @@ void GeneratedClasses_game()
     (void)new cSC4ResourceLibCOMDirector;
     (void)new cGZWinDlg;
     (void)new cSCColorSequenceEntryView;
+    (void)new cSCExemplarCache;
     (void)new cGZPersistResourceKeyList;
     (void)new cSCExemplarResourceView;
     (void)new cSCGeneralResponseCurveEntryView;
@@ -1277,6 +1404,8 @@ void GeneratedClasses_game()
     (void)new nSCRes_cArrayCreateCommand;
     (void)new cUnk00aaeef8;
     (void)new cUnk00aaef2c;
+    (void)new cUnk00aaeff8;
+    (void)new cUnk00aaf0d0;
     (void)new nSCRes_cFileParser;
     (void)new cSCResFilterFixedGroupAndTypeId;
     (void)new cUnk00aaf510;
@@ -1297,13 +1426,18 @@ void GeneratedClasses_game()
     (void)new cUnk00ab15dc;
     (void)new cUnk00ab1610;
     (void)new cUnk00ab1830;
+    (void)new cUnk00ab18dc;
+    (void)new cSC4Lot;
     (void)new cUnk00ab1b28;
+    (void)new cSC4NeighborDeal;
+    (void)new cSC4NeighborConnection;
     (void)new cSC4PathFinder;
     (void)new cSC4PoliceSimulator;
     (void)new cUnk00ab2760;
     (void)new cUnk00ab27dc;
     (void)new cSC4WealthRequester;
     (void)new cUnk00ab2d34;
+    (void)new cSC4Simulator;
     (void)new cUnk00ab30dc;
     (void)new cUnk00ab33a4;
     (void)new cUnk00ab33bc;
@@ -1407,13 +1541,36 @@ void GeneratedClasses_game()
     (void)new cS3DCamera;
     (void)new cUnk00abd324;
     (void)new cUnk00abd388;
+    (void)new cS3DMaterialManager;
     (void)new cS3DMeshAndMaterial;
     (void)new cUnk00abd594;
     (void)new cS3DResModel;
     (void)new cUnk00abd6b4;
     (void)new cUnk00abd6fc;
     (void)new cUnk00abd714;
+    (void)new cS3DTextureBindingFactory;
     (void)new cUnk00abd92c;
+    (void)new cUnk00abd9d8;
+    (void)new cUnk00abdaf8;
+    (void)new cUnk00abdc18;
+    (void)new cSC4OrdinanceFreeClinics;
+    (void)new cUnk00abde58;
+    (void)new cUnk00abdf78;
+    (void)new cSC4OrdinanceLegalizeGambling;
+    (void)new cUnk00abe1b8;
+    (void)new cUnk00abe2d8;
+    (void)new cUnk00abe3f8;
+    (void)new cUnk00abe518;
+    (void)new cUnk00abe638;
+    (void)new cSC4OrdinanceProReadingCampaign;
+    (void)new cUnk00abe878;
+    (void)new cUnk00abea10;
+    (void)new cUnk00abebc8;
+    (void)new cUnk00abece8;
+    (void)new cUnk00abee08;
+    (void)new cUnk00abef28;
+    (void)new cUnk00abf048;
+    (void)new cUnk00abf168;
     (void)new cUnk00abf478;
     (void)new cUnk00abf5a8;
     (void)new cUnk00abf64c;
@@ -1422,6 +1579,7 @@ void GeneratedClasses_game()
     (void)new cRZFile;
     (void)new cUnk00ac003c;
     (void)new cRZNetCommandGenerator;
+    (void)new cUnk00ac0360;
     (void)new cUnk00ac0548;
     (void)new cUnk00ac0f80;
     (void)new cUnk00ac1068;
@@ -1430,6 +1588,7 @@ void GeneratedClasses_game()
     (void)new cUnk00ac14bc;
     (void)new cGZDrawContextAsBuffer;
     (void)new cUnk00ac162c;
+    (void)new cGZDrawSystem;
     (void)new cGZDrawContext;
     (void)new cGZDrawContextRenderToBuffer;
     (void)new cUnk00ac182c;
@@ -1457,6 +1616,7 @@ void GeneratedClasses_game()
     (void)new cGZWinLuaScriptViewCallStack;
     (void)new cGZWinLuaScriptViewVariables;
     (void)new cGZWinLuaScriptViewBreakpoints;
+    (void)new cGZLuaScriptServer;
     (void)new cGZWinLuaScriptView;
     (void)new cUnk00ac8be0;
     (void)new cGZLua5Thread;
@@ -1491,7 +1651,6 @@ void GeneratedClasses_game()
     (void)new cUnk00ace264;
     (void)new cUnk00ace2bc;
     (void)new cUnk00ace2ec;
-    (void)new cGZGimexFactory;
     (void)new cUnk00ace614;
     (void)new cUnk00ace61c;
     (void)new cRZMessage2Standard;
@@ -1501,7 +1660,6 @@ void GeneratedClasses_game()
     (void)new cUnk00ad2804;
     (void)new cUnk00ad2830;
     (void)new cGZScriptCOMDirector;
-    (void)new cFreshCellPlayer;
     (void)new cFreshCell;
     (void)new cUnk00ad538c;
     (void)new cUnk00ad5398;
@@ -1510,41 +1668,33 @@ void GeneratedClasses_game()
     (void)new cGZSoundCOMDirector;
     (void)new cUnk00ad725c;
     (void)new cGZSndEventStd;
-    (void)new cGZDBSegmentPackedFile;
+    (void)new cUnk00ad80e8;
+    (void)new cUnk00ad82e8;
+    (void)new cUnk00ad8628;
     (void)new cGZResourceCOMDirectorW32;
     (void)new cUnk00ad8b14;
     (void)new cUnk00ad8b44;
     (void)new cGZResManCOMDirector;
     (void)new cGZPersistBufferResourceFactory;
-    (void)new cGZDBSegmentDirectoryFiles;
-    (void)new cUnk00ad95e8;
     (void)new cRZCursorResourceFactory;
     (void)new cSLTokenSerialRecordIO_Text;
-    (void)new cRZWinKeyAcceleratorRes;
+    (void)new cGZAlphaBlt;
     (void)new cGZCanvasMessage;
     (void)new cGZMouseMessage;
     (void)new cGZKeyMessage;
+    (void)new cGZGraphicSystemW32;
+    (void)new cGZCanvasW32;
     (void)new cUnk00adaf90;
     (void)new cGZBufferSimGLCache;
     (void)new cGZScreenBuffer;
     (void)new cUnk00adb4dc;
     (void)new cUnk00adb500;
-    (void)new cUnk00adba40;
-    (void)new cUnk00adbbf0;
     (void)new cGZWinCOMDirector;
     (void)new cUnk00adcb38;
-    (void)new cUnk00add190;
-    (void)new cUnk00add578;
-    (void)new cUnk00addd50;
     (void)new cUnk00ade0d4;
     (void)new cUnk00ade0dc;
     (void)new cUnk00ade0e4;
-    (void)new cGZWinOutline;
     (void)new cUnk00ae2c90;
-    (void)new cGZWinTreeView;
-    (void)new cGZWinTextTicker;
-    (void)new cGZWinFolderRow;
-    (void)new cGZWinFolders;
     (void)new cGZWin32COMDirector;
     (void)new cUnk00ae466c;
     (void)new cUnk00ae467c;

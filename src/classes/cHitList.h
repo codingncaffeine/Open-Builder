@@ -9,9 +9,9 @@
 // SIZE 0x18
 class cHitList {
 public:
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad4cf4();
-    virtual void Slot02_ad4cf4();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual bool Add(uint32_t);
     virtual bool Add_2(uint32_t);
     virtual bool Remove(uint32_t);

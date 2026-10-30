@@ -14,7 +14,7 @@
 // SIZE 0x19c
 class cSC4CitySituationAdvice : public cUnk00a843c8, public cSC4Advice {
 public:
-    virtual ~cSC4CitySituationAdvice() {}
+    virtual ~cSC4CitySituationAdvice();
     virtual bool Slot03_a80710(uint32_t);
     virtual bool Slot04_a80710();
     virtual bool Slot08_a80710();
@@ -110,6 +110,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4CitySituationAdvice[sizeof(cSC4CitySituationAdvice) == 0x19c ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00423e00
+// cSC4CitySituationAdvice::`scalar deleting dtor'
 
 // SYNTHETIC: 0x00423860
 // cSC4CitySituationAdvice::QueryInterface`adjustor{4}'

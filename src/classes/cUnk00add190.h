@@ -6,15 +6,16 @@
 #include "common/types.h"
 #include "classes/cGZWin.h"
 #include "classes/cUnk00adcdc8.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00add190 cUnk00adcdc8
 // VTABLE: 0x00adcf30 cGZWin
 // SIZE 0x364
 class cUnk00add190 : public cUnk00adcdc8, public cGZWin {
 public:
-    virtual ~cUnk00add190() {}
+    virtual ~cUnk00add190();
     virtual void Slot89_add190();
-    virtual bool Slot90_add190(uint32_t);
+    virtual bool Slot90_add190(void*);
     virtual bool Slot91_add190();
     virtual bool Slot92_add190();
     virtual bool Slot93_add190();
@@ -124,41 +125,115 @@ public:
     virtual uint32_t Slot68_adc8d8(uint32_t, uint32_t);
     virtual bool GZPaint();
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
-    char unknowndc[0x84];
-    uint32_t field160;
-    char unknown164[0x80];
-    uint32_t field1e4;
-    char unknown1e8[0x14];
-    uint32_t field1fc;
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
+    // STUB: 0x009a0ead
+    bool LoadDefaultIcon(uint32_t);
+    // STUB: 0x009a0fee
+    bool CreateComboDownArrowBuffer(void*);
+    // STUB: 0x009a1163
+    bool CreateDefaultButtonBuffer(uint32_t, void*);
+    // STUB: 0x009a2ccf
+    uint32_t GetRowOfEntryByName(void*);
+    // STUB: 0x0099ef11
+    uint32_t CreateDefaultIcon(uint32_t, void*, void*);
+    uint32_t maVecDC[3];
+    void* mpObjE8;
+    void* mpObjEc;
+    void* mpObjF0;
+    void* mpObjF4;
+    void* mpObjF8;
+    void* mpObjFC;
+    void* mpObj100;
+    void* mpObj104;
+    void* mpObj108;
+    void* mpObj10c;
+    void* mpObj110;
+    void* mpObj114;
+    void* mpObj118;
+    uint8_t mabFeature11c[13];
+    char unknown129[0x3];
+    uint32_t mn12c;
+    uint32_t mn130;
+    uint32_t mn134;
+    char unknown138[0x4];
+    uint32_t maVec13c[3];
+    uint32_t maVec148[3];
+    uint32_t mnSel154;
+    uint32_t mList158;
+    char unknown15c[0x4];
+    uint32_t mnStyleFlags;
+    uint32_t mn164;
+    uint32_t mn168;
+    uint32_t mn16c;
+    cRZString mStr170;
+    cRZString mStr184;
+    uint32_t mn198;
+    uint32_t mn19c;
+    cRZString mStr1a0;
+    cRZString mStr1b4;
+    cRZString mStr1c8;
+    char unknown1dc[0x4];
+    uint32_t mn1e0;
+    uint32_t mn1e4;
+    uint8_t mb1e8;
+    char unknown1e9[0x3];
+    uint32_t mn1ec;
+    char unknown1f0[0xc];
+    uint32_t mn1fc;
     char unknown200[0x24];
-    uint32_t field224;
-    char unknown228[0x8];
-    uint32_t field230;
+    uint32_t mn224;
+    uint32_t mn228;
+    uint32_t mn22c;
+    uint32_t mn230;
     char unknown234[0x4];
-    uint32_t field238;
-    char unknown23c[0x19];
-    int8_t field255;
+    void* mpObj238;
+    uint32_t maGroup0[6];
+    char unknown254[0x1];
+    uint8_t mbGroup0Flag;
     char unknown256[0x6];
-    uint32_t field25c;
-    char unknown260[0x19];
-    int8_t field279;
-    char unknown27a[0x2a];
-    uint32_t field2a4;
-    char unknown2a8[0x19];
-    int8_t field2c1;
-    char unknown2c2[0x6];
-    uint32_t field2c8;
-    char unknown2cc[0x3c];
-    bool field308;
-    char unknown309[0x7];
-    uint32_t field310;
-    char unknown314[0x50];
+    void* mpObj25c;
+    uint32_t maGroup1[6];
+    char unknown278[0x1];
+    uint8_t mbGroup1Flag;
+    char unknown27a[0xa];
+    uint32_t maGroup2[6];
+    char unknown29c[0x2];
+    uint8_t mb29e;
+    char unknown29f[0x5];
+    void* mpObj2a4;
+    uint32_t maGroup3[6];
+    char unknown2c0[0x1];
+    uint8_t mbGroup3Flag;
+    uint8_t mb2c2;
+    char unknown2c3[0x5];
+    void* mpFont2c8;
+    void* mapObj2cc[7];
+    uint32_t mn2e8;
+    char unknown2ec[0x4];
+    void* mapObj2f0[4];
+    uint32_t mn300;
+    uint32_t mn304;
+    uint8_t mb308;
+    uint8_t mb309;
+    char unknown30a[0x2];
+    uint32_t mnColor;
+    void* mpObj310;
+    char unknown314[0x8];
+    bool mbDirty;
+    char unknown31d[0x3];
+    uint32_t mn320;
+    uint32_t mn324;
+    cRZString mStr328;
+    cRZString mStr33c;
+    cRZString mStr350;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00add190[sizeof(cUnk00add190) == 0x364 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x009a35dd
+// cUnk00add190::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0047aa30
 // cUnk00add190::QueryInterface`adjustor{4}'

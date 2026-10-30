@@ -12,8 +12,8 @@ public:
     virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void* Slot03_adb6a8() = 0;
-    virtual bool Slot04_adb6a8() = 0;
-    virtual bool Slot05_adb6a8() = 0;
+    virtual bool Slot03_ae1d24() = 0;
+    virtual bool Slot04_ae1d24() = 0;
     virtual void Slot06_adb6a8() = 0;
     virtual void Slot07_adb6a8() = 0;
     virtual bool Slot08_adb6a8(uint32_t, uint32_t) = 0;

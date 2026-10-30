@@ -12,7 +12,7 @@
 // SIZE 0x110
 class cGZWinOutline : public cUnk00ae1a28, public cGZWin {
 public:
-    virtual ~cGZWinOutline() {}
+    virtual ~cGZWinOutline();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -41,6 +41,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinOutline[sizeof(cGZWinOutline) == 0x110 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x009cbea4
+// cGZWinOutline::`scalar deleting dtor'
 
 // SYNTHETIC: 0x009cbd0e
 // cGZWinOutline::QueryInterface`adjustor{4}'

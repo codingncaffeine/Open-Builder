@@ -13,7 +13,7 @@
 // SIZE 0x12c
 class cSCResCatalogPickerView : public cUnk00aace34, public cSCResourceCatalogView {
 public:
-    virtual ~cSCResCatalogPickerView() {}
+    virtual ~cSCResCatalogPickerView();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -23,12 +23,15 @@ public:
     virtual void Slot06_aace34(uint32_t);
     virtual void Slot07_aace34(uint32_t);
     virtual void Slot08_aace34(uint32_t);
-    virtual bool Slot04_adb6a8();
+    virtual bool Slot03_ae1d24();
     char unknown118[0x14];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSCResCatalogPickerView[sizeof(cSCResCatalogPickerView) == 0x12c ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00664700
+// cSCResCatalogPickerView::`scalar deleting dtor'
 
 // SYNTHETIC: 0x00664690
 // cSCResCatalogPickerView::QueryInterface`adjustor{4}'

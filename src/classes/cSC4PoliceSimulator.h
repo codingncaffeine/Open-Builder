@@ -24,7 +24,7 @@ struct OB_NOVTABLE cSC4PoliceSimulator_10 {
 // SIZE 0x168
 class cSC4PoliceSimulator : public cUnk00ab2348, public cUnk00ab2b10, public cSC4PoliceSimulator_10 {
 public:
-    virtual ~cSC4PoliceSimulator() {}
+    virtual ~cSC4PoliceSimulator();
     virtual bool Slot03_ab0fb0(uint32_t);
     virtual void Slot07_ab0fb0(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot11_ab0fb0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
@@ -108,6 +108,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4PoliceSimulator[sizeof(cSC4PoliceSimulator) == 0x168 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x006e20f0
+// cSC4PoliceSimulator::`scalar deleting dtor'
 
 // SYNTHETIC: 0x006e1790
 // cSC4PoliceSimulator::Slot00_ab2348`adjustor{8}'

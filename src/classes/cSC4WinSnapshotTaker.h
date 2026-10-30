@@ -18,8 +18,8 @@ public:
     virtual bool GZOnMouseDownL(uint32_t, uint32_t, uint32_t);
     virtual bool GZOnMouseDownR(uint32_t, uint32_t, uint32_t);
     virtual bool GZOnMouseMove(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknownd8[0x34];
 };
 #ifdef _MSC_VER

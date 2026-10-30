@@ -46,10 +46,10 @@ public:
     virtual bool Slot26_adfe40(uint32_t, uint32_t);
     virtual void Slot27_adfe40(uint32_t, uint32_t);
     virtual void Slot28_adfe40(uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual void Slot49_adda20(uint32_t);
     virtual void Slot08_ae1a28(uint32_t);
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowndc[0x38];
 };
 #ifdef _MSC_VER

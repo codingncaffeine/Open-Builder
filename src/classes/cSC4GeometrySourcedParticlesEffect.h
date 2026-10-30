@@ -11,7 +11,7 @@
 // SIZE 0x280
 class cSC4GeometrySourcedParticlesEffect : public cSC4ParticlesEffect {
 public:
-    virtual ~cSC4GeometrySourcedParticlesEffect() {}
+    virtual ~cSC4GeometrySourcedParticlesEffect();
     virtual bool Slot04_aa0f48();
     virtual void Slot05_aa0f48();
     virtual void Slot16_aa0f48(uint32_t);
@@ -27,6 +27,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4GeometrySourcedParticlesEffect[sizeof(cSC4GeometrySourcedParticlesEffect) == 0x280 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x005a9080
+// cSC4GeometrySourcedParticlesEffect::`scalar deleting dtor'
 
 // SYNTHETIC: 0x005a8fd0
 // cSC4GeometrySourcedParticlesEffect::`vector deleting dtor'`adjustor{4}'

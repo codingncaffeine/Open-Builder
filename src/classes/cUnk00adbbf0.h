@@ -13,7 +13,7 @@
 // SIZE 0x2e8
 class cUnk00adbbf0 : public cUnk00adb6a8, public cGZWinTextEdit {
 public:
-    virtual ~cUnk00adbbf0() {}
+    virtual ~cUnk00adbbf0();
     virtual void Slot30_adbbf0();
     virtual void Slot31_adbbf0();
     virtual void Slot32_adbbf0(void*);
@@ -24,8 +24,6 @@ public:
     virtual bool DoMessage(uint32_t);
     virtual bool GZPaint();
     virtual void* Slot03_adb6a8();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual void Slot06_adb6a8();
     virtual void Slot07_adb6a8();
     virtual bool Slot08_adb6a8(uint32_t, uint32_t);
@@ -50,6 +48,8 @@ public:
     virtual void Slot27_adb6a8(uint32_t);
     virtual uint32_t Slot28_adb6a8(uint32_t);
     virtual uint32_t Slot29_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     uint32_t mnFlags;
     uint32_t mnValues[8];
     void* mpManager;
@@ -65,6 +65,9 @@ public:
 typedef char ob_size_cUnk00adbbf0[sizeof(cUnk00adbbf0) == 0x2e8 ? 1 : -1];
 #endif
 
+// SYNTHETIC: 0x009952ef
+// cUnk00adbbf0::`scalar deleting dtor'
+
 // SYNTHETIC: 0x00994eeb
 // cUnk00adbbf0::QueryInterface`adjustor{8}'
 
@@ -75,10 +78,10 @@ typedef char ob_size_cUnk00adbbf0[sizeof(cUnk00adbbf0) == 0x2e8 ? 1 : -1];
 // cUnk00adbbf0::Release`adjustor{8}'
 
 // SYNTHETIC: 0x00994ffc
-// cUnk00adbbf0::Slot04_adb6a8`adjustor{8}'
+// cUnk00adbbf0::Slot03_ae1d24`adjustor{8}'
 
 // SYNTHETIC: 0x00995004
-// cUnk00adbbf0::Slot05_adb6a8`adjustor{8}'
+// cUnk00adbbf0::Slot04_ae1d24`adjustor{8}'
 
 // SYNTHETIC: 0x00994f03
 // cUnk00adbbf0::`vector deleting dtor'`adjustor{8}'
@@ -93,10 +96,10 @@ typedef char ob_size_cUnk00adbbf0[sizeof(cUnk00adbbf0) == 0x2e8 ? 1 : -1];
 // cUnk00adbbf0::Release`adjustor{224}'
 
 // SYNTHETIC: 0x0099500c
-// cUnk00adbbf0::Slot04_adb6a8`adjustor{224}'
+// cUnk00adbbf0::Slot03_ae1d24`adjustor{224}'
 
 // SYNTHETIC: 0x00995017
-// cUnk00adbbf0::Slot05_adb6a8`adjustor{224}'
+// cUnk00adbbf0::Slot04_ae1d24`adjustor{224}'
 
 // SYNTHETIC: 0x00994f2c
 // cUnk00adbbf0::Slot03_adb6a8`adjustor{224}'

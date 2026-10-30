@@ -22,8 +22,6 @@ public:
     virtual bool GZOnKeyUp(uint32_t, uint32_t);
     virtual bool GZOnCommand(uint32_t, uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual void Slot49_adda20(uint32_t);
     virtual void* Slot03_ae1210();
     virtual uint32_t Slot04_ae1210(uint32_t);
@@ -52,6 +50,8 @@ public:
     virtual void Slot27_ae1210();
     virtual void Slot28_ae1210(uint32_t, uint32_t);
     virtual bool Slot29_ae1210(uint32_t, uint32_t);
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowndc[0x4];
     uint32_t fielde0;
     char unknowne4[0x14];

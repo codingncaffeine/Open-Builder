@@ -11,7 +11,7 @@
 // SIZE 0x364
 class cUnk00ac7630 : public cUnk00add190 {
 public:
-    virtual ~cUnk00ac7630() {}
+    virtual ~cUnk00ac7630();
     virtual bool SendMsg_2(uint32_t, uint32_t);
 };
 #ifdef _MSC_VER

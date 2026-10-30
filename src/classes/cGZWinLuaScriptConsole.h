@@ -21,8 +21,8 @@ public:
     virtual unsigned int Release();
     virtual bool Slot03_aaaa9c(void*);
     virtual bool DoMessage(uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknown12c[0x8];
 };
 #ifdef _MSC_VER

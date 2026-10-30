@@ -24,8 +24,6 @@ public:
     virtual void DrawGraphData(uint32_t);
     virtual float Slot164_ade188(uint32_t);
     virtual float Slot165_ade188(uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual void Slot03_adde50(uint32_t);
     virtual void Slot04_adde50(uint32_t);
     virtual void Slot05_adde50(uint32_t);
@@ -60,6 +58,8 @@ public:
     virtual void Slot37_adde50();
     virtual void Slot38_adde50();
     virtual uint32_t Slot39_adde50();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     uint32_t field230;
     uint32_t field234;
     char unknown238[0x30];

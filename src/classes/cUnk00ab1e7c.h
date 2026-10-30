@@ -12,17 +12,17 @@ public:
     virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_ab1e7c() = 0;
-    virtual void Slot04_ab1e7c() = 0;
-    virtual void Slot05_ab1e7c() = 0;
-    virtual void Slot06_ab1e7c() = 0;
-    virtual void Slot07_ab1e7c() = 0;
-    virtual void Slot08_ab1e7c() = 0;
-    virtual void Slot09_ab1e7c() = 0;
-    virtual void Slot10_ab1e7c() = 0;
-    virtual void Slot11_ab1e7c() = 0;
-    virtual void Slot12_ab1e7c() = 0;
-    virtual void Slot13_ab1e7c() = 0;
-    virtual void Slot14_ab1e7c() = 0;
+    virtual uint32_t Slot04_ab1e7c() = 0;
+    virtual uint32_t Slot05_ab1e7c() = 0;
+    virtual void Slot06_ab1e7c(uint32_t, uint32_t) = 0;
+    virtual void Slot07_ab1e7c(uint32_t, uint32_t) = 0;
+    virtual void Slot08_ab1e7c(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot09_ab1e7c() = 0;
+    virtual void Slot10_ab1e7c(uint32_t) = 0;
+    virtual bool Slot11_ab1e7c() = 0;
+    virtual void Slot12_ab1e7c(uint32_t) = 0;
+    virtual bool Slot13_ab1e7c() = 0;
+    virtual void Slot14_ab1e7c(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab1e7c[sizeof(cUnk00ab1e7c) == 0x4 ? 1 : -1];

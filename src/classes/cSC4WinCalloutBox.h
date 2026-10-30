@@ -12,7 +12,7 @@
 // SIZE 0x1b4
 class cSC4WinCalloutBox : public cUnk00ab6718, public cGZWin {
 public:
-    virtual ~cSC4WinCalloutBox() {}
+    virtual ~cSC4WinCalloutBox();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -35,8 +35,8 @@ public:
     virtual void* Slot18_ab6718();
     virtual void Slot19_ab6718(uint32_t);
     virtual void* Slot20_ab6718();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char fielddc[0x10];
     char fieldec[0x8];
     char fieldf4[0x14];
@@ -49,6 +49,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4WinCalloutBox[sizeof(cSC4WinCalloutBox) == 0x1b4 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x0079a020
+// cSC4WinCalloutBox::`scalar deleting dtor'
 
 // SYNTHETIC: 0x00799f30
 // cSC4WinCalloutBox::QueryInterface`adjustor{4}'

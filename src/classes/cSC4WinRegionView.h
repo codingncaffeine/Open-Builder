@@ -20,8 +20,8 @@ public:
     virtual void is_point_transparent(uint32_t, uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot03_ab95e0(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowndc[0x4c];
 };
 #ifdef _MSC_VER

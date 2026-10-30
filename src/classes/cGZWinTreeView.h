@@ -12,7 +12,7 @@
 // SIZE 0x1c4
 class cGZWinTreeView : public cUnk00ae2ef0, public cGZWin {
 public:
-    virtual ~cGZWinTreeView() {}
+    virtual ~cGZWinTreeView();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -25,8 +25,8 @@ public:
     virtual bool GZOnMouseMove(uint32_t, uint32_t, uint32_t);
     virtual bool GZOnMouseWheel(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     virtual void Slot03_ae2ef0(uint32_t, uint32_t);
     virtual uint32_t Slot04_ae2ef0(uint32_t);
     virtual void Slot05_ae2ef0(uint32_t, uint32_t);
@@ -96,6 +96,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinTreeView[sizeof(cGZWinTreeView) == 0x1c4 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x009d31f3
+// cGZWinTreeView::`scalar deleting dtor'
 
 // SYNTHETIC: 0x009d2d71
 // cGZWinTreeView::QueryInterface`adjustor{4}'

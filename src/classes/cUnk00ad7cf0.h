@@ -11,7 +11,7 @@
 
 class cUnk00ad7cf0 : public cUnk00ad8d88, public cUnk00ad8d48, public cGZPersistDBSerialRecord, public cUnk00ad1878 {
 public:
-    virtual ~cUnk00ad7cf0() {}
+    virtual ~cUnk00ad7cf0();
     virtual void Slot57_ad7cf0(uint32_t, uint32_t, uint32_t);
     virtual void Slot58_ad7cf0(uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot59_ad7cf0(uint32_t);
@@ -73,6 +73,7 @@ public:
     virtual bool Slot48_ad8d88(uint32_t);
     virtual void Slot49_ad8d88(uint32_t);
     virtual bool Slot50_ad8d88(uint32_t);
+    virtual bool Slot55_ad8d88(uint32_t);
     virtual bool Slot56_ad8d88(uint32_t);
     virtual bool Slot00_ad9030(uint32_t, uint32_t);
     virtual uint32_t Slot01_ad9030();

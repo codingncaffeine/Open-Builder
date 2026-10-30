@@ -8,9 +8,9 @@
 // SIZE 0x4
 class cUnk00a82930 {
 public:
-    virtual void Slot00_a82930() = 0;
-    virtual void Slot01_a82930() = 0;
-    virtual void Slot02_a82930() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual void Slot03_a82930() = 0;
     virtual void Slot04_a82930() = 0;
     virtual void Slot05_a82930() = 0;

@@ -12,13 +12,13 @@ public:
     virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_aa54b4() = 0;
-    virtual void Slot04_aa54b4() = 0;
+    virtual void Slot04_aa54b4(uint32_t) = 0;
     virtual void Slot05_aa54b4() = 0;
-    virtual void Slot06_aa54b4() = 0;
-    virtual void Slot07_aa54b4() = 0;
-    virtual void Slot08_aa54b4() = 0;
-    virtual void Slot09_aa54b4() = 0;
-    virtual void Slot10_aa54b4() = 0;
+    virtual void Slot06_aa54b4(uint32_t) = 0;
+    virtual void Slot07_aa54b4(uint32_t) = 0;
+    virtual void Slot08_aa54b4(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot09_aa54b4(uint32_t) = 0;
+    virtual void Slot10_aa54b4(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa54b4[sizeof(cUnk00aa54b4) == 0x4 ? 1 : -1];

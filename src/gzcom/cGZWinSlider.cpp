@@ -196,23 +196,23 @@ void cGZWinSlider::Slot11_ae074c(uint32_t a)
 }
 
 // FUNCTION: 0x009c2e47
-bool cGZWinSlider::Slot04_adb6a8()
+bool cGZWinSlider::Slot03_ae1d24()
 {
     if (!Fn0099bc31()) {
         Slot153_ae04d8();
     }
-    return cGZWin::Slot04_adb6a8();
+    return cGZWin::Slot03_ae1d24();
 }
 
 // FUNCTION: 0x009c2e65
-bool cGZWinSlider::Slot05_adb6a8()
+bool cGZWinSlider::Slot04_ae1d24()
 {
     cChild_ae04d8** pp = reinterpret_cast<cChild_ae04d8**>(&mpChild);
     if (*pp) {
         (*pp)->Release();
         *pp = 0;
     }
-    return cGZWin::Slot05_adb6a8();
+    return cGZWin::Slot04_ae1d24();
 }
 
 // FUNCTION: 0x009c2e86

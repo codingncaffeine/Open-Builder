@@ -12,7 +12,7 @@
 // SIZE 0x120
 class cSC4ConfigRuleManager : public cUnk00abb004, public cUnk0090da1e {
 public:
-    virtual ~cSC4ConfigRuleManager() {}
+    virtual ~cSC4ConfigRuleManager();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -26,6 +26,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4ConfigRuleManager[sizeof(cSC4ConfigRuleManager) == 0x120 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x007d1050
+// cSC4ConfigRuleManager::`scalar deleting dtor'
 
 // SYNTHETIC: 0x007d0da0
 // cSC4ConfigRuleManager::QueryInterface`adjustor{4}'

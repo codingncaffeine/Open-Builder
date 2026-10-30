@@ -34,8 +34,8 @@ public:
     virtual void Slot09_adf63c(uint32_t);
     virtual bool Slot10_adf63c(uint32_t);
     virtual void Slot11_adf63c(uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     // STUB: 0x009bc447
     void Fn009bc447(void*);
     // STUB: 0x0099bc31

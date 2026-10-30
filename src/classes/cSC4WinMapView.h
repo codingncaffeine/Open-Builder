@@ -15,7 +15,7 @@
 // SIZE 0x9e8
 class cSC4WinMapView : public cUnk00ab7e14, public cUnk00aaaa9c, public cGZWinGen {
 public:
-    virtual ~cSC4WinMapView() {}
+    virtual ~cSC4WinMapView();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -27,13 +27,16 @@ public:
     virtual void Slot03_ab7e14(uint32_t);
     virtual void Slot04_ab7e14(uint32_t);
     virtual void Slot05_ab7e14(uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknown130[0x8b8];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4WinMapView[sizeof(cSC4WinMapView) == 0x9e8 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x007a0f10
+// cSC4WinMapView::`scalar deleting dtor'
 
 // SYNTHETIC: 0x007a0380
 // cSC4WinMapView::QueryInterface`adjustor{4}'

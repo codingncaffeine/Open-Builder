@@ -14,7 +14,7 @@
 // SIZE 0x104
 class cSC4MySimBalloonAdvice : public cSC4Advice, public cUnk00a855a4 {
 public:
-    virtual ~cSC4MySimBalloonAdvice() {}
+    virtual ~cSC4MySimBalloonAdvice();
     virtual bool Slot03_a80710(uint32_t);
     virtual bool Slot08_a80710();
     virtual void Slot28_a80710();
@@ -45,6 +45,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4MySimBalloonAdvice[sizeof(cSC4MySimBalloonAdvice) == 0x104 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x0042faf0
+// cSC4MySimBalloonAdvice::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0042f9d0
 // cSC4MySimBalloonAdvice::QueryInterface`adjustor{4}'

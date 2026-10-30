@@ -21,8 +21,6 @@ public:
     virtual void Slot14_addff8(uint32_t);
     virtual void LoadDefaultFonts();
     virtual void DrawGraphData(uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual void Slot05_addf78(uint32_t);
     virtual void Slot06_addf78(uint32_t, uint32_t);
     virtual void Slot07_addf78(uint32_t, uint32_t, uint32_t);
@@ -48,6 +46,8 @@ public:
     virtual void Slot28_addf78(uint32_t, uint32_t);
     virtual void Slot29_addf78();
     virtual uint32_t Slot30_addf78();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     uint32_t field230;
     char unknown234[0x58];
 };
@@ -71,10 +71,10 @@ typedef char ob_size_cGZPieGraph[sizeof(cGZPieGraph) == 0x28c ? 1 : -1];
 // cGZPieGraph::Release`adjustor{556}'
 
 // SYNTHETIC: 0x009ba31d
-// cGZPieGraph::Slot04_adb6a8`adjustor{556}'
+// cGZPieGraph::Slot03_ae1d24`adjustor{556}'
 
 // SYNTHETIC: 0x009ba333
-// cGZPieGraph::Slot05_adb6a8`adjustor{556}'
+// cGZPieGraph::Slot04_ae1d24`adjustor{556}'
 
 // SYNTHETIC: 0x009ba33e
 // cGZPieGraph::DrawGraphData`adjustor{556}'

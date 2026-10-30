@@ -32,7 +32,7 @@ struct OB_NOVTABLE cUnk00abb6c0_0 {
 // VTABLE: 0x00abb6a8 cUnk0090da1e
 class cUnk00abb6c0 : public cUnk00abb6c0_0, public cUnk0090da1e {
 public:
-    virtual ~cUnk00abb6c0() {}
+    virtual ~cUnk00abb6c0();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -53,6 +53,9 @@ public:
     virtual uint32_t Slot17_abb6c0(uint32_t);
     char unknownc[0x20];
 };
+
+// SYNTHETIC: 0x007deeb0
+// cUnk00abb6c0::`scalar deleting dtor'
 
 // SYNTHETIC: 0x005bcb50
 // cUnk00abb6c0::QueryInterface`adjustor{4}'

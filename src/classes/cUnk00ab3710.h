@@ -8,11 +8,11 @@
 // SIZE 0x4
 class cUnk00ab3710 {
 public:
-    virtual void Slot00_ab3710() = 0;
-    virtual void Slot01_ab3710() = 0;
-    virtual void Slot02_ab3710() = 0;
-    virtual void Slot03_ab3710() = 0;
-    virtual void Slot04_ab3710() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual void Slot03_ab3830() = 0;
+    virtual void Slot04_ab3830() = 0;
     virtual void Slot05_ab3710() = 0;
     virtual void Slot06_ab3710() = 0;
     virtual void Slot07_ab3710() = 0;

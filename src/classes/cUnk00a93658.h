@@ -8,17 +8,17 @@
 // SIZE 0x4
 class cUnk00a93658 {
 public:
-    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ac5488() = 0;
-    virtual void Slot02_ac5488() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual uint32_t Slot03_a93658() = 0;
     virtual void Slot04_a93658(uint32_t) = 0;
     virtual uint32_t Slot05_a93658() = 0;
     virtual bool Slot06_a93658() = 0;
     virtual void Slot07_a93658(uint32_t) = 0;
-    virtual bool Slot03_ac5488() = 0;
-    virtual bool Slot04_ac5488() = 0;
-    virtual bool Slot10_a93658(uint32_t) = 0;
+    virtual bool Slot03_ae1d24() = 0;
+    virtual bool Slot04_ae1d24() = 0;
+    virtual bool Slot09_ad1a98(uint32_t) = 0;
     virtual bool Slot11_a93658(uint32_t) = 0;
     virtual uint32_t Slot12_a93658() = 0;
 };

@@ -26,8 +26,8 @@ public:
     virtual void Slot08_ab5620(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot09_ab5620();
     virtual void Slot10_ab5620();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowndc[0x8];
     uint32_t fielde4;
 };

@@ -12,7 +12,7 @@
 // SIZE 0x138
 class cGZWinTextTicker : public cUnk00ae37b4, public cGZWin {
 public:
-    virtual ~cGZWinTextTicker() {}
+    virtual ~cGZWinTextTicker();
     virtual void GetNextMessage();
     virtual void AddMessageInternal(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
@@ -22,9 +22,9 @@ public:
     virtual bool GZOnKeyDown(uint32_t, uint32_t);
     virtual bool GZOnKeyUp(uint32_t, uint32_t);
     virtual bool GZOnMouseDownL(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual void Slot49_adda20(uint32_t);
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     virtual uint32_t Slot03_ae37b4(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot04_ae37b4(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot05_ae37b4(uint32_t);
@@ -43,6 +43,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinTextTicker[sizeof(cGZWinTextTicker) == 0x138 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x009d671f
+// cGZWinTextTicker::`scalar deleting dtor'
 
 // SYNTHETIC: 0x009d6600
 // cGZWinTextTicker::QueryInterface`adjustor{4}'

@@ -34,8 +34,8 @@ public:
     virtual void Slot07_ab8318(uint32_t, uint32_t);
     virtual uint32_t Slot08_ab8318(uint32_t, uint32_t);
     virtual void Slot09_ab8318();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowne0[0x88c];
 };
 #ifdef _MSC_VER

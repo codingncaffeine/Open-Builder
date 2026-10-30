@@ -4,7 +4,9 @@
 #include "classes/cUnk00ac2c88.h"
 #include "classes/cUnk00ac2e28.h"
 #include "classes/cUnk00ac3090.h"
+#include "classes/cUnk00ac31e4.h"
 #include "classes/cGZCOMLibrary.h"
+#include "classes/cGZFileSystem.h"
 #include "classes/cUnk00ac51fc.h"
 #include "classes/cRZCursorManager.h"
 #include "classes/cRZCursor.h"
@@ -13,6 +15,7 @@
 #include "classes/cGZFontSys.h"
 #include "classes/cGZFont.h"
 #include "classes/cRZDiskRadioStation.h"
+#include "classes/cRZRadio.h"
 #include "classes/cRZCookieManager.h"
 #include "classes/cGZWinHTML.h"
 #include "classes/cUnk00acd418.h"
@@ -28,30 +31,42 @@
 #include "classes/cUnk00ace2c0.h"
 #include "classes/cUnk00ace300.h"
 #include "classes/cGXCOMDirector.h"
+#include "classes/cGZGimexFactory.h"
 #include "classes/cGZGimexReader.h"
 #include "classes/cGZGimexWriter.h"
 #include "classes/cUnk00ace624.h"
 #include "classes/cUnk00ace650.h"
 #include "classes/cUnk00aceaf0.h"
 #include "classes/cUnk00acf150.h"
+#include "classes/cRZSystemService.h"
 #include "classes/cUnk00acfb90.h"
 #include "classes/cUnk00acfbe4.h"
+#include "classes/cGZCheatCodeManager.h"
+#include "classes/cGZRegistry.h"
 #include "classes/cGZClipboardManagerClipboardData.h"
 #include "classes/cGZClipboardManagerClipboard.h"
+#include "classes/cGZClipboardManager.h"
 #include "classes/cRZLanguageUtility.h"
+#include "classes/cRZLanguageManager.h"
 #include "classes/cGZMessage2CommandDispatcher.h"
 #include "classes/cGZCommandParameterSet.h"
 #include "classes/cGZStringCommandGenerator.h"
+#include "classes/cGZCommandServer.h"
 #include "classes/cUnk00ad18d8.h"
 #include "classes/cUnk00ad1938.h"
 #include "classes/cGZMessageQueue2.h"
+#include "classes/cUnk00ad1bf4.h"
 #include "classes/cGZMessageQueue.h"
+#include "classes/cUnk00ad1d20.h"
+#include "classes/cUnk00ad1da0.h"
 #include "classes/cGZDefaultAllocator.h"
+#include "classes/cUnk00ad1e40.h"
 #include "classes/cRZTextFile.h"
 #include "classes/cUnk00ad1ef4.h"
 #include "classes/cUnk00ad1f14.h"
 #include "classes/cUnk00ad1f48.h"
 #include "classes/cUnk00ad1f6c.h"
+#include "classes/nGZLog_cService.h"
 #include "classes/cUnk00ad2164.h"
 #include "classes/cUnk00ad226c.h"
 #include "classes/cUnk00ad22a0.h"
@@ -60,6 +75,10 @@
 #include "classes/cHitControlGroup.h"
 #include "classes/cHitTrackDataBlock.h"
 #include "classes/cGZPropertySetT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612.h"
+#include "classes/cHitPropertySetResource.h"
+#include "classes/cHitPropertySetTrackResource.h"
+#include "classes/cHitMan.h"
+#include "classes/cHitDebugInfo.h"
 #include "classes/cHitTrackPlayer.h"
 #include "classes/cHitChannel.h"
 #include "classes/cHitResourceFactory.h"
@@ -73,14 +92,17 @@
 #include "classes/cGZScriptVocab.h"
 #include "classes/cFreshnessCOMDirector.h"
 #include "classes/cUnk00ad4818.h"
+#include "classes/cFreshCellPlayer.h"
 #include "classes/cFreshPlayer.h"
 #include "classes/cFreshDimensionPlayer.h"
 #include "classes/cUnk00ad4ec0.h"
 #include "classes/cGZUIScriptCOMDirector.h"
+#include "classes/cGZUIScriptService.h"
 #include "classes/cGZScriptableControlSet.h"
 #include "classes/cGZLegacyControl.h"
 #include "classes/cUnk00ad53ec.h"
 #include "classes/cGZWinCustom.h"
+#include "classes/cGZSndMgr.h"
 #include "classes/cGZSndSegmentDataSourceCreator.h"
 #include "classes/cGZSndPropertyCache.h"
 #include "classes/cGZSndInstanceCache.h"
@@ -91,12 +113,17 @@
 #include "classes/cGZSndSegmentDataSourceUTalk.h"
 #include "classes/cGZSndSegmentDataSourceXA.h"
 #include "classes/cGZDBSerialRecordAsIGZFile.h"
+#include "classes/cGZDBSegmentPackedFile.h"
 #include "classes/cUnk00ad8970.h"
+#include "classes/cGZPersistResourceManager.h"
 #include "classes/cGZPersistResource.h"
 #include "classes/cGZPersistBufferResource.h"
+#include "classes/cGZDBSDFRecord.h"
 #include "classes/cGZRESIDtoExtensionMap.h"
+#include "classes/cGZDBSegmentDirectoryFiles.h"
 #include "classes/cGZPersistCacheStrategyBasic.h"
 #include "classes/cGZBufferResource.h"
+#include "classes/cUnk00ad95e8.h"
 #include "classes/cGZBufferResourceFactory.h"
 #include "classes/cRZCursorResource.h"
 #include "classes/cGZPersistDBSegmentMultiPackedFiles.h"
@@ -122,11 +149,21 @@
 #include "classes/cUnk00ada45c.h"
 #include "classes/cGZPersistBinaryResource.h"
 #include "classes/cRZStringResource.h"
+#include "classes/cRZWinKeyAcceleratorRes.h"
 #include "classes/cUnk00ada628.h"
+#include "classes/cGZWinIMEProxy.h"
+#include "classes/cUnk00adba40.h"
+#include "classes/cUnk00adbbf0.h"
+#include "classes/cGZWinIMEServer.h"
 #include "classes/cUnk00adbf80.h"
+#include "classes/cUnk00adc018.h"
+#include "classes/cUnk00adc1ec.h"
 #include "classes/cGZWinGenTitleBar.h"
 #include "classes/cGZWinGen.h"
 #include "classes/cGZWin.h"
+#include "classes/cUnk00add190.h"
+#include "classes/cUnk00add578.h"
+#include "classes/cUnk00addd50.h"
 #include "classes/cUnk00adde30.h"
 #include "classes/cUnk00adde3c.h"
 #include "classes/cGZGraph.h"
@@ -145,16 +182,23 @@
 #include "classes/cGZWinLineInput.h"
 #include "classes/cGZWinOptGrp.h"
 #include "classes/cGZWinListBox.h"
+#include "classes/cGZWinOutline.h"
+#include "classes/cGZWinDragAndDropManager.h"
 #include "classes/cGZWinFlatRect.h"
 #include "classes/cUnk00ae2398.h"
 #include "classes/cGZWinMsgBox.h"
 #include "classes/cGZWinCombo.h"
+#include "classes/cGZWinTreeView.h"
 #include "classes/cGZWinPieMenu.h"
 #include "classes/cRZWinKeyAccelerator.h"
 #include "classes/cUnk00ae37b0.h"
+#include "classes/cGZWinTextTicker.h"
+#include "classes/cGZWinFolderRow.h"
+#include "classes/cGZWinFolders.h"
 #include "classes/cGZWinScrollbar2.h"
 #include "classes/cGZWinToolTipMgr.h"
 #include "classes/cGZWinToolTip.h"
+#include "classes/cUnk00ae46e8.h"
 #include "classes/cUnk00ae4cc4.h"
 #include "classes/cUnk00ae4ce4.h"
 #include "classes/cUnk00ae4d6c.h"
@@ -171,7 +215,9 @@ void GeneratedClasses_gzcom()
     (void)new cUnk00ac2c88;
     (void)new cUnk00ac2e28;
     (void)new cUnk00ac3090;
+    (void)new cUnk00ac31e4;
     (void)new cGZCOMLibrary;
+    (void)new cGZFileSystem;
     (void)new cUnk00ac51fc;
     (void)new cRZCursorManager;
     (void)new cRZCursor;
@@ -180,6 +226,7 @@ void GeneratedClasses_gzcom()
     (void)new cGZFontSys;
     (void)new cGZFont;
     (void)new cRZDiskRadioStation;
+    (void)new cRZRadio;
     (void)new cRZCookieManager;
     (void)new cGZWinHTML;
     (void)new cUnk00acd418;
@@ -195,30 +242,42 @@ void GeneratedClasses_gzcom()
     (void)new cUnk00ace2c0;
     (void)new cUnk00ace300;
     (void)new cGXCOMDirector;
+    (void)new cGZGimexFactory;
     (void)new cGZGimexReader;
     (void)new cGZGimexWriter;
     (void)new cUnk00ace624;
     (void)new cUnk00ace650;
     (void)new cUnk00aceaf0;
     (void)new cUnk00acf150;
+    (void)new cRZSystemService;
     (void)new cUnk00acfb90;
     (void)new cUnk00acfbe4;
+    (void)new cGZCheatCodeManager;
+    (void)new cGZRegistry;
     (void)new cGZClipboardManagerClipboardData;
     (void)new cGZClipboardManagerClipboard;
+    (void)new cGZClipboardManager;
     (void)new cRZLanguageUtility;
+    (void)new cRZLanguageManager;
     (void)new cGZMessage2CommandDispatcher;
     (void)new cGZCommandParameterSet;
     (void)new cGZStringCommandGenerator;
+    (void)new cGZCommandServer;
     (void)new cUnk00ad18d8;
     (void)new cUnk00ad1938;
     (void)new cGZMessageQueue2;
+    (void)new cUnk00ad1bf4;
     (void)new cGZMessageQueue;
+    (void)new cUnk00ad1d20;
+    (void)new cUnk00ad1da0;
     (void)new cGZDefaultAllocator;
+    (void)new cUnk00ad1e40;
     (void)new cRZTextFile;
     (void)new cUnk00ad1ef4;
     (void)new cUnk00ad1f14;
     (void)new cUnk00ad1f48;
     (void)new cUnk00ad1f6c;
+    (void)new nGZLog_cService;
     (void)new cUnk00ad2164;
     (void)new cUnk00ad226c;
     (void)new cUnk00ad22a0;
@@ -227,6 +286,10 @@ void GeneratedClasses_gzcom()
     (void)new cHitControlGroup;
     (void)new cHitTrackDataBlock;
     (void)new cGZPropertySetT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612;
+    (void)new cHitPropertySetResource;
+    (void)new cHitPropertySetTrackResource;
+    (void)new cHitMan;
+    (void)new cHitDebugInfo;
     (void)new cHitTrackPlayer;
     (void)new cHitChannel;
     (void)new cHitResourceFactory;
@@ -240,14 +303,17 @@ void GeneratedClasses_gzcom()
     (void)new cGZScriptVocab;
     (void)new cFreshnessCOMDirector;
     (void)new cUnk00ad4818;
+    (void)new cFreshCellPlayer;
     (void)new cFreshPlayer;
     (void)new cFreshDimensionPlayer;
     (void)new cUnk00ad4ec0;
     (void)new cGZUIScriptCOMDirector;
+    (void)new cGZUIScriptService;
     (void)new cGZScriptableControlSet;
     (void)new cGZLegacyControl;
     (void)new cUnk00ad53ec;
     (void)new cGZWinCustom;
+    (void)new cGZSndMgr;
     (void)new cGZSndSegmentDataSourceCreator;
     (void)new cGZSndPropertyCache;
     (void)new cGZSndInstanceCache;
@@ -258,12 +324,17 @@ void GeneratedClasses_gzcom()
     (void)new cGZSndSegmentDataSourceUTalk;
     (void)new cGZSndSegmentDataSourceXA;
     (void)new cGZDBSerialRecordAsIGZFile;
+    (void)new cGZDBSegmentPackedFile;
     (void)new cUnk00ad8970;
+    (void)new cGZPersistResourceManager;
     (void)new cGZPersistResource;
     (void)new cGZPersistBufferResource;
+    (void)new cGZDBSDFRecord;
     (void)new cGZRESIDtoExtensionMap;
+    (void)new cGZDBSegmentDirectoryFiles;
     (void)new cGZPersistCacheStrategyBasic;
     (void)new cGZBufferResource;
+    (void)new cUnk00ad95e8;
     (void)new cGZBufferResourceFactory;
     (void)new cRZCursorResource;
     (void)new cGZPersistDBSegmentMultiPackedFiles;
@@ -289,11 +360,21 @@ void GeneratedClasses_gzcom()
     (void)new cUnk00ada45c;
     (void)new cGZPersistBinaryResource;
     (void)new cRZStringResource;
+    (void)new cRZWinKeyAcceleratorRes;
     (void)new cUnk00ada628;
+    (void)new cGZWinIMEProxy;
+    (void)new cUnk00adba40;
+    (void)new cUnk00adbbf0;
+    (void)new cGZWinIMEServer;
     (void)new cUnk00adbf80;
+    (void)new cUnk00adc018;
+    (void)new cUnk00adc1ec;
     (void)new cGZWinGenTitleBar;
     (void)new cGZWinGen;
     (void)new cGZWin;
+    (void)new cUnk00add190;
+    (void)new cUnk00add578;
+    (void)new cUnk00addd50;
     (void)new cUnk00adde30;
     (void)new cUnk00adde3c;
     (void)new cGZGraph;
@@ -312,16 +393,23 @@ void GeneratedClasses_gzcom()
     (void)new cGZWinLineInput;
     (void)new cGZWinOptGrp;
     (void)new cGZWinListBox;
+    (void)new cGZWinOutline;
+    (void)new cGZWinDragAndDropManager;
     (void)new cGZWinFlatRect;
     (void)new cUnk00ae2398;
     (void)new cGZWinMsgBox;
     (void)new cGZWinCombo;
+    (void)new cGZWinTreeView;
     (void)new cGZWinPieMenu;
     (void)new cRZWinKeyAccelerator;
     (void)new cUnk00ae37b0;
+    (void)new cGZWinTextTicker;
+    (void)new cGZWinFolderRow;
+    (void)new cGZWinFolders;
     (void)new cGZWinScrollbar2;
     (void)new cGZWinToolTipMgr;
     (void)new cGZWinToolTip;
+    (void)new cUnk00ae46e8;
     (void)new cUnk00ae4cc4;
     (void)new cUnk00ae4ce4;
     (void)new cUnk00ae4d6c;

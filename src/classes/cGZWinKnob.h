@@ -12,7 +12,7 @@
 // SIZE 0x108
 class cGZWinKnob : public cUnk00ab4658, public cGZWin {
 public:
-    virtual ~cGZWinKnob() {}
+    virtual ~cGZWinKnob();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -32,8 +32,8 @@ public:
     virtual uint32_t Slot15_ab4658();
     virtual void Slot16_ab4658(uint32_t, uint32_t);
     virtual uint32_t Slot17_ab4658(uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     uint32_t fielddc;
     char unknowne0[0xc];
     uint32_t fieldec;
@@ -47,6 +47,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinKnob[sizeof(cGZWinKnob) == 0x108 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00762b80
+// cGZWinKnob::`scalar deleting dtor'
 
 // SYNTHETIC: 0x00762960
 // cGZWinKnob::QueryInterface`adjustor{4}'

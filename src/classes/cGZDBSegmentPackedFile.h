@@ -12,7 +12,7 @@
 // SIZE 0x1c8
 class cGZDBSegmentPackedFile : public cUnk00ad8488, public cUnk00ad8ca0 {
 public:
-    virtual ~cGZDBSegmentPackedFile() {}
+    virtual ~cGZDBSegmentPackedFile();
     virtual bool DoOpenRecordForWrite(uint32_t, uint32_t);
     virtual void DoReadRecord(uint32_t, uint32_t);
     virtual void DoWriteRecord(uint32_t, uint32_t);
@@ -90,6 +90,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cGZDBSegmentPackedFile[sizeof(cGZDBSegmentPackedFile) == 0x1c8 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x009710d6
+// cGZDBSegmentPackedFile::`scalar deleting dtor'
 
 // SYNTHETIC: 0x00970163
 // cGZDBSegmentPackedFile::Slot00_ad8fc8`adjustor{4}'

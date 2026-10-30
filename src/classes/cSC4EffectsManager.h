@@ -19,7 +19,7 @@
 // SIZE 0xdf4
 class cSC4EffectsManager : public cUnk00a9f0d8, public cUnk00a881d4, public cUnk00aaaa9c, public cSC4EffectMaps, public cUnk00a9f040 {
 public:
-    virtual ~cSC4EffectsManager() {}
+    virtual ~cSC4EffectsManager();
     virtual void FinalRelease();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
@@ -45,6 +45,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4EffectsManager[sizeof(cSC4EffectsManager) == 0xdf4 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00590080
+// cSC4EffectsManager::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0058fe20
 // cSC4EffectsManager::QueryInterface`adjustor{4}'

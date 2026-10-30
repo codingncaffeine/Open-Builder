@@ -17,8 +17,8 @@ public:
     virtual bool GZPaint();
     virtual bool GZOnKeyDown(uint32_t, uint32_t);
     virtual bool GZOnKeyUp(uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknownd8[0xc];
 };
 #ifdef _MSC_VER

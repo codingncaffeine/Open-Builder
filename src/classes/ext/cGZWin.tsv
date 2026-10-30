@@ -1,0 +1,49 @@
+field c uint32_t mnRefCount
+field 70 bool mbInvalid
+field c8 uint32_t mnFlags
+slot Slot16_adc8d8 bool uint32_t
+slot Slot10_adc8d8 void*
+slot Slot38_adc8d8 void* int32_t int32_t
+field 74 uint32_t mpCursor
+field 94 int32_t mnFadeInTime
+field 98 int32_t mnFadeOutTime
+slot PullToFront bool
+slot SendToBack bool
+slot ChildToFront_2 bool void*
+slot ChildToBack bool void*
+slot GetChildWindowFromID void* uint32_t
+method 0x0099b7bd void InvalidateAllParents()
+method 0x0099c9df void SetFocusTo(void*)
+slot GetChildWindowFromIDRecursive void* uint32_t
+slot WindowToScreenCoordinates void void* void*
+slot ScreenToWindowCoordinates void void* void*
+slot ChildMoveRelative bool void* void* uint32_t
+slot Slot15_adc8d8 bool void*
+slot GetParam bool uint32_t void*
+slot EnumParams bool void* void*
+method 0x0099ba3e bool fill_private_buffer_with_transparent_color()
+method 0x0099ba92 bool set_private_buffer_transparency(bool)
+method 0x0099c20d bool fade_in_progress()
+method 0x0099caad void set_fade_state(uint8_t, int32_t)
+method 0x0099bc31 bool get_init_flag()
+method 0x0099bc3f void set_init_flag(bool)
+method 0x0099d3d2 void unlock_child_list_read(void*)
+method 0x0099e08f void* lock_child_list_write()
+method 0x0099d645 bool child_private_buffers(bool)
+slot IsChildKeyEquivalent void* uint32_t uint32_t
+slot ChildExists_2 bool void*
+method 0x0099e2bd bool child_remove_absolute(void*)
+slot GetChildWindowFromPoint void* uint32_t uint32_t
+slot GetChildWindowFromCursorPoint void* uint32_t uint32_t
+field 71 bool mbDeferStrategy
+slot SetParam bool uint32_t void*
+slot Slot14_adc8d8 void void*
+slot EnumChildren bool uint32_t void* void*
+method 0x0099d938 void Fn0099d938()
+method 0x0099c7ba bool recalc_blt_area()
+slot MoveRelativeTo bool void* uint32_t
+slot SortChildren bool void* void* uint32_t
+method 0x0099be0a bool GZAmCapturing()
+method 0x0099be1e void GZReleaseCapture()
+method 0x0099bde4 void GZSetCapture()
+method 0x0099c026 void fade_advance()

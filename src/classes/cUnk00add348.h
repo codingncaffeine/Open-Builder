@@ -11,8 +11,8 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual bool Slot04_adb6a8() = 0;
-    virtual bool Slot05_adb6a8() = 0;
+    virtual bool Slot03_ae1d24() = 0;
+    virtual bool Slot04_ae1d24() = 0;
     virtual uint32_t Slot05_add348() = 0;
     virtual bool Slot06_add348() = 0;
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t) = 0;

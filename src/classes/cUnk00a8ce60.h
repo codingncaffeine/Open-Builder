@@ -11,13 +11,13 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_a953a8() = 0;
-    virtual void Slot04_a953a8() = 0;
-    virtual void Slot05_a8ce60() = 0;
-    virtual void Slot06_a8ce60() = 0;
-    virtual void Slot07_a8ce60() = 0;
-    virtual void Slot08_a8ce60() = 0;
-    virtual void Slot09_a8ce60() = 0;
+    virtual bool Slot03_a953a8() = 0;
+    virtual bool Slot04_a953a8() = 0;
+    virtual uint32_t Slot05_a8ce60() = 0;
+    virtual uint32_t Slot06_a8ce60(uint32_t) = 0;
+    virtual uint32_t Slot07_a8ce60() = 0;
+    virtual bool Slot08_a8ce60(uint32_t) = 0;
+    virtual bool Slot09_a8ce60() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a8ce60[sizeof(cUnk00a8ce60) == 0x4 ? 1 : -1];

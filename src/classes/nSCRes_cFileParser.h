@@ -14,7 +14,7 @@
 // SIZE 0x60
 class nSCRes_cFileParser : public cUnk00aaf3a4, public cUnk00aaaa9c, public cUnk0090da1e {
 public:
-    virtual ~nSCRes_cFileParser() {}
+    virtual ~nSCRes_cFileParser();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -39,6 +39,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_nSCRes_cFileParser[sizeof(nSCRes_cFileParser) == 0x60 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00681cc0
+// nSCRes_cFileParser::`scalar deleting dtor'
 
 // SYNTHETIC: 0x006817b0
 // nSCRes_cFileParser::QueryInterface`adjustor{4}'

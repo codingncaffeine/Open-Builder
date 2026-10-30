@@ -7,19 +7,19 @@
 
 class cUnk00aa1388 {
 public:
-    virtual void Slot00_aa1388() = 0;
-    virtual void Slot01_aa1388() = 0;
-    virtual void Slot02_aa1388() = 0;
-    virtual void Slot03_aa1388() = 0;
-    virtual void Slot04_aa1388() = 0;
-    virtual void Slot05_aa1388() = 0;
-    virtual void Slot06_aa1388() = 0;
-    virtual void Slot07_aa1388() = 0;
-    virtual void Slot08_aa1388() = 0;
-    virtual void Slot09_aa1388() = 0;
-    virtual void Slot10_aa1388() = 0;
-    virtual void Slot11_aa1388() = 0;
-    virtual void Slot12_aa1388() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_aa1388(uint32_t, uint32_t) = 0;
+    virtual bool Slot04_aa1388(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot05_aa1388(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot06_aa1388(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot07_aa1388(uint32_t, uint32_t) = 0;
+    virtual bool Slot08_aa1388(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot09_aa1388(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot10_aa1388(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot11_aa1388(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot12_aa1388(uint32_t) = 0;
 };
 
 #endif

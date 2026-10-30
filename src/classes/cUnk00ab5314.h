@@ -9,8 +9,8 @@
 // The subobject at +0x0 (vtable 0x00ab5314): an interface or base the class map has no class for.
 struct OB_NOVTABLE cUnk00ab5314_0 {
     virtual bool Slot00_ab5314(uint32_t, uint32_t) = 0;
-    virtual void Slot01_ab5314() = 0;
-    virtual void Slot02_ab5314() = 0;
+    virtual unsigned int Release() = 0;
+    virtual uint32_t AddRef() = 0;
     virtual bool Slot03_ab5314(uint32_t, uint32_t) = 0;
     virtual bool Slot04_ab5314(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t Slot05_ab5314(uint32_t) = 0;
@@ -26,9 +26,9 @@ struct OB_NOVTABLE cUnk00ab5314_0 {
 class cUnk00ab5314 : public cUnk00ab5314_0, public cUnk00aaaac4 {
 public:
     virtual ~cUnk00ab5314() {}
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual bool Slot00_ab5314(uint32_t, uint32_t);
-    virtual void Slot01_ab5314();
-    virtual void Slot02_ab5314();
     virtual bool Slot03_ab5314(uint32_t, uint32_t);
     virtual bool Slot04_ab5314(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t Slot05_ab5314(uint32_t);
@@ -37,16 +37,16 @@ public:
     virtual bool Slot08_ab5314(uint32_t);
     virtual void Slot09_ab5314();
     virtual void Slot10_ab5314();
-    char unknown14[0x8];
+    char unknown8[0x14];
 };
 
 // SYNTHETIC: 0x00777ce0
 // cUnk00ab5314::`vector deleting dtor'`adjustor{4}'
 
 // SYNTHETIC: 0x005be410
-// cUnk00ab5314::Slot02_ab5314`adjustor{4}'
+// cUnk00ab5314::AddRef`adjustor{4}'
 
 // SYNTHETIC: 0x005be420
-// cUnk00ab5314::Slot01_ab5314`adjustor{4}'
+// cUnk00ab5314::Release`adjustor{4}'
 
 #endif

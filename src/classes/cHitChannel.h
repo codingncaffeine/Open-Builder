@@ -12,9 +12,9 @@
 
 // The subobject at +0x0 (vtable 0x00ad3fc0): an interface or base the class map has no class for.
 struct OB_NOVTABLE cHitChannel_0 {
-    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ad4cf4() = 0;
-    virtual void Slot02_ad4cf4() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual bool Shutdown() = 0;
     virtual bool Slot04_ad3fc0() = 0;
     virtual void Play(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
@@ -78,6 +78,9 @@ struct OB_NOVTABLE cHitChannel_0 {
 class cHitChannel : public cHitChannel_0, public cUnk00ac2d78, public cUnk00a943c0, public cUnk00ad2bc8, public cUnk00ad2bec, public cUnk00ac2bdc {
 public:
     virtual ~cHitChannel();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual bool Slot03_ac2bdc(uint32_t, uint32_t);
     virtual uint32_t Slot04_ac2bdc();
     virtual void Slot04_ac2d78(uint32_t, uint32_t, uint32_t);
@@ -152,9 +155,6 @@ public:
     virtual bool SetLowPassCutoff(uint32_t);
     virtual bool SetHighPassCutoff(uint32_t);
     virtual bool SetTimeMultiplier(uint32_t);
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad4cf4();
-    virtual void Slot02_ad4cf4();
     char unknown18[0x20];
 };
 #ifdef _MSC_VER
@@ -168,45 +168,45 @@ typedef char ob_size_cHitChannel[sizeof(cHitChannel) == 0x38 ? 1 : -1];
 // cHitChannel::QueryInterface`adjustor{4}'
 
 // SYNTHETIC: 0x0093f9a9
-// cHitChannel::Slot01_ad4cf4`adjustor{4}'
+// cHitChannel::AddRef`adjustor{4}'
 
 // SYNTHETIC: 0x0093f9b1
-// cHitChannel::Slot02_ad4cf4`adjustor{4}'
+// cHitChannel::Release`adjustor{4}'
 
 // SYNTHETIC: 0x0093f9b9
 // cHitChannel::QueryInterface`adjustor{8}'
 
 // SYNTHETIC: 0x0093f9c1
-// cHitChannel::Slot01_ad4cf4`adjustor{8}'
+// cHitChannel::AddRef`adjustor{8}'
 
 // SYNTHETIC: 0x0093f9c9
-// cHitChannel::Slot02_ad4cf4`adjustor{8}'
+// cHitChannel::Release`adjustor{8}'
 
 // SYNTHETIC: 0x0093f9d1
 // cHitChannel::QueryInterface`adjustor{12}'
 
 // SYNTHETIC: 0x0093f9d9
-// cHitChannel::Slot01_ad4cf4`adjustor{12}'
+// cHitChannel::AddRef`adjustor{12}'
 
 // SYNTHETIC: 0x0093f9e1
-// cHitChannel::Slot02_ad4cf4`adjustor{12}'
+// cHitChannel::Release`adjustor{12}'
 
 // SYNTHETIC: 0x0093f9e9
 // cHitChannel::QueryInterface`adjustor{16}'
 
 // SYNTHETIC: 0x0093f9f1
-// cHitChannel::Slot01_ad4cf4`adjustor{16}'
+// cHitChannel::AddRef`adjustor{16}'
 
 // SYNTHETIC: 0x0093f9f9
-// cHitChannel::Slot02_ad4cf4`adjustor{16}'
+// cHitChannel::Release`adjustor{16}'
 
 // SYNTHETIC: 0x0093fa01
 // cHitChannel::QueryInterface`adjustor{20}'
 
 // SYNTHETIC: 0x0093fa09
-// cHitChannel::Slot01_ad4cf4`adjustor{20}'
+// cHitChannel::AddRef`adjustor{20}'
 
 // SYNTHETIC: 0x0093fa11
-// cHitChannel::Slot02_ad4cf4`adjustor{20}'
+// cHitChannel::Release`adjustor{20}'
 
 #endif

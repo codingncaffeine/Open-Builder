@@ -14,7 +14,7 @@
 // SIZE 0x14c
 class cUnk00aa0ac0 : public cUnk00aa0a44, public cUnk00a9f040, public cGZPersistResource {
 public:
-    virtual ~cUnk00aa0ac0() {}
+    virtual ~cUnk00aa0ac0();
     virtual void Slot06_aa0ac0();
     virtual void Slot07_aa0ac0();
     virtual uint32_t Slot08_aa0ac0();
@@ -30,6 +30,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa0ac0[sizeof(cUnk00aa0ac0) == 0x14c ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x005a5130
+// cUnk00aa0ac0::`scalar deleting dtor'
 
 // SYNTHETIC: 0x005a4d60
 // cUnk00aa0ac0::QueryInterface`adjustor{4}'

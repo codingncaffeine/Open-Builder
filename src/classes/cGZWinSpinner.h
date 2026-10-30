@@ -24,8 +24,6 @@ public:
     virtual bool GZOnMouseMove(uint32_t, uint32_t, uint32_t);
     virtual bool GZOnCaptureChanged(uint32_t, uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual void* Slot03_ae0b00();
     virtual bool Slot04_ae0b00(uint32_t);
     virtual bool Slot05_ae0b00(uint32_t);
@@ -58,6 +56,8 @@ public:
     virtual bool Slot32_ae0b00(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot33_ae0b00(uint32_t, uint32_t);
     virtual bool Slot34_ae0b00(uint32_t, uint32_t);
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowndc[0x38];
     uint32_t field114;
     uint32_t field118;

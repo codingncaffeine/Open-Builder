@@ -9,9 +9,9 @@
 
 // The subobject at +0x0 (vtable 0x00ad4cf4): an interface or base the class map has no class for.
 struct OB_NOVTABLE cFreshDimensionPlayer_0 {
-    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ad4cf4() = 0;
-    virtual void Slot02_ad4cf4() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual uint32_t AsIFreshPlayer() = 0;
     virtual bool SetScoreEnabled(uint32_t, uint32_t) = 0;
     virtual ~cFreshDimensionPlayer_0() {}
@@ -27,6 +27,9 @@ struct OB_NOVTABLE cFreshDimensionPlayer_0 {
 class cFreshDimensionPlayer : public cFreshDimensionPlayer_0, public cUnk00ad4aa0, public cUnk00a943c0 {
 public:
     virtual ~cFreshDimensionPlayer();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual void Slot13_ad3e48(uint32_t);
     virtual bool Slot03_ad4aa0(uint32_t);
     virtual bool Slot04_ad4aa0();
@@ -62,9 +65,6 @@ public:
     virtual void Slot34_ad4aa0(uint32_t);
     virtual void* Slot35_ad4aa0();
     virtual void Slot36_ad4aa0(uint32_t);
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad4cf4();
-    virtual void Slot02_ad4cf4();
     virtual uint32_t AsIFreshPlayer();
     virtual bool SetScoreEnabled(uint32_t, uint32_t);
     virtual bool SetZPos(uint32_t);
@@ -97,18 +97,18 @@ typedef char ob_size_cFreshDimensionPlayer[sizeof(cFreshDimensionPlayer) == 0x19
 // cFreshDimensionPlayer::QueryInterface`adjustor{4}'
 
 // SYNTHETIC: 0x009d2d79
-// cFreshDimensionPlayer::Slot01_ad4cf4`adjustor{4}'
+// cFreshDimensionPlayer::AddRef`adjustor{4}'
 
 // SYNTHETIC: 0x00949b8b
-// cFreshDimensionPlayer::Slot02_ad4cf4`adjustor{4}'
+// cFreshDimensionPlayer::Release`adjustor{4}'
 
 // SYNTHETIC: 0x00949b93
 // cFreshDimensionPlayer::QueryInterface`adjustor{8}'
 
 // SYNTHETIC: 0x00949b9b
-// cFreshDimensionPlayer::Slot01_ad4cf4`adjustor{8}'
+// cFreshDimensionPlayer::AddRef`adjustor{8}'
 
 // SYNTHETIC: 0x00949ba3
-// cFreshDimensionPlayer::Slot02_ad4cf4`adjustor{8}'
+// cFreshDimensionPlayer::Release`adjustor{8}'
 
 #endif

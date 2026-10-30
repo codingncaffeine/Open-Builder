@@ -160,12 +160,9 @@ if [[ $mode == tu ]]; then
             for (y = 1; y <= nm; y++) {
               s1 = sz[W[x]]; s2 = msz[Mc[y]] + 0
               msplit(mname[Mc[y]])
+              # (pairing by place and size alone was tried: 0 of 20 right on the pilot unit — only a name match pairs)
               w = 0
               if (wc != "" && wm != "" && wc == MC && wm == MM) w = 2
-              else if ((s1 <= 24 && s2 <= 24) || (s2 > 0 && s1 * 4 >= s2 * 3 && s1 * 3 <= s2 * 4)) {
-                w = 1
-                if ((W[x] in virt) && (wc == "" || MC == "" || wc != MC)) w = 0
-              }
               best = f[x - 1, y]; if (f[x, y - 1] > best) best = f[x, y - 1]
               if (w && f[x - 1, y - 1] + w > best) best = f[x - 1, y - 1] + w
               f[x, y] = best; pw[x, y] = w

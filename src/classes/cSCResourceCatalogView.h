@@ -12,7 +12,7 @@
 // SIZE 0x114
 class cSCResourceCatalogView : public cUnk00aafbfc, public cGZWin {
 public:
-    virtual ~cSCResourceCatalogView() {}
+    virtual ~cSCResourceCatalogView();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -30,8 +30,8 @@ public:
     virtual void Slot06_aafbfc(uint32_t);
     virtual bool Slot07_aafbfc(uint32_t);
     virtual void Slot08_aafbfc();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     bool fielddc;
     bool fielddd;
     char unknownde[0x2];
@@ -42,6 +42,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSCResourceCatalogView[sizeof(cSCResourceCatalogView) == 0x114 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x006866c0
+// cSCResourceCatalogView::`scalar deleting dtor'
 
 // SYNTHETIC: 0x006864f0
 // cSCResourceCatalogView::QueryInterface`adjustor{4}'

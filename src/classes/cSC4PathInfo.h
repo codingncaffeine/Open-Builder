@@ -65,7 +65,4 @@ public:
 // SYNTHETIC: 0x008089e0
 // cSC4PathInfo::Release`adjustor{4}'
 
-// SYNTHETIC: 0x005403e0
-// cSC4PathInfo::`vector deleting dtor'`adjustor{4}'
-
 #endif

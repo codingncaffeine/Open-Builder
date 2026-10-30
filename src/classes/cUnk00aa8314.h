@@ -12,7 +12,7 @@
 // SIZE 0x58
 class cUnk00aa8314 : public cUnk00a881d4, public cUnk0090da1e {
 public:
-    virtual ~cUnk00aa8314() {}
+    virtual ~cUnk00aa8314();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -22,6 +22,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa8314[sizeof(cUnk00aa8314) == 0x58 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00620ba0
+// cUnk00aa8314::`scalar deleting dtor'
 
 // SYNTHETIC: 0x005bcb50
 // cUnk00aa8314::QueryInterface`adjustor{4}'

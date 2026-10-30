@@ -58,9 +58,9 @@ public:
     virtual bool Slot31_adc2b0(uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void* Slot03_adb720();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual void Slot49_adda20(uint32_t);
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowndc[0x18];
     uint32_t fieldf4;
     char unknownf8[0x14];

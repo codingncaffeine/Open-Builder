@@ -27,8 +27,8 @@ public:
     virtual void Slot04_aadd28();
     virtual void Slot05_aadd28();
     virtual void Slot06_aadd28(bool);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     uint32_t fielde8;
     uint32_t fieldec;
     char unknownf0[0xc];

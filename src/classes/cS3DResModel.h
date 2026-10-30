@@ -34,7 +34,4 @@ public:
 // SYNTHETIC: 0x008089e0
 // cS3DResModel::Release`adjustor{4}'
 
-// SYNTHETIC: 0x00806220
-// cS3DResModel::`vector deleting dtor'`adjustor{4}'
-
 #endif

@@ -7,17 +7,18 @@
 
 class cUnk00ad2620 {
 public:
-    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ad4cf4() = 0;
-    virtual void Slot02_ad4cf4() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual void Slot03_ad2620(uint32_t) = 0;
     virtual bool Slot04_ad2620(uint32_t) = 0;
-    virtual uint32_t GetRefCount() = 0;
+    virtual uint32_t Slot05_ad2620() = 0;
     virtual uint32_t Slot06_ad2620() = 0;
     virtual uint32_t Slot07_ad2620() = 0;
     virtual bool Slot08_ad2620(uint32_t) = 0;
     virtual bool Slot09_ad2620(uint32_t) = 0;
     virtual bool Slot10_ad2620(uint32_t) = 0;
+    virtual uint32_t GetRefCount() = 0;
     virtual bool ReadResource_2(uint32_t, uint32_t, uint32_t) = 0;
     virtual bool WriteResource_2(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot14_ad2620(uint32_t, uint32_t) = 0;

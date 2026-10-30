@@ -8,9 +8,9 @@
 // SIZE 0x4
 class cUnk00a943c0 {
 public:
-    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ad4cf4() = 0;
-    virtual void Slot02_ad4cf4() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual void Slot13_ad3e48(uint32_t) = 0;
 };
 #ifdef _MSC_VER

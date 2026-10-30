@@ -8,20 +8,20 @@
 // SIZE 0x4
 class cUnk00adb5d0 {
 public:
-    virtual void Slot00_adb5d0() = 0;
-    virtual void Slot01_adb5d0() = 0;
-    virtual void Slot02_adb5d0() = 0;
-    virtual void Slot03_adb5d0() = 0;
-    virtual void Slot04_adb5d0() = 0;
-    virtual void Slot05_adb5d0() = 0;
-    virtual void Slot06_adb5d0() = 0;
-    virtual void Slot07_adb5d0() = 0;
-    virtual void Slot08_adb5d0() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_ae1d24() = 0;
+    virtual bool Slot04_ae1d24() = 0;
+    virtual bool Slot05_adb5d0() = 0;
+    virtual void Slot06_adb5d0(uint32_t) = 0;
+    virtual uint32_t Slot07_adb5d0() = 0;
+    virtual uint32_t Slot08_adb5d0() = 0;
     virtual void Slot09_adb5d0() = 0;
-    virtual void Slot10_adb5d0() = 0;
-    virtual void Slot11_adb5d0() = 0;
-    virtual void Slot12_adb5d0() = 0;
-    virtual void Slot13_adb5d0() = 0;
+    virtual bool Slot10_adb5d0() = 0;
+    virtual void Slot11_adb5d0(uint32_t) = 0;
+    virtual uint32_t Slot12_adb5d0() = 0;
+    virtual uint32_t Slot13_adb5d0() = 0;
     virtual void Slot14_adb5d0() = 0;
 };
 #ifdef _MSC_VER

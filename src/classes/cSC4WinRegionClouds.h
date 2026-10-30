@@ -12,8 +12,8 @@ class cSC4WinRegionClouds : public cGZWin {
 public:
     virtual ~cSC4WinRegionClouds();
     virtual bool GZPaint();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknownd8[0x68];
 };
 #ifdef _MSC_VER

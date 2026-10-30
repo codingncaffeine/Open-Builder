@@ -45,13 +45,13 @@ bool cGZWinBMP::QueryInterface(unsigned int iid, void** ppv)
 }
 
 // FUNCTION: 0x009bc097
-bool cGZWinBMP::Slot05_adb6a8()
+bool cGZWinBMP::Slot04_ae1d24()
 {
     if (mpChild) {
         mpChild->Release();
         mpChild = 0;
     }
-    return cGZWin::Slot05_adb6a8();
+    return cGZWin::Slot04_ae1d24();
 }
 
 // FUNCTION: 0x009bc0bd
@@ -121,7 +121,7 @@ void cGZWinBMP::Slot11_adf63c(uint32_t a, uint32_t b)
 }
 
 // FUNCTION: 0x009bc52d
-bool cGZWinBMP::Slot04_adb6a8()
+bool cGZWinBMP::Slot03_ae1d24()
 {
     if (Fn0099bc31()) {
         return true;
@@ -133,7 +133,7 @@ bool cGZWinBMP::Slot04_adb6a8()
     r[2] = GetW();
     r[3] = h;
     Fn009bc447(r);
-    return cGZWin::Slot04_adb6a8();
+    return cGZWin::Slot03_ae1d24();
 }
 
 // FUNCTION: 0x009bc57e

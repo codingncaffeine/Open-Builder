@@ -1,0 +1,2 @@
+field 20 uint8_t mThreadRegistry[0x1c]
+field 3c void* mpErrorReporter

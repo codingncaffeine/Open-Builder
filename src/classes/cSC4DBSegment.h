@@ -19,7 +19,7 @@ struct OB_NOVTABLE cSC4DBSegment_4 : public cGZDBSegmentPackedFile {
 // SIZE 0x1dc
 class cSC4DBSegment : public cUnk00aa239c, public cSC4DBSegment_4 {
 public:
-    virtual ~cSC4DBSegment() {}
+    virtual ~cSC4DBSegment();
     virtual uint32_t Slot03_aa239c();
     virtual uint32_t Slot04_aa239c();
     virtual bool Slot05_aa239c(uint32_t, uint32_t);
@@ -47,6 +47,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4DBSegment[sizeof(cSC4DBSegment) == 0x1dc ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x005d2720
+// cSC4DBSegment::`scalar deleting dtor'
 
 // SYNTHETIC: 0x005d2600
 // cSC4DBSegment::Slot00_ad8fc8`adjustor{4}'

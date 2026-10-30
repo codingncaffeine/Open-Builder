@@ -14,7 +14,7 @@
 // SIZE 0x120
 class cSCResKeyTableEntryView : public cUnk00aace34, public cUnk00aaf8d0, public cUnk00aae630 {
 public:
-    virtual ~cSCResKeyTableEntryView() {}
+    virtual ~cSCResKeyTableEntryView();
     virtual void SetTableToView(uint32_t);
     virtual void SetResourceType(uint32_t);
     virtual void saveTable();
@@ -33,8 +33,8 @@ public:
     virtual void Slot08_aace34(uint32_t);
     virtual void Slot03_aaf8d0(uint32_t);
     virtual void Slot04_aaf8d0(uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     uint32_t fieldec;
     char unknownf0[0x4];
     uint32_t fieldf4;
@@ -43,6 +43,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSCResKeyTableEntryView[sizeof(cSCResKeyTableEntryView) == 0x120 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00684240
+// cSCResKeyTableEntryView::`scalar deleting dtor'
 
 // SYNTHETIC: 0x00683eb0
 // cSCResKeyTableEntryView::QueryInterface`adjustor{4}'

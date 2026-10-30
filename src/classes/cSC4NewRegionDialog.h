@@ -12,7 +12,7 @@
 // SIZE 0x1c
 class cSC4NewRegionDialog : public cUnk00a83524, public cUnk00ace624 {
 public:
-    virtual ~cSC4NewRegionDialog() {}
+    virtual ~cSC4NewRegionDialog();
     virtual uint32_t Display(uint32_t);
     virtual void GZOnAttach();
     virtual void GZOnDetach();
@@ -28,6 +28,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4NewRegionDialog[sizeof(cSC4NewRegionDialog) == 0x1c ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00777f20
+// cSC4NewRegionDialog::`scalar deleting dtor'
 
 // SYNTHETIC: 0x00777f10
 // cSC4NewRegionDialog::`vector deleting dtor'`adjustor{4}'

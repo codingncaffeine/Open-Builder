@@ -11,13 +11,16 @@
 // SIZE 0x2e8
 class cUnk00aa5b80 : public cUnk00add578 {
 public:
-    virtual ~cUnk00aa5b80() {}
+    virtual ~cUnk00aa5b80();
     virtual bool GZOnKeyDown(uint32_t, uint32_t);
     virtual bool GZOnMouseUpL(uint32_t, uint32_t, uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa5b80[sizeof(cUnk00aa5b80) == 0x2e8 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x005f94f0
+// cUnk00aa5b80::`scalar deleting dtor'
 
 // SYNTHETIC: 0x005f8fd0
 // cUnk00aa5b80::`vector deleting dtor'`adjustor{4}'

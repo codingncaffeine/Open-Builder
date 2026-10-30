@@ -8,27 +8,27 @@
 // SIZE 0x4
 class cUnk00adac70 {
 public:
-    virtual void Slot00_adac70() = 0;
-    virtual void Slot01_adac70() = 0;
-    virtual void Slot02_adac70() = 0;
-    virtual void Slot03_adac70() = 0;
-    virtual void Slot04_adac70() = 0;
-    virtual void Slot05_adac70() = 0;
-    virtual void Slot06_adac70() = 0;
-    virtual void Slot07_adac70() = 0;
-    virtual void Slot08_adac70() = 0;
-    virtual void Slot09_adac70() = 0;
-    virtual void Slot10_adac70() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual void Slot03_adac70(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot04_adac70(uint32_t) = 0;
+    virtual bool Slot05_adac70() = 0;
+    virtual bool Slot04_ae1d24() = 0;
+    virtual bool Slot07_adac70() = 0;
+    virtual bool Slot08_adac70() = 0;
+    virtual void Slot09_adac70(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot10_adac70(uint32_t) = 0;
     virtual void Slot11_adac70() = 0;
     virtual void Slot12_adac70() = 0;
-    virtual void Slot13_adac70() = 0;
+    virtual void Slot13_adac70(uint32_t) = 0;
     virtual void Slot14_adac70() = 0;
     virtual void Slot15_adac70() = 0;
-    virtual void Slot16_adac70() = 0;
-    virtual void Slot17_adac70() = 0;
-    virtual void Slot18_adac70() = 0;
-    virtual void Slot19_adac70() = 0;
-    virtual void Slot20_adac70() = 0;
+    virtual uint32_t Slot16_adac70() = 0;
+    virtual uint32_t Slot17_adac70() = 0;
+    virtual uint32_t Slot18_adac70() = 0;
+    virtual void Slot19_adac70(uint32_t) = 0;
+    virtual void* Slot20_adac70() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adac70[sizeof(cUnk00adac70) == 0x4 ? 1 : -1];

@@ -12,7 +12,7 @@
 // SIZE 0x38
 class cGZGimexFactory : public cUnk00ace4b0, public cGZPersistResourceFactory {
 public:
-    virtual ~cGZGimexFactory() {}
+    virtual ~cGZGimexFactory();
     virtual bool CreateInstance_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
     virtual bool Slot10_ad8c20(uint32_t, uint32_t);
@@ -41,6 +41,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cGZGimexFactory[sizeof(cGZGimexFactory) == 0x38 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x0090bceb
+// cGZGimexFactory::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0090bc9b
 // cGZGimexFactory::Slot00_ace4b0`adjustor{4}'

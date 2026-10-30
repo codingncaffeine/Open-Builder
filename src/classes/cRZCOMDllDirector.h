@@ -8,9 +8,9 @@
 
 // The subobject at +0x0 (vtable 0x00ace6f8): an interface or base the class map has no class for.
 struct OB_NOVTABLE cRZCOMDllDirector_0 {
-    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ace6f8() = 0;
-    virtual void Slot02_ace6f8() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual bool InitializeCOM(uint32_t, uint32_t) = 0;
     virtual bool OnStart(uint32_t) = 0;
     virtual void EnumClassObjects(uint32_t, uint32_t) = 0;
@@ -30,6 +30,9 @@ struct OB_NOVTABLE cRZCOMDllDirector_0 {
 class cRZCOMDllDirector : public cRZCOMDllDirector_0, public cUnk00ace69c {
 public:
     virtual ~cRZCOMDllDirector();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual bool Slot03_ace69c();
     virtual bool Slot04_ace69c();
     virtual bool Slot05_ace69c();
@@ -38,9 +41,6 @@ public:
     virtual bool Slot08_ace69c();
     virtual bool Slot09_ace69c();
     virtual bool Slot10_ace69c();
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ace6f8();
-    virtual void Slot02_ace6f8();
     virtual bool InitializeCOM(uint32_t, uint32_t);
     virtual bool OnStart(uint32_t);
     virtual void EnumClassObjects(uint32_t, uint32_t);

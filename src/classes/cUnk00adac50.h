@@ -7,13 +7,13 @@
 
 class cUnk00adac50 {
 public:
-    virtual void Slot00_adac50() = 0;
-    virtual void Slot01_adac50() = 0;
-    virtual void Slot02_adac50() = 0;
-    virtual void Slot03_adac50() = 0;
-    virtual void Slot04_adac50() = 0;
-    virtual void Slot05_adac50() = 0;
-    virtual void Slot06_adac50() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual uint32_t Slot03_adac50() = 0;
+    virtual bool Slot04_adac50(uint32_t, uint32_t) = 0;
+    virtual void Slot05_adac50(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot06_adac50(uint32_t, uint32_t) = 0;
 };
 
 #endif

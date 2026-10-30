@@ -8,27 +8,27 @@
 // SIZE 0x4
 class cUnk00acfde8 {
 public:
-    virtual void Slot00_acfde8() = 0;
-    virtual void Slot01_acfde8() = 0;
-    virtual void Slot02_acfde8() = 0;
-    virtual void Slot03_acfde8() = 0;
-    virtual void Slot04_acfde8() = 0;
-    virtual void Slot05_acfde8() = 0;
-    virtual void Slot06_acfde8() = 0;
-    virtual void Slot07_acfde8() = 0;
-    virtual void Slot08_acfde8() = 0;
-    virtual void Slot09_acfde8() = 0;
-    virtual void Slot10_acfde8() = 0;
-    virtual void Slot11_acfde8() = 0;
-    virtual void Slot12_acfde8() = 0;
-    virtual void Slot13_acfde8() = 0;
-    virtual void Slot14_acfde8() = 0;
-    virtual void Slot15_acfde8() = 0;
-    virtual void Slot16_acfde8() = 0;
-    virtual void Slot17_acfde8() = 0;
-    virtual void Slot18_acfde8() = 0;
-    virtual void Slot19_acfde8() = 0;
-    virtual void Slot20_acfde8() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_ae1d24() = 0;
+    virtual bool Slot04_ae1d24() = 0;
+    virtual uint32_t Slot05_acfde8() = 0;
+    virtual uint32_t Slot06_acfde8(uint32_t) = 0;
+    virtual uint32_t Slot07_acfde8(uint32_t, uint32_t) = 0;
+    virtual bool Slot08_acfde8(uint32_t) = 0;
+    virtual bool Slot09_acfde8(uint32_t) = 0;
+    virtual bool Slot10_acfde8(uint32_t) = 0;
+    virtual bool Slot11_acfde8(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot12_acfde8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot13_acfde8(uint32_t) = 0;
+    virtual bool Slot14_acfde8(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot15_acfde8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot16_acfde8(uint32_t, uint32_t) = 0;
+    virtual bool Slot17_acfde8(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot18_acfde8(uint32_t, uint32_t) = 0;
+    virtual bool Slot19_acfde8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot20_acfde8(uint32_t, uint32_t, uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00acfde8[sizeof(cUnk00acfde8) == 0x4 ? 1 : -1];

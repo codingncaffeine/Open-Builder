@@ -1,0 +1,81 @@
+field dc cRZString mText
+field f0 cRZString mStrF0
+field 104 char mcPasswordChar
+field 130 cRZString mStr130
+field 144 cRZString mStr144
+field 108 uint32_t* mpLineBegin
+field 10c uint32_t* mpLineEnd
+field 114 uint32_t mnInsertionLine
+field 118 uint32_t mnInsertionColumn
+field 11c uint32_t mnInsertionIndex
+field 120 uint32_t mnSelectionStart
+field 124 uint32_t mnSelectionEnd
+field 128 uint32_t mnTextFlags
+field 1a4 uint32_t mnFontStyle
+field 1a8 uint32_t mnColors[6]
+field 1c4 uint32_t mnHighlightFillColor
+method 0x009be945 void UpdateScrollBarsAndWindowPosition()
+field 17c void* mpBackgroundImage
+field 180 bool mbBackgroundTile
+field 27c uint32_t mnSoundIDs[4]
+field 1c0 uint32_t mnCaretColor
+field 16c int32_t mnFirstVisibleLine
+field 1a0 void* mpFont
+field 1dc void* mpScrollBarImageV
+field 1e0 void* mpScrollBarImageH
+field 1e4 int32_t mnScrollBarRectV[4]
+field 1f4 int32_t mnScrollBarRectH[4]
+field 208 uint8_t mTimer[0x18]
+field 220 uint32_t mn220
+field 224 uint32_t mnCaretPeriod
+field 228 bool mbCaretVisible
+field 22c uint8_t mCaretTimer[0x28]
+field 254 uint8_t mScrollTimer[0x28]
+field 28c void* mp28C
+method 0x0099bdf3 void* Fn0099bdf3()
+method 0x009bcc93 void StopScrollTimer()
+method 0x009bcc74 void Fn009bcc74()
+method 0x009be9ed void Fn009be9ed()
+method 0x009bc60e void ToggleCaretVisibility()
+method 0x009bc635 void Fn009bc635()
+method 0x009be302 void PutInsertionPositionInView()
+method 0x009be7af bool TestForPossibleScrollBarAdditionOrRemoval()
+method 0x009bdcd1 void Fn009bdcd1(bool)
+method 0x009bddc2 uint32_t Fn009bddc2()
+field 158 int32_t mnTextAreaX
+field 15c int32_t mnTextAreaY
+field 160 int32_t mnTextAreaW
+field 164 int32_t mnTextAreaH
+field 168 int32_t mnVisibleLineCount
+field 174 int32_t mnHScrollChars
+field 178 int32_t mnHScrollPixels
+method 0x009bc65c bool StartCaretTimer(bool)
+method 0x009bd0af void Fn009bd0af()
+field 1d4 void* mpVScrollBar
+method 0x009bf98b void RecalculateAll()
+method 0x009bcbc5 uint32_t CalculateVisibleWidth()
+method 0x009bf2e5 void Fn009bf2e5(uint32_t, uint32_t)
+field 12c int32_t mnCodePage
+field 1cc uint32_t mnLineHeight
+field 1d8 void* mpHScrollBar
+method 0x009bccce void DoCursorScroll()
+method 0x009bcdba void RemoveScrollBar(bool, bool)
+method 0x009bdb00 uint32_t GetPixelWidthOfLongestLine(bool)
+method 0x009bda65 void Fn009bda65()
+method 0x009be477 bool AddScrollBar(bool, bool)
+field 170 int32_t mn170
+method 0x009be6ce bool Fn009be6ce()
+field 184 uint32_t mnMaxUndoLevels
+field 188 uint8_t mUndoVec[12]
+field 194 uint8_t mRedoVec[12]
+method 0x009bf335 uint32_t Fn009bf335(char*, void*)
+method 0x009bf578 uint32_t Fn009bf578(void*)
+method 0x009be614 uint32_t FixBadCharacterComposition(void*, void*, uint32_t)
+method 0x009c068d bool AddUndoRecordForTextInsertion(void*, uint32_t, char*, uint32_t, char*, uint32_t)
+method 0x0099bf14 void* Fn0099bf14()
+method 0x009c07e1 bool InsertTextHighLevel(void*)
+field 1c8 uint32_t mn1C8
+field 1d0 int32_t mn1D0
+method 0x009bf3e0 void Fn009bf3e0(uint32_t)
+method 0x009bdb83 void GetHorizontalLineMetrics(uint32_t, uint32_t, void*, void*, void*)
+method 0x009c075f bool AddUndoRecordForTextDeletion(void*, uint32_t, char*, uint32_t)

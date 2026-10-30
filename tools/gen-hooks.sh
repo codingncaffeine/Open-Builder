@@ -154,8 +154,12 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
     /\/\/ GLOBAL: 0x[0-9a-fA-F]+/ {
       match($0, /0x[0-9a-fA-F]+/); address = substr($0, RSTART, RLENGTH); global = 1; next
     }
+    # a named namespace opened at column 0 qualifies what is declared inside it, until its brace closes (braces
+    # counted per line; the closing line itself declares nothing)
+    { if (nsname != "" && depth <= nsdepth) nsname = ""; depth += gsub(/\{/, "{") - gsub(/\}/, "}") }
+    /^namespace[ \t]+[A-Za-z_][A-Za-z0-9_]*[ \t]*\{/ { ns = $0; sub(/^namespace[ \t]+/, "", ns); sub(/[ \t{].*/, "", ns); nsname = ns; nsdepth = depth - 1 }
     # the class a member declaration (an indented one) belongs to, up to its closing "};" (not a forward declaration)
-    /^(class|struct)[ \t]/ && !/;[ \t]*$/ { c = $0; sub(/^(class|struct)[ \t]+(OB_NOVTABLE[ \t]+)?/, "", c); sub(/[ \t:{;].*/, "", c); cls = c }
+    /^(class|struct)[ \t]/ && !/;[ \t]*$/ { c = $0; sub(/^(class|struct)[ \t]+(OB_NOVTABLE[ \t]+)?/, "", c); sub(/[ \t:{;].*/, "", c); cls = (nsname != "" ? nsname "::" : "") c }
     /^};/ { cls = "" }
     global {
       global = 0; line = $0; sub(/\/\/.*/, "", line)
@@ -185,6 +189,7 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       isconst = (substr(text, rparen + 1) ~ /^[ \t]*const/)
       n = split(trim(head), w, " "); qualified = w[n]; sub(/^[*&]+/, "", qualified)
       if (qualified !~ /::/ && text ~ /^ [ \t]/ && cls != "") qualified = cls "::" qualified
+      else if (qualified !~ /::/ && nsname != "") qualified = nsname "::" qualified
       k = key(qualified, params, isconst)
       if (!(k in usym) && unamed[qualified] == 1) usym[k] = ubyname[qualified]
       if (k in usym) { n = split(usym[k], w, " "); for (i = 1; i <= n; i++) print address "\t" w[i] >> stubsOut }  # not called: no stub
@@ -199,6 +204,7 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       head = substr(text, 1, open - 1); params = substr(text, open + 1, rparen - open - 1)
       isconst = (substr(text, rparen + 1) ~ /^[ \t]*const/)
       n = split(trim(head), w, " "); qualified = w[n]; sub(/^[*&]+/, "", qualified)
+      if (qualified !~ /::/ && nsname != "") qualified = nsname "::" qualified
       k = key(qualified, params, isconst)
       if (!(k in sym) && named[qualified] == 1) sym[k] = byname[qualified]
       if (!(k in sym)) { printf "gen-hooks: %s: no compiled function for %s (%s)\n", src, k, address > "/dev/stderr"; bad = 1; pending = 0; next }

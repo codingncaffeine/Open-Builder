@@ -23,8 +23,8 @@ public:
     virtual uint32_t Slot03_ab889c();
     virtual void Slot04_ab889c(uint32_t);
     virtual void Slot05_ab889c(uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowne0[0x50];
     uint32_t field130;
 };

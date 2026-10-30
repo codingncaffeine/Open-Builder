@@ -8,25 +8,25 @@
 // SIZE 0x4
 class cUnk00abd800 {
 public:
-    virtual void Slot00_abd800() = 0;
-    virtual void Slot01_abd800() = 0;
-    virtual void Slot02_abd800() = 0;
-    virtual void Slot03_abd800() = 0;
-    virtual void Slot04_abd800() = 0;
-    virtual void Slot05_abd800() = 0;
-    virtual void Slot06_abd800() = 0;
-    virtual void Slot07_abd800() = 0;
-    virtual void Slot08_abd800() = 0;
-    virtual void Slot09_abd800() = 0;
-    virtual void Slot10_abd800() = 0;
-    virtual void Slot11_abd800() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_abd800(uint32_t) = 0;
+    virtual bool Slot04_abd800(uint32_t, uint32_t) = 0;
+    virtual void Slot05_abd800(uint32_t, uint32_t) = 0;
+    virtual bool Slot06_abd800(uint32_t, uint32_t) = 0;
+    virtual void Slot07_abd800(uint32_t, uint32_t) = 0;
+    virtual void Slot08_abd800(uint32_t, uint32_t) = 0;
+    virtual void Slot09_abd800(uint32_t) = 0;
+    virtual void Slot10_abd800(uint32_t) = 0;
+    virtual uint32_t Slot11_abd800() = 0;
     virtual void Slot12_abd800() = 0;
-    virtual void Slot13_abd800() = 0;
-    virtual void Slot14_abd800() = 0;
+    virtual uint32_t Slot13_abd800() = 0;
+    virtual void Slot14_abd800(uint32_t) = 0;
     virtual void Slot15_abd800() = 0;
     virtual void Slot16_abd800() = 0;
-    virtual void Slot17_abd800() = 0;
-    virtual void Slot18_abd800() = 0;
+    virtual void Slot17_abd800(uint32_t) = 0;
+    virtual void Slot18_abd800(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00abd800[sizeof(cUnk00abd800) == 0x4 ? 1 : -1];

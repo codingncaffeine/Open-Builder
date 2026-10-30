@@ -12,7 +12,7 @@
 // SIZE 0xfc
 class cSC4TutorialTask : public cUnk00a8623c, public cUnk0090da1e {
 public:
-    virtual ~cSC4TutorialTask() {}
+    virtual ~cSC4TutorialTask();
     virtual uint32_t GetGUID();
     virtual bool HasButtonGUID(uint32_t);
     virtual void* GetInstructionMsg();
@@ -59,6 +59,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4TutorialTask[sizeof(cSC4TutorialTask) == 0xfc ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00441340
+// cSC4TutorialTask::`scalar deleting dtor'
 
 // SYNTHETIC: 0x004410b0
 // cSC4TutorialTask::QueryInterface`adjustor{4}'

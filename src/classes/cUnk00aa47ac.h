@@ -12,11 +12,11 @@ public:
     virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_aa54b4() = 0;
-    virtual void Slot04_aa47ac() = 0;
-    virtual void Slot05_aa47ac() = 0;
-    virtual void Slot06_aa47ac() = 0;
-    virtual void Slot07_aa47ac() = 0;
-    virtual void Slot08_aa47ac() = 0;
+    virtual uint32_t Slot04_aa47ac() = 0;
+    virtual void Slot05_aa47ac(uint32_t) = 0;
+    virtual void Slot06_aa47ac(uint32_t) = 0;
+    virtual void Slot07_aa47ac(uint32_t) = 0;
+    virtual bool Slot08_aa47ac(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa47ac[sizeof(cUnk00aa47ac) == 0x4 ? 1 : -1];

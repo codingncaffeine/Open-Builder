@@ -12,7 +12,7 @@
 // SIZE 0x220
 class cSC4ParticlesEffect : public cUnk00a9ebe4, public cUnk00aa0f48 {
 public:
-    virtual ~cSC4ParticlesEffect() {}
+    virtual ~cSC4ParticlesEffect();
     virtual bool Update(uint32_t, uint32_t);
     virtual void SetDescription(uint32_t);
     virtual void SetModel(uint32_t);
@@ -45,6 +45,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4ParticlesEffect[sizeof(cSC4ParticlesEffect) == 0x220 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x005b2fe0
+// cSC4ParticlesEffect::`scalar deleting dtor'
 
 // SYNTHETIC: 0x005a8fb0
 // cSC4ParticlesEffect::AddRef`adjustor{4}'

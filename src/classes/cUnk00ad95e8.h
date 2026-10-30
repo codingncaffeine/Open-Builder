@@ -12,11 +12,13 @@
 // VTABLE: 0x00ad94e8 cUnk00ad1878
 class cUnk00ad95e8 : public cUnk00ad7cf0 {
 public:
-    virtual ~cUnk00ad95e8() {}
+    virtual ~cUnk00ad95e8();
     virtual bool Slot62_ad95e8(uint32_t, uint32_t);
     virtual bool Slot63_ad95e8(uint32_t);
     virtual bool Slot64_ad95e8(uint32_t);
+    virtual bool Slot53_ad8d88(uint32_t);
     virtual uint32_t Slot54_ad8d88();
+    virtual bool Slot55_ad8d88(uint32_t);
     virtual bool Slot56_ad8d88(uint32_t);
     virtual uint32_t Slot03_ad9030();
     virtual bool Slot04_ad9030(uint32_t, uint32_t);
@@ -25,6 +27,9 @@ public:
     uint32_t field44;
     char unknown48[0x4];
 };
+
+// SYNTHETIC: 0x0097d61a
+// cUnk00ad95e8::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0097cf9d
 // cUnk00ad95e8::Slot04_ad9030`adjustor{4}'
@@ -36,7 +41,7 @@ public:
 // cUnk00ad95e8::Slot03_ad9030`adjustor{4}'
 
 // SYNTHETIC: 0x0096e7c3
-// cUnk00ad95e8::Slot56_ad8d88`adjustor{4}'
+// cUnk00ad95e8::Slot53_ad8d88`adjustor{4}'
 
 // SYNTHETIC: 0x0097cfad
 // cUnk00ad95e8::Slot54_ad8d88`adjustor{4}'

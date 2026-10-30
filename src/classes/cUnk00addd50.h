@@ -12,7 +12,7 @@
 // SIZE 0x1b4
 class cUnk00addd50 : public cUnk00adda20, public cGZWin {
 public:
-    virtual ~cUnk00addd50() {}
+    virtual ~cUnk00addd50();
     virtual bool Slot51_addd50();
     virtual bool Slot52_addd50();
     virtual bool QueryInterface(unsigned int, void **);
@@ -33,8 +33,6 @@ public:
     virtual bool GZOnMouseEnter(uint32_t);
     virtual bool GZOnMouseExit(uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual uint32_t Slot03_adda20();
     virtual uint32_t Slot04_adda20(uint32_t);
     virtual void Slot05_adda20();
@@ -83,6 +81,8 @@ public:
     virtual uint32_t Slot48_adda20();
     virtual void Slot49_adda20(uint32_t);
     virtual void* Slot50_adda20();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowndc[0x58];
     uint32_t field134;
     char unknown138[0x3c];
@@ -92,6 +92,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00addd50[sizeof(cUnk00addd50) == 0x1b4 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x009b1e2e
+// cUnk00addd50::`scalar deleting dtor'
 
 // SYNTHETIC: 0x009b1d78
 // cUnk00addd50::QueryInterface`adjustor{4}'

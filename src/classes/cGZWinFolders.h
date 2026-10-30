@@ -12,14 +12,14 @@
 // SIZE 0xfc
 class cGZWinFolders : public cUnk00ae3ab8, public cGZWin {
 public:
-    virtual ~cGZWinFolders() {}
+    virtual ~cGZWinFolders();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual bool GZOnMouseDownL(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     virtual uint32_t Slot03_ae3ab8();
     virtual bool Slot04_ae3ab8(uint32_t, uint32_t);
     virtual bool Slot05_ae3ab8(uint32_t);
@@ -37,6 +37,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinFolders[sizeof(cGZWinFolders) == 0xfc ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x009d7bb9
+// cGZWinFolders::`scalar deleting dtor'
 
 // SYNTHETIC: 0x009d7848
 // cGZWinFolders::QueryInterface`adjustor{4}'

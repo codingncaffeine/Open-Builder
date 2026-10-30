@@ -14,7 +14,7 @@ public:
     virtual ~cWinBMPViewGVExtra() {}
     virtual bool DoMessage(uint32_t);
     virtual bool GZOnMouseDownL(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
+    virtual bool Slot03_ae1d24();
     char unknown140[0x40];
 };
 #ifdef _MSC_VER

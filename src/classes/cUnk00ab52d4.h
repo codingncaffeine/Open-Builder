@@ -9,9 +9,9 @@
 // SIZE 0x4
 class cUnk00ab52d4 {
 public:
-    virtual bool Slot00_ab52d4(uint32_t, uint32_t);
-    virtual void Slot01_ab52d4();
-    virtual void Slot02_ab52d4();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual bool Slot03_ab52d4(uint32_t);
 };
 #ifdef _MSC_VER

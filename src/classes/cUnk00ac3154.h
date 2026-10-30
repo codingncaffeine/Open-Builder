@@ -7,21 +7,21 @@
 
 class cUnk00ac3154 {
 public:
-    virtual void Slot00_ac3154() = 0;
-    virtual void Slot01_ac3154() = 0;
-    virtual void Slot02_ac3154() = 0;
-    virtual void Slot03_ac3154() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual void* Slot03_ac3154() = 0;
     virtual void Slot04_ac3154() = 0;
-    virtual void Slot05_ac3154() = 0;
-    virtual void Slot06_ac3154() = 0;
-    virtual void Slot07_ac3154() = 0;
-    virtual void Slot08_ac3154() = 0;
-    virtual void Slot09_ac3154() = 0;
+    virtual uint32_t Slot05_ac3154() = 0;
+    virtual bool Slot06_ac3154() = 0;
+    virtual bool Slot07_ac3154() = 0;
+    virtual bool Slot08_ac3154() = 0;
+    virtual bool Slot09_ac3154() = 0;
     virtual void Slot10_ac3154() = 0;
     virtual void Slot11_ac3154() = 0;
     virtual void Slot12_ac3154() = 0;
     virtual void Slot13_ac3154() = 0;
-    virtual void Slot14_ac3154() = 0;
+    virtual bool Slot14_ac3154() = 0;
 };
 
 #endif

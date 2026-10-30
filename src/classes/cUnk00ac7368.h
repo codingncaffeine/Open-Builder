@@ -8,31 +8,31 @@
 // SIZE 0x4
 class cUnk00ac7368 {
 public:
-    virtual void Slot00_ac7368() = 0;
-    virtual void Slot01_ac7368() = 0;
-    virtual void Slot02_ac7368() = 0;
-    virtual void Slot03_ac7368() = 0;
-    virtual void Slot04_ac7368() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_ae1d24() = 0;
+    virtual bool Slot04_ae1d24() = 0;
     virtual void Slot05_ac7368() = 0;
-    virtual void Slot06_ac7368() = 0;
-    virtual void Slot07_ac7368() = 0;
-    virtual void Slot08_ac7368() = 0;
-    virtual void Slot09_ac7368() = 0;
-    virtual void Slot10_ac7368() = 0;
-    virtual void Slot11_ac7368() = 0;
-    virtual void Slot12_ac7368() = 0;
-    virtual void Slot13_ac7368() = 0;
-    virtual void Slot14_ac7368() = 0;
-    virtual void Slot15_ac7368() = 0;
-    virtual void Slot16_ac7368() = 0;
-    virtual void Slot17_ac7368() = 0;
-    virtual void Slot18_ac7368() = 0;
-    virtual void Slot19_ac7368() = 0;
-    virtual void Slot20_ac7368() = 0;
-    virtual void Slot21_ac7368() = 0;
-    virtual void Slot22_ac7368() = 0;
-    virtual void Slot23_ac7368() = 0;
-    virtual void Slot24_ac7368() = 0;
+    virtual uint32_t Slot06_ac7368(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot07_ac7368(uint32_t, uint32_t) = 0;
+    virtual bool Slot08_ac7368(uint32_t) = 0;
+    virtual uint32_t Slot09_ac7368(uint32_t) = 0;
+    virtual uint32_t Slot10_ac7368(uint32_t) = 0;
+    virtual void Slot11_ac7368(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot12_ac7368(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot13_ac7368(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot14_ac7368(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot15_ac7368(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot16_ac7368(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot17_ac7368(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot18_ac7368(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot19_ac7368(uint32_t) = 0;
+    virtual bool Slot20_ac7368(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot21_ac7368() = 0;
+    virtual bool Slot22_ac7368(uint32_t) = 0;
+    virtual bool Slot23_ac7368(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot24_ac7368() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ac7368[sizeof(cUnk00ac7368) == 0x4 ? 1 : -1];

@@ -25,8 +25,6 @@ public:
     virtual void GetAutomaticGraphAreaRect(uint32_t);
     virtual void Slot174_ade188(uint32_t, uint32_t);
     virtual void Slot175_ade188(uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual void Slot03_addef0(uint32_t, uint32_t);
     virtual void Slot04_addef0(uint32_t);
     virtual void Slot05_addef0(uint32_t);
@@ -50,6 +48,8 @@ public:
     virtual void Slot30_addef0(uint32_t, uint32_t, uint32_t);
     virtual void Slot31_addef0();
     virtual uint32_t Slot32_addef0();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknown230[0x24];
 };
 #ifdef _MSC_VER

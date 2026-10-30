@@ -11,9 +11,9 @@ public:
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual void Slot03_ab16bc() = 0;
-    virtual void Slot04_ab16bc() = 0;
-    virtual void Slot05_ab16bc() = 0;
+    virtual void Slot03_ab16bc(uint32_t) = 0;
+    virtual void Slot04_ab16bc(uint32_t) = 0;
+    virtual void* Slot05_ab16bc() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab16bc[sizeof(cUnk00ab16bc) == 0x4 ? 1 : -1];

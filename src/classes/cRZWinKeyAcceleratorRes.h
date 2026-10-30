@@ -12,7 +12,7 @@
 // SIZE 0x28
 class cRZWinKeyAcceleratorRes : public cUnk00ada5b0, public cGZPersistResource {
 public:
-    virtual ~cRZWinKeyAcceleratorRes() {}
+    virtual ~cRZWinKeyAcceleratorRes();
     virtual void SerialRead(uint32_t);
     virtual bool SerialWrite(uint32_t);
     virtual void DebugInstanceTag();
@@ -27,6 +27,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cRZWinKeyAcceleratorRes[sizeof(cRZWinKeyAcceleratorRes) == 0x28 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00984452
+// cRZWinKeyAcceleratorRes::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0098437d
 // cRZWinKeyAcceleratorRes::QueryInterface`adjustor{4}'

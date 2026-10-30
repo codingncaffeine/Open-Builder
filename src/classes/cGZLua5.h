@@ -124,8 +124,8 @@ public:
     virtual void Slot12_ac8d7c(uint32_t);
     virtual void Slot13_ac8d7c(uint32_t, uint32_t);
     virtual uint32_t Slot14_ac8d7c();
-    char unknown20[0x1c];
-    uint32_t field3c;
+    uint8_t mThreadRegistry[0x1c];
+    void* mpErrorReporter;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZLua5[sizeof(cGZLua5) == 0x40 ? 1 : -1];

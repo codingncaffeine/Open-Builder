@@ -23,8 +23,8 @@ public:
     virtual bool GZPaint();
     virtual bool IsPointInWindowWindowCoordinates(uint32_t, uint32_t);
     virtual bool IsPointInWindowParentCoordinates(uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     virtual void* Slot03_ae4368();
     virtual bool Slot04_ae4368(uint32_t, uint32_t, uint32_t);
     virtual bool Slot05_ae4368(uint32_t);

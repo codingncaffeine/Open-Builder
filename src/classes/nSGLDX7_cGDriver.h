@@ -18,7 +18,7 @@
 // SIZE 0x2e0
 class nSGLDX7_cGDriver : public cUnk00ac34cc, public cUnk00ac34f8, public cUnk00ac3508, public cIGZGDriver, public cUnk00ace624 {
 public:
-    virtual ~nSGLDX7_cGDriver() {}
+    virtual ~nSGLDX7_cGDriver();
     virtual uint32_t FinalRelease();
     virtual bool DeleteAllBufferRegions();
     virtual uint32_t AddRef();
@@ -127,6 +127,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_nSGLDX7_cGDriver[sizeof(nSGLDX7_cGDriver) == 0x2e0 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00886730
+// nSGLDX7_cGDriver::`scalar deleting dtor'
 
 // SYNTHETIC: 0x00886420
 // nSGLDX7_cGDriver::QueryInterface`adjustor{4}'

@@ -14,9 +14,9 @@
 
 // The subobject at +0x0 (vtable 0x00ad3e48): an interface or base the class map has no class for.
 struct OB_NOVTABLE cHitTrackPlayer_0 {
-    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ad4cf4() = 0;
-    virtual void Slot02_ad4cf4() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual void* Slot03_ad3e48() = 0;
     virtual uint32_t AsIGZSnd3D() = 0;
     virtual uint32_t AsIGZSndMultipleSources() = 0;
@@ -62,6 +62,9 @@ struct OB_NOVTABLE cHitTrackPlayer_0 {
 class cHitTrackPlayer : public cHitTrackPlayer_0, public cUnk00ad2bc8, public cUnk00ac2d78, public cUnk00ac2b18, public cUnk00ad2bec, public cUnk00a943c0, public cUnk00ad2bfc, public cUnk00ac2bf0 {
 public:
     virtual ~cHitTrackPlayer();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual bool Slot03_ac2b18();
     virtual bool Slot04_ac2b18();
     virtual bool Slot05_ac2b18(uint32_t, uint32_t, uint32_t, uint32_t);
@@ -154,9 +157,6 @@ public:
     virtual bool HandleNotifySetPropertyValue(uint32_t);
     virtual void Slot33_ad3e48();
     virtual uint32_t GetRefCount();
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad4cf4();
-    virtual void Slot02_ad4cf4();
     char unknown20[0x1c];
     uint32_t field3c;
     char unknown40[0x84];
@@ -174,19 +174,19 @@ typedef char ob_size_cHitTrackPlayer[sizeof(cHitTrackPlayer) == 0x104 ? 1 : -1];
 // cHitTrackPlayer::QueryInterface`adjustor{4}'
 
 // SYNTHETIC: 0x0093e552
-// cHitTrackPlayer::Slot01_ad4cf4`adjustor{4}'
+// cHitTrackPlayer::AddRef`adjustor{4}'
 
 // SYNTHETIC: 0x0093e55a
-// cHitTrackPlayer::Slot02_ad4cf4`adjustor{4}'
+// cHitTrackPlayer::Release`adjustor{4}'
 
 // SYNTHETIC: 0x0093e562
 // cHitTrackPlayer::QueryInterface`adjustor{8}'
 
 // SYNTHETIC: 0x0093e56a
-// cHitTrackPlayer::Slot01_ad4cf4`adjustor{8}'
+// cHitTrackPlayer::AddRef`adjustor{8}'
 
 // SYNTHETIC: 0x0093e572
-// cHitTrackPlayer::Slot02_ad4cf4`adjustor{8}'
+// cHitTrackPlayer::Release`adjustor{8}'
 
 // SYNTHETIC: 0x0093e57a
 // cHitTrackPlayer::Slot03_ad3e48`adjustor{8}'
@@ -195,28 +195,28 @@ typedef char ob_size_cHitTrackPlayer[sizeof(cHitTrackPlayer) == 0x104 ? 1 : -1];
 // cHitTrackPlayer::QueryInterface`adjustor{12}'
 
 // SYNTHETIC: 0x0093e58a
-// cHitTrackPlayer::Slot01_ad4cf4`adjustor{12}'
+// cHitTrackPlayer::AddRef`adjustor{12}'
 
 // SYNTHETIC: 0x0093e592
-// cHitTrackPlayer::Slot02_ad4cf4`adjustor{12}'
+// cHitTrackPlayer::Release`adjustor{12}'
 
 // SYNTHETIC: 0x0093e59a
 // cHitTrackPlayer::QueryInterface`adjustor{16}'
 
 // SYNTHETIC: 0x0093e5a2
-// cHitTrackPlayer::Slot01_ad4cf4`adjustor{16}'
+// cHitTrackPlayer::AddRef`adjustor{16}'
 
 // SYNTHETIC: 0x0093e5aa
-// cHitTrackPlayer::Slot02_ad4cf4`adjustor{16}'
+// cHitTrackPlayer::Release`adjustor{16}'
 
 // SYNTHETIC: 0x0093e5b2
 // cHitTrackPlayer::QueryInterface`adjustor{20}'
 
 // SYNTHETIC: 0x0093e5ba
-// cHitTrackPlayer::Slot01_ad4cf4`adjustor{20}'
+// cHitTrackPlayer::AddRef`adjustor{20}'
 
 // SYNTHETIC: 0x0093e5c2
-// cHitTrackPlayer::Slot02_ad4cf4`adjustor{20}'
+// cHitTrackPlayer::Release`adjustor{20}'
 
 // SYNTHETIC: 0x0093e5ca
 // cHitTrackPlayer::Slot13_ad3e48`adjustor{20}'
@@ -225,18 +225,18 @@ typedef char ob_size_cHitTrackPlayer[sizeof(cHitTrackPlayer) == 0x104 ? 1 : -1];
 // cHitTrackPlayer::QueryInterface`adjustor{24}'
 
 // SYNTHETIC: 0x0093e5da
-// cHitTrackPlayer::Slot01_ad4cf4`adjustor{24}'
+// cHitTrackPlayer::AddRef`adjustor{24}'
 
 // SYNTHETIC: 0x0093e5e2
-// cHitTrackPlayer::Slot02_ad4cf4`adjustor{24}'
+// cHitTrackPlayer::Release`adjustor{24}'
 
 // SYNTHETIC: 0x0093e5ea
 // cHitTrackPlayer::QueryInterface`adjustor{28}'
 
 // SYNTHETIC: 0x0093e5f2
-// cHitTrackPlayer::Slot01_ad4cf4`adjustor{28}'
+// cHitTrackPlayer::AddRef`adjustor{28}'
 
 // SYNTHETIC: 0x0093e5fa
-// cHitTrackPlayer::Slot02_ad4cf4`adjustor{28}'
+// cHitTrackPlayer::Release`adjustor{28}'
 
 #endif

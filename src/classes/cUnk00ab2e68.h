@@ -8,14 +8,14 @@
 // SIZE 0x4
 class cUnk00ab2e68 {
 public:
-    virtual void Slot00_ab2e68() = 0;
-    virtual void Slot01_ab2e68() = 0;
-    virtual void Slot02_ab2e68() = 0;
-    virtual void Slot03_ab2e68() = 0;
-    virtual void Slot04_ab2e68() = 0;
-    virtual void Slot05_ab2e68() = 0;
-    virtual void Slot06_ab2e68() = 0;
-    virtual void Slot07_ab2e68() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_ae1d24() = 0;
+    virtual bool Slot04_ae1d24() = 0;
+    virtual void Slot05_ab2e68(uint32_t) = 0;
+    virtual void Slot06_ab2e68(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot07_ab2e68() = 0;
     virtual void Slot08_ab2e68() = 0;
     virtual void Slot09_ab2e68() = 0;
     virtual void Slot10_ab2e68() = 0;
@@ -23,25 +23,25 @@ public:
     virtual void Slot12_ab2e68() = 0;
     virtual void Slot13_ab2e68() = 0;
     virtual void Slot14_ab2e68() = 0;
-    virtual void Slot15_ab2e68() = 0;
-    virtual void Slot16_ab2e68() = 0;
-    virtual void Slot17_ab2e68() = 0;
-    virtual void Slot18_ab2e68() = 0;
-    virtual void Slot19_ab2e68() = 0;
-    virtual void Slot20_ab2e68() = 0;
+    virtual bool Slot15_ab2e68() = 0;
+    virtual bool Slot16_ab2e68() = 0;
+    virtual bool Slot17_ab2e68() = 0;
+    virtual uint32_t Slot18_ab2e68() = 0;
+    virtual bool Slot19_ab2e68(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot20_ab2e68(uint32_t) = 0;
     virtual void Slot21_ab2e68() = 0;
-    virtual void Slot22_ab2e68() = 0;
-    virtual void Slot23_ab2e68() = 0;
+    virtual bool Slot22_ab2e68(uint32_t) = 0;
+    virtual bool Slot23_ab2e68() = 0;
     virtual void Slot24_ab2e68() = 0;
-    virtual void Slot25_ab2e68() = 0;
+    virtual bool Slot25_ab2e68(uint32_t) = 0;
     virtual void Slot26_ab2e68() = 0;
-    virtual void Slot27_ab2e68() = 0;
-    virtual void Slot28_ab2e68() = 0;
-    virtual void Slot29_ab2e68() = 0;
-    virtual void Slot30_ab2e68() = 0;
-    virtual void Slot31_ab2e68() = 0;
-    virtual void Slot32_ab2e68() = 0;
-    virtual void Slot33_ab2e68() = 0;
+    virtual uint32_t Slot27_ab2e68() = 0;
+    virtual bool Slot28_ab2e68(uint32_t) = 0;
+    virtual uint32_t Slot29_ab2e68() = 0;
+    virtual void Slot30_ab2e68(uint32_t) = 0;
+    virtual void Slot31_ab2e68(uint32_t) = 0;
+    virtual float Slot32_ab2e68() = 0;
+    virtual void Slot33_ab2e68(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab2e68[sizeof(cUnk00ab2e68) == 0x4 ? 1 : -1];

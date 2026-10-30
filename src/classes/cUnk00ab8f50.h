@@ -12,8 +12,8 @@ class cUnk00ab8f50 : public cGZWin {
 public:
     virtual ~cUnk00ab8f50();
     virtual bool GZPaint();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknownd8[0x4];
 };
 #ifdef _MSC_VER

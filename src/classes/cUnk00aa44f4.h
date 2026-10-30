@@ -12,9 +12,9 @@ public:
     virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
     virtual void Slot03_aa54b4() = 0;
-    virtual void Slot04_aa44f4() = 0;
-    virtual void Slot05_aa44f4() = 0;
-    virtual void Slot06_aa44f4() = 0;
+    virtual uint32_t Slot04_aa44f4() = 0;
+    virtual void Slot05_aa44f4(uint32_t) = 0;
+    virtual void Slot06_aa44f4(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aa44f4[sizeof(cUnk00aa44f4) == 0x4 ? 1 : -1];

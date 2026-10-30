@@ -12,8 +12,8 @@
 // SIZE 0x2e8
 class cUnk00add578 : public cUnk00add348, public cGZWin {
 public:
-    virtual ~cUnk00add578() {}
-    virtual bool Slot140_add578(uint32_t);
+    virtual ~cUnk00add578();
+    virtual bool Slot140_add578(void*);
     virtual bool Slot141_add578(uint32_t);
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
@@ -165,25 +165,157 @@ public:
     virtual bool Slot137_add348(uint32_t, uint32_t);
     virtual bool Slot138_add348(uint32_t, uint32_t);
     virtual bool Slot139_add348();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual void Slot08_ae1a28(uint32_t);
-    uint32_t fielddc;
-    char unknowne0[0x60];
-    uint32_t field140;
-    uint32_t field144;
-    uint32_t field148;
-    char unknown14c[0x4c];
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
+    // STUB: 0x009a5faa
+    void Fn009a5faa();
+    // STUB: 0x009a5f23
+    bool Fn009a5f23(bool);
+    // STUB: 0x009a5f48
+    bool Fn009a5f48(bool);
+    // STUB: 0x009aee63
+    bool RecalculateAll();
+    // STUB: 0x009a5cd7
+    void Fn009a5cd7();
+    // STUB: 0x009ad684
+    int32_t GetColumnWidthInternal(int32_t);
+    // STUB: 0x009ae387
+    int32_t GetRowHeightInternal(int32_t);
+    // STUB: 0x009a5cee
+    void SetDefaultFormatting();
+    // STUB: 0x009aab01
+    bool DisposeOfCellData(int32_t, int32_t, void*, bool);
+    // STUB: 0x009ae282
+    bool MakeRoomForRow(int32_t, int32_t, int32_t);
+    // STUB: 0x009ae2ef
+    bool MakeRoomForColumn(int32_t, int32_t, int32_t);
+    // STUB: 0x009ade44
+    bool MakeRoom(int32_t, int32_t, int32_t, int32_t);
+    // STUB: 0x009acd43
+    void SetSizeCachedActualForColumn(int32_t, int32_t, int32_t);
+    // STUB: 0x009a7178
+    bool RemoveScrollBar(bool, bool);
+    // STUB: 0x009abaef
+    bool DisposeOfAllCellData();
+    // STUB: 0x009a5fe3
+    void CalcCellDrawingParams(void*, void*, void*, void*, void*, void*);
+    // STUB: 0x009a8f7a
+    void Fn009a8f7a(void*);
+    // STUB: 0x009a9837
+    bool DoWindowRemoval(int32_t, int32_t, void*);
+    // STUB: 0x009acc5a
+    void SetSizeCachedActualForRow(int32_t, int32_t, int32_t);
+    // STUB: 0x009a6fd7
+    bool AddScrollBar(bool, bool);
+    // STUB: 0x009a7405
+    bool SetScrollBarPositions();
+    // STUB: 0x009a71fd
+    bool SetScrollBarValues();
+    // STUB: 0x009a82c6
+    bool TestForPossibleScrollBarAdditionOrRemoval();
+    // STUB: 0x009a6c45
+    void Fn009a6c45(int32_t, int32_t, void*, bool, bool);
+    // STUB: 0x009aa991
+    void PlaceAllCellWindows();
+    // STUB: 0x009ad6fa
+    int32_t CalculateCellHeight(int32_t, int32_t, void*);
+    // STUB: 0x009a60bb
+    void DrawCellBackground(void*);
+    // STUB: 0x009aa91a
+    void Fn009aa91a(int32_t, int32_t, void*, bool, bool);
+    // STUB: 0x009ab46a
+    bool Fn009ab46a(uint32_t, uint32_t, void*, int32_t, int32_t, void*);
+    // STUB: 0x009a85b6
+    void DoArrowKey(uint32_t, uint32_t);
+    // STUB: 0x009ad512
+    bool Fn009ad512(int32_t, int32_t, int32_t, int32_t, bool);
+    // STUB: 0x009a7e52
+    void DrawCell(void*);
+    uint32_t mnFlags;
+    uint32_t mnE0;
+    uint8_t mbE4;
+    char unknowne5[0x3];
+    int32_t mnPauseCount;
+    uint8_t mbInvalidated;
+    char unknowned[0x3];
+    int32_t mnGutters[4];
+    int32_t mnCellGutters[4];
+    int32_t mnHeaderSizeA;
+    int32_t mnHeaderSizeB;
+    int32_t mnGridWidth;
+    int32_t mnGridHeight;
+    int32_t mnCellAreaWidth;
+    int32_t mnCellAreaHeight;
+    int32_t mnFirstColumn;
+    int32_t mnFirstRow;
+    float mfVisibleColumns;
+    float mfVisibleRows;
+    int32_t mnMaxColumns;
+    int32_t mnMaxRows;
+    int32_t mnDefaultColumnWidth;
+    int32_t mnDefaultRowHeight;
+    uint32_t mnOutlineColor;
+    uint32_t mnGridColorA;
+    uint32_t mnGridColorB;
+    int32_t mnBorderOffsetA;
+    int32_t mnBorderOffsetB;
+    int32_t mnLastColumn;
+    int32_t mnLastRow;
+    cIGZUnknown* mpBackgroundBitmap;
+    cIGZUnknown* mpOwnerDrawNotify;
+    char unknown16c[0x4];
+    uint8_t mTimer[0x18];
+    uint32_t mn188;
+    int32_t mnSelectionRuleA;
+    int32_t mnSelectionRuleB;
+    void* mpSelection;
     uint32_t field198;
-    char unknown19c[0x6c];
-    uint32_t field208;
-    char unknown20c[0x5c];
-    uint32_t field268;
-    char unknown26c[0x7c];
+    uint8_t mColumnFormats[0x24];
+    uint8_t mRowFormats[0x24];
+    uint8_t mCells[0x24];
+    cIGZUnknown* mpDefaultFont;
+    uint32_t mnDefaultColors[6];
+    uint8_t mnDefaultWrapping;
+    uint8_t mnDefaultColumnAlignment;
+    uint8_t mnDefaultRowAlignment;
+    uint8_t mnDefaultBorderWidth;
+    uint32_t mnDefaultBorderColor;
+    uint8_t mCellWindows[8];
+    char unknown234[0x4];
+    int32_t mnHitResult;
+    int32_t mnHitColumn;
+    int32_t mnHitRow;
+    int32_t mnHoverResult;
+    int32_t mnHoverColumn;
+    int32_t mnHoverRow;
+    uint8_t mRowExtra[0xc];
+    uint8_t mColumnExtra[0xc];
+    cIGZUnknown* mpExtra;
+    void* mpScrollBarV;
+    void* mpScrollBarH;
+    cIGZUnknown* mpScrollImageV;
+    cIGZUnknown* mpScrollImageH;
+    uint8_t mScrollRectV[0x10];
+    uint8_t mScrollRectH[0x10];
+    uint32_t mnSoundIds[3];
+    uint8_t mColumnHeadings[0xc];
+    uint8_t mRowHeadings[0xc];
+    cIGZUnknown* mpHeadingFont;
+    uint32_t mnHeadingColors[6];
+    uint8_t mnHeadingWrapping;
+    uint8_t mnHeadingColumnAlignment;
+    uint8_t mnHeadingRowAlignment;
+    uint8_t mnHeadingBorderWidth;
+    uint32_t mnHeadingBorderColor;
+    char unknown2e4[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00add578[sizeof(cUnk00add578) == 0x2e8 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x009ac24d
+// cUnk00add578::`scalar deleting dtor'
 
 // SYNTHETIC: 0x005f8f70
 // cUnk00add578::QueryInterface`adjustor{4}'
@@ -195,10 +327,10 @@ typedef char ob_size_cUnk00add578[sizeof(cUnk00add578) == 0x2e8 ? 1 : -1];
 // cUnk00add578::Release`adjustor{4}'
 
 // SYNTHETIC: 0x005f8fa0
-// cUnk00add578::Slot04_adb6a8`adjustor{4}'
+// cUnk00add578::Slot03_ae1d24`adjustor{4}'
 
 // SYNTHETIC: 0x005f8fb0
-// cUnk00add578::Slot05_adb6a8`adjustor{4}'
+// cUnk00add578::Slot04_ae1d24`adjustor{4}'
 
 // SYNTHETIC: 0x005f8fc0
 // cUnk00add578::Slot07_add348`adjustor{4}'

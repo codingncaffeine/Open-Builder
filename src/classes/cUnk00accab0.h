@@ -12,7 +12,7 @@
 // SIZE 0x78
 class cUnk00accab0 : public cUnk00acc9d0, public cUnk00ace624 {
 public:
-    virtual ~cUnk00accab0() {}
+    virtual ~cUnk00accab0();
     virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot00_acc9d0(uint32_t, uint32_t);
@@ -45,6 +45,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00accab0[sizeof(cUnk00accab0) == 0x78 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x008f4250
+// cUnk00accab0::`scalar deleting dtor'
 
 // SYNTHETIC: 0x008f41b0
 // cUnk00accab0::`vector deleting dtor'`adjustor{4}'

@@ -7,10 +7,21 @@
 #include "classes/cHitList.h"
 #include "classes/cUnk00ad2620.h"
 
-// Between cUnk00ad2620 and cHitResource_cHitList at +0x18: a class the map never saw on its own, overriding these.
-struct OB_NOVTABLE cHitResource_cHitList_18 : public cUnk00ad2620 {
+// VTABLE: 0x00ad4378 cHitList
+// VTABLE: 0x00ad4338 cUnk00ad2620
+// SIZE 0x28
+class cHitResource_cHitList : public cHitList, public cUnk00ad2620 {
+public:
+    virtual ~cHitResource_cHitList() {}
+    virtual bool DebugInstanceTag(uint32_t);
+    virtual bool DebugClassTag(uint32_t);
+    virtual bool DebugTypeTag(uint32_t);
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual void Slot03_ad2620(uint32_t);
     virtual bool Slot04_ad2620(uint32_t);
+    virtual uint32_t Slot05_ad2620();
     virtual uint32_t Slot06_ad2620();
     virtual uint32_t Slot07_ad2620();
     virtual bool Slot08_ad2620(uint32_t);
@@ -18,24 +29,11 @@ struct OB_NOVTABLE cHitResource_cHitList_18 : public cUnk00ad2620 {
     virtual bool Slot10_ad2620(uint32_t);
     virtual void Slot14_ad2620(uint32_t, uint32_t);
     virtual uint32_t GetRefCount();
-};
-
-// VTABLE: 0x00ad4378 cHitList
-// VTABLE: 0x00ad4338 cHitResource_cHitList_18
-// SIZE 0x28
-class cHitResource_cHitList : public cHitList, public cHitResource_cHitList_18 {
-public:
-    virtual ~cHitResource_cHitList() {}
-    virtual bool DebugInstanceTag(uint32_t);
-    virtual bool DebugClassTag(uint32_t);
-    virtual bool DebugTypeTag(uint32_t);
-    virtual uint32_t GetRefCount();
     virtual bool ReadResource_2(uint32_t, uint32_t, uint32_t);
     virtual bool WriteResource_2(uint32_t, uint32_t, uint32_t);
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad4cf4();
-    virtual void Slot02_ad4cf4();
-    char unknown1c[0xc];
+    uint32_t field1c;
+    uint32_t field20;
+    uint32_t field24;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cHitResource_cHitList[sizeof(cHitResource_cHitList) == 0x28 ? 1 : -1];
@@ -45,10 +43,10 @@ typedef char ob_size_cHitResource_cHitList[sizeof(cHitResource_cHitList) == 0x28
 // cHitResource_cHitList::QueryInterface`adjustor{24}'
 
 // SYNTHETIC: 0x00940583
-// cHitResource_cHitList::Slot01_ad4cf4`adjustor{24}'
+// cHitResource_cHitList::AddRef`adjustor{24}'
 
 // SYNTHETIC: 0x0094058b
-// cHitResource_cHitList::Slot02_ad4cf4`adjustor{24}'
+// cHitResource_cHitList::Release`adjustor{24}'
 
 // SYNTHETIC: 0x00940593
 // cHitResource_cHitList::GetRefCount`adjustor{24}'

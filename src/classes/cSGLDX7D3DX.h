@@ -12,7 +12,7 @@
 // SIZE 0x48
 class cSGLDX7D3DX : public cUnk00ac5030, public cUnk00ace624 {
 public:
-    virtual ~cSGLDX7D3DX() {}
+    virtual ~cSGLDX7D3DX();
     virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot00_ac5030(uint32_t, uint32_t);
@@ -36,6 +36,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSGLDX7D3DX[sizeof(cSGLDX7D3DX) == 0x48 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x0088c660
+// cSGLDX7D3DX::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0088c530
 // cSGLDX7D3DX::`vector deleting dtor'`adjustor{4}'

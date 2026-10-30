@@ -13,7 +13,7 @@ class cUnk00aab7d8 : public cSCStandardTypeEntryView {
 public:
     virtual ~cUnk00aab7d8() {}
     virtual void Slot07_aace34(uint32_t);
-    virtual bool Slot04_adb6a8();
+    virtual bool Slot03_ae1d24();
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00aab7d8[sizeof(cUnk00aab7d8) == 0x100 ? 1 : -1];

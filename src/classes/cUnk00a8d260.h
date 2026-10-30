@@ -11,12 +11,15 @@
 // SIZE 0x364
 class cUnk00a8d260 : public cUnk00add190 {
 public:
-    virtual ~cUnk00a8d260() {}
+    virtual ~cUnk00a8d260();
     virtual bool SendMsg_2(uint32_t, uint32_t);
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a8d260[sizeof(cUnk00a8d260) == 0x364 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x008af100
+// cUnk00a8d260::`scalar deleting dtor'
 
 // SYNTHETIC: 0x008aeb00
 // cUnk00a8d260::`vector deleting dtor'`adjustor{4}'

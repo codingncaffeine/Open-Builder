@@ -14,7 +14,7 @@
 // SIZE 0x58
 class cUnk00a8576c : public cUnk00a83524, public cUnk00aaaa9c, public cUnk0090da1e {
 public:
-    virtual ~cUnk00a8576c() {}
+    virtual ~cUnk00a8576c();
     virtual void Slot05_a8576c(uint32_t);
     virtual void Slot06_a8576c(uint32_t);
     virtual void Slot07_a8576c(uint32_t);
@@ -32,6 +32,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a8576c[sizeof(cUnk00a8576c) == 0x58 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00430cc0
+// cUnk00a8576c::`scalar deleting dtor'
 
 // SYNTHETIC: 0x00430c30
 // cUnk00a8576c::QueryInterface`adjustor{4}'

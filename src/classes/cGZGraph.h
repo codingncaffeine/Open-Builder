@@ -100,8 +100,8 @@ public:
     virtual uint32_t Slot52_addff8();
     virtual uint32_t Slot53_addff8();
     virtual void* Slot54_addff8();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowndc[0x4c];
     uint32_t field128;
     bool field12c;

@@ -8,9 +8,9 @@
 
 // The subobject at +0x0 (vtable 0x00ad4b48): an interface or base the class map has no class for.
 struct OB_NOVTABLE cFreshPlayer_0 {
-    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ad4cf4() = 0;
-    virtual void Slot02_ad4cf4() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual bool Init(uint32_t) = 0;
     virtual bool Slot04_ad4b48() = 0;
     virtual bool LoadScore(uint32_t, uint32_t) = 0;
@@ -81,6 +81,9 @@ struct OB_NOVTABLE cFreshPlayer_0 {
 class cFreshPlayer : public cFreshPlayer_0, public cUnk00a943c0 {
 public:
     virtual ~cFreshPlayer();
+    virtual bool QueryInterface(unsigned int, void **);
+    virtual uint32_t AddRef();
+    virtual unsigned int Release();
     virtual void Slot13_ad3e48(uint32_t);
     virtual bool Init(uint32_t);
     virtual bool Slot04_ad4b48();
@@ -143,9 +146,6 @@ public:
     virtual bool ShowUsage();
     virtual uint32_t GetMinCellsPlaying();
     virtual void GetMaxCellsPlaying();
-    virtual bool QueryInterface(uint32_t, uint32_t);
-    virtual uint32_t Slot01_ad4cf4();
-    virtual void Slot02_ad4cf4();
     char unknown8[0x14];
     uint32_t field1c;
     bool field20;
@@ -173,9 +173,9 @@ typedef char ob_size_cFreshPlayer[sizeof(cFreshPlayer) == 0x4144 ? 1 : -1];
 // cFreshPlayer::QueryInterface`adjustor{4}'
 
 // SYNTHETIC: 0x009359bd
-// cFreshPlayer::Slot01_ad4cf4`adjustor{4}'
+// cFreshPlayer::AddRef`adjustor{4}'
 
 // SYNTHETIC: 0x00948c09
-// cFreshPlayer::Slot02_ad4cf4`adjustor{4}'
+// cFreshPlayer::Release`adjustor{4}'
 
 #endif

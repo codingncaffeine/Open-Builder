@@ -19,13 +19,13 @@ public:
     virtual unsigned int Release();
     virtual bool GZPaint();
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual bool Slot03_adc294(uint32_t);
     virtual bool Slot04_adc294(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot05_adc294(uint32_t, uint32_t);
     virtual bool Slot17_ae2300(uint32_t);
     virtual void Slot49_adda20(uint32_t);
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknownf4[0x28];
 };
 #ifdef _MSC_VER

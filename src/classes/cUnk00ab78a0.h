@@ -14,7 +14,7 @@ class cUnk00ab78a0 : public cUnk00adba40 {
 public:
     virtual ~cUnk00ab78a0() {}
     virtual void Slot17_adba40(uint32_t);
-    virtual bool Slot04_adb6a8();
+    virtual bool Slot03_ae1d24();
     char unknown154[0x8];
 };
 #ifdef _MSC_VER
@@ -22,7 +22,7 @@ typedef char ob_size_cUnk00ab78a0[sizeof(cUnk00ab78a0) == 0x15c ? 1 : -1];
 #endif
 
 // SYNTHETIC: 0x0079ca40
-// cUnk00ab78a0::Slot04_adb6a8`adjustor{4}'
+// cUnk00ab78a0::Slot03_ae1d24`adjustor{4}'
 
 // SYNTHETIC: 0x0079c730
 // cUnk00ab78a0::`vector deleting dtor'`adjustor{4}'

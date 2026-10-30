@@ -12,7 +12,7 @@
 // SIZE 0x140
 class cSC4WinCatalogView : public cUnk00ab6a28, public cGZWin {
 public:
-    virtual ~cSC4WinCatalogView() {}
+    virtual ~cSC4WinCatalogView();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -42,8 +42,8 @@ public:
     virtual bool Slot20_ab6a28(uint32_t);
     virtual bool Slot21_ab6a28(uint32_t, uint32_t, uint32_t);
     virtual void Slot22_ab6a28(uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowndc[0xc];
     uint32_t fielde8;
     uint32_t fieldec;
@@ -52,6 +52,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4WinCatalogView[sizeof(cSC4WinCatalogView) == 0x140 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x0079b620
+// cSC4WinCatalogView::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0079b590
 // cSC4WinCatalogView::QueryInterface`adjustor{4}'

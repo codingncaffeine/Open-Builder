@@ -12,7 +12,7 @@
 // SIZE 0xb0
 class cGZDBSegmentDirectoryFiles : public cUnk00ad8fc8, public cUnk00ad8ca0 {
 public:
-    virtual ~cGZDBSegmentDirectoryFiles() {}
+    virtual ~cGZDBSegmentDirectoryFiles();
     virtual void DoOpenRecordForWrite(uint32_t, uint32_t);
     virtual bool Slot27_ad93a0(uint32_t, uint32_t, uint32_t);
     virtual void BuildKeyList();
@@ -77,6 +77,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cGZDBSegmentDirectoryFiles[sizeof(cGZDBSegmentDirectoryFiles) == 0xb0 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x0097b5f6
+// cGZDBSegmentDirectoryFiles::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0097b4a5
 // cGZDBSegmentDirectoryFiles::Slot00_ad8fc8`adjustor{4}'

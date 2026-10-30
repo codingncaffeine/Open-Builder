@@ -8,31 +8,31 @@
 // SIZE 0x4
 class cUnk00ad1660 {
 public:
-    virtual void Slot00_ad1660() = 0;
-    virtual void Slot01_ad1660() = 0;
-    virtual void Slot02_ad1660() = 0;
-    virtual void Slot03_ad1660() = 0;
-    virtual void Slot04_ad1660() = 0;
-    virtual void Slot05_ad1660() = 0;
-    virtual void Slot06_ad1660() = 0;
-    virtual void Slot07_ad1660() = 0;
-    virtual void Slot08_ad1660() = 0;
-    virtual void Slot09_ad1660() = 0;
-    virtual void Slot10_ad1660() = 0;
-    virtual void Slot11_ad1660() = 0;
-    virtual void Slot12_ad1660() = 0;
-    virtual void Slot13_ad1660() = 0;
-    virtual void Slot14_ad1660() = 0;
-    virtual void Slot15_ad1660() = 0;
-    virtual void Slot16_ad1660() = 0;
-    virtual void Slot17_ad1660() = 0;
-    virtual void Slot18_ad1660() = 0;
-    virtual void Slot19_ad1660() = 0;
-    virtual void Slot20_ad1660() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_ae1d24() = 0;
+    virtual bool Slot04_ae1d24() = 0;
+    virtual void Slot05_ad1660(uint32_t) = 0;
+    virtual bool Slot06_ad1660(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot07_ad1660(uint32_t, uint32_t) = 0;
+    virtual bool Slot08_ad1660(uint32_t, uint32_t) = 0;
+    virtual bool Slot09_ad1660(uint32_t) = 0;
+    virtual bool Slot10_ad1660(uint32_t, uint32_t) = 0;
+    virtual bool Slot11_ad1660(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot12_ad1660(uint32_t) = 0;
+    virtual uint32_t Slot13_ad1660(uint32_t, uint32_t) = 0;
+    virtual void Slot14_ad1660(uint32_t) = 0;
+    virtual bool Slot15_ad1660(uint32_t) = 0;
+    virtual bool Slot16_ad1660(uint32_t) = 0;
+    virtual uint32_t Slot17_ad1660() = 0;
+    virtual bool Slot18_ad1660(uint32_t) = 0;
+    virtual uint32_t Slot19_ad1660(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot20_ad1660(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot21_ad1660() = 0;
-    virtual void Slot22_ad1660() = 0;
-    virtual void Slot23_ad1660() = 0;
-    virtual void Slot24_ad1660() = 0;
+    virtual bool Slot22_ad1660(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot23_ad1660(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot24_ad1660(uint32_t, uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad1660[sizeof(cUnk00ad1660) == 0x4 ? 1 : -1];

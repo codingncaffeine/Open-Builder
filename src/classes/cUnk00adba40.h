@@ -13,7 +13,7 @@
 // SIZE 0x154
 class cUnk00adba40 : public cUnk00adb720, public cGZWinGen {
 public:
-    virtual ~cUnk00adba40() {}
+    virtual ~cUnk00adba40();
     virtual void Slot15_adba40();
     virtual void Slot16_adba40();
     virtual void Slot17_adba40(uint32_t);
@@ -31,8 +31,8 @@ public:
     virtual void Slot12_adb720(uint32_t);
     virtual uint32_t Slot13_adb720(uint32_t);
     virtual uint32_t Slot14_adb720();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     uint32_t field12c;
     char unknown130[0x20];
     uint32_t field150;
@@ -40,6 +40,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adba40[sizeof(cUnk00adba40) == 0x154 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x00994d5b
+// cUnk00adba40::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0079c6f0
 // cUnk00adba40::QueryInterface`adjustor{4}'
@@ -51,10 +54,10 @@ typedef char ob_size_cUnk00adba40[sizeof(cUnk00adba40) == 0x154 ? 1 : -1];
 // cUnk00adba40::Release`adjustor{4}'
 
 // SYNTHETIC: 0x00994a31
-// cUnk00adba40::Slot04_adb6a8`adjustor{4}'
+// cUnk00adba40::Slot03_ae1d24`adjustor{4}'
 
 // SYNTHETIC: 0x0079c720
-// cUnk00adba40::Slot05_adb6a8`adjustor{4}'
+// cUnk00adba40::Slot04_ae1d24`adjustor{4}'
 
 // SYNTHETIC: 0x0099454c
 // cUnk00adba40::`vector deleting dtor'`adjustor{4}'

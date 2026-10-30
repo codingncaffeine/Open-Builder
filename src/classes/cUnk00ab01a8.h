@@ -13,7 +13,7 @@ class cUnk00ab01a8 : public cSCStandardTypeEntryView {
 public:
     virtual ~cUnk00ab01a8();
     virtual void Slot07_aace34(uint32_t);
-    virtual bool Slot04_adb6a8();
+    virtual bool Slot03_ae1d24();
     char unknown100[0xc];
 };
 #ifdef _MSC_VER

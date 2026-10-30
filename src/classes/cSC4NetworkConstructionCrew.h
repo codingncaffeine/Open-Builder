@@ -14,7 +14,7 @@
 // SIZE 0xa0
 class cSC4NetworkConstructionCrew : public cUnk00a881d4, public cUnk0090da1e, public cUnk00aaaa9c {
 public:
-    virtual ~cSC4NetworkConstructionCrew() {}
+    virtual ~cSC4NetworkConstructionCrew();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -25,6 +25,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4NetworkConstructionCrew[sizeof(cSC4NetworkConstructionCrew) == 0xa0 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x0046f220
+// cSC4NetworkConstructionCrew::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0046d7e0
 // cSC4NetworkConstructionCrew::QueryInterface`adjustor{4}'

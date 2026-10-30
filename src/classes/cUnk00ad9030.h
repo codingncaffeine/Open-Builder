@@ -14,17 +14,17 @@ public:
     virtual uint32_t Slot03_ad9030() = 0;
     virtual bool Slot04_ad9030(uint32_t, uint32_t) = 0;
     virtual bool Slot05_ad9030(uint32_t, uint32_t) = 0;
-    virtual void Slot06_ad9030() = 0;
-    virtual void Slot07_ad9030() = 0;
-    virtual void Slot08_ad9030() = 0;
-    virtual void Slot09_ad9030() = 0;
+    virtual uint32_t Slot06_ad9030(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot07_ad9030(uint32_t, uint32_t) = 0;
+    virtual bool Slot08_ad9030(uint32_t) = 0;
+    virtual bool Slot09_ad9030(uint32_t, uint32_t) = 0;
     virtual void Slot10_ad9030() = 0;
-    virtual void Slot11_ad9030() = 0;
-    virtual void Slot12_ad9030() = 0;
-    virtual void Slot13_ad9030() = 0;
-    virtual void Slot14_ad9030() = 0;
-    virtual void Slot15_ad9030() = 0;
-    virtual void Slot16_ad9030() = 0;
+    virtual bool Slot11_ad9030(uint32_t) = 0;
+    virtual bool Slot12_ad9030(uint32_t) = 0;
+    virtual bool Slot13_ad9030(uint32_t) = 0;
+    virtual bool Slot14_ad9030(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot15_ad9030() = 0;
+    virtual bool Slot16_ad9030() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ad9030[sizeof(cUnk00ad9030) == 0x4 ? 1 : -1];

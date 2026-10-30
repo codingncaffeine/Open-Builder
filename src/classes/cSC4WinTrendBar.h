@@ -14,7 +14,7 @@
 // SIZE 0x10c
 class cSC4WinTrendBar : public cUnk00aba3f8, public cGZWin, public cUnk00aaaa9c {
 public:
-    virtual ~cSC4WinTrendBar() {}
+    virtual ~cSC4WinTrendBar();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -24,13 +24,16 @@ public:
     virtual void Slot04_aba3f8(uint32_t, uint32_t);
     virtual void Slot05_aba3f8(uint32_t, uint32_t);
     virtual void Slot06_aba3f8(uint32_t, uint32_t, uint32_t);
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
     char unknowne0[0x2c];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4WinTrendBar[sizeof(cSC4WinTrendBar) == 0x10c ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x007bf650
+// cSC4WinTrendBar::`scalar deleting dtor'
 
 // SYNTHETIC: 0x007bf590
 // cSC4WinTrendBar::QueryInterface`adjustor{4}'

@@ -7,27 +7,27 @@
 
 class cUnk00ac50c8 {
 public:
-    virtual void Slot00_ac50c8() = 0;
-    virtual void Slot01_ac50c8() = 0;
-    virtual void Slot02_ac50c8() = 0;
-    virtual void Slot03_ac50c8() = 0;
-    virtual void Slot04_ac50c8() = 0;
-    virtual void Slot05_ac50c8() = 0;
-    virtual void Slot06_ac50c8() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual uint32_t Slot03_ac50c8() = 0;
+    virtual uint32_t Slot04_ac50c8() = 0;
+    virtual uint32_t Slot05_ac50c8() = 0;
+    virtual uint32_t Slot06_ac50c8() = 0;
     virtual void Slot07_ac50c8() = 0;
     virtual void Slot08_ac50c8() = 0;
-    virtual void Slot09_ac50c8() = 0;
-    virtual void Slot10_ac50c8() = 0;
-    virtual void Slot11_ac50c8() = 0;
-    virtual void Slot12_ac50c8() = 0;
+    virtual uint32_t Slot09_ac50c8() = 0;
+    virtual uint32_t Slot10_ac50c8() = 0;
+    virtual uint32_t Slot11_ac50c8() = 0;
+    virtual uint32_t Slot12_ac50c8() = 0;
     virtual void Slot13_ac50c8() = 0;
-    virtual void Slot14_ac50c8() = 0;
-    virtual void Slot15_ac50c8() = 0;
+    virtual void Slot14_ac50c8(bool) = 0;
+    virtual void Slot15_ac50c8(bool) = 0;
     virtual void Slot16_ac50c8() = 0;
     virtual void Slot17_ac50c8() = 0;
-    virtual void Slot18_ac50c8() = 0;
-    virtual void Slot19_ac50c8() = 0;
-    virtual void Slot20_ac50c8() = 0;
+    virtual bool Slot18_ac50c8(uint32_t) = 0;
+    virtual bool Slot19_ac50c8(uint32_t) = 0;
+    virtual void Slot20_ac50c8(uint32_t) = 0;
     virtual void Slot21_ac50c8() = 0;
 };
 

@@ -8,9 +8,9 @@
 // SIZE 0x4
 class cUnk00ad4aa0 {
 public:
-    virtual bool QueryInterface(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot01_ad4cf4() = 0;
-    virtual void Slot02_ad4cf4() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
     virtual bool Slot03_ad4aa0(uint32_t) = 0;
     virtual bool Slot04_ad4aa0() = 0;
     virtual bool Slot05_ad4aa0(uint32_t, uint32_t) = 0;

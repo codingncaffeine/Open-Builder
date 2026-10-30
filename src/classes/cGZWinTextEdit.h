@@ -6,6 +6,7 @@
 #include "common/types.h"
 #include "classes/cGZWin.h"
 #include "classes/cUnk00adf900.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00adfbd0 cGZWin
 // VTABLE: 0x00adfa68 cUnk00adf900
@@ -38,8 +39,6 @@ public:
     virtual bool GZOnMouseWheel(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot07_add348(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void* Slot03_adb6a8();
-    virtual bool Slot04_adb6a8();
-    virtual bool Slot05_adb6a8();
     virtual void Slot06_adb6a8();
     virtual void Slot07_adb6a8();
     virtual bool Slot10_adb6a8(uint32_t);
@@ -124,19 +123,125 @@ public:
     virtual void Slot49_adda20(uint32_t);
     virtual void* Slot50_adda20();
     virtual void Slot08_ae1a28(uint32_t);
-    char fielddc[0x4];
-    uint32_t fielde0;
-    char unknowne4[0x74];
-    uint32_t field158;
-    uint32_t field15c;
-    char unknown160[0xc];
-    uint32_t field16c;
-    char unknown170[0x14];
-    uint32_t field184;
-    char unknown188[0x44];
-    uint32_t field1cc;
-    uint32_t field1d0;
-    char unknown1d4[0xbc];
+    virtual bool Slot03_ae1d24();
+    virtual bool Slot04_ae1d24();
+    // STUB: 0x009be945
+    void UpdateScrollBarsAndWindowPosition();
+    // STUB: 0x0099bdf3
+    void* Fn0099bdf3();
+    // STUB: 0x009bcc93
+    void StopScrollTimer();
+    // STUB: 0x009bcc74
+    void Fn009bcc74();
+    // STUB: 0x009be9ed
+    void Fn009be9ed();
+    // STUB: 0x009bc60e
+    void ToggleCaretVisibility();
+    // STUB: 0x009bc635
+    void Fn009bc635();
+    // STUB: 0x009be302
+    void PutInsertionPositionInView();
+    // STUB: 0x009be7af
+    bool TestForPossibleScrollBarAdditionOrRemoval();
+    // STUB: 0x009bdcd1
+    void Fn009bdcd1(bool);
+    // STUB: 0x009bddc2
+    uint32_t Fn009bddc2();
+    // STUB: 0x009bc65c
+    bool StartCaretTimer(bool);
+    // STUB: 0x009bd0af
+    void Fn009bd0af();
+    // STUB: 0x009bf98b
+    void RecalculateAll();
+    // STUB: 0x009bcbc5
+    uint32_t CalculateVisibleWidth();
+    // STUB: 0x009bf2e5
+    void Fn009bf2e5(uint32_t, uint32_t);
+    // STUB: 0x009bccce
+    void DoCursorScroll();
+    // STUB: 0x009bcdba
+    void RemoveScrollBar(bool, bool);
+    // STUB: 0x009bdb00
+    uint32_t GetPixelWidthOfLongestLine(bool);
+    // STUB: 0x009bda65
+    void Fn009bda65();
+    // STUB: 0x009be477
+    bool AddScrollBar(bool, bool);
+    // STUB: 0x009be6ce
+    bool Fn009be6ce();
+    // STUB: 0x009bf335
+    uint32_t Fn009bf335(char*, void*);
+    // STUB: 0x009bf578
+    uint32_t Fn009bf578(void*);
+    // STUB: 0x009be614
+    uint32_t FixBadCharacterComposition(void*, void*, uint32_t);
+    // STUB: 0x009c068d
+    bool AddUndoRecordForTextInsertion(void*, uint32_t, char*, uint32_t, char*, uint32_t);
+    // STUB: 0x0099bf14
+    void* Fn0099bf14();
+    // STUB: 0x009c07e1
+    bool InsertTextHighLevel(void*);
+    // STUB: 0x009bf3e0
+    void Fn009bf3e0(uint32_t);
+    // STUB: 0x009bdb83
+    void GetHorizontalLineMetrics(uint32_t, uint32_t, void*, void*, void*);
+    // STUB: 0x009c075f
+    bool AddUndoRecordForTextDeletion(void*, uint32_t, char*, uint32_t);
+    cRZString mText;
+    cRZString mStrF0;
+    char mcPasswordChar;
+    char unknown105[0x3];
+    uint32_t* mpLineBegin;
+    uint32_t* mpLineEnd;
+    char unknown110[0x4];
+    uint32_t mnInsertionLine;
+    uint32_t mnInsertionColumn;
+    uint32_t mnInsertionIndex;
+    uint32_t mnSelectionStart;
+    uint32_t mnSelectionEnd;
+    uint32_t mnTextFlags;
+    int32_t mnCodePage;
+    cRZString mStr130;
+    cRZString mStr144;
+    int32_t mnTextAreaX;
+    int32_t mnTextAreaY;
+    int32_t mnTextAreaW;
+    int32_t mnTextAreaH;
+    int32_t mnVisibleLineCount;
+    int32_t mnFirstVisibleLine;
+    int32_t mn170;
+    int32_t mnHScrollChars;
+    int32_t mnHScrollPixels;
+    void* mpBackgroundImage;
+    bool mbBackgroundTile;
+    char unknown181[0x3];
+    uint32_t mnMaxUndoLevels;
+    uint8_t mUndoVec[12];
+    uint8_t mRedoVec[12];
+    void* mpFont;
+    uint32_t mnFontStyle;
+    uint32_t mnColors[6];
+    uint32_t mnCaretColor;
+    uint32_t mnHighlightFillColor;
+    uint32_t mn1C8;
+    uint32_t mnLineHeight;
+    int32_t mn1D0;
+    void* mpVScrollBar;
+    void* mpHScrollBar;
+    void* mpScrollBarImageV;
+    void* mpScrollBarImageH;
+    int32_t mnScrollBarRectV[4];
+    int32_t mnScrollBarRectH[4];
+    char unknown204[0x4];
+    uint8_t mTimer[0x18];
+    uint32_t mn220;
+    uint32_t mnCaretPeriod;
+    bool mbCaretVisible;
+    char unknown229[0x3];
+    uint8_t mCaretTimer[0x28];
+    uint8_t mScrollTimer[0x28];
+    uint32_t mnSoundIDs[4];
+    void* mp28C;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinTextEdit[sizeof(cGZWinTextEdit) == 0x290 ? 1 : -1];
@@ -155,10 +260,10 @@ typedef char ob_size_cGZWinTextEdit[sizeof(cGZWinTextEdit) == 0x290 ? 1 : -1];
 // cGZWinTextEdit::Release`adjustor{216}'
 
 // SYNTHETIC: 0x009bff47
-// cGZWinTextEdit::Slot04_adb6a8`adjustor{216}'
+// cGZWinTextEdit::Slot03_ae1d24`adjustor{216}'
 
 // SYNTHETIC: 0x009bfb91
-// cGZWinTextEdit::Slot05_adb6a8`adjustor{216}'
+// cGZWinTextEdit::Slot04_ae1d24`adjustor{216}'
 
 // SYNTHETIC: 0x00994f37
 // cGZWinTextEdit::Slot07_add348`adjustor{216}'

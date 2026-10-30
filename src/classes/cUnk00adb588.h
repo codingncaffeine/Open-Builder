@@ -8,24 +8,24 @@
 // SIZE 0x4
 class cUnk00adb588 {
 public:
-    virtual void Slot00_adb588() = 0;
-    virtual void Slot01_adb588() = 0;
-    virtual void Slot02_adb588() = 0;
-    virtual void Slot03_adb588() = 0;
-    virtual void Slot04_adb588() = 0;
-    virtual void Slot05_adb588() = 0;
-    virtual void Slot06_adb588() = 0;
-    virtual void Slot07_adb588() = 0;
-    virtual void Slot08_adb588() = 0;
-    virtual void Slot09_adb588() = 0;
-    virtual void Slot10_adb588() = 0;
-    virtual void Slot11_adb588() = 0;
-    virtual void Slot12_adb588() = 0;
-    virtual void Slot13_adb588() = 0;
-    virtual void Slot14_adb588() = 0;
-    virtual void Slot15_adb588() = 0;
-    virtual void Slot16_adb588() = 0;
-    virtual void Slot17_adb588() = 0;
+    virtual bool QueryInterface(unsigned int, void **) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual unsigned int Release() = 0;
+    virtual bool Slot03_ae1d24() = 0;
+    virtual bool Slot04_ae1d24() = 0;
+    virtual bool Slot05_adb588() = 0;
+    virtual bool Slot06_adb588() = 0;
+    virtual void Slot07_adb588(uint32_t) = 0;
+    virtual bool Slot08_adb588() = 0;
+    virtual bool Slot09_adb588(uint32_t) = 0;
+    virtual bool Slot10_adb588() = 0;
+    virtual bool Slot11_adb588(uint32_t) = 0;
+    virtual void* Slot12_adb588() = 0;
+    virtual bool Slot13_adb588(uint32_t, uint32_t) = 0;
+    virtual bool Slot14_adb588() = 0;
+    virtual bool Slot15_adb588(uint32_t) = 0;
+    virtual void* Slot16_adb588() = 0;
+    virtual bool Slot17_adb588(uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00adb588[sizeof(cUnk00adb588) == 0x4 ? 1 : -1];

@@ -11,7 +11,7 @@
 // SIZE 0x280
 class cSC4ModelBasedParticlesEffect : public cSC4ParticlesEffect {
 public:
-    virtual ~cSC4ModelBasedParticlesEffect() {}
+    virtual ~cSC4ModelBasedParticlesEffect();
     virtual void SetModel_3(uint32_t);
     virtual bool Slot04_aa0f48();
     virtual void Slot05_aa0f48();
@@ -28,6 +28,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSC4ModelBasedParticlesEffect[sizeof(cSC4ModelBasedParticlesEffect) == 0x280 ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x005ac590
+// cSC4ModelBasedParticlesEffect::`scalar deleting dtor'
 
 // SYNTHETIC: 0x005ac580
 // cSC4ModelBasedParticlesEffect::`vector deleting dtor'`adjustor{4}'

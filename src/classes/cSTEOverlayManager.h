@@ -16,7 +16,7 @@
 // SIZE 0xfc
 class cSTEOverlayManager : public cUnk00ab3930, public cUnk00a881d4, public cUnk0090da1e, public cUnk00aaaa9c {
 public:
-    virtual ~cSTEOverlayManager() {}
+    virtual ~cSTEOverlayManager();
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
@@ -52,6 +52,9 @@ public:
 #ifdef _MSC_VER
 typedef char ob_size_cSTEOverlayManager[sizeof(cSTEOverlayManager) == 0xfc ? 1 : -1];
 #endif
+
+// SYNTHETIC: 0x0073c980
+// cSTEOverlayManager::`scalar deleting dtor'
 
 // SYNTHETIC: 0x0073bda0
 // cSTEOverlayManager::QueryInterface`adjustor{4}'
