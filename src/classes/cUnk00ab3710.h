@@ -8,34 +8,34 @@
 // SIZE 0x4
 class cUnk00ab3710 {
 public:
-    virtual bool QueryInterface(unsigned int, void **) = 0;
-    virtual uint32_t AddRef() = 0;
-    virtual unsigned int Release() = 0;
-    virtual void Slot03_ab3830() = 0;
-    virtual void Slot04_ab3830() = 0;
-    virtual void Slot05_ab3710() = 0;
-    virtual void Slot06_ab3710() = 0;
+    virtual bool Slot00_ab3830(uint32_t, uint32_t) = 0;
+    virtual void Slot01_ab3830() = 0;
+    virtual void Slot02_ab3830() = 0;
+    virtual bool Slot03_ab3830() = 0;
+    virtual bool Slot04_ab3830() = 0;
+    virtual void Slot05_ab3710(uint32_t) = 0;
+    virtual uint32_t Slot06_ab3710(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot07_ab3710() = 0;
-    virtual void Slot08_ab3710() = 0;
-    virtual void Slot09_ab3710() = 0;
+    virtual void Slot08_ab3710(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot09_ab3710(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot10_ab3710() = 0;
-    virtual void Slot11_ab3710() = 0;
-    virtual void Slot12_ab3710() = 0;
+    virtual void Slot11_ab3710(uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot12_ab3710(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot13_ab3710() = 0;
-    virtual void Slot14_ab3710() = 0;
+    virtual void Slot14_ab3710(uint32_t) = 0;
     virtual void Slot15_ab3710() = 0;
-    virtual void Slot16_ab3710() = 0;
-    virtual void Slot17_ab3710() = 0;
-    virtual void Slot18_ab3710() = 0;
-    virtual void Slot19_ab3710() = 0;
-    virtual void Slot20_ab3710() = 0;
-    virtual void Slot21_ab3710() = 0;
-    virtual void Slot22_ab3710() = 0;
+    virtual uint32_t Slot16_ab3710() = 0;
+    virtual void Slot17_ab3710(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot18_ab3710(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void Slot19_ab3710(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot20_ab3710(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot21_ab3710(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot22_ab3710(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot23_ab3710() = 0;
-    virtual void Slot24_ab3710() = 0;
-    virtual void Slot25_ab3710() = 0;
+    virtual void Slot24_ab3710(uint32_t) = 0;
+    virtual void Slot25_ab3710(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot26_ab3710() = 0;
-    virtual void Slot27_ab3710() = 0;
+    virtual uint32_t Slot27_ab3710() = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab3710[sizeof(cUnk00ab3710) == 0x4 ? 1 : -1];

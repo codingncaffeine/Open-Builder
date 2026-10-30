@@ -8,23 +8,23 @@
 // SIZE 0x4
 class cUnk00ab2d50 {
 public:
-    virtual void Slot00_ab2d50() = 0;
+    virtual bool Slot00_ab2d50(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab2d50() = 0;
     virtual void Slot02_ab2d50() = 0;
-    virtual void Slot03_ab2d50() = 0;
-    virtual void Slot04_ab2d50() = 0;
-    virtual void Slot05_ab2d50() = 0;
-    virtual void Slot06_ab2d50() = 0;
+    virtual bool Slot03_ab2d50() = 0;
+    virtual bool Slot04_ab2d50() = 0;
+    virtual uint32_t Slot05_ab2d50(uint32_t) = 0;
+    virtual uint32_t Slot06_ab2d50() = 0;
     virtual void Slot07_ab2d50() = 0;
-    virtual void Slot08_ab2d50() = 0;
-    virtual void Slot09_ab2d50() = 0;
-    virtual void Slot10_ab2d50() = 0;
+    virtual void Slot08_ab2d50(uint32_t) = 0;
+    virtual uint32_t Slot09_ab2d50(uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot10_ab2d50() = 0;
     virtual void Slot11_ab2d50() = 0;
-    virtual void Slot12_ab2d50() = 0;
-    virtual void Slot13_ab2d50() = 0;
-    virtual void Slot14_ab2d50() = 0;
-    virtual void Slot15_ab2d50() = 0;
-    virtual void Slot16_ab2d50() = 0;
+    virtual bool Slot12_ab2d50(uint32_t, uint32_t, uint32_t) = 0;
+    virtual uint32_t Slot13_ab2d50() = 0;
+    virtual void Slot14_ab2d50(uint32_t) = 0;
+    virtual bool Slot15_ab2d50() = 0;
+    virtual bool Slot16_ab2d50(uint32_t, uint32_t) = 0;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab2d50[sizeof(cUnk00ab2d50) == 0x4 ? 1 : -1];

@@ -28,6 +28,7 @@
 #include "classes/cSC4MySimBalloonAdvice.h"
 #include "classes/cUnk00a856cc.h"
 #include "classes/cUnk00a8576c.h"
+#include "classes/cSC4MySimDispatch.h"
 #include "classes/cUnk00a85800.h"
 #include "classes/cUnk00a858d0.h"
 #include "classes/cUnk00a8596c.h"
@@ -41,6 +42,7 @@
 #include "classes/cUnk00a86258.h"
 #include "classes/cSC4TutorialTask.h"
 #include "classes/cUnk00a86364.h"
+#include "classes/cSC424HourClock.h"
 #include "classes/cUnk00a86640.h"
 #include "classes/cUnk00a86674.h"
 #include "classes/cUnk00a86690.h"
@@ -49,6 +51,7 @@
 #include "classes/cSC4BuildingOccupant.h"
 #include "classes/cGZPersistResourceKeyFilter.h"
 #include "classes/cUnk00a87578.h"
+#include "classes/cSC4City.h"
 #include "classes/cSC4CityDetailManager.h"
 #include "classes/cUnk00a878c0.h"
 #include "classes/cUnk00a87950.h"
@@ -64,9 +67,11 @@
 #include "classes/cSC4GDriversCOMDirector.h"
 #include "classes/cSC4ScriptedWindowCOMDirector.h"
 #include "classes/cUnk00a87fc0.h"
+#include "classes/cSC4Demolition.h"
 #include "classes/cUnk00a88050.h"
 #include "classes/cUnk00a88084.h"
 #include "classes/cUnk00a880b8.h"
+#include "classes/cSC4DispatchManager.h"
 #include "classes/cUnk00a881d4.h"
 #include "classes/cUnk00a881e8.h"
 #include "classes/cSC4NetworkConstructionCrew.h"
@@ -77,6 +82,7 @@
 #include "classes/cUnk00a8ca7c.h"
 #include "classes/cUnk00a8cafc.h"
 #include "classes/cSC4GameDataRegistry.h"
+#include "classes/cSC4HistoryWarehouse.h"
 #include "classes/cUnk00a8ce28.h"
 #include "classes/cSC4LotConfiguration.h"
 #include "classes/cUnk00a8d260.h"
@@ -85,6 +91,7 @@
 #include "classes/cUnk00a8d4e0.h"
 #include "classes/cSC4WinLotConfigurationEditor.h"
 #include "classes/cSC4LotConfigurationFilter.h"
+#include "classes/cSC4LotConfigurationManager.h"
 #include "classes/cUnk00a8ece0.h"
 #include "classes/cUnk00a8ed08.h"
 #include "classes/cSC4MissingPluginDataReporter.h"
@@ -94,6 +101,7 @@
 #include "classes/cUnk00a8edf8.h"
 #include "classes/cUnk00a8ee38.h"
 #include "classes/cUnk00a8eea0.h"
+#include "classes/cSC4Nation.h"
 #include "classes/cSC4WinNetworkLotEditor.h"
 #include "classes/cUnk00a8f328.h"
 #include "classes/cUnk00a8f694.h"
@@ -101,12 +109,15 @@
 #include "classes/cUnk00a8f79c.h"
 #include "classes/cSC4OccupantManager.h"
 #include "classes/cUnk00a8f8e4.h"
+#include "classes/cSC4PropManager.h"
 #include "classes/cUnk00a8f9cc.h"
 #include "classes/cSC4Region.h"
 #include "classes/cUnk00a8fad4.h"
+#include "classes/cSC4RegionalCity.h"
 #include "classes/cSC4ToxicOccupant.h"
 #include "classes/cUnk00a8fe14.h"
 #include "classes/cUnk00a8fe48.h"
+#include "classes/cSC4TrafficNetworkMap.h"
 #include "classes/cSC4ViewInputControlEffectDisaster.h"
 #include "classes/cUnk00a900d8.h"
 #include "classes/cUnk00a90180.h"
@@ -139,6 +150,7 @@
 #include "classes/cSC4ViewInputControlTollBooth.h"
 #include "classes/cSC4ViewInputControlCitySituations.h"
 #include "classes/cUnk00a92d40.h"
+#include "classes/cSC4ZoneManager.h"
 #include "classes/cUnk00a92eb8.h"
 #include "classes/cUnk00a92ec0.h"
 #include "classes/cWinSC4App.h"
@@ -263,6 +275,7 @@
 #include "classes/cSC4AutomataCOMDirector.h"
 #include "classes/cSC4AutomataGenerator.h"
 #include "classes/cUnk00a95f00.h"
+#include "classes/cSC4AutomataControllerManager.h"
 #include "classes/cUnk00a960bc.h"
 #include "classes/cUnk00a96134.h"
 #include "classes/cUnk00a96138.h"
@@ -477,9 +490,11 @@
 #include "classes/cSC4NetworkLayoutCustomView.h"
 #include "classes/cUnk00aa760c.h"
 #include "classes/cSC4NetworkLot.h"
+#include "classes/cSC4NetworkLotManager.h"
 #include "classes/cUnk00aa7998.h"
 #include "classes/cUnk00aa7a54.h"
 #include "classes/cUnk00aa7a88.h"
+#include "classes/cSC4NetworkManager.h"
 #include "classes/cUnk00aa825c.h"
 #include "classes/cUnk00aa8290.h"
 #include "classes/cUnk00aa8314.h"
@@ -548,29 +563,54 @@
 #include "classes/cUnk00aaff28.h"
 #include "classes/cUnk00ab01a8.h"
 #include "classes/cUnk00ab0428.h"
+#include "classes/cUnk00ab0714.h"
+#include "classes/cSC4AuraSimulator.h"
+#include "classes/cSC4BudgetSimulator.h"
+#include "classes/cSC4BuildingDevelopmentSimulator.h"
+#include "classes/cSC4CivicBuildingSimulator.h"
+#include "classes/cSC4CommercialSimulator.h"
 #include "classes/cUnk00ab0d18.h"
 #include "classes/cUnk00ab0d4c.h"
 #include "classes/cSC4CrimeSimulator.h"
+#include "classes/cSC4DemandSimulator.h"
 #include "classes/cSC4DepartmentBudget.h"
 #include "classes/cSC4LineItem.h"
+#include "classes/cSC4FirePlaneDispatchSource.h"
 #include "classes/cSC4FireProtectionSimulator.h"
+#include "classes/cSC4FlammabilitySimulator.h"
 #include "classes/cUnk00ab1374.h"
+#include "classes/cSC4FloraSimulator.h"
+#include "classes/cSC4GrowthDeveloper.h"
+#include "classes/cSC4IndustrialSimulator.h"
+#include "classes/cSC4LandfillDeveloper.h"
 #include "classes/cUnk00ab15dc.h"
 #include "classes/cUnk00ab1610.h"
+#include "classes/cSC4LandValueSimulator.h"
 #include "classes/cUnk00ab1830.h"
 #include "classes/cUnk00ab18dc.h"
 #include "classes/cSC4Lot.h"
 #include "classes/cUnk00ab1b28.h"
+#include "classes/cSC4LotDeveloper.h"
 #include "classes/cSC4NeighborDeal.h"
+#include "classes/cSC4NeighborsSimulator.h"
 #include "classes/cSC4NeighborConnection.h"
+#include "classes/cSC4ParkManager.h"
 #include "classes/cSC4PathFinder.h"
+#include "classes/cSC4PlumbingSimulator.h"
+#include "classes/cSC4PoliceHelicopterDispatchSource.h"
 #include "classes/cSC4PoliceSimulator.h"
+#include "classes/cSC4PollutionSimulator.h"
 #include "classes/cUnk00ab2760.h"
 #include "classes/cUnk00ab27dc.h"
+#include "classes/cSC4PowerSimulator.h"
 #include "classes/cSC4WealthRequester.h"
+#include "classes/cSC4PropDeveloper.h"
+#include "classes/cSC4ResidentialSimulator.h"
 #include "classes/cUnk00ab2d34.h"
+#include "classes/cUnk00ab2e10.h"
 #include "classes/cSC4Simulator.h"
 #include "classes/cUnk00ab30dc.h"
+#include "classes/cSC4TractDeveloper.h"
 #include "classes/cUnk00ab33a4.h"
 #include "classes/cUnk00ab33bc.h"
 #include "classes/cSC4TrafficSimulator.h"
@@ -579,13 +619,16 @@
 #include "classes/cUnk00ab35ec.h"
 #include "classes/cUnk00ab35fc.h"
 #include "classes/cSC4WeatherSimulator.h"
+#include "classes/cUnk00ab3830.h"
 #include "classes/cUnk00ab3868.h"
 #include "classes/cUnk00ab3884.h"
 #include "classes/cUnk00ab3894.h"
 #include "classes/cUnk00ab38a4.h"
 #include "classes/cSTEOverlayManager.h"
 #include "classes/cSTESurfaceWater.h"
+#include "classes/cSTETerrain.h"
 #include "classes/cUnk00ab42f8.h"
+#include "classes/cSTETerrainView3D.h"
 #include "classes/cUnk00ab45a8.h"
 #include "classes/cUnk00ab4624.h"
 #include "classes/cGZWinKnob.h"
@@ -653,6 +696,7 @@
 #include "classes/cWinBMPView.h"
 #include "classes/cUnk00abaa38.h"
 #include "classes/cUnk00abaae0.h"
+#include "classes/cSC43DRender.h"
 #include "classes/cSC4CameraControl.h"
 #include "classes/cSC4ConfigRuleManager.h"
 #include "classes/cSC4LightingManager.h"
@@ -697,6 +741,7 @@
 #include "classes/cSC4OrdinanceProReadingCampaign.h"
 #include "classes/cUnk00abe878.h"
 #include "classes/cUnk00abea10.h"
+#include "classes/cSC4OrdinanceSimulator.h"
 #include "classes/cUnk00abebc8.h"
 #include "classes/cUnk00abece8.h"
 #include "classes/cUnk00abee08.h"
@@ -896,6 +941,7 @@ void GeneratedClasses_game()
     (void)new cSC4MySimBalloonAdvice;
     (void)new cUnk00a856cc;
     (void)new cUnk00a8576c;
+    (void)new cSC4MySimDispatch;
     (void)new cUnk00a85800;
     (void)new cUnk00a858d0;
     (void)new cUnk00a8596c;
@@ -909,6 +955,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a86258;
     (void)new cSC4TutorialTask;
     (void)new cUnk00a86364;
+    (void)new cSC424HourClock(ob_emit());
     (void)new cUnk00a86640;
     (void)new cUnk00a86674;
     (void)new cUnk00a86690;
@@ -917,6 +964,7 @@ void GeneratedClasses_game()
     (void)new cSC4BuildingOccupant;
     (void)new cGZPersistResourceKeyFilter;
     (void)new cUnk00a87578;
+    (void)new cSC4City(ob_emit());
     (void)new cSC4CityDetailManager;
     (void)new cUnk00a878c0;
     (void)new cUnk00a87950;
@@ -932,9 +980,11 @@ void GeneratedClasses_game()
     (void)new cSC4GDriversCOMDirector;
     (void)new cSC4ScriptedWindowCOMDirector;
     (void)new cUnk00a87fc0;
+    (void)new cSC4Demolition;
     (void)new cUnk00a88050;
     (void)new cUnk00a88084;
     (void)new cUnk00a880b8;
+    (void)new cSC4DispatchManager(ob_emit());
     (void)new cUnk00a881d4;
     (void)new cUnk00a881e8;
     (void)new cSC4NetworkConstructionCrew;
@@ -945,6 +995,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a8ca7c;
     (void)new cUnk00a8cafc;
     (void)new cSC4GameDataRegistry;
+    (void)new cSC4HistoryWarehouse(ob_emit());
     (void)new cUnk00a8ce28;
     (void)new cSC4LotConfiguration;
     (void)new cUnk00a8d260;
@@ -953,6 +1004,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a8d4e0;
     (void)new cSC4WinLotConfigurationEditor;
     (void)new cSC4LotConfigurationFilter;
+    (void)new cSC4LotConfigurationManager(ob_emit());
     (void)new cUnk00a8ece0;
     (void)new cUnk00a8ed08;
     (void)new cSC4MissingPluginDataReporter;
@@ -962,6 +1014,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a8edf8(ob_emit());
     (void)new cUnk00a8ee38;
     (void)new cUnk00a8eea0;
+    (void)new cSC4Nation;
     (void)new cSC4WinNetworkLotEditor;
     (void)new cUnk00a8f328;
     (void)new cUnk00a8f694;
@@ -969,12 +1022,15 @@ void GeneratedClasses_game()
     (void)new cUnk00a8f79c;
     (void)new cSC4OccupantManager(ob_emit());
     (void)new cUnk00a8f8e4;
+    (void)new cSC4PropManager;
     (void)new cUnk00a8f9cc;
     (void)new cSC4Region;
     (void)new cUnk00a8fad4;
+    (void)new cSC4RegionalCity(ob_emit());
     (void)new cSC4ToxicOccupant;
     (void)new cUnk00a8fe14;
     (void)new cUnk00a8fe48;
+    (void)new cSC4TrafficNetworkMap(ob_emit());
     (void)new cSC4ViewInputControlEffectDisaster;
     (void)new cUnk00a900d8;
     (void)new cUnk00a90180;
@@ -1007,6 +1063,7 @@ void GeneratedClasses_game()
     (void)new cSC4ViewInputControlTollBooth;
     (void)new cSC4ViewInputControlCitySituations;
     (void)new cUnk00a92d40;
+    (void)new cSC4ZoneManager(ob_emit());
     (void)new cUnk00a92eb8;
     (void)new cUnk00a92ec0;
     (void)new cWinSC4App;
@@ -1131,6 +1188,7 @@ void GeneratedClasses_game()
     (void)new cSC4AutomataCOMDirector;
     (void)new cSC4AutomataGenerator(ob_emit());
     (void)new cUnk00a95f00(ob_emit());
+    (void)new cSC4AutomataControllerManager(ob_emit());
     (void)new cUnk00a960bc;
     (void)new cUnk00a96134;
     (void)new cUnk00a96138;
@@ -1345,9 +1403,11 @@ void GeneratedClasses_game()
     (void)new cSC4NetworkLayoutCustomView;
     (void)new cUnk00aa760c;
     (void)new cSC4NetworkLot;
+    (void)new cSC4NetworkLotManager(ob_emit());
     (void)new cUnk00aa7998;
     (void)new cUnk00aa7a54;
     (void)new cUnk00aa7a88;
+    (void)new cSC4NetworkManager(ob_emit());
     (void)new cUnk00aa825c;
     (void)new cUnk00aa8290;
     (void)new cUnk00aa8314;
@@ -1416,29 +1476,54 @@ void GeneratedClasses_game()
     (void)new cUnk00aaff28;
     (void)new cUnk00ab01a8;
     (void)new cUnk00ab0428;
+    (void)new cUnk00ab0714(ob_emit());
+    (void)new cSC4AuraSimulator(ob_emit());
+    (void)new cSC4BudgetSimulator(ob_emit());
+    (void)new cSC4BuildingDevelopmentSimulator(ob_emit());
+    (void)new cSC4CivicBuildingSimulator(ob_emit());
+    (void)new cSC4CommercialSimulator(ob_emit());
     (void)new cUnk00ab0d18;
     (void)new cUnk00ab0d4c;
     (void)new cSC4CrimeSimulator;
+    (void)new cSC4DemandSimulator(ob_emit());
     (void)new cSC4DepartmentBudget(ob_emit());
     (void)new cSC4LineItem(ob_emit());
+    (void)new cSC4FirePlaneDispatchSource(ob_emit());
     (void)new cSC4FireProtectionSimulator(ob_emit());
+    (void)new cSC4FlammabilitySimulator(ob_emit());
     (void)new cUnk00ab1374;
+    (void)new cSC4FloraSimulator(ob_emit());
+    (void)new cSC4GrowthDeveloper(ob_emit());
+    (void)new cSC4IndustrialSimulator;
+    (void)new cSC4LandfillDeveloper(ob_emit());
     (void)new cUnk00ab15dc;
     (void)new cUnk00ab1610;
+    (void)new cSC4LandValueSimulator(ob_emit());
     (void)new cUnk00ab1830;
     (void)new cUnk00ab18dc(ob_emit());
     (void)new cSC4Lot;
     (void)new cUnk00ab1b28;
+    (void)new cSC4LotDeveloper(ob_emit());
     (void)new cSC4NeighborDeal(ob_emit());
+    (void)new cSC4NeighborsSimulator(ob_emit());
     (void)new cSC4NeighborConnection(ob_emit());
+    (void)new cSC4ParkManager(ob_emit());
     (void)new cSC4PathFinder;
+    (void)new cSC4PlumbingSimulator(ob_emit());
+    (void)new cSC4PoliceHelicopterDispatchSource(ob_emit());
     (void)new cSC4PoliceSimulator(ob_emit());
+    (void)new cSC4PollutionSimulator(ob_emit());
     (void)new cUnk00ab2760;
     (void)new cUnk00ab27dc;
+    (void)new cSC4PowerSimulator(ob_emit());
     (void)new cSC4WealthRequester;
+    (void)new cSC4PropDeveloper(ob_emit());
+    (void)new cSC4ResidentialSimulator(ob_emit());
     (void)new cUnk00ab2d34;
+    (void)new cUnk00ab2e10(ob_emit());
     (void)new cSC4Simulator(ob_emit());
     (void)new cUnk00ab30dc;
+    (void)new cSC4TractDeveloper(ob_emit());
     (void)new cUnk00ab33a4;
     (void)new cUnk00ab33bc;
     (void)new cSC4TrafficSimulator;
@@ -1447,13 +1532,16 @@ void GeneratedClasses_game()
     (void)new cUnk00ab35ec;
     (void)new cUnk00ab35fc;
     (void)new cSC4WeatherSimulator;
+    (void)new cUnk00ab3830(ob_emit());
     (void)new cUnk00ab3868;
     (void)new cUnk00ab3884;
     (void)new cUnk00ab3894;
     (void)new cUnk00ab38a4;
     (void)new cSTEOverlayManager;
     (void)new cSTESurfaceWater(ob_emit());
+    (void)new cSTETerrain(ob_emit());
     (void)new cUnk00ab42f8;
+    (void)new cSTETerrainView3D;
     (void)new cUnk00ab45a8;
     (void)new cUnk00ab4624;
     (void)new cGZWinKnob;
@@ -1521,6 +1609,7 @@ void GeneratedClasses_game()
     (void)new cWinBMPView;
     (void)new cUnk00abaa38;
     (void)new cUnk00abaae0;
+    (void)new cSC43DRender(ob_emit());
     (void)new cSC4CameraControl(ob_emit());
     (void)new cSC4ConfigRuleManager(ob_emit());
     (void)new cSC4LightingManager;
@@ -1565,6 +1654,7 @@ void GeneratedClasses_game()
     (void)new cSC4OrdinanceProReadingCampaign;
     (void)new cUnk00abe878;
     (void)new cUnk00abea10(ob_emit());
+    (void)new cSC4OrdinanceSimulator(ob_emit());
     (void)new cUnk00abebc8;
     (void)new cUnk00abece8;
     (void)new cUnk00abee08;

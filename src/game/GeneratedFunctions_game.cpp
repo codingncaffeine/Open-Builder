@@ -13,30 +13,66 @@
 #include "classes/cGZWinLuaScriptViewGeneral.h"
 #include "classes/cRZDiskRadioStation.h"
 #include "classes/cS3DTextureBindingFactory.h"
+#include "classes/cSC424HourClock.h"
+#include "classes/cSC43DRender.h"
 #include "classes/cSC4Advice.h"
 #include "classes/cSC4Aircraft.h"
+#include "classes/cSC4AuraSimulator.h"
+#include "classes/cSC4AutomataControllerManager.h"
 #include "classes/cSC4AutomataGenerator.h"
+#include "classes/cSC4BudgetSimulator.h"
+#include "classes/cSC4BuildingDevelopmentSimulator.h"
 #include "classes/cSC4CameraControl.h"
+#include "classes/cSC4City.h"
+#include "classes/cSC4CivicBuildingSimulator.h"
+#include "classes/cSC4CommercialSimulator.h"
 #include "classes/cSC4ConfigRuleManager.h"
 #include "classes/cSC4Demand.h"
+#include "classes/cSC4DemandSimulator.h"
 #include "classes/cSC4DepartmentBudget.h"
 #include "classes/cSC4DisasterInstanceVolcano.h"
+#include "classes/cSC4DispatchManager.h"
 #include "classes/cSC4EffectsManager.h"
 #include "classes/cSC4FireOccupant.h"
+#include "classes/cSC4FirePlaneDispatchSource.h"
 #include "classes/cSC4FireProtectionSimulator.h"
 #include "classes/cSC4FireTruck.h"
+#include "classes/cSC4FlammabilitySimulator.h"
+#include "classes/cSC4FloraSimulator.h"
+#include "classes/cSC4GrowthDeveloper.h"
 #include "classes/cSC4Helicopter.h"
+#include "classes/cSC4HistoryWarehouse.h"
+#include "classes/cSC4LandValueSimulator.h"
+#include "classes/cSC4LandfillDeveloper.h"
 #include "classes/cSC4LineItem.h"
+#include "classes/cSC4LotConfigurationManager.h"
+#include "classes/cSC4LotDeveloper.h"
 #include "classes/cSC4NeighborConnection.h"
 #include "classes/cSC4NeighborDeal.h"
+#include "classes/cSC4NeighborsSimulator.h"
+#include "classes/cSC4NetworkLotManager.h"
+#include "classes/cSC4NetworkManager.h"
 #include "classes/cSC4Occupant.h"
 #include "classes/cSC4OccupantManager.h"
+#include "classes/cSC4OrdinanceSimulator.h"
+#include "classes/cSC4ParkManager.h"
 #include "classes/cSC4PatrolCar.h"
+#include "classes/cSC4PlumbingSimulator.h"
+#include "classes/cSC4PoliceHelicopterDispatchSource.h"
 #include "classes/cSC4PoliceSimulator.h"
+#include "classes/cSC4PollutionSimulator.h"
+#include "classes/cSC4PowerSimulator.h"
+#include "classes/cSC4PropDeveloper.h"
+#include "classes/cSC4RegionalCity.h"
+#include "classes/cSC4ResidentialSimulator.h"
 #include "classes/cSC4Simulator.h"
+#include "classes/cSC4TractDeveloper.h"
+#include "classes/cSC4TrafficNetworkMap.h"
+#include "classes/cSC4ZoneManager.h"
 #include "classes/cSCResKeyTableEntryView.h"
 #include "classes/cSCResourceCatalogView.h"
 #include "classes/cSTESurfaceWater.h"
+#include "classes/cSTETerrain.h"
 #include "classes/cUnk00a8edf8.h"
 #include "classes/cUnk00a9378c.h"
 #include "classes/cUnk00a94164.h"
@@ -48,7 +84,10 @@
 #include "classes/cUnk00aa442c.h"
 #include "classes/cUnk00aaeef8.h"
 #include "classes/cUnk00aaef2c.h"
+#include "classes/cUnk00ab0714.h"
 #include "classes/cUnk00ab18dc.h"
+#include "classes/cUnk00ab2e10.h"
+#include "classes/cUnk00ab3830.h"
 #include "classes/cUnk00abd714.h"
 #include "classes/cUnk00abea10.h"
 #include "classes/cUnk00ac14bc.h"
@@ -90,22 +129,10 @@ uint32_t Fn0043035a()
     return 0x430342;
 }
 
-// FUNCTION: 0x00433d40
-uint32_t Fn00433d40()
-{
-    return 0xcbc14674;
-}
-
 // FUNCTION: 0x0043f640
 uint32_t Fn0043f640()
 {
     return 0xaa3836fb;
-}
-
-// FUNCTION: 0x00445a30
-uint32_t Fn00445a30()
-{
-    return 0xa7e7f929;
 }
 
 // FUNCTION: 0x0044960a
@@ -126,70 +153,10 @@ uint32_t Fn00456aaa()
     return 0x456a92;
 }
 
-// FUNCTION: 0x0045a360
-uint32_t Fn0045a360()
-{
-    return 0x8990c372;
-}
-
-// FUNCTION: 0x00466490
-uint32_t Fn00466490()
-{
-    return 0x990c38a;
-}
-
-// FUNCTION: 0x004695a0
-uint32_t Fn004695a0()
-{
-    return 0x4990bd93;
-}
-
-// FUNCTION: 0x00475650
-uint32_t Fn00475650()
-{
-    return 0x89efa536;
-}
-
-// FUNCTION: 0x00489650
-uint32_t Fn00489650()
-{
-    return 0x299062c0;
-}
-
-// FUNCTION: 0x004976e0
-uint32_t Fn004976e0()
-{
-    return 0xc9dc0477;
-}
-
-// FUNCTION: 0x004a1d20
-uint32_t Fn004a1d20()
-{
-    return 0xa990bd10;
-}
-
-// FUNCTION: 0x004aba60
-uint32_t Fn004aba60()
-{
-    return 0x6a037c24;
-}
-
-// FUNCTION: 0x004b3ab0
-uint32_t Fn004b3ab0()
-{
-    return 0x6a0f82b2;
-}
-
 // FUNCTION: 0x004d7baa
 uint32_t Fn004d7baa()
 {
     return 0x4d7b92;
-}
-
-// FUNCTION: 0x004dc1a0
-uint32_t Fn004dc1a0()
-{
-    return 0x298f9b2d;
 }
 
 // FUNCTION: 0x004de4aa
@@ -238,12 +205,6 @@ uint32_t Fn004f6230()
 uint32_t Fn004f84fb()
 {
     return 0x4f8457;
-}
-
-// FUNCTION: 0x0051a300
-uint32_t Fn0051a300()
-{
-    return 0xca14ca03;
 }
 
 // FUNCTION: 0x00520050
@@ -408,18 +369,6 @@ uint32_t Fn0060a7c0()
     return 0x4b8ea424;
 }
 
-// FUNCTION: 0x0060c720
-uint32_t Fn0060c720()
-{
-    return 0xe9a6cd3b;
-}
-
-// FUNCTION: 0x00610530
-uint32_t Fn00610530()
-{
-    return 0xc990bd46;
-}
-
 // FUNCTION: 0x0061087a
 uint32_t Fn0061087a()
 {
@@ -510,202 +459,10 @@ uint32_t Fn00680890()
     return 0x5cf9459a;
 }
 
-// FUNCTION: 0x0068afd0
-uint32_t Fn0068afd0()
-{
-    return 0xaa2049a1;
-}
-
-// FUNCTION: 0x0068afe0
-uint32_t Fn0068afe0()
-{
-    return 0xea3955c4;
-}
-
-// FUNCTION: 0x0068d1a0
-uint32_t Fn0068d1a0()
-{
-    return 0x990bdd8;
-}
-
-// FUNCTION: 0x00694240
-uint32_t Fn00694240()
-{
-    return 0xe990be01;
-}
-
-// FUNCTION: 0x00695280
-uint32_t Fn00695280()
-{
-    return 0x8990be7a;
-}
-
-// FUNCTION: 0x0069d6b0
-uint32_t Fn0069d6b0()
-{
-    return 0xa413481;
-}
-
-// FUNCTION: 0x0069ea40
-uint32_t Fn0069ea40()
-{
-    return 0x8990c080;
-}
-
-// FUNCTION: 0x006a2300
-uint32_t Fn006a2300()
-{
-    return 0x2990bff2;
-}
-
-// FUNCTION: 0x006ac540
-uint32_t Fn006ac540()
-{
-    return 0x4c0ae114;
-}
-
-// FUNCTION: 0x006ae380
-uint32_t Fn006ae380()
-{
-    return 0xe990c045;
-}
-
-// FUNCTION: 0x006afbd0
-uint32_t Fn006afbd0()
-{
-    return 0xc990c034;
-}
-
-// FUNCTION: 0x006b3790
-uint32_t Fn006b3790()
-{
-    return 0x990c138;
-}
-
-// FUNCTION: 0x006b8960
-uint32_t Fn006b8960()
-{
-    return 0xa990c022;
-}
-
-// FUNCTION: 0x006b8b10
-uint32_t Fn006b8b10()
-{
-    return 0xea09d4ae;
-}
-
-// FUNCTION: 0x006bd4b0
-uint32_t Fn006bd4b0()
-{
-    return 0xe990c18e;
-}
-
-// FUNCTION: 0x006c3b00
-uint32_t Fn006c3b00()
-{
-    return 0xa990bfe0;
-}
-
-// FUNCTION: 0x006cdef0
-uint32_t Fn006cdef0()
-{
-    return 0xc990c0a4;
-}
-
-// FUNCTION: 0x006d5050
-uint32_t Fn006d5050()
-{
-    return 0xaa3fe6bc;
-}
-
-// FUNCTION: 0x006da3b0
-uint32_t Fn006da3b0()
-{
-    return 0x990c075;
-}
-
-// FUNCTION: 0x006df750
-uint32_t Fn006df750()
-{
-    return 0xc0b06e8;
-}
-
-// FUNCTION: 0x006e2cc0
-uint32_t Fn006e2cc0()
-{
-    return 0x8990c065;
-}
-
-// FUNCTION: 0x006e5030
-uint32_t Fn006e5030()
-{
-    return 0xe9a4300b;
-}
-
-// FUNCTION: 0x006e9ce0
-uint32_t Fn006e9ce0()
-{
-    return 0xa2c4eee;
-}
-
-// FUNCTION: 0x006eabb0
-uint32_t Fn006eabb0()
-{
-    return 0x990c005;
-}
-
-// FUNCTION: 0x006f0d70
-uint32_t Fn006f0d70()
-{
-    return 0x89c48f47;
-}
-
-// FUNCTION: 0x006f6e50
-uint32_t Fn006f6e50()
-{
-    return 0x4990c013;
-}
-
-// FUNCTION: 0x00700e80
-uint32_t Fn00700e80()
-{
-    return 0xea230a28;
-}
-
 // FUNCTION: 0x007010a0
 uint32_t Fn007010a0()
 {
     return 0x80;
-}
-
-// FUNCTION: 0x00701970
-uint32_t Fn00701970()
-{
-    return 0xea3957ad;
-}
-
-// FUNCTION: 0x007045a0
-uint32_t Fn007045a0()
-{
-    return 0x2990c142;
-}
-
-// FUNCTION: 0x00729eb0
-uint32_t Fn00729eb0()
-{
-    return 0x498f9b01;
-}
-
-// FUNCTION: 0x007405d0
-uint32_t Fn007405d0()
-{
-    return 0xe98f9525;
-}
-
-// FUNCTION: 0x007523e0
-uint32_t Fn007523e0()
-{
-    return 0xc9b84e10;
 }
 
 // FUNCTION: 0x0075ccea
@@ -748,12 +505,6 @@ uint32_t Fn007b24fa()
 uint32_t Fn007be6f0()
 {
     return 0xaa7cecfd;
-}
-
-// FUNCTION: 0x007c9f90
-uint32_t Fn007c9f90()
-{
-    return 0xe9c622d8;
 }
 
 // FUNCTION: 0x007ce130
@@ -808,12 +559,6 @@ uint32_t Fn0080426a()
 uint32_t Fn00809120()
 {
     return 0x9ac0e23c;
-}
-
-// FUNCTION: 0x0080e230
-uint32_t Fn0080e230()
-{
-    return 0xa990c08e;
 }
 
 // FUNCTION: 0x00813bf7
@@ -1422,16 +1167,46 @@ cSC4Advice* Fn00408a50()
     return new cSC4Advice;
 }
 
+// FUNCTION: 0x00445c80
+cSC424HourClock* Fn00445c80()
+{
+    return new cSC424HourClock;
+}
+
+// FUNCTION: 0x0045a560
+cSC4City* Fn0045a560()
+{
+    return new cSC4City;
+}
+
 // FUNCTION: 0x004661d0
 cGZWinLuaScriptViewGeneral* Fn004661d0()
 {
     return new cGZWinLuaScriptViewGeneral;
 }
 
+// FUNCTION: 0x0046a7b0
+cSC4DispatchManager* Fn0046a7b0()
+{
+    return new cSC4DispatchManager;
+}
+
 // FUNCTION: 0x004715e0
 cSC4FireOccupant* Fn004715e0()
 {
     return new cSC4FireOccupant;
+}
+
+// FUNCTION: 0x00476bb0
+cSC4HistoryWarehouse* Fn00476bb0()
+{
+    return new cSC4HistoryWarehouse;
+}
+
+// FUNCTION: 0x0048a520
+cSC4LotConfigurationManager* Fn0048a520()
+{
+    return new cSC4LotConfigurationManager;
 }
 
 // FUNCTION: 0x004929b0
@@ -1444,6 +1219,24 @@ cUnk00a8edf8* Fn004929b0()
 cSC4OccupantManager* Fn004a18a0()
 {
     return new cSC4OccupantManager;
+}
+
+// FUNCTION: 0x004ad9a0
+cSC4RegionalCity* Fn004ad9a0()
+{
+    return new cSC4RegionalCity;
+}
+
+// FUNCTION: 0x004b42e0
+cSC4TrafficNetworkMap* Fn004b42e0()
+{
+    return new cSC4TrafficNetworkMap;
+}
+
+// FUNCTION: 0x004dd3e0
+cSC4ZoneManager* Fn004dd3e0()
+{
+    return new cSC4ZoneManager;
 }
 
 // FUNCTION: 0x004eb0a0
@@ -1506,6 +1299,12 @@ cUnk00a94b38* Fn00514800()
     return new cUnk00a94b38;
 }
 
+// FUNCTION: 0x00514840
+cSC4AutomataControllerManager* Fn00514840()
+{
+    return new cSC4AutomataControllerManager;
+}
+
 // FUNCTION: 0x00514860
 cSC4AutomataGenerator* Fn00514860()
 {
@@ -1554,6 +1353,18 @@ cUnk00aa442c* Fn005ebbd0()
     return new cUnk00aa442c;
 }
 
+// FUNCTION: 0x0060f4f0
+cSC4NetworkLotManager* Fn0060f4f0()
+{
+    return new cSC4NetworkLotManager;
+}
+
+// FUNCTION: 0x00613750
+cSC4NetworkManager* Fn00613750()
+{
+    return new cSC4NetworkManager;
+}
+
 // FUNCTION: 0x00664240
 cUnk00aaeef8* Fn00664240()
 {
@@ -1590,6 +1401,48 @@ cSCResKeyTableEntryView* Fn00684260()
     return new cSCResKeyTableEntryView;
 }
 
+// FUNCTION: 0x0068b520
+cUnk00ab0714* Fn0068b520()
+{
+    return new cUnk00ab0714;
+}
+
+// FUNCTION: 0x0068d6e0
+cSC4AuraSimulator* Fn0068d6e0()
+{
+    return new cSC4AuraSimulator;
+}
+
+// FUNCTION: 0x00694970
+cSC4BudgetSimulator* Fn00694970()
+{
+    return new cSC4BudgetSimulator;
+}
+
+// FUNCTION: 0x0069a7a0
+cSC4BuildingDevelopmentSimulator* Fn0069a7a0()
+{
+    return new cSC4BuildingDevelopmentSimulator;
+}
+
+// FUNCTION: 0x0069e800
+cSC4CivicBuildingSimulator* Fn0069e800()
+{
+    return new cSC4CivicBuildingSimulator;
+}
+
+// FUNCTION: 0x0069ef70
+cSC4CommercialSimulator* Fn0069ef70()
+{
+    return new cSC4CommercialSimulator;
+}
+
+// FUNCTION: 0x006a6f30
+cSC4DemandSimulator* Fn006a6f30()
+{
+    return new cSC4DemandSimulator;
+}
+
 // FUNCTION: 0x006ab000
 cSC4DepartmentBudget* Fn006ab000()
 {
@@ -1602,10 +1455,46 @@ cSC4LineItem* Fn006ab7a0()
     return new cSC4LineItem;
 }
 
+// FUNCTION: 0x006acea0
+cSC4FirePlaneDispatchSource* Fn006acea0()
+{
+    return new cSC4FirePlaneDispatchSource;
+}
+
 // FUNCTION: 0x006adb80
 cSC4FireProtectionSimulator* Fn006adb80()
 {
     return new cSC4FireProtectionSimulator;
+}
+
+// FUNCTION: 0x006aead0
+cSC4FlammabilitySimulator* Fn006aead0()
+{
+    return new cSC4FlammabilitySimulator;
+}
+
+// FUNCTION: 0x006b2940
+cSC4FloraSimulator* Fn006b2940()
+{
+    return new cSC4FloraSimulator;
+}
+
+// FUNCTION: 0x006b7870
+cSC4GrowthDeveloper* Fn006b7870()
+{
+    return new cSC4GrowthDeveloper;
+}
+
+// FUNCTION: 0x006b98e0
+cSC4LandfillDeveloper* Fn006b98e0()
+{
+    return new cSC4LandfillDeveloper;
+}
+
+// FUNCTION: 0x006bdef0
+cSC4LandValueSimulator* Fn006bdef0()
+{
+    return new cSC4LandValueSimulator;
 }
 
 // FUNCTION: 0x006c0eb0
@@ -1614,10 +1503,22 @@ cUnk00ab18dc* Fn006c0eb0()
     return new cUnk00ab18dc;
 }
 
+// FUNCTION: 0x006c8df0
+cSC4LotDeveloper* Fn006c8df0()
+{
+    return new cSC4LotDeveloper;
+}
+
 // FUNCTION: 0x006cf940
 cSC4NeighborDeal* Fn006cf940()
 {
     return new cSC4NeighborDeal;
+}
+
+// FUNCTION: 0x006d38d0
+cSC4NeighborsSimulator* Fn006d38d0()
+{
+    return new cSC4NeighborsSimulator;
 }
 
 // FUNCTION: 0x006d4b90
@@ -1626,10 +1527,58 @@ cSC4NeighborConnection* Fn006d4b90()
     return new cSC4NeighborConnection;
 }
 
+// FUNCTION: 0x006d5ae0
+cSC4ParkManager* Fn006d5ae0()
+{
+    return new cSC4ParkManager;
+}
+
+// FUNCTION: 0x006dc9a0
+cSC4PlumbingSimulator* Fn006dc9a0()
+{
+    return new cSC4PlumbingSimulator;
+}
+
+// FUNCTION: 0x006e0030
+cSC4PoliceHelicopterDispatchSource* Fn006e0030()
+{
+    return new cSC4PoliceHelicopterDispatchSource;
+}
+
 // FUNCTION: 0x006e2720
 cSC4PoliceSimulator* Fn006e2720()
 {
     return new cSC4PoliceSimulator;
+}
+
+// FUNCTION: 0x006e5f00
+cSC4PollutionSimulator* Fn006e5f00()
+{
+    return new cSC4PollutionSimulator;
+}
+
+// FUNCTION: 0x006f00d0
+cSC4PowerSimulator* Fn006f00d0()
+{
+    return new cSC4PowerSimulator;
+}
+
+// FUNCTION: 0x006f3600
+cSC4PropDeveloper* Fn006f3600()
+{
+    return new cSC4PropDeveloper;
+}
+
+// FUNCTION: 0x00700e60
+cSC4ResidentialSimulator* Fn00700e60()
+{
+    return new cSC4ResidentialSimulator;
+}
+
+// FUNCTION: 0x007019f0
+cUnk00ab2e10* Fn007019f0()
+{
+    return new cUnk00ab2e10;
 }
 
 // FUNCTION: 0x00704340
@@ -1638,10 +1587,34 @@ cSC4Simulator* Fn00704340()
     return new cSC4Simulator;
 }
 
+// FUNCTION: 0x0070caa0
+cSC4TractDeveloper* Fn0070caa0()
+{
+    return new cSC4TractDeveloper;
+}
+
+// FUNCTION: 0x00734af0
+cUnk00ab3830* Fn00734af0()
+{
+    return new cUnk00ab3830;
+}
+
 // FUNCTION: 0x0073e950
 cSTESurfaceWater* Fn0073e950()
 {
     return new cSTESurfaceWater;
+}
+
+// FUNCTION: 0x0074d580
+cSTETerrain* Fn0074d580()
+{
+    return new cSTETerrain;
+}
+
+// FUNCTION: 0x007cb070
+cSC43DRender* Fn007cb070()
+{
+    return new cSC43DRender;
 }
 
 // FUNCTION: 0x007ccc00
@@ -1666,6 +1639,12 @@ cS3DTextureBindingFactory* Fn0080a680()
 cUnk00abea10* Fn0080cdc0()
 {
     return new cUnk00abea10;
+}
+
+// FUNCTION: 0x0080e890
+cSC4OrdinanceSimulator* Fn0080e890()
+{
+    return new cSC4OrdinanceSimulator;
 }
 
 // FUNCTION: 0x008298f0
