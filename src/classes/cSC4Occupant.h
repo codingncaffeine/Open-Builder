@@ -55,6 +55,9 @@ public:
     virtual void Slot08_a953a8(uint32_t);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
+    // STUB: 0x005e9220
+    cSC4Occupant();
+    explicit cSC4Occupant(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     uint32_t field24;
     char unknown28[0x7];
     bool field2f;

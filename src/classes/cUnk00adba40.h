@@ -33,6 +33,9 @@ public:
     virtual uint32_t Slot14_adb720();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x00994d12
+    cUnk00adba40();
+    explicit cUnk00adba40(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     uint32_t field12c;
     char unknown130[0x20];
     uint32_t field150;

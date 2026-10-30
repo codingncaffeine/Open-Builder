@@ -63,6 +63,9 @@ public:
     virtual bool Slot23_ad8fc8();
     virtual bool Slot24_ad8fc8(uint32_t, uint32_t);
     virtual bool Slot25_ad8fc8();
+    // STUB: 0x0097b40c
+    cGZDBSegmentDirectoryFiles();
+    explicit cGZDBSegmentDirectoryFiles(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x009796fc
     void StartBackgroundThread();
     // STUB: 0x00979ad2

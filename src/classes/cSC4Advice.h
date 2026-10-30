@@ -49,6 +49,9 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
+    // STUB: 0x004085d0
+    cSC4Advice();
+    explicit cSC4Advice(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x00408800
     bool Fn00408800();
     char unknown10[0x20];

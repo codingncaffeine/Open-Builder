@@ -61,6 +61,9 @@ public:
     virtual uint32_t GetDisplayFlags();
     virtual void SetDisplayFlag(uint32_t, bool);
     virtual bool IsLocalFundingItem();
+    // STUB: 0x006aae20
+    cSC4LineItem();
+    explicit cSC4LineItem(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown8[0x4];
     cRZString mName;
     uint32_t mnNameB;

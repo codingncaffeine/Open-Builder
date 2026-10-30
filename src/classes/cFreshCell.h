@@ -52,6 +52,9 @@ public:
     virtual bool SetRandPitchShiftHigh(uint32_t);
     virtual bool SetGroupId(uint32_t);
     virtual bool SetStereoSample(bool);
+    // STUB: 0x00945dcc
+    cFreshCell();
+    explicit cFreshCell(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x4];
     uint32_t field8;
     char fieldc[0x14];

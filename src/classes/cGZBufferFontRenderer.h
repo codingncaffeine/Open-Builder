@@ -17,6 +17,9 @@ public:
     virtual void Slot05_ac55b4(uint32_t, uint32_t, uint32_t);
     virtual void Slot06_ac55b4(uint32_t, uint32_t, uint32_t);
     virtual bool Slot07_ac55b4(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00897722
+    cGZBufferFontRenderer();
+    explicit cGZBufferFontRenderer(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x4];
 };
 #ifdef _MSC_VER

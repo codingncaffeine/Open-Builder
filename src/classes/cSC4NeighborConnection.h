@@ -40,6 +40,9 @@ public:
     virtual void Slot12_ab1e7c(uint32_t);
     virtual bool Slot13_ab1e7c();
     virtual void Slot14_ab1e7c(uint32_t);
+    // STUB: 0x006d4680
+    cSC4NeighborConnection();
+    explicit cSC4NeighborConnection(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown20[0x4];
     uint32_t field24;
     char unknown28[0x14];

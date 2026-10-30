@@ -20,6 +20,9 @@ public:
     virtual ~cUnk00ac14bc();
     virtual bool Slot09_ac14bc(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot10_ac14bc(uint32_t, uint32_t);
+    // STUB: 0x00829f70
+    cUnk00ac14bc();
+    explicit cUnk00ac14bc(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x44c];
 };
 #ifdef _MSC_VER

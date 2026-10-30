@@ -73,6 +73,9 @@ public:
     virtual void* AddCharData(uint32_t, void*);
     virtual bool CopyGlyphToSourceData(void*, void*, uint32_t, uint32_t, const void*, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool ReallocateSourceData(void*, uint32_t, uint32_t);
+    // STUB: 0x00899aab
+    cGZFont();
+    explicit cGZFont(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x00896293
     void Fn00896293();
     // STUB: 0x0089603d

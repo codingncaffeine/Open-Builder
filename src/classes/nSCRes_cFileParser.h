@@ -31,6 +31,9 @@ public:
     virtual uint32_t Slot12_aaf3a4();
     virtual void Slot13_aaf3a4(uint32_t);
     virtual bool Slot14_aaf3a4();
+    // STUB: 0x00681700
+    nSCRes_cFileParser();
+    explicit nSCRes_cFileParser(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     uint32_t field10;
     char unknown14[0x20];
     bool field34;

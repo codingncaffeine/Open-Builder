@@ -50,6 +50,9 @@ public:
     virtual void Slot08_ae1a28(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x009c19c8
+    cGZWinText();
+    explicit cGZWinText(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknowndc[0x38];
 };
 #ifdef _MSC_VER

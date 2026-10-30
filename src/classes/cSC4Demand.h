@@ -90,6 +90,9 @@ public:
     virtual void DebugUnlockValue();
     virtual bool DebugIsValueLocked();
     virtual void CalculateActiveDemand(bool);
+    // STUB: 0x005d5280
+    cSC4Demand();
+    explicit cSC4Demand(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     bool mbLoaded;
     bool mbOpen;
     char unknowna[0x2];

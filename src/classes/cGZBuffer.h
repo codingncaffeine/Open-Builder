@@ -111,6 +111,9 @@ public:
     virtual bool DestroySurfaces();
     virtual void Slot45_ac1400();
     virtual bool Slot46_ac1400(void*, void*, void*);
+    // STUB: 0x008272e0
+    cGZBuffer();
+    explicit cGZBuffer(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     bool field8;
     char unknown9[0x3];
     uint32_t mnColorType;

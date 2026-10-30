@@ -33,6 +33,9 @@ public:
     virtual ~cUnk00ad7520();
     virtual void Slot22_ad7520();
     virtual uint32_t Slot23_ad7520();
+    // STUB: 0x0096b1f5
+    cUnk00ad7520();
+    explicit cUnk00ad7520(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0xf60];
     uint32_t fieldf64;
     char fieldf68[0x14];

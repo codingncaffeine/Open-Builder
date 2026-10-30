@@ -18,6 +18,9 @@ public:
     virtual bool GetTranslation(uint32_t, uint32_t);
     virtual bool Clear();
     virtual ~cGZScriptVocab();
+    // STUB: 0x009453d4
+    cGZScriptVocab();
+    explicit cGZScriptVocab(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x10];
 };
 #ifdef _MSC_VER

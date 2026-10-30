@@ -47,6 +47,9 @@ public:
     virtual uint32_t DependentResource(uint32_t);
     virtual uint32_t IndexOfDependentResource(uint32_t);
     virtual ~cGZPersistSurveyorWriter();
+    // STUB: 0x0098158e
+    cGZPersistSurveyorWriter();
+    explicit cGZPersistSurveyorWriter(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x8];
     uint32_t fieldc;
     char unknown10[0x30];

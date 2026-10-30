@@ -36,6 +36,9 @@ public:
     virtual bool Slot16_ad4830(uint32_t, uint32_t, uint32_t);
     virtual bool Slot17_ad4830(uint32_t, uint32_t);
     virtual void Slot18_ad4830();
+    // STUB: 0x00945c6c
+    cFreshCellPlayer();
+    explicit cFreshCellPlayer(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknownc[0x18];
     uint32_t field24;
     char unknown28[0x15];

@@ -16,6 +16,9 @@ public:
     virtual void Read(uint32_t);
     virtual uint32_t GetGZCLSID();
     virtual ~cSC4CameraControl() {}
+    // STUB: 0x007cc990
+    cSC4CameraControl();
+    explicit cSC4CameraControl(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x15c];
 };
 #ifdef _MSC_VER

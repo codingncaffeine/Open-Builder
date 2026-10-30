@@ -155,6 +155,9 @@ public:
     virtual bool SetLowPassCutoff(uint32_t);
     virtual bool SetHighPassCutoff(uint32_t);
     virtual bool SetTimeMultiplier(uint32_t);
+    // STUB: 0x0093fe12
+    cHitChannel();
+    explicit cHitChannel(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x0093f304
     bool CreateSnd();
     // STUB: 0x0093f687

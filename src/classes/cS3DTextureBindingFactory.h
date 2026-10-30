@@ -41,6 +41,9 @@ public:
     virtual void Slot03_abd84c(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x0080a5b0
+    cS3DTextureBindingFactory();
+    explicit cS3DTextureBindingFactory(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown28[0x3c];
     uint32_t field64;
     uint32_t field68;

@@ -26,6 +26,9 @@ public:
     virtual void Slot03_ab16bc(uint32_t);
     virtual void Slot04_ab16bc(uint32_t);
     virtual void* Slot05_ab16bc();
+    // STUB: 0x006c0800
+    cUnk00ab18dc();
+    explicit cUnk00ab18dc(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char field1c[0x4];
 };
 #ifdef _MSC_VER

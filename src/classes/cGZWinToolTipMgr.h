@@ -16,6 +16,9 @@ public:
     virtual bool Init(uint32_t, uint32_t, uint32_t);
     virtual bool Shutdown();
     virtual ~cGZWinToolTipMgr();
+    // STUB: 0x009d9f0e
+    cGZWinToolTipMgr();
+    explicit cGZWinToolTipMgr(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x48];
 };
 #ifdef _MSC_VER

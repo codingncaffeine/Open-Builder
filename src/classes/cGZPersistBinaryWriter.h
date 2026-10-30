@@ -39,6 +39,9 @@ public:
     virtual void WriteTypeInfo(uint32_t);
     virtual void Slot28_ada210();
     virtual ~cGZPersistBinaryWriter();
+    // STUB: 0x009832df
+    cGZPersistBinaryWriter();
+    explicit cGZPersistBinaryWriter(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x2c];
 };
 #ifdef _MSC_VER

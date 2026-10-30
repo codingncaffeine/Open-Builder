@@ -37,6 +37,9 @@ public:
     virtual bool Slot18_ae2300(bool);
     virtual uint32_t Slot19_ae2300();
     virtual void Slot08_ae1a28(uint32_t);
+    // STUB: 0x009cd842
+    cGZWinFlatRect();
+    explicit cGZWinFlatRect(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     bool fielddc;
     uint8_t fielddd;
     char unknownde[0x12];

@@ -32,6 +32,9 @@ public:
     virtual bool Slot12_ae3ab8();
     virtual void Slot13_ae3ab8(uint32_t);
     virtual bool Slot14_ae3ab8(uint32_t, uint32_t);
+    // STUB: 0x009d77ca
+    cGZWinFolders();
+    explicit cGZWinFolders(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknowndc[0x20];
 };
 #ifdef _MSC_VER

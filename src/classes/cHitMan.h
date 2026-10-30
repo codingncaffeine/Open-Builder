@@ -68,6 +68,9 @@ public:
     virtual bool Slot46_ad2540(uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x00939ea4
+    cHitMan();
+    explicit cHitMan(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     uint8_t mbDuckEnabled;
     bool field21;
     char unknown22[0xa];

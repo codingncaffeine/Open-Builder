@@ -35,6 +35,9 @@ public:
     virtual uint32_t Slot10_ae2360();
     virtual uint32_t Slot11_ae2360();
     virtual uint32_t Slot12_ae2360();
+    // STUB: 0x009cdba5
+    cGZWinMsgBox();
+    explicit cGZWinMsgBox(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknowne0[0x18];
     uint32_t fieldf8;
     uint32_t fieldfc;

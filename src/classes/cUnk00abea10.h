@@ -53,6 +53,9 @@ public:
     virtual bool Slot27_abe900(bool);
     virtual bool Slot28_abe900(bool);
     virtual bool Slot29_abe900(uint32_t, uint32_t);
+    // STUB: 0x0080cc50
+    cUnk00abea10();
+    explicit cUnk00abea10(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown24[0x14];
     uint32_t field38;
     char field3c[0x14];

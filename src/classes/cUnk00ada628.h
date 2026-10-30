@@ -24,6 +24,9 @@ public:
     virtual bool Slot12_ada628(uint32_t);
     virtual uint32_t Slot13_ada628();
     virtual ~cUnk00ada628();
+    // STUB: 0x00985148
+    cUnk00ada628();
+    explicit cUnk00ada628(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x18];
     uint32_t field1c;
     uint32_t field20;

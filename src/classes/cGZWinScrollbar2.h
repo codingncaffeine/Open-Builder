@@ -48,6 +48,9 @@ public:
     virtual bool Slot23_ae4020(uint32_t);
     virtual uint32_t Slot24_ae4020();
     virtual bool Slot25_ae4020(uint32_t);
+    // STUB: 0x009d9445
+    cGZWinScrollbar2();
+    explicit cGZWinScrollbar2(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     uint32_t fielddc;
     char unknowne0[0x14];
     uint32_t fieldf4;

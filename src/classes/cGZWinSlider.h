@@ -42,6 +42,9 @@ public:
     virtual bool Slot13_ae074c(uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x009c3836
+    cGZWinSlider();
+    explicit cGZWinSlider(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x0099bc31
     bool Fn0099bc31();
     // STUB: 0x0099bdfe

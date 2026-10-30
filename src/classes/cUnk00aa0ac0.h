@@ -24,6 +24,9 @@ public:
     virtual void Slot03_aa0a44();
     virtual uint32_t Slot04_aa0a44();
     virtual void Slot05_aa0a44();
+    // STUB: 0x005a4cc0
+    cUnk00aa0ac0();
+    explicit cUnk00aa0ac0(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     uint32_t field134;
     char unknown138[0x14];
 };

@@ -27,6 +27,9 @@ public:
     virtual void CheckTimeOfDay(uint32_t, uint32_t);
     virtual uint32_t IsExpired();
     virtual void DoAnimationTick(float, uint32_t, void*);
+    // STUB: 0x005182b0
+    cUnk00a95f00();
+    explicit cUnk00a95f00(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown5c[0x30];
     uint32_t field8c;
     char unknown90[0x10];

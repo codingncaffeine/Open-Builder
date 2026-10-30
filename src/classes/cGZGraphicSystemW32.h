@@ -53,6 +53,9 @@ public:
     virtual bool Slot04_adac50(uint32_t, uint32_t);
     virtual void Slot05_adac50(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot06_adac50(uint32_t, uint32_t);
+    // STUB: 0x0098b590
+    cGZGraphicSystemW32();
+    explicit cGZGraphicSystemW32(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown178[0x8];
 };
 #ifdef _MSC_VER

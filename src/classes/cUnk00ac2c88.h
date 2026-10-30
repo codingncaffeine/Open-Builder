@@ -138,6 +138,9 @@ public:
     virtual bool Slot49_ac2c88(uint32_t);
     virtual bool Slot50_ac2c88(uint32_t);
     virtual void Slot13_ad3e48(uint32_t);
+    // STUB: 0x00877672
+    cUnk00ac2c88();
+    explicit cUnk00ac2c88(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x008760c3
     void Fn008760c3();
     // STUB: 0x008769cc

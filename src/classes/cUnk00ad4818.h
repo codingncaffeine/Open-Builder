@@ -14,6 +14,9 @@ public:
     virtual void Slot02_ad4818();
     virtual uint32_t Slot03_ad4818(uint32_t, uint32_t, uint32_t);
     virtual ~cUnk00ad4818();
+    // STUB: 0x0094585f
+    cUnk00ad4818();
+    explicit cUnk00ad4818(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x4044];
 };
 #ifdef _MSC_VER

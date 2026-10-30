@@ -54,6 +54,9 @@ public:
     virtual uint32_t GetDamagedOccupantsCount();
     virtual void CreateParticleEffect(const char*, const void*, bool, void*);
     virtual void DoAnimationTick(uint32_t);
+    // STUB: 0x0057faf0
+    cSC4DisasterInstanceVolcano();
+    explicit cSC4DisasterInstanceVolcano(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x0057f360
     void Fn0057f360();
     // STUB: 0x0057f3d0

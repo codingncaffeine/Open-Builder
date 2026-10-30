@@ -51,6 +51,9 @@ public:
     virtual void* GetWaterVelocity(uint32_t, uint32_t);
     virtual uint32_t GetWaterType(uint32_t, uint32_t);
     virtual uint32_t HasDraftClearance(uint32_t, uint32_t);
+    // STUB: 0x0073ded0
+    cSTESurfaceWater();
+    explicit cSTESurfaceWater(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x0073d090
     bool Fn0073d090(void*);
     // STUB: 0x00740060

@@ -21,6 +21,9 @@ public:
     virtual bool HandleEnterState(void*, uint32_t);
     virtual bool HandleExitState(void*, uint32_t);
     virtual void FinalRelease();
+    // STUB: 0x005181f0
+    cSC4AutomataGenerator();
+    explicit cSC4AutomataGenerator(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown5c[0x10];
 };
 #ifdef _MSC_VER

@@ -16,6 +16,9 @@ public:
     virtual bool AddSndDataSourceDef(uint32_t, uint32_t);
     virtual void RemoveSndDataSourceDef(uint32_t);
     virtual ~cGZSndSegmentDataSourceCreator();
+    // STUB: 0x00969e08
+    cGZSndSegmentDataSourceCreator();
+    explicit cGZSndSegmentDataSourceCreator(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0xc];
 };
 #ifdef _MSC_VER

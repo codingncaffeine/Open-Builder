@@ -51,6 +51,9 @@ public:
     virtual void Slot31_ad7270(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x00969af1
+    cGZSndMgr();
+    explicit cGZSndMgr(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     bool mbInitialized;
     char unknown25[0x3];
     void* mpSndSys;

@@ -65,6 +65,9 @@ public:
     virtual bool Slot00_ab2348(uint32_t, uint32_t);
     virtual void Slot01_ab2348();
     virtual void Slot02_ab2348();
+    // STUB: 0x006ada50
+    cSC4FireProtectionSimulator();
+    explicit cSC4FireProtectionSimulator(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown14[0x68];
     uint32_t field7c;
     uint32_t field80;

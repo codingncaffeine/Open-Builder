@@ -32,6 +32,9 @@ public:
     virtual void Slot08_aafbfc();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x00686450
+    cSCResourceCatalogView();
+    explicit cSCResourceCatalogView(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     bool fielddc;
     bool fielddd;
     char unknownde[0x2];

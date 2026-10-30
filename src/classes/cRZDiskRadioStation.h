@@ -37,6 +37,9 @@ public:
     virtual void PlayWelcome();
     virtual void ExpandPlayLists(void*, void*);
     virtual bool PlayNextSelectionNotOnExclusionList();
+    // STUB: 0x008d376e
+    cRZDiskRadioStation();
+    explicit cRZDiskRadioStation(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x008d3ee0
     bool Fn008d3ee0(void*);
     uint32_t mnRefCount;

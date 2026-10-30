@@ -40,6 +40,9 @@ public:
     virtual void Slot07_a953a8(uint32_t);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
+    // STUB: 0x004711c0
+    cSC4FireOccupant();
+    explicit cSC4FireOccupant(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown38[0x8];
     uint32_t field40;
     uint32_t field44;

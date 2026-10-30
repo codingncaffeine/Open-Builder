@@ -36,6 +36,9 @@ public:
     virtual void Slot11_adf63c(uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x009bc4ba
+    cGZWinBMP();
+    explicit cGZWinBMP(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x009bc447
     void Fn009bc447(void*);
     // STUB: 0x0099bc31

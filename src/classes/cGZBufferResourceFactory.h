@@ -29,6 +29,9 @@ public:
     virtual bool Slot10_ad970c(uint32_t);
     virtual bool Slot11_ad970c();
     virtual uint32_t Slot12_ad970c();
+    // STUB: 0x0097dbbe
+    cGZBufferResourceFactory();
+    explicit cGZBufferResourceFactory(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown14[0x30];
 };
 #ifdef _MSC_VER

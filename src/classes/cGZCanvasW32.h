@@ -61,6 +61,9 @@ public:
     virtual uint32_t Slot03_adace0();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x0098c7b0
+    cGZCanvasW32();
+    explicit cGZCanvasW32(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown30[0x4];
     bool field34;
     char unknown35[0x7];

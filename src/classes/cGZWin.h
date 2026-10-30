@@ -160,6 +160,9 @@ public:
     virtual ~cGZWin();
     virtual void is_point_transparent(uint32_t, uint32_t);
     virtual bool create_private_buffer(uint32_t, uint32_t);
+    // STUB: 0x0099d938
+    cGZWin();
+    explicit cGZWin(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x0099b7bd
     void InvalidateAllParents();
     // STUB: 0x0099c9df

@@ -41,6 +41,9 @@ public:
     virtual uint32_t Slot24_ac7368();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x008b07c0
+    cGZLuaScriptServer();
+    explicit cGZLuaScriptServer(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown20[0x10];
     uint32_t field30;
     char unknown34[0x18];

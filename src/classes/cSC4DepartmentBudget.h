@@ -88,6 +88,9 @@ public:
     virtual void SetTotalSpending(uint32_t, uint32_t);
     virtual void GetLocallyFundedItemsByPurpose(uint32_t, uint32_t);
     virtual bool HasLocallyFundedItemsByPurpose(uint32_t);
+    // STUB: 0x006aab90
+    cSC4DepartmentBudget();
+    explicit cSC4DepartmentBudget(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown8[0x8];
     uint32_t field10;
     char unknown14[0x1c];

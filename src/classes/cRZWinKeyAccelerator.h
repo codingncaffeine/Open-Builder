@@ -25,6 +25,9 @@ public:
     virtual uint32_t GetKeysForAccelerator(uint32_t, uint32_t, uint32_t);
     virtual bool ProcessAccelerator(uint32_t);
     virtual ~cRZWinKeyAccelerator();
+    // STUB: 0x009d5fd2
+    cRZWinKeyAccelerator();
+    explicit cRZWinKeyAccelerator(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x18];
 };
 #ifdef _MSC_VER

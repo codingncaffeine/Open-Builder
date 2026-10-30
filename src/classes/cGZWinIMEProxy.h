@@ -33,6 +33,9 @@ public:
     virtual void Slot14_adb5d0();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x00994a68
+    cGZWinIMEProxy();
+    explicit cGZWinIMEProxy(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown24[0x2c];
     bool field50;
     char unknown51[0x3];

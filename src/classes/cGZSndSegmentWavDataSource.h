@@ -34,6 +34,9 @@ public:
     virtual void Slot22_ad74b8();
     virtual void Slot23_ad74b8();
     virtual uint32_t Shutdown();
+    // STUB: 0x0096b919
+    cGZSndSegmentWavDataSource();
+    explicit cGZSndSegmentWavDataSource(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x30];
     uint32_t field34;
     char unknown38[0xc];

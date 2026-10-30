@@ -36,6 +36,9 @@ public:
     virtual bool Slot16_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void Slot17_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool Slot18_ace4b0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x0090bc54
+    cGZGimexFactory();
+    explicit cGZGimexFactory(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown14[0x24];
 };
 #ifdef _MSC_VER

@@ -61,6 +61,9 @@ public:
     virtual uint32_t Slot38_ab1cb0(uint32_t);
     virtual uint32_t Slot39_ab1cb0(uint32_t);
     virtual bool Slot40_ab1cb0(uint32_t, uint32_t);
+    // STUB: 0x006cf270
+    cSC4NeighborDeal();
+    explicit cSC4NeighborDeal(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown1c[0x4];
     uint32_t field20;
     char unknown24[0x14];

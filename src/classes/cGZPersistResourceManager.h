@@ -64,6 +64,9 @@ public:
     virtual void Slot42_ad88c0(uint32_t);
     virtual bool Slot43_ad88c0();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x009744b2
+    cGZPersistResourceManager();
+    explicit cGZPersistResourceManager(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x00972ff2
     uint32_t Fn00972ff2();
     // STUB: 0x00973023

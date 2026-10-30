@@ -16,6 +16,11 @@
 #define OB_STDCALL
 #endif
 
+// The argument of the constructor a generated class gets only so its vtable is emitted (tools/obcmp/obdecl): a class
+// whose real constructor is still the original's (a STUB) is constructed through it by GeneratedClasses, never at run time.
+struct ob_emit {
+};
+
 // A pointer that arrives as a 32-bit integer (a slot or field not typed yet), and the way back. Macros on purpose:
 // the 2003 compiler evaluates an inlined function call before the other arguments of the call it sits in, which
 // swaps the registers the original's code uses; a cast expression is evaluated in place.

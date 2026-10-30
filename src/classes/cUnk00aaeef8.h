@@ -15,6 +15,9 @@ public:
     virtual bool Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
     virtual bool Slot10_ad8c20(uint32_t, uint32_t);
     virtual bool Slot11_ad8c20(uint32_t, uint32_t);
+    // STUB: 0x0067e360
+    cUnk00aaeef8();
+    explicit cUnk00aaeef8(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     bool field10;
     char unknown11[0x17];
 };

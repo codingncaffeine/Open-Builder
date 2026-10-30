@@ -14,6 +14,9 @@ public:
     virtual bool Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
     virtual bool Slot10_ad8c20(uint32_t, uint32_t);
     virtual bool Slot11_ad8c20(uint32_t, uint32_t);
+    // STUB: 0x00808900
+    cUnk00abd714();
+    explicit cUnk00abd714(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00abd714[sizeof(cUnk00abd714) == 0x10 ? 1 : -1];

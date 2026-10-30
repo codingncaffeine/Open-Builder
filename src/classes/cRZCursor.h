@@ -24,6 +24,9 @@ public:
     virtual bool GetCursorBuffer();
     virtual uint32_t IsLoaded();
     virtual ~cRZCursor();
+    // STUB: 0x0089229e
+    cRZCursor();
+    explicit cRZCursor(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x4];
     bool field8;
     char unknown9[0x1b];

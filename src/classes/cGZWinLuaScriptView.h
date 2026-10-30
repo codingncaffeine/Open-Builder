@@ -23,6 +23,9 @@ public:
     virtual bool DoMessage(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x008b2ac0
+    cGZWinLuaScriptView();
+    explicit cGZWinLuaScriptView(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown12c[0x3c];
 };
 #ifdef _MSC_VER

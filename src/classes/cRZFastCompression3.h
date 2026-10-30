@@ -19,6 +19,9 @@ public:
     virtual void Slot07_b00a5c();
     virtual void GetCompressionVersionString(uint32_t);
     virtual ~cRZFastCompression3() {}
+    // STUB: 0x00a6e193
+    cRZFastCompression3();
+    explicit cRZFastCompression3(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x8];
 };
 #ifdef _MSC_VER

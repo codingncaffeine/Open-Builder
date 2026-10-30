@@ -25,6 +25,9 @@ public:
     virtual bool PushVocabulary(uint32_t);
     virtual bool PopVocabulary();
     virtual ~cGZScriptTerp();
+    // STUB: 0x00945404
+    cGZScriptTerp();
+    explicit cGZScriptTerp(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x1c];
     uint32_t field20;
     char unknown24[0x38];

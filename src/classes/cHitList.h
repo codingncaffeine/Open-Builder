@@ -30,6 +30,9 @@ public:
     virtual uint32_t GetRefCount();
     virtual bool ReadResource_2(uint32_t, uint32_t, uint32_t);
     virtual bool WriteResource_2(uint32_t, uint32_t, uint32_t);
+    // STUB: 0x009439cf
+    cHitList();
+    explicit cHitList(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     uint32_t field4;
     char unknown8[0x10];
 };

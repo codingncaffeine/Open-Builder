@@ -33,6 +33,9 @@ public:
     virtual bool Slot197_a981e0(uint32_t);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
+    // STUB: 0x00544240
+    cSC4PatrolCar();
+    explicit cSC4PatrolCar(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown2d8[0x4];
 };
 #ifdef _MSC_VER

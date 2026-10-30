@@ -48,6 +48,9 @@ public:
     virtual void Slot10_a9378c(uint32_t);
     virtual bool Slot11_a9378c(uint32_t);
     virtual void Slot12_a9378c();
+    // STUB: 0x004ea390
+    cUnk00a9378c();
+    explicit cUnk00a9378c(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown10[0x4];
     uint32_t field14;
     bool field18;

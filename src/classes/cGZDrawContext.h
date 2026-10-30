@@ -57,6 +57,9 @@ public:
     virtual void Slot45_ac16c8(uint32_t, const void*, uint32_t);
     virtual void Slot46_ac16c8();
     virtual void Slot47_ac16c8();
+    // STUB: 0x0082c9a0
+    cGZDrawContext();
+    explicit cGZDrawContext(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x0082ca40
     void Fn0082ca40();
     // STUB: 0x0082cae0

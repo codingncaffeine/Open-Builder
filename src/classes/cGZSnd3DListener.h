@@ -47,6 +47,9 @@ public:
     virtual void GetOrientation(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual uint32_t SetOrientation(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void* AsIGZSnd3DListenerEx();
+    // STUB: 0x00878e1f
+    cGZSnd3DListener();
+    explicit cGZSnd3DListener(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x00878ced
     uint32_t Fn00878ced(uint32_t);
     int32_t mnRefCount;

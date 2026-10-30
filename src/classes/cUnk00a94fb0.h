@@ -22,6 +22,9 @@ public:
     virtual float Slot193_a981e0();
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
+    // STUB: 0x00504f30
+    cUnk00a94fb0();
+    explicit cUnk00a94fb0(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a94fb0[sizeof(cUnk00a94fb0) == 0x2d8 ? 1 : -1];

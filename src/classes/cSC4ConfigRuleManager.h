@@ -21,6 +21,9 @@ public:
     virtual bool Slot05_abb004(uint32_t);
     virtual void Slot06_abb004(uint32_t, uint32_t);
     virtual uint32_t Slot07_abb004(uint32_t);
+    // STUB: 0x007d0cc0
+    cSC4ConfigRuleManager();
+    explicit cSC4ConfigRuleManager(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknownc[0x114];
 };
 #ifdef _MSC_VER

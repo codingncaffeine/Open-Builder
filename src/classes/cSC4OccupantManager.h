@@ -121,6 +121,9 @@ public:
     virtual bool IterateOccupantsByStandardCityCell(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool IterateOccupantsByStandardCityCell_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual void ReleaseOccupantList(uint32_t);
+    // STUB: 0x004a0540
+    cSC4OccupantManager();
+    explicit cSC4OccupantManager(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x0049dac0
     void Fn0049dac0(uint32_t, uint32_t, uint32_t, uint32_t);
     // STUB: 0x0049ee80

@@ -57,6 +57,9 @@ public:
     virtual bool Slot42_adc078(uint32_t, uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x009988bf
+    cUnk00adc1ec();
+    explicit cUnk00adc1ec(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x00996d25
     uint32_t getFontOrSystemFont(uint32_t);
     bool mbInitialized;

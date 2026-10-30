@@ -38,6 +38,9 @@ public:
     virtual uint32_t Slot26_ada340(uint32_t);
     virtual uint32_t InputStream();
     virtual ~cGZPersistBinaryReader();
+    // STUB: 0x00983d5b
+    cGZPersistBinaryReader();
+    explicit cGZPersistBinaryReader(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x2c];
 };
 #ifdef _MSC_VER

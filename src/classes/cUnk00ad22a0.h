@@ -29,6 +29,9 @@ public:
     virtual uint32_t Slot01_ad22a0();
     virtual void Slot02_ad22a0();
     virtual bool Slot03_ad22a0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00935b9a
+    cUnk00ad22a0();
+    explicit cUnk00ad22a0(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknownc[0x14];
 };
 #ifdef _MSC_VER

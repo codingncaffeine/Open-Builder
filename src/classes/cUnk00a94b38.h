@@ -36,6 +36,9 @@ public:
     virtual bool TranslatePlayerDriveCommands(void*, float);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
+    // STUB: 0x004fcfe0
+    cUnk00a94b38();
+    explicit cUnk00a94b38(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown1ec[0x144];
     uint16_t field330;
     char unknown332[0x2];

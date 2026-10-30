@@ -28,6 +28,9 @@ public:
     virtual bool DoPlayerDriveTick(float);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
+    // STUB: 0x004fac60
+    cSC4Aircraft();
+    explicit cSC4Aircraft(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown1e4[0x8];
 };
 #ifdef _MSC_VER

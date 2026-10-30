@@ -27,6 +27,9 @@ public:
     virtual bool RemoveGlobalProperty(uint32_t);
     virtual ~cGZSndPropertyCache();
     virtual void PostPropertyCacheMessage(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x0096a382
+    cGZSndPropertyCache();
+    explicit cGZSndPropertyCache(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x14];
 };
 #ifdef _MSC_VER

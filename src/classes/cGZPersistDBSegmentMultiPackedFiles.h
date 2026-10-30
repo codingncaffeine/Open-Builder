@@ -46,6 +46,9 @@ public:
     virtual uint32_t Slot08_ad9868(uint32_t);
     virtual void Slot09_ad9868(uint32_t, uint32_t);
     virtual void Slot10_ad9868(uint32_t, uint32_t);
+    // STUB: 0x0097eb25
+    cGZPersistDBSegmentMultiPackedFiles();
+    explicit cGZPersistDBSegmentMultiPackedFiles(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown14[0x4];
     uint32_t field18;
     char unknown1c[0x28];

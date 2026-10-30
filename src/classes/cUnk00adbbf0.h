@@ -50,6 +50,9 @@ public:
     virtual uint32_t Slot29_adb6a8();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x00994e01
+    cUnk00adbbf0();
+    explicit cUnk00adbbf0(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     uint32_t mnFlags;
     uint32_t mnValues[8];
     void* mpManager;

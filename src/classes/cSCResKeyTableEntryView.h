@@ -35,6 +35,9 @@ public:
     virtual void Slot04_aaf8d0(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x006841b0
+    cSCResKeyTableEntryView();
+    explicit cSCResKeyTableEntryView(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     uint32_t fieldec;
     char unknownf0[0x4];
     uint32_t fieldf4;

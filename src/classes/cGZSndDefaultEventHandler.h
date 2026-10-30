@@ -14,6 +14,9 @@ public:
     virtual void Release();
     virtual bool DoEvent(uint32_t);
     virtual ~cGZSndDefaultEventHandler();
+    // STUB: 0x0096ac16
+    cGZSndDefaultEventHandler();
+    explicit cGZSndDefaultEventHandler(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0xc];
 };
 #ifdef _MSC_VER

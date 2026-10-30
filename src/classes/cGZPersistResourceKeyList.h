@@ -21,6 +21,9 @@ public:
     virtual void Size();
     virtual void GetKey();
     virtual ~cGZPersistResourceKeyList() {}
+    // STUB: 0x00974e7a
+    cGZPersistResourceKeyList();
+    explicit cGZPersistResourceKeyList(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x3c];
 };
 #ifdef _MSC_VER

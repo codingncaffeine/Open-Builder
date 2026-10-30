@@ -32,6 +32,9 @@ public:
     virtual bool Slot197_a981e0(uint32_t);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
+    // STUB: 0x005337e0
+    cSC4FireTruck();
+    explicit cSC4FireTruck(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown2d8[0xc];
 };
 #ifdef _MSC_VER

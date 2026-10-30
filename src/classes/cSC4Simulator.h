@@ -57,6 +57,9 @@ public:
     virtual void Slot33_ab2e68(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x00704120
+    cSC4Simulator();
+    explicit cSC4Simulator(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x007020e0
     void PostMessageServerMessage(uint32_t, uint32_t, uint32_t, uint32_t);
     // STUB: 0x00702430

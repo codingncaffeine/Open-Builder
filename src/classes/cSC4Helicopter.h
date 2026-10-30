@@ -38,6 +38,9 @@ public:
     virtual bool PlaceSelf();
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
+    // STUB: 0x0053c6e0
+    cSC4Helicopter();
+    explicit cSC4Helicopter(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown1ec[0x84];
     uint16_t field270;
     char unknown272[0x2];

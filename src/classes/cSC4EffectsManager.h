@@ -36,6 +36,9 @@ public:
     virtual void Slot08_a9f0d8(uint32_t);
     virtual uint32_t Slot09_a9f0d8();
     virtual float Slot10_a9f0d8();
+    // STUB: 0x005912b0
+    cSC4EffectsManager();
+    explicit cSC4EffectsManager(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown1ac[0xbec];
     uint32_t fieldd98;
     char unknownd9c[0x4];

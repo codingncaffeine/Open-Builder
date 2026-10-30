@@ -73,6 +73,9 @@ public:
     virtual bool IsSubstitutionAvailable(uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x00895268
+    cGZFontSys();
+    explicit cGZFontSys(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown8[0x8];
     uint32_t field10;
     uint32_t field14;

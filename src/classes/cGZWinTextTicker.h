@@ -35,6 +35,9 @@ public:
     virtual uint32_t Slot10_ae37b4();
     virtual uint32_t Slot11_ae37b4();
     virtual uint32_t Slot12_ae37b4();
+    // STUB: 0x009d6530
+    cGZWinTextTicker();
+    explicit cGZWinTextTicker(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknowndc[0x50];
     uint32_t field12c;
     uint32_t field130;

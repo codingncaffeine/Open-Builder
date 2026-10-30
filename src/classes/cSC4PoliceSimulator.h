@@ -87,6 +87,9 @@ public:
     virtual void Slot42_ab2348(uint32_t);
     virtual uint32_t Slot43_ab2348(uint32_t);
     virtual uint32_t Slot44_ab2348(uint32_t);
+    // STUB: 0x006e1f80
+    cSC4PoliceSimulator();
+    explicit cSC4PoliceSimulator(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     // STUB: 0x006e11f0
     void Fn006e11f0();
     // STUB: 0x006e06e0

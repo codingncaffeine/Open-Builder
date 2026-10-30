@@ -15,6 +15,9 @@ public:
     virtual bool Slot09_ad8c20(uint32_t, uint32_t, uint32_t);
     virtual bool Slot10_ad8c20(uint32_t, uint32_t);
     virtual bool Slot11_ad8c20(uint32_t, uint32_t);
+    // STUB: 0x0097f0a6
+    cSLTokenResourceFactory();
+    explicit cSLTokenResourceFactory(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSLTokenResourceFactory[sizeof(cSLTokenResourceFactory) == 0x10 ? 1 : -1];

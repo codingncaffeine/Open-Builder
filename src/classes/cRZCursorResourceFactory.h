@@ -19,6 +19,9 @@ public:
     virtual uint32_t Slot01_ace4b0();
     virtual uint32_t Slot02_ace4b0();
     virtual bool Slot03_ad9818(uint32_t, uint32_t);
+    // STUB: 0x0097e214
+    cRZCursorResourceFactory();
+    explicit cRZCursorResourceFactory(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
 };
 #ifdef _MSC_VER
 typedef char ob_size_cRZCursorResourceFactory[sizeof(cRZCursorResourceFactory) == 0x14 ? 1 : -1];

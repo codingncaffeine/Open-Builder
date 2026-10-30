@@ -28,6 +28,9 @@ public:
     virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual bool Slot03_a8edf8(uint32_t);
+    // STUB: 0x00491ad0
+    cUnk00a8edf8();
+    explicit cUnk00a8edf8(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown8[0x10c];
 };
 #ifdef _MSC_VER

@@ -28,6 +28,9 @@ public:
     virtual uint32_t Slot10_ac15f0();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x0082bbf0
+    cGZDrawSystem();
+    explicit cGZDrawSystem(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown20[0x8];
     uint32_t field28;
     char unknown2c[0x8];

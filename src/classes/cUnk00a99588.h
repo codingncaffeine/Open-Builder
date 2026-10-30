@@ -25,6 +25,9 @@ public:
     virtual bool HandleExitNetwork(void*, uint32_t, void*, void*);
     virtual bool Slot03_aaee5c(uint32_t);
     virtual bool Slot04_aaee5c(uint32_t);
+    // STUB: 0x0053cbb0
+    cUnk00a99588();
+    explicit cUnk00a99588(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a99588[sizeof(cUnk00a99588) == 0x2fc ? 1 : -1];

@@ -39,6 +39,9 @@ public:
     virtual void WriteTypeInfo(uint32_t);
     virtual void Slot28_ada288();
     virtual ~cGZPersistASCIIWriter();
+    // STUB: 0x00983314
+    cGZPersistASCIIWriter();
+    explicit cGZPersistASCIIWriter(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x2c];
 };
 #ifdef _MSC_VER
