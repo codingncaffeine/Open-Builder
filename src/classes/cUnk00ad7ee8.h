@@ -6,9 +6,16 @@
 #include "common/types.h"
 #include "classes/cUnk00ad7cf0.h"
 
+// SIZE 0x44
 class cUnk00ad7ee8 : public cUnk00ad7cf0 {
 public:
     virtual void Slot62_ad7ee8() = 0;
+    cUnk00ad7ee8(uint32_t kind, uint32_t a, void* b, uint32_t c);
+    cUnk00ad7ee8() {}
+    uint32_t mnKind;
 };
+#ifdef _MSC_VER
+typedef char ob_size_cUnk00ad7ee8[sizeof(cUnk00ad7ee8) == 0x44 ? 1 : -1];
+#endif
 
 #endif

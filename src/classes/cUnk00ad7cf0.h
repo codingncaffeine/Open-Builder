@@ -79,6 +79,9 @@ public:
     virtual uint32_t Slot01_ad9030();
     virtual uint32_t Slot02_ad9030();
     virtual void Slot10_ad9030();
+    // STUB: 0x00975cb5
+    cUnk00ad7cf0(uint32_t a, void* b, uint32_t c);
+    cUnk00ad7cf0() {}
     uint8_t mbNoSwap;
     char unknown3d[0x3];
 };

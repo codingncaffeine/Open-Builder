@@ -10,6 +10,7 @@
 // VTABLE: 0x00ad82a8 cUnk00ad8d48
 // VTABLE: 0x00ad8248 cGZPersistDBSerialRecord
 // VTABLE: 0x00ad81e8 cUnk00ad1878
+// SIZE 0x5c
 class cUnk00ad82e8 : public cUnk00ad7ee8 {
 public:
     virtual ~cUnk00ad82e8() {}
@@ -21,7 +22,16 @@ public:
     virtual uint32_t Slot03_ad9030();
     virtual bool Slot04_ad9030(uint32_t, uint32_t);
     virtual bool Slot05_ad9030(uint32_t, uint32_t);
+    cUnk00ad82e8(uint32_t* a, uint32_t b, uint32_t c, void* d, uint32_t e);
+    cUnk00ad82e8() {}
+    uint32_t* mpShared;
+    uint32_t mnField48;
+    uint32_t mnField4c;
+    char unknown50[0xc];
 };
+#ifdef _MSC_VER
+typedef char ob_size_cUnk00ad82e8[sizeof(cUnk00ad82e8) == 0x5c ? 1 : -1];
+#endif
 
 // SYNTHETIC: 0x0096e863
 // cUnk00ad82e8::Slot04_ad9030`adjustor{4}'

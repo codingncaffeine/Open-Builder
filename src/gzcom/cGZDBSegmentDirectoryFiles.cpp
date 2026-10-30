@@ -1,4 +1,5 @@
 #include "classes/cGZDBSegmentDirectoryFiles.h"
+#include "classes/cGZRESIDtoExtensionMap.h"
 #include <stddef.h>
 #include <new>
 #include "gzcom/cRZString.h"
@@ -871,20 +872,13 @@ Alloc_ad93a0* Alloc_ad93a0::Fn0097b2cf()
 }
 #endif
 
-struct ResMapDraft_ad93a0 {
-    uint32_t mVptr;
-    uint32_t mCount;
-    Alloc_ad93a0 mAlloc;
-    ResMapDraft_ad93a0* Fn0097b3ce();
-};
-
-// FUNCTION: 0x0097b3ce
-ResMapDraft_ad93a0* ResMapDraft_ad93a0::Fn0097b3ce()
+// Not hooked: run in the game, a constructor installs our stand-in vtables (their destructors are not the original's
+// yet) in place of the original's.
+// FUNCTION: 0x0097b3ce nohook
+cGZRESIDtoExtensionMap::cGZRESIDtoExtensionMap()
 {
-    mCount = 0;
-    mVptr = 0x00ad92cc;
-    mAlloc.Fn0097b2cf();
-    return this;
+    mnCount = 0;
+    reinterpret_cast<Alloc_ad93a0*>(unknown8)->Fn0097b2cf();
 }
 
 // STUB: 0x0097b670

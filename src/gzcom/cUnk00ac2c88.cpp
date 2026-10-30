@@ -386,12 +386,12 @@ void cUnk00ac2c88::Fn008760c3()
 {
     uint8_t zero = 0;
     if (mbF4e == zero) {
-        if (mbF4a != zero || mbF4b != zero || mbF4c != zero) {
+        if (mbF4a != zero || static_cast<uint8_t>(mbF4b) != zero || mbF4c != zero) {
             Owner_ac2c88* o = static_cast<Owner_ac2c88*>(mpOwner);
             mbF4e = 1;
             o->Fn30(static_cast<cUnk00a943c0*>(this), 0x14);
         }
-    } else if (mbF4a == zero && mbF4b == zero && mbF4c == zero) {
+    } else if (mbF4a == zero && static_cast<uint8_t>(mbF4b) == zero && mbF4c == zero) {
         static_cast<Owner_ac2c88*>(mpOwner)->Fn31(static_cast<cUnk00a943c0*>(this));
         mbF4e = zero;
     }

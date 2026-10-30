@@ -1,4 +1,6 @@
 #include "classes/cGZDBSegmentPackedFile.h"
+#include "classes/cUnk00ad80e8.h"
+#include "classes/cUnk00ad82e8.h"
 #include <algorithm>
 #include "gzcom/cRZString.h"
 
@@ -1233,8 +1235,12 @@ struct RecBase_ad87d0 {
     uint32_t w[0x18];
     // STUB: 0x00975cb5
     void Fn00975cb5(uint32_t a, void* b, uint32_t c);
+    // the record constructors (cUnk00ad7ee8, cUnk00ad80e8, cUnk00ad82e8) as the drafts call them
+    // STUB: 0x0096d859
     RecBase_ad87d0* Fn0096d859(uint32_t kind, uint32_t a, void* b, uint32_t c);
+    // STUB: 0x0096d8d0
     RecBase_ad87d0* Fn0096d8d0(uint32_t a, uint32_t b, uint32_t c, void* d, uint32_t e);
+    // STUB: 0x0096d9d1
     RecBase_ad87d0* Fn0096d9d1(uint32_t* a, uint32_t b, uint32_t c, void* d, uint32_t e);
     RecBase_ad87d0* Fn0096da30(uint32_t a, uint32_t b, uint32_t c, void* d, uint32_t e);
     RecBase_ad87d0* Fn00970e67(const void* data, uint32_t length, uint32_t c, void* d, uint32_t e);
@@ -1243,47 +1249,34 @@ struct RecBase_ad87d0 {
     void Fn00478aa0(uint32_t length);
 };
 
-// FUNCTION: 0x0096d859
-RecBase_ad87d0* RecBase_ad87d0::Fn0096d859(uint32_t kind, uint32_t a, void* b, uint32_t c)
+// Not hooked: run in the game, a constructor installs our stand-in vtables (their destructors are not the original's
+// yet) in place of the original's.
+// FUNCTION: 0x0096d859 nohook
+cUnk00ad7ee8::cUnk00ad7ee8(uint32_t kind, uint32_t a, void* b, uint32_t c)
+    : cUnk00ad7cf0(a, b, c)
 {
-    Fn00975cb5(a, b, c);
-    w[0x10] = kind;
-    w[0] = 0xad7ee8;
-    w[1] = 0xad7ea8;
-    w[7] = 0xad7e48;
-    w[0xb] = 0xad7de8;
-    return this;
+    mnKind = kind;
 }
 
-// FUNCTION: 0x0096d8d0
-RecBase_ad87d0* RecBase_ad87d0::Fn0096d8d0(uint32_t a, uint32_t b, uint32_t c, void* d, uint32_t e)
+// FUNCTION: 0x0096d8d0 nohook
+cUnk00ad80e8::cUnk00ad80e8(uint32_t a, uint32_t b, uint32_t c, void* d, uint32_t e)
+    : cUnk00ad7ee8(1, c, d ? static_cast<char*>(d) + 4 : 0, e)
 {
-    Fn0096d859(1, c, d ? static_cast<char*>(d) + 4 : 0, e);
-    w[0x12] = 0;
-    w[0x11] = a;
-    w[0x13] = b;
-    w[0] = 0xad80e8;
-    w[1] = 0xad80a8;
-    w[7] = 0xad8048;
-    w[0xb] = 0xad7fe8;
-    reinterpret_cast<uint16_t*>(w)[5] = 1;
-    return this;
+    mnField48 = 0;
+    mnValue = a;
+    mnField4c = b;
+    field6 = 1;
 }
 
-// FUNCTION: 0x0096d9d1
-RecBase_ad87d0* RecBase_ad87d0::Fn0096d9d1(uint32_t* a, uint32_t b, uint32_t c, void* d, uint32_t e)
+// FUNCTION: 0x0096d9d1 nohook
+cUnk00ad82e8::cUnk00ad82e8(uint32_t* a, uint32_t b, uint32_t c, void* d, uint32_t e)
+    : cUnk00ad7ee8(2, c, d ? static_cast<char*>(d) + 4 : 0, e)
 {
-    Fn0096d859(2, c, d ? static_cast<char*>(d) + 4 : 0, e);
-    w[0x12] = 0;
-    w[0x11] = OB_ADDR(a);
-    w[0] = 0xad82e8;
-    w[1] = 0xad82a8;
-    w[7] = 0xad8248;
-    w[0xb] = 0xad81e8;
-    w[0x13] = b;
+    mnField48 = 0;
+    mpShared = a;
+    mnField4c = b;
     ++a[1];
-    reinterpret_cast<uint16_t*>(w)[5] = 1;
-    return this;
+    field6 = 1;
 }
 
 #ifdef OB_DRAFTS

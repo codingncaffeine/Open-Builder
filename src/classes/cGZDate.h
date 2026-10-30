@@ -12,6 +12,8 @@ public:
     virtual void NameOfDayString(uint32_t, uint32_t);
     virtual void NameOfMonthString(uint32_t, uint32_t);
     virtual void DateString(uint32_t, uint32_t);
+    cGZDate() {}
+    cGZDate(const void* date);
     uint32_t field4;
 };
 #ifdef _MSC_VER

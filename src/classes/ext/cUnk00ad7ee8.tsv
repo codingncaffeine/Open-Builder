@@ -1,0 +1,4 @@
+size 44
+field 40 uint32_t mnKind
+method - cUnk00ad7ee8(uint32_t kind, uint32_t a, void* b, uint32_t c)
+method - cUnk00ad7ee8() {}

@@ -1,0 +1,6 @@
+size 5c
+field 44 uint32_t mnValue
+field 48 uint32_t mnField48
+field 4c uint32_t mnField4c
+method - cUnk00ad80e8(uint32_t a, uint32_t b, uint32_t c, void* d, uint32_t e)
+method - cUnk00ad80e8() {}

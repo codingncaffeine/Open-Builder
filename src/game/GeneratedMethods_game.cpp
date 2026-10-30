@@ -8864,13 +8864,13 @@ bool cUnk00ae468c::Slot00_ae468c(uint32_t, uint32_t)
 }
 
 // FUNCTION: 0x0093878e
-bool cUnk00ad82e8::Slot53_ad8d88(uint32_t)
+bool cUnk00ad80e8::Slot53_ad8d88(uint32_t)
 {
     return false;
 }
 
 // FUNCTION: 0x0093878e nohook
-bool cUnk00ad80e8::Slot53_ad8d88(uint32_t)
+bool cUnk00ad82e8::Slot53_ad8d88(uint32_t)
 {
     return false;
 }
@@ -9031,7 +9031,7 @@ bool cGZSnd3DListener::Slot04_ac2f70()
 }
 
 // FUNCTION: 0x00949b47 nohook
-uint32_t cGZSndEventStd::GetVoid3()
+uint32_t cGZSndEventStd::GetVoid1()
 {
     return 0;
 }
@@ -9043,7 +9043,7 @@ uint32_t cGZSndEventStd::GetVoid2()
 }
 
 // FUNCTION: 0x00949b47 nohook
-uint32_t cGZSndEventStd::GetVoid1()
+uint32_t cGZSndEventStd::GetVoid3()
 {
     return 0;
 }
@@ -9055,7 +9055,17 @@ uint32_t cGZSndEventStd::GetVoid4()
 }
 
 // FUNCTION: 0x00949b73 nohook
+void cGZSndEventStd::SetVoid4(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
 void cUnk00ad725c::Slot03_ad725c(uint32_t)
+{
+}
+
+// FUNCTION: 0x00949b73 nohook
+void cGZSndEventStd::Slot36_acec00(uint32_t)
 {
 }
 
@@ -9070,17 +9080,7 @@ void cUnk00acd7a0::Slot05_acd504(uint32_t)
 }
 
 // FUNCTION: 0x00949b73 nohook
-void cGZSndEventStd::Slot36_acec00(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
 void cGZSndEventStd::SetVoid2(uint32_t)
-{
-}
-
-// FUNCTION: 0x00949b73 nohook
-void cGZSndEventStd::SetVoid4(uint32_t)
 {
 }
 
@@ -9090,13 +9090,13 @@ void cGZSndEventStd::SetVoid1(uint32_t)
 }
 
 // FUNCTION: 0x0094a5ea nohook
-bool cGZSndEventStd::GetHasExtra()
+bool cGZSndEventStd::GetHasIGZUnknown()
 {
     return false;
 }
 
 // FUNCTION: 0x0094a5ea nohook
-bool cGZSndEventStd::GetHasIGZUnknown()
+bool cGZSndEventStd::GetHasExtra()
 {
     return false;
 }
@@ -9121,12 +9121,12 @@ bool cFreshCell::SetPanX(uint32_t value)
 }
 
 // FUNCTION: 0x0096e960 nohook
-void cGZDate::NameOfDayString(uint32_t, uint32_t)
+void cGZDate::NameOfMonthString(uint32_t, uint32_t)
 {
 }
 
 // FUNCTION: 0x0096e960 nohook
-void cGZDate::NameOfMonthString(uint32_t, uint32_t)
+void cGZDate::NameOfDayString(uint32_t, uint32_t)
 {
 }
 
@@ -9155,12 +9155,6 @@ uint32_t cGZAlphaBlt::Slot05_ada668()
 }
 
 // FUNCTION: 0x00989960
-void cGZCanvasMessage::Slot08_ada82c(uint32_t value)
-{
-    fieldc = value;
-}
-
-// FUNCTION: 0x00989960 nohook
 void cSC4ViewInputControl::SetID(uint32_t value)
 {
     fieldc = value;
@@ -9172,6 +9166,12 @@ void cSC4WinAdviceList::Slot06_ab5620(uint32_t value)
     fielde4 = value;
 }
 
+// FUNCTION: 0x00989960 nohook
+void cGZCanvasMessage::Slot08_ada82c(uint32_t value)
+{
+    fieldc = value;
+}
+
 // FUNCTION: 0x00989a60
 void cGZCanvasMessage::SetType(uint32_t value)
 {
@@ -9179,13 +9179,13 @@ void cGZCanvasMessage::SetType(uint32_t value)
 }
 
 // FUNCTION: 0x00989a60 nohook
-void cGZKeyMessage::SetType(uint32_t value)
+void cGZMouseMessage::SetType(uint32_t value)
 {
     field8 = value;
 }
 
 // FUNCTION: 0x00989a60 nohook
-void cGZMouseMessage::SetType(uint32_t value)
+void cGZKeyMessage::SetType(uint32_t value)
 {
     field8 = value;
 }
@@ -9281,9 +9281,33 @@ uint32_t cFreshCell::GetFadeOutTime()
 }
 
 // FUNCTION: 0x0099b7ee nohook
+uint32_t cUnk00ad80e8::Slot54_ad8d88()
+{
+    return mnField48;
+}
+
+// FUNCTION: 0x0099b7ee nohook
 uint32_t cFreshCell::GetLoopLength()
 {
     return field48;
+}
+
+// FUNCTION: 0x0099b7ee nohook
+uint32_t cUnk00ad82e8::Slot54_ad8d88()
+{
+    return mnField48;
+}
+
+// FUNCTION: 0x0099be4c nohook
+uint32_t cUnk00ad82e8::Slot03_ad9030()
+{
+    return mnField4c;
+}
+
+// FUNCTION: 0x0099be4c nohook
+uint32_t cUnk00ad80e8::Slot03_ad9030()
+{
+    return mnField4c;
 }
 
 // FUNCTION: 0x0099be4c nohook
@@ -9372,13 +9396,13 @@ uint32_t cFreshCell::GetGroupId()
 }
 
 // FUNCTION: 0x009d4714 nohook
-uint32_t cRZMessage2Standard::GetVoid2()
+uint32_t cRZMessage2Standard::GetData2()
 {
     return field14;
 }
 
 // FUNCTION: 0x009d4714 nohook
-uint32_t cRZMessage2Standard::GetData2()
+uint32_t cRZMessage2Standard::GetVoid2()
 {
     return field14;
 }
@@ -9396,12 +9420,6 @@ uint32_t cUnk00a881e8::Slot05_a881e8()
 }
 
 // FUNCTION: 0x009d8539 nohook
-uint32_t cUnk00ace174::Slot00_ace174()
-{
-    return field1c;
-}
-
-// FUNCTION: 0x009d8539 nohook
 uint32_t cRZMessage2Standard::GetVoid4()
 {
     return field1c;
@@ -9413,14 +9431,20 @@ uint32_t cRZMessage2Standard::GetData4()
     return field1c;
 }
 
+// FUNCTION: 0x009d8539 nohook
+uint32_t cUnk00ace174::Slot00_ace174()
+{
+    return field1c;
+}
+
 // FUNCTION: 0x009d858f nohook
-uint32_t cRZMessage2Standard::GetIGZUnknown()
+uint32_t cUnk00ace2ec::Slot00_ace15c()
 {
     return field24;
 }
 
 // FUNCTION: 0x009d858f nohook
-uint32_t cUnk00ace2ec::Slot00_ace15c()
+uint32_t cRZMessage2Standard::GetIGZUnknown()
 {
     return field24;
 }
@@ -9460,13 +9484,13 @@ void cUnk00ae4c30::Slot02_ae4c30()
 }
 
 // FUNCTION: 0x009e1230
-uint32_t cUnk00ae4d28::Slot04_ae4d28()
+uint32_t cUnk00ae4d28::Slot05_ae4d28()
 {
     return 0;
 }
 
 // FUNCTION: 0x009e1230 nohook
-uint32_t cUnk00ae4d28::Slot05_ae4d28()
+uint32_t cUnk00ae4d28::Slot04_ae4d28()
 {
     return 0;
 }

@@ -633,13 +633,11 @@ uint32_t Fn00912b08Draft_aceaf0(uint32_t month, uint32_t day, uint32_t year)
 }
 
 
-// A bare date made from another date's interface.
-struct Date0_aceaf0 : public cGZDate {
-    Date0_aceaf0(const void* date);
-};
-
-// FUNCTION: 0x0091270e
-Date0_aceaf0::Date0_aceaf0(const void* date)
+// A date made from another date's interface.
+// Not hooked: run in the game, a constructor installs our stand-in vtables (their destructors are not the original's
+// yet) in place of the original's.
+// FUNCTION: 0x0091270e nohook
+cGZDate::cGZDate(const void* date)
 {
     field4 = OB_PTR(cUnk00aceb48, OB_ADDR(date) + 8)->Slot26_aceb48();
 }

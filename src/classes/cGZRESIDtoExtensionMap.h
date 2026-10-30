@@ -19,7 +19,9 @@ public:
     virtual void Copy(uint32_t);
     virtual ~cGZRESIDtoExtensionMap() {}
     virtual uint32_t Size();
-    char unknown4[0x8];
+    cGZRESIDtoExtensionMap();
+    uint32_t mnCount;
+    char unknown8[0x4];
     uint32_t fieldc;
     char unknown10[0x4];
 };

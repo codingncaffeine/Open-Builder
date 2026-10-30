@@ -22,6 +22,7 @@ public:
     virtual uint32_t Slot03_ad9030();
     virtual bool Slot04_ad9030(uint32_t, uint32_t);
     virtual bool Slot05_ad9030(uint32_t, uint32_t);
+    char unknown44[0x18];
 };
 
 // SYNTHETIC: 0x0096f3e5

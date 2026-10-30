@@ -1,0 +1,2 @@
+method - cGZDate() {}
+method - cGZDate(const void* date)

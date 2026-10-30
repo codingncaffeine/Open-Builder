@@ -2,3 +2,5 @@ slot Slot59_ad7cf0 void* uint32_t
 slot Slot60_ad7cf0 void* uint32_t
 slot Slot61_ad7cf0 void* uint32_t
 field 3c uint8_t mbNoSwap
+method 0x00975cb5 cUnk00ad7cf0(uint32_t a, void* b, uint32_t c)
+method - cUnk00ad7cf0() {}
