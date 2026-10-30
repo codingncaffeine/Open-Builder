@@ -22,6 +22,7 @@
 //   get T OFF                 return the member at OFF (a: its address)
 //   set T OFF ARG             the member at OFF = argument ARG (0 = the first)
 //   setconst T OFF ARG CT CV  the same, then return the constant CV of type CT
+//   factory SIZE OPT CTOR NEW return new C (C's constructor CTOR out of line, operator new NEW; see factoryOf)
 // --extents: "address extent" (hex), how far past this the function reaches (see thisExtent), for those that do.
 // The shapes are what the compiler emits for the spellings in tools/obcmp/test/shapes.cpp (checked by shapes.sh).
 
@@ -42,6 +43,7 @@ using namespace ob;
 struct Ins {
     ZydisDecodedInstruction i;
     ZydisDecodedOperand o[ZYDIS_MAX_OPERAND_COUNT];
+    uint32_t next = 0;  // the address after it (a relative call or jump lands at next + its immediate)
 };
 
 bool isReg(const ZydisDecodedOperand& o, ZydisRegister r) { return o.type == ZYDIS_OPERAND_TYPE_REGISTER && o.reg.value == r; }
@@ -128,8 +130,39 @@ bool constant(const std::vector<Ins>& v, size_t at, size_t& used, std::string& t
     return false;
 }
 
+// `return new C;` with C's constructor out of line: push SIZE; call new; (add esp,4 | test eax,eax; pop ecx); je null;
+// mov ecx,eax; jmp CONSTRUCTOR; xor eax,eax; ret. "factory SIZE OPT CONSTRUCTOR NEW" (hex): OPT the flags that clean
+// the stack that way (add esp,4 /O2's, pop ecx /O1's).
+std::string factoryOf(const std::vector<Ins>& all) {
+    std::vector<Ins> v(all);
+    while (!v.empty() && (v.back().i.mnemonic == ZYDIS_MNEMONIC_INT3 || v.back().i.mnemonic == ZYDIS_MNEMONIC_NOP)) v.pop_back();
+    if (v.size() != 9) return "";
+    auto rel = [](const Ins& x) { return x.o[0].type == ZYDIS_OPERAND_TYPE_IMMEDIATE && x.o[0].imm.is_relative; };
+    auto target = [](const Ins& x) { return uint32_t(x.next + uint32_t(x.o[0].imm.value.s)); };
+    auto testEax = [](const Ins& x) {
+        return x.i.mnemonic == ZYDIS_MNEMONIC_TEST && isReg(x.o[0], ZYDIS_REGISTER_EAX) && isReg(x.o[1], ZYDIS_REGISTER_EAX);
+    };
+    if (v[0].i.mnemonic != ZYDIS_MNEMONIC_PUSH || !isImm(v[0].o[0])) return "";
+    if (v[1].i.mnemonic != ZYDIS_MNEMONIC_CALL || !rel(v[1])) return "";
+    std::string opt;
+    if (v[2].i.mnemonic == ZYDIS_MNEMONIC_ADD && isReg(v[2].o[0], ZYDIS_REGISTER_ESP) && isImm(v[2].o[1]) &&
+        v[2].o[1].imm.value.u == 4 && testEax(v[3]))
+        opt = "O2";
+    else if (testEax(v[2]) && v[3].i.mnemonic == ZYDIS_MNEMONIC_POP && isReg(v[3].o[0], ZYDIS_REGISTER_ECX))
+        opt = "O1";
+    else
+        return "";
+    if (v[4].i.mnemonic != ZYDIS_MNEMONIC_JZ || !rel(v[4]) || target(v[4]) != v[6].next) return "";
+    if (v[5].i.mnemonic != ZYDIS_MNEMONIC_MOV || !isReg(v[5].o[0], ZYDIS_REGISTER_ECX) || !isReg(v[5].o[1], ZYDIS_REGISTER_EAX)) return "";
+    if (v[6].i.mnemonic != ZYDIS_MNEMONIC_JMP || !rel(v[6])) return "";
+    if (v[7].i.mnemonic != ZYDIS_MNEMONIC_XOR || !isReg(v[7].o[0], ZYDIS_REGISTER_EAX) || !isReg(v[7].o[1], ZYDIS_REGISTER_EAX)) return "";
+    if (!isRet(v[8]) || retPops(v[8])) return "";
+    return "factory " + hexs(uint32_t(v[0].o[0].imm.value.u)) + " " + opt + " " + hexs(target(v[6])) + " " + hexs(target(v[1]));
+}
+
 std::string shapeOf(const std::vector<Ins>& v, const Image& img) {
     if (v.empty()) return "-";
+    if (std::string f = factoryOf(v); !f.empty()) return f;
     if (v.back().i.mnemonic == ZYDIS_MNEMONIC_JMP) {
         size_t n = v.size();
         const ZydisDecodedOperand& j = v.back().o[0];
@@ -366,6 +399,7 @@ int main(int argc, char** argv) {
             if (ZYAN_FAILED(ZydisDecoderDecodeFull(&dec, code + o, size - o, &x.i, x.o))) break;
             o += x.i.length;
             own = o;
+            x.next = va + o;
             if (isRet(x)) pops.insert(retPops(x));
             v.push_back(x);
             if (isRet(x) && pops.size() == 1 && o < size && v.size() <= 4) {

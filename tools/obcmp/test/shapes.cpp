@@ -63,3 +63,10 @@ float C::KF1() { return 1.0f; }
 float C::KF2() { return 2.5f; }
 void C::E(uint32_t, uint32_t) {}
 C* C::This() { return this; }
+
+// return new F; with F's constructor out of line (a factory)
+struct F {
+    F();
+    uint32_t a[3];
+};
+F* MakeF() { return new F; }

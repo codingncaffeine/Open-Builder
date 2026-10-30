@@ -27,3 +27,4 @@ SetDRet	4 B setconst d 8 0 b 1
 SetF	4 V set d 14 0
 SetW	4 V set w 10 0
 This	0 D this
+MakeF	0 D factory c O1 addr addr

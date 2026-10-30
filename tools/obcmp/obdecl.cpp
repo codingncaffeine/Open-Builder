@@ -321,6 +321,7 @@ int main(int argc, char** argv) {
             if (r.size() >= 3) slotBefore[{parseHex(r[0]), std::stoi(r[1])}] = r[2];
     std::map<uint32_t, Record> recs;
     std::map<uint32_t, uint32_t> vtableClass;  // vtable -> primary of its class
+    std::map<uint32_t, uint32_t> ctorClass;    // a function that stores a class's vtables and is no destructor -> its class
     for (auto& r : readTsv(pos[0])) {
         if (r.size() < 11) continue;
         Record rec;
@@ -342,6 +343,8 @@ int main(int argc, char** argv) {
         rec.virtualBases = r[10] != "-";
         rec.conflict = r[9].find("layout-conflict") != std::string::npos;
         for (auto& [o, v] : rec.layout) vtableClass[v] = rec.primary;
+        if (r[5] != "-")
+            for (auto& c : split(r[5], ',')) ctorClass[parseHex(c)] = rec.primary;
         recs[rec.primary] = rec;
     }
     std::map<uint32_t, std::vector<Slot>> slots;
@@ -554,6 +557,19 @@ int main(int argc, char** argv) {
     for (auto& [p, h] : hands) usedClassNames.insert(h.name);
     std::map<int, std::string> wasNamed;  // a slot identity's name under --names-before
     std::map<uint32_t, Model> models;
+    // Sizes written by hand (src/classes/ext/<class>.tsv "size <hex>") for a class the class map has none for: the bytes
+    // its operator new asks for where the map did not see the call.
+    std::map<std::string, uint32_t> extSizes;
+    std::error_code extError;
+    for (auto& entry : fs::directory_iterator(outDir + "/ext", extError)) {
+        if (entry.path().extension() != ".tsv") continue;
+        std::ifstream f(entry.path());
+        for (std::string line; std::getline(f, line);) {
+            std::istringstream ss(line);
+            std::string kw, value;
+            if (ss >> kw >> value && kw == "size") extSizes[entry.path().stem().string()] = parseHex(value);
+        }
+    }
     std::function<Model&(uint32_t)> model = [&](uint32_t primary) -> Model& {
         Model& m = models[primary];
         if (m.done) return m;
@@ -623,6 +639,7 @@ int main(int argc, char** argv) {
         for (auto& [o, v] : r.layout)
             if (!slots.count(v)) return fail("vtable " + hex8(v) + " has no slots");
         m.size = r.size;
+        if (!m.size) if (auto it = extSizes.find(m.name); it != extSizes.end()) m.size = it->second;
         if (!m.size && implied.count(primary) && implied[primary].size() == 1) m.size = *implied[primary].begin();
         if (!m.size && implied.count(primary) && implied[primary].size() > 1) {
             // The derived classes disagree: one of them picked this base wrongly. The size most of them leave wins and
@@ -1329,6 +1346,7 @@ int main(int argc, char** argv) {
         }
     // Members written by hand beside a generated class (decompiling its code): <out>/ext/<class>.tsv,
     //   field <offset> <type> <name>     a data member at that offset from the class's this (name may end in [N])
+    //   size <hex>                       the class's size, where the class map has none
     //   method <address|-> <declaration> a non-virtual member; with an address, STUB-annotated (tools/gen-hooks.sh)
     //                                     (or one with its body inline: "cX() {}", the default constructor beside a declared one)
     // A field named there takes precedence over one the one-line methods imply.
@@ -1387,6 +1405,7 @@ int main(int argc, char** argv) {
                 continue;
             }
             if (kw == "slot") continue;  // read with the signatures above
+            if (kw == "size") continue;  // read with the class map
             if (kw != "field") { bad("unknown line"); continue; }
             std::string off, rest;
             ss >> off;
@@ -1491,6 +1510,41 @@ int main(int argc, char** argv) {
         return out;
     };
 
+    // Factories (obshape "factory"): `return new C;` whose constructor the original kept out of line. C declares that
+    // constructor (a STUB until it is decompiled) and, so its vtable is still emitted here, a constructor nothing calls
+    // (`explicit C(ob_emit) {}`, what GeneratedClasses constructs); the factory itself is written below. Only for a
+    // generated class whose size is the factory's (operator new's argument), through the global operator new, and
+    // whose constructors nobody declared by hand.
+    const uint32_t globalNew = 0x5e55e0;
+    std::map<uint32_t, uint32_t> factoryCtor;                   // class -> its default constructor
+    std::vector<std::pair<uint32_t, uint32_t>> factoryFns;      // factory -> class
+    std::map<uint32_t, std::string> factoryOpt;                 // factory -> O1 / O2
+    {
+        std::map<uint32_t, std::set<uint32_t>> ctorsSeen;
+        for (auto& [fn, s] : shapes) {
+            if (s.kind != "factory" || s.detail.size() < 4 || parseHex(s.detail[3]) != globalNew) continue;
+            if (annotated.count(fn) || stubbed.count(fn) || libraries.count(fn)) continue;
+            uint32_t ctor = parseHex(s.detail[2]);
+            auto c = ctorClass.find(ctor);
+            if (c == ctorClass.end() || !models.count(c->second)) continue;
+            const Model& m = models[c->second];
+            if (!m.ok || m.hand || m.abstract || m.assumedSize || m.reachedSize || m.size != parseHex(s.detail[0])) continue;
+            if (annotated.count(ctor)) continue;
+            bool declared = false;  // a constructor written in the ext file: the class is the hand's
+            for (auto& [a, decl] : extMethods[c->second]) declared |= decl.rfind(m.name + "(", 0) == 0;
+            if (declared) continue;
+            ctorsSeen[c->second].insert(ctor);
+            factoryFns.push_back({fn, c->second});
+            factoryOpt[fn] = s.detail[1];
+        }
+        for (auto& [cls, set] : ctorsSeen)
+            if (set.size() == 1) factoryCtor[cls] = *set.begin();
+        std::vector<std::pair<uint32_t, uint32_t>> keep;
+        for (auto& f : factoryFns)
+            if (factoryCtor.count(f.second)) keep.push_back(f);
+        factoryFns.swap(keep);
+    }
+
     for (auto& [p, m] : models) {
         if (m.hand || (!only.empty() && m.name != only)) continue;
         fieldIncludes.clear();
@@ -1585,6 +1639,11 @@ int main(int argc, char** argv) {
         for (int id : m.pureAgain)
             if (seenName[m.name].insert(nameOf(id).decl).second) body[m.name].push_back("virtual " + nameOf(id).decl + " = 0;");
         for (auto& line : body[m.name]) lines.push_back(line);
+        if (auto c = factoryCtor.find(p); c != factoryCtor.end()) {
+            lines.push_back("// STUB: 0x" + hex8(c->second));
+            lines.push_back(m.name + "();");
+            lines.push_back("explicit " + m.name + "(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)");
+        }
         for (auto& [a, decl] : extMethods[p]) {
             if (a != "-") lines.push_back("// STUB: 0x" + hex8(parseHex(a)));
             lines.push_back(decl.back() == '}' ? decl : decl + ";");  // a body written inline (an empty constructor) takes no ';'
@@ -1665,7 +1724,7 @@ int main(int argc, char** argv) {
         for (auto& [a, n] : synthetic) h << "\n// SYNTHETIC: 0x" << hex8(a) << "\n// " << n << "\n";
         h << "\n#endif\n";
         for (auto& [a, n] : stubList) stubs << "0x" << hex8(a) << " " << n << "\n";
-        if (!m.abstract) (m.o1 ? instO1 : instO2).push_back(m.name + "|" + m.header);
+        if (!m.abstract) (m.o1 ? instO1 : instO2).push_back(m.name + (factoryCtor.count(p) ? "(ob_emit())" : "") + "|" + m.header);
         synthCount += synthetic.size();
         vtCount += vtables.size();
         ++written;
@@ -1767,12 +1826,27 @@ int main(int argc, char** argv) {
             freeBodies[opt == "O1" ? "gzcom" : "game"].push_back(def);
             ++freeCount;
         }
+        // the factories, in the folder whose flags clean the stack as theirs do
+        std::map<std::string, std::set<std::string>> freeIncludes;
+        size_t factoryCount = 0;
+        for (auto& [fn, cls] : factoryFns) {
+            const Model& m = models[cls];
+            if (!usable(cls)) continue;
+            std::string group = factoryOpt[fn] == "O1" ? "gzcom" : "game";
+            freeIncludes[group].insert(m.header);
+            freeBodies[group].push_back("// FUNCTION: 0x" + hex8(fn) + (shapes[fn].room >= 5 ? "" : " nohook") + "\n" + m.name +
+                                        "* Fn" + hex8(fn) + "()\n{\n    return new " + m.name + ";\n}\n");
+            ++factoryCount;
+        }
+        std::printf("%zu factories (%zu classes declare their constructor)\n", factoryCount, factoryCtor.size());
         for (const char* group : {"game", "gzcom"}) {
             std::ofstream f(srcDir + "/" + group + "/GeneratedFunctions_" + group + ".cpp");
-            f << "// GENERATED by tools/obcmp/obdecl: the functions of the original whose whole body returns one constant and\n"
-                 "// that belong to no declared class (tools/obcmp/obshape), named by address until their class or name is known.\n"
+            f << "// GENERATED by tools/obcmp/obdecl: the functions of the original whose whole body returns one constant\n"
+                 "// or a new object (a factory) and that belong to no declared class (tools/obcmp/obshape), named by address until\n"
+                 "// their class or name is known.\n"
                  "#include \"common/compiler.h\"\n"
                  "#include \"common/types.h\"\n";
+            for (auto& h : freeIncludes[group]) f << "#include \"" << h << "\"\n";
             for (auto& d : freeBodies[group]) f << "\n" << d;
         }
     }
