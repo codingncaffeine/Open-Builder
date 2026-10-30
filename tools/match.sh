@@ -44,9 +44,9 @@ awk -v textend="$textend" -v sizes="$sizes" '
     if (!(o in size)) { print "# no size for " o > "/dev/stderr"; next }
     printf "%s %s %x %x %s\n", o, size[o], r, rs, nm
   }' "$sizes" "$map" "$out/hook-pairs.txt" >"$out/pairs.tsv"
-# The global objects of tools/gen-statics.py: the k-th STATIC-INIT of an object file pairs the original's initializer
-# and teardown with that object's _$E<3k+1> and _$E<3k+2> (the compiler numbers an initializer, its teardown and the
-# pointer to the initializer in a row); ours run to the next symbol.
+# The global objects of tools/gen-statics.py: each STATIC-INIT of an object file pairs the original's initializer and
+# teardown with that object's next _$E<n>: the compiler numbers an initializer, its teardown and the pointer to the
+# initializer in a row (an object with no teardown, "-", takes two numbers); ours run to the next symbol.
 for src in $(grep -rl '^// STATIC-INIT: 0x' src --include=*.cpp | sort); do
   obj=$(basename "$src" .cpp).obj
   awk -v obj="$obj" -v textend="$textend" -v sizes="$sizes" '
@@ -56,15 +56,16 @@ for src in $(grep -rl '^// STATIC-INIT: 0x' src --include=*.cpp | sort); do
       next
     }
     /^\/\/ STATIC-INIT: 0x/ {
-      k++
       for (w = 0; w < 2; w++) {
-        o = sprintf("%x", strtonum($(3 + w))); r = e[3 * (k - 1) + 1 + w]
-        if (!r) { print "match: no _$E" 3 * (k - 1) + 1 + w " in " obj > "/dev/stderr"; continue }
+        if (w && $4 == "-") continue
+        o = sprintf("%x", strtonum($(3 + w))); r = e[next_ + 1 + w]
+        if (!r) { print "match: no _$E" next_ + 1 + w " in " obj > "/dev/stderr"; continue }
         rs = textend - r
         for (i = 1; i <= n; i++) if (va[i] > r && va[i] - r < rs) rs = va[i] - r
         if (!(o in size)) { print "# no size for " o > "/dev/stderr"; continue }
         printf "%s %s %x %x %s\n", o, size[o], r, rs, (w ? "teardown_" : "init_") $5
       }
+      next_ += $4 == "-" ? 2 : 3
     }' "$sizes" "$map" "$src" >>"$out/pairs.tsv"
 done
 # The stubs that lead to functions not decompiled yet name their original, so calls to them compare by target.
