@@ -1,14 +1,21 @@
 #!/usr/bin/env python3
-# Writes src/game/GeneratedStatics_game.cpp: the global objects of the original whose construction and destruction
-# the compiler wrote as a pair of functions (the dynamic initializer, which constructs the object and registers the
-# other with atexit, and the teardown it registers), found in the original by their exact instructions.
+# Writes src/<folder>/GeneratedStatics_<folder>.cpp: the global objects of the original whose construction and
+# destruction the compiler wrote as a pair of functions (the dynamic initializer, which constructs the object and
+# registers the other with atexit, and the teardown it registers), found in the original by their exact instructions.
 #   tools/gen-statics.py
-# One family so far: a global cRZString made from a string literal, as the game's flags (/O2) compile it
-# (`cRZString g("...")`: the string's range constructor inline, the vtable stored, the reference count zeroed):
-#   push ecx; lea eax,[esp+3]; push eax; push END; push BEGIN; mov ecx,G+4; call _M_range_initialize<const char*>
-#   push TEARDOWN; mov [G],cRZString vtable; mov [G+0x10],0; call atexit; add esp,8; ret
-# and the teardown, ~cRZString inline:
-#   mov eax,[G+4]; test eax,eax; mov [G],cRZString vtable; je +7; push eax; call __stl_delete; pop ecx; ret
+# The families, each a definition and the instructions the folder's flags make of it:
+# - cRZString g("...") with the game's flags (/O2): the string's range constructor inline, the vtable stored, the
+#   reference count zeroed:
+#     push ecx; lea eax,[esp+3]; push eax; push END; push BEGIN; mov ecx,G+4; call _M_range_initialize<const char*>
+#     push TEARDOWN; mov [G],cRZString vtable; mov [G+0x10],0; call atexit; add esp,8; ret
+#   and the teardown, ~cRZString inline:
+#     mov eax,[G+4]; test eax,eax; mov [G],cRZString vtable; je +7; push eax; call __stl_delete; pop ecx; ret
+# - std::string g("...") with the game's flags: the same without the vtable and the count,
+#     ...; mov ecx,G; call _M_range_initialize<const char*>; push TEARDOWN; call atexit; add esp,8; ret
+#     mov eax,[G]; test eax,eax; je +7; push eax; call __stl_delete; pop ecx; ret
+# - cRZString g("...") with the framework's flags (/O1): the constructor called,
+#     push LITERAL; mov ecx,G; call cRZString::cRZString(const char*); push TEARDOWN; call atexit; pop ecx; ret
+#   and the same teardown as the game's.
 # Each definition is annotated "// STATIC-INIT: 0x<initializer> 0x<teardown> <global> <size>": tools/match.sh pairs
 # them with the compiler's _$E<n> functions of the object file, in order. The objects live in namespace ob_statics,
 # so that the hook build's references to the original's variables (GLOBAL annotations) still reach the original's.
@@ -20,12 +27,13 @@ import sys
 root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(root)
 EXE = "scratch/testbed/game/Apps/SimCity 4.exe"
-OUT = "src/game/GeneratedStatics_game.cpp"
+OUTS = {g: "src/%s/GeneratedStatics_%s.cpp" % (g, g) for g in ("game", "gzcom")}
 
 RANGE_INIT = 0x407FA0   # basic_string<char>::_M_range_initialize<const char*>
 RZSTRING_VTABLE = 0xA80810
 ATEXIT = 0x9EF059
 STL_DELETE = 0x90CF63
+RZSTRING_CTOR = 0x408480  # cRZString::cRZString(const char*), out of line
 
 
 def sections(data):
@@ -68,16 +76,12 @@ taken = set()
 pat = re.compile(r"// (?:FUNCTION|SYNTHETIC|STUB|CLOSE): 0x([0-9a-fA-F]+)")
 for d, _, files in os.walk("src"):
     for f in files:
-        if f.endswith((".cpp", ".h")) and os.path.join(d, f) != OUT:
+        if f.endswith((".cpp", ".h")) and os.path.join(d, f) not in OUTS.values():
             for m in pat.finditer(open(os.path.join(d, f), errors="replace").read()):
                 taken.add(int(m.group(1), 16))
 
 text = next(s for s in secs if s[0] == ".text")
 tbase = text[1] - text[3]  # va = file offset + tbase within .text
-init = re.compile(rb"\x51\x8d\x44\x24\x03\x50\x68(.{4})\x68(.{4})\xb9(.{4})\xe8.{4}\x68(.{4})\xc7\x05(.{4})(.{4})"
-                  rb"\xc7\x05(.{4})\x00\x00\x00\x00\xe8.{4}\x83\xc4\x08\xc3", re.S)
-
-
 def literal(b):  # a C++ literal the compiler stores as these bytes (octal escapes: no hex run-on, no trigraphs)
     s = ""
     for c in b:
@@ -86,43 +90,73 @@ def literal(b):  # a C++ literal the compiler stores as these bytes (octal escap
     return '"' + s + '"'
 
 
-defs = []
+u32 = lambda va: struct.unpack_from("<I", data, offset(va))[0]
+
+
+def rztear(td, g):  # ~cRZString inline on G
+    o = offset(td)
+    want = b"\xa1" + struct.pack("<I", g + 4) + b"\x85\xc0\xc7\x05" + struct.pack("<II", g, RZSTRING_VTABLE) + b"\x74\x07\x50\xe8"
+    return o is not None and data[o:o + len(want)] == want and data[o + 25:o + 27] == b"\x59\xc3" and rel(td + 21) == STL_DELETE
+
+
+def strtear(td, g):  # ~basic_string inline on G
+    o = offset(td)
+    want = b"\xa1" + struct.pack("<I", g) + b"\x85\xc0\x74\x07\x50\xe8"
+    return o is not None and data[o:o + len(want)] == want and data[o + 15:o + 17] == b"\x59\xc3" and rel(td + 11) == STL_DELETE
+
+
+RANGE = rb"\x51\x8d\x44\x24\x03\x50\x68(.{4})\x68(.{4})\xb9(.{4})\xe8.{4}\x68(.{4})"
+families = [  # folder, type, size, initializer pattern, check -> (teardown, global, literal start, literal end) or None
+    ("game", "cRZString", 0x14,
+     re.compile(RANGE + rb"\xc7\x05(.{4})(.{4})\xc7\x05(.{4})\x00\x00\x00\x00\xe8.{4}\x83\xc4\x08\xc3", re.S),
+     lambda fn, end, begin, g4, td, g, vt, g10: (td, g, begin, end)
+     if g4 == g + 4 and g10 == g + 0x10 and vt == RZSTRING_VTABLE and rel(fn + 0x16) == RANGE_INIT
+     and rel(fn + 0x34) == ATEXIT and rztear(td, g) else None),
+    ("game", "std::string", 0xc,
+     re.compile(RANGE + rb"\xe8.{4}\x83\xc4\x08\xc3", re.S),
+     lambda fn, end, begin, g, td: (td, g, begin, end)
+     if rel(fn + 0x16) == RANGE_INIT and rel(fn + 0x20) == ATEXIT and strtear(td, g) else None),
+    ("gzcom", "cRZString", 0x14,
+     re.compile(rb"\x68(.{4})\xb9(.{4})\xe8.{4}\x68(.{4})\xe8.{4}\x59\xc3", re.S),
+     lambda fn, lit, g, td: (td, g, lit, lit + data[offset(lit):].index(b"\0") if offset(lit) is not None else lit)
+     if rel(fn + 11) == RZSTRING_CTOR and rel(fn + 21) == ATEXIT and rztear(td, g) else None),
+]
+
+defs = {g: [] for g in OUTS}
 skipped = 0
 held = 0
-for m in init.finditer(data, text[3], text[3] + text[2]):
-    fn = m.start() + tbase
-    end, begin, g4, td, g, vt, g10 = (struct.unpack("<I", x)[0] for x in m.groups())
-    if g4 != g + 4 or g10 != g + 0x10 or vt != RZSTRING_VTABLE:
-        continue
-    if rel(fn + 0x16) != RANGE_INIT or rel(fn + 0x34) != ATEXIT:
-        continue
-    o = offset(td)
-    want = (b"\xa1" + struct.pack("<I", g + 4) + b"\x85\xc0\xc7\x05" + struct.pack("<II", g, RZSTRING_VTABLE) +
-            b"\x74\x07\x50\xe8")
-    if o is None or data[o:o + len(want)] != want or data[o + 25:o + 27] != b"\x59\xc3" or rel(td + 21) != STL_DELETE:
-        skipped += 1
-        continue
-    lo, hi = offset(begin), offset(end)
-    if lo is None or hi is None or hi < lo or data[hi] != 0 or 0 in data[lo:hi]:
-        skipped += 1
-        continue
-    if fn in taken or td in taken:
-        continue
-    # literals that name other products (registry paths, font faces) wait for a decision on what may be published
-    if b"HKEY_" in data[lo:hi] or b"FACE=" in data[lo:hi]:
-        held += 1
-        continue
-    defs.append((fn, td, g, literal(data[lo:hi])))
+for folder, typ, size, pattern, check in families:
+    for m in pattern.finditer(data, text[3], text[3] + text[2]):
+        fn = m.start() + tbase
+        got = check(fn, *(struct.unpack("<I", x)[0] for x in m.groups()))
+        if got is None:
+            skipped += 1
+            continue
+        td, g, begin, end = got
+        lo, hi = offset(begin), offset(end)
+        if lo is None or hi is None or hi < lo or data[hi] != 0 or 0 in data[lo:hi]:
+            skipped += 1
+            continue
+        if fn in taken or td in taken:
+            continue
+        # literals that name other products (registry paths, font faces) wait for a decision on what may be published
+        if b"HKEY_" in data[lo:hi] or b"FACE=" in data[lo:hi]:
+            held += 1
+            continue
+        defs[folder].append((fn, td, g, size, typ, literal(data[lo:hi])))
 
-defs.sort()
-with open(OUT + ".new", "w") as f:
-    f.write("// GENERATED by tools/gen-statics.py: the original's global objects whose construction and destruction the\n"
-            "// compiler wrote as functions (the dynamic initializer and the teardown it registers with atexit), found by\n"
-            "// their instructions. tools/match.sh pairs each STATIC-INIT with this object's _$E<n> functions, in order.\n"
-            "#include \"gzcom/cRZString.h\"\n\n"
-            "namespace ob_statics {\n")
-    for fn, td, g, lit in defs:
-        f.write("\n// STATIC-INIT: 0x%08x 0x%08x 0x%08x 0x14\ncRZString g%s(%s);\n" % (fn, td, g, ('%x' % g).capitalize(), lit))
-    f.write("\n}  // namespace ob_statics\n")
-os.replace(OUT + ".new", OUT)
-print("gen-statics: %d global strings (%d functions), %d near misses skipped, %d held back" % (len(defs), 2 * len(defs), skipped, held))
+total = 0
+for folder, out in OUTS.items():
+    with open(out + ".new", "w") as f:
+        f.write("// GENERATED by tools/gen-statics.py: the original's global objects whose construction and destruction the\n"
+                "// compiler wrote as functions (the dynamic initializer and the teardown it registers with atexit), found by\n"
+                "// their instructions. tools/match.sh pairs each STATIC-INIT with this object's _$E<n> functions, in order.\n"
+                "#include \"gzcom/cRZString.h\"\n\n"
+                "namespace ob_statics {\n")
+        for fn, td, g, size, typ, lit in sorted(defs[folder]):
+            f.write("\n// STATIC-INIT: 0x%08x 0x%08x 0x%08x 0x%x\n%s g%s(%s);\n" % (fn, td, g, size, typ, ("%x" % g).capitalize(), lit))
+        f.write("\n}  // namespace ob_statics\n")
+    os.replace(out + ".new", out)
+    total += len(defs[folder])
+print("gen-statics: %d global strings (%d functions; %s), %d near misses skipped, %d held back" % (
+    total, 2 * total, ", ".join("%s %d" % (k, len(v)) for k, v in defs.items()), skipped, held))
