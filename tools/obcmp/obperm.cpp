@@ -763,15 +763,18 @@ void trimFill(std::vector<std::string>& t) {
     while (!t.empty() && (t.back() == "int3" || t.back().rfind("nop", 0) == 0 || std::regex_match(t.back(), longNop))) t.pop_back();
 }
 
+// A prefix several STUB lines of one source compile to (overloads): it stands for none of them.
+constexpr uint32_t kAmbiguous = 0xffffffffu;
+
 // What a symbol of ours stands for in the original: the stub lists ("0x<address> <decorated>": hook/stubs.txt, the
 // generated classes' src/classes/stubs.txt, and the last build's STUB annotations and GLOBALs), else the address in
 // its name (Fn0045e000, gpB43dc4: the names the agents give unknowns). 0 = not known.
 uint32_t originalOf(const std::string& sym, const std::map<std::string, uint32_t>& stubs) {
     // first the scored file's own STUB and GLOBAL lines, by symbol prefix (sourceStubs): newer than any build's list
     for (auto& [prefix, address] : stubs)
-        if (prefix.size() > 2 && prefix.compare(prefix.size() - 2, 2, "@@") == 0 && sym.rfind(prefix, 0) == 0) return address;
+        if (address != kAmbiguous && prefix.size() > 2 && prefix.compare(prefix.size() - 2, 2, "@@") == 0 && sym.rfind(prefix, 0) == 0) return address;
     auto it = stubs.find(sym);
-    if (it != stubs.end()) return it->second;
+    if (it != stubs.end() && it->second != kAmbiguous) return it->second;
     std::string name = sym.substr(sym[0] == '?' ? 1 : 0);
     name = name.substr(0, name.find('@'));
     static const std::regex fn("^Fn([0-9a-fA-F]{8})$"), global("^g[a-z]?([0-9A-Fa-f]{6,8})$");
@@ -800,8 +803,10 @@ void sourceStubs(const std::string& src, std::map<std::string, uint32_t>& out) {
         if (std::regex_search(decl, m, last)) {
             std::string name = m[1], scope = line[0] == ' ' || line[0] == '\t' ? cls : "";
             if (auto c = name.rfind("::"); c != std::string::npos) { scope = name.substr(0, c); name = name.substr(c + 2); }
-            if (name == scope && !scope.empty()) out.emplace("??0" + scope + "@@", pending);
-            else out.emplace("?" + name + "@" + (scope.empty() ? "" : scope + "@") + "@", pending);
+            std::string prefix = name == scope && !scope.empty() ? "??0" + scope + "@@" : "?" + name + "@" + (scope.empty() ? "" : scope + "@") + "@";
+            // overloads (two constructors) share the prefix: it names neither, the exact names of the build's list decide
+            auto [it, fresh] = out.emplace(prefix, pending);
+            if (!fresh && it->second != pending) it->second = kAmbiguous;
         }
         pending = 0;
     }
