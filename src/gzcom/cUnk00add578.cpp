@@ -3371,12 +3371,11 @@ MatIter_add578 Matrix_add578::Fn009a9a4c(int32_t row)
 }
 #endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x009a94ca score 6
+// FUNCTION: 0x009a94ca
 InsertResult_add578 IntTreeA_add578::Fn009a94ca(const KeyValue_add578& v)
 {
     TreeNode_add578* y = mpHeader;
-    TreeNode_add578* x = y->mpParent;
+    TreeNode_add578* x = mpHeader->mpParent;
     bool less = true;
     while (x) {
         y = x;
@@ -3395,14 +3394,12 @@ InsertResult_add578 IntTreeA_add578::Fn009a94ca(const KeyValue_add578& v)
     }
     return InsertResult_add578(j, false);
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x009a954e score 6
+// FUNCTION: 0x009a954e
 InsertResult_add578 CellsTree_add578::Fn009a954e(const KeyValue_add578& v)
 {
     TreeNode_add578* y = mpHeader;
-    TreeNode_add578* x = y->mpParent;
+    TreeNode_add578* x = mpHeader->mpParent;
     bool less = true;
     while (x) {
         y = x;
@@ -3421,14 +3418,12 @@ InsertResult_add578 CellsTree_add578::Fn009a954e(const KeyValue_add578& v)
     }
     return InsertResult_add578(j, false);
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x009abb8d score 6
+// FUNCTION: 0x009abb8d
 InsertResult_add578 IntTreeB_add578::Fn009abb8d(const KeyValue_add578& v)
 {
     TreeNode_add578* y = mpHeader;
-    TreeNode_add578* x = y->mpParent;
+    TreeNode_add578* x = mpHeader->mpParent;
     bool less = true;
     while (x) {
         y = x;
@@ -3447,14 +3442,12 @@ InsertResult_add578 IntTreeB_add578::Fn009abb8d(const KeyValue_add578& v)
     }
     return InsertResult_add578(j, false);
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x009abc11 score 6
+// FUNCTION: 0x009abc11
 InsertResult_add578 RowsTree_add578::Fn009abc11(const KeyValue_add578& v)
 {
     TreeNode_add578* y = mpHeader;
-    TreeNode_add578* x = y->mpParent;
+    TreeNode_add578* x = mpHeader->mpParent;
     bool less = true;
     while (x) {
         y = x;
@@ -3473,7 +3466,6 @@ InsertResult_add578 RowsTree_add578::Fn009abc11(const KeyValue_add578& v)
     }
     return InsertResult_add578(j, false);
 }
-#endif
 
 // FUNCTION: 0x009ab66b
 uint32_t Tree_add578::Fn009ab66b(uint32_t key)
@@ -3847,15 +3839,14 @@ struct CellEntry_add578 : public KeyValue_add578 {
     CellEntry_add578(int32_t column, void* value) : KeyValue_add578(column), mnColumn(column), mpValue(value) {}
 };
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x009ac157 score 27
+// FUNCTION: 0x009ac157
 bool Matrix_add578::InsertCell(int32_t column, int32_t row, void* value, void* old)
 {
-    int32_t r = row;
-    int32_t c = column;
-    if (r < mnMinRow || c < mnMinColumn || r > mnMaxRow || c > mnMaxColumn) {
+    if (row < mnMinRow || column < mnMinColumn || row > mnMaxRow || column > mnMaxColumn) {
         return false;
     }
+    int32_t r = row;
+    int32_t c = column;
     TreeNode_add578* rowNode = mRows.Find(row);
     if (rowNode != mRows.mpHeader) {
         CellsTree_add578* cells = &static_cast<RowNode_add578*>(rowNode)->mRow.mCells;
@@ -3877,7 +3868,6 @@ bool Matrix_add578::InsertCell(int32_t column, int32_t row, void* value, void* o
     }
     return true;
 }
-#endif
 
 #ifdef OB_DRAFTS
 // CLOSE: 0x009a903e score 21

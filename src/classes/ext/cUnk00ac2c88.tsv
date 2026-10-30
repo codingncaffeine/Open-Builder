@@ -3,7 +3,7 @@ field 34 cRZString mName
 field 48 uint8_t mbF48
 field 49 uint8_t mbF49
 field 4a uint8_t mbF4a
-field 4b uint8_t mbF4b
+field 4b bool mbF4b
 field 4c uint8_t mbF4c
 field 4d uint8_t mbF4d
 field 4e uint8_t mbF4e

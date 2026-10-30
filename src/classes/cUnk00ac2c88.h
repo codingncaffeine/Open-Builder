@@ -155,7 +155,7 @@ public:
     uint8_t mbF48;
     uint8_t mbF49;
     uint8_t mbF4a;
-    uint8_t mbF4b;
+    bool mbF4b;
     uint8_t mbF4c;
     uint8_t mbF4d;
     uint8_t mbF4e;
