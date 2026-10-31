@@ -17,6 +17,8 @@
 #include "sc4/RegionalCity.h"
 #include "sc4/SC4UI.h"
 #include "sc4/ServiceLocator.h"
+#include "sc4/SCPropertyHelp.h"
+#include "sc4/Exemplar.h"
 
 namespace native {
 
@@ -408,8 +410,24 @@ public:
         return *image != nullptr;
     }
 
-    cISCPropertyHolder* CreateTuningProperties() override { return nullptr; }
-    bool CloudOpacityBytes(cISCPropertyHolder*, std::uint8_t&, std::uint8_t&) override { return false; }
+    // The region screen's tuning exemplar {0x6534284a, 0x690f693f, 0xaa383bfe} (ReadTunableValues, Mac i386 0x0019fbde): scroll
+    // speeds, city half-sizes, water erosion, the grid / label colours and the cloud opacity. One reference, released by the
+    // caller through the holder (it is the exemplar itself).
+    cISCPropertyHolder* CreateTuningProperties() override {
+        if (!SL::spRM) return nullptr;
+        void* raw = nullptr;
+        const cGZPersistResourceKey key{0x6534284a, 0x690f693f, 0xaa383bfe};
+        if (!SL::spRM->GetResource(key, 0xa52160f5, &raw, 0, nullptr) || !raw) return nullptr;
+        return static_cast<cISCResExemplar*>(raw)->AsISCPropertyHolder();
+    }
+    // Property 0xca383cb1: the clouds' opacity range, two bytes.
+    bool CloudOpacityBytes(cISCPropertyHolder* holder, std::uint8_t& first, std::uint8_t& second) override {
+        std::vector<std::uint8_t> bytes;
+        if (!holder || !cSCPropertyHelp::GetPropertyValue(holder, 0xca383cb1, bytes) || bytes.size() < 2) return false;
+        first = bytes[0];
+        second = bytes[1];
+        return true;
+    }
     bool CameraBasis(RegionCameraBasis&) override { return false; }
     void SetWaterErosionTunables(std::uint32_t, std::uint32_t, std::uint32_t) override {}
     void SetRegionHeightGlobals(std::uint32_t base, std::uint32_t other) override {

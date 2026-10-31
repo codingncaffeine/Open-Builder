@@ -43,6 +43,7 @@
 #pragma once
 #include <cstdint>
 #include <list>
+#include <map>
 #include <vector>
 
 #include "gz/Buffer.h"
@@ -329,6 +330,23 @@ private:
     std::uint8_t pad1af_ = 0;                   // +0x1af
     int mapMode_ = 0;                           // +0x1b0
     std::vector<cRZAutoRefCount<cIGZBuffer>> iconBuffers_;   // +0x1b8
+
+    // RenderTile's per-city work (the original keeps it in the city record: +0x2c the work buffer, +0x34 its "prepared"
+    // flag, +0x38 the runs): the picture with the mask's alpha, the grid tint and the grown semi-transparent edge, and
+    // its runs. Rebuilt when the picture, the mask, the grid switch, the grid colour or the map mode change.
+    struct PreparedCity {
+        const cIGZBuffer* image = nullptr;
+        const cIGZBuffer* mask = nullptr;
+        bool grid = false;
+        std::uint32_t gridColour = 0;
+        int mapMode = 0;
+        int width = 0, height = 0;
+        std::vector<std::uint32_t> pixels;   // 0xAARRGGBB, colours premultiplied as the original treats them
+        struct Run { int y, x0, x1; bool opaque; };
+        std::vector<Run> runs;
+    };
+    std::map<const cSC4RegionViewCity*, PreparedCity> prepared_;
+    const PreparedCity& Prepare(const cSC4RegionViewCity& city);
 };
 
 }  // namespace sc4

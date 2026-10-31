@@ -197,6 +197,7 @@ void cSC4WinRegionView::ClearCityEffectList(cSC4RegionViewCity& city) {
 
 void cSC4WinRegionView::ClearCities() {   // @ 0x10075b5c6
     selected_ = nullptr;
+    prepared_.clear();   // the prepared pictures are keyed by the city records about to go
     for (cSC4RegionViewCity* city : cities_) {
         if (city) ClearCityEffectList(*city);
     }
@@ -291,7 +292,88 @@ void cSC4WinRegionView::UpdateCity(cSC4RegionViewCity* city) {   // @ 0x10075d5e
 // Rendering
 // ===================================================================================================================
 
-void cSC4WinRegionView::RenderTile(cIGZBuffer* buffer, int x, int y) {   // @ 0x10075bb66 (PARTIAL)
+// The city's picture ready to blend (RenderTile's preparation pass, Mac i386 0x005002da, and the mask handling of
+// RecalculateImagesFromCitySnapshots 0x001a4cfe / SC4MoveMaskToAlpha 0x0019fe7a / SC4CreateSpanList 0x001a1fae). The mask is
+// three masks in one picture: blue = the city's body (the picture's alpha), red = its outline with an anti-aliasing
+// strength per pixel (the grid), green = the label area. Not done: the sub-pixel Resample of the original.
+const cSC4WinRegionView::PreparedCity& cSC4WinRegionView::Prepare(const cSC4RegionViewCity& city) {
+    PreparedCity& p = prepared_[&city];
+    cIGZBuffer* image = city.image;
+    cIGZBuffer* mask = city.mask;
+    if (!p.pixels.empty() && p.image == image && p.mask == mask && p.grid == grid_ && p.gridColour == labelColour1_ && p.mapMode == mapMode_)
+        return p;
+    p = PreparedCity{};
+    p.image = image; p.mask = mask; p.grid = grid_; p.gridColour = labelColour1_; p.mapMode = mapMode_;
+    if (!image || !image->Lock(cIGZBuffer::kLockRead)) return p;
+    const int w = static_cast<int>(image->Width()), h = static_cast<int>(image->Height());
+    p.width = w; p.height = h;
+    p.pixels.resize(static_cast<std::size_t>(w) * h);
+    const auto* src = static_cast<const std::uint8_t*>(image->GetColorSurfaceBits());
+    const std::uint32_t srcPitch = image->GetColorSurfaceStride();
+    for (int row = 0; row < h; ++row)
+        std::memcpy(&p.pixels[std::size_t(row) * w], src + std::size_t(row) * srcPitch, std::size_t(w) * 4);
+    image->Unlock(cIGZBuffer::kLockRead);
+
+    const bool maskUsable = mask && static_cast<int>(mask->Width()) >= w && static_cast<int>(mask->Height()) >= h &&
+                            mask->Lock(cIGZBuffer::kLockRead);
+    if (maskUsable) {
+        const auto* m = static_cast<const std::uint8_t*>(mask->GetColorSurfaceBits());
+        const std::uint32_t mPitch = mask->GetColorSurfaceStride();
+        const std::uint32_t c = labelColour1_;
+        for (int row = 0; row < h; ++row) {
+            const auto* mrow = reinterpret_cast<const std::uint32_t*>(m + std::size_t(row) * mPitch);
+            std::uint32_t* prow = &p.pixels[std::size_t(row) * w];
+            for (int col = 0; col < w; ++col) {
+                const std::uint32_t mv = mrow[col];
+                std::uint32_t px = (prow[col] & 0x00ffffffu) | ((mv & 0xffu) << 24);   // SC4MoveMaskToAlpha: blue -> alpha
+                const std::uint32_t strength = ((mv >> 16) & 0xffu) >> 1;            // the outline (red), halved
+                if (grid_ && strength) {   // the grid: the outline tinted toward the grid colour
+                    std::uint32_t out = px & 0xff000000u;
+                    for (int shift = 0; shift <= 16; shift += 8) {
+                        const int pc = int((px >> shift) & 0xff), gc = int((c >> shift) & 0xff);
+                        out |= std::uint32_t(pc + ((gc - pc) * int(strength) + 0x80 >> 8)) << shift;
+                    }
+                    px = out;
+                }
+                prow[col] = px;
+            }
+        }
+        mask->Unlock(cIGZBuffer::kLockRead);
+    }
+
+    // The grown edge: a pixel short of opaque takes in its right and lower neighbours (front-to-back "over"), so the
+    // outline fades out over a pixel instead of stepping; then the runs (opaque / partly transparent) are recorded.
+    for (int row = 0; row < h; ++row) {
+        std::uint32_t* prow = &p.pixels[std::size_t(row) * w];
+        const std::uint32_t* below = row + 1 < h ? &p.pixels[std::size_t(row + 1) * w] : nullptr;
+        int state = 0, runStart = 0;
+        for (int col = 0; col < w; ++col) {
+            std::uint32_t px = prow[col];
+            if (px < 0xff000000u) {
+                const std::uint32_t b = below ? below[col] : 0u;
+                const std::uint32_t r = col + 1 < w ? prow[col + 1] : 0u;
+                const std::uint32_t ib = 255u - (b >> 24), ip = 255u - (px >> 24);
+                std::uint32_t out = 0;
+                for (int shift = 0; shift <= 24; shift += 8) {
+                    const std::uint32_t pc = (px >> shift) & 0xff, bc = (b >> shift) & 0xff, rc = (r >> shift) & 0xff;
+                    const std::uint32_t v = pc + ((((rc * ib + 0x80) >> 8) + bc) * ip + 0x80 >> 8);
+                    out |= std::min<std::uint32_t>(v, 0xff) << shift;
+                }
+                prow[col] = px = out;
+            }
+            const int now = (px >> 24) == 0 ? 0 : ((px >> 24) < 0xff ? 1 : 2);
+            if (now != state) {
+                if (state != 0) p.runs.push_back({row, runStart, col, state == 2});
+                runStart = col;
+                state = now;
+            }
+        }
+        if (state != 0) p.runs.push_back({row, runStart, w, state == 2});
+    }
+    return p;
+}
+
+void cSC4WinRegionView::RenderTile(cIGZBuffer* buffer, int x, int y) {   // @ 0x10075bb66 (Mac i386 0x005002da; labels / icons not drawn)
     if (!buffer) return;
     if (backdrop_) {
         const cRZRect* source = backdrop_->GetBufferArea();
@@ -300,10 +382,8 @@ void cSC4WinRegionView::RenderTile(cIGZBuffer* buffer, int x, int y) {   // @ 0x
     } else {
         buffer->Fill(buffer->ConvertRGBValueToNative(0, 0, 0), static_cast<const cRZRect*>(nullptr));
     }
-    // The cities, back to front, each blended over the tile at its map position (the original's loop, 0x10075bbf0, clips the city's
-    // rectangle against the tile first). PARTIAL: the original blends through the mask's transparent-run list (growing the
-    // semi-transparent edge, +0x58) and then draws the selected city's grid, the label windows and the airport / seaport icons
-    // (to 0x10075d4fc); here the picture's own alpha is blended and nothing else is drawn.
+    // The cities, back to front, each prepared once and blended over the tile at its map position: opaque runs copy,
+    // partly transparent ones blend with the colours taken as premultiplied (dst = src + dst * (255 - alpha) / 255).
     if (cities_.empty() || !buffer->Lock(cIGZBuffer::kLockWrite)) return;
     auto* destination = static_cast<std::uint8_t*>(buffer->GetColorSurfaceBits());
     const std::uint32_t destinationPitch = buffer->GetColorSurfaceStride();
@@ -313,27 +393,31 @@ void cSC4WinRegionView::RenderTile(cIGZBuffer* buffer, int x, int y) {   // @ 0x
         cRZRect rect;
         GetRegionScreenRect(*city, rect);   // in view coordinates, i.e. canvas coordinates
         const int left = rect.left - x, top = rect.top - y;
-        const int width = rect.right - rect.left, height = rect.bottom - rect.top;
-        const int x0 = std::max(left, tileArea.left), y0 = std::max(top, tileArea.top);
-        const int x1 = std::min(left + width, tileArea.right), y1 = std::min(top + height, tileArea.bottom);
-        if (x0 >= x1 || y0 >= y1 || !city->image->Lock(cIGZBuffer::kLockRead)) continue;
-        const auto* source = static_cast<const std::uint8_t*>(city->image->GetColorSurfaceBits());
-        const std::uint32_t sourcePitch = city->image->GetColorSurfaceStride();
-        for (int row = y0; row < y1; ++row) {
-            const auto* from = reinterpret_cast<const std::uint32_t*>(source + static_cast<std::size_t>(row - top) * sourcePitch) + (x0 - left);
-            auto* to = reinterpret_cast<std::uint32_t*>(destination + static_cast<std::size_t>(row) * destinationPitch) + x0;
+        if (left >= tileArea.right || top >= tileArea.bottom || rect.right - x <= tileArea.left || rect.bottom - y <= tileArea.top) continue;
+        const PreparedCity& p = Prepare(*city);
+        for (const PreparedCity::Run& run : p.runs) {
+            const int ty = top + run.y;
+            if (ty < tileArea.top || ty >= tileArea.bottom) continue;
+            const int x0 = std::max(left + run.x0, tileArea.left), x1 = std::min(left + run.x1, tileArea.right);
+            if (x0 >= x1) continue;
+            const std::uint32_t* from = &p.pixels[std::size_t(run.y) * p.width + std::size_t(x0 - left)];
+            auto* to = reinterpret_cast<std::uint32_t*>(destination + static_cast<std::size_t>(ty) * destinationPitch) + x0;
+            if (run.opaque) {
+                std::memcpy(to, from, std::size_t(x1 - x0) * 4);
+                continue;
+            }
             for (int col = x0; col < x1; ++col, ++from, ++to) {
-                const std::uint32_t pixel = *from, alpha = pixel >> 24;
-                if (alpha == 0) continue;
-                if (alpha == 255) { *to = pixel | 0xff000000u; continue; }
-                const std::uint32_t back = *to;
+                const std::uint32_t src = *from, a = src >> 24;
+                if (a == 0) continue;
+                const std::uint32_t back = *to, keep = 0xffu - a;
                 std::uint32_t out = 0xff000000u;
-                for (int shift = 0; shift <= 16; shift += 8)
-                    out |= ((((pixel >> shift) & 0xff) * alpha + ((back >> shift) & 0xff) * (255 - alpha) + 127) / 255) << shift;
+                for (int shift = 0; shift <= 16; shift += 8) {
+                    const std::uint32_t v = ((((back >> shift) & 0xff) * keep + 0x80) >> 8) + ((src >> shift) & 0xff);
+                    out |= std::min<std::uint32_t>(v, 0xff) << shift;
+                }
                 *to = out;
             }
         }
-        city->image->Unlock(cIGZBuffer::kLockRead);
     }
     buffer->Unlock(cIGZBuffer::kLockWrite);
 }
