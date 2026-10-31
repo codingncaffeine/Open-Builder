@@ -410,7 +410,12 @@ template <class _Key, class _Value, class _KeyOfValue,
   iterator __j = iterator(__y);   
   if (__comp)
     if (__j == begin())     
+#if defined (_STLP_INSERT_UNIQUE_BY_X)
+      /* Modified for Open Builder: the program this project rebuilds passes __x here, as 4.5.3 does; 4.6 passes __y. */
+      return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
+#else
       return pair<iterator,bool>(_M_insert(/* __x*/ __y, __y, __v), true);
+#endif
     else
       --__j;
   if (_M_key_compare(_S_key(__j._M_node), _KeyOfValue()(__v)))

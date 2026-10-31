@@ -70,6 +70,7 @@ while read -r sym; do
   } >"$probes/$probe.cpp"
   ( cd "$root" && tools/vc71.sh cl /nologo /c /Od /GX- /Isdk /Isrc /Ihook /Ithird_party/stlport-4.6/stlport \
       /D_STLP_DONT_FORCE_MSVC_LIB_NAME /D_STLP_USE_NEWALLOC /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE \
+      /D_STLP_TREE_ITERATOR_WALKS /D_STLP_INSERT_UNIQUE_BY_X \
       "/Fo$probes/$probe.obj" "$probes/$probe.cpp" >"$probes/$probe.log" 2>&1 ) || true
   [[ -f "$probes/$probe.obj" ]] || { echo "known-slots: the probe for $cls does not compile ($probes/$probe.log)" >&2; cat "$probes/$probe.log" >&2; continue; }
   llvm-objdump -t "$probes/$probe.obj" | awk '/\?\?_7/ && /\(sec +[0-9]+\)/ { match($0, /\(sec +[0-9]+\)/); s = substr($0, RSTART + 5, RLENGTH - 6); gsub(/ /, "", s); print s, $NF }' >"$work/vtables"

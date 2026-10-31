@@ -15,7 +15,8 @@ link() { "$root/tools/vc71.sh" link "$@"; }
 hook_flags="/O2 /GX- /W3"
 # STLport configured as the original had it: plain new-allocator, __stl_new/__stl_delete out of line (stubs).
 common=(/nologo /c /Isdk /Isrc /Ihook /Ithird_party/stlport-4.6/stlport /D_STLP_DONT_FORCE_MSVC_LIB_NAME
-  /D_STLP_USE_NEWALLOC /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE)
+  /D_STLP_USE_NEWALLOC /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE /D_STLP_TREE_ITERATOR_WALKS
+  /D_STLP_INSERT_UNIQUE_BY_X)
 rm -rf "$out"
 mkdir -p "$out/sdk" "$out/obj"
 

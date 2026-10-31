@@ -1084,7 +1084,8 @@ int main(int argc, char** argv) {
         if (flags.empty()) flags = "/O2 /GX- /W3";
     }
     std::string common = "/nologo /c /DOB_DRAFTS /Isdk /Isrc /Ihook /Ithird_party/stlport-4.6/stlport /D_STLP_DONT_FORCE_MSVC_LIB_NAME "
-                         "/D_STLP_USE_NEWALLOC /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE /I" +
+                         "/D_STLP_USE_NEWALLOC /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE "
+                         "/D_STLP_TREE_ITERATOR_WALKS /D_STLP_INSERT_UNIQUE_BY_X /I" +
                          quote(fs::path(file).parent_path().string());
 
     fs::create_directories(work);

@@ -171,14 +171,62 @@ template <class _Value, class _Traits> struct _Rb_tree_iterator : public _Rb_tre
   
   _STLP_DEFINE_ARROW_OPERATOR
 
+#if defined (_STLP_TREE_ITERATOR_WALKS)
+  /* Modified for Open Builder: in the program this project rebuilds the tree iterator's ++ and -- walk the tree
+     themselves (the static helpers' bodies, written out here) and stay out of line; 4.6 calls the helpers. */
+  _Self& operator++() {
+    _Base_ptr __x = _M_node;
+    if (__x->_M_right != 0) {
+      __x = __x->_M_right;
+      while (__x->_M_left != 0)
+        __x = __x->_M_left;
+    }
+    else {
+      _Base_ptr __y = __x->_M_parent;
+      while (__x == __y->_M_right) {
+        __x = __y;
+        __y = __y->_M_parent;
+      }
+      if (__x->_M_right != __y)
+        __x = __y;
+    }
+    _M_node = __x;
+    return *this;
+  }
+#else
   _Self& operator++() { _M_node = _Rb_global_inst::_M_increment(_M_node); return *this; }
+#endif
   _Self operator++(int) {
     _Self __tmp = *this;
     _M_node = _Rb_global_inst::_M_increment(_M_node);
     return __tmp;
   }
     
+#if defined (_STLP_TREE_ITERATOR_WALKS)
+  _Self& operator--() {
+    _Base_ptr __x = _M_node;
+    if (__x->_M_color == _S_rb_tree_red && __x->_M_parent->_M_parent == __x)
+      __x = __x->_M_right;
+    else if (__x->_M_left != 0) {
+      _Base_ptr __y = __x->_M_left;
+      while (__y->_M_right != 0)
+        __y = __y->_M_right;
+      __x = __y;
+    }
+    else {
+      _Base_ptr __y = __x->_M_parent;
+      while (__x == __y->_M_left) {
+        __x = __y;
+        __y = __y->_M_parent;
+      }
+      __x = __y;
+    }
+    _M_node = __x;
+    return *this;
+  }
+#else
   _Self& operator--() { _M_node = _Rb_global_inst::_M_decrement(_M_node); return *this; }
+#endif
   _Self operator--(int) {
     _Self __tmp = *this;
     _M_node = _Rb_global_inst::_M_decrement(_M_node);

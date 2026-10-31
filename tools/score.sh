@@ -33,7 +33,9 @@ copy="$work/$(basename "$file")"
 sed -E 's|^// CLOSE: (0x[0-9a-fA-F]+).*|// FUNCTION: \1|' "$file" >"$copy"
 # The options obperm compiles with (tools/obcmp/obperm.cpp, "common").
 common=(/nologo /c /Isdk /Isrc /Ihook /Ithird_party/stlport-4.6/stlport /D_STLP_DONT_FORCE_MSVC_LIB_NAME
-  /D_STLP_USE_NEWALLOC /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE "/I$(dirname "$file")")
+  /D_STLP_USE_NEWALLOC /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE /D_STLP_TREE_ITERATOR_WALKS
+  /D_STLP_INSERT_UNIQUE_BY_X
+  "/I$(dirname "$file")")
 compile() {  # flags, object
   # shellcheck disable=SC2086
   timeout -k 5 120 tools/vc71.sh cl "${common[@]}" /DOB_DRAFTS $1 "/Fo$2" "$copy" >"$2.log" 2>&1 || true
