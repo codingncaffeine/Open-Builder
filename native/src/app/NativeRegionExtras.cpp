@@ -8,6 +8,7 @@
 #include "app/NativeModelMaker.h"
 #include "app/NativeUi.h"
 #include "render/gd/IGZGDriver.h"
+#include "render/gd/VideoModes.h"
 #include "sc4/WinRegionClouds.h"
 #include "sc4/WinRegionScroll.h"
 #include "sc4/WinRegionScreen.h"
@@ -32,7 +33,24 @@ public:
         g_driver->TexStageMatrix(reinterpret_cast<const float*>(static_cast<std::intptr_t>(a)), static_cast<std::uint32_t>(b),
                                  static_cast<std::uint32_t>(c), static_cast<gd::eGDTexMatFlags>(d));
     }
-    void SetVertices(int format, int offset, const sc4::CloudVertex* vertices) override { g_driver->InterleavedArrays(format, offset, vertices); }
+    // Called once per paint, before the clouds draw: the clouds are in screen coordinates, so the pass takes the whole
+    // screen. The driver still holds the viewport and projection of whichever window drew last (the draw context sets
+    // them per clip rectangle), which squeezed the clouds into that window's corner of the screen.
+    void SetVertices(int format, int offset, const sc4::CloudVertex* vertices) override {
+        gd::sGDMode mode{};
+        g_driver->GetVideoModeInfo(mode);
+        if (mode.width > 0 && mode.height > 0) {
+            g_driver->SetViewport();
+            // cGZDrawContextRenderToHardware::UpdateTransform's orthographic projection for the full screen (y down)
+            const float sx = 2.0f / float(mode.width), sy = -2.0f / float(mode.height);
+            const float projection[16] = {sx, 0, 0, 0, 0, sy, 0, 0, 0, 0, 0, 0, -1.0f, 1.0f, 0.5f, 1.0f};
+            g_driver->MatrixMode(1);
+            g_driver->LoadMatrix(projection);
+            g_driver->MatrixMode(0);
+            g_driver->LoadIdentity();
+        }
+        g_driver->InterleavedArrays(format, offset, vertices);
+    }
     void SetTexture(std::uint32_t handle, int stage) override { g_driver->SetTexture(handle, static_cast<std::uint32_t>(stage)); }
     void SetTextureState(int stage, int state, int value) override { g_driver->TexParameter(stage, state, value); }
     void SetSamplerState(int stage, int state, int value) override { g_driver->TexEnv(stage, state, static_cast<gd::eGDTextureEnvModeParam>(value)); }
