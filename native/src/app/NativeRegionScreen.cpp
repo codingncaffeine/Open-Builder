@@ -418,6 +418,9 @@ public:
     void RunGameOptionsDialog() override {
         native::RunGameOptionsDialog([] { return BootApplication() ? BootApplication()->GetPreferences() : nullptr; });
     }
+    void RunAudioOptionsDialog() override {
+        native::RunAudioOptionsDialog([] { return BootApplication() ? BootApplication()->GetPreferences() : nullptr; });
+    }
     void FormatNumber(int value, cRZString& out) override {
         // thousands separated by commas, as the English language utility makes them
         std::string digits = std::to_string(value < 0 ? -value : value);

@@ -23,6 +23,8 @@ struct CityScreenCallbacks {
 void SetCityScreenCallbacks(CityScreenCallbacks callbacks);
 
 // Installs the city hooks once and loads the city file through cSC4App::LoadCity; true when the city came up.
+// The exemplar and cohort factories of the resource manager (idempotent; boot and the first city load call it).
+void RegisterExemplarFactories();
 bool LoadCityFile(cSC4App& app, const std::string& path);
 // One framework tick for the services the simulator host registered (NativeSimulatorHost.cpp): cSC4Simulator::OnTick.
 void TickSimulatorServices(std::uint32_t tickNumber);

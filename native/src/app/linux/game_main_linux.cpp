@@ -154,6 +154,7 @@ std::string FindFontFile(const std::string& faces, bool bold, bool italic) {
 
 struct StyleFont { cGZFont* font = nullptr; };
 std::map<std::uint32_t, StyleFont> gStyleFonts;
+std::map<std::string, std::uint32_t> gStyleNames;   // "GenBodyLight" -> its guid (lower case: scripts vary the case)
 
 cGZFont* MakeFont(const std::string& path, std::uint32_t size) {
     auto* font = new cGZFont(gFontHost);
@@ -203,6 +204,11 @@ void AddFontStyle(const std::string& line) {
     if (!font->Init()) { font->Release(); return; }
     if (gStyleFonts[guid].font) gStyleFonts[guid].font->Release();
     gStyleFonts[guid].font = font;
+    std::string name = line.substr(0, at);
+    name.erase(0, name.find_first_not_of(" \t`"));
+    name.erase(name.find_last_not_of(" \t") + 1);
+    for (char& c : name) c = char(std::tolower(static_cast<unsigned char>(c)));
+    if (!name.empty()) gStyleNames[name] = guid;
 }
 
 void LoadFontStyles() {
@@ -276,6 +282,14 @@ struct FontSource final : gz::IWinFontSource {
         return &f;
     }
     bool Available() override { return gFont != nullptr; }
+    gz::IWinFont* FontByName(const char* name) override {
+        if (!gFont || !name) return nullptr;
+        LoadFontStyles();
+        std::string key(name);
+        for (char& c : key) c = char(std::tolower(static_cast<unsigned char>(c)));
+        auto it = gStyleNames.find(key);
+        return it == gStyleNames.end() ? nullptr : Font(it->second);
+    }
 } gFontSource;
 
 // ---- images: PNG through libpng, uncompressed BMP by hand -> a CPU buffer with straight alpha (B, G, R, A in memory) ------
@@ -434,6 +448,7 @@ void StartGameAudio() {
     if (!audio.Open(dat, error)) { std::printf("audio: %s\n", error.c_str()); return; }
     gAudio = &audio;
     native::SetGameAudio(&audio);
+    if (cSC4App* app = native::BootApplication()) native::ApplyAudioPreferences(app->GetPreferences());   // the saved volumes and songs
     if (std::getenv("SC4_AUDIODIRECTORS") && native::BootFramework())
         native::StartAudioDirectors(*native::BootFramework(), dat.substr(0, dat.rfind('/') + 1));
     std::printf("audio: %zu sounds\n", audio.SoundCount());
@@ -524,6 +539,7 @@ bool Boot() {
         };
     });
     if (!ok) std::printf("boot: FAILED\n");
+    native::RegisterExemplarFactories();   // tuning exemplars are read on the region screen too (the audio options)
     if (cSC4App* app = native::BootApplication()) {
         native::RegionCallbacks callbacks;
         callbacks.dataDirectory = platform::GameDataDir();
@@ -883,7 +899,25 @@ int main(int argc, char** argv) {
         gMgr->Plot();
         gGraphics->Services().Tick();
         Present();
-        if (!interactive && ++frame >= 30) {
+        // debug: SC4_MODALINPUT="FRAME:X:Y,..." clicks inside the dialog at those frames of it; SC4_MODALFRAMES its length (30)
+        if (!interactive) {
+            if (const char* input = std::getenv("SC4_MODALINPUT")) {
+                std::stringstream list(input);
+                std::string item;
+                while (std::getline(list, item, ',')) {
+                    int at = -1, x = 0, y = 0;
+                    if (std::sscanf(item.c_str(), "%d:%d:%d", &at, &x, &y) == 3 && at == frame + 1) {
+                        gMgr->GZWinMsgPost_Mouse(kGZMsgMouseMove, x, y, 0);
+                        gMgr->GZWinMsgPost_Mouse(kGZMsgMouseDownL, x, y, 0);
+                        gMgr->GZWinMsgPost_Mouse(kGZMsgMouseUpL, x, y, 0);
+                        std::printf("modal input: click %d,%d at frame %d\n", x, y, at);
+                    }
+                }
+            }
+        }
+        const char* lengthText = std::getenv("SC4_MODALFRAMES");
+        const int length = lengthText ? std::max(1, std::atoi(lengthText)) : 30;
+        if (!interactive && ++frame >= length) {
             frame = 0;
             if (const char* tree = std::getenv("SC4_MODALTREE"))   // debug: the window tree under the dialog's window id (hex)
                 if (cIGZWin* w = gMgr->GetMainWindow()->GetChildWindowFromIDRecursive(std::uint32_t(std::strtoul(tree, nullptr, 16)))) DumpTree(w, 0, 6);
@@ -891,6 +925,18 @@ int main(int argc, char** argv) {
             gMgr->PostWinMessage(gz::kWinMgrMsgEndModal, 0, 0x80000001u, 0x80000001u);
         }
     };
+    if (const char* dump = std::getenv("SC4_DUMPRES")) {   // debug: "type,group,instance[,file]" writes one resource's bytes
+        unsigned type = 0, group = 0, instance = 0;
+        char file[256] = "resource.bin";
+        std::sscanf(dump, "%x,%x,%x,%255s", &type, &group, &instance, file);
+        std::vector<std::uint8_t> bytes;
+        if (native::LoadResourceBytes(type, group, instance, bytes)) {
+            std::ofstream(file, std::ios::binary).write(reinterpret_cast<const char*>(bytes.data()), std::streamsize(bytes.size()));
+            std::printf("dump: %zu bytes -> %s\n", bytes.size(), file);
+        } else {
+            std::printf("dump: %08x %08x %08x not found\n", type, group, instance);
+        }
+    }
     if (!native::VerifyRuntimeWiring(gDriver.get(), gAudio != nullptr)) { std::fprintf(stderr, "boot halted: a required dependency is not wired\n"); return 3; }
     if (!scenario.empty()) return RunScenario(scenario);
 

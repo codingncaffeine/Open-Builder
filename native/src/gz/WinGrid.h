@@ -107,7 +107,7 @@ public:
     };
     // cIGZWinGrid::CellFormat, 0x28 bytes. `font` is the original's cIGZFont*; the recovered text controls use the
     // IWinFont adapter (gz/WinFont.h) so the grid does not need the whole font interface. The six colours are
-    // 0 disabled text, 1 disabled background, 2 text, 3 text shadow, 4 selected text, 5 selected background.
+    // 0 text, 1 background, 2 disabled text, 3 disabled background, 4 selected text, 5 selected background.
     struct CellFormat {
         IWinFont* font = nullptr;           // +0x00
         std::uint32_t colors[6] = {0x40000000, 0x40000000, 0x40000000, 0x40000000, 0x40000000, 0x40000000};  // +0x08
@@ -553,7 +553,7 @@ protected:
     std::int32_t firstVisibleColumn_ = 0, firstVisibleRow_ = 0;   // +0x1a4, +0x1a8
     float visibleColumns_ = 1.0f, visibleRows_ = 1.0f;            // +0x1ac, +0x1b0
     std::int32_t columnLimit_ = -1, rowLimit_ = -1;               // +0x1b4, +0x1b8
-    std::int32_t defaultColumnWidth_ = 100, defaultRowHeight_ = 0x140;   // +0x1bc, +0x1c0
+    std::int32_t defaultColumnWidth_ = 100, defaultRowHeight_ = 0x14;    // +0x1bc, +0x1c0 (20: Mac i386 ctor 0x001b8be8 stores 0x14)
     std::uint32_t outlineColor_ = 0;                              // +0x1c4
     std::uint32_t columnLineColor_ = 0, rowLineColor_ = 0;        // +0x1c8, +0x1cc
     std::int32_t lineOffsetX_ = 1, lineOffsetY_ = 1;              // +0x1d0, +0x1d4

@@ -143,10 +143,10 @@ void cGZWinGrid::RecalculateAll() {   // @ 0x10025121c
         int column = firstVisibleColumn_;
         int columnLimit = std::numeric_limits<int>::max();
         if (columnLimit_ > 0) columnLimit = columnLimit_;
-        if (static_cast<std::int16_t>(flags_ & 0xffff) >= 0) {
-            cRZRect visible{0, 0, 0, 0};
-            GetCellVisibleRange(visible);
-            if (visible.right <= columnLimit) columnLimit = visible.right + 1;
+        if (static_cast<std::int16_t>(flags_ & 0xffff) >= 0) {   // bounded columns: up to the last used one (vslot [50])
+            cRZRect used{0, 0, 0, 0};
+            GetCellUsedRange(used);
+            if (used.right <= columnLimit) columnLimit = used.right + 1;
         }
         if (column < columnLimit) {
             int accumulated = 0;
@@ -167,10 +167,10 @@ void cGZWinGrid::RecalculateAll() {   // @ 0x10025121c
         int row = firstVisibleRow_;
         int rowLimit = std::numeric_limits<int>::max();
         if (rowLimit_ > 0) rowLimit = rowLimit_;
-        if ((flags_ & kGridUnboundedRows) == 0) {
-            cRZRect visible{0, 0, 0, 0};
-            GetCellVisibleRange(visible);
-            if (visible.bottom <= rowLimit) rowLimit = visible.bottom + 1;
+        if ((flags_ & kGridUnboundedRows) == 0) {   // bounded rows: up to the last used one (Mac i386 0x001ba6f8 calls vslot [50],
+            cRZRect used{0, 0, 0, 0};                  // GetCellUsedRange; the visible range only ever grew by one row per pass)
+            GetCellUsedRange(used);
+            if (used.bottom <= rowLimit) rowLimit = used.bottom + 1;
         }
         if (row < rowLimit) {
             int accumulated = 0;
@@ -621,29 +621,29 @@ bool cGZWinGrid::GZOnMouseDownL(int x, int y, std::uint32_t modifiers) {   // @ 
         ClearSelection();
         for (int c = 0; c <= static_cast<int>(visibleColumns_); ++c) AddCellToSelection(c, cell.row, true);
     }
+    // Mac i386 0x001be380: a double click on the same cell sends only the double-click notification; any other click
+    // sends cell-changed and, when it hit a different cell, selection-changed (p2 = the cell).
     const bool changed = lastHitResult_ != result || lastHitColumn_ != cell.col || lastHitRow_ != cell.row;
+    lastHitResult_ = result;
+    lastHitColumn_ = cell.col;
+    lastHitRow_ = cell.row;
+    cGZMessage message;
+    message.param1 = reinterpret_cast<std::uint64_t>(static_cast<cIGZWinGrid*>(this));
     if (!changed && doubleClick) {
-        cGZMessage message;
         message.type = kGZMsgGridDoubleClick;
-        message.param1 = reinterpret_cast<std::uint64_t>(static_cast<cIGZWinGrid*>(this));
         message.param2 = reinterpret_cast<std::uint64_t>(&lastHitResult_);
         SendMsg(notify_, message);
     } else {
-        lastHitResult_ = result;
-        lastHitColumn_ = cell.col;
-        lastHitRow_ = cell.row;
-    }
-    cGZMessage message;
-    message.type = kGZMsgGridCellChanged;
-    message.param1 = reinterpret_cast<std::uint64_t>(static_cast<cIGZWinGrid*>(this));
-    message.param2 = reinterpret_cast<std::uint64_t>(&lastHitResult_);
-    SendMsg(notify_, message);
-    if (changed) {
-        message.type = kGZMsgGridMouseDown;
-        message.param2 = reinterpret_cast<std::uint64_t>(&cell);
+        message.type = kGZMsgGridCellChanged;
+        message.param2 = reinterpret_cast<std::uint64_t>(&lastHitResult_);
         SendMsg(notify_, message);
-        recalculatePending_ = true;
-        MarkInvalid();
+        if (changed) {
+            message.type = kGZMsgGridSelectionChanged;
+            message.param2 = reinterpret_cast<std::uint64_t>(&cell);
+            SendMsg(notify_, message);
+            recalculatePending_ = true;
+            MarkInvalid();
+        }
     }
     if ((flags_ & kGridCapture) != 0) GZSetCapture();
     return true;
@@ -2672,9 +2672,21 @@ bool cGZWinGrid::Refresh() {   // @ 0x10025c9a8
 
 bool cGZWinGrid::TestForPossibleScrollBarAdditionOrRemoval() {   // @ 0x10025c9c6
     if ((flags_ & kGridVerticalScroll) != 0) {
+        // Mac i386 0x001b7d3a: unbounded rows without a limit always scroll; otherwise the rows that count are the limit
+        // (unbounded rows) or the used rows (vslot [50]), and the bar shows while they exceed the visible rows.
         bool want = false;
-        if (rowLimit_ > 0) want = static_cast<float>(rowLimit_) > visibleRows_;
-        else if (rowLimit_ == -1 && (flags_ & kGridUnboundedRows) != 0) want = true;
+        const bool noLimit = rowLimit_ == -1 || rowLimit_ == 0;
+        if (noLimit && (flags_ & kGridUnboundedRows) != 0) {
+            want = true;
+        } else {
+            int rows = rowLimit_;
+            if ((flags_ & kGridUnboundedRows) == 0) {
+                cRZRect used{0, 0, 0, 0};
+                GetCellUsedRange(used);
+                rows = used.bottom + 1;
+            }
+            want = static_cast<float>(rows) > visibleRows_;
+        }
         if (want) {
             if (!verticalScrollBar_) AddScrollBar(true, false);
         } else if (verticalScrollBar_) {
@@ -2897,7 +2909,9 @@ void cGZWinGrid::CalcCellDrawingParams(const cIGZString& text, const OwnerDrawIn
         rect.top = rect.bottom - lineHeight;
     }
     if (!info.selected) {
-        if (!info.enabled) {
+        // an enabled grid draws with pair 0 / 1 (the pair DrawCellBackground fills with), a disabled one with 2 / 3
+        // (Mac i386 0x001b5868: the info's +0x29 is the window's enabled flag, GZPaint 0x001babfe)
+        if (info.enabled) {
             color = format->colors[0];
             color2 = format->colors[1];
         } else {

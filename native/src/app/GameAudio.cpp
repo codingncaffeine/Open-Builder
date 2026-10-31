@@ -122,7 +122,7 @@ bool GameAudio::Open(const std::string& soundDat, std::string& error) {
 
 void GameAudio::SetMuted(bool muted) {
     muted_ = muted;
-    if (impl_ && impl_->ambient) impl_->ambient->SetVolume(muted ? 0.0f : 0.6f);
+    if (impl_ && impl_->ambient) impl_->ambient->SetVolume(muted ? 0.0f : musicGain_);
 }
 
 void GameAudio::NextAmbient() {
@@ -157,7 +157,7 @@ void GameAudio::PlayClick() {
 }
 
 bool GameAudio::PlayTrack(std::uint32_t trackId) {
-    if (!impl_ || !impl_->segment || muted_) return false;
+    if (!impl_ || !impl_->segment || muted_ || !soundEnabled_) return false;
     auto found = trackSound_.find(trackId);
     if (found == trackSound_.end()) {
         std::uint32_t sound = 0;
@@ -185,7 +185,7 @@ bool GameAudio::PlayTrack(std::uint32_t trackId) {
     if (found->second == 0) return false;
     AudioPlatform::IVoice* voice = impl_->MakeVoice(found->second);
     if (!voice) return false;
-    voice->SetVolume(0.8f);
+    voice->SetVolume(soundGain_);
     voice->Play(0);
     impl_->voices.push_back(voice);
     return true;
@@ -197,6 +197,7 @@ void GameAudio::SetStation(const std::string& directory) {
     playlist_.clear();
     nextSong_ = 0;
     if (impl_ && impl_->ambient) { impl_->ambient->Stop(); delete impl_->ambient; impl_->ambient = nullptr; }
+    currentSong_.clear();
     if (directory.empty()) return;
     std::error_code listError;
     for (const auto& entry : std::filesystem::directory_iterator(directory, listError)) {
@@ -209,18 +210,11 @@ void GameAudio::SetStation(const std::string& directory) {
 }
 
 void GameAudio::Tick() {
-    if (impl_ && !playlist_.empty() && !muted_ && (!impl_->ambient || !impl_->ambient->IsPlaying())) {
+    if (impl_ && !playlist_.empty() && !muted_ && musicEnabled_ && !radioHeld_ && (!impl_->ambient || !impl_->ambient->IsPlaying())) {
         for (std::size_t tries = 0; tries < playlist_.size(); ++tries) {
             const std::string& path = playlist_[nextSong_++ % playlist_.size()];
-            AudioPlatform::IVoice* voice = impl_->backend->CreateFileVoice(path.c_str());
-            if (!voice) continue;
-            if (impl_->ambient) { impl_->ambient->Stop(); delete impl_->ambient; }
-            impl_->ambient = voice;
-            voice->SetVolume(0.5f);
-            voice->Play(0);
-            current_ = path;
-            if (std::getenv("SC4_DEBUG")) std::fprintf(stderr, "audio: music %s\n", path.c_str());
-            break;
+            if (songEnabled_ && !songEnabled_(path)) continue;
+            if (PlaySong(path)) break;
         }
     }
     if (impl_) {
@@ -228,5 +222,43 @@ void GameAudio::Tick() {
             if (!impl_->voices[i]->IsPlaying()) { delete impl_->voices[i]; impl_->voices.erase(impl_->voices.begin() + i); }
             else ++i;
         }
+    }
+}
+
+bool GameAudio::PlaySong(const std::string& path) {
+    if (!impl_) return false;
+    AudioPlatform::IVoice* voice = impl_->backend->CreateFileVoice(path.c_str());
+    if (!voice) return false;
+    if (impl_->ambient) { impl_->ambient->Stop(); delete impl_->ambient; }
+    impl_->ambient = voice;
+    voice->SetVolume(musicGain_);
+    voice->Play(0);
+    current_ = currentSong_ = path;
+    if (std::getenv("SC4_DEBUG")) std::fprintf(stderr, "audio: music %s\n", path.c_str());
+    return true;
+}
+
+void GameAudio::StopRadio() {
+    radioHeld_ = true;
+    if (impl_ && impl_->ambient) { impl_->ambient->Stop(); delete impl_->ambient; impl_->ambient = nullptr; }
+    currentSong_.clear();
+}
+
+void GameAudio::SetMusic(bool enabled, float gain) {
+    if (enabled == musicEnabled_ && gain == musicGain_) return;
+    musicEnabled_ = enabled;
+    musicGain_ = gain;
+    if (!impl_ || !impl_->ambient) return;
+    if (!enabled) { impl_->ambient->Stop(); delete impl_->ambient; impl_->ambient = nullptr; currentSong_.clear(); }
+    else impl_->ambient->SetVolume(gain);
+}
+
+void GameAudio::SetSound(bool enabled, float gain) {
+    soundEnabled_ = enabled;
+    soundGain_ = gain;
+    if (!impl_) return;
+    for (AudioPlatform::IVoice* voice : impl_->voices) {
+        if (enabled) voice->SetVolume(gain);
+        else voice->Stop();
     }
 }

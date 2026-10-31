@@ -7,6 +7,8 @@
 #include "audio/AudioServices.h"
 #include "audio/interfaces/cIGZSnd.h"
 #include "gz/WinBtn.h"
+#include "gz/WinCtrlFactory.h"
+#include "sc4/AudioPreferencesWinProc.h"
 #include "gz/WinFont.h"
 
 namespace native {
@@ -14,15 +16,15 @@ namespace {
 GameAudio* g_audio = nullptr;
 
 // RZ::SS() / RZ::WCM for the window buttons: the sounds play; the captions take the game's font styles (the same source the
-// text windows use), so the colour manager counts as present once that source is up. Its images stay with the window code's
-// own fallbacks.
+// text windows use), so the colour manager counts as present once that source is up; its stock images come from the
+// control factory's table (cSC4App::SetupWinCtrlMgr's).
 class ButtonHost final : public gz::IWinButtonHost {
 public:
     gz::IWinButtonFont* Font(std::uint32_t style) override {
         gz::IWinFontSource* fonts = gz::WinFontSource();
         return fonts && fonts->Available() ? fonts->Font(style) : nullptr;
     }
-    cIGZBuffer* Image(std::uint32_t) override { return nullptr; }
+    cIGZBuffer* Image(std::uint32_t id) override { gz::IWinCtrlFactory* stock = gz::WinCtrlFactory(); return stock ? stock->Image(id) : nullptr; }
     std::uint32_t DefaultSoundId(int) override { return 0; }
     void PlaySound(std::uint32_t soundId) override { PlayGameSound(soundId); }
     void ShowTip(const gz::BtnTipRequest&) override {}
@@ -33,6 +35,15 @@ ButtonHost g_buttons;
 }  // namespace
 
 void SetGameAudio(GameAudio* audio) { g_audio = audio; }
+GameAudio* CurrentGameAudio() { return g_audio; }
+void ApplyAudioPreferences(const std::uint8_t* preferences) {
+    if (!g_audio || !preferences) return;
+    using sc4::cSC4AudioPreferencesWinProc;
+    const float music = cSC4AudioPreferencesWinProc::MusicGain(preferences), sound = cSC4AudioPreferencesWinProc::SoundGain(preferences);
+    g_audio->SetMusic(music > 0.0f, music);
+    g_audio->SetSound(sound > 0.0f, sound);
+    g_audio->SetSongFilter([](const std::string& path) { return cSC4AudioPreferencesWinProc::IsSongEnabled(path); });
+}
 void PlayGameSound(std::uint32_t soundId) {
     if (!soundId) return;
     // The game's own path first: the sound manager builds the sound from its track definition and the hit manager plays it.

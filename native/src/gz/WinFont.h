@@ -50,6 +50,8 @@ public:
     virtual ~IWinFontSource() = default;
     virtual IWinFont* Font(std::uint32_t styleId) = 0;
     virtual bool Available() = 0;
+    // The style a script names ("font=GenBodyLight": the names of the [Font Styles] table); null when unknown.
+    virtual IWinFont* FontByName(const char* name) { (void)name; return nullptr; }
 };
 IWinFontSource* WinFontSource();
 void SetWinFontSource(IWinFontSource* source);

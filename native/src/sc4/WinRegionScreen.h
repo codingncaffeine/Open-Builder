@@ -355,6 +355,8 @@ public:
     virtual void ActivatePanelButton(cIGZWin* button, cIGZWin* rootChild) = 0;
     // The options menu's game options button (0x0a5510a9): the modal "Game Options" dialog (cSC4GamePreferencesWinProc).
     virtual void RunGameOptionsDialog() {}
+    // The options menu's audio options button (0xa98f4f88): the modal "Audio Options" dialog.
+    virtual void RunAudioOptionsDialog() {}
     // RZ::LM()->vslot 0x128(0)->vslot 0x90 (value, out): the localised number text.
     virtual void FormatNumber(int value, cRZString& out) = 0;
 };

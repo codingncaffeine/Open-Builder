@@ -134,6 +134,20 @@ CityScreenCallbacks g_screens;
 
 void SetCityScreenCallbacks(CityScreenCallbacks callbacks) { g_screens = std::move(callbacks); }
 
+// Exemplars (type 0x6534284a) and cohorts: the resource manager needs the recovered factories to build them from the packages.
+// The game registers them at start-up; the region screen's dialogs read tuning exemplars before any city exists. Once only.
+void RegisterExemplarFactories() {
+    static bool registered = false;
+    if (registered || !SL::spRM) return;
+    registered = true;
+    static sc4::cSCResExemplarFactory exemplarFactory;
+    static sc4::cSCResExemplarCohortFactory cohortFactory;
+    exemplarFactory.AddRef();
+    cohortFactory.AddRef();
+    SL::spRM->RegisterObjectFactory(0x453429b3, sc4::kResourceTypeExemplar, &exemplarFactory);
+    SL::spRM->RegisterObjectFactory(0x053429c8, sc4::kResourceTypeCohort, &cohortFactory);
+}
+
 bool LoadCityFile(cSC4App& app, const std::string& path) {
     static CityHost cityHost;
     static Factory factory;
@@ -178,15 +192,7 @@ bool LoadCityFile(cSC4App& app, const std::string& path) {
         hooks.destroyCurrentScreen = [] { if (g_screens.destroyCurrentScreen) g_screens.destroyCurrentScreen(); };
         hooks.createCityScreen = [] { if (g_screens.createCityScreen) g_screens.createCityScreen(); };
         hooks.createRegionScreen = [] {};
-        // Exemplars (type 0x6534284a) and cohorts: the resource manager needs the recovered factories to build them from the packages.
-        if (SL::spRM) {
-            static sc4::cSCResExemplarFactory exemplarFactory;
-            static sc4::cSCResExemplarCohortFactory cohortFactory;
-            exemplarFactory.AddRef();
-            cohortFactory.AddRef();
-            SL::spRM->RegisterObjectFactory(0x453429b3, sc4::kResourceTypeExemplar, &exemplarFactory);
-            SL::spRM->RegisterObjectFactory(0x053429c8, sc4::kResourceTypeCohort, &cohortFactory);
-        }
+        RegisterExemplarFactories();
         InstallStubHosts();
         InstallCityProbeBindings();
         InstallBuildingDevelopmentHost();   // the real hosts replace the generated stubs before the components Init

@@ -25,6 +25,9 @@ public:
     virtual ~ISLStringHost() = default;
     virtual int LanguageOffset() = 0;
     virtual cSCStringDetokenizer* Detokenizer() = 0;
+    // The string resource read straight from the packages, for when the resource manager has no string factory (the
+    // native builds); false when there is no such string.
+    virtual bool LoadText(const cGZPersistResourceKey& key, cIGZString& out) { (void)key; (void)out; return false; }
 };
 ISLStringHost* SLStringHost();
 void SetSLStringHost(ISLStringHost* host);
@@ -44,6 +47,7 @@ public:
     bool ConvertTokens(cSCStringDetokenizer* detokenizer, bool htmlClean);        // @ 0x1001216d0 (always answers false)
 
 protected:
+    bool LoadFromHost(bool convertTokens, bool htmlClean);   // the native fallback (ISLStringHost::LoadText)
     cGZPersistResourceKey key_{kResourceTypeSLString, 0, 0};   // +0x24..+0x2c
 };
 

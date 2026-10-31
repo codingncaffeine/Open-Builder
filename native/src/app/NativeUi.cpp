@@ -2,7 +2,12 @@
 #include "platform/GameDataPath.h"
 #include "app/NativeUi.h"
 
+#include <algorithm>
 #include <cstdio>
+#include <cstdlib>
+#include <cctype>
+#include <filesystem>
+#include <map>
 #include <memory>
 #include <string>
 #include <vector>
@@ -23,8 +28,13 @@
 #include "gz/WinFlatRect.h"
 #include "gz/WinGen.h"
 #include "gz/WinStyle.h"
+#include "gz/WinCtrlFactory.h"
+#include "gz/WinGrid.h"
+#include "gz/WinScrollbar.h"
+#include "gz/WinSlider.h"
 #include "gz/WinText.h"
 #include "rz/COMDirectors.h"
+#include "sc4/SLString.h"
 #include "sc4/WinMapView.h"
 #include "sc4/WinSmallViews.h"
 #include "rz/cRZString.h"
@@ -46,16 +56,42 @@ PngDecoder g_decodePng = nullptr;   // set by host_main.mm (ImageIO lives there)
 }  // namespace
 
 // The standard bitmap resources (type 0x856ddbac, PNG) of the game data, searched in the engine's package order; one counted reference.
+// The packages in lookup order: the language's SimCityLocale.dat first (its strings and art override the base ones), then
+// the base packages. Names match without regard to case (the PC data spells some ".DAT"); the language folder is
+// $SC4_LANGUAGE, else English.
+std::string FindDataFile(const std::string& relative) {
+    std::error_code error;
+    if (std::filesystem::exists(GameDataDir() + relative, error)) return GameDataDir() + relative;
+    std::filesystem::path dir = GameDataDir();
+    for (const auto& part : std::filesystem::path(relative)) {
+        std::string want = part.string(), found;
+        for (char& c : want) c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+        for (const auto& entry : std::filesystem::directory_iterator(dir, error)) {
+            std::string name = entry.path().filename().string();
+            for (char& c : name) c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+            if (name == want) { found = entry.path().filename().string(); break; }
+        }
+        if (found.empty()) return {};
+        dir /= found;
+    }
+    return dir.string();
+}
+
 bool LoadResourceBytes(std::uint32_t type, std::uint32_t group, std::uint32_t instance, std::vector<std::uint8_t>& bytes) {
     static std::vector<std::unique_ptr<dbpf::Package>> packages;
-    static const char* kNames[] = {"Intro.dat", "SimCity_1.dat", "SimCity_2.dat", "SimCity_3.dat", "SimCity_4.dat", "SimCity_5.dat", "EP1.dat"};
-    static std::size_t opened = 0;
-    for (std::size_t i = 0; i <= opened && i < 7; ++i) {
+    static std::vector<std::string> names;
+    if (names.empty()) {
+        const char* language = std::getenv("SC4_LANGUAGE");
+        names.push_back(std::string(language && *language ? language : "English") + "/SimCityLocale.dat");
+        for (const char* name : {"Intro.dat", "SimCity_1.dat", "SimCity_2.dat", "SimCity_3.dat", "SimCity_4.dat", "SimCity_5.dat", "EP1.dat"})
+            names.push_back(name);
+    }
+    for (std::size_t i = 0; i < names.size(); ++i) {
         if (i == packages.size()) {   // open the next one only when the earlier ones do not have it
             auto package = std::make_unique<dbpf::Package>();
-            package->Open(GameDataDir() + kNames[i]);
+            const std::string path = FindDataFile(names[i]);
+            if (!path.empty()) package->Open(path);
             packages.push_back(std::move(package));
-            opened = packages.size();
         }
         const dbpf::Entry* entry = packages[i]->Find(type, group, instance);
         if (entry && packages[i]->Read(*entry, bytes)) return true;
@@ -102,7 +138,7 @@ public:
     }
     cIGZWin* GetMainWindow() override { return g_mgr->GetMainWindow(); }
     bool UnscriptWindow(cIGZWin*, cIGZString&) override { return false; }   // unscript_IGZWin is not recovered
-    bool LoadScriptString(std::uint32_t, std::uint32_t, cIGZString&) override { return false; }   // captions fall back to the script text
+    bool LoadScriptString(std::uint32_t group, std::uint32_t instance, cIGZString& out) override { return LoadLocalizedString(group, instance, out); }
     cIGZBuffer* LoadScriptBuffer(std::uint32_t group, std::uint32_t instance) override { return LoadBitmapResource(group, instance); }
     void GetNativeResolution(int index, int& width, int& height) override {
         static const int modes[4][2] = {{1024, 768}, {1280, 1024}, {1600, 1200}, {1920, 1080}};
@@ -119,8 +155,91 @@ cIGZUnknown* MakeWin() { return static_cast<cIGZUnknown*>(static_cast<cIGZWin*>(
 
 void SetPngDecoder(PngDecoder decoder) { g_decodePng = decoder; }
 
+// The game's string resources (LTEXT, type 0x2026960b): a u16 character count, the marker 0x1000, then that many UTF-16LE
+// characters; a record without the marker is plain 8-bit text. Stored as UTF-8, the encoding the native fonts read.
+bool LoadLocalizedString(std::uint32_t group, std::uint32_t instance, cIGZString& out) {
+    std::vector<std::uint8_t> bytes;
+    if (!LoadResourceBytes(0x2026960b, group, instance, bytes) || bytes.empty()) return false;
+    std::string text;
+    if (bytes.size() >= 4 && bytes[2] == 0x00 && bytes[3] == 0x10) {
+        const std::size_t count = std::min<std::size_t>(std::size_t(bytes[0]) | std::size_t(bytes[1]) << 8, (bytes.size() - 4) / 2);
+        for (std::size_t i = 0; i < count; ++i) {
+            std::uint32_t c = std::uint32_t(bytes[4 + 2 * i]) | std::uint32_t(bytes[5 + 2 * i]) << 8;
+            if (c >= 0xd800 && c < 0xdc00 && i + 1 < count) {   // a surrogate pair
+                const std::uint32_t low = std::uint32_t(bytes[6 + 2 * i]) | std::uint32_t(bytes[7 + 2 * i]) << 8;
+                if (low >= 0xdc00 && low < 0xe000) { c = 0x10000 + ((c - 0xd800) << 10) + (low - 0xdc00); ++i; }
+            }
+            if (c < 0x80) text += char(c);
+            else if (c < 0x800) { text += char(0xc0 | c >> 6); text += char(0x80 | (c & 0x3f)); }
+            else if (c < 0x10000) { text += char(0xe0 | c >> 12); text += char(0x80 | (c >> 6 & 0x3f)); text += char(0x80 | (c & 0x3f)); }
+            else { text += char(0xf0 | c >> 18); text += char(0x80 | (c >> 12 & 0x3f)); text += char(0x80 | (c >> 6 & 0x3f)); text += char(0x80 | (c & 0x3f)); }
+        }
+    } else {
+        text.assign(bytes.begin(), bytes.end());
+    }
+    out.AssignFromChars(text.c_str(), static_cast<std::uint32_t>(text.size()));
+    return true;
+}
+
+// RZ::WCM()'s control entries for the composite controls (the grid's and list box's scroll bars, the option groups'
+// children) and its stock images: built from the recovered classes. Nothing answered them natively, so a grid never got
+// its scroll bar.
+class CtrlFactory final : public gz::IWinCtrlFactory {
+public:
+    bool CreateCtrl(std::uint32_t classId, std::uint32_t iid, void** out) override {
+        return GZCOM() && GZCOM()->CreateInstance(classId, iid, out) && *out;
+    }
+    // cGZWinCtrlMgr::CreateScrollbar (Mac i386 0x0016a9f2): the id, the direction, the stock scroll bar skin, the range
+    // and the value.
+    gz::cIGZWinScrollbar* CreateScrollbar(std::uint32_t id, int direction, int low, int high, int value) override {
+        auto* bar = new gz::cGZWinScrollbar(g_mgr);
+        auto* view = static_cast<gz::cIGZWinScrollbar*>(bar);
+        view->AddRef();
+        gz::cIGZWinSlider* slider = view->AsIGZWinSlider();
+        view->AsIGZWin()->SetID(id);
+        slider->SetDirection(static_cast<gz::tSliderWindowDirection>(direction));
+        // the slider header forward-declares its own gz::cIGZBuffer; the stock image is the same object (cf. IWinGridHost::AsScrollBarImage)
+        slider->SetImage(reinterpret_cast<gz::cIGZBuffer*>(Image(0xe8963ec7)), nullptr);
+        slider->SetMinimumValue(low);
+        slider->SetMaximumValue(high);
+        view->SetValue(value);
+        return view;
+    }
+    std::uint32_t DefaultColor(int) override { return 0xff000000u; }
+    std::uint32_t DoubleClickMilliseconds() override { return 500; }
+    // The stock images cSC4App::SetupWinCtrlMgr (Mac i386 0x0000d190) registers: UI art {0x856ddbac, 0x46a006b0, instance}
+    // under the window control manager's ids. Loaded on first use, kept for the session (borrowed pointers).
+    cIGZBuffer* Image(std::uint32_t id) override {
+        static constexpr std::pair<std::uint32_t, std::uint32_t> kStock[] = {   // {instance, stock id}
+            {0x46a006a2, 0xa8963eb8}, {0x46a006a2, 0xe8963ef1}, {0x144161ea, 0x68963ebe}, {0x144161ea, 0xa8963ef3},
+            {0x0000000a, 0xc8963ef6}, {0x82b99d9d, 0x68963ed6}, {0x62b99d31, 0x68963ed8}, {0x42e55fd4, 0x48963eee},
+            {0xe78ffc90, 0xe8963edf}, {0xc2b66daa, 0xe8963ee5}, {0x46a006a4, 0xc8963ed3}, {0x46a006a6, 0xe8963ec7},
+            {0x46a006a7, 0x88963ec1}, {0x46a006a8, 0xa8963ec4}, {0x46a006a5, 0xa8963eea}, {0xe2b14588, 0xe2b14588},
+            {0x62b19ce9, 0xe2b14589}};
+        auto cached = images_.find(id);
+        if (cached != images_.end()) return cached->second;
+        cIGZBuffer* image = nullptr;
+        for (const auto& [instance, stock] : kStock)
+            if (stock == id) { image = LoadBitmapResource(0x46a006b0, instance); break; }
+        images_[id] = image;   // the table keeps the reference
+        return image;
+    }
+
+private:
+    std::map<std::uint32_t, cIGZBuffer*> images_;
+};
+
 bool InitUiScripts(WinMgr* mgr) {
     g_mgr = mgr;
+    static CtrlFactory ctrlFactory;
+    gz::SetWinCtrlFactory(&ctrlFactory);
+    // cSLString: the strings come straight from the packages (the resource manager has no string factory natively)
+    static struct : sc4::ISLStringHost {
+        int LanguageOffset() override { return 0; }
+        sc4::cSCStringDetokenizer* Detokenizer() override { return nullptr; }
+        bool LoadText(const cGZPersistResourceKey& key, cIGZString& out) override { return LoadLocalizedString(key.group, key.instance, out); }
+    } stringHost;
+    sc4::SetSLStringHost(&stringHost);
     cGZFramework* framework = BootFramework();
     if (!framework || !GZCOM()) { std::printf("ui: no framework (run the boot first)\n"); return false; }
 
@@ -140,6 +259,12 @@ bool InitUiScripts(WinMgr* mgr) {
     gz::RegisterDirectorMaker("cSC4WinText", +[]() -> cIGZUnknown* { return MakeWin<gz::cGZWinText>(); });
     gz::RegisterDirectorMaker("cGZWinFlatRect", +[]() -> cIGZUnknown* { return MakeWin<gz::cGZWinFlatRect>(); });
     gz::RegisterDirectorMaker("cSC4WinMapView", +[]() -> cIGZUnknown* { return MakeWin<sc4::cSC4WinMapView>(); });   // clsid 0x28c5a41f
+    // The slider (clsid 0x21325208) and the grid (0xdaa6b9bf): without makers the scripts built bare windows in their place
+    // (the audio options' volume sliders drew as filled boxes and its playlist took no rows).
+    gz::RegisterDirectorMaker("cGZWinSlider", +[]() -> cIGZUnknown* { return MakeWin<gz::cGZWinSlider>(); });
+    gz::RegisterDirectorMaker("cGZWinGrid", +[]() -> cIGZUnknown* {   // the director's default flags (Mac i386 CreateGZWinGrid 0x0073c2ee)
+        return static_cast<cIGZUnknown*>(static_cast<cIGZWin*>(new gz::cGZWinGrid(g_mgr, 0x19bff)));
+    });
 
     // seams
     SetVocabularyServices(&g_services);

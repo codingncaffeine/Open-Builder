@@ -60,6 +60,7 @@ bool cSLString::Load(bool convertTokens, bool htmlClean) {
             return true;
         }
     }
+    if (g_host && LoadFromHost(convertTokens, htmlClean)) return true;   // no resource manager service: the packages directly
     Resize(0);
     return false;
 }
@@ -89,4 +90,20 @@ cGZPersistResourceKey cADVString::KeyFromScriptText(const char* text) {
 void cADVString::FromScriptText(const char* text) { SetKey(KeyFromScriptText(text)); }
 void cADVString::FromScriptText(const char* text, unsigned int) { FromScriptText(text); }
 
+}  // namespace sc4
+
+namespace sc4 {
+// The host's own reading of the string (group + language offset first, then the plain group, as above).
+bool cSLString::LoadFromHost(bool convertTokens, bool htmlClean) {
+    const int language = g_host->LanguageOffset();
+    cGZPersistResourceKey key = key_;
+    key.group = key_.group + language;
+    bool found = g_host->LoadText(key, *this);
+    if (!found && language != 0) {
+        key.group = key_.group;
+        found = g_host->LoadText(key, *this);
+    }
+    if (found && convertTokens) ConvertTokens(nullptr, htmlClean);
+    return found;
+}
 }  // namespace sc4

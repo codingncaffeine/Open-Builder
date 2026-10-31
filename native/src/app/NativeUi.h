@@ -23,6 +23,8 @@ void SetPngDecoder(PngDecoder decoder);
 // package has it. The same decoder serves files (DecodeFunction).
 // The bytes of one resource from the game's .dat packages (false when none has it).
 bool LoadResourceBytes(std::uint32_t type, std::uint32_t group, std::uint32_t instance, std::vector<std::uint8_t>& bytes);
+// A string resource (type 0x2026960b, LTEXT) as UTF-8; false when there is none.
+bool LoadLocalizedString(std::uint32_t group, std::uint32_t instance, cIGZString& out);
 cGZBuffer* LoadBitmapResource(std::uint32_t group, std::uint32_t instance);
 PngDecoder DecodeFunction();
 
@@ -33,4 +35,6 @@ bool InitUiScripts(WinMgr* mgr);
 cIGZWin* CreateWindowFromScript(const cGZPersistResourceKey& key, cIGZWin* parent, std::uint32_t id);
 // The modal "Game Options" dialog (cSC4GamePreferencesWinProc); `preferences` is the blob its check boxes mirror.
 void RunGameOptionsDialog(std::function<std::uint8_t*()> preferences);
+// The modal "Audio Options" dialog (cSC4AudioPreferencesWinProc) over the same blob.
+void RunAudioOptionsDialog(std::function<std::uint8_t*()> preferences);
 }  // namespace native

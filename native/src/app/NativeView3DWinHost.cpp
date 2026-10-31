@@ -35,6 +35,10 @@
 #include "sc4/ViewInputControlPlaceLot.h"
 #include "sc4/ViewInputControlSignTool.h"
 #include "sc4/GamePreferencesWinProc.h"
+#include "platform/GameDataPath.h"
+#include "app/GameAudio.h"
+#include "app/NativeAudio.h"
+#include "sc4/AudioPreferencesWinProc.h"
 #include "sc4/SmallWinProcs.h"
 #include <chrono>
 #include "sc4/PropDeveloper.h"
@@ -252,7 +256,12 @@ struct StubView3DWin final : IView3DWinHost {
     bool FocusVehicle(std::uint32_t) override { SC4_UNWIRED("IView3DWinHost::FocusVehicle (vehicle managers)"); return false; }
     // new cSC4GamePreferencesWinProc; AddRef; ShowDialog(kGameOptions) (vslot 0x28); DoModalWin; the view takes the focus back
     void RunPreferencesDialog(int which) override {
-        if (which != 0) { SC4_UNWIRED("IView3DWinHost::RunPreferencesDialog (video / audio preferences not recovered)"); return; }
+        if (which == 2) {
+            RunAudioOptionsDialog([] { return BootApplication() ? BootApplication()->GetPreferences() : nullptr; });
+            if (sc4::cSC4View3DWin* view = CityView3DWin()) view->SetFocus();
+            return;
+        }
+        if (which != 0) { SC4_UNWIRED("IView3DWinHost::RunPreferencesDialog (video preferences not recovered)"); return; }
         RunGameOptionsDialog([this] { return Preferences(); });
         if (sc4::cSC4View3DWin* view = CityView3DWin()) view->SetFocus();
     }
@@ -370,6 +379,38 @@ void RunGameOptionsDialog(std::function<std::uint8_t*()> preferences) {
     // DoModalWin dereferences the dialog: run it only when this ShowDialog built one (the script loaded, no other copy is up)
     if (!alreadyShowing && cSC4GamePreferencesWinProc::Displayed()) proc->DoModalWin();
     else SC4_UNWIRED("RunGameOptionsDialog: the game options dialog was not built");
+    proc->Release();
+}
+
+// new cSC4AudioPreferencesWinProc; ShowDialog; DoModalWin: the "Audio Options" dialog, from the city view's options menu and the
+// region screen's. Its controls drive the running sound output (GameAudio) as they change.
+void RunAudioOptionsDialog(std::function<std::uint8_t*()> preferences) {
+    using sc4::cSC4AudioPreferencesWinProc;
+    if (!ActiveWinMgr() || !ActiveWinMgr()->modalDialogs || cSC4AudioPreferencesWinProc::Displayed()) return;
+    sc4::AudioPreferencesServices& services = sc4::GetAudioPreferencesServices();
+    services.preferences = std::move(preferences);
+    if (!services.windowManager) {
+        services.windowManager = [] { return static_cast<cIGZWinMgr*>(ActiveWinMgr()); };
+        services.savePreferences = [] { if (cSC4App* app = BootApplication()) app->SavePreferences(); };
+        services.postMessage = [](std::uint32_t type) {
+            if (!SL::spMS2) return;
+            auto* message = new cRZMessage2Standard();
+            message->AddRef();
+            message->SetType(type);
+            SL::spMS2->MessagePost(message, false);
+            message->Release();
+        };
+        services.dataDirectory = [] { return platform::GameDataDir(); };
+        services.applyAudio = [] { ApplyAudioPreferences(sc4::GetAudioPreferencesServices().preferences ? sc4::GetAudioPreferencesServices().preferences() : nullptr); };
+        services.playSong = [](const std::string& path) { GameAudio* audio = CurrentGameAudio(); return audio && audio->PlaySong(path); };
+        services.stopRadio = [] { if (GameAudio* audio = CurrentGameAudio()) audio->StopRadio(); };
+        services.resumeRadio = [] { if (GameAudio* audio = CurrentGameAudio()) audio->ResumeRadio(); };
+        services.currentSong = [] { GameAudio* audio = CurrentGameAudio(); return audio ? audio->CurrentSong() : std::string(); };
+    }
+    auto* proc = new cSC4AudioPreferencesWinProc();
+    proc->AddRef();
+    if (proc->ShowDialog()) proc->DoModalWin();
+    else SC4_UNWIRED("RunAudioOptionsDialog: the audio options dialog was not built");
     proc->Release();
 }
 

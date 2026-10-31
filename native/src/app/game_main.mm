@@ -495,6 +495,7 @@ bool Boot() {
         };
     });
     if (!ok) std::printf("boot: FAILED\n");
+    native::RegisterExemplarFactories();   // tuning exemplars are read on the region screen too (the audio options)
     if (cSC4App* app = native::BootApplication()) {
         native::RegionCallbacks callbacks;
         callbacks.dataDirectory = platform::GameDataDir();

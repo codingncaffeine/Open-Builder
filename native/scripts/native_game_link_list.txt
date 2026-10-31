@@ -71,6 +71,8 @@ src/gz/RZServices.cpp
 src/sc4/Exemplar.cpp
 src/sc4/AppResources.cpp
 src/gz/WinGrid.cpp
+src/gz/WinSlider.cpp
+src/gz/WinScrollbar.cpp
 src/sc4/AppInit.cpp
 src/sc4/UIHTMLHook.cpp
 src/gz/GZFramework.cpp
@@ -219,6 +221,7 @@ src/sc4/ViewInputControlCityScroll.cpp
 src/sc4/WinRegionScreen.cpp
 src/sc4/WinSplashScreen.cpp
 src/gz/LegacyControl.cpp
+src/gz/LegacyControlGrid.cpp
 src/gz/ScriptableControlSet.cpp
 src/gz/UIScriptService.cpp
 src/dbpf/DBPFReader.cpp
@@ -692,3 +695,4 @@ src/app/NativeAnimationTicks.cpp
 src/app/NativeCityQueries.cpp
 src/app/NativeCityViewQueries.cpp
 src/sc4/GamePreferencesWinProc.cpp
+src/sc4/AudioPreferencesWinProc.cpp

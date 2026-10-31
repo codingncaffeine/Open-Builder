@@ -2,6 +2,7 @@
 // recovered data sources and plays them through AVAudioPlayer (behind the AudioPlatform seam).
 #pragma once
 #include <cstdint>
+#include <functional>
 #include <map>
 #include <string>
 #include <vector>
@@ -29,6 +30,17 @@ public:
     std::size_t SoundCount() const { return sounds_.size(); }
     void Tick();                      // call regularly: advances the ambient bed when it ends
 
+    // The audio preferences (the Audio Options dialog): music and effects on / off and their gains (0..1), and which
+    // songs the radio may pick (`songEnabled` answers for a song's full path; unset = every song).
+    void SetMusic(bool enabled, float gain);
+    void SetSound(bool enabled, float gain);
+    void SetSongFilter(std::function<bool(const std::string& path)> songEnabled) { songEnabled_ = std::move(songEnabled); }
+    // The dialog's Preview / Stop: plays one song now; Stop silences the radio until ResumeRadio (the dialog closing).
+    bool PlaySong(const std::string& path);
+    void StopRadio();
+    void ResumeRadio() { radioHeld_ = false; }
+    const std::string& CurrentSong() const { return currentSong_; }
+
 private:
     struct Impl;
     Impl* impl_ = nullptr;
@@ -41,4 +53,8 @@ private:
     std::map<std::uint32_t, std::uint32_t> trackSound_;   // track id -> sample instance (0 = not a track)
     bool muted_ = false;
     std::string current_;
+    bool musicEnabled_ = true, soundEnabled_ = true, radioHeld_ = false;
+    float musicGain_ = 0.5f, soundGain_ = 0.8f;   // the values the voices used before the preferences existed
+    std::function<bool(const std::string&)> songEnabled_;
+    std::string currentSong_;                     // the song the radio voice plays (empty: none)
 };
