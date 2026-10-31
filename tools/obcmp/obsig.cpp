@@ -1,14 +1,16 @@
 // obsig — finds the functions of a library, built with the original's compiler, inside the original program.
 //
 //   obsig <original.exe> <original-functions.tsv> <library.dll> <library-functions.tsv> <library.map>
-//         [--out matches.tsv] [--min N] [--list] [--diff NAME]
+//         [--out matches.tsv] [--min N] [--list] [--diff NAME] [--twins] [--no-position]
 //
 // The function lists are tools/ghidra/ExportFunctions.java output ("entry size name source", hex). The map names the
 // library's public functions; the others (statics) are named after the public function before them.
 //
 // Every function on both sides is tokenised (pe.h). A token string found exactly once among the unmatched functions
 // of each side is a match. Matched pairs then share a name, so calls to them tokenise the same on both sides and
-// tell apart more of the rest; this repeats until a round finds nothing new. Functions under --min instructions
+// tell apart more of the rest; this repeats until a round finds nothing new. With --twins, library functions identical
+// to each other (one template over types of one shape: map<int, void*> and map<int, int>) count as one: the first by
+// name stands for them all. --no-position leaves out the pairs by position (a catalogue has no layout to follow). Functions under --min instructions
 // (default 3) are never matched on their own: too many of them look alike by chance.
 //
 // Pairs are rescored at the end with every name known: identical, or "near" with a score (a position pair
@@ -41,6 +43,7 @@ struct Function {
     std::string object;  // library side: the .obj it came from (from the map)
     int match = -1;      // index on the other side
     bool byPosition = false;
+    bool twin = false;   // library side, --twins: identical to a matched function that stands for it
 };
 
 bool readFunctions(const std::string& path, std::vector<Function>& out) {
@@ -201,14 +204,16 @@ int main(int argc, char** argv) {
     if (argc < 6) {
         std::fprintf(stderr,
                      "usage: obsig <original.exe> <original-functions.tsv> <library.dll> <library-functions.tsv> "
-                     "<library.map> [--out matches.tsv] [--min N]\n");
+                     "<library.map> [--out matches.tsv] [--min N] [--list] [--diff NAME] [--twins] [--no-position]\n");
         return 2;
     }
     std::string outPath, diffName;
     size_t minCount = 3;
-    bool listNear = false;
+    bool listNear = false, twins = false, position = true;
     for (int i = 6; i < argc; ++i) {
         if (std::strcmp(argv[i], "--list") == 0) listNear = true;
+        else if (std::strcmp(argv[i], "--twins") == 0) twins = true;
+        else if (std::strcmp(argv[i], "--no-position") == 0) position = false;
         else if (i + 1 >= argc) break;
         else if (std::strcmp(argv[i], "--out") == 0) outPath = argv[++i];
         else if (std::strcmp(argv[i], "--min") == 0) minCount = std::stoul(argv[++i]);
@@ -242,17 +247,20 @@ int main(int argc, char** argv) {
         }
         int found = 0;
         for (auto& [s, g] : groups) {
-            if (g.first.size() != 1 || g.second.size() != 1) continue;
+            if (g.first.size() != 1 || g.second.empty() || (g.second.size() != 1 && !twins)) continue;
             int i = g.first[0], j = g.second[0];
+            for (int k : g.second) if (b[k].name < b[j].name) j = k;
             a[i].match = j;
             b[j].match = i;
             namesA[a[i].va] = namesB[b[j].va] = b[j].name;
+            for (int k : g.second)
+                if (k != j) b[k].match = i, b[k].twin = true, namesB[b[k].va] = b[j].name;
             ++found;
         }
         // When the token rounds stall, pair through the references of identical pairs, then by position: a run of
         // unmatched functions of one object between two matched neighbours faces the same number of unmatched functions between the neighbours' matches.
         if (!found) found = pairByReference(orig, lib, a, b, namesA, namesB);
-        if (!found) found = pairByPosition(a, b, namesA, namesB);
+        if (!found && position) found = pairByPosition(a, b, namesA, namesB);
         std::fprintf(stderr, "round %d: %d new matches\n", round, found);
         if (!found) break;
     }
@@ -322,7 +330,7 @@ int main(int argc, char** argv) {
     if (!outPath.empty()) {
         std::ofstream out(outPath);
         for (const Function& fn : b) {
-            if (fn.match < 0) continue;
+            if (fn.match < 0 || fn.twin) continue;
             const Function& o = a[fn.match];
             out << std::hex << o.va << '\t' << o.size << '\t' << fn.va << '\t' << fn.size << '\t' << fn.name
                 << (fn.byPosition ? "\t# by position" : "") << '\n';
