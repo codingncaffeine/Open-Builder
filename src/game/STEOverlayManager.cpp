@@ -549,7 +549,7 @@ SNode_ab3930* OB_STDCALL Fn00736250(SNode_ab3930* before, SNode_ab3930* end)
 void OB_STDCALL Fn00736440(SNode_ab3930* before, SNode_ab3930* first, SNode_ab3930* last, void* alloc);
 
 // FUNCTION: 0x00736440
-void OB_STDCALL Fn00736440Draft_ab3930(SNode_ab3930* before, SNode_ab3930* first, SNode_ab3930* last, void* alloc)
+void OB_STDCALL Fn00736440Draft_ab3930(SNode_ab3930* before, SNode_ab3930* first, SNode_ab3930* last, void* /*alloc*/)
 {
     while (first != last) {
         SNode_ab3930* node = static_cast<SNode_ab3930*>(Fn0090cf54(8));

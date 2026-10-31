@@ -718,7 +718,7 @@ struct ListH_ad1ad0 {
 };
 
 // FUNCTION: 0x0092d514
-ListH_ad1ad0::ListH_ad1ad0(const void* alloc) : mpHead(0)
+ListH_ad1ad0::ListH_ad1ad0(const void* /*alloc*/) : mpHead(0)
 {
     mpHead = static_cast<Node_ad1ad0*>(StlNew_ad1ad0(0x18));
 }
@@ -826,7 +826,7 @@ void Tree_ad1ad0::Destroy()
 // The three sub-objects of the queue, each built (or taken apart) by its own function.
 struct ListBase_ad1ad0 {
     // STUB: 0x004f5a00
-    void Construct(const char* alloc);
+    void Construct(char* alloc);
     // STUB: 0x00427670
     void Destruct();
 };

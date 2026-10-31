@@ -188,7 +188,7 @@ unsigned int cSC4AutomataScriptSystem::Release()
     }
     Shutdown();
     Fn0051ff70();
-    delete this;
+    operator delete(this);
     return 0;
 }
 

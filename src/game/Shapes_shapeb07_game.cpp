@@ -1358,9 +1358,8 @@ struct Caller_0059d9b0_shapeb07_game {
     void Fn0059d9b0(Target_0059d9b0_shapeb07_game* pTarget);
 };
 
-const uint16_t kEmpty_0059d9b0_shapeb07_game[1] = { 0 };
-
 #ifdef OB_DRAFTS
+const uint16_t kEmpty_0059d9b0_shapeb07_game[1] = { 0 };
 // CLOSE: 0x0059d9b0 score 38
 void Caller_0059d9b0_shapeb07_game::Fn0059d9b0(Target_0059d9b0_shapeb07_game* pTarget)
 {
@@ -1425,9 +1424,8 @@ struct Caller_0059dcf0_shapeb07_game {
     void Fn0059dcf0(Target_0059dcf0_shapeb07_game* pTarget);
 };
 
-const uint16_t kEmpty_0059dcf0_shapeb07_game[1] = { 0 };
-
 #ifdef OB_DRAFTS
+const uint16_t kEmpty_0059dcf0_shapeb07_game[1] = { 0 };
 // CLOSE: 0x0059dcf0 score 38
 void Caller_0059dcf0_shapeb07_game::Fn0059dcf0(Target_0059dcf0_shapeb07_game* pTarget)
 {
@@ -1494,9 +1492,8 @@ struct Caller_0059df50_shapeb07_game {
     void Fn0059df50(Target_0059df50_shapeb07_game* pTarget);
 };
 
-const uint16_t kEmpty_0059df50_shapeb07_game[1] = { 0 };
-
 #ifdef OB_DRAFTS
+const uint16_t kEmpty_0059df50_shapeb07_game[1] = { 0 };
 // CLOSE: 0x0059df50 score 38
 void Caller_0059df50_shapeb07_game::Fn0059df50(Target_0059df50_shapeb07_game* pTarget)
 {
@@ -1565,9 +1562,8 @@ struct Caller_0059e260_shapeb07_game {
     void Fn0059e260(Target_0059e260_shapeb07_game* pTarget);
 };
 
-const uint16_t kEmpty_0059e260_shapeb07_game[1] = { 0 };
-
 #ifdef OB_DRAFTS
+const uint16_t kEmpty_0059e260_shapeb07_game[1] = { 0 };
 // CLOSE: 0x0059e260 score 38
 void Caller_0059e260_shapeb07_game::Fn0059e260(Target_0059e260_shapeb07_game* pTarget)
 {
@@ -1628,9 +1624,8 @@ struct Caller_0059eb50_shapeb07_game {
     void Fn0059eb50(Target_0059eb50_shapeb07_game* pTarget);
 };
 
-const uint16_t kEmpty_0059eb50_shapeb07_game[1] = { 0 };
-
 #ifdef OB_DRAFTS
+const uint16_t kEmpty_0059eb50_shapeb07_game[1] = { 0 };
 // CLOSE: 0x0059eb50 score 38
 void Caller_0059eb50_shapeb07_game::Fn0059eb50(Target_0059eb50_shapeb07_game* pTarget)
 {

@@ -124,7 +124,7 @@ uint32_t Fn009d5973(uint32_t a, uint32_t b, uint32_t c)
 
 struct Value_0087bf21 {
     // STUB: 0x0087bee4
-    void Copy(const void* source);
+    Value_0087bf21(const void* source);
 };
 
 struct Item_0087bf21 {
@@ -136,15 +136,13 @@ struct Item_0087bf21 {
 Item_0087bf21* OB_STDCALL Fn0087bf21(const void* source)
 {
     Item_0087bf21* node = static_cast<Item_0087bf21*>(_STL::__stl_new(0x38));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_0087bf21(source);
     return node;
 }
 
 struct Value_008f7fd1 {
     // STUB: 0x008f72fd
-    void Copy(const void* source);
+    Value_008f7fd1(const void* source);
 };
 
 struct Item_008f7fd1 {
@@ -156,15 +154,13 @@ struct Item_008f7fd1 {
 Item_008f7fd1* OB_STDCALL Fn008f7fd1(const void* source)
 {
     Item_008f7fd1* node = static_cast<Item_008f7fd1*>(_STL::__stl_new(0x58));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_008f7fd1(source);
     return node;
 }
 
 struct Value_009004f8 {
     // STUB: 0x008ffe6a
-    void Copy(const void* source);
+    Value_009004f8(const void* source);
 };
 
 struct Item_009004f8 {
@@ -176,15 +172,13 @@ struct Item_009004f8 {
 Item_009004f8* OB_STDCALL Fn009004f8(const void* source)
 {
     Item_009004f8* node = static_cast<Item_009004f8*>(_STL::__stl_new(0x38));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_009004f8(source);
     return node;
 }
 
 struct Value_0092194f {
     // STUB: 0x009217f2
-    void Copy(const void* source);
+    Value_0092194f(const void* source);
 };
 
 struct Item_0092194f {
@@ -196,9 +190,7 @@ struct Item_0092194f {
 Item_0092194f* OB_STDCALL Fn0092194f(const void* source)
 {
     Item_0092194f* node = static_cast<Item_0092194f*>(_STL::__stl_new(0x24));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_0092194f(source);
     return node;
 }
 
@@ -217,7 +209,7 @@ Tail_shape09_gzcom* Fn0092ea44()
 
 struct Value_0092f0af {
     // STUB: 0x0097bf85
-    void Copy(const void* source);
+    Value_0092f0af(const void* source);
 };
 
 struct Item_0092f0af {
@@ -229,15 +221,13 @@ struct Item_0092f0af {
 Item_0092f0af* OB_STDCALL Fn0092f0af(const void* source)
 {
     Item_0092f0af* node = static_cast<Item_0092f0af*>(_STL::__stl_new(0x18));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_0092f0af(source);
     return node;
 }
 
 struct Value_0093460f {
     // STUB: 0x00934573
-    void Copy(const void* source);
+    Value_0093460f(const void* source);
 };
 
 struct Item_0093460f {
@@ -249,15 +239,13 @@ struct Item_0093460f {
 Item_0093460f* OB_STDCALL Fn0093460f(const void* source)
 {
     Item_0093460f* node = static_cast<Item_0093460f*>(_STL::__stl_new(0x34));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_0093460f(source);
     return node;
 }
 
 struct Value_00934878 {
     // STUB: 0x009ca065
-    void Copy(const void* source);
+    Value_00934878(const void* source);
 };
 
 struct Item_00934878 {
@@ -269,15 +257,13 @@ struct Item_00934878 {
 Item_00934878* OB_STDCALL Fn00934878(const void* source)
 {
     Item_00934878* node = static_cast<Item_00934878*>(_STL::__stl_new(0x28));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_00934878(source);
     return node;
 }
 
 struct Value_009560dd {
     // STUB: 0x009550c3
-    void Copy(const void* source);
+    Value_009560dd(const void* source);
 };
 
 struct Item_009560dd {
@@ -289,15 +275,13 @@ struct Item_009560dd {
 Item_009560dd* OB_STDCALL Fn009560dd(const void* source)
 {
     Item_009560dd* node = static_cast<Item_009560dd*>(_STL::__stl_new(0x70));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_009560dd(source);
     return node;
 }
 
 struct Value_009560fe {
     // STUB: 0x009ca065
-    void Copy(const void* source);
+    Value_009560fe(const void* source);
 };
 
 struct Item_009560fe {
@@ -309,15 +293,13 @@ struct Item_009560fe {
 Item_009560fe* OB_STDCALL Fn009560fe(const void* source)
 {
     Item_009560fe* node = static_cast<Item_009560fe*>(_STL::__stl_new(0x20));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_009560fe(source);
     return node;
 }
 
 struct Value_0095619a {
     // STUB: 0x009541d8
-    void Copy(const void* source);
+    Value_0095619a(const void* source);
 };
 
 struct Item_0095619a {
@@ -329,15 +311,13 @@ struct Item_0095619a {
 Item_0095619a* OB_STDCALL Fn0095619a(const void* source)
 {
     Item_0095619a* node = static_cast<Item_0095619a*>(_STL::__stl_new(0x24));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_0095619a(source);
     return node;
 }
 
 struct Value_009561bb {
     // STUB: 0x009541f5
-    void Copy(const void* source);
+    Value_009561bb(const void* source);
 };
 
 struct Item_009561bb {
@@ -349,15 +329,13 @@ struct Item_009561bb {
 Item_009561bb* OB_STDCALL Fn009561bb(const void* source)
 {
     Item_009561bb* node = static_cast<Item_009561bb*>(_STL::__stl_new(0x24));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_009561bb(source);
     return node;
 }
 
 struct Value_00956269 {
     // STUB: 0x004b6100
-    void Copy(const void* source);
+    Value_00956269(const void* source);
 };
 
 struct Item_00956269 {
@@ -369,15 +347,13 @@ struct Item_00956269 {
 Item_00956269* OB_STDCALL Fn00956269(const void* source)
 {
     Item_00956269* node = static_cast<Item_00956269*>(_STL::__stl_new(0x28));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_00956269(source);
     return node;
 }
 
 struct Value_0095628a {
     // STUB: 0x00662ab0
-    void Copy(const void* source);
+    Value_0095628a(const void* source);
 };
 
 struct Item_0095628a {
@@ -389,15 +365,13 @@ struct Item_0095628a {
 Item_0095628a* OB_STDCALL Fn0095628a(const void* source)
 {
     Item_0095628a* node = static_cast<Item_0095628a*>(_STL::__stl_new(0x28));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_0095628a(source);
     return node;
 }
 
 struct Value_00959f5a {
     // STUB: 0x00959f3d
-    void Copy(const void* source);
+    Value_00959f5a(const void* source);
 };
 
 struct Item_00959f5a {
@@ -409,15 +383,13 @@ struct Item_00959f5a {
 Item_00959f5a* OB_STDCALL Fn00959f5a(const void* source)
 {
     Item_00959f5a* node = static_cast<Item_00959f5a*>(_STL::__stl_new(0x24));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_00959f5a(source);
     return node;
 }
 
 struct Value_00973648 {
     // STUB: 0x00966956
-    void Copy(const void* source);
+    Value_00973648(const void* source);
 };
 
 struct Item_00973648 {
@@ -429,15 +401,13 @@ struct Item_00973648 {
 Item_00973648* OB_STDCALL Fn00973648(const void* source)
 {
     Item_00973648* node = static_cast<Item_00973648*>(_STL::__stl_new(0xc));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_00973648(source);
     return node;
 }
 
 struct Value_0098433c {
     // STUB: 0x0092ee7c
-    void Copy(const void* source);
+    Value_0098433c(const void* source);
 };
 
 struct Item_0098433c {
@@ -449,15 +419,13 @@ struct Item_0098433c {
 Item_0098433c* OB_STDCALL Fn0098433c(const void* source)
 {
     Item_0098433c* node = static_cast<Item_0098433c*>(_STL::__stl_new(0x24));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_0098433c(source);
     return node;
 }
 
 struct Value_009ab839 {
     // STUB: 0x009ab44d
-    void Copy(const void* source);
+    Value_009ab839(const void* source);
 };
 
 struct Item_009ab839 {
@@ -469,15 +437,13 @@ struct Item_009ab839 {
 Item_009ab839* OB_STDCALL Fn009ab839(const void* source)
 {
     Item_009ab839* node = static_cast<Item_009ab839*>(_STL::__stl_new(0x24));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_009ab839(source);
     return node;
 }
 
 struct Value_009ab85a {
     // STUB: 0x009ab430
-    void Copy(const void* source);
+    Value_009ab85a(const void* source);
 };
 
 struct Item_009ab85a {
@@ -489,15 +455,13 @@ struct Item_009ab85a {
 Item_009ab85a* OB_STDCALL Fn009ab85a(const void* source)
 {
     Item_009ab85a* node = static_cast<Item_009ab85a*>(_STL::__stl_new(0x24));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_009ab85a(source);
     return node;
 }
 
 struct Value_009ccb01 {
     // STUB: 0x004e4bb0
-    void Copy(const void* source);
+    Value_009ccb01(const void* source);
 };
 
 struct Item_009ccb01 {
@@ -509,15 +473,13 @@ struct Item_009ccb01 {
 Item_009ccb01* OB_STDCALL Fn009ccb01(const void* source)
 {
     Item_009ccb01* node = static_cast<Item_009ccb01*>(_STL::__stl_new(0xc));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_009ccb01(source);
     return node;
 }
 
 struct Value_009d7729 {
     // STUB: 0x009d76ce
-    void Copy(const void* source);
+    Value_009d7729(const void* source);
 };
 
 struct Item_009d7729 {
@@ -529,15 +491,13 @@ struct Item_009d7729 {
 Item_009d7729* OB_STDCALL Fn009d7729(const void* source)
 {
     Item_009d7729* node = static_cast<Item_009d7729*>(_STL::__stl_new(0x30));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_009d7729(source);
     return node;
 }
 
 struct Value_009dbb21 {
     // STUB: 0x0092ee7c
-    void Copy(const void* source);
+    Value_009dbb21(const void* source);
 };
 
 struct Item_009dbb21 {
@@ -549,9 +509,7 @@ struct Item_009dbb21 {
 Item_009dbb21* OB_STDCALL Fn009dbb21(const void* source)
 {
     Item_009dbb21* node = static_cast<Item_009dbb21*>(_STL::__stl_new(0x1c));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_009dbb21(source);
     return node;
 }
 

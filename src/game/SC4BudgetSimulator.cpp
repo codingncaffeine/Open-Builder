@@ -282,7 +282,6 @@ struct IncomeWinProc_ab0908 {
     IncomeWinProc_ab0908();
 };
 
-static const int64_t kMaxFunds_ab0908 = (static_cast<int64_t>(0x7fffffff) << 32) | 0xffffffffu;
 
 // FUNCTION: 0x00691000
 void* cSC4BudgetSimulator::GetDepartmentBudget_2(uint32_t id)
@@ -311,6 +310,7 @@ int64_t cSC4BudgetSimulator::GetMonthlyPaymentForLoan(int64_t principal)
 }
 
 #ifdef OB_DRAFTS
+static const int64_t kMaxFunds_ab0908 = (static_cast<int64_t>(0x7fffffff) << 32) | 0xffffffffu;
 // CLOSE: 0x00690170 score 62
 bool cSC4BudgetSimulator::DepositFunds(int64_t value)
 {

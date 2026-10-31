@@ -499,7 +499,7 @@ void Fn0058e170(Pair_a9f0d8* first, Pair_a9f0d8* last)
 #endif
 
 // FUNCTION: 0x0058d940
-void Fn0058d940(Pair_a9f0d8* first, int32_t hole, int32_t top, Pair_a9f0d8 val, uint32_t extra)
+void Fn0058d940(Pair_a9f0d8* first, int32_t hole, int32_t top, Pair_a9f0d8 val, uint32_t /*extra*/)
 {
     int32_t parent = (hole - 1) / 2;
     while (hole > top && first[parent].mfKey < val.mfKey) {

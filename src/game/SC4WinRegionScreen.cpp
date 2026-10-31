@@ -262,7 +262,7 @@ void cSC4RegionalTerrainMap::Slot16_ab3be8(uint32_t rect, uint32_t out, uint32_t
 #endif
 
 // FUNCTION: 0x007aa490
-void cSC4RegionalTerrainMap::Slot17_ab3be8(uint32_t x, uint32_t z, uint32_t corners)
+void cSC4RegionalTerrainMap::Slot17_ab3be8(uint32_t /*x*/, uint32_t /*z*/, uint32_t corners)
 {
     float* c = OB_PTR(float, corners);
     c[0] = c[1] = c[2] = c[3] = mfAltitude;
@@ -294,7 +294,7 @@ bool cUnk00ab8cd0::Slot04_ae1d24()
 }
 
 // FUNCTION: 0x007aa600
-bool cSC4WinRegionScreen::GZOnMouseEnter(uint32_t win)
+bool cSC4WinRegionScreen::GZOnMouseEnter(uint32_t /*win*/)
 {
     int32_t x;
     int32_t y;
@@ -333,7 +333,7 @@ bool cSC4WinRegionScreen::QueryInterface(unsigned int iid, void** ppv)
 #endif
 
 // FUNCTION: 0x007aadf0
-void cSC4RegionalTerrainMap::Slot28_ab3be8(uint32_t x, uint32_t z, uint32_t normal)
+void cSC4RegionalTerrainMap::Slot28_ab3be8(uint32_t /*x*/, uint32_t /*z*/, uint32_t normal)
 {
     float* n = OB_PTR(float, normal);
     n[0] = 0.0f;
@@ -391,7 +391,7 @@ cUnk00ab8f50::~cUnk00ab8f50()
 #endif
 
 // FUNCTION: 0x007ab760
-bool cSC4WinRegionScreen::GZOnMouseMove(uint32_t x, uint32_t z, uint32_t flags)
+bool cSC4WinRegionScreen::GZOnMouseMove(uint32_t x, uint32_t z, uint32_t /*flags*/)
 {
     if (!mbBlocked) {
         static_cast<cSC4WinRegionView*>(mpView)->SelectCity(x, z);
@@ -407,7 +407,7 @@ bool cSC4WinRegionScreen::GZOnMouseDownR(uint32_t x, uint32_t z, uint32_t flags)
 }
 
 // FUNCTION: 0x007abb60
-bool cSC4WinRegionScreen::GZOnMouseExit(uint32_t win)
+bool cSC4WinRegionScreen::GZOnMouseExit(uint32_t /*win*/)
 {
     if (!mbBlocked) {
         static_cast<cSC4WinRegionView*>(mpView)->ClearSelection();
@@ -669,7 +669,7 @@ void OB_STDCALL Fn007ad2c0(Node_ab9260** out, Node_ab9260* first, Node_ab9260* l
 #endif
 
 // FUNCTION: 0x007ad3b0
-bool cUnk00ab8cd0::GZOnMouseDownR(uint32_t x, uint32_t z, uint32_t flags)
+bool cUnk00ab8cd0::GZOnMouseDownR(uint32_t x, uint32_t z, uint32_t /*flags*/)
 {
     void* marker = GetChildWindowFromID(0x48e945b4);
     if (marker) {

@@ -130,7 +130,7 @@ Tail_top_shape09_gzcom* Fn008747d4()
 
 struct Value_0091b2d6 {
     // STUB: 0x0091aeed
-    void Copy(const void* source);
+    Value_0091b2d6(const void* source);
 };
 
 struct Item_0091b2d6 {
@@ -142,9 +142,7 @@ struct Item_0091b2d6 {
 Item_0091b2d6* OB_STDCALL Fn0091b2d6(const void* source)
 {
     Item_0091b2d6* node = static_cast<Item_0091b2d6*>(_STL::__stl_new(0x24));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_0091b2d6(source);
     return node;
 }
 
@@ -176,7 +174,7 @@ Tail_top_shape09_gzcom* Fn00935ebd()
 
 struct Value_00949327 {
     // STUB: 0x009490c9
-    void Copy(const void* source);
+    Value_00949327(const void* source);
 };
 
 struct Item_00949327 {
@@ -188,9 +186,7 @@ struct Item_00949327 {
 Item_00949327* OB_STDCALL Fn00949327(const void* source)
 {
     Item_00949327* node = static_cast<Item_00949327*>(_STL::__stl_new(0x18));
-    if (&node->mValue) {
-        node->mValue.Copy(source);
-    }
+    new (&node->mValue) Value_00949327(source);
     return node;
 }
 

@@ -767,7 +767,7 @@ void Fn004a7770_a8fb20(Rec16_a8fb20* first, int32_t hole, int32_t top, Rec16_a8f
 }
 
 // FUNCTION: 0x004a7a20
-void Fn004a7a20_a8fb20(Rec16_a8fb20* first, Rec16_a8fb20* last, uint32_t unused, Less16_a8fb20 less)
+void Fn004a7a20_a8fb20(Rec16_a8fb20* first, Rec16_a8fb20* last, uint32_t /*unused*/, Less16_a8fb20 less)
 {
     for (Rec16_a8fb20* p = first; p != last; ++p) {
         Fn004a7700_a8fb20(p, *p, less);

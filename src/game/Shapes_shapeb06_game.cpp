@@ -29,7 +29,7 @@ struct View_411b00_shapeb06_game {
 };
 
 // FUNCTION: 0x00411b00
-void* View_411b00_shapeb06_game::Fn00411b00(uint32_t n, const void* hint)
+void* View_411b00_shapeb06_game::Fn00411b00(uint32_t n, const void* /*hint*/)
 {
     if (!cGZAllocatorServiceCache<Node_b207dc_shapeb06_game>::spService) {
         cGZAllocatorServiceRef ref;
@@ -59,7 +59,7 @@ struct View_411b60_shapeb06_game {
 };
 
 // FUNCTION: 0x00411b60
-void* View_411b60_shapeb06_game::Fn00411b60(uint32_t n, const void* hint)
+void* View_411b60_shapeb06_game::Fn00411b60(uint32_t n, const void* /*hint*/)
 {
     if (!cGZAllocatorServiceCache<Node_b207e0_shapeb06_game>::spService) {
         cGZAllocatorServiceRef ref;
@@ -83,7 +83,7 @@ struct View_413dd0_shapeb06_game {
 };
 
 // FUNCTION: 0x00413dd0
-void* View_413dd0_shapeb06_game::Fn00413dd0(uint32_t n, const void* hint)
+void* View_413dd0_shapeb06_game::Fn00413dd0(uint32_t n, const void* /*hint*/)
 {
     if (!cGZAllocatorServiceCache<cISC4Occupant*>::spService) {
         cGZAllocatorServiceRef ref;
@@ -113,7 +113,7 @@ struct View_420fd0_shapeb06_game {
 };
 
 // FUNCTION: 0x00420fd0
-void* View_420fd0_shapeb06_game::Fn00420fd0(uint32_t n, const void* hint)
+void* View_420fd0_shapeb06_game::Fn00420fd0(uint32_t n, const void* /*hint*/)
 {
     if (!cGZAllocatorServiceCache<Node_b20d58_shapeb06_game>::spService) {
         cGZAllocatorServiceRef ref;
@@ -143,7 +143,7 @@ struct View_611240_shapeb06_game {
 };
 
 // FUNCTION: 0x00611240
-void* View_611240_shapeb06_game::Fn00611240(uint32_t n, const void* hint)
+void* View_611240_shapeb06_game::Fn00611240(uint32_t n, const void* /*hint*/)
 {
     if (!cGZAllocatorServiceCache<Node_b45238_shapeb06_game>::spService) {
         cGZAllocatorServiceRef ref;
@@ -978,8 +978,8 @@ bool View_45d280_shapeb06_game::Fn0045d280(uint32_t iid, uint32_t ppv)
         return true;
     case 0xe4fda3d4:
         void* p;
-        if (this) {
-            p = reinterpret_cast<char*>(this) + 0x4;
+        if (self) {
+            p = reinterpret_cast<char*>(self) + 0x4;
         } else {
             p = 0;
         }
@@ -1007,8 +1007,8 @@ bool View_475660_shapeb06_game::Fn00475660(uint32_t iid, uint32_t ppv)
         return true;
     case 0xe4fda3d4:
         void* p;
-        if (this) {
-            p = reinterpret_cast<char*>(this) + 0x8;
+        if (self) {
+            p = reinterpret_cast<char*>(self) + 0x8;
         } else {
             p = 0;
         }
@@ -1036,8 +1036,8 @@ bool View_4896a0_shapeb06_game::Fn004896a0(uint32_t iid, uint32_t ppv)
         return true;
     case 0xe4fda3d4:
         void* p;
-        if (this) {
-            p = reinterpret_cast<char*>(this) + 0x8;
+        if (self) {
+            p = reinterpret_cast<char*>(self) + 0x8;
         } else {
             p = 0;
         }
@@ -1065,8 +1065,8 @@ bool View_6bf390_shapeb06_game::Fn006bf390(uint32_t iid, uint32_t ppv)
         return true;
     case 0xe4fda3d4:
         void* p;
-        if (this) {
-            p = reinterpret_cast<char*>(this) + 0x4;
+        if (self) {
+            p = reinterpret_cast<char*>(self) + 0x4;
         } else {
             p = 0;
         }
@@ -1094,8 +1094,8 @@ bool View_6f0e30_shapeb06_game::Fn006f0e30(uint32_t iid, uint32_t ppv)
         return true;
     case 0xe4fda3d4:
         void* p;
-        if (this) {
-            p = reinterpret_cast<char*>(this) + 0x4;
+        if (self) {
+            p = reinterpret_cast<char*>(self) + 0x4;
         } else {
             p = 0;
         }
@@ -1504,7 +1504,7 @@ void View_989800_shapeb06_game::Fn00989800(uint32_t a, uint32_t b, uint32_t c, u
 void Fn008d1030(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f);
 
 // FUNCTION: 0x0080a6a0
-void Fn0080a6a0(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f)
+void Fn0080a6a0(int32_t a, int32_t b, int32_t c, int32_t /*d*/, int32_t e, int32_t f)
 {
     Fn008d1030(a, c, b, e >> 2, e >> 2, f >> 2);
 }
@@ -1513,7 +1513,7 @@ void Fn0080a6a0(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f
 void Fn008d1a30(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f);
 
 // FUNCTION: 0x0080a6d0
-void Fn0080a6d0(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f)
+void Fn0080a6d0(int32_t a, int32_t b, int32_t c, int32_t /*d*/, int32_t e, int32_t f)
 {
     Fn008d1a30(a, c, b, e >> 2, e >> 2, f >> 2);
 }
@@ -1522,7 +1522,7 @@ void Fn0080a6d0(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f
 void Fn008d1f80(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f);
 
 // FUNCTION: 0x0088cf90
-void Fn0088cf90(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f)
+void Fn0088cf90(int32_t a, int32_t b, int32_t c, int32_t /*d*/, int32_t e, int32_t f)
 {
     Fn008d1f80(a, c, b, e >> 2, e >> 2, f >> 2);
 }
@@ -1531,7 +1531,7 @@ void Fn0088cf90(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f
 void Fn008d2140(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f);
 
 // FUNCTION: 0x0088cfc0
-void Fn0088cfc0(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f)
+void Fn0088cfc0(int32_t a, int32_t b, int32_t c, int32_t /*d*/, int32_t e, int32_t f)
 {
     Fn008d2140(a, c, b, e >> 2, e >> 2, f >> 2);
 }
@@ -1540,7 +1540,7 @@ void Fn0088cfc0(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f
 void Fn008d1240(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f);
 
 // FUNCTION: 0x0088cff0
-void Fn0088cff0(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f)
+void Fn0088cff0(int32_t a, int32_t b, int32_t c, int32_t /*d*/, int32_t e, int32_t f)
 {
     Fn008d1240(a, c, b, e >> 2, e >> 2, f >> 2);
 }
@@ -1549,7 +1549,7 @@ void Fn0088cff0(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f
 void Fn008d1630(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f);
 
 // FUNCTION: 0x0088d020
-void Fn0088d020(int32_t a, int32_t b, int32_t c, int32_t d, int32_t e, int32_t f)
+void Fn0088d020(int32_t a, int32_t b, int32_t c, int32_t /*d*/, int32_t e, int32_t f)
 {
     Fn008d1630(a, c, b, e >> 2, e >> 2, f >> 2);
 }

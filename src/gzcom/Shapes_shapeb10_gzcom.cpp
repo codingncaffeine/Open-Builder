@@ -92,7 +92,7 @@ struct View_00892017_shapeb10_gzcom {
 };
 
 // FUNCTION: 0x00892017
-View_00892017_shapeb10_gzcom* View_00892017_shapeb10_gzcom::Fn00892017(const void* unused, const void* alloc)
+View_00892017_shapeb10_gzcom* View_00892017_shapeb10_gzcom::Fn00892017(const void* /*unused*/, const void* alloc)
 {
     Base(alloc);
     mnSize = 0;
@@ -146,7 +146,7 @@ struct View_0090d291_shapeb10_gzcom {
 };
 
 // FUNCTION: 0x0090d291
-View_0090d291_shapeb10_gzcom* View_0090d291_shapeb10_gzcom::Fn0090d291(const void* unused, const void* alloc)
+View_0090d291_shapeb10_gzcom* View_0090d291_shapeb10_gzcom::Fn0090d291(const void* /*unused*/, const void* alloc)
 {
     Base(alloc);
     mnSize = 0;
@@ -529,7 +529,7 @@ struct View_00933eff_shapeb10_gzcom {
 };
 
 // FUNCTION: 0x00933eff
-View_00933eff_shapeb10_gzcom* View_00933eff_shapeb10_gzcom::Fn00933eff(const void* unused, const void* alloc)
+View_00933eff_shapeb10_gzcom* View_00933eff_shapeb10_gzcom::Fn00933eff(const void* /*unused*/, const void* alloc)
 {
     Base(alloc);
     mnSize = 0;
@@ -561,7 +561,7 @@ struct Elem_0093b776_shapeb10_gzcom {
 };
 
 // FUNCTION: 0x0093b776
-void Fn0093b776(Elem_0093b776_shapeb10_gzcom* first, Elem_0093b776_shapeb10_gzcom* last, void* tag)
+void Fn0093b776(Elem_0093b776_shapeb10_gzcom* first, Elem_0093b776_shapeb10_gzcom* last, void* /*tag*/)
 {
     for (; first != last; ++first) {
         first->Fn(0);
@@ -585,7 +585,7 @@ struct View_0093c0c2_shapeb10_gzcom {
 };
 
 // FUNCTION: 0x0093c0c2
-View_0093c0c2_shapeb10_gzcom* View_0093c0c2_shapeb10_gzcom::Fn0093c0c2(const void* unused, const void* alloc)
+View_0093c0c2_shapeb10_gzcom* View_0093c0c2_shapeb10_gzcom::Fn0093c0c2(const void* /*unused*/, const void* alloc)
 {
     Base(alloc);
     mnSize = 0;
@@ -666,7 +666,7 @@ struct View_0094cb8b_shapeb10_gzcom {
 };
 
 // FUNCTION: 0x0094cb8b
-View_0094cb8b_shapeb10_gzcom* View_0094cb8b_shapeb10_gzcom::Fn0094cb8b(const void* unused, const void* alloc)
+View_0094cb8b_shapeb10_gzcom* View_0094cb8b_shapeb10_gzcom::Fn0094cb8b(const void* /*unused*/, const void* alloc)
 {
     Base(alloc);
     mnSize = 0;
@@ -1123,7 +1123,7 @@ struct Elem_009b95eb_shapeb10_gzcom {
 };
 
 // FUNCTION: 0x009b95eb
-void Fn009b95eb(Elem_009b95eb_shapeb10_gzcom* first, Elem_009b95eb_shapeb10_gzcom* last, void* tag)
+void Fn009b95eb(Elem_009b95eb_shapeb10_gzcom* first, Elem_009b95eb_shapeb10_gzcom* last, void* /*tag*/)
 {
     for (; first != last; ++first) {
         first->Fn(0);
@@ -1137,7 +1137,7 @@ struct Elem_009b9606_shapeb10_gzcom {
 };
 
 // FUNCTION: 0x009b9606
-void Fn009b9606(Elem_009b9606_shapeb10_gzcom* first, Elem_009b9606_shapeb10_gzcom* last, void* tag)
+void Fn009b9606(Elem_009b9606_shapeb10_gzcom* first, Elem_009b9606_shapeb10_gzcom* last, void* /*tag*/)
 {
     for (; first != last; ++first) {
         first->Fn(0);
@@ -1151,7 +1151,7 @@ struct Elem_009b96b9_shapeb10_gzcom {
 };
 
 // FUNCTION: 0x009b96b9
-void Fn009b96b9(Elem_009b96b9_shapeb10_gzcom* first, Elem_009b96b9_shapeb10_gzcom* last, void* tag)
+void Fn009b96b9(Elem_009b96b9_shapeb10_gzcom* first, Elem_009b96b9_shapeb10_gzcom* last, void* /*tag*/)
 {
     for (; first != last; ++first) {
         first->Fn(0);
@@ -1309,7 +1309,7 @@ struct Elem_009bea0d_shapeb10_gzcom {
 };
 
 // FUNCTION: 0x009bea0d
-void Fn009bea0d(Elem_009bea0d_shapeb10_gzcom* first, Elem_009bea0d_shapeb10_gzcom* last, void* tag)
+void Fn009bea0d(Elem_009bea0d_shapeb10_gzcom* first, Elem_009bea0d_shapeb10_gzcom* last, void* /*tag*/)
 {
     for (; first != last; ++first) {
         first->Fn(0);

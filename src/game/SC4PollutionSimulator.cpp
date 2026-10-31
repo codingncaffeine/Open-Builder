@@ -577,7 +577,7 @@ uint32_t cSC4PollutionSimulator::Release()
     }
     Slot04_ab2630();
     Fn006e4e20();
-    delete this;
+    operator delete(this);
     return 0;
 }
 

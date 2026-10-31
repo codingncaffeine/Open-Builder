@@ -795,21 +795,21 @@ struct Wide_abfed0 {
     uint16_t* mpCap;
     // STUB: 0x0079c7c0
     void Fn0079c7c0(uint32_t count);
-    void Fn00918a86(const uint16_t* first, const uint16_t* last, const char* tag);
+    void Fn00918a86(const uint16_t* first, const uint16_t* last, char* tag);
     Wide_abfed0* Fn00918eba(const Wide_abfed0* other);
     uint32_t Fn00918a25Draft(uint16_t value, uint32_t position);
     Wide_abfed0* Fn00919114Draft(const uint16_t* first, const uint16_t* last);
     // STUB: 0x0090e3bf
     void Fn0090e3bf(uint16_t* first, uint16_t* last);
     // STUB: 0x00918ab7
-    Wide_abfed0* Fn00918ab7(const uint16_t* first, const uint16_t* last, const char* tag);
+    Wide_abfed0* Fn00918ab7(const uint16_t* first, const uint16_t* last, char* tag);
 };
 
 // STUB: 0x0090e63c
 uint16_t* Fn0090e63c(const uint16_t* first, const uint16_t* last, uint16_t* destination);
 
 // FUNCTION: 0x00918a86
-void Wide_abfed0::Fn00918a86(const uint16_t* first, const uint16_t* last, const char* tag)
+void Wide_abfed0::Fn00918a86(const uint16_t* first, const uint16_t* last, char* /*tag*/)
 {
     Fn0079c7c0((last - first) + 1);
     mpEnd = Fn0090e63c(first, last, mpBegin);

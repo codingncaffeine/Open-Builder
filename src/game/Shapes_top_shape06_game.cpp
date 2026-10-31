@@ -467,7 +467,7 @@ struct View_7d2980_top_shape06_game {
 };
 
 // FUNCTION: 0x007d2980
-void View_7d2980_top_shape06_game::Fn7d2980(uint32_t nUnused, uint32_t nValue)
+void View_7d2980_top_shape06_game::Fn7d2980(uint32_t /*nUnused*/, uint32_t nValue)
 {
     mnValue = nValue;
 }
