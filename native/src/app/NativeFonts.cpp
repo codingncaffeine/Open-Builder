@@ -11,6 +11,8 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_GLYPH_H
+#include FT_MODULE_H
+#include FT_DRIVER_H
 
 namespace native {
 namespace {
@@ -77,7 +79,14 @@ private:
 
 FreeTypeFontHost::FreeTypeFontHost() {
     FT_Library lib = nullptr;
-    if (FT_Init_FreeType(&lib) == 0) library_ = lib;
+    if (FT_Init_FreeType(&lib) == 0) {
+        library_ = lib;
+        // The game shipped a 2003 FreeType whose TrueType bytecode interpreter hinted both axes (interpreter v35): stems
+        // snap to whole pixels, the crisp, heavier text of the original UI. Today's default (v40) hints vertically only
+        // and draws the game's 13-pixel Arta noticeably thinner.
+        FT_UInt interpreter = TT_INTERPRETER_VERSION_35;
+        FT_Property_Set(lib, "truetype", "interpreter-version", &interpreter);
+    }
 }
 FreeTypeFontHost::~FreeTypeFontHost() { if (library_) FT_Done_FreeType(static_cast<FT_Library>(library_)); }
 

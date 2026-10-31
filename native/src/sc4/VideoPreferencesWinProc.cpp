@@ -116,11 +116,14 @@ bool cSC4VideoPreferencesWinProc::ShowDialog() {
         std::uint32_t width = 0, height = 0;
         if (!w) continue;
         w->SetNotificationTarget(window);
-        if (!ResolutionAt(i, width, height)) w->SetFlag(2, false);   // no such choice for this window: disabled
+        if (!ResolutionAt(i, width, height)) w->SetFlag(kWinFlagVisible, false);   // no such choice for this window
     }
     for (const Check& c : kChecks) if (cIGZWin* w = window->GetChildWindowFromIDRecursive(c.id)) w->SetNotificationTarget(window);
     for (std::uint32_t id : {kAccept, kNoticeAccept, kCancel, kDefaults})
         if (cIGZWin* w = window->GetChildWindowFromIDRecursive(id)) w->SetNotificationTarget(window);
+    // Colour quality: the native renderer is always 32-bit, and the script control blanks these labels (the colour depth
+    // resource strings, as the original does), so the two buttons are hidden.
+    for (std::uint32_t id : {0x2ab6c376u, 0x2ab6c377u}) if (cIGZWin* w = window->GetChildWindowFromIDRecursive(id)) w->SetFlag(kWinFlagVisible, false);
     if (cIGZWin* notice = window->GetChildWindowFromIDRecursive(kNoticePage)) notice->SetFlag(kWinFlagVisible, false);
     if (cIGZWin* options = window->GetChildWindowFromIDRecursive(kOptionsPage)) options->SetFlag(kWinFlagVisible, true);
     return true;

@@ -285,12 +285,16 @@ struct FontSource final : gz::IWinFontSource {
     }
     bool Available() override { return gFont != nullptr; }
     gz::IWinFont* FontByName(const char* name) override {
-        if (!gFont || !name) return nullptr;
+        const std::uint32_t id = StyleId(name);
+        return id ? Font(id) : nullptr;
+    }
+    std::uint32_t StyleId(const char* name) override {
+        if (!gFont || !name) return 0;
         LoadFontStyles();
         std::string key(name);
         for (char& c : key) c = char(std::tolower(static_cast<unsigned char>(c)));
         auto it = gStyleNames.find(key);
-        return it == gStyleNames.end() ? nullptr : Font(it->second);
+        return it == gStyleNames.end() ? 0 : it->second;
     }
 } gFontSource;
 
@@ -951,6 +955,9 @@ int main(int argc, char** argv) {
         if (interactive) PumpEvents();
         Nap();
         PumpTimers();
+        // the region map under the dialog: re-blitted every frame like Frame() does (the clouds keep drawing over it)
+        const bool regionScreen = gAppWindow && gAppWindow->CurrentScreen() && gAppWindow->CurrentScreen()->GetID() == 0xea659793;
+        if (regionScreen && native::DrawRegionLayers()) InvalidateTree(gMgr->GetMainWindow());
         if (gAppWindow && gAppWindow->View3D()) InvalidateTree(gMgr->GetMainWindow());
         gMgr->Pump();
         gMgr->Plot();

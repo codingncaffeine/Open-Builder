@@ -564,6 +564,13 @@ bool GetPropertyRect(const tScriptPropertyArray& parameters, std::uint32_t id, c
     return std::sscanf(text.ToChar(), "(%d,%d,%d,%d)", &out.left, &out.top, &out.right, &out.bottom) == 4;
 }
 
+// A style named in a script ("font=GenBodyMedium"): its style id through the colour manager's font mapping (WCM vslot 0x130,
+// the host's FontStyleFromName); 0 when the name is unknown.
+std::uint32_t NamedFontStyle(const cIGZString& name) {
+    IScriptControlHost* host = gScriptControlHost;
+    return host ? host->FontStyleFromName(name) : 0;
+}
+
 void SetGZWinFont(cIGZWin* window, std::uint32_t styleId, std::uint32_t index) {
     if (!window) return;
     // The font parameters start at 0xfaa3be85 (a negative id); index 0 is the control's own font.
@@ -1028,8 +1035,8 @@ void cGZLegacyControl::InterpretPropertiesGZWinCommon(cIGZWin* window, tScriptPr
             IScriptControlHost* host = gScriptControlHost;
             if (!host) break;
             host->GetNativeResolution(i, width, height);
-            char buffer[32];
-            std::snprintf(buffer, sizeof(buffer), "%dx%d", width, height);
+            char buffer[32] = "";
+            if (width > 0 && height > 0) std::snprintf(buffer, sizeof(buffer), "%dx%d", width, height);   // none: no label
             window->SetCaption(cRZString(buffer));
             break;
         }
@@ -1425,7 +1432,10 @@ void cGZLegacyControl::InterpretPropertiesGZWinText(cIGZWin* window, tScriptProp
             SetGZWinFont(window, styleId, 0);
         } else {
             cRZString name;
-            if (GetPropertyString(parameters, 0xf000, name)) SetGZWinFont(window, name, 0);
+            if (GetPropertyString(parameters, 0xf000, name)) {
+                if (const std::uint32_t named = NamedFontStyle(name)) text->SetFontStyle(named);
+                SetGZWinFont(window, name, 0);
+            }
         }
         std::uint8_t r = 0, g = 0, b = 0;
         if (GetPropertyColor(parameters, 0xf002, r, g, b)) {
@@ -1499,6 +1509,7 @@ void cGZLegacyControl::InterpretPropertiesGZWinBtn(cIGZWin* window, tScriptPrope
         btn->SetFontStyle(styleId);
         SetGZWinFont(window, styleId, 0);
     } else if (GetPropertyString(parameters, 0xf000, text)) {
+        if (const std::uint32_t named = NamedFontStyle(text)) btn->SetFontStyle(named);
         SetGZWinFont(window, text, 0);
     } else {
         IScriptControlHost* host = gScriptControlHost;
@@ -1624,6 +1635,7 @@ void cGZLegacyControl::InterpretPropertiesGZWinTextEdit(cIGZWin* window, tScript
             edit->SetFontStyle(styleId);
             SetGZWinFont(window, styleId, 0);
         } else if (GetPropertyString(parameters, 0xf000, name)) {
+            if (const std::uint32_t named = NamedFontStyle(name)) edit->SetFontStyle(named);
             SetGZWinFont(window, name, 0);
         }
         auto native = [](std::uint8_t r, std::uint8_t g, std::uint8_t b) { return WinGraphics() ? WinGraphics()->MakeNativeColor(r, g, b) : 0u; };
@@ -1727,6 +1739,7 @@ void cGZLegacyControl::InterpretPropertiesGZWinSpinner(cIGZWin* window, tScriptP
         spinner->SetFont(fonts ? fonts->Font(styleId) : nullptr);   // WCM vslot 0x28
         SetGZWinFont(window, styleId, 0);
     } else if (GetPropertyString(parameters, 0xf000, name)) {
+        if (const std::uint32_t named = NamedFontStyle(name)) spinner->SetFont(fonts ? fonts->Font(named) : nullptr);
         SetGZWinFont(window, name, 0);
     } else {
         IScriptControlHost* host = gScriptControlHost;

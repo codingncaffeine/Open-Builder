@@ -838,6 +838,8 @@ int main(int argc, char** argv) {
                     [NSThread sleepForTimeInterval:0.004];
                 }
                 PumpTimers();
+                const bool regionScreen = gAppWindow && gAppWindow->CurrentScreen() && gAppWindow->CurrentScreen()->GetID() == 0xea659793;
+                if (regionScreen && native::DrawRegionLayers()) InvalidateTree(gMgr->GetMainWindow());
                 if (gAppWindow && gAppWindow->View3D()) InvalidateTree(gMgr->GetMainWindow());
                 gMgr->Pump();
                 gMgr->Plot();

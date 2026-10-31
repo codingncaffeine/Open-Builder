@@ -31,6 +31,7 @@
 #include "gz/WinGen.h"
 #include "gz/WinStyle.h"
 #include "gz/WinCtrlFactory.h"
+#include "gz/WinFont.h"
 #include "gz/WinGrid.h"
 #include "gz/WinScrollbar.h"
 #include "gz/WinSlider.h"
@@ -143,6 +144,11 @@ public:
     bool UnscriptWindow(cIGZWin*, cIGZString&) override { return false; }   // unscript_IGZWin is not recovered
     bool LoadScriptString(std::uint32_t group, std::uint32_t instance, cIGZString& out) override { return LoadLocalizedString(group, instance, out); }
     cIGZBuffer* LoadScriptBuffer(std::uint32_t group, std::uint32_t instance) override { return LoadBitmapResource(group, instance); }
+    // the colour manager's font mapping: a style name of the [Font Styles] table -> its style id
+    std::uint32_t FontStyleFromName(const cIGZString& name) override {
+        gz::IWinFontSource* fonts = gz::WinFontSource();
+        return fonts ? fonts->StyleId(name.ToChar()) : 0;
+    }
     // the Graphic Options' four resolution labels: the logical resolutions this window offers (ResolutionChoice)
     void GetNativeResolution(int index, int& width, int& height) override { ResolutionChoice(index, width, height); }
 private:
