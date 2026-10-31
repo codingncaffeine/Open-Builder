@@ -38,9 +38,12 @@ layout(location = 2) in vec2 aUv0;
 layout(location = 3) in vec2 aUv1;
 out vec4 vColor;
 out vec2 vUv0, vUv1;
+// The game's viewport as an exact transform inside the full frame (x, y scale; x, y offset, applied in clip space).
+uniform vec4 uViewport;
 void main() {
     vec4 eye = c.view * (c.world * vec4(aPos, 1.0));
     gl_Position = c.projection * eye;
+    gl_Position.xy = gl_Position.xy * uViewport.xy + uViewport.zw * gl_Position.w;
     vColor = aColor * c.colorMul;
     vUv0 = c.stride >= 24u ? aUv0 : vec2(0.0);
     vUv1 = c.stride >= 32u ? aUv1 : vUv0;
@@ -195,6 +198,7 @@ struct cGLGDriver::Impl {
     int error = 0;
 
     std::map<ProgramKey, GLuint> programs;
+    std::map<GLuint, GLint> viewportUniform;   // program -> uViewport
     std::map<std::uint64_t, GLuint> samplers;
     std::uint32_t draws = 0;
 
@@ -397,6 +401,7 @@ struct cGLGDriver::Impl {
         glUseProgram(p);
         glUniform1i(glGetUniformLocation(p, "t0"), 0);
         glUniform1i(glGetUniformLocation(p, "t1"), 1);
+        viewportUniform[p] = glGetUniformLocation(p, "uViewport");
         programs[k] = p;
         return p;
     }
@@ -431,14 +436,25 @@ struct cGLGDriver::Impl {
         } else {
             glDisable(GL_CULL_FACE);
         }
-        const int x0 = PX(vx), y0 = PY(vy), x1 = PX(vx + vw), y1 = PY(vy + vh);
-        glViewport(x0, y0, x1 - x0, y1 - y0);
+        // The GL viewport is always the whole frame: the game's viewport is an exact (fractional) transform in the vertex
+        // shader (ViewportTransform), so every draw shares one logical -> pixel mapping. Rounding each viewport's origin
+        // to whole pixels shifted draws with different viewports by up to half a pixel, and at a fractional UI scale
+        // adjacent region-map tiles left one-pixel black columns between them.
+        glViewport(0, 0, GLsizei(pixelWidth), GLsizei(pixelHeight));
         if (scissor) {
+            const int x0 = PX(vx), y0 = PY(vy), x1 = PX(vx + vw), y1 = PY(vy + vh);
             glEnable(GL_SCISSOR_TEST);
             glScissor(x0, y0, x1 - x0, y1 - y0);
         } else {
             glDisable(GL_SCISSOR_TEST);
         }
+    }
+    // NDC of the game's viewport (vx, vy bottom-left, vw x vh logical) -> NDC of the whole frame: scale x, y and offset x, y.
+    void ViewportTransform(float out[4]) const {
+        out[0] = float(vw) / float(width);
+        out[1] = float(vh) / float(height);
+        out[2] = float(2.0 * vx + vw) / float(width) - 1.0f;
+        out[3] = float(2.0 * vy + vh) / float(height) - 1.0f;
     }
     void SetDepthState(bool test, eGDTestFunc func, bool write) {
         if (std::getenv("SC4_GDNODEPTH")) { test = false; write = false; }
@@ -828,7 +844,11 @@ void cGLGDriver::Encode(unsigned primitive, int vertexCount, const std::uint16_t
             std::memcpy(key.ops[st], ops, 6);
         }
     }
-    glUseProgram(s.Program(key));
+    const GLuint program = s.Program(key);
+    glUseProgram(program);
+    float viewport[4];
+    s.ViewportTransform(viewport);
+    glUniform4f(s.viewportUniform[program], viewport[0], viewport[1], viewport[2], viewport[3]);
     if (mirror_.blend) {
         glEnable(GL_BLEND);
         glBlendFunc(Factor(mirror_.blendSrc), Factor(mirror_.blendDst));
