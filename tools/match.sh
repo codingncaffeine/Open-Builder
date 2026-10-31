@@ -68,13 +68,28 @@ for src in $(grep -rl '^// STATIC-INIT: 0x' src --include=*.cpp | sort); do
       next_ += $4 == "-" ? 2 : 3
     }' "$sizes" "$map" "$src" >>"$out/pairs.tsv"
 done
+# Where our linker folded library functions (identical template instances, all of them the original's: STLport
+# append<char*> and append<const char*>) into one body, that body stands for each of the originals: they all take one
+# name, written first so it wins over the stubs' names (obcmp keeps an address's first name).
+awk -F'\t' 'FILENAME == ARGV[1] { lib[$3] = sprintf("%08x", strtonum("0x" $1)); next }
+            { split($0, f, " +") }
+            f[2] ~ /^0001:/ && f[3] !~ /^_\$E[0-9]+$/ {
+              if (!((f[3], f[4]) in seen)) { seen[f[3], f[4]] = 1; places[f[3]]++; all[f[4]]++; if (f[3] in lib) { n[f[4]]++; syms[f[4]] = syms[f[4]] " " f[3] } }
+            }
+            END {
+              for (a in n) {
+                if (n[a] < 2 || n[a] != all[a]) continue
+                k = split(substr(syms[a], 2), s, " "); ok = 1
+                for (i = 1; i <= k; i++) if (places[s[i]] != 1) ok = 0
+                if (ok) for (i = 1; i <= k; i++) print lib[s[i]], a, "folded_" a
+              }
+            }' re/map/libraries.tsv "$map" >"$out/names.tsv"
 # The stubs that lead to functions not decompiled yet name their original, so calls to them compare by target.
-awk '$1 ~ /^0001:/ && $2 ~ /^_ob_stub_[0-9a-f]{8}$/ { print substr($2, 10), $3, "stub_" substr($2, 10) }' "$map" >"$out/names.tsv"
+awk '$1 ~ /^0001:/ && $2 ~ /^_ob_stub_[0-9a-f]{8}$/ { print substr($2, 10), $3, "stub_" substr($2, 10) }' "$map" >>"$out/names.tsv"
 # A library function (STLport, the C runtime) our build compiles from the library's own source has the original's
-# decorated name: it stands for the original's copy, under the name a stub of that copy has. Where our linker folded
-# two of them into one body (identical template instances) that body stands for neither: left unnamed. A name our map
-# has at several addresses stands for none of them, nor does a static's teardown (_$E<n>: local to its object, named alike
-# in every one).
+# decorated name: it stands for the original's copy, under the name a stub of that copy has (folded ones above). A
+# name our map has at several addresses stands for none of them, nor does a static's teardown (_$E<n>: local to its
+# object, named alike in every one).
 awk -F'\t' 'FILENAME == ARGV[1] { lib[$3] = sprintf("%08x", strtonum("0x" $1)); next }
             { split($0, f, " +") }
             f[2] ~ /^0001:/ && (f[3] in lib) && f[3] !~ /^_\$E[0-9]+$/ { at[f[4]] = lib[f[3]]; n[f[4]]++; sym[f[4]] = f[3]; if (!((f[3], f[4]) in seen)) { seen[f[3], f[4]] = 1; places[f[3]]++ } }
