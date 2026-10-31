@@ -19,6 +19,9 @@ set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 out="$1" objdir="$2" stubsOut="${3:-/dev/null}" globalsOut="${4:-/dev/null}"
 cd "$root"
+# the original's function sizes (as tools/match.sh takes them)
+sizes=re/map/functions.tsv
+[[ -f scratch/classes/sizes.tsv ]] && sizes=scratch/classes/sizes.tsv
 
 # Signature keys "Class::Name(type;type)const" with types reduced to sorted tokens, typedefs resolved.
 canon='
@@ -252,7 +255,11 @@ done
   echo '#pragma const_seg(".obhook")'
   echo
   echo 'const HookEntry g_hooks[] = {'
-  awk -F'\t' '{ printf "    { %s, (void*)&obhook_%d, \"%s\", %d },\n", $1, NR, $3, $4 }' "$entries"
+  # a function shorter than the 5-byte jump is matched but never patched in: the jump would overwrite the start of
+  # the function after it (a 4-byte getter's hook broke the setter behind it, s17)
+  awk -F'\t' 'FILENAME != ARGV[ARGC - 1] { size[sprintf("%x", strtonum("0x" $1))] = strtonum("0x" $2); next }
+    { a = sprintf("%x", strtonum($1)); hook = $4; if ((a in size) && size[a] < 5) hook = 0
+      printf "    { %s, (void*)&obhook_%d, \"%s\", %d },\n", $1, NR, $3, hook }' "$sizes" "$entries"
   echo '    { 0, 0, 0, 0 },  // keeps the array non-empty; never installed'
   echo '};'
   echo
