@@ -1,0 +1,29 @@
+SOURCE src/sc4/View3DWin.cpp|h
+EVIDENCE test scripts/tests/sc4_view3dwin_test.cpp - AddGUI / RemoveGUI / ShowPanel / HidePanel / ShowMayorSubPanel / MinimizeUI / DoCityObliterated / UpdateSpeedButtons / UpdateAlertBorder / DoMessage(cIGZWin*, cGZMessage&) / DoPanelCommandGUI all run in sc4_view3dwin; the rows below are the panel pieces that still need a neighbour
+PARTIAL:
+0x10078afde View3DHandleButtonActivated - the 4659-byte switch over ~120 button ids is not written: each case either runs a command-server command (the new ExecuteCommand seam) or opens one of nine menu builders (DoZoningMenu 0x10078cb24, DoTransportMenu 0x10078dd12, DoUtilitiesMenu 0x10078cbb4, DoLandscapeMenu 0x10078c690, DoVehicleMenu 0x10078e108, DoDayNightMenu 0x10078ca8c, DoDisasterCopingMenu 0x10078dbb0, CreateBuildingMenu 0x10078d074, InvokeSecondaryMenu 0x10078c960 / 0x10078d762, InvokeTertiaryMenu 0x10078dfdc / 0x10078d1be), none recovered or seamed; the body is empty and reports not-handled
+0x10078c2dc View3DDoPanelCommandGUI - the four panel toggles are written (shift+ctrl+alt + byte 0x1c9 rule, currentPanel_ / kPanelToggleButtonIds bookkeeping, ShowPanel / HidePanel), but the new-city branch needs DoEstablishCityDialog 0x10078ff30 (1625 bytes, unrecovered; the ShowEstablishCityDialog seam answers it) and the real callers are HandleButtonActivated
+0x100788084 View3DUpdateMayorRatingBar - not written: 1848 bytes building the mayor approval bar from cSLBuffer images (0x1431xxxx resource group 0x46a006b0) plus three city queries; needs the image-buffer seam and the advisor approval ratings
+0x100787e12 View3DUpdateSimulationClock - not written: formats RZ::LM() vslot 0x128(0) with cGZDate and the simulator's date (vslot 0x30 -> 0x68 / 0x78 / 0xb8) into the toolbar date text; needs a language-manager date formatter seam
+0x100788912 View3DUpdate24HourClock - not written: 746 bytes choosing one of the clock images (0x14315xxx) from the simulator hour and setting the day/night buttons; needs the image seam and SL::sp24HourClock's date/time accessors
+0x10078616c View3DDoPreCityInit - not written: 1489 bytes creating the camera (cS3DCamera), AddBackgroundImageToRenderer, ReadTunableValues, AddGUI, SL::OnView3DInit and the progress messages; cS3DCamera / cSC43DRender / OnView3DInit are not seamed here
+0x1007867d8 View3DDoPostCityInit - not written: 1668 bytes bringing the city up (DoCityEstablished / DoCityObliterated, Update24HourClock, UpdateMayorRatingBar, ambient light, modeless dialog) with the same neighbours as DoPreCityInit plus the mission dialogs
+0x10078e2e0 View3DProcessCommand - not written: 5940 bytes (the command table: view / camera / zoning / snapshot / album / modal dialogs, ~100 commands over the Invoke* and Do* helpers); needs cSC4WinSnapshotTaker 0x1003a0c84, the album (GoToAlbumForCurrentCity 0x10039cb38) and every menu builder
+SKIPPED: none
+# New seams (View3DWin.h, IView3DWinHost): the four nSC4UI window-set helpers (GetWindowChildrenSet 0x10030ae2d,
+# GetWindowChildrenNotInSet 0x10030ae83, AlignWindowSetToWindow 0x10030ad12, ClearAcceptFocusFlagRecursive 0x10030b220 -
+# routed through the host so View3DWin.cpp does not drag SC4UI.cpp into every test that links it; the host forwards to nSC4UI),
+# the script-window factory (CreateWindowFromScript 3- and 5-argument, SC4CreateWindowFromScript 0x100039a9f / 0x100039bf7),
+# the image buffers (LoadImageBuffer = cSLBuffer 0x100043c72's inner buffer, CreateImageBuffer = SL::spGS vslot 0x20 @ 0x10078a53c),
+# GZCOM CreateInstance for the toolbar button (exemplar 0x22ecfc47 / cIGZWinBtn 0x8810) and the compass window (exemplar
+# 0xca5d3294 / cISC4WinAlertBorder 0xca5d3290), cSLString 0x1001215e4, the recovered window procedures behind
+# INewsTickerWindow (0x10031ba2c), IMySimWindow (0x10031552c), IBudgetUIWindow (0x1002e476c), IGraphsViewWindow (0x1002dfc9c),
+# IBuildingSelectWindow (0x10075913c), IAdvisorPopupQueue (0x10032f2ac = +0x4d0, APT-6) and AttachCompassWinProc
+# (0x10032ef20 + SetWinProc 0x10078a76b), CreateCalloutBox (0x1003c5f5c = +0x5d0), CreateWinBMP (0x1003304ec = +0x5c8),
+# InitMapView (0x10035266e), IAdvisorWindow (spCity vslot 0x288 -> cSC4AdvisorSystem vslots 0xd8 / 0xe0 / 0xe8),
+# DisasterAlertActive (spCity 0x240 -> vslot 0x50), SituationAlertActive (spCity 0x188 -> vslot 0x30), SimulatorBusy
+# (spSimulator vslot 0x78), IsKeyDownNow (0x100241b76), ExecuteCommand (spCommandServer vslot 0x98) and ShowEstablishCityDialog
+# (0x10078ff30). Header corrections: +0x4d0 is the cSC4AdvisorPopupTracker (not a tool tip manager) and its own Shutdown
+# (+0x38) is called; +0x5d0 is the cSC4WinCalloutBox (the ICursorTextWindow seam was dropped); +0x5c0 is a 0x80x0x20
+# cIGZBuffer and +0x5c8 its gz::cIGZWinBMP; +0x530 is ShowMayorSubPanel's second state word; RemoveGUI uses the window
+# manager's DestroyWindow (vslot 0xb8) instead of RemoveWindowFromValidList.

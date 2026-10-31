@@ -5,7 +5,8 @@
 A decompilation of a classic 2003 city-building game, rebuilt function by function in C++ from its last PC release
 (version 1.1.641), with the aim of running natively on Linux at any resolution and making the game easy to mod.
 
-**Status:** early. Nothing playable yet. The tooling and the map of the original program come first.
+**Status:** early. Nothing playable yet. The native Linux build (`native/`) starts up, reads the game data and loads
+most saved cities; there is no game window yet.
 
 ## You need your own copy
 
@@ -21,6 +22,18 @@ that copy may ever be added to this repository.
    game stays playable and every rewritten function is tested in real play.
 4. When every function is rewritten, the game builds from these sources alone. Then the Windows-specific parts are
    replaced, producing native Linux (and Windows) builds with modern display support.
+
+## Two parts
+
+- `src/`, `hook/`, `tools/`: the function-by-function rewrite of the PC release described above.
+- `native/`: the route to a playable native Linux build. It is based on
+  [DeSCAi4](https://github.com/CadenKalez/DeSCAi4) by CadenKalez and contributors, a C++20 decompilation of the
+  later Mac release (GPLv3), with our Linux build and loading fixes on top. Its own README and notes are kept as they
+  were upstream.
+
+## Licence
+
+GNU General Public License v3.0 (see `LICENSE`), as `native/` is GPLv3.
 
 ## Roadmap
 

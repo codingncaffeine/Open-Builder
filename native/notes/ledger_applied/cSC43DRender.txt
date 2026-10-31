@@ -1,0 +1,28 @@
+SOURCE src/sc4/Render3D.cpp|h
+EVIDENCE test scripts/tests/sc4_3drender_test.cpp - the model change queue and the quad grid: WorldToContainerRect's clamp / degenerate-repair path and GetViewportRayContainerRect's 2 x 2 window, InsertModel building the grid element (bounds box, quadrant cell 93/140, the 0x4 / 0x40 / 0x800 / 0x10 flags) and Draw's drain (0x100765a93) turning it static (0x8) so DrawStaticView draws it, the backing store then restoring instead of redrawing, MoveModel / ChangeModel(1, 3, 5) / RemoveModel queueing changes 2 / 4 / 5 / 1 and the drain applying them (RemoveModel leaves through the queue and clears the model's custom data), IsModelInserted draining a nine-item queue, the InsertModel double-insert quirk, a dynamic model staying out of the queue, ModelShouldGoIntoBackingStore at zoom 0 vs 3, RebuildQuadGrid re-creating the elements for a new rotation (cell 43/199) and ReevaluateBackingStoreObjectFlags flipping the static flag with the zoom, DoViewRotationChange2 / DoViewZoomChange3 dropping the store and the dirty rectangles and disabling the store past the +0x278 threshold; fake driver / host / model
+0x100761e58 Render3DInsertModel
+0x100762628 Render3DRemoveModel
+0x10076279c Render3DMoveModel
+0x100762968 Render3DChangeModel
+0x1007628d6 Render3DMoveGridElement
+0x100762458 Render3DUpdateGridElementObjectFlags
+0x100762538 Render3DModelShouldGoIntoBackingStore
+0x1007620c4 Render3DWorldToContainerRect
+0x100761896 Render3DProcessModelChangeQueue
+0x100765592 Render3DRebuildQuadGrid
+0x1007657c6 Render3DReevaluateBackingStoreObjectFlags
+0x10076385e Render3DDoViewRotationChange2
+0x100763936 Render3DDoViewZoomChange3
+0x10076113a Render3DClearModelChangeQueue
+0x10076180e Render3DIsModelInserted
+0x1007659f6 Render3DDraw
+0x1007679b4 Render3DGetViewportRayContainerRect
+PARTIAL:
+0x100762b36 Render3DDoMessage the dispatcher needs the cIGZMessage2 accessor slots (0x20 / 0x48 / 0x50 / 0x70 / 0x78 / 0x98 / 0xc0) and the city / terrain services behind SL::spCity / SL::spTerrain, neither of which is recovered; the two camera messages it forwards to are now ported (DoViewRotationChange2 / DoViewZoomChange3) and tested directly
+0x1007630ca Render3DUpdateVisibleTerrainMetrics needs the terrain view (SL::spTerrain, +0x290) slots 0x28 / 0x30 / 0x38 / 0x40 / 0x70 / 0xa8, unrecovered; only the PickTerrainAlways probes and the +0x3e4 container bounds it writes into the view utilities are understood
+0x100767b12 Render3DPickTerrain not ported: returns false; the decompiler drops the `this` argument (param_1 is the renderer) and the terrain view / QI path at +0x290 plus RayIntersectsGroundPlane need the terrain view service
+0x100767d26 Render3DPickTerrainAtPoint not ported: returns false; the screen-point overload of the same path
+0x100767e2a Render3DPickTerrainAlways not ported: returns false; same path with the always-hits flag
+0x1007687de Render3DPickTerrainAlwaysAtPoint not ported: returns false; same path with the always-hits flag
+0x1007688d6 Render3DPick not ported: returns false; needs the quad-grid walk, cSC4PickContext (unrecovered) and the occupant-filter test
+0x100768972 Render3DPickWithRay not ported: returns false; the explicit origin / direction overload of Pick

@@ -1,0 +1,39 @@
+SOURCE src/sc4/ZoneDeveloper.cpp|h
+EVIDENCE test scripts/tests/sc4_zonedeveloper_test.cpp - the fake IZoneDeveloperHost drives the whole zoning pipeline over the recovered cSC4Lot cSC4SimGrid and lot-configuration filter, the cell-map region helpers (make/set/test/compress/extract), the parcellizable mask (water, street and lot-configuration rejections), region subdivision by connected component, DetermineLotSize (developer selection by desirability then active demand, the growth-list style and the default 2x2 footprint with the density gap), the four boundary sides and both orientation branches, the street layout (ExtendAsStreets, LayInJogStreets with its blocked path, DrawStreet single cell, clip-to-region and extend mode), CreateLotToFaceRoad with an explicit list and with facing -1, the simple industrial parcellizer (100 1x1 lots on a 10x10 region plus its two streets), the general Parcellize layout (a 9x9 residential region builds lots inside the region on the levelled footprints), CreateLotRemnants for all four facings, OnDezone (lot deletion, remnant refill and the orphan-rail demolition region), both connection fix-ups and the plop-lot no-configuration path
+
+0x10012feac ZoneDeveloperUpdateZoneType
+0x10012d184 ZoneDeveloperCreateParcellizableRegion
+0x10012d3ac ZoneDeveloperCompressRegion
+0x10012fa04 ZoneDeveloperExtractConnectedCells
+0x10012ecc2 ZoneDeveloperSubdivideTheZone
+0x10012d606 ZoneDeveloperDetermineLotSize
+0x10012dec2 ZoneDeveloperExtendAsStreets
+0x10012e0e8 ZoneDeveloperLayInJogStreets
+0x10012c61c ZoneDeveloperDrawStreet
+0x10012cbcc ZoneDeveloperCreateLotToFaceRoad
+0x10012c320 ZoneDeveloperSimpleParcellize
+0x10012ee06 ZoneDeveloperParcellize
+0x10012ce50 ZoneDeveloperExamineBoundaries
+0x10012b160 ZoneDeveloperOnZone
+0x10012b976 ZoneDeveloperOnDezone
+0x100129956 ZoneDeveloperCreateLotRemnants
+0x10012a040 ZoneDeveloperConnectRoadToAnyAdjacentStreets
+0x10012a534 ZoneDeveloperConnectStreetsAcrossRail
+0x10012abe4 ZoneDeveloperPlopAllLotTypes
+0x100130994 ZoneDeveloperUpdateHighlightTextures
+0x100132b32 ZoneDeveloperCreateLotIfPossible
+0x10012b046 ZoneDeveloperDoParcellization
+0x100130914 ZoneDeveloperHighlightParcels
+0x10013090a ZoneDeveloperLotFilterDestruct
+0x100133bb6 ZoneDeveloperLotFilterDestructComplete
+0x100133be4 ZoneDeveloperLotFilterIncludesConfiguration
+
+PARTIAL:
+0x10012959a ZoneDeveloperDoMessage - every branch now executes except the PlopAllBuildings cheat, whose PlopAllBuildingTypes is not recovered
+0x10012ad80 ZoneDeveloperPlopAllBuildingTypes - needs the spiral position walk (cSpiralIterator is recovered in SpiralIterator.h but the zone developer test line does not link SpiralIterator.cpp) and the building-type catalogue
+0x100132cde ZoneDeveloperCreateLot - unchanged, the live cSC4SafeList iterator is not recovered
+0x100133466 ZoneDeveloperGetSafeLotIterator - unchanged, cSC4SafeList is not recovered
+
+SKIPPED:
+0x100131ecc ZoneDeveloperCanCreatePloppedLot - still needs DecodeNetworkConnectionObject and the network occupant edge flags (not part of this pass)
+0x100132396 ZoneDeveloperCheckLotTerrainConstraints - still needs the lot configuration object list, the surface water query and the city world-to-cell conversion (not part of this pass)

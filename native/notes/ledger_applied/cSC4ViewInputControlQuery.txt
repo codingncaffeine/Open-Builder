@@ -1,0 +1,179 @@
+SOURCE src/sc4/ViewInputControlQuery.cpp|h
+EVIDENCE test scripts/tests/sc4_viewinputcontrolquery_test.cpp - sc4_viewinputcontrolquery ok: lifecycle/QI, Init/Shutdown, 6 messages, tip, hover+highlight, clicks, 10 dialog control helpers, 6 SetOrGet rows, picking, ratings, 27 new EnumFunc*/fire/police/jail/park/cost/neighbour rows, row table
+
+0x1002d5de4 SetOrGetFireStationEffectiveness
+0x1002d5e1e SetOrGetFireStationLocalFunding
+0x1002d5f02 SetOrGetFireStationEngineCount
+0x1002d5f82 SetOrGetFireStationMaintenanceCost
+0x1002d5fd8 SetOrGetPoliceStationEffectiveness
+0x1002d6016 SetOrGetPoliceStationArrestCount
+0x1002d6056 SetOrGetPoliceStationCrimeCount
+0x1002d6096 SetOrGetPoliceStationLocalFunding
+0x1002d617a SetOrGetPoliceStationPatrolCarCount
+0x1002d61fa SetOrGetPoliceStationMaintenanceCost
+0x1002d6250 SetOrGetJailCondition
+0x1002d631c SetOrGetJailCellCount
+0x1002d636a SetOrGetJailInmateCount
+0x1002d63e6 SetOrGetJailMaintenanceCost
+0x1002d6426 SetOrGetParkMaintenanceCost
+0x1002d6434 SetOrGetOccupantCost
+0x1002d906e FindCityOnOtherSideOfConnection
+0x1002d90d6 SetOrGetNeighborConnectionNeighborCityName
+0x1002d9184 SetOrGetNeighborConnectionNeighborCityMayorName
+0x1002d922e SetOrGetNeighborConnectionCongestion
+0x1002db37e EnumFuncSetFilter
+0x1002db3bc EnumFuncClearFilter
+0x1002db566 EnumFuncSetValue
+0x1002db5d8 EnumFuncUpdateValue
+0x1002db69e EnumFuncGetValue
+0x1002db70e EnumFuncNeighborDialogSetValue
+0x1002db748 EnumFuncNeighborDialogGetValue
+
+PARTIAL:
+0x1002c309a needs an unrecovered neighbour (see the class header comment)
+0x1002c3748 needs an unrecovered neighbour (see the class header comment)
+0x1002c3f66 needs an unrecovered neighbour (see the class header comment)
+0x1002c515c needs an unrecovered neighbour (see the class header comment)
+0x1002c5558 needs an unrecovered neighbour (see the class header comment)
+0x1002c55ae needs an unrecovered neighbour (see the class header comment)
+0x1002c5604 needs an unrecovered neighbour (see the class header comment)
+0x1002c5ca8 needs cSC4GrowthDeveloper / cISC4ZoneManager / cSC4TractDeveloper / cSC4Advice text tables, all unrecovered
+0x1002c8e20 needs cSC4GrowthDeveloper / cISC4ZoneManager / cSC4TractDeveloper / cSC4Advice text tables, all unrecovered
+0x1002c95d0 needs cSC4GrowthDeveloper / cISC4ZoneManager / cSC4TractDeveloper / cSC4Advice text tables, all unrecovered
+0x1002ca0b2 needs cSC4GrowthDeveloper / cISC4ZoneManager / cSC4TractDeveloper / cSC4Advice text tables, all unrecovered
+0x1002ca70c needs cSC4GrowthDeveloper / cISC4ZoneManager / cSC4TractDeveloper / cSC4Advice text tables, all unrecovered
+0x1002cb3ec needs cSC4GrowthDeveloper / cISC4ZoneManager / cSC4TractDeveloper / cSC4Advice text tables, all unrecovered
+0x1002cc3a0 needs cSC4GrowthDeveloper / cISC4ZoneManager / cSC4TractDeveloper / cSC4Advice text tables, all unrecovered
+0x1002ccd38 needs cSC4GrowthDeveloper / cISC4ZoneManager / cSC4TractDeveloper / cSC4Advice text tables, all unrecovered
+0x1002cdf74 needs cISC4NeighborDeal amount/value slots (0x50/0xb0) and ConvertConnectionTypeToCommodityType, unrecovered
+0x1002ce610 needs the query dialog script windows (SC4CreateWindowFromScript) plus the unrecovered zone/growth rows
+0x1002ce9fc needs the query dialog script windows (SC4CreateWindowFromScript) plus the unrecovered zone/growth rows
+0x1002ced14 needs cSC4GrowthDeveloper / cISC4ZoneManager / cSC4TractDeveloper / cSC4Advice text tables, all unrecovered
+0x1002cf38e needs cSC4GrowthDeveloper subjective thresholds (vslot 0xf0) and its response curves
+0x1002cf488 needs cSC4GrowthDeveloper subjective thresholds (vslot 0xf0) and its response curves
+0x1002cf544 reads the school simulator coverage/staff grids (cISC4SchoolSimulator, unrecovered)
+0x1002cf5fe reads the hospital simulator grids (cISC4HospitalSimulator, unrecovered)
+0x1002cf6b8 needs cSC4GrowthDeveloper subjective thresholds (vslot 0xf0) and its response curves
+0x1002cf776 needs cSC4GrowthDeveloper subjective thresholds (vslot 0xf0) and its response curves
+0x1002cf87c needs cSC4GrowthDeveloper subjective thresholds (vslot 0xf0) and its response curves
+0x1002cf948 needs cSC4GrowthDeveloper / cISC4ZoneManager / cSC4TractDeveloper / cSC4Advice text tables, all unrecovered
+0x1002cfae0 needs cSC4GrowthDeveloper / cISC4ZoneManager / cSC4TractDeveloper / cSC4Advice text tables, all unrecovered
+0x1002cfb90 needs the advice/headline tables (cSC4Advice / lot headlines), uncovered
+0x1002d24b6 needs the advice/headline tables (cSC4Advice / lot headlines), uncovered
+0x1002d24f6 needs the advice/headline tables (cSC4Advice / lot headlines), uncovered
+0x1002d2666 needs cSC4PathView / cSC4TripData / cISC4TrafficSource, all unrecovered
+0x1002d28ee needs cSC4PathView / cSC4TripData / cISC4TrafficSource, all unrecovered
+0x1002d2d7c needs cSC4PathView / cSC4TripData / cISC4TrafficSource, all unrecovered
+0x1002d2ebe needs cSC4PathView / cSC4TripData / cISC4TrafficSource, all unrecovered
+0x1002d2f28 needs cSC4PathView / cSC4TripData / cISC4TrafficSource, all unrecovered
+0x1002d3a04 needs cSC4PathView / cSC4TripData / cISC4TrafficSource, all unrecovered
+0x1002d4022 needs cSC4PathView / cSC4TripData / cISC4TrafficSource, all unrecovered
+0x1002d40cc needs cSC4PathView / cSC4TripData / cISC4TrafficSource, all unrecovered
+0x1002d42b0 needs cSC4PathView / cSC4TripData / cISC4TrafficSource, all unrecovered
+0x1002d655a reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d65ae reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d668a reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d66de reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d6876 reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d68bc reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d6944 builds a cSC4ResponseCurve from the aura simulator value (SL::spAuraSim vslot 0x40 takes an argument Ghidra dropped)
+0x1002d6a9e reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d6af2 reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d6b6e reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d6bc2 reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d6c4c reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d6ca0 reads the airport developer (SL::spCity vslot 0x268) and cISC4AirportSimulator, both unrecovered
+0x1002d6d2a reads the seaport developer (SL::spCity vslot 0x270) and cISC4SeaportSimulator, both unrecovered
+0x1002d6d7e reads the seaport developer (SL::spCity vslot 0x270) and cISC4SeaportSimulator, both unrecovered
+0x1002d6e08 reads the seaport developer (SL::spCity vslot 0x270) and cISC4SeaportSimulator, both unrecovered
+0x1002d6e5c reads the seaport developer (SL::spCity vslot 0x270) and cISC4SeaportSimulator, both unrecovered
+0x1002d6ee6 reads the seaport developer (SL::spCity vslot 0x270) and cISC4SeaportSimulator, both unrecovered
+0x1002d6f3a reads the seaport developer (SL::spCity vslot 0x270) and cISC4SeaportSimulator, both unrecovered
+0x1002d7016 reads the seaport developer (SL::spCity vslot 0x270) and cISC4SeaportSimulator, both unrecovered
+0x1002d706a reads the seaport developer (SL::spCity vslot 0x270) and cISC4SeaportSimulator, both unrecovered
+0x1002d70e6 reads cISC4WaterSimulator / the water-pollution property (vslot 0x368), unrecovered
+0x1002d7142 reads the school simulator coverage/staff grids (cISC4SchoolSimulator, unrecovered)
+0x1002d71fc reads the school simulator coverage/staff grids (cISC4SchoolSimulator, unrecovered)
+0x1002d7346 reads the school simulator coverage/staff grids (cISC4SchoolSimulator, unrecovered)
+0x1002d748c reads the school simulator coverage/staff grids (cISC4SchoolSimulator, unrecovered)
+0x1002d74de reads the school simulator coverage/staff grids (cISC4SchoolSimulator, unrecovered)
+0x1002d7530 reads the school simulator coverage/staff grids (cISC4SchoolSimulator, unrecovered)
+0x1002d75dc reads the museum/library simulator statistics (unrecovered)
+0x1002d75ea reads the museum/library simulator statistics (unrecovered)
+0x1002d7696 reads the museum/library simulator statistics (unrecovered)
+0x1002d76e8 reads the hospital simulator grids (cISC4HospitalSimulator, unrecovered)
+0x1002d77a2 reads the hospital simulator grids (cISC4HospitalSimulator, unrecovered)
+0x1002d78e8 reads the hospital simulator grids (cISC4HospitalSimulator, unrecovered)
+0x1002d7a2c reads the hospital simulator grids (cISC4HospitalSimulator, unrecovered)
+0x1002d7a7e reads the hospital simulator grids (cISC4HospitalSimulator, unrecovered)
+0x1002d7ad0 reads the hospital simulator grids (cISC4HospitalSimulator, unrecovered)
+0x1002d7b7c reads the landfill developer (SL::spCity vslot 0x270) and its lot records, unrecovered
+0x1002d7c22 reads the landfill developer (SL::spCity vslot 0x270) and its lot records, unrecovered
+0x1002d7c92 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d7cfe reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d7d84 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d7e00 reaches the pollution property object (vslot 0x30 -> 0x368), unrecovered
+0x1002d7e5c reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d7ef6 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d7fc8 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d8064 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d80a2 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d80e0 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d80ee reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d8162 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d81ae reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d81fa reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d8208 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d8264 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d8272 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d82ca reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d82d8 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d8378 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d83f4 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d843e reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d8488 reads the garbage/power plant statistics (SL::spGarbageSim / power-plant vslots, unrecovered)
+0x1002d859e reads cISC4WaterSimulator / the water-pollution property (vslot 0x368), unrecovered
+0x1002d860e reads cISC4WaterSimulator / the water-pollution property (vslot 0x368), unrecovered
+0x1002d868e reads cISC4WaterSimulator / the water-pollution property (vslot 0x368), unrecovered
+0x1002d86f2 reads cISC4WaterSimulator / the water-pollution property (vslot 0x368), unrecovered
+0x1002d875a reads cISC4WaterSimulator / the water-pollution property (vslot 0x368), unrecovered
+0x1002d87c0 reads cISC4WaterSimulator / the water-pollution property (vslot 0x368), unrecovered
+0x1002d8860 reads cISC4WaterSimulator / the water-pollution property (vslot 0x368), unrecovered
+0x1002d894c reads cISC4WaterSimulator / the water-pollution property (vslot 0x368), unrecovered
+0x1002d89b0 reads the transit-station simulator (unrecovered)
+0x1002d8aae reads the transit-station simulator (unrecovered)
+0x1002d8ba2 reads the transit-station simulator (unrecovered)
+0x1002d8c80 reads the transit-station simulator (unrecovered)
+0x1002d8d5e reads the transit-station simulator (unrecovered)
+0x1002d8e3c reads the transit-station simulator (unrecovered)
+0x1002d8e9e reads the landmark funding records (cSC4LandmarkDeveloper, unrecovered)
+0x1002d8f14 reads the landmark funding records (cSC4LandmarkDeveloper, unrecovered)
+0x1002d8fc4 reads the landmark funding records (cSC4LandmarkDeveloper, unrecovered)
+0x1002d931e needs cISC4NeighborDeal amount/value slots (0x50/0xb0) and ConvertConnectionTypeToCommodityType, unrecovered
+0x1002d94b6 needs cISC4NeighborDeal amount/value slots (0x50/0xb0) and ConvertConnectionTypeToCommodityType, unrecovered
+0x1002d9672 needs cISC4NeighborDeal amount/value slots (0x50/0xb0) and ConvertConnectionTypeToCommodityType, unrecovered
+0x1002d97c8 needs cISC4NeighborDeal amount/value slots (0x50/0xb0) and ConvertConnectionTypeToCommodityType, unrecovered
+0x1002d99be needs cSC4GrowthDeveloper subjective thresholds (vslot 0xf0) and its response curves
+0x1002d9a92 needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002d9baa needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002d9ca8 needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002d9d5e needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002d9e00 needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002da05e needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002da0e2 needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002da170 needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002da1fe needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002da28c needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002da38a needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002da462 needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002da724 needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002da7b2 needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002da840 needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002dac26 needs cISC4Lot occupancy vslots (0x148/0x190/0x1e8), cISC4BuildingDevelopmentSimulator and cSC4GrowthDeveloper, all unrecovered
+0x1002dac96 builds a cSC4ResponseCurve from the aura simulator value (SL::spAuraSim vslot 0x40 takes an argument Ghidra dropped)
+0x1002daed6 needs an unrecovered neighbour (see the class header comment)
+0x1002daf82 reads cISC4WaterSimulator / the water-pollution property (vslot 0x368), unrecovered
+0x1002daf96 cell-id row dispatcher: only ids 0x104b..0x104d (neighbour city/mayor/congestion) are wired; the airport/seaport/landfill arms (0x1011..0x1015, 0x1026, 0x1027, 0x1028) and the deal arms (0x1066..0x107e) need the unrecovered airport/seaport/landfill developers and cISC4NeighborDeal
+
+SKIPPED:
+0x1002d57a0 DrawPerformanceMeter needs cGZWinBMP's bitmap-table slots (0x18 -> 0x2f0) and the icon buffer the original blits with RZDrawBltTiled; the port's cGZWinBMP does not model that table and Ghidra dropped the icon-buffer assignment, so the two blits cannot be reproduced faithfully

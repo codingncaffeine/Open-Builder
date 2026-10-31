@@ -1,0 +1,9 @@
+SOURCE src/sc4/NetworkTool.cpp|h
+EVIDENCE test scripts/tests/sc4_networktool_test.cpp - state, COM identity, init/shutdown handshake, failure strings, bridge queries, network-flag helpers, padded rect, IsSimpleDiagonalNetwork, terrain highlight and the 0x71aa64 straight/diagonal splitter (registry scripts/tests/registry/sc4_networktool.txt); the other 195 cSC4NetworkTool rows were already applied from the first pass of this file, this file only upgrades the row below
+0x10018b0a0 IsSimpleDiagonalNetwork
+
+PARTIAL:
+0x100186748 DestructBody - already applied as recovered-partial: the body calls Shutdown, which still has two unrecovered virtual calls (ClearCellPreviews 0x10018803e / ClearOccupantHighlights 0x1001901a6)
+
+SKIPPED:
+nothing in cSC4NetworkTool is Windows/DX7-only

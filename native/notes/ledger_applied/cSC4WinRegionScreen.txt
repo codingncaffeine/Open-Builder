@@ -1,0 +1,13 @@
+SOURCE src/sc4/WinRegionScreen.cpp|h
+EVIDENCE test scripts/tests/sc4_winregionscreen_test.cpp - Init posts the region-music request: the fake message server records a cIGZMessage2Standard of type 0x2a3ad653 with HasData1 true and Data1 == 1, posted between the leaving-app and entered-app messages, which is what cSC4AudioEventHandler::HandleRadioMessages turns into cIGZRadio::SetStation("krgn", fade); the same test drives the rest of Init (backdrop, the host's region view at +0x160 with its region index / label colours, the 12 snapshot buffers through the image-load path, the scroll and cloud children, InitApplicationServices, PutCitiesInView, ReadTunableValues and the saved view position restored from preferences +0xefc / +0xf00 only when the nation's previous region index matches and its validity flag is set), the Init-time command registration / notification registration and the Shutdown that removes the children, releases the graphic system and the snapshot buffers and leaves the fake server with exactly the leaving-region and left-region messages; registry scripts/tests/registry/sc4_winregionscreen.txt
+PARTIAL:
+0x100237bf2 Init: the "region_global" block 0x1002386ec..0x1002387e9 is still missing (cSC4EffectsManager vslot 0x30 creates the effect, cSC4VisualEffect::SetEffectTransform gets a translation of (cellsX/2, 0, cellsZ/2) * cell width and Start(0) runs it, stored at +0x280); the rest of the 3113-byte function is in place, with the cISC4Nation state (vslots 0x30/0x50) and the snapshot lookups / blank-buffer fallback behind IRegionScreenHost
+# No function is newly recovered by this change: Init stays recovered-partial because of the block above. The other
+# recovered-partial rows of this class are unchanged: PutCitiesInView 0x100236398 and RecalculateImagesFromCitySnapshots
+# 0x100236c36 still need SC4ReadCityRegionViewThumbnails 0x1001d2cf3 / Resample 0x10023c642 / SC4MoveMaskToAlpha
+# 0x10023ce10 / SC4CreateSpanList 0x10023cf28; MakeWholeRegion 0x10023a66c and GetOrCreateRegionalCity 0x10023ae9c need
+# the cISC4Nation / cSC4RegionalCity image plumbing; LoadGUI 0x10023927a needs the region script resources; GZOnCommand
+# 0x10023b92a needs the region dialogs; InitApplicationServices 0x100238972 needs the cSC43DRender wiring and
+# cSC4RegionalTerrainView.
+SKIPPED:
+# none: every remaining function of the class is either recovered or recovered-partial.
