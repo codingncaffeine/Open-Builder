@@ -83,7 +83,7 @@ _STLP_BEGIN_NAMESPACE
 inline void*  _STLP_CALL __stl_new(size_t __n) {  _STLP_CHECK_NULL_ALLOC(::operator _STLP_NEW(__n, __FILE__, __LINE__)); }
 inline void _STLP_CALL __stl_delete(void* __p) { ::operator delete(__p, __FILE__, __LINE__); }
 #elif defined (_STLP_OUT_OF_LINE_STL_NEW)
-/* Modified for Open Builder: the program this project rebuilds declares these two out of line and defines them
+/* Modified for Open City Builder: the program this project rebuilds declares these two out of line and defines them
    itself, routing the containers' memory to its own allocator. */
 void*  _STLP_CALL __stl_new(size_t __n);
 void   _STLP_CALL __stl_delete(void* __p);

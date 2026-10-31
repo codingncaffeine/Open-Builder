@@ -4,7 +4,7 @@
 //
 //   analyzeHeadless <project dir> <project> -process <program> -noanalysis \
 //       -scriptPath tools/ghidra -postScript Decompile.java <hexaddr> [hexaddr ...]
-//@category OpenBuilder
+//@category OpenCityBuilder
 
 import ghidra.app.decompiler.DecompInterface;
 import ghidra.app.decompiler.DecompileResults;

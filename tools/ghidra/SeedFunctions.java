@@ -2,7 +2,7 @@
 // argument (one per line), so analysis also finds functions nothing calls, such as a library's public API.
 //
 //   analyzeHeadless ... -import <binary> -scriptPath tools/ghidra -preScript SeedFunctions.java <addresses.txt>
-//@category OpenBuilder
+//@category OpenCityBuilder
 
 import ghidra.app.cmd.disassemble.DisassembleCommand;
 import ghidra.app.script.GhidraScript;

@@ -478,7 +478,7 @@ public:
   }
 
 #if defined (_STLP_RESIZE_BY_REFERENCE)
-  /* Modified for Open Builder: the program this project rebuilds used an STLport from before 4.6, whose resize takes
+  /* Modified for Open City Builder: the program this project rebuilds used an STLport from before 4.6, whose resize takes
      the value by reference (as 4.5.3 does); 4.6 takes it by value. */
   void resize(size_type __new_size, const _Tp& __x) {
 #else

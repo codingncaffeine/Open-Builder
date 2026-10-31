@@ -411,7 +411,7 @@ template <class _Key, class _Value, class _KeyOfValue,
   if (__comp)
     if (__j == begin())     
 #if defined (_STLP_INSERT_UNIQUE_BY_X)
-      /* Modified for Open Builder: the program this project rebuilds passes __x here, as 4.5.3 does; 4.6 passes __y. */
+      /* Modified for Open City Builder: the program this project rebuilds passes __x here, as 4.5.3 does; 4.6 passes __y. */
       return pair<iterator,bool>(_M_insert(__x, __y, __v), true);
 #else
       return pair<iterator,bool>(_M_insert(/* __x*/ __y, __y, __v), true);

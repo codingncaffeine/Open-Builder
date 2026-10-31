@@ -7,7 +7,7 @@ A decompilation of a classic 2003 city-building game, rebuilt function by functi
 
 ## You need your own copy
 
-Open Builder contains no game data, art, sound, text or executable code from the original. To build, verify or play
+Open City Builder contains no game data, art, sound, text or executable code from the original. To build, verify or play
 it you need your own legally purchased copy of the game (version 1.1.641, the current digital release). Nothing from
 that copy may ever be added to this repository.
 

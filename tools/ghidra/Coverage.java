@@ -4,7 +4,7 @@
 //
 //   analyzeHeadless <project dir> <project> -process <program> -noanalysis -readOnly \
 //       -scriptPath tools/ghidra -postScript Coverage.java [gaps to list, default 20]
-//@category OpenBuilder
+//@category OpenCityBuilder
 
 import ghidra.app.script.GhidraScript;
 import ghidra.program.model.address.Address;

@@ -172,7 +172,7 @@ template <class _Value, class _Traits> struct _Rb_tree_iterator : public _Rb_tre
   _STLP_DEFINE_ARROW_OPERATOR
 
 #if defined (_STLP_TREE_ITERATOR_WALKS)
-  /* Modified for Open Builder: in the program this project rebuilds the tree iterator's ++ and -- walk the tree
+  /* Modified for Open City Builder: in the program this project rebuilds the tree iterator's ++ and -- walk the tree
      themselves (the static helpers' bodies, written out here) and stay out of line; 4.6 calls the helpers. */
   _Self& operator++() {
     _Base_ptr __x = _M_node;

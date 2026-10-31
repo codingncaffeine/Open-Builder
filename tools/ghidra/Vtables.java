@@ -6,7 +6,7 @@
 //
 //   analyzeHeadless <project dir> <project> -process <program> -noanalysis -readOnly \
 //       -scriptPath tools/ghidra -postScript Vtables.java <out.tsv>
-//@category OpenBuilder
+//@category OpenCityBuilder
 
 import ghidra.app.script.GhidraScript;
 import ghidra.program.model.address.Address;

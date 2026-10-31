@@ -3,7 +3,7 @@
 //   postScript BSimPairs.java <bsim URL> <out.tsv> [similarity floor, default 0.5] [results per function, default 3]
 // out.tsv, one line per candidate: our address, rank, similarity, significance, its executable, its address, its name
 // (addresses hex, the other program's as BSim records it). Functions below BSim's own size floor are not asked.
-//@category OpenBuilder
+//@category OpenCityBuilder
 
 import java.io.PrintWriter;
 import java.util.*;

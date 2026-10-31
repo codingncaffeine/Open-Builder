@@ -8,7 +8,7 @@
 //
 //   analyzeHeadless <project dir> <project> -process <program> -noanalysis \
 //       -scriptPath tools/ghidra -postScript DataReferencedFunctions.java
-//@category OpenBuilder
+//@category OpenCityBuilder
 
 import ghidra.app.cmd.disassemble.DisassembleCommand;
 import ghidra.app.script.GhidraScript;
