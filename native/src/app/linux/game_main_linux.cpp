@@ -906,15 +906,24 @@ int main(int argc, char** argv) {
         else if (fullscreen) { windowW = usable.w; windowH = usable.h; }
         else { windowW = usable.w * 9 / 10; windowH = usable.h * 9 / 10; }
     }
+    if (uiScale < 0 && interactive)   // Graphic Options > Resolution: that many logical lines in the window
+        if (const int chosen = native::LoadDisplayHeight(); chosen >= 480) uiScale = std::clamp(double(windowH) / chosen, 0.75, 4.0);
     if (uiScale < 0) uiScale = interactive ? 0 : 1;
-    if (uiScale == 0) {   // auto: about 900 logical lines, in quarter steps, never below the desktop's own scale or 1
-        uiScale = std::max<double>(contentScale, std::floor(double(windowH) / 900.0 * 4.0) / 4.0);
-        uiScale = std::max(1.0, uiScale);
+    native::SetDisplayGeometry(windowW, windowH, 0);
+    if (uiScale == 0) {   // auto: the resolution choice nearest 900 lines (or the desktop's own scaling, when it has one)
+        const double target = contentScale > 1.0f ? windowH / contentScale : 900.0;
+        int best = windowH;
+        for (int i = 0; i < 4; ++i) {
+            int w = 0, h = 0;
+            if (native::ResolutionChoice(i, w, h) && std::fabs(h - target) < std::fabs(best - target)) best = h;
+        }
+        uiScale = std::max(1.0, double(windowH) / best);
     }
-    gW = std::max(800, int(std::lround(windowW / uiScale)));
-    gH = std::max(600, int(std::lround(windowH / uiScale)));
+    gW = std::max(640, int(std::lround(windowW / uiScale)));
+    gH = std::max(480, int(std::lround(windowH / uiScale)));
     std::printf("display: window %dx%d pixels, UI scale %.2f -> game resolution %dx%d\n", windowW, windowH, uiScale, gW, gH);
     native::SetGameResolution(gW, gH, usable.w, usable.h);
+    native::SetDisplayGeometry(windowW, windowH, gH);
     // The shot and scenario runs draw into a hidden window: the frame target is offscreen anyway, the window only holds the context.
     SDL_WindowFlags flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIGH_PIXEL_DENSITY;
     if (!interactive) flags |= SDL_WINDOW_HIDDEN;

@@ -3,10 +3,12 @@
 #include "app/NativeUi.h"
 
 #include <algorithm>
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <cctype>
 #include <filesystem>
+#include <fstream>
 #include <map>
 #include <memory>
 #include <string>
@@ -57,7 +59,7 @@ PngDecoder g_decodePng = nullptr;   // set by host_main.mm (ImageIO lives there)
 
 // The standard bitmap resources (type 0x856ddbac, PNG) of the game data, searched in the engine's package order; one counted reference.
 // The packages in lookup order: the language's SimCityLocale.dat first (its strings and art override the base ones), then
-// the base packages. Names match without regard to case (the PC data spells some ".DAT"); the language folder is
+// the expansion and the base packages, the later-loaded package first as the game's resource manager resolves them. Names match without regard to case (the PC data spells some ".DAT"); the language folder is
 // $SC4_LANGUAGE, else English.
 std::string FindDataFile(const std::string& relative) {
     std::error_code error;
@@ -83,7 +85,8 @@ bool LoadResourceBytes(std::uint32_t type, std::uint32_t group, std::uint32_t in
     if (names.empty()) {
         const char* language = std::getenv("SC4_LANGUAGE");
         names.push_back(std::string(language && *language ? language : "English") + "/SimCityLocale.dat");
-        for (const char* name : {"Intro.dat", "SimCity_1.dat", "SimCity_2.dat", "SimCity_3.dat", "SimCity_4.dat", "SimCity_5.dat", "EP1.dat"})
+        // later packages override earlier ones in the game's resource manager: the expansion first, then the base set newest first
+        for (const char* name : {"EP1.dat", "SimCity_5.dat", "SimCity_4.dat", "SimCity_3.dat", "SimCity_2.dat", "SimCity_1.dat", "Intro.dat"})
             names.push_back(name);
     }
     for (std::size_t i = 0; i < names.size(); ++i) {
@@ -140,10 +143,8 @@ public:
     bool UnscriptWindow(cIGZWin*, cIGZString&) override { return false; }   // unscript_IGZWin is not recovered
     bool LoadScriptString(std::uint32_t group, std::uint32_t instance, cIGZString& out) override { return LoadLocalizedString(group, instance, out); }
     cIGZBuffer* LoadScriptBuffer(std::uint32_t group, std::uint32_t instance) override { return LoadBitmapResource(group, instance); }
-    void GetNativeResolution(int index, int& width, int& height) override {
-        static const int modes[4][2] = {{1024, 768}, {1280, 1024}, {1600, 1200}, {1920, 1080}};
-        width = modes[index & 3][0]; height = modes[index & 3][1];
-    }
+    // the Graphic Options' four resolution labels: the logical resolutions this window offers (ResolutionChoice)
+    void GetNativeResolution(int index, int& width, int& height) override { ResolutionChoice(index, width, height); }
 private:
     IVocabulary* cached_ = nullptr;
 } g_services;
@@ -154,6 +155,40 @@ cIGZUnknown* MakeWin() { return static_cast<cIGZUnknown*>(static_cast<cIGZWin*>(
 }  // namespace
 
 void SetPngDecoder(PngDecoder decoder) { g_decodePng = decoder; }
+
+namespace {
+int g_windowW = 1024, g_windowH = 768, g_gameH = 768;
+}  // namespace
+void SetDisplayGeometry(int windowWidth, int windowHeight, int gameHeight) {
+    g_windowW = windowWidth; g_windowH = windowHeight; g_gameH = gameHeight;
+}
+// The four logical resolutions on offer: the largest four of the usual heights that fit the window (so the UI never
+// shrinks below its drawn size), each as wide as the window's aspect ratio makes it.
+bool ResolutionChoice(int index, int& width, int& height) {
+    static constexpr int kHeights[] = {600, 720, 768, 900, 1080, 1200, 1440, 1600, 2160};
+    std::vector<int> fit;
+    for (int h : kHeights) if (h <= g_windowH) fit.push_back(h);
+    if (fit.empty()) fit.push_back(g_windowH);
+    while (fit.size() > 4) fit.erase(fit.begin());
+    if (index < 0 || index >= int(fit.size())) { width = height = 0; return false; }
+    height = fit[std::size_t(index)];
+    width = int(std::lround(double(height) * g_windowW / std::max(1, g_windowH)));
+    return true;
+}
+int CurrentGameHeight() { return g_gameH; }
+
+int LoadDisplayHeight() {
+    std::ifstream in(DocumentsDirectory() + "/display.conf");
+    std::string line;
+    while (std::getline(in, line))
+        if (line.rfind("game-height=", 0) == 0) return std::atoi(line.c_str() + 12);
+    return 0;
+}
+void SaveDisplayHeight(int height) {
+    std::error_code error;
+    std::filesystem::create_directories(DocumentsDirectory(), error);
+    std::ofstream(DocumentsDirectory() + "/display.conf") << "# the game's logical height (Graphic Options > Resolution); --scale overrides it\ngame-height=" << height << "\n";
+}
 
 // The game's string resources (LTEXT, type 0x2026960b): a u16 character count, the marker 0x1000, then that many UTF-16LE
 // characters; a record without the marker is plain 8-bit text. Stored as UTF-8, the encoding the native fonts read.

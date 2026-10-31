@@ -39,6 +39,7 @@
 #include "app/GameAudio.h"
 #include "app/NativeAudio.h"
 #include "sc4/AudioPreferencesWinProc.h"
+#include "sc4/VideoPreferencesWinProc.h"
 #include "sc4/SmallWinProcs.h"
 #include <chrono>
 #include "sc4/PropDeveloper.h"
@@ -261,7 +262,12 @@ struct StubView3DWin final : IView3DWinHost {
             if (sc4::cSC4View3DWin* view = CityView3DWin()) view->SetFocus();
             return;
         }
-        if (which != 0) { SC4_UNWIRED("IView3DWinHost::RunPreferencesDialog (video preferences not recovered)"); return; }
+        if (which == 1) {
+            RunGraphicOptionsDialog([] { return BootApplication() ? BootApplication()->GetPreferences() : nullptr; });
+            if (sc4::cSC4View3DWin* view = CityView3DWin()) view->SetFocus();
+            return;
+        }
+        if (which != 0) return;
         RunGameOptionsDialog([this] { return Preferences(); });
         if (sc4::cSC4View3DWin* view = CityView3DWin()) view->SetFocus();
     }
@@ -412,6 +418,52 @@ void RunAudioOptionsDialog(std::function<std::uint8_t*()> preferences) {
     if (proc->ShowDialog()) proc->DoModalWin();
     else SC4_UNWIRED("RunAudioOptionsDialog: the audio options dialog was not built");
     proc->Release();
+}
+
+// new cSC4VideoPreferencesWinProc; ShowDialog; DoModalWin: the "Graphic Options" dialog. A changed resolution becomes the
+// game's logical height at the next start (<documents>/display.conf, read before the window opens): on modern displays the
+// choice sets how much room the UI has, as it did on the original's screens.
+void RunGraphicOptionsDialog(std::function<std::uint8_t*()> preferences) {
+    using sc4::cSC4VideoPreferencesWinProc;
+    if (!ActiveWinMgr() || !ActiveWinMgr()->modalDialogs || cSC4VideoPreferencesWinProc::Displayed()) return;
+    sc4::VideoPreferencesServices& services = sc4::GetVideoPreferencesServices();
+    services.preferences = std::move(preferences);
+    if (!services.windowManager) {
+        services.windowManager = [] { return static_cast<cIGZWinMgr*>(ActiveWinMgr()); };
+        services.savePreferences = [] { if (cSC4App* app = BootApplication()) app->SavePreferences(); };
+        services.applyVideo = [](std::uint8_t* block) {
+            if (cSC4App* app = BootApplication()) app->ApplyVideoPreferences(*reinterpret_cast<sc4::SC4VideoPreferences*>(block));
+        };
+        services.resolution = [](int index, int& width, int& height) { return ResolutionChoice(index, width, height); };
+        services.currentHeight = [] { return CurrentGameHeight(); };
+        services.automaticVideo = [](std::uint8_t* block) {
+            if (cSC4App* app = BootApplication()) app->GetAutoVideoPreferences(reinterpret_cast<sc4::SC4VideoPreferences*>(block));
+        };
+        services.postMessage = [](std::uint32_t type) {
+            if (!SL::spMS2) return;
+            auto* message = new cRZMessage2Standard();
+            message->AddRef();
+            message->SetType(type);
+            SL::spMS2->MessagePost(message, false);
+            message->Release();
+        };
+    }
+    std::uint8_t* blob = services.preferences ? services.preferences() : nullptr;
+    std::uint32_t height = 0;
+    if (blob) std::memcpy(&height, blob + 0xf20, 4);
+    if (blob) {   // the block's resolution starts as the one running now (the dialog's buttons compare with it)
+        int width = 0, running = CurrentGameHeight();
+        for (int i = 0; i < 4; ++i) { int w = 0, h = 0; if (ResolutionChoice(i, w, h) && h == running) width = w; }
+        if (width) { const std::uint32_t w32 = std::uint32_t(width), h32 = std::uint32_t(running); std::memcpy(blob + 0xf1c, &w32, 4); std::memcpy(blob + 0xf20, &h32, 4); height = h32; }
+    }
+    auto* proc = new cSC4VideoPreferencesWinProc();
+    proc->AddRef();
+    if (proc->ShowDialog()) proc->DoModalWin();
+    else SC4_UNWIRED("RunGraphicOptionsDialog: the graphic options dialog was not built");
+    proc->Release();
+    std::uint32_t chosen = 0;
+    if (blob) std::memcpy(&chosen, blob + 0xf20, 4);
+    if (blob && chosen != height && chosen >= 480) SaveDisplayHeight(static_cast<int>(chosen));
 }
 
 void InstallView3DWinStub() { static StubView3DWin s; sc4::SetView3DWinHost(&s); }

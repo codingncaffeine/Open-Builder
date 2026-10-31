@@ -691,6 +691,7 @@ src/app/NativeCityQueries.cpp
 src/app/NativeCityViewQueries.cpp
 src/sc4/GamePreferencesWinProc.cpp
 src/sc4/AudioPreferencesWinProc.cpp
+src/sc4/VideoPreferencesWinProc.cpp
 src/tools/city_probe_hostglobals.cpp
 src/render/gd/GLGDriver.cpp
 src/app/GameAudio.cpp

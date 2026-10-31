@@ -37,4 +37,13 @@ cIGZWin* CreateWindowFromScript(const cGZPersistResourceKey& key, cIGZWin* paren
 void RunGameOptionsDialog(std::function<std::uint8_t*()> preferences);
 // The modal "Audio Options" dialog (cSC4AudioPreferencesWinProc) over the same blob.
 void RunAudioOptionsDialog(std::function<std::uint8_t*()> preferences);
+// The modal "Graphic Options" dialog (cSC4VideoPreferencesWinProc) over the same blob.
+void RunGraphicOptionsDialog(std::function<std::uint8_t*()> preferences);
+// The game's logical height for the next start (<documents>/display.conf; 0 = none chosen).
+int LoadDisplayHeight();
+// The window's size and the game's logical height (the main sets them); the resolution choices offered for them.
+void SetDisplayGeometry(int windowWidth, int windowHeight, int gameHeight);
+bool ResolutionChoice(int index, int& width, int& height);
+int CurrentGameHeight();
+void SaveDisplayHeight(int height);
 }  // namespace native

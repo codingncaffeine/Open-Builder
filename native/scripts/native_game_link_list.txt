@@ -696,3 +696,4 @@ src/app/NativeCityQueries.cpp
 src/app/NativeCityViewQueries.cpp
 src/sc4/GamePreferencesWinProc.cpp
 src/sc4/AudioPreferencesWinProc.cpp
+src/sc4/VideoPreferencesWinProc.cpp

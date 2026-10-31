@@ -357,6 +357,8 @@ public:
     virtual void RunGameOptionsDialog() {}
     // The options menu's audio options button (0xa98f4f88): the modal "Audio Options" dialog.
     virtual void RunAudioOptionsDialog() {}
+    // The options menu's graphic options button (0x098f4f6c): the modal "Graphic Options" dialog.
+    virtual void RunGraphicOptionsDialog() {}
     // RZ::LM()->vslot 0x128(0)->vslot 0x90 (value, out): the localised number text.
     virtual void FormatNumber(int value, cRZString& out) = 0;
 };

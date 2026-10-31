@@ -1218,6 +1218,9 @@ bool cSC4WinRegionScreen::GZOnCommand(std::uint32_t command, std::uint64_t param
     case 0xa98f4f88:   // the options menu's audio options button
         if (host) host->RunAudioOptionsDialog();
         return true;
+    case 0x098f4f6c:   // the options menu's graphic options button
+        if (host) host->RunGraphicOptionsDialog();
+        return true;
     case kRegionScreenPanelButtonIds[0]:
         ShowPanel(0);
         return true;

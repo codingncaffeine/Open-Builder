@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <filesystem>
+#include <map>
 #include <string>
 #include <vector>
 
@@ -56,14 +57,29 @@ struct Graphics final : IGraphicSystemControl {
     bool IsFullScreenMode() override { return false; }
     std::uint32_t GetScreenPixelFormatBits() override { return 32; }
 };
+// The video options (cSC4App::ApplyVideoPreferences writes them, GetAutoVideoPreferences reads the automatic choice).
+// Any machine that runs this build is far past the game's high tier: the automatic choice is High everywhere, every
+// effect on, hardware rendering, 32-bit colour. Option numbers: 0 visual effects, 1 cars / sims, 2 shadows, 3 texture
+// quality, 9 city detail, 0xf building draw speed (1..3); 4 clouds / fog, 5 waves, 7 colour cursor, 8 UI translucency,
+// 10 variable speed automata (0 / 1); 6 renderer (1 hardware); 0xb the native resolution's index; 0xc colour depth
+// (1 = 32 bit); 0xd (1).
 struct Options final : sc4::IVideoOptionStore {
-    void SetOption(int, int) override {}
-    int GetOption(int option) override { return option == 0xd ? 1 : 0; }
+    std::map<int, int> values = {{0, 3}, {1, 3}, {2, 3}, {3, 3}, {9, 3}, {0xf, 3}, {4, 1}, {5, 1}, {7, 1}, {8, 1},
+                                 {10, 1}, {6, 1}, {0xb, 0}, {0xc, 1}, {0xd, 1}};
+    void SetOption(int option, int value) override { values[option] = value; }
+    int GetOption(int option) override { auto it = values.find(option); return it == values.end() ? 0 : it->second; }
 };
 }  // namespace
 
 
 namespace native {
+std::string DocumentsDirectory() {
+    if (const char* forced = std::getenv("SC4_DOCUMENTS"); forced && *forced) return forced;
+    if (const char* data = std::getenv("XDG_DATA_HOME"); data && *data) return std::string(data) + "/open-city-builder";
+    const char* home = std::getenv("HOME");
+    return std::string(home && *home ? home : "/tmp") + "/.local/share/open-city-builder";
+}
+
 static cGZFramework* g_framework = nullptr;
 static cSC4App* g_app = nullptr;
 cGZFramework* BootFramework() { return g_framework; }
@@ -74,9 +90,12 @@ bool RunBoot(bool verbose, bool keepAlive, gd::cIGZGDriver* driver, const std::f
     auto Step = [&](const char* name, bool ok) { std::printf("[%s] %s\n", ok ? "OK" : "FAIL", name); std::fflush(stdout); if (!ok) ++failures; };
 
     const std::string bundle = platform::GameContentsDir();
-    const std::string docs = "/tmp/sc4boot_docs";
-    std::filesystem::create_directories(docs);
-    SetDocumentsFolderProvider([&](std::string& out) { out = docs; return true; });
+    // The game's documents (preferences, regions, saved cities): $XDG_DATA_HOME/open-city-builder (~/.local/share/...),
+    // kept between runs. SC4_DOCUMENTS overrides it (the tests point it into their sandbox).
+    static const std::string docs = DocumentsDirectory();
+    std::error_code docsError;
+    std::filesystem::create_directories(docs, docsError);
+    SetDocumentsFolderProvider([](std::string& out) { out = docs; return true; });
 
     auto* framework = new cGZFramework();
     g_framework = framework;

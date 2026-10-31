@@ -1,5 +1,6 @@
 // Platform glue of the native Metal application (no recovered counterpart on macOS); derived from the early host.
 #pragma once
+#include <string>
 #include <functional>
 
 class cGZFramework;
@@ -8,6 +9,8 @@ class cSC4App;
 namespace native {
 // The game's (logical) resolution and the display's, before RunBoot (the application reads them as its metrics).
 void SetGameResolution(int width, int height, int screenWidth, int screenHeight);
+// Where the game keeps its documents: $SC4_DOCUMENTS, else $XDG_DATA_HOME/open-city-builder, else ~/.local/share/open-city-builder.
+std::string DocumentsDirectory();
 // Runs PreFrameWorkInit -> Init -> PostFrameWorkInit (-> shutdown unless keepAlive) of the recovered cSC4App against
 // the real game data.
 // `beforeInit` runs after the framework and the application object exist and before PreFrameWorkInit: the place to register the window
