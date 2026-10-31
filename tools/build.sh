@@ -28,6 +28,10 @@ quiet() {  # the toolkit echoes each source name and its progress, in CRLF; show
 cl /nologo /c /O2 /Isdk "/Fo$out/sdk$sep" sdk/kernel32_stub.cpp 2>&1 | quiet
 link /nologo /dll /noentry /nodefaultlib /def:sdk/kernel32.def "/out:$out/sdk/kernel32.dll" \
   "/implib:$out/sdk/kernel32.lib" "$out/sdk/kernel32_stub.obj" 2>&1 | quiet
+# wininet.lib alike: decompiled functions call the original's wininet imports
+cl /nologo /c /O2 /Isdk "/Fo$out/sdk$sep" sdk/wininet_stub.cpp 2>&1 | quiet
+link /nologo /dll /noentry /nodefaultlib /def:sdk/wininet.def "/out:$out/sdk/wininet.dll" \
+  "/implib:$out/sdk/wininet.lib" "$out/sdk/wininet_stub.obj" 2>&1 | quiet
 
 
 flags_for() {  # the FLAGS file nearest above a source under src/, else the hook's flags
@@ -76,7 +80,7 @@ objs=()
 for s in "${sources[@]}"; do objs+=("$out/obj/$(basename "${s%.cpp}").obj"); done
 objs+=("$out/obj/globals.gen.obj")
 link /nologo /dll /nodefaultlib /entry:DllMain /def:hook/version.def "/map:$out/version.map" \
-  "/out:$out/version.dll" "${objs[@]}" "$out/sdk/kernel32.lib" OpenGL32.Lib Gdi32.Lib User32.Lib 2>&1 | quiet
+  "/out:$out/version.dll" "${objs[@]}" "$out/sdk/kernel32.lib" "$out/sdk/wininet.lib" OpenGL32.Lib Gdi32.Lib User32.Lib 2>&1 | quiet
 
 [[ -f "$out/version.dll" ]] || { echo "build failed" >&2; exit 1; }
 # The objects of this successful build, kept beside the output (which the next build wipes first): tools/known-slots.sh

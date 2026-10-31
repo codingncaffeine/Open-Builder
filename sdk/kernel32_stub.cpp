@@ -25,4 +25,9 @@ BOOL __stdcall SetEnvironmentVariableA(LPCSTR, LPCSTR) { return 0; }
 DWORD __stdcall GetLastError() { return 0; }
 DWORD __stdcall GetFileSize(HANDLE, DWORD*) { return 0; }
 DWORD __stdcall SetFilePointer(HANDLE, long, long*, DWORD) { return 0; }
+BOOL __stdcall ReleaseMutex(HANDLE) { return 0; }
+BOOL __stdcall PulseEvent(HANDLE) { return 0; }
+BOOL __stdcall ResetEvent(HANDLE) { return 0; }
+long __stdcall InterlockedIncrement(long*) { return 0; }
+long __stdcall InterlockedDecrement(long*) { return 0; }
 }

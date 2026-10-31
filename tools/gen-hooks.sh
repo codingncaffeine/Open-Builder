@@ -99,11 +99,11 @@ paste "$symbols.kind" <(llvm-undname <"$symbols.raw" 2>/dev/null | awk 'BEGIN { 
     kind = $1; undefined = kind == "U"; $1 = $2; $2 = $3
     gsub(anon, "", $2)
     if (kind == "UD" || kind == "DD") {
-      # a variable: its name is the last word, or the one in "(*name)" of a function pointer, or a template'"'"'s static
+      # a variable: its name is the last word, or the one in "(*name)" (or "(* const name)") of a function pointer, or a template'"'"'s static
       # member spelled without class keys and spaces ("cX<cY*>::spZ")
       d = $2; t = d; gsub(/(class|struct|union|enum) /, "", t)
       if (match(t, /[A-Za-z_][A-Za-z0-9_:]*<.*>::[A-Za-z_][A-Za-z0-9_]*$/)) { name = substr(t, RSTART, RLENGTH); gsub(/ /, "", name) }
-      else if (match(d, /\*[A-Za-z_][A-Za-z0-9_:]*\)/)) name = substr(d, RSTART + 1, RLENGTH - 2)
+      else if (match(d, /\*( *(const|volatile))* *[A-Za-z_][A-Za-z0-9_:]*\)/)) { name = substr(d, RSTART, RLENGTH - 1); sub(/^.*[* ]/, "", name) }
       else { n = split(d, w, /[ *&]+/); name = w[n] }
       print (kind == "UD" ? "UDATA:" : "DATA:") name "\t" $1
       next

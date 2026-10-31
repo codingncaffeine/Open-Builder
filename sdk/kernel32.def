@@ -20,3 +20,8 @@ EXPORTS
   GetLastError
   GetFileSize
   SetFilePointer
+  ReleaseMutex
+  PulseEvent
+  ResetEvent
+  InterlockedIncrement
+  InterlockedDecrement

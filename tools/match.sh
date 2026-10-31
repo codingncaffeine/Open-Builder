@@ -140,4 +140,7 @@ awk 'FILENAME ~ /generated-classes.txt$/ { generated[$1] = 1; next }
        }
        exit bad
      }' "$out/generated-classes.txt" re/map/vtables.tsv "$map" "$out/vtable-annotations.txt" >"$out/vtables.tsv"
+# Our code that stores the original's vtable address itself (a view struct's vtable field) refers to the same
+# vtable as the original's store: named alike.
+awk '{ print $1, $1, $5 }' "$out/vtables.tsv" >>"$out/names.tsv"
 "$obcmp" "$exe" "$dll" "$out/pairs.tsv" --names "$out/names.tsv" --vtables "$out/vtables.tsv" "$@"
