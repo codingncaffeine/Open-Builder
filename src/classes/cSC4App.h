@@ -199,7 +199,7 @@ public:
     char unknown652[0xe];
     uint32_t field660;
     uint32_t field664;
-    uint8_t mbFirstRunAfterInstall;
+    bool mbFirstRunAfterInstall;
     char unknown669[0x7];
 };
 #ifdef _MSC_VER

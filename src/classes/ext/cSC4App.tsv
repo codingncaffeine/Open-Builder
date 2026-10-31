@@ -38,5 +38,5 @@ method 0x0044e980 void Fn0044e980()
 method 0x00454e50 void DoCityObliteration()
 slot Slot03_a86c2c_4 bool void*
 method 0x00449ba0 void PostSC4AppMessage(uint32_t, bool)
-field 668 uint8_t mbFirstRunAfterInstall
+field 668 bool mbFirstRunAfterInstall
 field 58 void* mpField58
