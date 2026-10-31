@@ -44,6 +44,7 @@ struct Function {
     int match = -1;      // index on the other side
     bool byPosition = false;
     bool twin = false;   // library side, --twins: identical to a matched function that stands for it
+    bool hasTwins = false;  // library side: stands for twins (its name says what the code is, not which copy)
 };
 
 bool readFunctions(const std::string& path, std::vector<Function>& out) {
@@ -254,7 +255,7 @@ int main(int argc, char** argv) {
             b[j].match = i;
             namesA[a[i].va] = namesB[b[j].va] = b[j].name;
             for (int k : g.second)
-                if (k != j) b[k].match = i, b[k].twin = true, namesB[b[k].va] = b[j].name;
+                if (k != j) b[k].match = i, b[k].twin = true, namesB[b[k].va] = b[j].name, b[j].hasTwins = true;
             ++found;
         }
         // When the token rounds stall, pair through the references of identical pairs, then by position: a run of
@@ -333,7 +334,7 @@ int main(int argc, char** argv) {
             if (fn.match < 0 || fn.twin) continue;
             const Function& o = a[fn.match];
             out << std::hex << o.va << '\t' << o.size << '\t' << fn.va << '\t' << fn.size << '\t' << fn.name
-                << (fn.byPosition ? "\t# by position" : "") << '\n';
+                << (fn.byPosition ? "\t# by position" : fn.hasTwins ? "\t# twins" : "") << '\n';
         }
     }
     return 0;

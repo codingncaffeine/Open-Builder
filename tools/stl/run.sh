@@ -14,16 +14,18 @@ exe="scratch/testbed/game/Apps/SimCity 4.exe"
 obsig=scratch/build/obcmp/obsig
 mkdir -p "$out/src"
 # One object can hold only so many sections: 40 instantiations per source.
-# A variant is built again only when the catalogue changed (or its last run did not finish).
-python3 tools/stl/catalogue.py >"$out/catalogue.cpp.new"
-cmp -s "$out/catalogue.cpp.new" "$out/catalogue.cpp" || rm -f "$out"/*/matches.tsv
-mv "$out/catalogue.cpp.new" "$out/catalogue.cpp"
+stl=(/I"${OB_STL_INCLUDE:-third_party/stlport-4.6/stlport}" /D_STLP_DONT_FORCE_MSVC_LIB_NAME /D_STLP_USE_NEWALLOC
+  /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE /D_STLP_TREE_ITERATOR_WALKS /D_STLP_INSERT_UNIQUE_BY_X /W0)
+# A variant is built again only when the catalogue, the options or the headers changed (or its last run did not finish).
+python3 tools/stl/catalogue.py >"$out/catalogue.cpp"
+{ md5sum "$out/catalogue.cpp" tools/obcmp/obsig.cpp; echo "${stl[*]}"; find "${OB_STL_INCLUDE:-third_party/stlport-4.6/stlport}" -type f -print0 | sort -z | xargs -0 cat; } |
+  md5sum >"$out/stamp.new"
+cmp -s "$out/stamp.new" "$out/stamp" || rm -f "$out"/*/matches.tsv
+mv "$out/stamp.new" "$out/stamp"
 rm -f "$out"/src/*.cpp
 awk -v dir="$out/src" '/^template class/ { n++; if (n % 40 == 1) { k++; f = sprintf("%s/c%02d.cpp", dir, k); printf "%s", head > f }
                                            print > f; next }
                        { head = head $0 "\n" }' "$out/catalogue.cpp"
-stl=(/I"${OB_STL_INCLUDE:-third_party/stlport-4.6/stlport}" /D_STLP_DONT_FORCE_MSVC_LIB_NAME /D_STLP_USE_NEWALLOC
-  /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE /W0)
 variant() {  # name, flags
   local d="$out/$1"
   [[ -s "$d/matches.tsv" ]] && return
@@ -48,14 +50,16 @@ grep -rhoE '// FUNCTION: 0x[0-9a-fA-F]+' src | awk '{ printf "%x\n", strtonum($3
 awk -F'\t' -v OFS='\t' 'FILENAME ~ /done.txt$/ { known[$1] = 1; next }
      FILENAME ~ /libraries.tsv$/ { known[sprintf("%x", strtonum("0x" $1))] = 1; next }
      { a = sprintf("%x", strtonum("0x" $1)); v = FILENAME; sub(/\/matches.tsv$/, "", v); sub(/.*\//, "", v)
-       if (!(a in known) && !(a in seen)) { seen[a] = 1; print a, $2, $5, v } }' \
+       if (!(a in known) && !(a in seen)) { seen[a] = 1; print a, $2, $5 ($6 == "# twins" ? "#twin" : ""), v } }' \
   "$out/done.txt" re/map/libraries.tsv "$out"/{O2,O1,O2GX,O2Ob1,O1Ob1,O2Ob1GX}/matches.tsv | sort >"$out/new.tsv"
 echo "new: $(wc -l <"$out/new.tsv") instances not in re/map/libraries.tsv"
 [[ "$apply" == --apply ]] || exit 0
-# A name at a second address (the same instance built with other flags, or another type of the same shape the first
-# by name stood for) is kept apart as name#2, #3...: match.sh then names none of our functions after it.
-awk -F'\t' -v OFS='\t' 'FILENAME ~ /libraries.tsv$/ { used[$3]++; next }
-     { n = $3; if (used[n]++) n = n "#" used[n]; print sprintf("%x", strtonum("0x" $1)), "stlport", n }' \
-  re/map/libraries.tsv "$out/new.tsv" >"$out/apply.tsv"
+# The rows count these addresses as library code; they name none of our functions (name#cat: match.sh never finds
+# it in our map). A decorated name does not tell which copy of an instance it is: the original can hold several of
+# one instance (objects built without function-level linking are never folded: cRZString's own copy of
+# _M_range_initialize<char*> at 0x408420 beside 0x407fa0), and obsig's pick among identical instances of several types
+# is one of them by chance.
+awk -F'\t' -v OFS='\t' '{ n = $3; sub(/#twin$/, "", n); print sprintf("%x", strtonum("0x" $1)), "stlport", n "#cat" }' \
+  "$out/new.tsv" >"$out/apply.tsv"
 cat "$out/apply.tsv" >>re/map/libraries.tsv
 echo "applied: $(wc -l <"$out/apply.tsv") rows added to re/map/libraries.tsv"
