@@ -122,8 +122,6 @@ public:
     // STUB: 0x00529fd0
     cSC4CitySituationManager();
     explicit cSC4CitySituationManager(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    // STUB: 0x00524a50
-    bool Fn00524a50(uint32_t);
     // STUB: 0x00524c40
     void HandleStatusChanged(uint32_t);
     // STUB: 0x00524cc0
@@ -162,12 +160,6 @@ public:
     uint32_t Fn00526e60();
     // STUB: 0x00526ef0
     float Fn00526ef0();
-    // STUB: 0x00527110
-    uint32_t Fn00527110(uint32_t);
-    // STUB: 0x00527180
-    void Fn00527180(uint32_t, uint32_t);
-    // STUB: 0x005271d0
-    void Fn005271d0(uint32_t);
     // STUB: 0x00527320
     void Fn00527320();
     // STUB: 0x00527800
@@ -252,6 +244,8 @@ public:
     void Fn00524d10(uint32_t, void*, void*);
     // STUB: 0x00524d80
     void SendSituationMessage(uint32_t, void*, uint32_t);
+    // STUB: 0x005263d0
+    void Fn005263d0();
     char unknown14[0x9dc];
     bool field9f0;
     char unknown9f1[0x3];

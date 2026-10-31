@@ -33,6 +33,8 @@ public:
     void Fn008b10f0();
     // STUB: 0x008b1110
     void Fn008b1110();
+    // STUB: 0x008b2960
+    void DoRequestOpenLuaScript(bool, bool);
     void* mpServer;
     void* mpTextWin;
 };

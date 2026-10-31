@@ -17,7 +17,7 @@ struct OB_NOVTABLE cSC4LotDeveloper_0 {
     virtual void Slot07_ab1b98() = 0;
     virtual void Slot08_ab1b98(void*, uint32_t) = 0;
     virtual void Slot09_ab1b98(void*, uint32_t) = 0;
-    virtual void ChangeBuilding(uint32_t, uint32_t) = 0;
+    virtual void ChangeBuilding(void*, uint32_t) = 0;
     virtual void RemoveBuildingZotProp(void*) = 0;
     virtual void StartDemolishLot(void*) = 0;
     virtual void EndDemolishLot(void*) = 0;
@@ -44,7 +44,7 @@ struct OB_NOVTABLE cSC4LotDeveloper_0 {
     virtual void UpdateTravelDesignates(uint32_t) = 0;
     virtual void Slot35_ab1b98() = 0;
     virtual bool Slot36_ab1b98(uint32_t, uint32_t) = 0;
-    virtual bool UpdateLotElements(uint32_t, uint32_t) = 0;
+    virtual bool UpdateLotElements(void*, uint32_t) = 0;
     virtual void* GetFirstBuilding(void*) = 0;
     virtual void GetPositionForLotConfigurationObject(void*, void*, void*, void*, void*) = 0;
     virtual void GetPositionForBuilding(void*, void*, void*) = 0;
@@ -110,7 +110,7 @@ public:
     virtual void Slot07_ab1b98();
     virtual void Slot08_ab1b98(void*, uint32_t);
     virtual void Slot09_ab1b98(void*, uint32_t);
-    virtual void ChangeBuilding(uint32_t, uint32_t);
+    virtual void ChangeBuilding(void*, uint32_t);
     virtual void RemoveBuildingZotProp(void*);
     virtual void StartDemolishLot(void*);
     virtual void EndDemolishLot(void*);
@@ -137,7 +137,7 @@ public:
     virtual void UpdateTravelDesignates(uint32_t);
     virtual void Slot35_ab1b98();
     virtual bool Slot36_ab1b98(uint32_t, uint32_t);
-    virtual bool UpdateLotElements(uint32_t, uint32_t);
+    virtual bool UpdateLotElements(void*, uint32_t);
     virtual void* GetFirstBuilding(void*);
     virtual void GetPositionForLotConfigurationObject(void*, void*, void*, void*, void*);
     virtual void GetPositionForBuilding(void*, void*, void*);
@@ -188,6 +188,40 @@ public:
     void UpdateSurroundingLotFoundations(void*);
     // STUB: 0x006c8a20
     void ClearLot(void*);
+    // STUB: 0x006c7860
+    void Fn006c7860(void*, void*, uint32_t);
+    // STUB: 0x006c6d70
+    void* Fn006c6d70(void*, uint32_t);
+    // STUB: 0x006caaf0
+    void Fn006caaf0(void*);
+    // STUB: 0x006c7630
+    float Fn006c7630(void*);
+    // STUB: 0x006cbe50
+    void Fn006cbe50(uint32_t);
+    // STUB: 0x006cbd60
+    void Fn006cbd60(uint32_t);
+    // STUB: 0x006c8e10
+    void Fn006c8e10(void*, bool);
+    // STUB: 0x006c91f0
+    bool UpdateLotObjectAlitudes(void*);
+    // STUB: 0x006cae30
+    bool TestWater(void*, int32_t, int32_t);
+    // STUB: 0x006c98c0
+    void AddBuildingZotProp(void*, uint32_t, uint32_t);
+    // STUB: 0x006c4a20
+    void ReadSimulatorTunableValues();
+    // STUB: 0x006c5360
+    float PickLotFoundationAltitude(void*, float, float, void*);
+    // STUB: 0x006c47c0
+    bool TestDesirability(void*, int32_t, int32_t);
+    // STUB: 0x006c60c0
+    uint32_t PickLotBaseTextureForLot(void*, void*);
+    // STUB: 0x006c4630
+    uint32_t Fn006c4630(void*, uint32_t, uint32_t);
+    // STUB: 0x006cd2b0
+    void Fn006cd2b0(void*, void*, void*);
+    // STUB: 0x006cd010
+    void* Fn006cd010(void*, void*);
     bool mbInitialized;
     char unknownd[0x3];
     int32_t mnRefCount;
@@ -213,12 +247,27 @@ public:
     bool mb5d;
     bool mb5e;
     bool mb5f;
-    char unknown60[0x70];
+    char unknown60[0x4];
+    uint8_t mQueueStart[0x10];
+    uint8_t mQueueFinish[0x10];
+    char unknown84[0x8];
+    uint8_t mQueueCursor[0x10];
+    uint32_t mnQueueState;
+    uint32_t mnQueueBatch;
+    uint32_t mnQueueTicks;
+    char unknowna8[0x18];
+    uint16_t mnC0;
+    char unknownc2[0x2];
+    float mfC4;
+    float mfC8;
+    float mfCC;
     float mfd0;
     float mfd4;
     uint32_t mnLotFoundationId;
     uint32_t mnFoundationId;
-    char unknowne0[0x4];
+    bool mbE0;
+    bool mbE1;
+    char unknowne2[0x2];
     float mfe4;
     float mfe8;
     uint8_t mCurve[0x10];

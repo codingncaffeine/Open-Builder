@@ -28,7 +28,7 @@ method 0x0047c990 uint32_t Fn0047c990()
 method 0x0047cb70 bool DoShowHelpUI(int32_t)
 method 0x0047cc30 bool DoSelectTexturesUI(void*, void*, void*)
 method 0x0047cf90 uint32_t Fn0047cf90(uint32_t, uint32_t)
-method 0x0047d610 uint32_t Fn0047d610(uint32_t, uint32_t)
+method 0x0047d610 uint32_t Fn0047d610(void*, uint32_t)
 method 0x0047d6b0 bool Fn0047d6b0(uint32_t, uint32_t)
 method 0x0047d8f0 uint32_t Fn0047d8f0()
 method 0x0047d940 bool Fn0047d940()
@@ -115,3 +115,4 @@ field 138 void* mpHolder138
 field 13c void* mpStatus13c
 field 1bc float mfGrabX1bc
 field 1c0 float mfGrabY1c0
+method 0x0047ca60 void Fn0047ca60(uint32_t, uint32_t)

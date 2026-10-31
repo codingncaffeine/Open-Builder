@@ -26,7 +26,9 @@ public:
     virtual bool Slot04_ae1d24();
     char unknown128[0x4];
     void* mpScriptView;
-    char unknown130[0xc];
+    char unknown130[0x4];
+    void* mpGrid;
+    char unknown138[0x4];
     int32_t mnCallLevel;
 };
 #ifdef _MSC_VER

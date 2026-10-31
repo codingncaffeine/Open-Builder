@@ -18,7 +18,7 @@ method 0x007e6e40 void Fn007e6e40()
 method 0x007e6ee0 void Fn007e6ee0()
 method 0x007e6f60 void ShowMayorSubPanel(uint32_t)
 method 0x007e70c0 void Fn007e70c0(uint32_t)
-method 0x007e7130 void Fn007e7130(uint32_t)
+method 0x007e7130 void Fn007e7130(uint32_t, uint32_t)
 method 0x007e7220 void Fn007e7220(uint32_t)
 method 0x007e7270 void Fn007e7270(uint32_t)
 method 0x007e75b0 uint32_t RunGlobalTerrainTool(int32_t)
@@ -30,7 +30,7 @@ method 0x007e8ca0 uint32_t Fn007e8ca0(uint32_t)
 method 0x007e8e40 uint32_t Fn007e8e40()
 method 0x007e8f30 uint32_t Fn007e8f30(uint32_t)
 method 0x007e9090 void Fn007e9090(int32_t, int32_t)
-method 0x007e9150 void ObliterateCity(uint32_t)
+method 0x007e9150 void ObliterateCity()
 method 0x007e9780 bool Fn007e9780()
 method 0x007e97a0 void DoCityObliterated()
 method 0x007e9db0 uint32_t InvokeDisaster(uint32_t)
@@ -124,3 +124,16 @@ field 3cc int32_t mnCostY
 field 3d4 void* mpCostWin
 field 3d8 void* mpCursorTextWin
 field 3dc void* mpTipList
+field 3fc bool mbContour
+field 400 int32_t mnContourHandle
+field 1fc void* mpTertiaryMenu
+field 204 uint32_t mnTertiary204
+field 208 void* mpTertiaryData
+method 0x007e8090 void Fn007e8090(uint32_t, uint32_t)
+field 2dc void* mpPanelA
+field 2ec void* mpPanelB
+field 194 void* mpPanelC
+field 2d4 bool mbPanelFlag2d4
+field 2d5 bool mbPanelFlag2d5
+field 2d6 bool mbPanelFlag2d6
+field 3b0 uint32_t mnCostValue

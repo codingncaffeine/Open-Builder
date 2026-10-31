@@ -8,3 +8,4 @@ method 0x008b1b80 bool Fn008b1b80(void*, void*, int32_t, void*)
 field 34 void* mpManager
 field 24 bool mbInitialized
 field 38 void* mpRef38
+method 0x008aed10 bool Fn008aed10()

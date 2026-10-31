@@ -96,7 +96,7 @@ public:
     // STUB: 0x0047cf90
     uint32_t Fn0047cf90(uint32_t, uint32_t);
     // STUB: 0x0047d610
-    uint32_t Fn0047d610(uint32_t, uint32_t);
+    uint32_t Fn0047d610(void*, uint32_t);
     // STUB: 0x0047d6b0
     bool Fn0047d6b0(uint32_t, uint32_t);
     // STUB: 0x0047d8f0
@@ -219,6 +219,8 @@ public:
     bool Fn004893e0(uint32_t, uint32_t, uint32_t);
     // STUB: 0x00486530
     bool Open(void*);
+    // STUB: 0x0047ca60
+    void Fn0047ca60(uint32_t, uint32_t);
     uint8_t mbDataChanged12c;
     char unknown12d[0xb];
     void* mpHolder138;

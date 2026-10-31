@@ -126,7 +126,6 @@ families = [  # folder, type, size, initializer pattern, check -> (teardown, glo
 
 defs = {g: [] for g in OUTS}
 skipped = 0
-held = 0
 for folder, typ, size, pattern, check in families:
     for m in pattern.finditer(data, text[3], text[3] + text[2]):
         fn = m.start() + tbase
@@ -140,10 +139,6 @@ for folder, typ, size, pattern, check in families:
             skipped += 1
             continue
         if fn in taken or td in taken:
-            continue
-        # literals that name other products (registry paths, font faces) wait for a decision on what may be published
-        if b"HKEY_" in data[lo:hi] or b"FACE=" in data[lo:hi]:
-            held += 1
             continue
         defs[folder].append((fn, td, g, size, "%s g%s(%s);" % (typ, ("%x" % g).capitalize(), literal(data[lo:hi]))))
 
@@ -206,5 +201,5 @@ for folder, out in OUTS.items():
         f.write("\n}  // namespace ob_statics\n")
     os.replace(out + ".new", out)
     total += len(defs[folder])
-print("gen-statics: %d global objects (%s), %d near misses skipped, %d held back" % (
-    total, ", ".join("%s %d" % (k, len(v)) for k, v in defs.items()), skipped, held))
+print("gen-statics: %d global objects (%s), %d near misses skipped" % (
+    total, ", ".join("%s %d" % (k, len(v)) for k, v in defs.items()), skipped))

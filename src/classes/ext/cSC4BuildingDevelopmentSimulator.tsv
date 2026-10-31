@@ -17,3 +17,4 @@ method 0x00699270 void ExecuteGrowthPlan()
 method 0x00696a50 void ExecuteDeclinePlan()
 method 0x0069b6d0 void DoDailySimulation(int32_t)
 slot LoadLotRetainingWallProperties bool void* uint32_t
+slot IsSuitableForConstruction bool void* void*

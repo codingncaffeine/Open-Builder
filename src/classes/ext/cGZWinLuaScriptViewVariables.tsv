@@ -1,3 +1,4 @@
 field 12c void* mpScriptView
 field 13c int32_t mnCallLevel
 slot SetCurrentCallLevel void int32_t bool
+field 134 void* mpGrid

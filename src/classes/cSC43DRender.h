@@ -40,7 +40,7 @@ struct OB_NOVTABLE cSC43DRender_0 {
     virtual bool MoveModel(uint32_t) = 0;
     virtual void ChangeModel(uint32_t, uint32_t) = 0;
     virtual bool AddViewObject(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void RemoveViewObject(uint32_t) = 0;
+    virtual bool RemoveViewObject(uint32_t) = 0;
     virtual bool FindViewObject(uint32_t) = 0;
     virtual void SetZoom(int32_t) = 0;
     virtual void Slot36_abab60() = 0;
@@ -67,10 +67,10 @@ struct OB_NOVTABLE cSC43DRender_0 {
     virtual void SetBackingStoreEnabled(bool) = 0;
     virtual bool BorrowRenderSystem() = 0;
     virtual bool ReturnRenderSystem() = 0;
-    virtual void PickTerrain(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual bool PickTerrain_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void PickTerrainAlways(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual bool PickTerrainAlways_2(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool PickTerrain(int32_t, int32_t, void*, bool, bool) = 0;
+    virtual bool PickTerrain_2(void*, void*, void*, bool, bool) = 0;
+    virtual bool PickTerrainAlways(int32_t, int32_t, void*, bool) = 0;
+    virtual bool PickTerrainAlways_2(void*, void*, void*, bool) = 0;
     virtual bool Pick(int32_t, int32_t, void*, void*, void*, void*) = 0;
     virtual bool Pick_2(int32_t, int32_t, void*, void*) = 0;
     virtual bool GetModelsInVolume(uint32_t, uint32_t, uint32_t) = 0;
@@ -143,7 +143,7 @@ public:
     virtual bool MoveModel(uint32_t);
     virtual void ChangeModel(uint32_t, uint32_t);
     virtual bool AddViewObject(uint32_t, uint32_t, uint32_t);
-    virtual void RemoveViewObject(uint32_t);
+    virtual bool RemoveViewObject(uint32_t);
     virtual bool FindViewObject(uint32_t);
     virtual void SetZoom(int32_t);
     virtual void Slot36_abab60();
@@ -170,10 +170,10 @@ public:
     virtual void SetBackingStoreEnabled(bool);
     virtual bool BorrowRenderSystem();
     virtual bool ReturnRenderSystem();
-    virtual void PickTerrain(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool PickTerrain_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void PickTerrainAlways(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool PickTerrainAlways_2(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool PickTerrain(int32_t, int32_t, void*, bool, bool);
+    virtual bool PickTerrain_2(void*, void*, void*, bool, bool);
+    virtual bool PickTerrainAlways(int32_t, int32_t, void*, bool);
+    virtual bool PickTerrainAlways_2(void*, void*, void*, bool);
     virtual bool Pick(int32_t, int32_t, void*, void*, void*, void*);
     virtual bool Pick_2(int32_t, int32_t, void*, void*);
     virtual bool GetModelsInVolume(uint32_t, uint32_t, uint32_t);
@@ -230,9 +230,41 @@ public:
     bool Fn007c5540(void*);
     // STUB: 0x007c38d0
     bool Fn007c38d0();
+    // STUB: 0x007c9600
+    void ProcessModelChangeQueue();
+    // STUB: 0x007c2960
+    bool SaveBackingStore(int32_t, int32_t, int32_t, int32_t);
+    // STUB: 0x007ca9c0
+    void DoPartialViewUpdate(void*, uint32_t);
+    // STUB: 0x007c6e30
+    void ClearModelChangeQueue();
+    // STUB: 0x007caa60
+    void Fn007caa60(int32_t, int32_t, int32_t, int32_t);
+    // STUB: 0x007cab30
+    void Fn007cab30(int32_t, int32_t, int32_t, int32_t);
+    // STUB: 0x007c5370
+    void RebuildQuadGrid(int32_t, int32_t, int32_t, int32_t);
+    // STUB: 0x007c55c0
+    void Fn007c55c0();
+    // STUB: 0x007cafb0
+    void DoViewCleanup();
+    // STUB: 0x007c1e10
+    void Fn007c1e10(float*);
+    // STUB: 0x007c1ef0
+    void Fn007c1ef0(float*);
+    // STUB: 0x007c1fd0
+    void Fn007c1fd0(float*, int32_t);
+    // STUB: 0x007cabe0
+    bool AttemptTranslatedViewUpdate(int32_t, int32_t);
+    // STUB: 0x007ca4d0
+    void DoTranslatedViewUpdate(int32_t, int32_t);
     char unknownc[0x4];
     uint32_t mnRefCount;
-    char unknown14[0x34];
+    void* mpGraphicDriver;
+    void* mpGraphicSystem;
+    uint8_t mDriverName[0x14];
+    uint8_t mDriverDesc[0x14];
+    char unknown44[0x4];
     void* mpRenderProps;
     bool mbBorrowed;
     bool field4d;
@@ -278,9 +310,11 @@ public:
     char unknown128[0x34];
     uint32_t mnCounter15c;
     bool mbDirtyA;
-    char unknown161[0x13];
+    char unknown161[0x3];
+    float mfRectA[4];
     bool mbDirtyB;
-    char unknown175[0x13];
+    char unknown175[0x3];
+    float mfRectB[4];
     void* mpViewListA;
     void* mpViewListB;
     void* mpViewListC;
@@ -294,12 +328,38 @@ public:
     float mfClearB;
     float mfClearA;
     float mfClearDepth;
-    char unknown1bc[0x9c];
+    char unknown1bc[0x8];
+    void* mpQueueBegin;
+    void* mpQueueEnd;
+    void* mpQueueCap;
+    bool mbQueueBusy;
+    char unknown1d1[0x3];
+    void* mpDirtyList;
+    uint32_t mnDirty1d8;
+    char unknown1dc[0x4];
+    uint32_t mnDirty1e0;
+    char unknown1e4[0x4];
+    void* mpDirtyVecBegin;
+    void* mpDirtyVecEnd;
+    char unknown1f0[0xc];
+    bool mbCleanupA;
+    bool mbCleanupB;
+    char unknown1fe[0x2];
+    int32_t mCleanupRect[4];
+    int32_t mnCleanupStep;
+    char unknown214[0x4];
+    uint8_t mCleanupTimer[0x18];
+    uint32_t mnCleanupDelay;
+    void* mpShakeList;
+    char unknown238[0x8];
+    uint32_t mTimerBase;
+    char unknown244[0x14];
     int32_t mnShakeX;
     int32_t mnShakeY;
     char unknown260[0x4];
     int32_t mnGridScale;
-    char unknown268[0x20];
+    float mfOffsetsX[4];
+    float mfOffsetsY[4];
     uint32_t mnStat288;
     uint32_t mnStat28c;
     uint32_t mnStat290;

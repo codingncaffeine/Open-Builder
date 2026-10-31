@@ -3,6 +3,7 @@
 #include "classes/cGZPersistBinaryWriter.h"
 #include "classes/cGZPersistASCIIWriter.h"
 #include <cstdio>
+#include "gzcom/cRZString.h"
 
 // The stream a binary reader pulls its values from: only the slots used here are named.
 struct InStream_ada340 {
@@ -1259,5 +1260,707 @@ void cGZPersistASCIIWriter::WriteObjectRef_4(const char* name, void* pObject)
         }
     }
     static_cast<OutStream_ada210*>(Slot28_ada288())->WriteChars_ada210("\n");
+}
+#endif
+
+// ---- Agent 2: the deque / vector internals the reader and writer stack on (std containers of the original) ----
+
+struct Iter_ada340 {
+    void Fn0098294bDraft_ada340();
+    void Fn00981ab6Draft_ada340();
+    char* cur;
+    char* first;
+    char* last;
+    char** node;
+};
+
+// STUB: 0x0090cf54
+void* Fn0090cf54(uint32_t size);
+// STUB: 0x0090cf63
+void Fn0090cf63(void* p);
+// STUB: 0x00407a50
+void* Fn00407a50(const void* first, const void* last, void* dest);
+// STUB: 0x00413d00
+void* Fn00413d00(const void* first, const void* last, void* dest);
+
+struct Releasable2_ada340 {
+    virtual void Pad0_ada340();
+    virtual void Pad1_ada340();
+    virtual void Release_ada340();
+};
+
+struct Str_ada340 {
+    // STUB: 0x0093de49
+    void Destroy_ada340();
+};
+
+struct Ptr_ada340 {
+    Ptr_ada340* Fn00981d78_ada340(const Ptr_ada340* pSource);
+    Releasable2_ada340* mp;
+    // STUB: 0x00966956
+    void Copy_ada340(const void* pSource);
+    // STUB: 0x0093ab29
+    void* Delete_ada340(uint32_t flags);
+};
+
+struct Map_ada340 {
+    // STUB: 0x009db998
+    char** Allocate_ada340(uint32_t count);
+};
+
+struct Info_ada340 {
+    void Info_Destroy_Draft_ada340();
+    char mPad[0xc];
+    Str_ada340 mA;
+    Releasable2_ada340* mpObj;
+    Str_ada340 mB;
+};
+
+struct Pair_ada340 {
+    Pair_ada340* Fn009831c8Draft_ada340(const void* pSource);
+    Pair_ada340* Fn0098319bDraft_ada340(Pair_ada340* pSource);
+    // STUB: 0x004f20c0
+    void Fn004f20c0(const void* p);
+    // STUB: 0x004e4bb0
+    void Fn004e4bb0(const void* p);
+};
+
+struct Vec_ada340 {
+    Vec_ada340* Fn00982b59Draft_ada340(Vec_ada340* pSource);
+    char** begin;
+    char** end;
+    char** cap;
+    // STUB: 0x00982b59
+    Vec_ada340* Fn00982b59(Vec_ada340* pSource);
+};
+
+struct RDeque_ada340;
+// STUB: 0x00982c25
+void Fn00982c25_ada340(RDeque_ada340* pDeque, uint32_t n, bool atFront);
+// STUB: 0x00982a8e
+void Fn00982a8e_ada340(RDeque_ada340* pDeque, uint32_t n);
+// STUB: 0x0098296c
+void Fn0098296c_ada340(RDeque_ada340* pDeque, char** first, char** last);
+
+struct RDeque_ada340 {
+    RDeque_ada340* Fn00983d46Draft_ada340();
+    void Fn00982bd7Draft_ada340();
+    char* Fn00982bb6Draft_ada340();
+    char* Fn00892041Draft_ada340();
+    void Fn00982d6fDraft_ada340(uint32_t n);
+    void Fn00982d95Draft_ada340(uint32_t n);
+    void Fn00983105Draft_ada340();
+    void Fn00983a13Draft_ada340();
+    RDeque_ada340* Fn00982bf4Draft_ada340(uint32_t n, const void* /*alloc*/);
+    void Fn00983972Draft_ada340();
+    void Fn009832adDraft_ada340(const void* pItem);
+    void Fn00983940Draft_ada340(const void* pItem);
+    void Fn00982b23Draft_ada340();
+    void Fn00983349Draft_ada340(Pair_ada340* pItem);
+    void Fn00983133Draft_ada340(Ptr_ada340 item);
+    Iter_ada340 start;
+    Iter_ada340 finish;
+    char** map;
+    uint32_t mapSize;
+
+    // STUB: 0x009831f0
+    void DestroyInfo_ada340();
+    // STUB: 0x00982d6f
+    void ReserveBack_ada340(uint32_t n);
+    // STUB: 0x00983349
+    void PushBackAux_ada340(void* pItem);
+    // STUB: 0x00983972
+    void PopBackAux_ada340();
+    void PopBack_ada340();
+};
+
+
+// STUB: 0x00982bf4
+RDeque_ada340* Fn00982bf4_ada340(RDeque_ada340* pThis, uint32_t n, const void* pAlloc);
+// STUB: 0x00982b93
+void Fn00982b93_ada340(Iter_ada340 first, Iter_ada340 last, const void* pAlloc);
+// STUB: 0x009833ab
+void Fn009833ab_ada340(Iter_ada340 first, Iter_ada340 last, const void* pAlloc);
+// STUB: 0x00982d19
+void Fn00982d19_ada340(Iter_ada340 first, Iter_ada340 last);
+// STUB: 0x009839a3
+void Fn009839a3_ada340(Iter_ada340 first, Iter_ada340 last);
+// STUB: 0x00982d46
+void Fn00982d46_ada340(Iter_ada340 first, Iter_ada340 last);
+// STUB: 0x009839ea
+void Fn009839ea_ada340(Iter_ada340 first, Iter_ada340 last);
+// STUB: 0x00891f0f
+void Fn00891f0f_ada340(RDeque_ada340* pThis);
+// STUB: 0x00973c0e
+void Fn00973c0e_ada340(RDeque_ada340* pThis, uint32_t n, bool atFront);
+// STUB: 0x0098294b
+void Fn0098294b_ada340(Iter_ada340* pIter);
+// STUB: 0x009730a9
+void Fn009730a9_ada340(Iter_ada340* pIter);
+// STUB: 0x00981ab6
+void Fn00981ab6_ada340(Iter_ada340* pIter);
+// STUB: 0x00982b59
+void Fn00982b59_ada340(Vec_ada340* pDest, Vec_ada340* pSource);
+
+// FUNCTION: 0x009839d0
+void RDeque_ada340::PopBack_ada340()
+{
+    if (this->finish.cur != this->finish.first) {
+        this->finish.cur -= 0x1c;
+        reinterpret_cast<RDeque_ada340*>(this->finish.cur)->DestroyInfo_ada340();
+    } else {
+        this->PopBackAux_ada340();
+    }
+}
+
+// FUNCTION: 0x00981d78
+Ptr_ada340* Ptr_ada340::Fn00981d78_ada340(const Ptr_ada340* pSource)
+{
+    this->Copy_ada340(pSource);
+    reinterpret_cast<uint32_t*>(this)[1] = reinterpret_cast<const uint32_t*>(pSource)[1];
+    reinterpret_cast<uint32_t*>(this)[2] = reinterpret_cast<const uint32_t*>(pSource)[2];
+    return this;
+}
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x00983d46 score ?
+RDeque_ada340* RDeque_ada340::Fn00983d46Draft_ada340()
+{
+    char alloc[4];
+    Fn00982bf4_ada340(this, 0, alloc);
+    return this;
+}
+
+
+// CLOSE: 0x00982bd7 score ?
+void RDeque_ada340::Fn00982bd7Draft_ada340()
+{
+    if (this->finish.cur != this->finish.first) {
+        this->finish.cur -= 4;
+        reinterpret_cast<Ptr_ada340*>(this->finish.cur)->Delete_ada340(0);
+    } else {
+        // 0x982b23: free the last node, step back one
+        Fn0090cf63(this->finish.first);
+        this->finish.node -= 1;
+        this->finish.first = *this->finish.node;
+        this->finish.last = this->finish.first + 0x80;
+        this->finish.cur = this->finish.last - 4;
+        reinterpret_cast<Ptr_ada340*>(this->finish.cur)->Delete_ada340(0);
+    }
+}
+
+// CLOSE: 0x0098296c score ?
+void Fn0098296cDraft_ada340(char** first, char** last)
+{
+    for (; first < last; ++first) {
+        *first = static_cast<char*>(Fn0090cf54(0x70));
+    }
+}
+
+// CLOSE: 0x009831f0 score ?
+void Info_ada340::Info_Destroy_Draft_ada340()
+{
+    if (this->mpObj != 0) {
+        this->mpObj->Release_ada340();
+    }
+    this->mA.Destroy_ada340();
+    reinterpret_cast<Str_ada340*>(this)->Destroy_ada340();
+}
+
+
+// CLOSE: 0x0098294b score ?
+void Iter_ada340::Fn0098294bDraft_ada340()
+{
+    if (this->cur == this->first) {
+        --this->node;
+        this->first = *this->node;
+        this->last = this->first + 0x70;
+        this->cur = this->last;
+    }
+    this->cur -= 0x1c;
+}
+
+// CLOSE: 0x00982bb6 score ?
+char* RDeque_ada340::Fn00982bb6Draft_ada340()
+{
+    Iter_ada340 it = this->finish;
+    Fn0098294b_ada340(&it);
+    return it.cur;
+}
+
+// CLOSE: 0x00892041 score ?
+char* RDeque_ada340::Fn00892041Draft_ada340()
+{
+    Iter_ada340 it = this->finish;
+    Fn009730a9_ada340(&it);
+    return it.cur;
+}
+
+// CLOSE: 0x009833ab score ?
+void Fn009833abDraft_ada340(Iter_ada340 first, Iter_ada340 last, const void* /*alloc*/)
+{
+    while (first.cur != last.cur) {
+        reinterpret_cast<RDeque_ada340*>(first.cur)->DestroyInfo_ada340();
+        Fn00981ab6_ada340(&first);
+    }
+}
+
+// CLOSE: 0x00982b93 score ?
+void Fn00982b93Draft_ada340(Iter_ada340 first, Iter_ada340 last, const void* /*alloc*/)
+{
+    while (first.cur != last.cur) {
+        reinterpret_cast<Ptr_ada340*>(first.cur)->Delete_ada340(0);
+        // 0x97316e: advance by 4
+        first.cur += 4;
+    }
+}
+
+// CLOSE: 0x00981ab6 score ?
+void Iter_ada340::Fn00981ab6Draft_ada340()
+{
+    this->cur += 0x1c;
+    if (this->cur == this->last) {
+        ++this->node;
+        this->first = *this->node;
+        this->last = this->first + 0x70;
+        this->cur = this->first;
+    }
+}
+
+// CLOSE: 0x00982d6f score ?
+void RDeque_ada340::Fn00982d6fDraft_ada340(uint32_t n)
+{
+    if (n + 1 > this->mapSize - static_cast<uint32_t>(this->finish.node - this->map)) {
+        Fn00982c25_ada340(this, n, false);
+    }
+}
+
+// CLOSE: 0x00982d95 score ?
+void RDeque_ada340::Fn00982d95Draft_ada340(uint32_t n)
+{
+    if (n + 1 > this->mapSize - static_cast<uint32_t>(this->finish.node - this->map)) {
+        Fn00973c0e_ada340(this, n, false);
+    }
+}
+
+// CLOSE: 0x009831c8 score ?
+Pair_ada340* Pair_ada340::Fn009831c8Draft_ada340(const void* pSource)
+{
+    uint32_t* w = reinterpret_cast<uint32_t*>(this);
+    w[0] = 0;
+    w[1] = 0;
+    w[2] = 0;
+    w[3] = 0;
+    w[4] = 0;
+    w[5] = 0;
+    reinterpret_cast<Pair_ada340*>(w + 6)->Fn004f20c0(pSource);
+    return this;
+}
+
+// CLOSE: 0x00982d46 score ?
+void Fn00982d46Draft_ada340(Iter_ada340 first, Iter_ada340 last)
+{
+    Fn00982d19_ada340(first, last);
+}
+
+// CLOSE: 0x009839ea score ?
+void Fn009839eaDraft_ada340(Iter_ada340 first, Iter_ada340 last)
+{
+    Fn009839a3_ada340(first, last);
+}
+
+// CLOSE: 0x00982d19 score ?
+void Fn00982d19Draft_ada340(Iter_ada340 first, Iter_ada340 last)
+{
+    char alloc[1];
+    Fn00982b93_ada340(first, last, alloc);
+}
+
+// CLOSE: 0x009839a3 score ?
+void Fn009839a3Draft_ada340(Iter_ada340 first, Iter_ada340 last)
+{
+    char alloc[1];
+    Fn009833ab_ada340(first, last, alloc);
+}
+
+// CLOSE: 0x0098319b score ?
+Pair_ada340* Pair_ada340::Fn0098319bDraft_ada340(Pair_ada340* pSource)
+{
+    char* self = reinterpret_cast<char*>(this);
+    char* src = reinterpret_cast<char*>(pSource);
+    Fn00982b59_ada340(reinterpret_cast<Vec_ada340*>(self), reinterpret_cast<Vec_ada340*>(src));
+    Fn00982b59_ada340(reinterpret_cast<Vec_ada340*>(self + 0xc), reinterpret_cast<Vec_ada340*>(src + 0xc));
+    reinterpret_cast<Pair_ada340*>(self + 0x18)->Fn004e4bb0(src + 0x18);
+    return this;
+}
+
+// CLOSE: 0x00983105 score ?
+void RDeque_ada340::Fn00983105Draft_ada340()
+{
+    Fn00982d46_ada340(this->finish, this->start);
+    Fn00891f0f_ada340(this);
+}
+
+// CLOSE: 0x00983a13 score ?
+void RDeque_ada340::Fn00983a13Draft_ada340()
+{
+    Fn009839ea_ada340(this->finish, this->start);
+    Fn00891f0f_ada340(this);
+}
+
+// CLOSE: 0x00982bf4 score ?
+RDeque_ada340* RDeque_ada340::Fn00982bf4Draft_ada340(uint32_t n, const void* /*alloc*/)
+{
+    uint32_t* w = reinterpret_cast<uint32_t*>(this);
+    for (int i = 0; i < 10; ++i) {
+        w[i] = 0;
+    }
+    Fn00982a8e_ada340(this, n);
+    return this;
+}
+
+// CLOSE: 0x00983972 score ?
+void RDeque_ada340::Fn00983972Draft_ada340()
+{
+    if (this->finish.first != 0) {
+        Fn0090cf63(this->finish.first);
+    }
+    --this->finish.node;
+    this->finish.first = *this->finish.node;
+    this->finish.last = this->finish.first + 0x70;
+    this->finish.cur = this->finish.last - 0x1c;
+    reinterpret_cast<RDeque_ada340*>(this->finish.cur)->DestroyInfo_ada340();
+}
+
+// CLOSE: 0x009832ad score ?
+void RDeque_ada340::Fn009832adDraft_ada340(const void* pItem)
+{
+    if (this->finish.cur != this->finish.last - 4) {
+        if (this->finish.cur != 0) {
+            reinterpret_cast<Ptr_ada340*>(this->finish.cur)->Copy_ada340(pItem);
+        }
+        this->finish.cur += 4;
+    } else {
+        reinterpret_cast<RDeque_ada340*>(this)->PushBackAux_ada340(const_cast<void*>(pItem));
+    }
+}
+
+// CLOSE: 0x00983940 score ?
+void RDeque_ada340::Fn00983940Draft_ada340(const void* pItem)
+{
+    if (this->finish.cur != this->finish.last - 0x1c) {
+        if (this->finish.cur != 0) {
+            reinterpret_cast<Pair_ada340*>(this->finish.cur)->Fn0098319bDraft_ada340(reinterpret_cast<Pair_ada340*>(const_cast<void*>(pItem)));
+        }
+        this->finish.cur += 0x1c;
+    } else {
+        this->PushBackAux_ada340(const_cast<void*>(pItem));
+    }
+}
+
+// CLOSE: 0x00982b23 score ?
+void RDeque_ada340::Fn00982b23Draft_ada340()
+{
+    if (this->finish.first != 0) {
+        Fn0090cf63(this->finish.first);
+    }
+    --this->finish.node;
+    this->finish.first = *this->finish.node;
+    this->finish.last = this->finish.first + 0x80;
+    this->finish.cur = this->finish.last - 4;
+    reinterpret_cast<Ptr_ada340*>(this->finish.cur)->Delete_ada340(0);
+}
+
+// CLOSE: 0x00982b59 score ?
+Vec_ada340* Vec_ada340::Fn00982b59Draft_ada340(Vec_ada340* pSource)
+{
+    this->end = reinterpret_cast<char**>(Fn00407a50(pSource->begin, pSource->end, this->begin));
+    return this;
+}
+
+// CLOSE: 0x00983349 score ?
+void RDeque_ada340::Fn00983349Draft_ada340(Pair_ada340* pItem)
+{
+    char copy[0x1c];
+    reinterpret_cast<Pair_ada340*>(copy)->Fn0098319bDraft_ada340(pItem);
+    this->ReserveBack_ada340(1);
+    this->finish.node[1] = static_cast<char*>(Fn0090cf54(0x70));
+    if (this->finish.cur != 0) {
+        reinterpret_cast<Pair_ada340*>(this->finish.cur)->Fn0098319bDraft_ada340(reinterpret_cast<Pair_ada340*>(copy));
+    }
+    ++this->finish.node;
+    this->finish.first = *this->finish.node;
+    this->finish.last = this->finish.first + 0x70;
+    this->finish.cur = this->finish.first;
+    reinterpret_cast<RDeque_ada340*>(copy)->DestroyInfo_ada340();
+}
+
+// CLOSE: 0x00983133 score ?
+void RDeque_ada340::Fn00983133Draft_ada340(Ptr_ada340 item)
+{
+    Ptr_ada340 key;
+    key.Copy_ada340(&item);
+    Fn00973c0e_ada340(this, 1, false);
+    this->finish.node[1] = static_cast<char*>(Fn0090cf54(0x80));
+    if (this->finish.cur != 0) {
+        reinterpret_cast<Ptr_ada340*>(this->finish.cur)->Copy_ada340(&key);
+    }
+    ++this->finish.node;
+    this->finish.first = *this->finish.node;
+    this->finish.last = this->finish.first + 0x80;
+    this->finish.cur = this->finish.first;
+    if (key.mp != 0) {
+        key.mp->Release_ada340();
+    }
+}
+#endif
+
+// ---- Agent 2: Slot26 and ReadRoot (drafts; they call the container internals above through STUBs) ----
+
+// A counted pointer slot (cRZAutoRefCount) as the original passes it around.
+struct Counted_ada340 {
+    Unknown_ada340* mp;
+    uint32_t mA;
+    uint32_t mB;
+    // STUB: 0x0094909a
+    void Assign_ada340(void* p);
+    // STUB: 0x00981d78
+    Counted_ada340* Copy_ada340(Counted_ada340* pSource);
+    // STUB: 0x0096e773
+    void Construct_ada340(void* p);
+};
+
+struct Key_ada340 {
+    uint32_t mType;
+    uint32_t mGroup;
+    uint32_t mInstance;
+};
+
+struct KeyHolder_ada340 {
+    virtual void Pad0_ada340();
+    virtual void Pad1_ada340();
+    virtual void Pad2_ada340();
+    virtual void Pad3_ada340();
+    virtual void Pad4_ada340();
+    virtual void Pad5_ada340();
+    virtual void Pad6_ada340();
+    virtual void Pad7_ada340();
+    virtual void Pad8_ada340();
+    virtual void Pad9_ada340();
+    virtual void Pad10_ada340();
+    virtual void Pad11_ada340();
+    virtual void* GetKey_ada340(Key_ada340* pOut);
+};
+
+struct ResourceObject_ada340 {
+    virtual void Pad0_ada340();
+    virtual void Pad1_ada340();
+    virtual void Pad2_ada340();
+    virtual void Pad3_ada340();
+    virtual void Pad4_ada340();
+    virtual void Pad5_ada340();
+    virtual void Pad6_ada340();
+    virtual void Pad7_ada340();
+    virtual KeyHolder_ada340* Owner_ada340();
+};
+
+struct ResourceManager_ada340 {
+    virtual void Pad0_ada340();
+    virtual void Pad1_ada340();
+    virtual void Pad2_ada340();
+    virtual bool GetResource_ada340(Key_ada340* pKey, uint32_t iid, void** ppOut, uint32_t a, uint32_t b);
+    virtual void Pad4_ada340();
+    virtual void Pad5_ada340();
+    virtual void Pad6_ada340();
+    virtual void Pad7_ada340();
+    virtual void Register_ada340(void* pKey);
+    virtual void Pad9_ada340();
+    virtual bool Exists_ada340(void* pKey);
+};
+
+struct ManagerPtr_ada340 {
+    ResourceManager_ada340* mp;
+    // STUB: 0x004496c0
+    void Construct_ada340();
+    // STUB: 0x004495c0
+    void Destroy_ada340();
+};
+
+struct InfoVec_ada340 {
+    // STUB: 0x00981855
+    void PushResource_ada340(Counted_ada340* pItem);
+    // STUB: 0x0098181d
+    void PushReferent_ada340(Counted_ada340* pItem);
+};
+
+struct ReaderStack2_ada340 {
+    // STUB: 0x00983940
+    void PushBack_ada340(void* pInfo);
+    // STUB: 0x009839d0
+    void PopBack_ada340();
+    // STUB: 0x00982bb6
+    char* back();
+};
+
+struct InfoCtor_ada340 {
+    // STUB: 0x009831c8
+    InfoCtor_ada340* Construct_ada340(void* pStream);
+    // STUB: 0x009831f0
+    void Destroy_ada340();
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x0098320f score ?
+uint32_t cGZPersistBinaryReader::Slot26_ada340(uint32_t arg)
+{
+    Counted_ada340 local;
+    local.mp = 0;
+    cRZString* pText = new cRZString();
+    local.Assign_ada340(pText);
+    static_cast<InStream_ada340*>(InputStream())->ReadString_ada340(local.mp);
+    uint32_t a;
+    uint32_t b;
+    static_cast<InStream_ada340*>(InputStream())->ReadUint32_ada340(&a);
+    static_cast<InStream_ada340*>(InputStream())->ReadUint32_ada340(&b);
+    Counted_ada340* result = OB_PTR(Counted_ada340, arg);
+    result->Copy_ada340(&local);
+    if (local.mp != 0) {
+        local.mp->Release_ada340();
+    }
+    return OB_ADDR(result);
+}
+
+// CLOSE: 0x00983a4f score ?
+void cGZPersistBinaryReader::ReadRoot(uint32_t resArg, uint32_t streamArg)
+{
+    ResourceObject_ada340* resource = OB_PTR(ResourceObject_ada340, resArg);
+    InfoCtor_ada340 info;
+    ReaderStack2_ada340* stack = reinterpret_cast<ReaderStack2_ada340*>(reinterpret_cast<char*>(this) + 8);
+    stack->PushBack_ada340(info.Construct_ada340(OB_PTR(void, streamArg)));
+    info.Destroy_ada340();
+    ManagerPtr_ada340 manager;
+    manager.Construct_ada340();
+    Key_ada340 key;
+    bool existed = manager.mp->Exists_ada340(resource->Owner_ada340()->GetKey_ada340(&key));
+    if (!existed) {
+        manager.mp->Register_ada340(resource->Owner_ada340()->GetKey_ada340(&key));
+    }
+    uint32_t count;
+    static_cast<InStream_ada340*>(InputStream())->ReadUint32_ada340(&count);
+    for (uint32_t i = 0; i < count; ++i) {
+        Key_ada340 dep;
+        dep.mType = 0;
+        dep.mGroup = 0;
+        dep.mInstance = 0;
+        InStream_ada340* in = static_cast<InStream_ada340*>(InputStream());
+        in->ReadUint32_ada340(&dep.mGroup);
+        in->ReadUint32_ada340(&dep.mInstance);
+        in->ReadUint32_ada340(&dep.mType);
+        Counted_ada340 held;
+        held.mp = 0;
+        if (dep.mType != 0) {
+            if (!manager.mp->GetResource_ada340(&dep, 0x9b11bf70, reinterpret_cast<void**>(&held.mp), 0, 0)) {
+                cRZString text;
+                text.Sprintf("Cannot load dependent resource with group ID = %xu, instance ID = %xu, type = %xu\n", dep.mGroup, dep.mInstance, dep.mType);
+            }
+        } else {
+            cRZString text;
+            text.Sprintf("Null dependent resource with group ID = %xu, instance ID = %xu, type = %xu\n", dep.mGroup, dep.mInstance, dep.mType);
+        }
+        reinterpret_cast<InfoVec_ada340*>(stack->back())->PushResource_ada340(&held);
+        if (held.mp != 0) {
+            held.mp->Release_ada340();
+        }
+    }
+    uint32_t refCount;
+    static_cast<InStream_ada340*>(InputStream())->ReadUint32_ada340(&refCount);
+    Counted_ada340 first;
+    first.Construct_ada340(resource);
+    reinterpret_cast<InfoVec_ada340*>(stack->back() + 0xc)->PushReferent_ada340(&first);
+    if (first.mp != 0) {
+        first.mp->Release_ada340();
+    }
+    uint32_t id;
+    static_cast<InStream_ada340*>(InputStream())->ReadUint32_ada340(&id);
+    for (uint32_t j = 1; j < refCount; ++j) {
+        Counted_ada340 ref;
+        static_cast<InStream_ada340*>(InputStream())->ReadUint32_ada340(&id);
+        ref.mp = 0;
+        if (id != 0) {
+            Fn0090ddf1()->Create_ada340(id, 0xbb11a53e, reinterpret_cast<void**>(&ref.mp));
+            reinterpret_cast<InfoVec_ada340*>(stack->back() + 0xc)->PushReferent_ada340(&ref);
+        } else {
+            reinterpret_cast<InfoVec_ada340*>(stack->back() + 0xc)->PushReferent_ada340(&ref);
+        }
+        if (ref.mp != 0) {
+            ref.mp->Release_ada340();
+        }
+    }
+    for (uint32_t k = 0; k < refCount; ++k) {
+        Unknown_ada340* item = reinterpret_cast<Unknown_ada340**>(*reinterpret_cast<char**>(stack->back() + 0xc))[k];
+        if (item != 0) {
+            item->Read_ada340(this);
+        }
+    }
+    if (!existed) {
+        manager.mp->Register_ada340(resource->Owner_ada340()->GetKey_ada340(&key));
+    }
+    stack->PopBack_ada340();
+    manager.Destroy_ada340();
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x00982a8e score ?
+void Fn00982a8eDraft_ada340(RDeque_ada340* pDeque, uint32_t n)
+{
+    uint32_t nodes = n / 4 + 1;
+    uint32_t want = nodes + 2;
+    uint32_t minimum = 8;
+    pDeque->mapSize = want > minimum ? want : minimum;
+    pDeque->map = reinterpret_cast<Map_ada340*>(&pDeque->map)->Allocate_ada340(pDeque->mapSize);
+    char** nodeStart = pDeque->map + (pDeque->mapSize - nodes) / 2;
+    char** nodeFinish = nodeStart + nodes;
+    Fn0098296c_ada340(pDeque, nodeStart, nodeFinish);
+    pDeque->start.node = nodeStart;
+    pDeque->start.first = *nodeStart;
+    pDeque->start.last = pDeque->start.first + 0x70;
+    pDeque->finish.node = nodeFinish - 1;
+    pDeque->finish.first = *pDeque->finish.node;
+    pDeque->finish.last = pDeque->finish.first + 0x70;
+    pDeque->finish.cur = pDeque->finish.first + (n % 4) * 0x1c;
+    pDeque->start.cur = pDeque->start.first;
+}
+
+// CLOSE: 0x00982c25 score ?
+void Fn00982c25Draft_ada340(RDeque_ada340* pDeque, uint32_t n, bool atFront)
+{
+    uint32_t oldNodes = static_cast<uint32_t>(pDeque->finish.node - pDeque->start.node) + 1;
+    uint32_t newNodes = oldNodes + n;
+    char** newStart;
+    if (pDeque->mapSize > 2 * newNodes) {
+        newStart = pDeque->map + (pDeque->mapSize - newNodes) / 2 + (atFront ? n : 0);
+        if (newStart < pDeque->start.node) {
+            Fn00407a50(pDeque->start.node, pDeque->finish.node + 1, newStart);
+        } else {
+            Fn00413d00(pDeque->start.node, pDeque->finish.node + 1, newStart + oldNodes);
+        }
+    } else {
+        uint32_t newSize = pDeque->mapSize + (pDeque->mapSize > n ? pDeque->mapSize : n) + 2;
+        char** newMap = reinterpret_cast<Map_ada340*>(&pDeque->map)->Allocate_ada340(newSize);
+        newStart = newMap + (newSize - newNodes) / 2 + (atFront ? n : 0);
+        Fn00407a50(pDeque->start.node, pDeque->finish.node + 1, newStart);
+        if (pDeque->map != 0) {
+            Fn0090cf63(pDeque->map);
+        }
+        pDeque->map = newMap;
+        pDeque->mapSize = newSize;
+    }
+    pDeque->start.node = newStart;
+    pDeque->start.first = *newStart;
+    pDeque->start.last = pDeque->start.first + 0x70;
+    pDeque->finish.node = newStart + oldNodes - 1;
+    pDeque->finish.first = *pDeque->finish.node;
+    pDeque->finish.last = pDeque->finish.first + 0x70;
 }
 #endif

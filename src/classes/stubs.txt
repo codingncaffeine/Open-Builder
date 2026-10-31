@@ -4932,7 +4932,7 @@
 0x00698d90 ?Slot42_ab0af8@cSC4BuildingDevelopmentSimulator@@UAEEEE@Z
 0x0069ccb0 ?GetBuildingMapKey@cSC4BuildingDevelopmentSimulator@@UAEEI@Z
 0x00696c20 ?Slot45_ab0af8@cSC4BuildingDevelopmentSimulator@@UAEMIII@Z
-0x00695430 ?IsSuitableForConstruction@cSC4BuildingDevelopmentSimulator@@UAEXII@Z
+0x00695430 ?IsSuitableForConstruction@cSC4BuildingDevelopmentSimulator@@UAE_NPAX0@Z
 0x00695570 ?PlopBuilding@cSC4BuildingDevelopmentSimulator@@UAEXPAX@Z
 0x006958e0 ?GetFreeConstructionResources@cSC4BuildingDevelopmentSimulator@@UAEIXZ
 0x00695910 ?Slot49_ab0af8@cSC4BuildingDevelopmentSimulator@@UAEIXZ
@@ -5286,7 +5286,7 @@
 0x006ccef0 ?Slot07_ab1b98@cSC4LotDeveloper@@UAEXXZ
 0x006c3d30 ?Slot08_ab1b98@cSC4LotDeveloper@@UAEXPAXI@Z
 0x006c3d50 ?Slot09_ab1b98@cSC4LotDeveloper@@UAEXPAXI@Z
-0x006c5210 ?ChangeBuilding@cSC4LotDeveloper@@UAEXII@Z
+0x006c5210 ?ChangeBuilding@cSC4LotDeveloper@@UAEXPAXI@Z
 0x006cb940 ?RemoveBuildingZotProp@cSC4LotDeveloper@@UAEXPAX@Z
 0x006cc1d0 ?StartDemolishLot@cSC4LotDeveloper@@UAEXPAX@Z
 0x006c90a0 ?EndDemolishLot@cSC4LotDeveloper@@UAEXPAX@Z
@@ -5313,7 +5313,7 @@
 0x006cb4d0 ?UpdateTravelDesignates@cSC4LotDeveloper@@UAEXI@Z
 0x006c6340 ?Slot35_ab1b98@cSC4LotDeveloper@@UAEXXZ
 0x006c7a70 ?Slot36_ab1b98@cSC4LotDeveloper@@UAE_NII@Z
-0x006cc880 ?UpdateLotElements@cSC4LotDeveloper@@UAE_NII@Z
+0x006cc880 ?UpdateLotElements@cSC4LotDeveloper@@UAE_NPAXI@Z
 0x006c9100 ?GetFirstBuilding@cSC4LotDeveloper@@UAEPAXPAX@Z
 0x006c4ef0 ?GetPositionForLotConfigurationObject@cSC4LotDeveloper@@UAEXPAX0000@Z
 0x006c3cf0 ?GetPositionForBuilding@cSC4LotDeveloper@@UAEXPAX00@Z
@@ -6703,7 +6703,7 @@
 0x007c9220 ?MoveModel@cSC43DRender@@UAE_NI@Z
 0x007c9320 ?ChangeModel@cSC43DRender@@UAEXII@Z
 0x007c5d90 ?AddViewObject@cSC43DRender@@UAE_NIII@Z
-0x007c5ac0 ?RemoveViewObject@cSC43DRender@@UAEXI@Z
+0x007c5ac0 ?RemoveViewObject@cSC43DRender@@UAE_NI@Z
 0x007c52f0 ?FindViewObject@cSC43DRender@@UAE_NI@Z
 0x007c22b0 ?SetZoom@cSC43DRender@@UAEXH@Z
 0x007c22d0 ?Slot36_abab60@cSC43DRender@@UAEXXZ
@@ -6728,10 +6728,10 @@
 0x007c2760 ?SetBackingStoreEnabled@cSC43DRender@@UAEX_N@Z
 0x007c2cd0 ?BorrowRenderSystem@cSC43DRender@@UAE_NXZ
 0x007c2ce0 ?ReturnRenderSystem@cSC43DRender@@UAE_NXZ
-0x007c5000 ?PickTerrain@cSC43DRender@@UAEXIIIII@Z
-0x007c35c0 ?PickTerrain_2@cSC43DRender@@UAE_NIIIII@Z
-0x007c50f0 ?PickTerrainAlways@cSC43DRender@@UAEXIIII@Z
-0x007c7e20 ?PickTerrainAlways_2@cSC43DRender@@UAE_NIIII@Z
+0x007c5000 ?PickTerrain@cSC43DRender@@UAE_NHHPAX_N1@Z
+0x007c35c0 ?PickTerrain_2@cSC43DRender@@UAE_NPAX00_N1@Z
+0x007c50f0 ?PickTerrainAlways@cSC43DRender@@UAE_NHHPAX_N@Z
+0x007c7e20 ?PickTerrainAlways_2@cSC43DRender@@UAE_NPAX00_N@Z
 0x007c6830 ?Pick@cSC43DRender@@UAE_NHHPAX000@Z
 0x007c2220 ?Pick_2@cSC43DRender@@UAE_NHHPAX0@Z
 0x007c5260 ?Slot67_abab60@cSC43DRender@@UAE_NPAXH@Z

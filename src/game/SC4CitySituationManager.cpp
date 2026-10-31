@@ -84,7 +84,7 @@ struct OB_NOVTABLE Automaton_a97e58 {
     virtual void Pad56_a97e58() = 0;
     virtual void Pad57_a97e58() = 0;
     virtual void Pad58_a97e58() = 0;
-    virtual void Pad59_a97e58() = 0;
+    virtual int32_t GetType_a97e58() = 0;
     virtual void Pad60_a97e58() = 0;
     virtual void Slot61_a97e58(uint32_t value) = 0;
     virtual void Pad62_a97e58() = 0;
@@ -110,6 +110,8 @@ struct List_a97e58 {
 struct DispatchVehicleView_a97e58 {
     // STUB: 0x0046d3a0
     void ShowAllIndicators(uint32_t type, uint32_t visible);
+    // STUB: 0x0046efb0
+    void Fn0046efb0(uint32_t item, uint32_t flag);
     // STUB: 0x0046b4e0
     void SetIndicatorMax(uint32_t type, uint32_t max);
 };
@@ -119,8 +121,8 @@ struct OB_NOVTABLE Advice_a97e58 {
     virtual void Pad00_a97e58() = 0;
     virtual void Pad01_a97e58() = 0;
     virtual void Pad02_a97e58() = 0;
-    virtual void Pad03_a97e58() = 0;
-    virtual void Pad04_a97e58() = 0;
+    virtual uint32_t GetId_a97e58() = 0;
+    virtual int32_t GetKind_a97e58() = 0;
     virtual void Pad05_a97e58() = 0;
     virtual void Pad06_a97e58() = 0;
     virtual void Pad07_a97e58() = 0;
@@ -552,6 +554,8 @@ struct Variant_a97e58 {
     Variant_a97e58* ConstructBool_a97e58(bool value);
     // STUB: 0x00915d6d
     Variant_a97e58* ConstructUlong_a97e58(uint32_t value);
+    // STUB: 0x00915d44
+    Variant_a97e58* ConstructUshort_a97e58(uint16_t value);
 };
 
 struct OB_NOVTABLE Object_a97e58 {
@@ -560,7 +564,7 @@ struct OB_NOVTABLE Object_a97e58 {
     virtual void Pad02_a97e58() = 0;
     virtual void Pad03_a97e58() = 0;
     virtual void Pad04_a97e58() = 0;
-    virtual void Pad05_a97e58() = 0;
+    virtual uint16_t Slot05_a97e58(void* arg) = 0;
     virtual void Pad06_a97e58() = 0;
     virtual void Pad07_a97e58() = 0;
     virtual uint32_t Slot08_a97e58() = 0;
@@ -568,6 +572,38 @@ struct OB_NOVTABLE Object_a97e58 {
     virtual void Pad10_a97e58() = 0;
     virtual void Pad11_a97e58() = 0;
     virtual uint32_t Slot12_a97e58() = 0;
+    virtual void Pad13_a97e58() = 0;
+    virtual void Pad14_a97e58() = 0;
+    virtual void Pad15_a97e58() = 0;
+    virtual void Pad16_a97e58() = 0;
+    virtual void Pad17_a97e58() = 0;
+    virtual void Pad18_a97e58() = 0;
+    virtual void Pad19_a97e58() = 0;
+    virtual void Pad20_a97e58() = 0;
+    virtual void Pad21_a97e58() = 0;
+    virtual void Pad22_a97e58() = 0;
+    virtual void Pad23_a97e58() = 0;
+    virtual void Pad24_a97e58() = 0;
+    virtual void Pad25_a97e58() = 0;
+    virtual void Pad26_a97e58() = 0;
+    virtual void Pad27_a97e58() = 0;
+    virtual void Pad28_a97e58() = 0;
+    virtual void Slot29_a97e58(uint32_t value) = 0;
+    virtual bool Slot30_a97e58() = 0;
+};
+
+struct OB_NOVTABLE Item_a97e58 {
+    virtual void Pad00_a97e58() = 0;
+    virtual void Pad01_a97e58() = 0;
+    virtual void Pad02_a97e58() = 0;
+    virtual void Pad03_a97e58() = 0;
+    virtual void Pad04_a97e58() = 0;
+    virtual void Pad05_a97e58() = 0;
+    virtual void Pad06_a97e58() = 0;
+    virtual void Pad07_a97e58() = 0;
+    virtual void Pad08_a97e58() = 0;
+    virtual void Pad09_a97e58() = 0;
+    virtual void GetValue_a97e58(uint32_t* out) = 0;
 };
 
 struct OB_NOVTABLE ParamSet_a97e58 {
@@ -576,8 +612,8 @@ struct OB_NOVTABLE ParamSet_a97e58 {
     virtual void Pad02_a97e58() = 0;
     virtual void Pad03_a97e58() = 0;
     virtual void Pad04_a97e58() = 0;
-    virtual void Pad05_a97e58() = 0;
-    virtual void Pad06_a97e58() = 0;
+    virtual Item_a97e58* GetItem_a97e58(uint32_t index) = 0;
+    virtual void* GetParam_a97e58(uint32_t index) = 0;
     virtual void SetValue_a97e58(uint32_t index, Variant_a97e58* value) = 0;
     virtual uint32_t GetValue_a97e58(uint32_t index) = 0;
     virtual void Pad09_a97e58() = 0;
@@ -636,6 +672,11 @@ struct PtrNode_a97e58 {
     Held_a97e58* mpValue;
 };
 
+struct Pair_a97e58 {
+    uint32_t mnKey;
+    uint16_t mnValue;
+};
+
 struct KeyNode_a97e58 {
     KeyNode_a97e58* mpNext;
     uint32_t mnKey;
@@ -672,6 +713,16 @@ struct HashKey_a97e58 {
     uint32_t mnSize;
     uint32_t Fn00525e80(const uint32_t* key);
     void Fn00525f10(HashResult_a97e58* out, const KeyNode_a97e58* value);
+    // STUB: 0x005260c0
+    void Fn005260c0(HashResult_a97e58* out, const Pair_a97e58* value);
+    // STUB: 0x00526510
+    void Resize_00526510(uint32_t count);
+    void Fn005278e0(HashResult_a97e58* out, const Pair_a97e58* value);
+    uint16_t* Fn00527110(const uint32_t* key);
+    // STUB: 0x004f0940
+    void ResizeKey_a97e58(uint32_t count);
+    // STUB: 0x005264a0
+    Pair_a97e58* Fn005264a0(const Pair_a97e58* value);
 };
 
 #ifdef OB_DRAFTS
@@ -792,6 +843,7 @@ struct ListObjNode_a97e58 {
 
 struct ListObj_a97e58 {
     ListObjNode_a97e58* mpHead;
+    // STUB: 0x00525ec0
     void Fn00525ec0();
 };
 
@@ -865,6 +917,7 @@ struct HashPoint_a97e58 {
     PointNode_a97e58** mpCap;
     uint32_t mnSize;
     uint32_t Fn00525a50(const Point16_a97e58* point);
+    void Fn005271d0(const HashPoint_a97e58* other);
 };
 
 #ifdef OB_DRAFTS
@@ -1305,3 +1358,423 @@ void cSC4CitySituationManager::DoMessage(uint32_t flag)
         }
     }
 }
+
+// ---- Agent 2 ----
+
+// STUB: 0x0051d120
+void* Fn0051d120(void* param);
+// STUB: 0x00568ba0
+Held_a97e58** Fn00568ba0(Held_a97e58** from, Held_a97e58** end, Held_a97e58** to, void* scratch, uint32_t zero);
+// GLOBAL: 0x00b227e0
+extern uint32_t gB227e0;
+
+// A smart pointer to an object that orders by a number two calls away.
+struct OB_NOVTABLE Rank_a97e58 {
+    virtual void Pad00_a97e58() = 0;
+    virtual void Pad01_a97e58() = 0;
+    virtual void Pad02_a97e58() = 0;
+    virtual void Pad03_a97e58() = 0;
+    virtual void Pad04_a97e58() = 0;
+    virtual void Pad05_a97e58() = 0;
+    virtual void Pad06_a97e58() = 0;
+    virtual int32_t GetValue_a97e58() = 0;
+};
+
+struct OB_NOVTABLE Ranked_a97e58 {
+    virtual void Pad00_a97e58() = 0;
+    virtual void Pad01_a97e58() = 0;
+    virtual void Pad02_a97e58() = 0;
+    virtual Rank_a97e58* GetRank_a97e58() = 0;
+};
+
+struct Ref_a97e58 {
+    Ranked_a97e58* mpObject;
+    bool Fn00524a50(const Ref_a97e58* other);
+};
+
+struct VecHeld_a97e58 {
+    Held_a97e58** mpBegin;
+    Held_a97e58** mpEnd;
+    Held_a97e58** Fn00527180(Held_a97e58** first, Held_a97e58** last);
+};
+
+struct Obj_a97de4 {
+    uint32_t mnVtable0;
+    uint32_t mnVtable4;
+    uint32_t mnPad[4];
+    uint32_t mn18;
+    uint32_t mn1c;
+    uint32_t mn20;
+    uint32_t mn24;
+    // STUB: 0x005ea280
+    void Fn005ea280(uint32_t arg);
+    Obj_a97de4* Fn00526610();
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x00526610 score 2
+Obj_a97de4* Obj_a97de4::Fn00526610()
+{
+    Fn005ea280(0);
+    // (the two vtable words at +0 and +4 are stored here by the original)
+    mn18 = 0;
+    mn1c = gB227e0;
+    mn20 = gB227e0;
+    mn24 = gB227e0;
+    return this;
+}
+#endif
+
+// FUNCTION: 0x005278e0
+void HashKey_a97e58::Fn005278e0(HashResult_a97e58* out, const Pair_a97e58* value)
+{
+    Resize_00526510(mnSize + 1);
+    HashResult_a97e58 result;
+    Fn005260c0(&result, value);
+    out->mpNode = result.mpNode;
+    out->mpTable = result.mpTable;
+    out->mbInserted = result.mbInserted;
+}
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x005264a0 score 15
+Pair_a97e58* HashKey_a97e58::Fn005264a0(const Pair_a97e58* value)
+{
+    ResizeKey_a97e58(mnSize + 1);
+    uint32_t bucket = value->mnKey % static_cast<uint32_t>(mpEnd - mpBegin);
+    KeyNode_a97e58* first = mpBegin[bucket];
+    KeyNode_a97e58* node = static_cast<KeyNode_a97e58*>(Fn0090cf54(0xc));
+    Pair_a97e58* pair = reinterpret_cast<Pair_a97e58*>(&node->mnKey);
+    node->mpNext = 0;
+    if (pair) {
+        pair->mnKey = value->mnKey;
+        pair->mnValue = value->mnValue;
+    }
+    node->mpNext = first;
+    mpBegin[bucket] = node;
+    ++mnSize;
+    return pair;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x00527110 score 33
+uint16_t* HashKey_a97e58::Fn00527110(const uint32_t* key)
+{
+    uint32_t k = *key;
+    KeyNode_a97e58* p = mpBegin[k % static_cast<uint32_t>(mpEnd - mpBegin)];
+    while (p) {
+        if (p->mnKey == k) {
+            break;
+        }
+        p = p->mpNext;
+    }
+    if (!p) {
+        Pair_a97e58 pair;
+        pair.mnKey = k;
+        pair.mnValue = 0;
+        return &Fn005264a0(&pair)->mnValue;
+    }
+    return &p->mnValue;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x00524a50 score 27
+bool Ref_a97e58::Fn00524a50(const Ref_a97e58* other)
+{
+    bool result = false;
+    if (mpObject) {
+        if (other->mpObject) {
+            Rank_a97e58* mine = mpObject->GetRank_a97e58();
+            int32_t theirs = other->mpObject->GetRank_a97e58()->GetValue_a97e58();
+            if (mine->GetValue_a97e58() < theirs) {
+                return true;
+            }
+        }
+        return result;
+    }
+    if (other->mpObject) {
+        return true;
+    }
+    return result;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x00527180 score 12
+Held_a97e58** VecHeld_a97e58::Fn00527180(Held_a97e58** first, Held_a97e58** last)
+{
+    uint32_t scratch;
+    Held_a97e58** newEnd = Fn00568ba0(last, mpEnd, first, &scratch, 0);
+    Held_a97e58** oldEnd = mpEnd;
+    for (Held_a97e58** p = newEnd; p != oldEnd; ++p) {
+        if (*p) {
+            (*p)->Release();
+        }
+    }
+    mpEnd = newEnd;
+    return first;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x005245f0 score 26
+bool OB_STDCALL Fn005245f0(Automaton_a97e58* automaton)
+{
+    bool result = false;
+    if (automaton) {
+        if (automaton->HasFlag_a97e58(2) && !automaton->HasFlag_a97e58(1) && !automaton->HasFlag_a97e58(0x8000000)
+            && !automaton->HasFlag_a97e58(0x10000000)) {
+            int32_t type = automaton->GetType_a97e58();
+            if (type != 0x34) {
+                return type != 0x14;
+            }
+        }
+    }
+    return result;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x00524760 score 23
+bool Fn00524760(uint32_t id, ParamSet_a97e58* input, ParamSet_a97e58* set)
+{
+    Object_a97e58* object = set->GetObject_a97e58(set->GetValue_a97e58(id));
+    uint16_t result = 0;
+    void* param = input->GetParam_a97e58(0);
+    if (param) {
+        void* handle = Fn0051d120(param);
+        if (object && handle) {
+            result = object->Slot05_a97e58(handle);
+        }
+    }
+    Variant_a97e58 value;
+    Variant_a97e58* made = value.ConstructUshort_a97e58(result);
+    set->SetValue_a97e58(1, made);
+    value.Destruct_a97e58();
+    return true;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x00524880 score 25
+bool Fn00524880(uint32_t id, ParamSet_a97e58* input, ParamSet_a97e58* set)
+{
+    Object_a97e58* object = set->GetObject_a97e58(set->GetValue_a97e58(id));
+    bool result = true;
+    if (object) {
+        uint32_t token = 1;
+        input->GetItem_a97e58(0)->GetValue_a97e58(&token);
+        result = object->Slot30_a97e58();
+        object->Slot29_a97e58(token);
+    }
+    Variant_a97e58 value;
+    Variant_a97e58* made = value.ConstructBool_a97e58(result);
+    set->SetValue_a97e58(1, made);
+    value.Destruct_a97e58();
+    return true;
+}
+#endif
+
+// FUNCTION: 0x005263d0
+void cSC4CitySituationManager::Fn005263d0()
+{
+    ListObjNode_a97e58* head = FLD_a97e58(ListObjNode_a97e58*, 0xa04);
+    for (ListObjNode_a97e58* node = head->mpNext; node != head; node = node->mpNext) {
+        Held_a97e58* first = node->mpFirst;
+        if (first) {
+            node->mpFirst = 0;
+            first->Release();
+        }
+        DispatchVehicleView_a97e58* view = FLD_a97e58(DispatchVehicleView_a97e58*, 0xa2c);
+        if (view && node->mnThird) {
+            view->Fn0046efb0(node->mnThird, 0);
+        }
+        Held_a97e58* second = node->mpSecond;
+        if (second) {
+            node->mpSecond = 0;
+            second->Release();
+        }
+        node->mnThird = 0;
+    }
+    reinterpret_cast<ListObj_a97e58*>(reinterpret_cast<char*>(this) + 0xa04)->Fn00525ec0();
+}
+
+// ---- batch 8 ----
+
+struct BucketVec_a97e58 {
+    PointNode_a97e58** mpBegin;
+    PointNode_a97e58** mpEnd;
+    PointNode_a97e58** mpCap;
+    // STUB: 0x0045d4f0
+    void Reserve_a97e58(uint32_t count);
+    // STUB: 0x004fba20
+    void Fill_a97e58(PointNode_a97e58** position, uint32_t count, PointNode_a97e58* const* value);
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x005271d0 score 123
+void HashPoint_a97e58::Fn005271d0(const HashPoint_a97e58* other)
+{
+    BucketVec_a97e58* vec = reinterpret_cast<BucketVec_a97e58*>(&mpBegin);
+    mpEnd = mpBegin;
+    uint32_t count = static_cast<uint32_t>(other->mpEnd - other->mpBegin);
+    vec->Reserve_a97e58(count);
+    PointNode_a97e58* zero = 0;
+    vec->Fill_a97e58(mpEnd, count, &zero);
+    for (uint32_t i = 0; i < static_cast<uint32_t>(other->mpEnd - other->mpBegin); ++i) {
+        PointNode_a97e58* src = other->mpBegin[i];
+        if (src) {
+            PointNode_a97e58* node = static_cast<PointNode_a97e58*>(Fn0090cf54(8));
+            node->mpNext = 0;
+            node->mnX = src->mnX;
+            node->mnY = src->mnY;
+            mpBegin[i] = node;
+            PointNode_a97e58* last = node;
+            for (src = src->mpNext; src; src = src->mpNext) {
+                PointNode_a97e58* copy = static_cast<PointNode_a97e58*>(Fn0090cf54(8));
+                copy->mpNext = 0;
+                copy->mnX = src->mnX;
+                copy->mnY = src->mnY;
+                last->mpNext = copy;
+                last = copy;
+            }
+        }
+    }
+    mnSize = other->mnSize;
+}
+#endif
+
+struct OB_NOVTABLE TargetObj_a97e58 {
+    virtual void Pad00_a97e58() = 0;
+    virtual void Pad01_a97e58() = 0;
+    virtual void Pad02_a97e58() = 0;
+    virtual void Pad03_a97e58() = 0;
+    virtual void Pad04_a97e58() = 0;
+    virtual void Pad05_a97e58() = 0;
+    virtual void Pad06_a97e58() = 0;
+    virtual void Pad07_a97e58() = 0;
+    virtual void Pad08_a97e58() = 0;
+    virtual void Pad09_a97e58() = 0;
+    virtual void Pad10_a97e58() = 0;
+    virtual void Pad11_a97e58() = 0;
+    virtual void Pad12_a97e58() = 0;
+    virtual void Pad13_a97e58() = 0;
+    virtual void Pad14_a97e58() = 0;
+    virtual void Pad15_a97e58() = 0;
+    virtual void Pad16_a97e58() = 0;
+    virtual void Pad17_a97e58() = 0;
+    virtual void Pad18_a97e58() = 0;
+    virtual void Pad19_a97e58() = 0;
+    virtual void Pad20_a97e58() = 0;
+    virtual void Pad21_a97e58() = 0;
+    virtual bool HasKind_a97e58(uint32_t kind) = 0;
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x0052c0e0 score 63
+uint32_t cSC4CitySituationManager::HandleTargetRemoved()
+{
+    uint32_t result = FLD_a97e58(uint32_t, 0xa48);
+    if (FLD_a97e58(int32_t, 0xae4) == -2) {
+        int32_t kind = FLD_a97e58(Advice_a97e58*, 0x9f4)->GetKind_a97e58();
+        if (kind == 1) {
+            result = 2;
+        } else if (kind == 3) {
+            if (!ChooseNextTarget()) {
+                result = 1;
+            }
+        }
+    } else {
+        TargetObj_a97e58* target = FLD_a97e58(TargetObj_a97e58*, 0xa50);
+        if (target) {
+            if (target->HasKind_a97e58(0x5005) || target->HasKind_a97e58(0x5006)) {
+                if (!Fn0052ad00(1)) {
+                    SetTarget(0);
+                }
+            }
+        }
+    }
+    HandleStatusChanged(result);
+    return result;
+}
+#endif
+
+struct OB_NOVTABLE AutoTarget_a97e58 {
+    virtual bool QueryInterface_a97e58(uint32_t id, void** out) = 0;
+    virtual uint32_t AddRef_a97e58() = 0;
+    virtual uint32_t Release_a97e58() = 0;
+    virtual void Pad03_a97e58() = 0;
+    virtual void Pad04_a97e58() = 0;
+    virtual void Pad05_a97e58() = 0;
+    virtual void Pad06_a97e58() = 0;
+    virtual void Pad07_a97e58() = 0;
+    virtual void Pad08_a97e58() = 0;
+    virtual void Pad09_a97e58() = 0;
+    virtual void Pad10_a97e58() = 0;
+    virtual void Pad11_a97e58() = 0;
+    virtual void Pad12_a97e58() = 0;
+    virtual void Slot13_a97e58(uint32_t value) = 0;
+};
+
+struct OB_NOVTABLE Advisor_a97e58 {
+    virtual void Pad00_a97e58() = 0;
+    virtual void Pad01_a97e58() = 0;
+    virtual void Pad02_a97e58() = 0;
+    virtual void Pad03_a97e58() = 0;
+    virtual void Pad04_a97e58() = 0;
+    virtual void Pad05_a97e58() = 0;
+    virtual void Pad06_a97e58() = 0;
+    virtual Advisor_a97e58* GetAdvisor_a97e58(uint32_t id) = 0;
+    virtual void Pad08_a97e58() = 0;
+    virtual void Pad09_a97e58() = 0;
+    virtual void Pad10_a97e58() = 0;
+    virtual void Pad11_a97e58() = 0;
+    virtual void Pad12_a97e58() = 0;
+    virtual void Pad13_a97e58() = 0;
+    virtual void Pad14_a97e58() = 0;
+    virtual void Pad15_a97e58() = 0;
+    virtual void Pad16_a97e58() = 0;
+    virtual void Pad17_a97e58() = 0;
+    virtual void Pad18_a97e58() = 0;
+    virtual void Pad19_a97e58() = 0;
+    virtual void Slot20_a97e58(uint32_t value) = 0;
+};
+
+// GLOBAL: 0x00b43d34
+extern Advisor_a97e58* gpB43d34_a97e58;
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x0052bf00 score 1
+uint32_t cSC4CitySituationManager::Fn0052bf00()
+{
+    if (FLD_a97e58(uint8_t, 0xa64)) {
+        void* found = 0;
+        Unknown_a97e58* target = FLD_a97e58(Unknown_a97e58*, 0xa50);
+        if (target) {
+            if (target->QueryInterface(0xa9b40f05, &found)) {
+                static_cast<Unknown_a97e58*>(found)->Release();
+            }
+        }
+        AutoTarget_a97e58* automaton = static_cast<AutoTarget_a97e58*>(found);
+        if (automaton) {
+            automaton->AddRef_a97e58();
+            automaton->Slot13_a97e58(0);
+            automaton->Release_a97e58();
+        }
+    }
+    Advice_a97e58* advice = FLD_a97e58(Advice_a97e58*, 0x9f4);
+    if (advice) {
+        if (gpB43d34_a97e58) {
+            Advisor_a97e58* advisor = gpB43d34_a97e58->GetAdvisor_a97e58(0x1d);
+            if (advisor) {
+                advisor->Slot20_a97e58(advice->GetId_a97e58());
+            }
+        }
+        Fn0052a650(OB_ADDR(advice));
+    }
+    EndSituation();
+    return 0;
+}
+#endif

@@ -2,6 +2,8 @@
 
 #include <cstddef>
 #include <new>
+#include <cmath>
+#include <cstdlib>
 
 // The color backing store and the backing-store switch (class statics of the original).
 // GLOBAL: 0x00b0dc19
@@ -85,6 +87,7 @@ struct cRef_abab60 {
     virtual void Pad72_abab60();
     virtual void Pad73_abab60();
     virtual void Slot74(uint32_t x, uint32_t y, uint32_t w, uint32_t h);
+    virtual void Slot75();
 };
 
 // The object at 0x00b4e1f0: slot 5 frees a handle.
@@ -148,7 +151,7 @@ struct cCamera_abab60 {
     // STUB: 0x007ff120
     uint32_t GetProjectionState();
     // STUB: 0x00800340
-    void GetEyeRay(const float* point, void* origin, void* direction);
+    bool GetEyeRay(const float* point, void* origin, void* direction);
     // STUB: 0x007ff3c0
     uint32_t GetViewState();
 };
@@ -811,7 +814,9 @@ struct ModelChangeQueueItem_abab60 {
     uint8_t c;
     Quad_abab60 q;
     uint32_t s[6];
+    // STUB: 0x007c3ad0
     ModelChangeQueueItem_abab60(const ModelChangeQueueItem_abab60& o);
+    // STUB: 0x007c2e50
     ModelChangeQueueItem_abab60(uint32_t a_, uint8_t b_, uint8_t c_, const Quad_abab60& q_, const uint32_t* s_);
 };
 
@@ -1566,5 +1571,1090 @@ bool cSC43DRender::Fn007c38d0()
         fromY = 0;
     }
     return Fn007c2ac0(fromX, fromY, mnViewportW - dx, mnViewportH - dy, toX, toY);
+}
+#endif
+
+// ---- agent 2, batch 1 ----
+// STUB: 0x0090cf54
+void* StlNew_abab60(uint32_t size);
+
+struct IUnk_abab60 {
+    virtual uint32_t QueryInterface(uint32_t iid, void* out);
+    virtual uint32_t AddRef();
+    virtual uint32_t Release();
+};
+
+// The graphics driver: slot 29 fetches the driver's name and description strings.
+struct GfxDriver_abab60 : IUnk_abab60 {
+    virtual void P03_abab60();
+    virtual void P04_abab60();
+    virtual void P05_abab60();
+    virtual void P06_abab60();
+    virtual void P07_abab60();
+    virtual void P08_abab60();
+    virtual void P09_abab60();
+    virtual void P10_abab60();
+    virtual void P11_abab60();
+    virtual void P12_abab60();
+    virtual void P13_abab60();
+    virtual void P14_abab60();
+    virtual void P15_abab60();
+    virtual void P16_abab60();
+    virtual void P17_abab60();
+    virtual void P18_abab60();
+    virtual void P19_abab60();
+    virtual void P20_abab60();
+    virtual void P21_abab60();
+    virtual void P22_abab60();
+    virtual void P23_abab60();
+    virtual void P24_abab60();
+    virtual void P25_abab60();
+    virtual void P26_abab60();
+    virtual void P27_abab60();
+    virtual void P28_abab60();
+    virtual void Slot29(void* name, void* description);
+};
+
+struct Str_abab60 {
+    uint32_t pad;
+    char* start;
+    char* finish;
+};
+
+// FUNCTION: 0x007c5d00
+void cSC43DRender::SetGraphicSystem(uint32_t system)
+{
+    IUnk_abab60* sys = OB_PTR(IUnk_abab60, system);
+    if (sys) {
+        sys->AddRef();
+    }
+    if (mpGraphicDriver) {
+        static_cast<IUnk_abab60*>(mpGraphicDriver)->Release();
+    }
+    if (mpGraphicSystem) {
+        static_cast<IUnk_abab60*>(mpGraphicSystem)->Release();
+    }
+    mpGraphicSystem = sys;
+    if (sys) {
+        sys->QueryInterface(0x73283c, &mpGraphicDriver);
+    }
+    if (mpGraphicDriver) {
+        static_cast<GfxDriver_abab60*>(mpGraphicDriver)->Slot29(mDriverName, mDriverDesc);
+    } else {
+        Str_abab60* a = reinterpret_cast<Str_abab60*>(mDriverName);
+        if (a->start != a->finish) {
+            *a->start = 0;
+            a->finish = a->start;
+        }
+        Str_abab60* b = reinterpret_cast<Str_abab60*>(mDriverDesc);
+        if (b->start != b->finish) {
+            *b->start = 0;
+            b->finish = b->start;
+        }
+    }
+}
+
+// The 0x30-byte record of the model change queue, with its inlined copy.
+struct ViewNode_abab60 {
+    ViewNode_abab60* next;
+    ViewNode_abab60* prev;
+    ViewObject_abab60* object;
+    uint32_t key;
+};
+struct ViewObjectRef_abab60 {
+    virtual void Pad00_abab60();
+    virtual uint32_t AddRef();
+};
+
+// STUB: 0x007c5c80
+void Fn007c5c80(List_abab60* list, ViewObject_abab60* object, uint32_t key);
+
+// FUNCTION: 0x007c5d90
+bool cSC43DRender::AddViewObject(uint32_t object, uint32_t mode, uint32_t key)
+{
+    if (mode == 3) {
+        Fn007c5c80(reinterpret_cast<List_abab60*>(&mpViewListA), OB_PTR(ViewObject_abab60, object), key);
+        return true;
+    }
+    if (mode == 5) {
+        Fn007c5c80(reinterpret_cast<List_abab60*>(&mpViewListB), OB_PTR(ViewObject_abab60, object), key);
+        return true;
+    }
+    List_abab60* list;
+    if (mode == 0) {
+        list = reinterpret_cast<List_abab60*>(&mpViewListC);
+    } else if (mode == 2) {
+        list = reinterpret_cast<List_abab60*>(&mpViewListD);
+    } else {
+        return false;
+    }
+    Fn007c5c80(list, OB_PTR(ViewObject_abab60, object), key);
+    mbBackingValid = false;
+    return true;
+}
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c5c80 score 20
+void Fn007c5c80(List_abab60* list, ViewObject_abab60* object, uint32_t key)
+{
+    reinterpret_cast<ViewObjectRef_abab60*>(object)->AddRef();
+    ViewNode_abab60* head = reinterpret_cast<ViewNode_abab60*>(list->head);
+    ViewNode_abab60* pos = head->next;
+    while (pos != head) {
+        if (pos->key > key) {
+            ViewNode_abab60* node = static_cast<ViewNode_abab60*>(StlNew_abab60(0x10));
+            if (&node->object) {
+                node->object = object;
+                node->key = key;
+            }
+            node->next = pos;
+            node->prev = pos->prev;
+            pos->prev->next = node;
+            pos->prev = node;
+            return;
+        }
+        pos = pos->next;
+    }
+    ViewNode_abab60* node = static_cast<ViewNode_abab60*>(StlNew_abab60(0x10));
+    if (&node->object) {
+        node->object = object;
+        node->key = key;
+    }
+    node->next = head;
+    node->prev = head->prev;
+    head->prev->next = node;
+    head->prev = node;
+}
+#endif
+
+struct ModelInstProps_abab60 {
+    uint8_t pad[6];
+    uint8_t flags6;
+};
+struct ModelInst_abab60 {
+    virtual void Pad00_abab60();
+    virtual uint32_t AddRef();
+    virtual uint32_t Release();
+    virtual void Pad03_abab60();
+    virtual void Pad04_abab60();
+    virtual ModelInstProps_abab60* GetProps();
+    virtual void Slot06(uint32_t);
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007ca180 score 20
+bool cSC43DRender::IsModelInserted(uint32_t model)
+{
+    ModelInst_abab60* m = OB_PTR(ModelInst_abab60, model);
+    ModelInstProps_abab60* props = m->GetProps();
+    if (props) {
+        if (props->flags6 & 0x10) {
+            ModelChangeQueueItem_abab60* it = static_cast<ModelChangeQueueItem_abab60*>(mpQueueBegin);
+            ModelChangeQueueItem_abab60* end = static_cast<ModelChangeQueueItem_abab60*>(mpQueueEnd);
+            for (; it != end; ++it) {
+                if (it->a == model && it->b == 1) {
+                    return false;
+                }
+            }
+            if (static_cast<uint32_t>(static_cast<ModelChangeQueueItem_abab60*>(mpQueueEnd) -
+                                      static_cast<ModelChangeQueueItem_abab60*>(mpQueueBegin)) > 8) {
+                ProcessModelChangeQueue();
+            }
+        }
+        return true;
+    }
+    return false;
+}
+#endif
+
+// STUB: 0x007c5870
+ModelChangeQueueItem_abab60* Fn007c5870(ModelChangeQueueItem_abab60* first, ModelChangeQueueItem_abab60* last,
+                                         ModelChangeQueueItem_abab60* dest, const char* tag, uint32_t n);
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c6e30 score 16
+void cSC43DRender::ClearModelChangeQueue()
+{
+    if (!mbQueueBusy) {
+        mbQueueBusy = true;
+        ModelChangeQueueItem_abab60* it = static_cast<ModelChangeQueueItem_abab60*>(mpQueueBegin);
+        for (; it != static_cast<ModelChangeQueueItem_abab60*>(mpQueueEnd); ++it) {
+            if (it->a) {
+                ModelInstProps_abab60* props = OB_PTR(ModelInst_abab60, it->a)->GetProps();
+                if (props) {
+                    props->flags6 &= 0xe7;
+                    uint32_t saved = it->a;
+                    it->a = 0;
+                    RemoveModel(saved);
+                    it->a = saved;
+                }
+                OB_PTR(ModelInst_abab60, it->a)->Release();
+            }
+        }
+        char tag;
+        ModelChangeQueueItem_abab60* end = static_cast<ModelChangeQueueItem_abab60*>(mpQueueEnd);
+        mpQueueEnd = Fn007c5870(end, end, static_cast<ModelChangeQueueItem_abab60*>(mpQueueBegin), &tag, 0);
+        mbQueueBusy = false;
+    }
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c57e0 score 63
+ModelChangeQueueItem_abab60* Fn007c57e0(ModelChangeQueueItem_abab60* dest, uint32_t n,
+                                         const ModelChangeQueueItem_abab60* x)
+{
+    if (n > 0) {
+        do {
+        if (dest) {
+            dest->a = x->a;
+            dest->b = x->b;
+            dest->c = x->c;
+            dest->q = x->q;
+            dest->s[0] = x->s[0];
+            dest->s[1] = x->s[1];
+            dest->s[2] = x->s[2];
+            dest->s[3] = x->s[3];
+            dest->s[4] = x->s[4];
+            dest->s[5] = x->s[5];
+        }
+        ++dest;
+        } while (--n != 0);
+    }
+    return dest;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c5750 score 70
+ModelChangeQueueItem_abab60* Fn007c5750(ModelChangeQueueItem_abab60* first, ModelChangeQueueItem_abab60* last,
+                                         ModelChangeQueueItem_abab60* dest)
+{
+    if (first != last) {
+        do {
+        if (dest) {
+            dest->a = first->a;
+            dest->b = first->b;
+            dest->c = first->c;
+            dest->q = first->q;
+            dest->s[0] = first->s[0];
+            dest->s[1] = first->s[1];
+            dest->s[2] = first->s[2];
+            dest->s[3] = first->s[3];
+            dest->s[4] = first->s[4];
+            dest->s[5] = first->s[5];
+        }
+        ++first;
+        ++dest;
+        } while (first != last);
+    }
+    return dest;
+}
+#endif
+
+// The model change queue is a vector of 0x30-byte items; its push_back.
+struct FalseType_abab60 {};  // the type tag the vector's overflow insert takes (items are not plain data)
+struct ModelQueue_abab60 {
+    ModelChangeQueueItem_abab60* begin;
+    ModelChangeQueueItem_abab60* finish;
+    ModelChangeQueueItem_abab60* cap;
+    // STUB: 0x007c62b0
+    void InsertOverflow(ModelChangeQueueItem_abab60* pos, const ModelChangeQueueItem_abab60& x, const FalseType_abab60& tag,
+                        uint32_t n, bool atEnd);
+    void PushBack(const ModelChangeQueueItem_abab60& x);
+};
+
+// FUNCTION: 0x007c6fe0
+void ModelQueue_abab60::PushBack(const ModelChangeQueueItem_abab60& x)
+{
+    if (finish != cap) {
+        if (finish) {
+            new (finish) ModelChangeQueueItem_abab60(x);
+        }
+        ++finish;
+    } else {
+        FalseType_abab60 tag;
+        InsertOverflow(finish, x, tag, 1, true);
+    }
+}
+
+// The record of 0x40 bytes with two embedded vectors.
+struct Vec12_abab60 {
+    uint32_t v[3];
+    // STUB: 0x00464760
+    Vec12_abab60& operator=(const Vec12_abab60& o);
+};
+struct Rec40_abab60 {
+    uint32_t a;
+    uint32_t b;
+    uint8_t c;
+    uint32_t d;
+    uint32_t e;
+    uint32_t f;
+    uint32_t g;
+    Vec12_abab60 v1;
+    Vec12_abab60 v2;
+    uint32_t h;
+    uint32_t i;
+    uint32_t j;
+    Rec40_abab60& Assign(const Rec40_abab60& o);
+};
+
+// FUNCTION: 0x007c63a0
+Rec40_abab60& Rec40_abab60::Assign(const Rec40_abab60& o)
+{
+    a = o.a;
+    b = o.b;
+    c = o.c;
+    d = o.d;
+    e = o.e;
+    f = o.f;
+    g = o.g;
+    v1 = o.v1;
+    v2 = o.v2;
+    h = o.h;
+    i = o.i;
+    j = o.j;
+    return *this;
+}
+
+struct DrawCtxFlag_abab60 {
+    char pad[0x20];
+    uint32_t reason;
+};
+struct cCameraUnset_abab60 {
+    // STUB: 0x007ff0b0
+    void Unset();
+};
+
+// FUNCTION: 0x007ca9c0
+void cSC43DRender::DoPartialViewUpdate(void* rect, uint32_t reason)
+{
+    if (gb0dc19) {
+        const int32_t* r = static_cast<const int32_t*>(rect);
+        if (r[2] > r[0] && r[3] > r[1]) {
+            static_cast<DrawCtxFlag_abab60*>(mpDrawContext)->reason = reason;
+            UpdateViewportRect(rect);
+            gpB4e1ec->Slot75();
+            static_cast<cCameraUnset_abab60*>(mpCamera)->Unset();
+            static_cast<cCameraUnset_abab60*>(mpCamera2D)->Unset();
+            mnCameraMode = 0;
+            if (mbBackingValid) {
+                mbBackingValid = SaveBackingStore(r[0], r[1], r[2] - r[0], r[3] - r[1]);
+            }
+            static_cast<DrawCtxFlag_abab60*>(mpDrawContext)->reason = 0;
+        }
+    }
+}
+
+struct ShakeNode_abab60 {
+    ShakeNode_abab60* next;
+    ShakeNode_abab60* prev;
+    float f08;
+    char pad0c[0x10];
+    float f1c;
+    float f20;
+    void* p24;
+    char pad28[0x8];
+    void* p30;
+    char pad34[0x10];
+    uint32_t id;
+};
+struct Timer_abab60 {
+    // STUB: 0x00890377
+    void GetElapsedTime(float& out) const;
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c8630 score 42
+void cSC43DRender::StopScreenShake(uint32_t id)
+{
+    ShakeNode_abab60* head = static_cast<ShakeNode_abab60*>(mpShakeList);
+    ShakeNode_abab60* n = head->next;
+    if (n == head) {
+        return;
+    }
+    while (n->id != id) {
+        n = n->next;
+        if (n == head) {
+            return;
+        }
+    }
+    if (n->f20 == 0.0f) {
+        n->prev->next = n->next;
+        n->next->prev = n->prev;
+        if (n->p30) {
+            StlDelete_abab60(n->p30);
+        }
+        if (n->p24) {
+            StlDelete_abab60(n->p24);
+        }
+        StlDelete_abab60(n);
+        return;
+    }
+    float t;
+    reinterpret_cast<const Timer_abab60*>(&mTimerBase)->GetElapsedTime(t);
+    t = (n->f20 - n->f1c) + t;
+    if (t < n->f08) {
+        n->f08 = t;
+    }
+}
+#endif
+
+// ---- agent 2, batch 2 ----
+struct DrawCtxScale_abab60 {
+    char pad[0x10];
+    float scale;
+    int32_t w;
+    int32_t h;
+};
+struct RenderPropsInner_abab60 {
+    char pad[0x15c];
+    int32_t value;
+};
+struct RenderPropsOuter_abab60 {
+    char pad[0x18];
+    RenderPropsInner_abab60* inner;
+};
+
+// FUNCTION: 0x007cab30
+void cSC43DRender::Fn007cab30(int32_t a, int32_t b, int32_t c, int32_t d)
+{
+    if (b != d) {
+        if (mpQueueBegin != mpQueueEnd) {
+            ProcessModelChangeQueue();
+        }
+        mbFullUpdateDone = true;
+        mbBackingValid = false;
+        static_cast<DrawCtxScale_abab60*>(mpDrawContext)->scale = static_cast<float>(c);
+        static_cast<DrawCtxScale_abab60*>(mpDrawContext)->w = c;
+        static_cast<DrawCtxScale_abab60*>(mpDrawContext)->h = d;
+        RebuildQuadGrid(a, b, c, d);
+        static_cast<cViewUtil_abab60*>(mpViewUtilities)->Fn007f9f50(mnViewOrigin, &mnViewportW2);
+        mbDirtyA = false;
+        mbDirtyB = false;
+        ++mnCounter15c;
+        ClearDirtyRectangleQueue();
+    }
+}
+
+// FUNCTION: 0x007caa60
+void cSC43DRender::Fn007caa60(int32_t a, int32_t b, int32_t c, int32_t d)
+{
+    if (a != c) {
+        if (mpQueueBegin != mpQueueEnd) {
+            ProcessModelChangeQueue();
+        }
+        SetBackingStoreEnabled(c < static_cast<RenderPropsOuter_abab60*>(mpRenderProps)->inner->value);
+        mbFullUpdateDone = true;
+        mbBackingValid = false;
+        static_cast<DrawCtxScale_abab60*>(mpDrawContext)->scale = static_cast<float>(c);
+        static_cast<DrawCtxScale_abab60*>(mpDrawContext)->w = c;
+        static_cast<DrawCtxScale_abab60*>(mpDrawContext)->h = d;
+        RebuildQuadGrid(a, b, c, d);
+        static_cast<cViewUtil_abab60*>(mpViewUtilities)->Fn007f9f50(mnViewOrigin, &mnViewportW2);
+        Fn007c55c0();
+        mbDirtyA = false;
+        mbDirtyB = false;
+        ++mnCounter15c;
+        ClearDirtyRectangleQueue();
+    }
+}
+
+struct CleanupTimer_abab60 {
+    // STUB: 0x0088fefb
+    bool IsTimerRunning() const;
+    // STUB: 0x00890198
+    uint32_t GetElapsedTime() const;
+    // STUB: 0x0088ff0a
+    void Reset();
+    // STUB: 0x0089058f
+    void Restart();
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007cafb0 score 54
+void cSC43DRender::DoViewCleanup()
+{
+    if (mbCleanupB && mbCleanupA) {
+        CleanupTimer_abab60* timer = reinterpret_cast<CleanupTimer_abab60*>(mCleanupTimer);
+        if (timer->IsTimerRunning()) {
+            if (timer->GetElapsedTime() > mnCleanupDelay) {
+                int32_t rect[4];
+                rect[0] = mCleanupRect[0];
+                rect[1] = mCleanupRect[1];
+                rect[2] = mCleanupRect[2];
+                rect[3] = mCleanupRect[3];
+                rect[2] = mnCleanupStep + rect[0];
+                if (rect[2] > mCleanupRect[2]) {
+                    rect[2] = mCleanupRect[2];
+                }
+                DoPartialViewUpdate(rect, 9);
+                mCleanupRect[0] = rect[2];
+                if (rect[2] >= mCleanupRect[2]) {
+                    mbCleanupB = false;
+                    timer->Reset();
+                }
+            }
+        } else {
+            timer->Restart();
+        }
+    }
+}
+#endif
+
+struct DirtyNode_abab60 {
+    DirtyNode_abab60* next;
+    DirtyNode_abab60* prev;
+    char pad[0x18];
+    ViewObject_abab60* object;
+};
+
+// STUB: 0x007257c0
+void* Fn007257c0(void* first, void* last, void* dest, const char* tag, uint32_t n);
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c6d80 score 28
+void cSC43DRender::ClearDirtyRectangleQueue()
+{
+    DirtyNode_abab60* head = static_cast<DirtyNode_abab60*>(mpDirtyList);
+    if (head->next != head) {
+        DirtyNode_abab60* tail = head;
+        DirtyNode_abab60* n = tail->next;
+        if (n != tail) {
+            do {
+                if (n->object) {
+                    n->object->Release();
+                }
+                n = n->next;
+            } while (n != tail);
+        }
+        n = static_cast<DirtyNode_abab60*>(mpDirtyList)->next;
+        while (n != static_cast<DirtyNode_abab60*>(mpDirtyList)) {
+            DirtyNode_abab60* cur = n;
+            n = n->next;
+            StlDelete_abab60(cur);
+        }
+        static_cast<DirtyNode_abab60*>(mpDirtyList)->next = static_cast<DirtyNode_abab60*>(mpDirtyList);
+        static_cast<DirtyNode_abab60*>(mpDirtyList)->prev = static_cast<DirtyNode_abab60*>(mpDirtyList);
+        char tag;
+        void* end = mpDirtyVecEnd;
+        mpDirtyVecEnd = Fn007257c0(end, end, mpDirtyVecBegin, &tag, 0);
+        mnDirty1d8 = 0;
+        mnDirty1e0 = 0;
+    }
+}
+#endif
+
+struct Vec4_abab60 {
+    uint32_t x;
+    uint32_t y;
+    uint32_t z;
+    uint32_t w;
+    Vec4_abab60()
+    {
+        x = gdB4e1f8;
+        y = gdB4e1f8;
+        z = gdB4e1f8;
+        w = gdB4e1f8;
+    }
+};
+struct Vec4Vector_abab60 {
+    Vec4_abab60* begin;
+    Vec4_abab60* finish;
+    Vec4_abab60* cap;
+    explicit Vec4Vector_abab60(uint32_t n);
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c5be0 score 56
+Vec4Vector_abab60::Vec4Vector_abab60(uint32_t n)
+{
+    begin = 0;
+    finish = 0;
+    cap = 0;
+    Vec4_abab60* p = 0;
+    if (n) {
+        p = static_cast<Vec4_abab60*>(StlNew_abab60(n * sizeof(Vec4_abab60)));
+    }
+    cap = p + n;
+    begin = p;
+    finish = p;
+    Vec4_abab60 x;
+    for (; n > 0; --n) {
+        if (p) {
+            *p = x;
+        }
+        ++p;
+    }
+    finish = p;
+}
+#endif
+
+struct GridCell_abab60 {
+    char pad[0xc];
+    uint16_t flags;
+};
+struct GridRow_abab60 {
+    GridCell_abab60* begin;
+    GridCell_abab60* end;
+    uint32_t pad;
+};
+struct GridState_abab60 {
+    int32_t count;
+    char pad[0x10];
+    GridRow_abab60* rowsBegin;
+    GridRow_abab60* rowsEnd;
+    // STUB: 0x005f34b0
+    void GetAllElements(GridElement_abab60** out, int32_t* count);
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c55c0 score 48
+void cSC43DRender::Fn007c55c0()
+{
+    GridState_abab60* grid = static_cast<GridState_abab60*>(mpQuadGrid);
+    if (grid) {
+        int32_t count = grid->count;
+        GridElement_abab60** all = static_cast<GridElement_abab60**>(operator new(count * 4));
+        static_cast<GridState_abab60*>(mpQuadGrid)->GetAllElements(all, &count);
+        for (int32_t i = 0; i < count; ++i) {
+            GridElement_abab60* e = all[i];
+            e->flags |= 8;
+            uint16_t bits = e->flags;
+            if (!Fn007c5540(e)) {
+                e->flags = bits & 0xfff7;
+            }
+        }
+        operator delete(all);
+        GridRow_abab60* row = static_cast<GridState_abab60*>(mpQuadGrid)->rowsBegin;
+        GridRow_abab60* rowEnd = static_cast<GridState_abab60*>(mpQuadGrid)->rowsEnd;
+        for (; row != rowEnd; ++row) {
+            GridCell_abab60* c = row->begin;
+            for (; c != row->end; ++c) {
+                c->flags |= 1;
+            }
+        }
+    }
+}
+#endif
+
+struct cViewUtilF_abab60 {
+    char pad0[0x10];
+    int32_t index;
+    char pad1[0x14];
+    int32_t w;
+    int32_t h;
+    char pad2[0x1fc];
+    int32_t v22c;
+    int32_t v230;
+    int32_t v234;
+    int32_t v238;
+    // STUB: 0x007f8390
+    void Fn007f8390(float* v);
+};
+
+// FUNCTION: 0x007c1e10
+void cSC43DRender::Fn007c1e10(float* out)
+{
+    float a[3];
+    a[0] = 0;
+    a[1] = 0;
+    a[2] = 0;
+    cViewUtilF_abab60* vu = static_cast<cViewUtilF_abab60*>(mpViewUtilities);
+    float b[3];
+    b[0] = static_cast<float>(vu->w);
+    b[1] = static_cast<float>(vu->h);
+    b[2] = 0;
+    vu->Fn007f8390(a);
+    a[0] = a[0] + mfOffsetsX[static_cast<cViewUtilF_abab60*>(mpViewUtilities)->index];
+    a[1] = -a[1];
+    a[1] = a[1] + mfOffsetsY[static_cast<cViewUtilF_abab60*>(mpViewUtilities)->index];
+    static_cast<cViewUtilF_abab60*>(mpViewUtilities)->Fn007f8390(b);
+    b[0] = b[0] + mfOffsetsX[static_cast<cViewUtilF_abab60*>(mpViewUtilities)->index];
+    b[1] = -b[1];
+    b[1] = b[1] + mfOffsetsY[static_cast<cViewUtilF_abab60*>(mpViewUtilities)->index];
+    out[0] = a[0];
+    out[1] = a[1];
+    out[2] = b[0];
+    out[3] = b[1];
+}
+
+// FUNCTION: 0x007c1ef0
+void cSC43DRender::Fn007c1ef0(float* out)
+{
+    cViewUtilF_abab60* vu = static_cast<cViewUtilF_abab60*>(mpViewUtilities);
+    float a[3];
+    a[0] = static_cast<float>(vu->v22c);
+    a[1] = static_cast<float>(vu->v230);
+    a[2] = 0;
+    float b[3];
+    b[0] = static_cast<float>(vu->v234);
+    b[1] = static_cast<float>(vu->v238);
+    b[2] = 0;
+    vu->Fn007f8390(a);
+    a[0] = a[0] + mfOffsetsX[static_cast<cViewUtilF_abab60*>(mpViewUtilities)->index];
+    a[1] = -a[1];
+    a[1] = a[1] + mfOffsetsY[static_cast<cViewUtilF_abab60*>(mpViewUtilities)->index];
+    static_cast<cViewUtilF_abab60*>(mpViewUtilities)->Fn007f8390(b);
+    b[0] = b[0] + mfOffsetsX[static_cast<cViewUtilF_abab60*>(mpViewUtilities)->index];
+    b[1] = -b[1];
+    b[1] = b[1] + mfOffsetsY[static_cast<cViewUtilF_abab60*>(mpViewUtilities)->index];
+    out[0] = a[0];
+    out[1] = a[1];
+    out[2] = b[0];
+    out[3] = b[1];
+}
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c1fd0 score 108
+void cSC43DRender::Fn007c1fd0(float* out, int32_t mode)
+{
+    float* r;
+    if (mode == 0 || mode == 1) {
+        if (!mbDirtyB) {
+            r = mfRectB;
+            Fn007c1ef0(r);
+            mbDirtyB = true;
+            goto clamp;
+        }
+        r = mfRectB;
+    } else {
+        if (!mbDirtyA) {
+            r = mfRectA;
+            Fn007c1e10(r);
+            mbDirtyA = true;
+        clamp:
+            if (r[0] < 0.0f) {
+                r[0] = 0.0f;
+            }
+            if (r[1] < 0.0f) {
+                r[1] = 0.0f;
+            }
+            if (mfQuadGridSize - 1.0f < r[2]) {
+                r[2] = mfQuadGridSize - 1.0f;
+            }
+            if (mfQuadGridSize - 1.0f < r[3]) {
+                r[3] = mfQuadGridSize - 1.0f;
+            }
+            out[0] = r[0];
+            out[1] = r[1];
+            out[2] = r[2];
+            out[3] = r[3];
+            return;
+        }
+        r = mfRectA;
+    }
+    out[0] = r[0];
+    out[1] = r[1];
+    out[2] = r[2];
+    out[3] = r[3];
+}
+#endif
+
+// ---- agent 2, batch 3 ----
+// GLOBAL: 0x00b0dc20
+extern float gfB0dc20;
+
+struct VecF3_abab60 {
+    float x;
+    float y;
+    float z;
+    VecF3_abab60()
+    {
+        *reinterpret_cast<uint32_t*>(&x) = gdB4e1f8;
+        *reinterpret_cast<uint32_t*>(&y) = gdB4e1f8;
+        *reinterpret_cast<uint32_t*>(&z) = gdB4e1f8;
+    }
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c5000 score 23
+bool cSC43DRender::PickTerrain(int32_t x, int32_t y, void* out, bool a, bool b)
+{
+    bool result = false;
+    if (mpCamera && mnFocusedViewObject) {
+        VecF3_abab60 origin;
+        VecF3_abab60 dir;
+        float point[2];
+        point[0] = static_cast<float>(x);
+        point[1] = static_cast<float>(y);
+        if (static_cast<cCamera_abab60*>(mpCamera)->GetEyeRay(point, &origin, &dir)) {
+            float scale = gfB0dc20 / sqrtf(dir.z * dir.z + dir.y * dir.y + dir.x * dir.x);
+            dir.x = dir.x * scale;
+            dir.y = dir.y * scale;
+            dir.z = dir.z * scale;
+            result = PickTerrain_2(&origin, &dir, out, a, b);
+        }
+    }
+    return result;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c50f0 score 23
+bool cSC43DRender::PickTerrainAlways(int32_t x, int32_t y, void* out, bool a)
+{
+    bool result = false;
+    if (mpCamera && mnFocusedViewObject) {
+        VecF3_abab60 origin;
+        VecF3_abab60 dir;
+        float point[2];
+        point[0] = static_cast<float>(x);
+        point[1] = static_cast<float>(y);
+        if (static_cast<cCamera_abab60*>(mpCamera)->GetEyeRay(point, &origin, &dir)) {
+            float scale = gfB0dc20 / sqrtf(dir.z * dir.z + dir.y * dir.y + dir.x * dir.x);
+            dir.x = dir.x * scale;
+            dir.y = dir.y * scale;
+            dir.z = dir.z * scale;
+            result = PickTerrainAlways_2(&origin, &dir, out, a);
+        }
+    }
+    return result;
+}
+#endif
+
+// ---- agent 2, batch 4 ----
+struct GridProps_abab60 {
+    char pad[6];
+    uint8_t flags6;
+    char pad2[0x15];
+    uint32_t box[6];
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c9220 score 39
+bool cSC43DRender::MoveModel(uint32_t model)
+{
+    ModelInst_abab60* m = OB_PTR(ModelInst_abab60, model);
+    m->AddRef();
+    GridProps_abab60* props = reinterpret_cast<GridProps_abab60*>(m->GetProps());
+    if (props) {
+        if (props->flags6 & 8) {
+            Quad_abab60 quad;
+            quad.v[0] = 0;
+            quad.v[1] = 0;
+            quad.v[2] = 0;
+            quad.v[3] = 0;
+            ModelChangeQueueItem_abab60 item(model, 2, 0, quad, props->box);
+            m->AddRef();
+            props->flags6 |= 0x10;
+            ModelQueue_abab60* q = reinterpret_cast<ModelQueue_abab60*>(&mpQueueBegin);
+            q->PushBack(item);
+            if (static_cast<int32_t>(q->finish - q->begin) == 200) {
+                DoFullViewUpdate(4);
+            }
+        } else {
+            MoveGridElement(props, m);
+        }
+    } else {
+        InsertModel(model);
+    }
+    m->Release();
+    return true;
+}
+#endif
+
+struct cViewUtilW_abab60 {
+    // STUB: 0x007f78a0
+    float Fn007f78a0(float* v);
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c2f80 score 50
+void Fn007c2f80(float* out, cViewUtilW_abab60* vu)
+{
+    float v[3];
+    float r[3];
+    v[0] = 0.0f;
+    v[1] = 0.0f;
+    v[2] = 0.0f;
+    r[0] = vu->Fn007f78a0(v);
+    v[0] = 1.0f;
+    v[1] = 0.0f;
+    v[2] = 0.0f;
+    r[1] = vu->Fn007f78a0(v);
+    v[0] = 0.0f;
+    v[1] = 1.0f;
+    v[2] = 0.0f;
+    r[2] = vu->Fn007f78a0(v);
+    v[0] = 0.0f;
+    v[1] = 0.0f;
+    v[2] = 1.0f;
+    float r3 = vu->Fn007f78a0(v);
+    out[0] = r[1] - r[0];
+    out[1] = r[2] - r[0];
+    out[2] = r3 - r[0];
+    out[3] = r[0] + 1.0f;
+}
+#endif
+
+// ---- agent 2, batch 5 ----
+struct DirtyRectNode_abab60 {
+    DirtyRectNode_abab60* next;
+    DirtyRectNode_abab60* prev;
+    int32_t pad[2];
+    int32_t x0;
+    int32_t y0;
+    int32_t x1;
+    int32_t y1;
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007cabe0 score 62
+bool cSC43DRender::AttemptTranslatedViewUpdate(int32_t dx, int32_t dy)
+{
+    int32_t ax = abs(dx);
+    if (ax < static_cast<int32_t>(mnViewportW) * 14 / 16) {
+        int32_t ay = abs(dy);
+        if (ay < static_cast<int32_t>(mnViewportH) * 14 / 16 && mbBufferRegionsUsable && gb0dc19 && mbBackingValid &&
+            gb4e1e4) {
+            DirtyRectNode_abab60* n = static_cast<DirtyRectNode_abab60*>(mpDirtyList)->next;
+            while (n != static_cast<DirtyRectNode_abab60*>(mpDirtyList)) {
+                n->x0 += -dx;
+                n->x1 += -dx;
+                n->y0 += dy;
+                n->y1 += dy;
+                n = n->next;
+            }
+            DoTranslatedViewUpdate(dx, dy);
+            return true;
+        }
+    }
+    static_cast<DrawCtxFlag_abab60*>(mpDrawContext)->reason = 3;
+    mbFullUpdateDone = true;
+    mbBackingValid = false;
+    static_cast<cViewUtil_abab60*>(mpViewUtilities)->Fn007f9f50(mnViewOrigin, &mnViewportW2);
+    mbDirtyA = false;
+    mbDirtyB = false;
+    ClearDirtyRectangleQueue();
+    return false;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007c5ac0 score 49
+bool cSC43DRender::RemoveViewObject(uint32_t object)
+{
+    ViewObject_abab60* o = OB_PTR(ViewObject_abab60, object);
+    bool result = false;
+    if (object == mnFocusedViewObject) {
+        if (mnFocusedViewObject) {
+            OB_PTR(ViewObject_abab60, mnFocusedViewObject)->Release();
+            mnFocusedViewObject = 0;
+        }
+        result = true;
+    }
+    ViewNode_abab60* head = static_cast<ViewNode_abab60*>(mpViewListB);
+    ViewNode_abab60* n = head->next;
+    while (n != head) {
+        if (n->object == o) {
+            n->prev->next = n->next;
+            n->next->prev = n->prev;
+            StlDelete_abab60(n);
+            o->Release();
+            result = true;
+            break;
+        }
+        n = n->next;
+    }
+    head = static_cast<ViewNode_abab60*>(mpViewListA);
+    n = head->next;
+    while (n != head) {
+        if (n->object == o) {
+            n->prev->next = n->next;
+            n->next->prev = n->prev;
+            StlDelete_abab60(n);
+            o->Release();
+            result = true;
+            break;
+        }
+        n = n->next;
+    }
+    head = static_cast<ViewNode_abab60*>(mpViewListD);
+    n = head->next;
+    while (n != head) {
+        if (n->object == o) {
+            n->prev->next = n->next;
+            n->next->prev = n->prev;
+            StlDelete_abab60(n);
+            o->Release();
+            mbBackingValid = false;
+            result = true;
+            break;
+        }
+        n = n->next;
+    }
+    head = static_cast<ViewNode_abab60*>(mpViewListC);
+    n = head->next;
+    while (n != head) {
+        if (n->object == o) {
+            n->prev->next = n->next;
+            n->next->prev = n->prev;
+            StlDelete_abab60(n);
+            o->Release();
+            mbBackingValid = false;
+            result = true;
+            break;
+        }
+        n = n->next;
+    }
+    return result;
+}
+#endif
+
+struct GridPropsW_abab60 {
+    char pad[6];
+    uint16_t flags;
+};
+struct cQuadGridR_abab60 {
+    // STUB: 0x005f2b30
+    bool RemoveElement(void* element);
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007ca3d0 score 53
+bool cSC43DRender::RemoveModel(uint32_t model)
+{
+    ModelInst_abab60* m = OB_PTR(ModelInst_abab60, model);
+    bool result = false;
+    m->AddRef();
+    GridProps_abab60* props = reinterpret_cast<GridProps_abab60*>(m->GetProps());
+    if (props) {
+        uint16_t bits = reinterpret_cast<GridPropsW_abab60*>(props)->flags;
+        if (bits & 8) {
+            if (bits & 0x10) {
+                ProcessModelChangeQueue();
+                props = reinterpret_cast<GridProps_abab60*>(m->GetProps());
+            }
+            if (props) {
+                Quad_abab60 quad;
+                quad.v[0] = 0;
+                quad.v[1] = 0;
+                quad.v[2] = 0;
+                quad.v[3] = 0;
+                ModelChangeQueueItem_abab60 item(model, 1, 0, quad, props->box);
+                m->AddRef();
+                props->flags6 |= 0x10;
+                ModelQueue_abab60* q = reinterpret_cast<ModelQueue_abab60*>(&mpQueueBegin);
+                q->PushBack(item);
+                if (static_cast<int32_t>(q->finish - q->begin) == 200) {
+                    DoFullViewUpdate(4);
+                }
+                result = true;
+            }
+        } else {
+            if (bits & 0x10) {
+                ProcessModelChangeQueue();
+            }
+            result = static_cast<cQuadGridR_abab60*>(mpQuadGrid)->RemoveElement(props);
+            if (result) {
+                m->Release();
+            }
+            m->Slot06(0);
+        }
+    }
+    m->Release();
+    return result;
 }
 #endif

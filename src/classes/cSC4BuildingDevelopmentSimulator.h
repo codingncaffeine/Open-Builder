@@ -54,7 +54,7 @@ struct OB_NOVTABLE cSC4BuildingDevelopmentSimulator_0 {
     virtual uint8_t GetBuildingMapKey(uint32_t) = 0;
     virtual void* GetSpecialBuildings() = 0;
     virtual float Slot45_ab0af8(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void IsSuitableForConstruction(uint32_t, uint32_t) = 0;
+    virtual bool IsSuitableForConstruction(void*, void*) = 0;
     virtual void PlopBuilding(void*) = 0;
     virtual uint32_t GetFreeConstructionResources() = 0;
     virtual uint32_t Slot49_ab0af8() = 0;
@@ -143,7 +143,7 @@ public:
     virtual uint8_t GetBuildingMapKey(uint32_t);
     virtual void* GetSpecialBuildings();
     virtual float Slot45_ab0af8(uint32_t, uint32_t, uint32_t);
-    virtual void IsSuitableForConstruction(uint32_t, uint32_t);
+    virtual bool IsSuitableForConstruction(void*, void*);
     virtual void PlopBuilding(void*);
     virtual uint32_t GetFreeConstructionResources();
     virtual uint32_t Slot49_ab0af8();

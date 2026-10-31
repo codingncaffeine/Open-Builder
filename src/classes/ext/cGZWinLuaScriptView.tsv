@@ -27,3 +27,8 @@ field 148 void* mpWin148
 field 158 int32_t mnCallLevel
 field 160 bool mbEnabled
 field 164 int32_t mn164
+method 0x008b0c40 void SetPauseCount(int32_t)
+method 0x008b53c0 bool SetViewByScriptNameAndLine(void*, int32_t)
+method 0x008b45c0 void* Fn008b45c0(uint32_t)
+method 0x008b4840 void Fn008b4840()
+method 0x008b30b0 void SetupScriptViewCaption()

@@ -148,7 +148,7 @@ public:
     // STUB: 0x007e70c0
     void Fn007e70c0(uint32_t);
     // STUB: 0x007e7130
-    void Fn007e7130(uint32_t);
+    void Fn007e7130(uint32_t, uint32_t);
     // STUB: 0x007e7220
     void Fn007e7220(uint32_t);
     // STUB: 0x007e7270
@@ -172,7 +172,7 @@ public:
     // STUB: 0x007e9090
     void Fn007e9090(int32_t, int32_t);
     // STUB: 0x007e9150
-    void ObliterateCity(uint32_t);
+    void ObliterateCity();
     // STUB: 0x007e9780
     bool Fn007e9780();
     // STUB: 0x007e97a0
@@ -267,6 +267,8 @@ public:
     void Fn007f6160();
     // STUB: 0x007f6410
     uint32_t Fn007f6410();
+    // STUB: 0x007e8090
+    void Fn007e8090(uint32_t, uint32_t);
     char unknowne4[0xc];
     void* mpCamera;
     void* mpPicker;
@@ -287,12 +289,24 @@ public:
     bool mbSimPaused;
     char unknown179[0x13];
     void* mpToolbarWin;
-    char unknown190[0x64];
+    char unknown190[0x4];
+    void* mpPanelC;
+    char unknown198[0x5c];
     int32_t mnPanel;
     void* mpSecondaryMenu;
-    char unknown1fc[0x4];
+    void* mpTertiaryMenu;
     uint32_t mnSecondaryMenu200;
-    char unknown204[0xfc];
+    uint32_t mnTertiary204;
+    void* mpTertiaryData;
+    char unknown20c[0xc8];
+    bool mbPanelFlag2d4;
+    bool mbPanelFlag2d5;
+    bool mbPanelFlag2d6;
+    char unknown2d7[0x5];
+    void* mpPanelA;
+    char unknown2e0[0xc];
+    void* mpPanelB;
+    char unknown2f0[0x10];
     void* mpManagerHost;
     char unknown304[0x1c];
     void* mpViewFilter;
@@ -312,7 +326,8 @@ public:
     char unknown350[0x14];
     int32_t mnZoomMin;
     int32_t mnZoomMax;
-    char unknown36c[0x48];
+    char unknown36c[0x44];
+    uint32_t mnCostValue;
     uint32_t mnCostState;
     uint32_t mnCostState2;
     float mfCostTimer;
@@ -325,7 +340,10 @@ public:
     void* mpCursorTextWin;
     void* mpTipList;
     char unknown3e0[0x4];
-    char field3e4[0x20];
+    char field3e4[0x18];
+    bool mbContour;
+    char unknown3fd[0x3];
+    int32_t mnContourHandle;
     void* mpProgressScreen;
     char unknown408[0x4];
     void* mpMissionPanel;

@@ -52,6 +52,8 @@ public:
     void* Fn008b42c0(void*, void*, int32_t, bool, void*);
     // STUB: 0x008b1b80
     bool Fn008b1b80(void*, void*, int32_t, void*);
+    // STUB: 0x008aed10
+    bool Fn008aed10();
     uint32_t mnRefCount;
     bool mbInitialized;
     char unknown25[0xb];

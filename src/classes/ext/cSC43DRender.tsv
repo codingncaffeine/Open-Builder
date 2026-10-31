@@ -111,3 +111,47 @@ slot FindViewObject bool uint32_t
 field 198 uint32_t mnFocusedViewObject
 method 0x007c5540 bool Fn007c5540(void*)
 method 0x007c38d0 bool Fn007c38d0()
+field 14 void* mpGraphicDriver
+field 18 void* mpGraphicSystem
+field 1c uint8_t mDriverName[0x14]
+field 30 uint8_t mDriverDesc[0x14]
+field 1c4 void* mpQueueBegin
+field 1c8 void* mpQueueEnd
+field 1cc void* mpQueueCap
+field 1d0 bool mbQueueBusy
+field 234 void* mpShakeList
+field 240 uint32_t mTimerBase
+method 0x007c9600 void ProcessModelChangeQueue()
+method 0x007c2960 bool SaveBackingStore(int32_t, int32_t, int32_t, int32_t)
+method 0x007ca9c0 void DoPartialViewUpdate(void*, uint32_t)
+method 0x007c6e30 void ClearModelChangeQueue()
+field 1d4 void* mpDirtyList
+field 1d8 uint32_t mnDirty1d8
+field 1e0 uint32_t mnDirty1e0
+field 1e8 void* mpDirtyVecBegin
+field 1ec void* mpDirtyVecEnd
+field 1fc bool mbCleanupA
+field 1fd bool mbCleanupB
+field 200 int32_t mCleanupRect[4]
+field 210 int32_t mnCleanupStep
+field 218 uint8_t mCleanupTimer[0x18]
+field 230 uint32_t mnCleanupDelay
+field 164 float mfRectA[4]
+field 178 float mfRectB[4]
+field 268 float mfOffsetsX[4]
+field 278 float mfOffsetsY[4]
+method 0x007caa60 void Fn007caa60(int32_t, int32_t, int32_t, int32_t)
+method 0x007cab30 void Fn007cab30(int32_t, int32_t, int32_t, int32_t)
+method 0x007c5370 void RebuildQuadGrid(int32_t, int32_t, int32_t, int32_t)
+method 0x007c55c0 void Fn007c55c0()
+method 0x007cafb0 void DoViewCleanup()
+method 0x007c1e10 void Fn007c1e10(float*)
+method 0x007c1ef0 void Fn007c1ef0(float*)
+method 0x007c1fd0 void Fn007c1fd0(float*, int32_t)
+slot PickTerrain bool int32_t int32_t void* bool bool
+slot PickTerrain_2 bool void* void* void* bool bool
+slot PickTerrainAlways bool int32_t int32_t void* bool
+slot PickTerrainAlways_2 bool void* void* void* bool
+method 0x007cabe0 bool AttemptTranslatedViewUpdate(int32_t, int32_t)
+method 0x007ca4d0 void DoTranslatedViewUpdate(int32_t, int32_t)
+slot RemoveViewObject bool uint32_t

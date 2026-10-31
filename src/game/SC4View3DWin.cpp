@@ -198,7 +198,7 @@ struct View_abc9c0 {
     virtual bool SetRotation(uint32_t) = 0;
     virtual bool RotateLeft() = 0;
     virtual bool RotateRight() = 0;
-    virtual void Pad41() = 0;
+    virtual bool SetZoomAndRotation(int32_t, uint32_t) = 0;
     virtual void Pad42() = 0;
     virtual void Pad43() = 0;
     virtual void Pad44() = 0;
@@ -242,7 +242,7 @@ void Fn009afd73(void* pWin, uint32_t id, bool value);
 void Fn009afe69(void* pWin, uint32_t id, bool value);
 
 // STUB: 0x0078e2f0
-void Fn0078e2f0(uint32_t a, uint32_t b);
+uint32_t Fn0078e2f0(uint32_t a, uint32_t b);
 
 // STUB: 0x0090cf63
 void StlDelete_abc9c0(void* p);
@@ -1265,10 +1265,10 @@ struct Clock_abc9c0 {
     virtual void Pad09() = 0;
     virtual void Pad10() = 0;
     virtual void Pad11() = 0;
-    virtual void Pad12() = 0;
+    virtual uint32_t Slot12() = 0;
     virtual void Pad13() = 0;
     virtual void Pad14() = 0;
-    virtual void Pad15() = 0;
+    virtual uint32_t Slot15() = 0;
     virtual void Pad16() = 0;
     virtual void Pad17() = 0;
     virtual void Pad18() = 0;
@@ -1542,3 +1542,1054 @@ void cSC4View3DWin::Fn007e6ee0()
         }
     }
 }
+
+// ===== Agent 2 additions =====
+// The picker object at +0xf4 seen through its slot 65 (0x104).
+struct PickView_abc9c0 {
+    virtual void Pad00() = 0;
+    virtual void Pad01() = 0;
+    virtual void Pad02() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual void Pad06() = 0;
+    virtual void Pad07() = 0;
+    virtual void Pad08() = 0;
+    virtual void Pad09() = 0;
+    virtual void Pad10() = 0;
+    virtual void Pad11() = 0;
+    virtual void Pad12() = 0;
+    virtual void Pad13() = 0;
+    virtual void Pad14() = 0;
+    virtual void Pad15() = 0;
+    virtual void Pad16() = 0;
+    virtual void Pad17() = 0;
+    virtual void Pad18() = 0;
+    virtual void Pad19() = 0;
+    virtual void Pad20() = 0;
+    virtual void Pad21() = 0;
+    virtual void Pad22() = 0;
+    virtual void Pad23() = 0;
+    virtual void Pad24() = 0;
+    virtual void Pad25() = 0;
+    virtual void Pad26() = 0;
+    virtual void Pad27() = 0;
+    virtual void Pad28() = 0;
+    virtual void Pad29() = 0;
+    virtual void Pad30() = 0;
+    virtual void Pad31() = 0;
+    virtual void Pad32() = 0;
+    virtual void Pad33() = 0;
+    virtual void Pad34() = 0;
+    virtual void Pad35() = 0;
+    virtual void Pad36() = 0;
+    virtual void Pad37() = 0;
+    virtual void Pad38() = 0;
+    virtual void Pad39() = 0;
+    virtual void Pad40() = 0;
+    virtual void Pad41() = 0;
+    virtual void Pad42() = 0;
+    virtual void Pad43() = 0;
+    virtual void Pad44() = 0;
+    virtual void Pad45() = 0;
+    virtual void Pad46() = 0;
+    virtual void Pad47() = 0;
+    virtual void Pad48() = 0;
+    virtual void Pad49() = 0;
+    virtual void Pad50() = 0;
+    virtual void Pad51() = 0;
+    virtual void Pad52() = 0;
+    virtual void Pad53() = 0;
+    virtual void Pad54() = 0;
+    virtual void Pad55() = 0;
+    virtual void Pad56() = 0;
+    virtual void Pad57() = 0;
+    virtual void Pad58() = 0;
+    virtual void Pad59() = 0;
+    virtual void Pad60() = 0;
+    virtual void Pad61() = 0;
+    virtual void Pad62() = 0;
+    virtual void Pad63() = 0;
+    virtual void Pad64() = 0;
+    virtual bool PickOccupant(uint32_t, uint32_t, uint32_t, Unknown_abc9c0**) = 0;
+};
+
+// The layer a terrain view hands out (slots 8 and 15).
+struct TerrainLayer_abc9c0 {
+    virtual void Pad00() = 0;
+    virtual void Pad01() = 0;
+    virtual void Pad02() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual void Pad06() = 0;
+    virtual void Pad07() = 0;
+    virtual uint32_t Slot08(uint32_t) = 0;
+    virtual void Pad09() = 0;
+    virtual void Pad10() = 0;
+    virtual void Pad11() = 0;
+    virtual void Pad12() = 0;
+    virtual void Pad13() = 0;
+    virtual void Pad14() = 0;
+    virtual void Slot15(uint32_t) = 0;
+};
+
+struct TerrainView_abc9c0 {
+    virtual void Pad00() = 0;
+    virtual void Pad01() = 0;
+    virtual void Pad02() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual void Pad06() = 0;
+    virtual void Pad07() = 0;
+    virtual void Pad08() = 0;
+    virtual void Pad09() = 0;
+    virtual void Pad10() = 0;
+    virtual void Pad11() = 0;
+    virtual void Pad12() = 0;
+    virtual void Pad13() = 0;
+    virtual void Pad14() = 0;
+    virtual void Pad15() = 0;
+    virtual void Pad16() = 0;
+    virtual void Pad17() = 0;
+    virtual TerrainLayer_abc9c0* Slot18(uint32_t) = 0;
+};
+
+// STUB: 0x00602160
+TerrainView_abc9c0* Fn00602160();
+
+// The object a tertiary menu answers a deep interface query with (calls at 0x24 and 0x44).
+struct MenuInfo_abc9c0 {
+    virtual bool QueryInterface(uint32_t, void**) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual uint32_t Release() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual void Pad06() = 0;
+    virtual void Pad07() = 0;
+    virtual void Pad08() = 0;
+    virtual uint32_t Slot09() = 0;
+    virtual void Pad10() = 0;
+    virtual void Pad11() = 0;
+    virtual void Pad12() = 0;
+    virtual void Pad13() = 0;
+    virtual void Pad14() = 0;
+    virtual void Pad15() = 0;
+    virtual void Pad16() = 0;
+    virtual uint32_t Slot17() = 0;
+};
+
+struct MenuPair_abc9c0 {
+    uint32_t mnFirst;
+    uint32_t mnSecond;
+};
+
+struct ObliterateCity_abc9c0 {
+    virtual bool QueryInterface(uint32_t, void**) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual uint32_t Release() = 0;
+    // STUB: 0x0049cf90
+    ObliterateCity_abc9c0* Fn0049cf90();
+};
+
+// The tertiary menu at +0x1fc (calls at 0x94 and 0x118).
+struct TertiaryMenu_abc9c0 {
+    virtual bool QueryInterface(uint32_t, void**) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual uint32_t Release() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual void Pad06() = 0;
+    virtual void Pad07() = 0;
+    virtual void Pad08() = 0;
+    virtual void Pad09() = 0;
+    virtual void Pad10() = 0;
+    virtual void Pad11() = 0;
+    virtual void Pad12() = 0;
+    virtual void Pad13() = 0;
+    virtual void Pad14() = 0;
+    virtual void Pad15() = 0;
+    virtual void Pad16() = 0;
+    virtual void Pad17() = 0;
+    virtual void Pad18() = 0;
+    virtual void Pad19() = 0;
+    virtual void Pad20() = 0;
+    virtual void Pad21() = 0;
+    virtual void Pad22() = 0;
+    virtual void Pad23() = 0;
+    virtual void Pad24() = 0;
+    virtual void Pad25() = 0;
+    virtual void Pad26() = 0;
+    virtual void Pad27() = 0;
+    virtual void Pad28() = 0;
+    virtual void Pad29() = 0;
+    virtual void Pad30() = 0;
+    virtual void Pad31() = 0;
+    virtual void Pad32() = 0;
+    virtual void Pad33() = 0;
+    virtual void Pad34() = 0;
+    virtual void Pad35() = 0;
+    virtual void Pad36() = 0;
+    virtual bool QueryDeep(uint32_t, uint32_t, MenuInfo_abc9c0**) = 0;
+    virtual void Pad38() = 0;
+    virtual void Pad39() = 0;
+    virtual void Pad40() = 0;
+    virtual void Pad41() = 0;
+    virtual void Pad42() = 0;
+    virtual void Pad43() = 0;
+    virtual void Pad44() = 0;
+    virtual void Pad45() = 0;
+    virtual void Pad46() = 0;
+    virtual void Pad47() = 0;
+    virtual void Pad48() = 0;
+    virtual void Pad49() = 0;
+    virtual void Pad50() = 0;
+    virtual void Pad51() = 0;
+    virtual void Pad52() = 0;
+    virtual void Pad53() = 0;
+    virtual void Pad54() = 0;
+    virtual void Pad55() = 0;
+    virtual void Pad56() = 0;
+    virtual void Pad57() = 0;
+    virtual void Pad58() = 0;
+    virtual void Pad59() = 0;
+    virtual void Pad60() = 0;
+    virtual void Pad61() = 0;
+    virtual void Pad62() = 0;
+    virtual void Pad63() = 0;
+    virtual void Pad64() = 0;
+    virtual void Pad65() = 0;
+    virtual void Pad66() = 0;
+    virtual void Pad67() = 0;
+    virtual void Pad68() = 0;
+    virtual void Pad69() = 0;
+    virtual void Hide() = 0;
+};
+
+// FUNCTION: 0x007e5fb0
+bool cSC4View3DWin::ToggleContourDisplay()
+{
+    mbContour = !mbContour;
+    TerrainView_abc9c0* pView = Fn00602160();
+    if (pView) {
+        TerrainLayer_abc9c0* pLayer = pView->Slot18(0);
+        if (mbContour) {
+            if (mnContourHandle == -1) {
+                mnContourHandle = pLayer->Slot08(0x7f94205);
+            }
+        } else {
+            int32_t nHandle = mnContourHandle;
+            if (nHandle != -1) {
+                pLayer->Slot15(nHandle);
+                mnContourHandle = -1;
+            }
+        }
+    }
+    return mbContour;
+}
+
+// FUNCTION: 0x007e6380
+bool cSC4View3DWin::Slot17_abc9c0(uint32_t zoom, uint32_t rotation)
+{
+    int32_t nZoom = zoom;
+    int32_t nMin = mnZoomMin;
+    if (nZoom < nMin) {
+        nZoom = nMin;
+    } else {
+        int32_t nMax = mnZoomMax;
+        if (nZoom > nMax) {
+            nZoom = nMax;
+        }
+    }
+    bool bOk = static_cast<View_abc9c0*>(mpPicker)->SetZoomAndRotation(nZoom, rotation);
+    if (bOk) {
+        if (!mbSimPaused) {
+            if (mpSimTarget) {
+                mbSimPaused = true;
+                static_cast<Pauser_abc9c0*>(mpSimTarget)->Pause();
+            }
+        }
+        reinterpret_cast<Timer_abc9c0*>(reinterpret_cast<char*>(this) + 0x160)->Restart();
+    }
+    return bOk;
+}
+
+// FUNCTION: 0x007e9150
+void cSC4View3DWin::ObliterateCity()
+{
+    if (Fn0078e2f0(0x2a41436c, 0x27df05be) == 0x6a41bbb5) {
+        Fn009afd73(mpToolbarWin, 0x4988bc6a, false);
+        if (mnPanel == 4) {
+            Fn007e8ca0(4);
+        }
+        void* pMem = ::operator new(0xa8);
+        ObliterateCity_abc9c0* pCtl;
+        if (pMem) {
+            pCtl = static_cast<ObliterateCity_abc9c0*>(pMem)->Fn0049cf90();
+        } else {
+            pCtl = 0;
+        }
+        if (pCtl) {
+            pCtl->AddRef();
+        }
+        Slot25_abc9c0(OB_ADDR(pCtl), 2);
+        if (pCtl) {
+            pCtl->Release();
+        }
+    }
+}
+
+// FUNCTION: 0x007e5890
+bool cSC4View3DWin::Slot37_abc9c0(uint32_t x, uint32_t y, uint32_t pOut)
+{
+    bool bOk = false;
+    void** pResult = OB_PTR(void*, pOut);
+    *pResult = 0;
+    if (mpPicker) {
+        Unknown_abc9c0* pObj = 0;
+        if (static_cast<PickView_abc9c0*>(mpPicker)->PickOccupant(x, y, 0, &pObj)) {
+            Unknown_abc9c0* pFound = OB_PTR(Unknown_abc9c0, pObj->Slot03());
+            if (pFound) {
+                void* pTmp;
+                if (pFound->QueryInterface(0x26bb767e, &pTmp)) {
+                    *pResult = pTmp;
+                    bOk = true;
+                }
+            }
+            pObj->Release();
+        }
+    }
+    return bOk;
+}
+
+// FUNCTION: 0x007e5e90
+void cSC4View3DWin::Slot60_abc9c0()
+{
+    if (mpTertiaryMenu) {
+        TertiaryMenu_abc9c0* pMenu = static_cast<TertiaryMenu_abc9c0*>(mpTertiaryMenu);
+        if (mpTertiaryData) {
+            MenuInfo_abc9c0* pInfo;
+            if (pMenu->QueryDeep(0x8a2cad8b, 0x49d98264, &pInfo)) {
+                static_cast<MenuPair_abc9c0*>(mpTertiaryData)->mnFirst = pInfo->Slot17();
+                static_cast<MenuPair_abc9c0*>(mpTertiaryData)->mnSecond = pInfo->Slot09();
+                pInfo->Release();
+            }
+        }
+        static_cast<TertiaryMenu_abc9c0*>(mpTertiaryMenu)->Hide();
+        static_cast<TertiaryMenu_abc9c0*>(mpTertiaryMenu)->Release();
+        Slot16_adc8d8(OB_ADDR(mpTertiaryMenu));
+        mpTertiaryMenu = 0;
+        mnTertiary204 = 0;
+    }
+}
+
+// ===== Agent 2 batch B =====
+// STUB: 0x009133da
+void* Fn009133da_abc9c0(uint32_t size);
+
+// The 0x2c-byte message object the allocator hands out.
+struct Msg_abc9c0 {
+    virtual void Pad00();
+    virtual void AddRef();
+    virtual void Release();
+    virtual void Pad03();
+    virtual void Pad04();
+    virtual void SetType(uint32_t);
+    virtual void Pad06();
+    virtual void Pad07();
+    virtual void Pad08();
+    virtual void Pad09();
+    virtual void Pad10();
+    virtual void SetKey(uint32_t);
+    virtual void SetPtrA(void*);
+    virtual void Pad13();
+    virtual void Pad14();
+    virtual void Pad15();
+    virtual void SetFlag(uint32_t);
+    virtual void SetPtrB(void*);
+    uint8_t mData[0x28];
+    // STUB: 0x009134d6
+    Msg_abc9c0();
+    static void* operator new(size_t size) { return Fn009133da_abc9c0(static_cast<uint32_t>(size)); }
+    static void operator delete(void*) {}
+};
+
+// The message server (the global at 0xb43ccc): slot 3 posts a message.
+struct MsgPost_abc9c0 {
+    virtual void Pad00() = 0;
+    virtual void Pad01() = 0;
+    virtual void Pad02() = 0;
+    virtual void Post(void*) = 0;
+};
+
+// GLOBAL: 0x00b43ccc
+extern MsgPost_abc9c0* gpB43ccc_abc9c0;
+
+struct HashEntry_abc9c0 {
+    HashEntry_abc9c0* mpNext;
+    uint32_t mnKey;
+    uint32_t mnCount;
+};
+
+// The hash map of global effect triggers at +0x428.
+struct TriggerMap_abc9c0 {
+    uint32_t mnPad;
+    HashEntry_abc9c0** mpBuckets;
+    HashEntry_abc9c0** mpBucketsEnd;
+    HashEntry_abc9c0* Find(uint32_t key)
+    {
+        uint32_t nCount = mpBucketsEnd - mpBuckets;
+        HashEntry_abc9c0* pNode = mpBuckets[key % nCount];
+        while (pNode && pNode->mnKey != key) {
+            pNode = pNode->mpNext;
+        }
+        return pNode;
+    }
+    // STUB: 0x004f8d30
+    uint32_t* Fn004f8d30(uint32_t* key);
+    // STUB: 0x00489cf0
+    void Fn00489cf0(HashEntry_abc9c0** it);
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007ecce0 score 51: key held in a register by the original's inlined find; the loop head order differs
+void cSC4View3DWin::Slot47_abc9c0(uint32_t key)
+{
+    TriggerMap_abc9c0* pMap = reinterpret_cast<TriggerMap_abc9c0*>(reinterpret_cast<char*>(this) + 0x428);
+    HashEntry_abc9c0* pNode = pMap->Find(key);
+    if (!pNode) {
+        *pMap->Fn004f8d30(&key) = 1;
+        MsgPost_abc9c0* pServer = gpB43ccc_abc9c0;
+        Msg_abc9c0* pMsg = new Msg_abc9c0;
+        pMsg->AddRef();
+        pMsg->SetType(0xaa375fe8);
+        pMsg->SetKey(key);
+        pMsg->SetFlag(1);
+        pServer->Post(pMsg);
+        pMsg->Release();
+    } else {
+        pNode->mnCount = pNode->mnCount + 1;
+    }
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007eb8a0 score 68: same inlined find as 007ecce0
+void cSC4View3DWin::Slot48_abc9c0(uint32_t key)
+{
+    TriggerMap_abc9c0* pMap = reinterpret_cast<TriggerMap_abc9c0*>(reinterpret_cast<char*>(this) + 0x428);
+    HashEntry_abc9c0* pNode = pMap->Find(key);
+    if (pNode) {
+        if (pNode->mnCount > 1) {
+            pNode->mnCount = pNode->mnCount - 1;
+        } else {
+            HashEntry_abc9c0* pIt = pNode;
+            pMap->Fn00489cf0(&pIt);
+            MsgPost_abc9c0* pServer = gpB43ccc_abc9c0;
+            Msg_abc9c0* pMsg = new Msg_abc9c0;
+            pMsg->AddRef();
+            pMsg->SetType(0xaa375fe8);
+            pMsg->SetKey(key);
+            pMsg->SetFlag(0);
+            pServer->Post(pMsg);
+            pMsg->Release();
+        }
+    }
+}
+#endif
+
+// ===== Agent 2 batch C =====
+struct InputCtlB_abc9c0 {
+    virtual bool QueryInterface(uint32_t, void**) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual uint32_t Release() = 0;
+    virtual void Pad03() = 0;
+    virtual void Slot04() = 0;
+    virtual void Pad05() = 0;
+    virtual void Pad06() = 0;
+    virtual uint32_t Slot07() = 0;
+    virtual void Pad08() = 0;
+    virtual void Pad09() = 0;
+    virtual void Pad10() = 0;
+    virtual void Pad11() = 0;
+    virtual void Pad12() = 0;
+    virtual void Pad13() = 0;
+    virtual void Pad14() = 0;
+    virtual void Pad15() = 0;
+    virtual void Pad16() = 0;
+    virtual void Pad17() = 0;
+    virtual void Pad18() = 0;
+    virtual void Pad19() = 0;
+    virtual void Pad20() = 0;
+    virtual void Pad21() = 0;
+    virtual void Pad22() = 0;
+    virtual void Pad23() = 0;
+    virtual void Slot24() = 0;
+};
+
+struct CursorHolder_abc9c0 {
+    virtual void Pad00() = 0;
+    virtual void Pad01() = 0;
+    virtual void Pad02() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual void Pad06() = 0;
+    virtual void Pad07() = 0;
+    virtual void Pad08() = 0;
+    virtual uint32_t Slot09(uint32_t) = 0;
+};
+
+struct WinCursor_abc9c0 {
+    // STUB: 0x0099bf14
+    CursorHolder_abc9c0* Fn0099bf14();
+};
+
+struct ViewRange_abc9c0 {
+    virtual void Pad00() = 0;
+    virtual void Pad01() = 0;
+    virtual void Pad02() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual bool Slot06(float) = 0;
+};
+
+struct ViewWithRange_abc9c0 {
+    virtual void Pad00() = 0;
+    virtual void Pad01() = 0;
+    virtual void Pad02() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual void Pad06() = 0;
+    virtual void Pad07() = 0;
+    virtual void Pad08() = 0;
+    virtual ViewRange_abc9c0* Slot09() = 0;
+    virtual void Pad10() = 0;
+    virtual void Pad11() = 0;
+    virtual void Pad12() = 0;
+    virtual void Pad13() = 0;
+    virtual void Pad14() = 0;
+    virtual void Pad15() = 0;
+    virtual void Pad16() = 0;
+    virtual void Pad17() = 0;
+    virtual void Pad18() = 0;
+    virtual void Pad19() = 0;
+    virtual void Slot20() = 0;
+};
+
+struct CityNode_abc9c0 {
+    virtual void Pad00() = 0;
+    virtual void Pad01() = 0;
+    virtual void Pad02() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual void Pad06() = 0;
+    virtual void Pad07() = 0;
+    virtual void Pad08() = 0;
+    virtual void Pad09() = 0;
+    virtual void Pad10() = 0;
+    virtual void Slot11() = 0;
+};
+
+struct FundsObj_abc9c0 {
+    virtual void Pad00() = 0;
+    virtual void Pad01() = 0;
+    virtual void Pad02() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual int64_t Slot06() = 0;
+};
+
+struct CityHolder_abc9c0 {
+    virtual void Pad00() = 0;
+    virtual void Pad01() = 0;
+    virtual void Pad02() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual void Pad06() = 0;
+    virtual void Pad07() = 0;
+    virtual void Pad08() = 0;
+    virtual void Pad09() = 0;
+    virtual void Pad10() = 0;
+    virtual void Pad11() = 0;
+    virtual void Pad12() = 0;
+    virtual void Pad13() = 0;
+    virtual void Pad14() = 0;
+    virtual void Pad15() = 0;
+    virtual void Pad16() = 0;
+    virtual void Pad17() = 0;
+    virtual void Pad18() = 0;
+    virtual void Pad19() = 0;
+    virtual void Pad20() = 0;
+    virtual void Pad21() = 0;
+    virtual void Pad22() = 0;
+    virtual void Pad23() = 0;
+    virtual void Pad24() = 0;
+    virtual void Pad25() = 0;
+    virtual void Pad26() = 0;
+    virtual void Pad27() = 0;
+    virtual void Pad28() = 0;
+    virtual void Pad29() = 0;
+    virtual void Pad30() = 0;
+    virtual void Pad31() = 0;
+    virtual void Pad32() = 0;
+    virtual void Pad33() = 0;
+    virtual void Pad34() = 0;
+    virtual void Pad35() = 0;
+    virtual void Pad36() = 0;
+    virtual void Pad37() = 0;
+    virtual void Pad38() = 0;
+    virtual void Pad39() = 0;
+    virtual void Pad40() = 0;
+    virtual void Pad41() = 0;
+    virtual void Pad42() = 0;
+    virtual void Pad43() = 0;
+    virtual void Pad44() = 0;
+    virtual void Pad45() = 0;
+    virtual void Pad46() = 0;
+    virtual void Pad47() = 0;
+    virtual void Pad48() = 0;
+    virtual void Pad49() = 0;
+    virtual void Pad50() = 0;
+    virtual void Pad51() = 0;
+    virtual FundsObj_abc9c0* Slot52() = 0;
+    virtual void Pad53() = 0;
+    virtual void Pad54() = 0;
+    virtual void Pad55() = 0;
+    virtual void Pad56() = 0;
+    virtual void Pad57() = 0;
+    virtual void Pad58() = 0;
+    virtual void Pad59() = 0;
+    virtual void Pad60() = 0;
+    virtual void Pad61() = 0;
+    virtual void Pad62() = 0;
+    virtual void Pad63() = 0;
+    virtual void Pad64() = 0;
+    virtual void Pad65() = 0;
+    virtual void Pad66() = 0;
+    virtual void Pad67() = 0;
+    virtual void Pad68() = 0;
+    virtual void Pad69() = 0;
+    virtual void Pad70() = 0;
+    virtual void Pad71() = 0;
+    virtual CityNode_abc9c0* Slot72() = 0;
+};
+
+// GLOBAL: 0x00b43cec
+extern CityHolder_abc9c0* gpB43cec_abc9c0;
+
+struct Ctl90_abc9c0 {
+    virtual bool QueryInterface(uint32_t, void**) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual uint32_t Release() = 0;
+    // STUB: 0x004ba7d0
+    Ctl90_abc9c0* Fn004ba7d0(uint32_t);
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007e9390 score 20: this+0xc cached in ebp for the cGZWin calls; our copy reloads it
+bool cSC4View3DWin::Slot26_abc9c0(uint32_t bKeepCursor)
+{
+    InputCtlB_abc9c0* pCtl = OB_PTR(InputCtlB_abc9c0, Slot24_abc9c0());
+    if (pCtl) {
+        pCtl->AddRef();
+        cGZWin* pWin = this;
+        pWin->GZReleaseCapture();
+        --mpInputControlsEnd;
+        pCtl->Slot24();
+        pCtl->Slot04();
+        pCtl->Release();
+        if (!(bKeepCursor & 0xff)) {
+            InputCtlB_abc9c0* pNext = OB_PTR(InputCtlB_abc9c0, Slot24_abc9c0());
+            if (pNext) {
+                pNext->AddRef();
+                pWin->SetCursor(pNext->Slot07(), 1);
+                Fn007e8090(OB_ADDR(pCtl), OB_ADDR(pNext));
+                pNext->Release();
+            } else {
+                uint32_t nCursor = reinterpret_cast<WinCursor_abc9c0*>(pWin)->Fn0099bf14()->Slot09(0xc16c4e1b);
+                if (nCursor) {
+                    pWin->SetCursor(nCursor, 1);
+                }
+            }
+        }
+        pCtl->Release();
+        return true;
+    }
+    return false;
+
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007e6e40 score 51: register allocation; unsigned int to float conversions
+void cSC4View3DWin::Fn007e6e40()
+{
+    if (mpPicker) {
+        uint32_t nHour = gpB43dbc_abc9c0->Slot12();
+        uint32_t nMinute = gpB43dbc_abc9c0->Slot15();
+        gpB43c94_abc9c0->GetSettings();
+        ViewRange_abc9c0* pRange = static_cast<ViewWithRange_abc9c0*>(mpPicker)->Slot09();
+        if (pRange) {
+            float fTime = static_cast<float>(nMinute) * (1.0f / 60.0f) + static_cast<float>(nHour);
+            if (pRange->Slot06(fTime)) {
+                static_cast<ViewWithRange_abc9c0*>(mpPicker)->Slot20();
+            }
+        }
+    }
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007e7130 score 75: original switch duplicates the construction tail; constant 1/60 guessed
+void cSC4View3DWin::Fn007e7130(uint32_t pWin, uint32_t pMsg)
+{
+    uint32_t nId = *(OB_PTR(uint32_t, pMsg) + 2);
+    int32_t nArg;
+    switch (nId) {
+    case 1:
+        Fn007e5d80(0x9de3002, 0x9de8798, pMsg, 1, 0xffffffe7);
+        return;
+    case 0x992fd36:
+        gpB43cec_abc9c0->Slot72()->Slot11();
+        return;
+    case 0x33:
+    case 0x69a30679:
+        nArg = (nId != 0x33);
+        break;
+    case 0x4bfc8c2f:
+    case 0x6bfc8c55:
+        nArg = (nId == 0x4bfc8c2f) + 5;
+        break;
+    default:
+        return;
+    }
+    void* pMem = ::operator new(0x90);
+    Ctl90_abc9c0* pCtl;
+    if (pMem) {
+        pCtl = static_cast<Ctl90_abc9c0*>(pMem)->Fn004ba7d0(nArg);
+    } else {
+        pCtl = 0;
+    }
+    if (pCtl) {
+        pCtl->AddRef();
+    }
+    Slot25_abc9c0(OB_ADDR(pCtl), 2);
+    if (pCtl) {
+        pCtl->Release();
+    }
+}
+#endif
+
+// FUNCTION: 0x007e6500
+void cSC4View3DWin::Slot21_abc9c0(uint32_t pInfo)
+{
+    uint32_t nOld = mnViewLevel;
+    uint32_t nNew = *OB_PTR(uint32_t, pInfo);
+    if (nOld != nNew) {
+        mnViewLevel = nNew;
+        MsgPost_abc9c0* pServer = gpB43ccc_abc9c0;
+        uint32_t aOld = nOld;
+        uint32_t aNew = nNew;
+        Msg_abc9c0* pMsg = new Msg_abc9c0;
+        pMsg->AddRef();
+        pMsg->SetType(0xc6cdbf1a);
+        pMsg->SetPtrA(&aOld);
+        pMsg->SetPtrB(&aNew);
+        pServer->Post(pMsg);
+        pMsg->Release();
+        pMsg = new Msg_abc9c0;
+        pMsg->AddRef();
+        pMsg->SetType(0xc6cdbf1b);
+        pMsg->SetPtrA(&aOld);
+        pMsg->SetPtrB(&aNew);
+        pServer->Post(pMsg);
+        pMsg->Release();
+    }
+}
+
+// FUNCTION: 0x007e63f0
+bool cSC4View3DWin::Slot19_abc9c0(uint32_t pInfo)
+{
+    Unknown_abc9c0* pOld = static_cast<Unknown_abc9c0*>(mpViewFilter);
+    if (pOld) {
+        pOld->AddRef();
+    }
+    MsgPost_abc9c0* pServer = gpB43ccc_abc9c0;
+    Msg_abc9c0* pMsg = new Msg_abc9c0;
+    pMsg->AddRef();
+    pMsg->SetType(0x6cdb65a);
+    pMsg->SetPtrA(&pOld);
+    pMsg->SetPtrB(OB_PTR(void, pInfo));
+    pServer->Post(pMsg);
+    pMsg->Release();
+    Unknown_abc9c0* pNew = *OB_PTR(Unknown_abc9c0*, pInfo);
+    if (mpViewFilter != pNew) {
+        if (pNew) {
+            pNew->AddRef();
+        }
+        if (mpViewFilter) {
+            static_cast<Unknown_abc9c0*>(mpViewFilter)->Release();
+        }
+        mpViewFilter = *OB_PTR(Unknown_abc9c0*, pInfo);
+    }
+    pMsg = new Msg_abc9c0;
+    pMsg->AddRef();
+    pMsg->SetType(0x6cdb65b);
+    pMsg->SetPtrA(&pOld);
+    pMsg->SetPtrB(OB_PTR(void, pInfo));
+    pServer->Post(pMsg);
+    pMsg->Release();
+    if (pOld) {
+        pOld->Release();
+    }
+    return true;
+}
+
+// ===== Agent 2 batch D =====
+struct InputCtlC_abc9c0 {
+    virtual bool QueryInterface(uint32_t, void**) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual uint32_t Release() = 0;
+    virtual bool Slot03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Pad05() = 0;
+    virtual void Pad06() = 0;
+    virtual uint32_t Slot07() = 0;
+    virtual void Pad08() = 0;
+    virtual void Pad09() = 0;
+    virtual void Slot10(void*) = 0;
+    virtual void Pad11() = 0;
+    virtual void Pad12() = 0;
+    virtual void Pad13() = 0;
+    virtual void Pad14() = 0;
+    virtual void Pad15() = 0;
+    virtual void Pad16() = 0;
+    virtual void Pad17() = 0;
+    virtual void Pad18() = 0;
+    virtual void Pad19() = 0;
+    virtual void Pad20() = 0;
+    virtual void Pad21() = 0;
+    virtual void Slot22() = 0;
+    virtual void Slot23() = 0;
+    virtual void Slot24() = 0;
+};
+
+struct Widget_abc9c0 {
+    virtual bool QueryInterface(uint32_t, void**) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual uint32_t Release() = 0;
+    virtual void Pad03() = 0;
+    virtual void Pad04() = 0;
+    virtual void Slot05() = 0;
+    virtual void Slot06() = 0;
+    virtual void Pad07() = 0;
+    virtual void Pad08() = 0;
+    virtual void Pad09() = 0;
+    virtual void Pad10() = 0;
+    virtual void Pad11() = 0;
+    virtual void Pad12() = 0;
+    virtual void Pad13() = 0;
+    virtual void Pad14() = 0;
+    virtual void Pad15() = 0;
+    virtual void Pad16() = 0;
+    virtual void Pad17() = 0;
+    virtual void Pad18() = 0;
+    virtual void Pad19() = 0;
+    virtual void Pad20() = 0;
+    virtual void Pad21() = 0;
+    virtual void Pad22() = 0;
+    virtual void Pad23() = 0;
+    virtual void Pad24() = 0;
+    virtual void Pad25() = 0;
+    virtual void Pad26() = 0;
+    virtual void Pad27() = 0;
+    virtual void Pad28() = 0;
+    virtual void Pad29() = 0;
+    virtual void Pad30() = 0;
+    virtual void Pad31() = 0;
+    virtual void Pad32() = 0;
+    virtual void Pad33() = 0;
+    virtual void Pad34() = 0;
+    virtual void Pad35() = 0;
+    virtual void Pad36() = 0;
+    virtual void Pad37() = 0;
+    virtual void Pad38() = 0;
+    virtual void Pad39() = 0;
+    virtual void Pad40() = 0;
+    virtual void Pad41() = 0;
+    virtual void Pad42() = 0;
+    virtual void Pad43() = 0;
+    virtual void Pad44() = 0;
+    virtual void Pad45() = 0;
+    virtual void Pad46() = 0;
+    virtual void Pad47() = 0;
+    virtual void Pad48() = 0;
+    virtual void Pad49() = 0;
+    virtual void Pad50() = 0;
+    virtual void Pad51() = 0;
+    virtual void Pad52() = 0;
+    virtual void Pad53() = 0;
+    virtual void Pad54() = 0;
+    virtual void Pad55() = 0;
+    virtual void Pad56() = 0;
+    virtual void Pad57() = 0;
+    virtual void Pad58() = 0;
+    virtual void Pad59() = 0;
+    virtual void Pad60() = 0;
+    virtual void Pad61() = 0;
+    virtual void Pad62() = 0;
+    virtual void Pad63() = 0;
+    virtual void Pad64() = 0;
+    virtual void Pad65() = 0;
+    virtual void Pad66() = 0;
+    virtual void Pad67() = 0;
+    virtual void Pad68() = 0;
+    virtual void Slot69() = 0;
+    virtual void Slot70() = 0;
+    virtual bool Slot71() = 0;
+};
+
+// STUB: 0x009afcfe
+void Fn009afcfe(void* pWin, uint32_t id, uint32_t a, uint32_t b);
+
+// FUNCTION: 0x007e91e0
+void cSC4View3DWin::Slot55_abc9c0(uint32_t bMinimize)
+{
+    if (bMinimize & 0xff) {
+        if (static_cast<Widget_abc9c0*>(mpToolbarWin)->Slot71()) {
+            static_cast<Widget_abc9c0*>(mpToolbarWin)->Slot70();
+            if (mnPanel != -1) {
+                Fn007e8ca0(mnPanel);
+            }
+            static_cast<Widget_abc9c0*>(mpPanelA)->Slot06();
+            Slot59_abc9c0();
+            if (mpPanelB) {
+                static_cast<Widget_abc9c0*>(mpPanelB)->Slot70();
+            }
+            static_cast<Widget_abc9c0*>(mpPanelC)->Slot69();
+            Fn009afcfe(static_cast<cGZWin*>(this), 0xea8cad14, 0, 0);
+        }
+    } else {
+        if (!static_cast<Widget_abc9c0*>(mpToolbarWin)->Slot71()) {
+            static_cast<Widget_abc9c0*>(mpToolbarWin)->Slot69();
+            if (mnPanel != -1) {
+                ShowPanel(mnPanel);
+            }
+            if (mpPanelB) {
+                static_cast<Widget_abc9c0*>(mpPanelB)->Slot69();
+            }
+            if (mbPanelFlag2d5 || mbPanelFlag2d4 || mbPanelFlag2d6) {
+                static_cast<Widget_abc9c0*>(mpPanelA)->Slot05();
+            }
+            static_cast<Widget_abc9c0*>(mpPanelC)->Slot70();
+            Fn009afcfe(static_cast<cGZWin*>(this), 0xea8cad14, 1, 0);
+        }
+    }
+}
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007ebd70 score 87: register assignment (edi/ebx swapped for the control and previous control); statement order of the tail
+bool cSC4View3DWin::Slot25_abc9c0(uint32_t pControl, uint32_t nMode)
+{
+    InputCtlC_abc9c0* pCtl = OB_PTR(InputCtlC_abc9c0, pControl);
+    if (pCtl) {
+        pCtl->Slot10(static_cast<cGZWin*>(this));
+    }
+    InputCtlC_abc9c0* pPrev = OB_PTR(InputCtlC_abc9c0, Slot24_abc9c0());
+    if (pPrev) {
+        pPrev->AddRef();
+    }
+    Fn007e8090(OB_ADDR(pPrev), OB_ADDR(pCtl));
+    if (nMode == 1) {
+        Slot26_abc9c0(0);
+    } else if (nMode == 2) {
+        Slot27_abc9c0(0);
+    }
+    InputCtlC_abc9c0* pCur = OB_PTR(InputCtlC_abc9c0, Slot24_abc9c0());
+    if (pCur != pPrev) {
+        if (pCur) {
+            pCur->AddRef();
+        }
+        if (pPrev) {
+            pPrev->Release();
+        }
+        pPrev = pCur;
+    }
+    if (pPrev) {
+        pPrev->Slot22();
+        pPrev->Slot24();
+    }
+    if (pCtl && pCtl->Slot03()) {
+        pCtl->AddRef();
+        void* pItem = pCtl;
+        reinterpret_cast<PtrVec_abc9c0*>(reinterpret_cast<char*>(this) + 0x134)->PushBack(pItem);
+        pCtl->Slot23();
+        uint32_t nCursor = pCtl->Slot07();
+        if (nCursor) {
+            SetCursor(nCursor, 1);
+        }
+    }
+    if (pPrev) {
+        pPrev->Release();
+    }
+    return true;
+}
+#endif
+
+// ===== Agent 2 batch E =====
+struct ColorObj_abc9c0 {
+    virtual bool QueryInterface(uint32_t, void**) = 0;
+    virtual uint32_t AddRef() = 0;
+    virtual uint32_t Release() = 0;
+    virtual void SetColor(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+};
+
+struct CostWinB_abc9c0 {
+    virtual void Pad00() = 0;
+    virtual void Pad01() = 0;
+    virtual void Pad02() = 0;
+    virtual Widget_abc9c0* Slot03() = 0;
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x007ec800 score 51: unsigned limit test and the zero register shared with the timer store; alpha select (setne/dec/and) not reproduced
+void cSC4View3DWin::Slot42_abc9c0(uint32_t nCost, uint32_t nLimit)
+{
+    int64_t nFunds = 0;
+    uint32_t nOver = 0;
+    CityHolder_abc9c0* pCity = gpB43cec_abc9c0;
+    if (pCity) {
+        FundsObj_abc9c0* pFunds = pCity->Slot52();
+        if (pFunds) {
+            nFunds = pFunds->Slot06();
+        }
+    }
+    if (nLimit != 0 && static_cast<int64_t>(nLimit) > nFunds) {
+        nOver = 1;
+    }
+    mfCostTimer = 0.0f;
+    if (mnCostState != 1 || mnCostState2 != nOver || mnCostValue != nCost) {
+        mnCostState = 1;
+        mnCostState2 = nOver;
+        mnCostValue = nCost;
+        RenderCostIndicator();
+        ColorObj_abc9c0* pColor = 0;
+        if (static_cast<Unknown_abc9c0*>(mpCaptionWin)->QueryInterface(0x86d72b57, reinterpret_cast<void**>(&pColor))) {
+            pColor->SetColor(0xff, 0xff, 0xff, nOver != 1 ? 0x96 : 0xff);
+            pColor->Release();
+        }
+        if (mpCostWin) {
+            static_cast<CostWinB_abc9c0*>(mpCostWin)->Slot03()->Slot69();
+        }
+    }
+}
+#endif

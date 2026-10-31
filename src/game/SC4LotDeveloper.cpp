@@ -1672,3 +1672,1617 @@ float cSC4LotDeveloper::GetAreaSlope(void* rect, bool flag)
     return slope;
 }
 #endif
+
+// ===== Agent 2 additions =====
+struct BaseTexOcc_ab1b98 {
+    virtual bool QueryInterface(uint32_t, void**);
+    virtual uint32_t AddRef();
+    virtual uint32_t Release();
+    virtual BaseTexOcc_ab1b98* Fn3();
+    virtual void P4();
+    virtual void SetFlag(uint32_t);
+
+    // STUB: 0x005e05b0
+    BaseTexOcc_ab1b98* Fn005e05b0();
+};
+struct Gzcom_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual bool Create(uint32_t clsid, uint32_t iid, void* out);
+};
+// STUB: 0x0090ddf1
+Gzcom_ab1b98* Fn0090ddf1();
+// STUB: 0x005decf0
+void* Fn005decf0(uint32_t size);
+struct OccMgrB_ab1b98 {
+    virtual void P0();
+    virtual uint32_t AddRef();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void P15();
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual void P20();
+    virtual void P21();
+    virtual void P22();
+    virtual void P23();
+    virtual void P24();
+    virtual void P25();
+    virtual void P26();
+    virtual void P27();
+    virtual void P28();
+    virtual void P29();
+    virtual void P30();
+    virtual void P31();
+    virtual void P32();
+    virtual bool Find(void*, int32_t, int32_t, uint32_t);
+    virtual void P34();
+    virtual void P35();
+    virtual void P36();
+    virtual bool GetOccupantsF(void*, void*, void*, uint32_t, int32_t);
+    virtual void P38();
+    virtual void P39();
+    virtual void P40();
+    virtual bool GetOccupants(void*, void*, void*, uint32_t, int32_t);
+    virtual void P42();
+    virtual void P43();
+    virtual void P44();
+    virtual void P45();
+    virtual void P46();
+    virtual void P47();
+    virtual void FreeList(void*);
+};
+struct LotCfgB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual float GetStoredSlope();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual bool Fn14();
+    virtual void P15();
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual void P20();
+    virtual void P21();
+    virtual void P22();
+    virtual void P23();
+    virtual void P24();
+    virtual void P25();
+    virtual void P26();
+    virtual bool Fn27(int32_t);
+};
+struct DqIt_ab1b98 {
+    void** mpCur;
+    void** mpFirst;
+    void** mpLast;
+    void*** mpNode;
+};
+
+// A list head like the original's allocator hands out; nodes hold an object pointer at +8.
+inline ListNode_ab1b98* NewListHead_ab1b98()
+{
+    ListNode_ab1b98* head = static_cast<ListNode_ab1b98*>(Fn0090cf54(0xc));
+    head->mpNext = head;
+    head->mpPrev = head;
+    return head;
+}
+inline void FreeListHead_ab1b98(ListNode_ab1b98* head)
+{
+    ListNode_ab1b98* n = head->mpNext;
+    while (n != head) {
+        ListNode_ab1b98* cur = n;
+        n = n->mpNext;
+        if (cur->mpData) {
+            cur->mpData->Release();
+        }
+        Fn0090cf63(cur);
+    }
+    head->mpNext = head;
+    head->mpPrev = head;
+    Fn0090cf63(head);
+}
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c41a0 score 13
+bool cSC4LotDeveloper::GetLotBaseTextureOccupant(void* lot, void* out, bool create)
+{
+    BaseTexOcc_ab1b98** pp = static_cast<BaseTexOcc_ab1b98**>(out);
+    Lot_ab1b98* l = static_cast<Lot_ab1b98*>(lot);
+    uint32_t x;
+    uint32_t z;
+    BaseTexOcc_ab1b98* found;
+    *pp = 0;
+    l->GetLocation(&x, &z);
+    if (static_cast<OccMgrB_ab1b98*>(mpOccupantManager)->Find(&found, x, z, 0x497f6d9d)) {
+        if (found->QueryInterface(0x97f6d98, reinterpret_cast<void**>(pp))) {
+            (*pp)->SetFlag(2);
+            found->Release();
+        }
+    } else if (create) {
+        if (!Fn0090ddf1()->Create(0xc97f987c, 0x97f6d98, pp)) {
+            void* mem = Fn005decf0(0x60);
+            BaseTexOcc_ab1b98* o = 0;
+            if (mem) {
+                o = static_cast<BaseTexOcc_ab1b98*>(mem)->Fn005e05b0();
+            }
+            *pp = o;
+            o->AddRef();
+        }
+        (*pp)->Fn3()->Fn3();
+        (*pp)->SetFlag(2);
+    }
+    return *pp != 0;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c7860 score 4
+void cSC4LotDeveloper::Fn006c7860(void* lot, void* config, uint32_t)
+{
+    ConfVec_ab1b98* objects = static_cast<Conf_ab1b98*>(config)->GetObjects();
+    if (objects) {
+        int32_t count = static_cast<int32_t>(objects->mpEnd - objects->mpBegin);
+        for (int32_t i = 0; i < count; i++) {
+            ConfObj_ab1b98* o = objects->mpBegin + i;
+            if (o->mPad[0] == 1 && !(o->mPad[1] & 1)) {
+                Fn006c6d70(lot, i);
+            }
+        }
+    }
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c7630 score 23
+float cSC4LotDeveloper::Fn006c7630(void* lot)
+{
+    Lot_ab1b98* l = static_cast<Lot_ab1b98*>(lot);
+    int32_t rect[4];
+    l->GetBoundingRect(rect);
+    float lowest = GetLowestOrHighestAreaAltitude(rect, true, true);
+    List_ab1b98 list;
+    list.mpHead = NewListHead_ab1b98();
+    if (static_cast<LotMgr_ab1b98*>(mpLotManager)->GetNearbyLots(lot, &list, 0xf)) {
+        for (ListNode_ab1b98* n = list.mpHead->mpNext; n != list.mpHead; n = n->mpNext) {
+            Lot_ab1b98* o = reinterpret_cast<Lot_ab1b98*>(n->mpData);
+            if (o->GetFlags() & 3) {
+                float altitude = o->GetAltitude();
+                if (lowest > altitude) {
+                    lowest = altitude;
+                }
+            }
+        }
+    }
+    FreeListHead_ab1b98(list.mpHead);
+    return lowest;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006caaf0 score 66
+void cSC4LotDeveloper::Fn006caaf0(void* lot)
+{
+    List_ab1b98 list;
+    list.mpHead = NewListHead_ab1b98();
+    if (lot && mpOccupantManager) {
+        int32_t rect[4];
+        static_cast<Lot_ab1b98*>(lot)->GetBoundingRect(rect);
+        if (static_cast<OccMgrB_ab1b98*>(mpOccupantManager)->GetOccupants(&list, &rect[0], &rect[2], 0x497f6d9d, -1)) {
+            Fn006c62f0(&list);
+        }
+    }
+    FreeListHead_ab1b98(list.mpHead);
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c9100 score 84
+void* cSC4LotDeveloper::GetFirstBuilding(void* lot)
+{
+    void* result = 0;
+    int32_t rect[4];
+    static_cast<Lot_ab1b98*>(lot)->GetBoundingRect(rect);
+    List_ab1b98 list;
+    list.mpHead = NewListHead_ab1b98();
+    OccMgrB_ab1b98* mgr = static_cast<OccMgrB_ab1b98*>(mpOccupantManager);
+    if (mgr->GetOccupants(&list, &rect[0], &rect[2], 0x278128a0, 1) && list.mpHead->mpNext != list.mpHead) {
+        if (reinterpret_cast<Occ_ab1b98*>(list.mpHead->mpNext->mpData)->QueryInterface(0x87dda3a9, &result)) {
+            static_cast<Occ_ab1b98*>(result)->Release();
+        }
+        mgr->FreeList(&list);
+    }
+    FreeListHead_ab1b98(list.mpHead);
+    return result;
+}
+#endif
+
+// FUNCTION: 0x006cc880
+bool cSC4LotDeveloper::UpdateLotElements(void* lot, uint32_t kind)
+{
+    Lot_ab1b98* l = static_cast<Lot_ab1b98*>(lot);
+    if (static_cast<int32_t>(l->GetState()) >= 2) {
+        bool flag = false;
+        if (l->GetFlags() & 3) {
+            UpdateLotFoundation(lot);
+            UpdateLotRetainingWalls(lot);
+        } else if (kind != 5) {
+            LotCfgB_ab1b98* config = static_cast<LotCfgB_ab1b98*>(l->GetLotConfiguration());
+            if (config) {
+                bool b = config->Fn14();
+                float slope = GetLotSlope(lot, b);
+                if (config->GetStoredSlope() < slope) {
+                    bool required = config->Fn27(7);
+                    AddLotFoundation(lot, config, required, false, true);
+                    flag = true;
+                }
+                if (fabsf(slope) > 0.25f) {
+                    UpdateLotObjectAlitudes(lot);
+                }
+            }
+        }
+        UpdateLotBaseTextureOccupant(lot, flag);
+        l->UpdateSlope();
+    }
+    return true;
+}
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006cbd60 score 2
+void cSC4LotDeveloper::Fn006cbd60(uint32_t ticks)
+{
+    mnQueueTicks += ticks;
+    if (mnQueueTicks > 200) {
+        bool flag = mnQueueState == 2;
+        mnQueueTicks = 0;
+        uint32_t count = mnQueueBatch;
+        if (count != 0) {
+            DqIt_ab1b98* cursor = reinterpret_cast<DqIt_ab1b98*>(mQueueCursor);
+            DqIt_ab1b98* finish = reinterpret_cast<DqIt_ab1b98*>(mQueueFinish);
+            do {
+                DqIt_ab1b98 fin = *finish;
+                count--;
+                if (cursor->mpCur == fin.mpCur) {
+                    mnQueueState = 0;
+                    return;
+                }
+                void* item = *cursor->mpCur;
+                cursor->mpCur++;
+                if (cursor->mpCur == cursor->mpLast) {
+                    cursor->mpNode++;
+                    cursor->mpFirst = *cursor->mpNode;
+                    cursor->mpLast = cursor->mpFirst + 0x80 / sizeof(void*);
+                    cursor->mpCur = cursor->mpFirst;
+                }
+                Fn006c8e10(item, flag);
+            } while (count != 0);
+        }
+    }
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006cbe50 score 10
+void cSC4LotDeveloper::Fn006cbe50(uint32_t state)
+{
+    bool flag = state == 2;
+    DqIt_ab1b98* start = reinterpret_cast<DqIt_ab1b98*>(mQueueStart);
+    DqIt_ab1b98* finish = reinterpret_cast<DqIt_ab1b98*>(mQueueFinish);
+    DqIt_ab1b98* cursor = reinterpret_cast<DqIt_ab1b98*>(mQueueCursor);
+    *cursor = *start;
+    DqIt_ab1b98 fin = *finish;
+    while (cursor->mpCur != fin.mpCur) {
+        void* item = *cursor->mpCur;
+        Fn006c8e10(item, flag);
+        cursor->mpCur++;
+        if (cursor->mpCur == cursor->mpLast) {
+            cursor->mpNode++;
+            cursor->mpFirst = *cursor->mpNode;
+            cursor->mpLast = cursor->mpFirst + 0x80 / sizeof(void*);
+            cursor->mpCur = cursor->mpFirst;
+        }
+        fin = *finish;
+    }
+    *cursor = *start;
+    mnQueueState = 0;
+}
+#endif
+
+struct PropObjB_ab1b98;
+struct PropObjC_ab1b98;
+struct PHItemB_ab1b98;
+struct PHTargetB_ab1b98;
+struct BldC_ab1b98;
+struct SimOrd_ab1b98;
+struct LotB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void* AsPropertyHolder();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void* GetLotConfiguration();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void GetCenter(void*);
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual void P20();
+    virtual void P21();
+    virtual void P22();
+    virtual void P23();
+    virtual void P24();
+    virtual void P25();
+    virtual void P26();
+    virtual void P27();
+    virtual void P28();
+    virtual void P29();
+    virtual void P30();
+    virtual void P31();
+    virtual void P32();
+    virtual uint32_t GetState();
+    virtual void P34();
+    virtual void P35();
+    virtual void P36();
+    virtual void P37();
+    virtual void P38();
+    virtual void P39();
+    virtual void P40();
+    virtual void P41();
+    virtual void P42();
+    virtual void P43();
+    virtual void P44();
+    virtual void P45();
+    virtual uint32_t GetBuildingType(bool);
+    virtual void P47();
+    virtual void* GetBuilding();
+};
+struct PropMgrB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void P15();
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual void P20();
+    virtual void P21();
+    virtual void P22();
+    virtual void P23();
+    virtual void GetLotProps(void*, void*);
+    virtual void P25();
+    virtual PropObjB_ab1b98* CreateProp(uint32_t, void*, uint32_t);
+    virtual void P27();
+    virtual void P28();
+    virtual void RemoveProp(void*);
+    virtual void P30();
+};
+struct PropObjB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual PropObjC_ab1b98* Fn6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void Fn12(uint32_t);
+};
+struct PropObjC_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void SetProperty(uint32_t, uint32_t, uint32_t);
+};
+struct PHB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual PHItemB_ab1b98* Query(uint32_t);
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void SetProperty(uint32_t, uint32_t, uint32_t);
+};
+struct PHItemB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual PHTargetB_ab1b98* Get();
+};
+struct PHTargetB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void P15();
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual void P20();
+    virtual void P21();
+    virtual void P22();
+    virtual void P23();
+    virtual void P24();
+    virtual void P25();
+    virtual void SetValue(uint32_t);
+    virtual void P27();
+    virtual void P28();
+    virtual void P29();
+    virtual void P30();
+    virtual void P31();
+    virtual void P32();
+    virtual void P33();
+    virtual void P34();
+    virtual void P35();
+    virtual void P36();
+    virtual void P37();
+    virtual void P38();
+    virtual void P39();
+    virtual void P40();
+    virtual void P41();
+    virtual void P42();
+    virtual void P43();
+    virtual void P44();
+    virtual void P45();
+    virtual void P46();
+    virtual void P47();
+    virtual void P48();
+    virtual void P49();
+    virtual void P50();
+    virtual void P51();
+    virtual void P52();
+    virtual void P53();
+    virtual void P54();
+    virtual void P55();
+    virtual void P56();
+    virtual void P57();
+    virtual void P58();
+    virtual void P59();
+    virtual void P60();
+    virtual void P61();
+    virtual void P62();
+    virtual void P63();
+    virtual void P64();
+    virtual void P65();
+    virtual void P66();
+    virtual void P67();
+    virtual void P68();
+    virtual void P69();
+    virtual void P70();
+    virtual void P71();
+    virtual uint32_t* GetValueSlot72();
+    virtual uint32_t* GetValueSlot73();
+};
+struct PlumbB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual bool Fn11(int32_t, int32_t);
+};
+struct CfgC_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual uint8_t Fn11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void P15();
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual void P20();
+    virtual void P21();
+    virtual void P22();
+    virtual void P23();
+    virtual uint32_t Fn24();
+};
+struct BldC_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void Fn10(void*, void*);
+};
+struct BldB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual BldC_ab1b98* Fn3();
+};
+struct FoundB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual uint32_t Release();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual int32_t Fn9();
+};
+struct SimOrd_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void P15();
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual uint8_t Fn20();
+};
+struct BuildSimB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void P15();
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual void P20();
+    virtual void P21();
+    virtual void P22();
+    virtual void P23();
+    virtual void P24();
+    virtual void P25();
+    virtual void P26();
+    virtual void P27();
+    virtual void P28();
+    virtual void P29();
+    virtual void P30();
+    virtual void P31();
+    virtual void P32();
+    virtual SimOrd_ab1b98* Fn33(uint32_t, int32_t);
+    virtual void P34();
+    virtual void P35();
+    virtual void P36();
+    virtual void P37();
+    virtual void P38();
+    virtual Profile_ab1b98* GetProfile(uint32_t);
+    virtual void P40();
+    virtual void P41();
+    virtual void P42();
+    virtual void P43();
+    virtual void P44();
+    virtual void P45();
+    virtual void P46();
+    virtual void P47();
+    virtual void P48();
+    virtual void P49();
+    virtual void P50();
+    virtual void P51();
+    virtual void P52();
+    virtual void P53();
+    virtual bool Fn54();
+};
+struct ViewUtil_ab1b98 {
+    uint8_t mPad[0x10];
+    uint32_t mn10;
+};
+// GLOBAL: 0x00b43dd8
+extern ViewUtil_ab1b98* gpB43dd8;
+
+inline void FreeListNodes_ab1b98(ListNode_ab1b98* head)
+{
+    ListNode_ab1b98* n = head->mpNext;
+    while (n != head) {
+        ListNode_ab1b98* cur = n;
+        n = n->mpNext;
+        Fn0090cf63(cur);
+    }
+    head->mpNext = head;
+    head->mpPrev = head;
+    Fn0090cf63(head);
+}
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c9780 score 107
+bool cSC4LotDeveloper::RemoveLotProp(void* lot, uint32_t id)
+{
+    List_ab1b98 list;
+    list.mpHead = NewListHead_ab1b98();
+    bool removed = false;
+    static_cast<PropMgrB_ab1b98*>(mpPropManager)->GetLotProps(&list, lot);
+    for (ListNode_ab1b98* n = list.mpHead->mpNext; n != list.mpHead; n = n->mpNext) {
+        Obj_ab1b98* item = n->mpData;
+        if (item) {
+            PropObjB_ab1b98* prop = reinterpret_cast<PropObjB_ab1b98*>(item);
+            PHB_ab1b98* ph = reinterpret_cast<PHB_ab1b98*>(prop->Fn6());
+            PHItemB_ab1b98* entry = ph->Query(0x48e95539);
+            if (entry) {
+                if (*entry->Get()->GetValueSlot72() == id) {
+                    static_cast<PropMgrB_ab1b98*>(mpPropManager)->RemoveProp(item);
+                    removed = true;
+                }
+            }
+            item->Release();
+        }
+    }
+    FreeListNodes_ab1b98(list.mpHead);
+    return removed;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006cae30 score 106
+bool cSC4LotDeveloper::TestWater(void* lot, int32_t x, int32_t z)
+{
+    LotB_ab1b98* l = static_cast<LotB_ab1b98*>(lot);
+    PHB_ab1b98* ph = static_cast<PHB_ab1b98*>(l->AsPropertyHolder());
+    PHItemB_ab1b98* item = ph->Query(0x8999b20b);
+    if (!item) {
+        ph->SetProperty(0x8999b20b, 0, 0);
+        item = ph->Query(0x8999b20b);
+    }
+    PHTargetB_ab1b98* target = item->Get();
+    uint32_t level = *target->GetValueSlot73();
+    bool flag = false;
+    int32_t state = static_cast<int32_t>(l->GetState());
+    if (state >= 2 && state <= 4) {
+        BuildSimB_ab1b98* sim = static_cast<BuildSimB_ab1b98*>(mpBuildingDevSim);
+        Profile_ab1b98* profile = sim->GetProfile(l->GetBuildingType(false));
+        if (profile->mn0 == 0) {
+            flag = true;
+        } else {
+            SimOrd_ab1b98* ordinance = sim->Fn33(profile->mn0, profile->mn4);
+            CfgC_ab1b98* config = static_cast<CfgC_ab1b98*>(l->GetLotConfiguration());
+            if (ordinance && config) {
+                uint8_t wanted = config->Fn11();
+                if (wanted > ordinance->Fn20()) {
+                    flag = true;
+                }
+            }
+        }
+    }
+    if (!static_cast<BuildSimB_ab1b98*>(mpBuildingDevSim)->Fn54() && !static_cast<PlumbB_ab1b98*>(mpPlumbingSim)->Fn11(x, z) && flag) {
+        uint32_t next = level + 1;
+        target->SetValue(next);
+        AddBuildingZotProp(lot, 0x1c430000, 5);
+        return next <= 2;
+    }
+    target->SetValue(0);
+    PHItemB_ab1b98* other = static_cast<PHB_ab1b98*>(l->AsPropertyHolder())->Query(0xc999c45e);
+    if (other) {
+        PHTargetB_ab1b98* t2 = other->Get();
+        uint32_t v = *t2->GetValueSlot73();
+        if (v == 5) {
+            RemoveLotProp(lot, v);
+            t2->SetValue(0);
+        }
+    }
+    return true;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c9480 score 136
+void* cSC4LotDeveloper::GetFoundationByStandardCityCell(uint32_t id, uint32_t x, uint32_t z)
+{
+    int32_t first[2];
+    int32_t second[2];
+    first[0] = x;
+    first[1] = z;
+    second[0] = x;
+    second[1] = z;
+    FoundB_ab1b98* result = 0;
+    List_ab1b98 list;
+    list.mpHead = NewListHead_ab1b98();
+    if (static_cast<OccMgrB_ab1b98*>(mpOccupantManager)->GetOccupants(&list, first, second, 0x68fd0c69, -1)) {
+        for (ListNode_ab1b98* n = list.mpHead->mpNext; n != list.mpHead; n = n->mpNext) {
+            Occ_ab1b98* o = reinterpret_cast<Occ_ab1b98*>(n->mpData);
+            if (!result) {
+                FoundB_ab1b98* found;
+                if (o->QueryInterface(0xc8fce101, reinterpret_cast<void**>(&found))) {
+                    if (found->Fn9() == static_cast<int32_t>(id)) {
+                        result = found;
+                    }
+                    found->Release();
+                }
+            }
+            o->Release();
+        }
+    }
+    FreeListNodes_ab1b98(list.mpHead);
+    return result;
+}
+#endif
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c98c0 score 55
+void cSC4LotDeveloper::AddBuildingZotProp(void* lot, uint32_t id, uint32_t amount)
+{
+    LotB_ab1b98* l = static_cast<LotB_ab1b98*>(lot);
+    void* building = l->GetBuilding();
+    CfgC_ab1b98* config = static_cast<CfgC_ab1b98*>(l->GetLotConfiguration());
+    uint32_t extent;
+    if (config) {
+        extent = config->Fn24();
+    } else {
+        extent = 0;
+    }
+    if (amount == 6) {
+        Fn005f98c0(0x4c04de69, 1, 0, 0, 0, lot);
+    }
+    PHB_ab1b98* ph = static_cast<PHB_ab1b98*>(l->AsPropertyHolder());
+    PHItemB_ab1b98* item = ph->Query(0xc999c45e);
+    if (!item) {
+        ph->SetProperty(0xc999c45e, 0, 0);
+        item = ph->Query(0xc999c45e);
+    }
+    PHTargetB_ab1b98* target = item->Get();
+    uint32_t current = *target->GetValueSlot73();
+    if (current != 0) {
+        if (current >= amount) {
+            return;
+        }
+        RemoveLotProp(lot, current);
+    }
+    target->SetValue(amount);
+    float pos[3];
+    float height;
+    if (building && config && extent) {
+        float unused[3];
+        GetPositionForBuilding(lot, pos, &extent);
+        static_cast<BldB_ab1b98*>(l->GetBuilding())->Fn3()->Fn10(unused, &height);
+    } else {
+        l->GetCenter(pos);
+        height = pos[1];
+    }
+    pos[1] = height + 3.0f;
+    PropObjB_ab1b98* prop = static_cast<PropMgrB_ab1b98*>(mpPropManager)->CreateProp(id, pos, gpB43dd8->mn10);
+    prop->Fn12(3);
+    prop->Fn6()->SetProperty(0x48e95539, amount, 0);
+}
+#endif
+
+struct HolderItemB_ab1b98;
+struct HolderTargetB_ab1b98;
+struct RmB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual bool Find(void*, uint32_t, void*, uint32_t, uint32_t);
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual bool Exists(void*);
+};
+struct RmOutB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual uint32_t Release();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void* GetHolder();
+};
+struct HolderB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual HolderItemB_ab1b98* Query(uint32_t);
+};
+struct HolderItemB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual HolderTargetB_ab1b98* Get();
+};
+struct HolderTargetB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void P15();
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual void P20();
+    virtual void P21();
+    virtual void P22();
+    virtual void P23();
+    virtual void P24();
+    virtual void P25();
+    virtual void P26();
+    virtual void P27();
+    virtual void P28();
+    virtual void P29();
+    virtual void P30();
+    virtual void P31();
+    virtual void P32();
+    virtual void P33();
+    virtual void P34();
+    virtual void P35();
+    virtual void P36();
+    virtual void P37();
+    virtual void P38();
+    virtual void P39();
+    virtual void P40();
+    virtual void P41();
+    virtual void P42();
+    virtual void P43();
+    virtual void P44();
+    virtual void P45();
+    virtual void P46();
+    virtual void P47();
+    virtual void P48();
+    virtual void P49();
+    virtual void P50();
+    virtual void P51();
+    virtual void P52();
+    virtual void P53();
+    virtual void P54();
+    virtual void P55();
+    virtual void P56();
+    virtual void P57();
+    virtual void P58();
+    virtual void P59();
+    virtual void P60();
+    virtual void P61();
+    virtual void P62();
+    virtual void P63();
+    virtual void P64();
+    virtual void P65();
+    virtual void P66();
+    virtual void P67();
+    virtual void P68();
+    virtual void P69();
+    virtual void P70();
+    virtual void P71();
+    virtual void P72();
+    virtual void P73();
+    virtual void P74();
+    virtual void P75();
+    virtual void P76();
+    virtual void P77();
+    virtual void P78();
+    virtual void P79();
+    virtual void P80();
+    virtual void P81();
+    virtual void P82();
+    virtual void P83();
+    virtual void P84();
+    virtual void P85();
+    virtual void P86();
+    virtual void P87();
+    virtual void P88();
+    virtual void P89();
+    virtual void P90();
+    virtual void P91();
+    virtual void P92();
+    virtual void P93();
+    virtual void P94();
+    virtual void P95();
+    virtual void P96();
+    virtual void P97();
+    virtual void P98();
+    virtual void P99();
+    virtual void P100();
+    virtual void P101();
+    virtual void P102();
+    virtual void P103();
+    virtual void P104();
+    virtual void P105();
+    virtual void P106();
+    virtual void P107();
+    virtual void P108();
+    virtual void P109();
+    virtual void P110();
+    virtual float* GetTriple();
+};
+// GLOBAL: 0x00b43ca8
+extern RmB_ab1b98* gpB43ca8;
+// STUB: 0x005fd420
+bool Fn005fd420(void* holder, uint32_t id, uint16_t* value);
+// STUB: 0x005fd4f0
+bool Fn005fd4f0(void* holder, uint32_t id, float* value);
+// STUB: 0x005fd390
+bool Fn005fd390(void* holder, uint32_t id, bool* value);
+struct CurveB_ab1b98 {
+    // STUB: 0x005f4620
+    void SetData(void* property);
+};
+
+// FUNCTION: 0x006c4a20
+void cSC4LotDeveloper::ReadSimulatorTunableValues()
+{
+    RmOutB_ab1b98* out;
+    uint32_t key[3];
+    key[0] = 0x6534284a;
+    key[1] = 0xe7e2c2db;
+    key[2] = 0xe8da7677;
+    if (gpB43ca8->Find(key, 0xa52160f5, &out, 0, 0)) {
+        void* holder = out->GetHolder();
+        Fn005fd420(holder, 0x47e2c400, &mnC0);
+        mfCC = 0.2f;
+        mfC8 = 0.4f;
+        mfC4 = 0.6f;
+        HolderItemB_ab1b98* item = static_cast<HolderB_ab1b98*>(holder)->Query(0x47e2c401);
+        if (item) {
+            float* triple = item->Get()->GetTriple();
+            mfCC = triple[0];
+            mfC8 = triple[1];
+            mfC4 = triple[2];
+        }
+        Fn005fd4f0(holder, 0xe900ea24, &mfd0);
+        Fn005fd4f0(holder, 0xe900ea25, &mfd4);
+        Fn005fd480(holder, 0xe900ea26, &mnLotFoundationId);
+        Fn005fd480(holder, 0x6916516b, &mnFoundationId);
+        Fn005fd390(holder, 0xe900ea27, &mbE0);
+        Fn005fd390(holder, 0xe900ea28, &mbE1);
+        Fn005fd4f0(holder, 0xe900ea29, &mfe4);
+        Fn005fd4f0(holder, 0xe900ea2a, &mfe8);
+        Fn005fd480(holder, 0xe900ea2b, &mnQueueTicks);
+        Fn005fd480(holder, 0xe900ea2c, &mnQueueBatch);
+        HolderItemB_ab1b98* curve = static_cast<HolderB_ab1b98*>(holder)->Query(0x2a2d7824);
+        if (curve) {
+            reinterpret_cast<CurveB_ab1b98*>(mCurve)->SetData(curve);
+        }
+        out->Release();
+    }
+}
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c8ab0 score 11
+bool cSC4LotDeveloper::AddLotFoundation_2(void* lot, uint32_t id, bool useLotAltitude, bool level, bool walls)
+{
+    Lot_ab1b98* l = static_cast<Lot_ab1b98*>(lot);
+    float center[3];
+    int32_t rect[4];
+    l->GetCenter(center);
+    l->GetBoundingRect(rect);
+    int32_t facing = l->GetFacing();
+    float width = static_cast<float>((rect[2] - rect[0] + 1) * 16);
+    float depth = static_cast<float>((rect[3] - rect[1] + 1) * 16);
+    float bottom = Fn006c7630(lot);
+    float baseAltitude = GetLowestOrHighestAreaAltitude(rect, false, true);
+    if (useLotAltitude) {
+        center[1] = l->GetAltitude();
+    } else {
+        float corners[4];
+        Fn006c4360(rect, corners, true);
+        center[1] = PickLotFoundationAltitude(lot, bottom, baseAltitude, corners);
+    }
+    if (level) {
+        if (rect[2] - rect[0] > 1 && rect[3] - rect[1] > 1) {
+            LevelAreaInternalVertices(rect, center[1] - 0.5f, true, true, lot);
+        }
+        LevelBorderingVertices(rect, center[1], true, lot);
+    }
+    bool result = static_cast<BuildSim_ab1b98*>(mpBuildingDevSim)->AddFoundation(id, 2, center, width, depth, facing, bottom);
+    l->SetAltitude(center[1]);
+    l->SetFlags((l->GetFlags() & 0xfffffffb) | 3);
+    if (walls && center[1] < baseAltitude) {
+        Fn005e3070(lot, true);
+        UpdateSurroundingLotFoundations(lot);
+        Fn005e3960(lot);
+    }
+    return result;
+}
+#endif
+
+struct BldObjC_ab1b98;
+struct BuildSimC_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual BldObjC_ab1b98* CreateBuilding(uint32_t, void*, uint32_t);
+};
+struct BldObjC_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void* GetRoot();
+};
+
+// FUNCTION: 0x006c5210
+void cSC4LotDeveloper::ChangeBuilding(void* lot, uint32_t id)
+{
+    Lot_ab1b98* l = static_cast<Lot_ab1b98*>(lot);
+    LotCfgB_ab1b98* config = static_cast<LotCfgB_ab1b98*>(l->GetLotConfiguration());
+    if (config) {
+        ClearLotBuildings(lot, 1, true, 0);
+        uint32_t out = 0;
+        float pos[3];
+        GetPositionForBuilding(lot, pos, &out);
+        BldObjC_ab1b98* building = static_cast<BuildSimC_ab1b98*>(mpBuildingDevSim)->CreateBuilding(id, pos, out);
+        if (building) {
+            bool locked = (l->GetFlags() & 3) != 0;
+            bool flag = config->Fn14();
+            if (!locked) {
+                float score = GetOccupantSlope(building->GetRoot(), flag);
+                if (score > mfd4) {
+                    int32_t rect[4];
+                    GetOccupantCellCoverage(building->GetRoot(), rect);
+                    if (AttemptAreaLevelling(rect, mfd4, true, flag, mfe8, lot)) {
+                        score = GetOccupantSlope(building->GetRoot(), flag);
+                    }
+                    if (score > mfd4) {
+                        AddBuildingFoundation(building, config);
+                    }
+                }
+            }
+        }
+        l->SetState(3, 0, 0);
+    }
+}
+
+struct DesirObjB_ab1b98;
+struct DesirGridB_ab1b98;
+struct BuildSimD_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void P15();
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual void P20();
+    virtual void P21();
+    virtual void P22();
+    virtual void P23();
+    virtual void P24();
+    virtual void P25();
+    virtual void P26();
+    virtual void P27();
+    virtual void P28();
+    virtual void P29();
+    virtual uint32_t Fn30(uint32_t, uint32_t);
+    virtual void P31();
+    virtual DesirObjB_ab1b98* Fn32(uint32_t);
+};
+struct DesirObjB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual int32_t Fn7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual DesirGridB_ab1b98* Fn13();
+};
+struct DesirGridB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual int16_t Fn7(int32_t, int32_t);
+};
+struct RandomB_ab1b98 {
+    uint8_t mPad[0x14];
+    // STUB: 0x00913a5c
+    void Init(uint32_t seed);
+    // STUB: 0x009136ca
+    int32_t Range(int32_t lo, int32_t hi);
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c47c0 score 112
+bool cSC4LotDeveloper::TestDesirability(void* lot, int32_t x, int32_t z)
+{
+    LotB_ab1b98* l = static_cast<LotB_ab1b98*>(lot);
+    PHB_ab1b98* ph = static_cast<PHB_ab1b98*>(l->AsPropertyHolder());
+    PHItemB_ab1b98* item = ph->Query(0xc999e206);
+    if (!item) {
+        ph->SetProperty(0xc999e206, 0, 0);
+        item = ph->Query(0xc999e206);
+    }
+    PHTargetB_ab1b98* target = item->Get();
+    uint32_t level = *target->GetValueSlot73();
+    if (static_cast<Lot_ab1b98*>(lot)->IsInLivableState()) {
+        BuildSimD_ab1b98* sim = static_cast<BuildSimD_ab1b98*>(mpBuildingDevSim);
+        Profile_ab1b98* profile = static_cast<BuildSimB_ab1b98*>(mpBuildingDevSim)->GetProfile(l->GetBuildingType(false));
+        uint32_t wealth = static_cast<Lot_ab1b98*>(lot)->GetOccupantWealth();
+        DesirObjB_ab1b98* obj = sim->Fn32(sim->Fn30(profile->mn0, wealth));
+        if (obj) {
+            if (obj->Fn7() == 5) {
+                return true;
+            }
+            int16_t value = obj->Fn13()->Fn7(x, z);
+            if (static_cast<float>(value) * 0.01f < mfCC) {
+                RandomB_ab1b98 random;
+                random.Init((x << 16) + z);
+                int32_t roll = random.Range(0, 7);
+                uint32_t next = level + 1;
+                target->SetValue(next);
+                return next <= static_cast<uint32_t>(roll + 2);
+            }
+        }
+    }
+    target->SetValue(0);
+    return true;
+}
+#endif
+
+struct U32Vec_ab1b98 {
+    uint32_t* mpBegin;
+    uint32_t* mpEnd;
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c60c0 score 93
+uint32_t cSC4LotDeveloper::PickLotBaseTextureForLot(void* lot, void* textures)
+{
+    U32Vec_ab1b98* v = static_cast<U32Vec_ab1b98*>(textures);
+    if (v->mpBegin != v->mpEnd) {
+        uint32_t picked = v->mpBegin[g00b49af0.Uniform(static_cast<uint32_t>(v->mpEnd - v->mpBegin))];
+        Lot_ab1b98* l = static_cast<Lot_ab1b98*>(lot);
+        uint32_t wealth = l->GetOccupantWealth();
+        uint32_t stage = 0;
+        switch (l->GetCondition()) {
+        case 0:
+        case 1:
+            stage = 0;
+            break;
+        case 2:
+        case 3:
+            stage = 1;
+            break;
+        case 4:
+        case 5:
+        case 6:
+            stage = 2;
+            break;
+        }
+        if (wealth == 0) {
+            uint32_t type = l->GetBuildingType(false);
+            if (type) {
+                wealth = static_cast<BuildSim_ab1b98*>(mpBuildingDevSim)->GetProfile(type)->mn4;
+            } else {
+                wealth = 1;
+            }
+        }
+        RmB_ab1b98* rm = gpB43ca8;
+        uint32_t high = picked & 0xffff0000;
+        uint32_t key[3];
+        key[0] = 0x7ab50e44;
+        key[1] = 0x986135e;
+        key[2] = (((wealth << 4) | stage) << 8) | high;
+        if (rm->Exists(key)) {
+            return key[2];
+        }
+        key[2] = (wealth << 12) | high;
+        if (rm->Exists(key)) {
+            return key[2];
+        }
+        key[2] = (stage << 8) | high;
+        if (rm->Exists(key)) {
+            return key[2];
+        }
+        return picked;
+    }
+    return 0;
+}
+#endif
+
+// GLOBAL: 0x00b43d0c
+extern OccMgrB_ab1b98* gpB43d0c;
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c95e0 score 133
+void* cSC4LotDeveloper::GetFoundationByPosition(uint32_t id, float x, float z)
+{
+    FoundB_ab1b98* result = 0;
+    List_ab1b98 list;
+    list.mpHead = NewListHead_ab1b98();
+    float high[3];
+    float low[3];
+    high[0] = x - 0.05f;
+    high[2] = z + 0.05f;
+    low[0] = x - 0.05f;
+    low[1] = -FLT_MAX;
+    low[2] = z + 0.05f;
+    high[1] = FLT_MAX;
+    if (!mpOccupantManager) {
+        mpOccupantManager = gpB43d0c;
+        gpB43d0c->AddRef();
+    }
+    if (static_cast<OccMgrB_ab1b98*>(mpOccupantManager)->GetOccupantsF(&list, low, high, 0x68fd0c69, -1)) {
+        for (ListNode_ab1b98* n = list.mpHead->mpNext; n != list.mpHead; n = n->mpNext) {
+            Occ_ab1b98* o = reinterpret_cast<Occ_ab1b98*>(n->mpData);
+            FoundB_ab1b98* found = 0;
+            if (!result) {
+                if (o->QueryInterface(0xc8fce101, reinterpret_cast<void**>(&found))) {
+                    if (found->Fn9() == static_cast<int32_t>(id)) {
+                        result = found;
+                    }
+                    found->Release();
+                }
+            }
+            o->Release();
+        }
+    }
+    FreeListNodes_ab1b98(list.mpHead);
+    return result;
+}
+#endif
+
+struct LotD_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void* AsPropertyHolder();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void P15();
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual void P20();
+    virtual void P21();
+    virtual void P22();
+    virtual void P23();
+    virtual void P24();
+    virtual void P25();
+    virtual void P26();
+    virtual void P27();
+    virtual void P28();
+    virtual void P29();
+    virtual void P30();
+    virtual void P31();
+    virtual void P32();
+    virtual uint32_t GetState();
+    virtual void P34();
+    virtual uint32_t GetCondition();
+    virtual void P36();
+    virtual void P37();
+    virtual void P38();
+    virtual void P39();
+    virtual uint32_t GetDaysSinceLastStateChange();
+    virtual uint32_t GetOccupantWealth();
+    virtual void P42();
+    virtual void P43();
+    virtual void P44();
+    virtual void P45();
+    virtual uint32_t GetBuildingType(bool);
+    virtual void P47();
+    virtual void P48();
+    virtual void P49();
+    virtual void P50();
+    virtual void P51();
+    virtual void P52();
+    virtual void P53();
+    virtual void P54();
+    virtual void P55();
+    virtual void P56();
+    virtual void P57();
+    virtual void P58();
+    virtual void P59();
+    virtual void P60();
+    virtual void GetOccupancy(float*);
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006c4630 score 106
+uint32_t cSC4LotDeveloper::Fn006c4630(void* lot, uint32_t, uint32_t)
+{
+    LotD_ab1b98* l = static_cast<LotD_ab1b98*>(lot);
+    int32_t state = static_cast<int32_t>(l->GetState());
+    uint32_t condition = l->GetCondition();
+    switch (state) {
+    case 3: {
+        BuildSimB_ab1b98* sim = static_cast<BuildSimB_ab1b98*>(mpBuildingDevSim);
+        Profile_ab1b98* profile = sim->GetProfile(l->GetBuildingType(false));
+        int32_t delta = profile->mn4 - static_cast<int32_t>(l->GetOccupantWealth());
+        bool flag = static_cast<int32_t>(condition - 1) > delta;
+        if (flag || l->GetDaysSinceLastStateChange() > mnC0) {
+            float occupancy;
+            l->GetOccupancy(&occupancy);
+            if (occupancy < mfC8 || (flag && occupancy < mfC4)) {
+                delta++;
+            }
+        }
+        if (delta > 2) {
+            return 3;
+        }
+        if (delta == 0) {
+            PHItemB_ab1b98* item = static_cast<PHB_ab1b98*>(l->AsPropertyHolder())->Query(0xe999b11f);
+            if (item && *item->Get()->GetValueSlot73() != 0) {
+                return 1;
+            }
+            return 0;
+        }
+        if (delta > 0) {
+            return delta + 1;
+        }
+        break;
+    }
+    case 4:
+        if (condition == 0) {
+            condition = 1;
+        }
+        if (l->GetDaysSinceLastStateChange() > mnC0) {
+            switch (condition) {
+            case 0:
+            case 1:
+                condition = 2;
+                break;
+            case 2:
+                condition = 3;
+                break;
+            case 3:
+                condition = 4;
+                break;
+            }
+        }
+        break;
+    }
+    return condition;
+}
+#endif
+
+struct FloraObjB_ab1b98;
+struct FloraB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void P15();
+    virtual void P16();
+    virtual FloraObjB_ab1b98* Fn17(void*, void*, uint32_t);
+};
+struct FloraObjB_ab1b98 {
+    virtual void P0();
+    virtual void P1();
+    virtual void P2();
+    virtual void P3();
+    virtual void P4();
+    virtual void P5();
+    virtual void P6();
+    virtual void P7();
+    virtual void P8();
+    virtual void P9();
+    virtual void P10();
+    virtual void P11();
+    virtual void P12();
+    virtual void P13();
+    virtual void P14();
+    virtual void P15();
+    virtual void P16();
+    virtual void P17();
+    virtual void P18();
+    virtual void P19();
+    virtual void P20();
+    virtual void P21();
+    virtual void P22();
+    virtual void P23();
+    virtual void P24();
+    virtual void P25();
+    virtual void P26();
+    virtual void P27();
+    virtual void Fn28(uint32_t);
+};
+
+#ifdef OB_DRAFTS
+// CLOSE: 0x006cd2b0 score 64
+void cSC4LotDeveloper::Fn006cd2b0(void* config, void* lot, void* extra)
+{
+    ConfVec_ab1b98* objects = static_cast<Conf_ab1b98*>(config)->GetObjects();
+    if (objects) {
+        int32_t count = static_cast<int32_t>(objects->mpEnd - objects->mpBegin);
+        for (int32_t i = 0; i < count; i++) {
+            ConfObj_ab1b98* o = objects->mpBegin + i;
+            if (o->mPad[0] == 4) {
+                float posA[3];
+                float posB[3];
+                posA[0] = g00b49aec;
+                posA[1] = g00b49aec;
+                posA[2] = g00b49aec;
+                GetPositionForLotConfigurationObject(lot, extra, o, posA, posB);
+                void* found = Fn006cd010(o->mTail, posA);
+                if (found) {
+                    FloraObjB_ab1b98* flora = static_cast<FloraB_ab1b98*>(mpFloraSim)->Fn17(found, posB, 0);
+                    if (flora) {
+                        flora->Fn28(o->mn24);
+                    }
+                }
+            }
+        }
+    }
+}
+#endif

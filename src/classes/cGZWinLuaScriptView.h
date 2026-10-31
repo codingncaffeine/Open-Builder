@@ -56,6 +56,16 @@ public:
     void Fn008af930();
     // STUB: 0x008b4720
     void SetupScriptView();
+    // STUB: 0x008b0c40
+    void SetPauseCount(int32_t);
+    // STUB: 0x008b53c0
+    bool SetViewByScriptNameAndLine(void*, int32_t);
+    // STUB: 0x008b45c0
+    void* Fn008b45c0(uint32_t);
+    // STUB: 0x008b4840
+    void Fn008b4840();
+    // STUB: 0x008b30b0
+    void SetupScriptViewCaption();
     void* mpServer;
     void* mpListWin;
     void* mpWin134;
