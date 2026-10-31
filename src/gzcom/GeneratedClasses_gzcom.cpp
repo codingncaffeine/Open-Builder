@@ -299,7 +299,7 @@ void GeneratedClasses_gzcom()
     (void)new cGZAny_AnyString;
     (void)new cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612;
     (void)new cHitList(ob_emit());
-    (void)new cGZScriptTerp(ob_emit());
+    (void)new cGZScriptTerp;
     (void)new cGZScriptVocab;
     (void)new cFreshnessCOMDirector;
     (void)new cUnk00ad4818(ob_emit());
@@ -309,7 +309,7 @@ void GeneratedClasses_gzcom()
     (void)new cUnk00ad4ec0;
     (void)new cGZUIScriptCOMDirector;
     (void)new cGZUIScriptService;
-    (void)new cGZScriptableControlSet(ob_emit());
+    (void)new cGZScriptableControlSet;
     (void)new cGZLegacyControl;
     (void)new cUnk00ad53ec;
     (void)new cGZWinCustom;

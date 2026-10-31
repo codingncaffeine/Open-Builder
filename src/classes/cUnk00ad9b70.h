@@ -4,7 +4,9 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "gzcom/cRZString.h"
 
+// SIZE 0x20
 class cUnk00ad9b70 {
 public:
     virtual ~cUnk00ad9b70() {}
@@ -29,6 +31,10 @@ public:
     virtual bool Slot19_ad9b70(uint32_t, uint32_t) = 0;
     virtual bool Slot20_ad9b70(uint32_t, uint32_t) = 0;
     char unknown4[0x8];
+    cRZString mName;
 };
+#ifdef _MSC_VER
+typedef char ob_size_cUnk00ad9b70[sizeof(cUnk00ad9b70) == 0x20 ? 1 : -1];
+#endif
 
 #endif

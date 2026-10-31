@@ -27,9 +27,6 @@ public:
     virtual bool Slot11_ad51f0(uint32_t, uint32_t);
     virtual bool Slot03_ad5220(uint32_t);
     virtual bool Slot04_ad5220(uint32_t, uint32_t);
-    // STUB: 0x0094c0af
-    cGZScriptableControlSet();
-    explicit cGZScriptableControlSet(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown8[0x1c];
 };
 #ifdef _MSC_VER

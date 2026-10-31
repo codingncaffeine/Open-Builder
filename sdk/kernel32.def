@@ -25,3 +25,8 @@ EXPORTS
   ResetEvent
   InterlockedIncrement
   InterlockedDecrement
+  GetProcessHeap
+  HeapAlloc
+  HeapFree
+  SuspendThread
+  ResumeThread

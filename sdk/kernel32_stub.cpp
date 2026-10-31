@@ -30,4 +30,9 @@ BOOL __stdcall PulseEvent(HANDLE) { return 0; }
 BOOL __stdcall ResetEvent(HANDLE) { return 0; }
 long __stdcall InterlockedIncrement(long*) { return 0; }
 long __stdcall InterlockedDecrement(long*) { return 0; }
+HANDLE __stdcall GetProcessHeap() { return 0; }
+LPVOID __stdcall HeapAlloc(HANDLE, DWORD, DWORD) { return 0; }
+BOOL __stdcall HeapFree(HANDLE, DWORD, LPVOID) { return 0; }
+DWORD __stdcall SuspendThread(HANDLE) { return 0; }
+DWORD __stdcall ResumeThread(HANDLE) { return 0; }
 }

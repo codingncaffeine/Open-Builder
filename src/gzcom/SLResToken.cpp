@@ -802,85 +802,65 @@ void Tree_SLResToken::Fn0097f3f6(Iter_SLResToken first, Iter_SLResToken last)
 }
 #endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00980343 score 3
+// FUNCTION: 0x00980343
 cUnk00ad9bc8::~cUnk00ad9bc8()
 {
     operator delete(SLRT_DATA(this, void));
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00980380 score 3
+// FUNCTION: 0x00980380
 cUnk00ad9c20::~cUnk00ad9c20()
 {
     operator delete(SLRT_DATA(this, void));
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x009803d9 score 3
+// FUNCTION: 0x009803d9
 cUnk00ad9cd0::~cUnk00ad9cd0()
 {
     operator delete(SLRT_DATA(this, void));
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00980416 score 3
+// FUNCTION: 0x00980416
 cUnk00ad9d28::~cUnk00ad9d28()
 {
     operator delete(SLRT_DATA(this, void));
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00980453 score 3
+// FUNCTION: 0x00980453
 cUnk00ad9d80::~cUnk00ad9d80()
 {
     operator delete(SLRT_DATA(this, void));
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00980490 score 3
+// FUNCTION: 0x00980490
 cUnk00ad9dd8::~cUnk00ad9dd8()
 {
     operator delete(SLRT_DATA(this, void));
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x00980520 score 3
+// FUNCTION: 0x00980520
 cUnk00ad9e88::~cUnk00ad9e88()
 {
     operator delete(SLRT_DATA(this, void));
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x0098055d score 3
+// FUNCTION: 0x0098055d
 cUnk00ad9ee0::~cUnk00ad9ee0()
 {
     operator delete(SLRT_DATA(this, void));
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x0098059a score 3
+// FUNCTION: 0x0098059a
 cUnk00ad9f38::~cUnk00ad9f38()
 {
     operator delete(SLRT_DATA(this, void));
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x009805d7 score 3
+// FUNCTION: 0x009805d7
 cUnk00ad9f90::~cUnk00ad9f90()
 {
     operator delete(SLRT_DATA(this, void));
 }
-#endif
 
 struct SerialRecord_SLResToken {
     virtual void R00();
@@ -1280,21 +1260,17 @@ bool cUnk00ad9e30::Slot13_ad9b70(uint32_t in, uint32_t idx)
     return false;
 }
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x0097fbe9 score 3
+// FUNCTION: 0x0097fbe9
 cUnk00ad9c78::~cUnk00ad9c78()
 {
     operator delete(SLRT_DATA(this, void));
 }
-#endif
 
-#ifdef OB_DRAFTS
-// CLOSE: 0x009804cd score 3
+// FUNCTION: 0x009804cd
 cUnk00ad9e30::~cUnk00ad9e30()
 {
     delete[] SLRT_DATA(this, cRZString);
 }
-#endif
 
 // FUNCTION: 0x0098103b
 cSLTokenRecord::~cSLTokenRecord()

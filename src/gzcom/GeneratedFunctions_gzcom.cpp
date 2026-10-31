@@ -15,8 +15,6 @@
 #include "classes/cGZPersistResourceKeyList.h"
 #include "classes/cGZPersistResourceManager.h"
 #include "classes/cGZPersistSurveyorWriter.h"
-#include "classes/cGZScriptTerp.h"
-#include "classes/cGZScriptableControlSet.h"
 #include "classes/cGZSnd3DListener.h"
 #include "classes/cGZSndDefaultEventHandler.h"
 #include "classes/cGZSndMgr.h"
@@ -311,12 +309,6 @@ cUnk00ad22a0* Fn00935ddb()
     return new cUnk00ad22a0;
 }
 
-// FUNCTION: 0x00944462
-cGZScriptTerp* Fn00944462()
-{
-    return new cGZScriptTerp;
-}
-
 // FUNCTION: 0x0094565f
 cFreshCell* Fn0094565f()
 {
@@ -333,12 +325,6 @@ cUnk00ad4818* Fn00945675()
 cFreshCellPlayer* Fn0094568e()
 {
     return new cFreshCellPlayer;
-}
-
-// FUNCTION: 0x0094af7a
-cGZScriptableControlSet* Fn0094af7a()
-{
-    return new cGZScriptableControlSet;
 }
 
 // FUNCTION: 0x009663f8
