@@ -10,7 +10,6 @@
 #include "classes/cGZGraphicSystemW32.h"
 #include "classes/cGZLuaScriptServer.h"
 #include "classes/cGZWinLuaScriptView.h"
-#include "classes/cGZWinLuaScriptViewGeneral.h"
 #include "classes/cS3DTextureBindingFactory.h"
 #include "classes/cSC424HourClock.h"
 #include "classes/cSC43DRender.h"
@@ -89,7 +88,6 @@
 #include "classes/cUnk00ab18dc.h"
 #include "classes/cUnk00ab2e10.h"
 #include "classes/cUnk00ab3830.h"
-#include "classes/cUnk00abd714.h"
 #include "classes/cUnk00abea10.h"
 #include "classes/cUnk00ac14bc.h"
 #include "classes/nSCRes_cFileParser.h"
@@ -1156,12 +1154,6 @@ cSC4City* Fn0045a560()
     return new cSC4City;
 }
 
-// FUNCTION: 0x004661d0
-cGZWinLuaScriptViewGeneral* Fn004661d0()
-{
-    return new cGZWinLuaScriptViewGeneral;
-}
-
 // FUNCTION: 0x0046a7b0
 cSC4DispatchManager* Fn0046a7b0()
 {
@@ -1352,12 +1344,6 @@ cUnk00aaef2c* Fn00664260()
 cSCResourceCatalogView* Fn00664280()
 {
     return new cSCResourceCatalogView;
-}
-
-// FUNCTION: 0x00664510
-cUnk00abd714* Fn00664510()
-{
-    return new cUnk00abd714;
 }
 
 // FUNCTION: 0x00681ca0

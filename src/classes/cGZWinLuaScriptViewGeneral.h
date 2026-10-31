@@ -13,9 +13,6 @@ class cGZWinLuaScriptViewGeneral : public cGZWinGen {
 public:
     virtual ~cGZWinLuaScriptViewGeneral() {}
     virtual bool IsPointInWindowWindowCoordinates(uint32_t, uint32_t);
-    // STUB: 0x0079c560
-    cGZWinLuaScriptViewGeneral();
-    explicit cGZWinLuaScriptViewGeneral(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZWinLuaScriptViewGeneral[sizeof(cGZWinLuaScriptViewGeneral) == 0x128 ? 1 : -1];

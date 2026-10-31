@@ -1594,7 +1594,7 @@ void GeneratedClasses_game()
     (void)new cSC4WinCatalogView;
     (void)new cSC4CatalogItem;
     (void)new cSC4CheatCodeEntryDialog;
-    (void)new cGZWinLuaScriptViewGeneral(ob_emit());
+    (void)new cGZWinLuaScriptViewGeneral;
     (void)new cUnk00ab78a0;
     (void)new cSC4WinIntroVideoScreen;
     (void)new cSC4WinLoadHeightField;
@@ -1652,7 +1652,7 @@ void GeneratedClasses_game()
     (void)new cS3DResModel;
     (void)new cUnk00abd6b4;
     (void)new cUnk00abd6fc;
-    (void)new cUnk00abd714(ob_emit());
+    (void)new cUnk00abd714;
     (void)new cS3DTextureBindingFactory(ob_emit());
     (void)new cUnk00abd92c;
     (void)new cUnk00abd9d8;

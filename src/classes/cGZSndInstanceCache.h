@@ -22,9 +22,6 @@ public:
     virtual bool RemoveAllInstances(uint32_t);
     virtual bool FindFirstObjectFromInstance(uint32_t, uint32_t);
     virtual ~cGZSndInstanceCache();
-    // STUB: 0x0096a6a9
-    cGZSndInstanceCache();
-    explicit cGZSndInstanceCache(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     char unknown4[0x10];
 };
 #ifdef _MSC_VER

@@ -292,7 +292,7 @@ void GeneratedClasses_gzcom()
     (void)new cHitDebugInfo;
     (void)new cHitTrackPlayer;
     (void)new cHitChannel(ob_emit());
-    (void)new cHitResourceFactory(ob_emit());
+    (void)new cHitResourceFactory;
     (void)new cGZPropertySetSerializerBinaryT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612;
     (void)new cHitResource_cHitTrackPlayer;
     (void)new cHitResource_cHitList;
@@ -300,7 +300,7 @@ void GeneratedClasses_gzcom()
     (void)new cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612;
     (void)new cHitList(ob_emit());
     (void)new cGZScriptTerp(ob_emit());
-    (void)new cGZScriptVocab(ob_emit());
+    (void)new cGZScriptVocab;
     (void)new cFreshnessCOMDirector;
     (void)new cUnk00ad4818(ob_emit());
     (void)new cFreshCellPlayer(ob_emit());
@@ -316,7 +316,7 @@ void GeneratedClasses_gzcom()
     (void)new cGZSndMgr(ob_emit());
     (void)new cGZSndSegmentDataSourceCreator(ob_emit());
     (void)new cGZSndPropertyCache(ob_emit());
-    (void)new cGZSndInstanceCache(ob_emit());
+    (void)new cGZSndInstanceCache;
     (void)new cGZSndDefaultEventHandler(ob_emit());
     (void)new cGZSndSegmentWavDataSource(ob_emit());
     (void)new cUnk00ad7520(ob_emit());

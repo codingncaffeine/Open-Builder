@@ -19,9 +19,6 @@ public:
     virtual ~cHitResourceFactory() {}
     virtual void CreateInstance_3(uint32_t, uint32_t, uint32_t);
     virtual void CreateInstance_4(uint32_t, uint32_t, uint32_t);
-    // STUB: 0x00940294
-    cHitResourceFactory();
-    explicit cHitResourceFactory(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
     int32_t mnRefCount;
 };
 #ifdef _MSC_VER

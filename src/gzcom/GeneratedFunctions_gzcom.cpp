@@ -16,11 +16,9 @@
 #include "classes/cGZPersistResourceManager.h"
 #include "classes/cGZPersistSurveyorWriter.h"
 #include "classes/cGZScriptTerp.h"
-#include "classes/cGZScriptVocab.h"
 #include "classes/cGZScriptableControlSet.h"
 #include "classes/cGZSnd3DListener.h"
 #include "classes/cGZSndDefaultEventHandler.h"
-#include "classes/cGZSndInstanceCache.h"
 #include "classes/cGZSndMgr.h"
 #include "classes/cGZSndPropertyCache.h"
 #include "classes/cGZSndSegmentDataSourceCreator.h"
@@ -39,7 +37,6 @@
 #include "classes/cHitChannel.h"
 #include "classes/cHitList.h"
 #include "classes/cHitMan.h"
-#include "classes/cHitResourceFactory.h"
 #include "classes/cRZCursor.h"
 #include "classes/cRZCursorResourceFactory.h"
 #include "classes/cRZFastCompression3.h"
@@ -296,12 +293,6 @@ cHitChannel* Fn009358aa()
     return new cHitChannel;
 }
 
-// FUNCTION: 0x009358c0
-cHitResourceFactory* Fn009358c0()
-{
-    return new cHitResourceFactory;
-}
-
 // FUNCTION: 0x009358d6
 cHitList* Fn009358d6()
 {
@@ -324,12 +315,6 @@ cUnk00ad22a0* Fn00935ddb()
 cGZScriptTerp* Fn00944462()
 {
     return new cGZScriptTerp;
-}
-
-// FUNCTION: 0x00944478
-cGZScriptVocab* Fn00944478()
-{
-    return new cGZScriptVocab;
 }
 
 // FUNCTION: 0x0094565f
@@ -372,12 +357,6 @@ cGZSndSegmentDataSourceCreator* Fn00966411()
 cGZSndPropertyCache* Fn00966427()
 {
     return new cGZSndPropertyCache;
-}
-
-// FUNCTION: 0x0096643d
-cGZSndInstanceCache* Fn0096643d()
-{
-    return new cGZSndInstanceCache;
 }
 
 // FUNCTION: 0x00966453
