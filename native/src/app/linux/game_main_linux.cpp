@@ -77,7 +77,9 @@ namespace {
 using linuxapp::NowMs;
 using linuxapp::PumpTimers;
 
-constexpr int kW = 1024, kH = 768;
+// The game's (logical) resolution: the UI lays out in it and every rectangle it draws is in it. The frame target is the
+// window's pixel size; the driver scales the game's rectangles onto it (the UI scale = pixels / logical).
+int gW = 1024, gH = 768;
 
 SDL_Window* gWindow = nullptr;
 std::unique_ptr<gd::cGLGDriver> gDriver;
@@ -488,11 +490,33 @@ void Frame() {
     gGraphics->Services().Tick();
 }
 
+// Where the frame lands in the window (window points): the frame keeps its aspect ratio, bars fill the rest.
+struct Placement { float x = 0, y = 0, w = 1, h = 1; };
+Placement FramePlacement() {
+    int ww = gW, wh = gH;
+    if (gWindow) SDL_GetWindowSize(gWindow, &ww, &wh);
+    const float scale = std::min(float(ww) / float(gW), float(wh) / float(gH));
+    Placement p;
+    p.w = float(gW) * scale;
+    p.h = float(gH) * scale;
+    p.x = (float(ww) - p.w) / 2;
+    p.y = (float(wh) - p.h) / 2;
+    return p;
+}
+
 void Present() {
     if (!gWindow) return;
-    int w = kW, h = kH;
-    SDL_GetWindowSizeInPixels(gWindow, &w, &h);
-    gDriver->Present(w, h);
+    int pw = gW, ph = gH, ww = gW, wh = gH;
+    SDL_GetWindowSizeInPixels(gWindow, &pw, &ph);
+    SDL_GetWindowSize(gWindow, &ww, &wh);
+    const Placement p = FramePlacement();
+    const float density = float(pw) / float(std::max(1, ww));   // window points -> pixels
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+    glDisable(GL_SCISSOR_TEST);
+    glClearColor(0, 0, 0, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    gDriver->Present(int(std::lround(p.x * density)), int(std::lround(float(ph) - (p.y + p.h) * density)),
+                     int(std::lround(p.w * density)), int(std::lround(p.h * density)));
     SDL_GL_SwapWindow(gWindow);
 }
 
@@ -500,11 +524,11 @@ bool Boot() {
     native::SetPngDecoder(&DecodePngBytes);
     SetSLBufferHost(&gBufferHost);
     nSC4UI::SetHost(&gUiHost);
-    gGraphics.reset(new native::Graphics(gDriver.get(), kW, kH));
+    gGraphics.reset(new native::Graphics(gDriver.get(), gW, gH));
     gMgr.reset(new native::WinMgr());
     gMgr->AddRef();
     gMgr->Init();
-    gMgr->GetMainWindow()->SetArea(0, 0, kW, kH);
+    gMgr->GetMainWindow()->SetArea(0, 0, gW, gH);
     if (!InitFont()) std::printf("font: FAILED to initialise\n");
     gz::SetWinFontSource(&gFontSource);
     native::InstallButtonSounds();   // the window buttons' host: caption fonts (and sounds, once there is audio output)
@@ -554,7 +578,7 @@ bool Boot() {
         screen.loadBitmap = [](std::uint32_t group, std::uint32_t instance) { return native::LoadBitmapResource(group, instance); };
         native::SetCityScreenCallbacks({[] { if (gAppWindow) gAppWindow->DestroyCurrentScreen(); }, [] {
             if (!gAppWindow || !gAppWindow->CreateCityScreen()) return;
-            if (sc4::cSC4View3DWin* view = gAppWindow->View3D()) native::AttachCityRenderStack(*view, native::BootApplication() ? native::BootApplication()->GetCity() : nullptr, gDriver.get(), static_cast<gz::cIGZDrawContext*>(gGraphics->Primary()->GetDrawContext()), kW, kH);
+            if (sc4::cSC4View3DWin* view = gAppWindow->View3D()) native::AttachCityRenderStack(*view, native::BootApplication() ? native::BootApplication()->GetCity() : nullptr, gDriver.get(), static_cast<gz::cIGZDrawContext*>(gGraphics->Primary()->GetDrawContext()), gW, gH);
         }});
         screen.loadCity = [app](const std::string& path) { return native::LoadCityFile(*app, path); };
         native::InstallRegionScreenHost(screen);
@@ -589,7 +613,6 @@ void WritePng(const std::string& path) {
 }
 
 // ---- input ------------------------------------------------------------------------------------------------------------------
-float gScaleX = 1.0f, gScaleY = 1.0f;   // window points -> the game's 1024x768 screen
 std::uint32_t gButtons = 0;
 
 std::uint32_t Flags() {
@@ -597,7 +620,8 @@ std::uint32_t Flags() {
     return ((mod & SDL_KMOD_SHIFT) ? 4u : 0u) | ((mod & SDL_KMOD_CTRL) ? 8u : 0u) | ((gButtons & SDL_BUTTON_LMASK) ? 0x10u : 0u);   // 0x10: the left button is down
 }
 void PostMouse(std::uint32_t type, float x, float y, std::uint32_t extra = 0) {
-    gMgr->GZWinMsgPost_Mouse(type, int(x * gScaleX), int(y * gScaleY), extra | Flags());
+    const Placement p = FramePlacement();   // window points -> the game's logical screen
+    gMgr->GZWinMsgPost_Mouse(type, int((x - p.x) * float(gW) / p.w), int((y - p.y) * float(gH) / p.h), extra | Flags());
 }
 
 // The Windows virtual-key code the game's windows test (VK_ESCAPE 0x1b, VK_RETURN 0x0d, letters and digits as upper-case ASCII).
@@ -685,13 +709,6 @@ void HandleEvent(const SDL_Event& e) {
         for (const char* c = e.text.text; *c; ++c)
             if (static_cast<unsigned char>(*c) >= 0x20 && static_cast<unsigned char>(*c) < 0x80) gMgr->GZWinMsgPost_Keyboard(kGZMsgCharacter, std::uint32_t(*c), 0);
         break;
-    case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED: case SDL_EVENT_WINDOW_RESIZED: {
-        int w = kW, h = kH;
-        SDL_GetWindowSize(gWindow, &w, &h);
-        gScaleX = float(kW) / float(std::max(1, w));
-        gScaleY = float(kH) / float(std::max(1, h));
-        break;
-    }
     default: break;
     }
 }
@@ -738,7 +755,7 @@ void RunInputScript(const std::string& all) {
             gMgr->GZWinMsgPost_Mouse(kGZMsgMouseDownL, cx, cy, 0);
             gMgr->GZWinMsgPost_Mouse(kGZMsgMouseUpL, cx, cy, 0);
         } else if (name == "wheel+" || name == "wheel-")
-            gMgr->GZWinMsgPost_Mouse(kGZMsgMouseWheel, kW / 2, kH / 2, std::uint32_t(name == "wheel+" ? 120 : -120) << 16);
+            gMgr->GZWinMsgPost_Mouse(kGZMsgMouseWheel, gW / 2, gH / 2, std::uint32_t(name == "wheel+" ? 120 : -120) << 16);
         else if (auto it = kCommands.find(name); it != kCommands.end() && v)
             v->ProcessViewCommand(it->second.first);
         for (int i = 0; i < hold; ++i) { Frame(); Nap(); }
@@ -858,10 +875,16 @@ int main(int argc, char** argv) {
     std::string shot;
     std::string scenario;   // --script FILE
     int frames = -1;
+    int windowW = 0, windowH = 0;   // --size WxH: the window's size in pixels (default: most of the display; 1024x768 headless)
+    double uiScale = -1;            // --scale S: the UI scale (0 or "auto": from the window height); headless default 1
+    bool fullscreen = false;        // --fullscreen: borderless, the whole display
     for (int i = 1; i < argc; ++i) {
         if (!std::strcmp(argv[i], "--shot") && i + 1 < argc) shot = argv[++i];
         else if (!std::strcmp(argv[i], "--frames") && i + 1 < argc) frames = std::atoi(argv[++i]);
         else if (!std::strcmp(argv[i], "--script") && i + 1 < argc) scenario = argv[++i];
+        else if (!std::strcmp(argv[i], "--size") && i + 1 < argc) std::sscanf(argv[++i], "%dx%d", &windowW, &windowH);
+        else if (!std::strcmp(argv[i], "--scale") && i + 1 < argc) uiScale = std::strcmp(argv[i + 1], "auto") ? std::atof(argv[i + 1]) : 0.0, ++i;
+        else if (!std::strcmp(argv[i], "--fullscreen")) fullscreen = true;
     }
     const bool interactive = shot.empty() && scenario.empty();
 
@@ -870,8 +893,33 @@ int main(int argc, char** argv) {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    // The window's pixel size and the UI scale fix the game's logical resolution (pixels / scale) for the session.
+    SDL_Rect usable{0, 0, 1024, 768};
+    float contentScale = 1.0f;
+    if (const SDL_DisplayID display = SDL_GetPrimaryDisplay()) {
+        SDL_GetDisplayUsableBounds(display, &usable);
+        contentScale = std::max(1.0f, SDL_GetDisplayContentScale(display));
+        if (fullscreen) if (const SDL_DisplayMode* mode = SDL_GetDesktopDisplayMode(display)) usable = {0, 0, mode->w, mode->h};
+    }
+    if (windowW <= 0 || windowH <= 0) {
+        if (!interactive) { windowW = 1024; windowH = 768; }
+        else if (fullscreen) { windowW = usable.w; windowH = usable.h; }
+        else { windowW = usable.w * 9 / 10; windowH = usable.h * 9 / 10; }
+    }
+    if (uiScale < 0) uiScale = interactive ? 0 : 1;
+    if (uiScale == 0) {   // auto: about 900 logical lines, in quarter steps, never below the desktop's own scale or 1
+        uiScale = std::max<double>(contentScale, std::floor(double(windowH) / 900.0 * 4.0) / 4.0);
+        uiScale = std::max(1.0, uiScale);
+    }
+    gW = std::max(800, int(std::lround(windowW / uiScale)));
+    gH = std::max(600, int(std::lround(windowH / uiScale)));
+    std::printf("display: window %dx%d pixels, UI scale %.2f -> game resolution %dx%d\n", windowW, windowH, uiScale, gW, gH);
+    native::SetGameResolution(gW, gH, usable.w, usable.h);
     // The shot and scenario runs draw into a hidden window: the frame target is offscreen anyway, the window only holds the context.
-    gWindow = SDL_CreateWindow("Open City Builder", kW, kH, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | (interactive ? 0 : SDL_WINDOW_HIDDEN));
+    SDL_WindowFlags flags = SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIGH_PIXEL_DENSITY;
+    if (!interactive) flags |= SDL_WINDOW_HIDDEN;
+    if (fullscreen) flags |= SDL_WINDOW_FULLSCREEN;
+    gWindow = SDL_CreateWindow("Open City Builder", int(windowW / contentScale), int(windowH / contentScale), flags);
     if (!gWindow) { std::fprintf(stderr, "SDL window: %s\n", SDL_GetError()); return 1; }
     SDL_GLContext context = SDL_GL_CreateContext(gWindow);
     if (!context) { std::fprintf(stderr, "OpenGL 3.3 context: %s\n", SDL_GetError()); return 1; }
@@ -880,7 +928,7 @@ int main(int argc, char** argv) {
     std::printf("game data: %s\n", platform::GameDataDir().c_str());
     if (interactive) SDL_StartTextInput(gWindow);
 
-    gDriver = gd::cGLGDriver::Create(kW, kH);
+    gDriver = gd::cGLGDriver::Create(std::uint32_t(gW), std::uint32_t(gH), std::uint32_t(windowW), std::uint32_t(windowH));
     if (!gDriver) { std::printf("no usable OpenGL driver\n"); return 1; }
     Boot();
     if (interactive || std::getenv("SC4_AUDIO")) StartGameAudio();

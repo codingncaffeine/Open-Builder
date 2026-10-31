@@ -3,6 +3,7 @@
 #include <epoxy/gl.h>
 
 #include <algorithm>
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -169,7 +170,11 @@ struct Texture {
 }  // namespace
 
 struct cGLGDriver::Impl {
-    std::uint32_t width = 0, height = 0;
+    std::uint32_t width = 0, height = 0;             // the game's (logical) resolution
+    std::uint32_t pixelWidth = 0, pixelHeight = 0;   // the frame target
+    // logical -> frame target pixels (x edges by the width ratio, y by the height ratio; rounded so adjacent rectangles meet)
+    int PX(std::uint32_t x) const { return int(std::lround(double(x) * pixelWidth / width)); }
+    int PY(std::uint32_t y) const { return int(std::lround(double(y) * pixelHeight / height)); }
     GLuint frameFbo = 0, frameColor = 0, frameDepth = 0;
     GLuint vao = 0, vbo = 0, ibo = 0, ubo = 0;
     GLuint whiteTexture = 0;
@@ -253,9 +258,9 @@ struct cGLGDriver::Impl {
         bool Create(std::uint32_t width, std::uint32_t height) override {
             if (width == 0 || height == 0) return false;
             Destroy();
-            m->MakeTarget(width, height, fbo, color, depth);
-            w = width;
-            h = height;
+            w = std::uint32_t(m->PX(width));   // the store holds pixels; its rectangles arrive logical
+            h = std::uint32_t(m->PY(height));
+            m->MakeTarget(w, h, fbo, color, depth);
             return glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE;
         }
         void Destroy() override {
@@ -269,8 +274,14 @@ struct cGLGDriver::Impl {
         bool Exists() const override { return fbo != 0; }
         void Copy(bool toStore, int sx, int sy, int cw, int ch, int dx, int dy) {
             if (!Exists() || cw <= 0 || ch <= 0 || sx < 0 || sy < 0 || dx < 0 || dy < 0) return;
-            const int srcH = int(toStore ? m->height : h), dstH = int(toStore ? h : m->height);
-            const int srcW = int(toStore ? m->width : w), dstW = int(toStore ? w : m->width);
+            // logical rectangles -> pixels
+            const int x0 = m->PX(std::uint32_t(sx)), y0 = m->PY(std::uint32_t(sy));
+            const int x1 = m->PX(std::uint32_t(dx)), y1 = m->PY(std::uint32_t(dy));
+            cw = m->PX(std::uint32_t(sx + cw)) - x0;
+            ch = m->PY(std::uint32_t(sy + ch)) - y0;
+            sx = x0; sy = y0; dx = x1; dy = y1;
+            const int srcH = int(toStore ? m->pixelHeight : h), dstH = int(toStore ? h : m->pixelHeight);
+            const int srcW = int(toStore ? m->pixelWidth : w), dstW = int(toStore ? w : m->pixelWidth);
             cw = std::min(cw, std::min(srcW - sx, dstW - dx));
             ch = std::min(ch, std::min(srcH - sy, dstH - dy));
             if (cw <= 0 || ch <= 0) return;
@@ -343,7 +354,7 @@ struct cGLGDriver::Impl {
             glDeleteTextures(1, &frameColor);
             glDeleteTextures(1, &frameDepth);
         }
-        MakeTarget(width, height, frameFbo, frameColor, frameDepth);
+        MakeTarget(pixelWidth, pixelHeight, frameFbo, frameColor, frameDepth);
         glDisable(GL_SCISSOR_TEST);
         glDepthMask(GL_TRUE);
         glClearColor(0, 0, 0, 0);
@@ -420,10 +431,11 @@ struct cGLGDriver::Impl {
         } else {
             glDisable(GL_CULL_FACE);
         }
-        glViewport(GLint(vx), GLint(vy), GLsizei(vw), GLsizei(vh));
+        const int x0 = PX(vx), y0 = PY(vy), x1 = PX(vx + vw), y1 = PY(vy + vh);
+        glViewport(x0, y0, x1 - x0, y1 - y0);
         if (scissor) {
             glEnable(GL_SCISSOR_TEST);
-            glScissor(GLint(vx), GLint(vy), GLsizei(vw), GLsizei(vh));
+            glScissor(x0, y0, x1 - x0, y1 - y0);
         } else {
             glDisable(GL_SCISSOR_TEST);
         }
@@ -447,7 +459,11 @@ struct cGLGDriver::Impl {
 cGLGDriver::cGLGDriver() : impl_(new Impl) { impl_->currentMode.id = -1; }
 cGLGDriver::~cGLGDriver() = default;   // GL objects go with the context
 
-std::unique_ptr<cGLGDriver> cGLGDriver::Create(std::uint32_t width, std::uint32_t height, IModeSource* modes) {
+std::uint32_t cGLGDriver::PixelWidth() const { return impl_->pixelWidth; }
+std::uint32_t cGLGDriver::PixelHeight() const { return impl_->pixelHeight; }
+
+std::unique_ptr<cGLGDriver> cGLGDriver::Create(std::uint32_t width, std::uint32_t height, std::uint32_t pixelWidth,
+                                               std::uint32_t pixelHeight, IModeSource* modes) {
     if (epoxy_gl_version() < 33) {
         std::fprintf(stderr, "cGLGDriver: OpenGL 3.3 is required (the context offers %d.%d)\n", epoxy_gl_version() / 10, epoxy_gl_version() % 10);
         return nullptr;
@@ -458,6 +474,8 @@ std::unique_ptr<cGLGDriver> cGLGDriver::Create(std::uint32_t width, std::uint32_
     Impl& m = *d->impl_;
     m.width = width;
     m.height = height;
+    m.pixelWidth = pixelWidth ? pixelWidth : width;
+    m.pixelHeight = pixelHeight ? pixelHeight : height;
     m.vw = width;
     m.vh = height;
     m.MakeFrame();
@@ -704,8 +722,9 @@ void cGLGDriver::Clear(std::uint32_t mask) {
     const std::uint32_t argb = mirror_.clearColor;
     glBindFramebuffer(GL_FRAMEBUFFER, s.frameFbo);
     if (s.scissor) {
+        const int x0 = s.PX(s.vx), y0 = s.PY(s.vy);
         glEnable(GL_SCISSOR_TEST);
-        glScissor(GLint(s.vx), GLint(s.vy), GLsizei(s.vw), GLsizei(s.vh));
+        glScissor(x0, y0, s.PX(s.vx + s.vw) - x0, s.PY(s.vy + s.vh) - y0);
     } else {
         glDisable(GL_SCISSOR_TEST);
     }
@@ -856,13 +875,14 @@ void cGLGDriver::Encode(unsigned primitive, int vertexCount, const std::uint16_t
 }
 
 // ---- presentation ----
-void cGLGDriver::Present(int windowWidth, int windowHeight) {
+void cGLGDriver::Present(int x, int y, int width, int height) {
     Impl& s = *impl_;
     glBindFramebuffer(GL_READ_FRAMEBUFFER, s.frameFbo);
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
     glDisable(GL_SCISSOR_TEST);
-    glBlitFramebuffer(0, 0, GLint(s.width), GLint(s.height), 0, 0, windowWidth, windowHeight, GL_COLOR_BUFFER_BIT,
-                      (windowWidth == int(s.width) && windowHeight == int(s.height)) ? GL_NEAREST : GL_LINEAR);
+    const bool exact = width == int(s.pixelWidth) && height == int(s.pixelHeight);
+    glBlitFramebuffer(0, 0, GLint(s.pixelWidth), GLint(s.pixelHeight), x, y, x + width, y + height, GL_COLOR_BUFFER_BIT,
+                      exact ? GL_NEAREST : GL_LINEAR);
     glBindFramebuffer(GL_FRAMEBUFFER, s.frameFbo);
 }
 
@@ -870,15 +890,15 @@ bool cGLGDriver::ReadBack(std::vector<std::uint8_t>& bgra, std::uint32_t& width,
     Impl& s = *impl_;
     glBindFramebuffer(GL_READ_FRAMEBUFFER, s.frameFbo);
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
-    const std::size_t rowBytes = std::size_t(s.width) * 4;
-    std::vector<std::uint8_t> bottomUp(rowBytes * s.height);
-    glReadPixels(0, 0, GLsizei(s.width), GLsizei(s.height), GL_BGRA, GL_UNSIGNED_BYTE, bottomUp.data());
+    const std::size_t rowBytes = std::size_t(s.pixelWidth) * 4;
+    std::vector<std::uint8_t> bottomUp(rowBytes * s.pixelHeight);
+    glReadPixels(0, 0, GLsizei(s.pixelWidth), GLsizei(s.pixelHeight), GL_BGRA, GL_UNSIGNED_BYTE, bottomUp.data());
     glBindFramebuffer(GL_FRAMEBUFFER, s.frameFbo);
-    width = s.width;
-    height = s.height;
+    width = s.pixelWidth;
+    height = s.pixelHeight;
     bgra.resize(bottomUp.size());
-    for (std::uint32_t y = 0; y < s.height; ++y)
-        std::memcpy(&bgra[y * rowBytes], &bottomUp[(s.height - 1 - y) * rowBytes], rowBytes);
+    for (std::uint32_t y = 0; y < s.pixelHeight; ++y)
+        std::memcpy(&bgra[y * rowBytes], &bottomUp[(s.pixelHeight - 1 - y) * rowBytes], rowBytes);
     return glGetError() == GL_NO_ERROR;
 }
 
@@ -912,6 +932,8 @@ bool cGLGDriver::SetVideoMode(int mode, void*, bool, bool) {
     }
     m.currentMode = info;
     if (info.width != m.width || info.height != m.height) {
+        m.pixelWidth = std::uint32_t(std::lround(double(m.pixelWidth) * info.width / m.width));   // the same scale
+        m.pixelHeight = std::uint32_t(std::lround(double(m.pixelHeight) * info.height / m.height));
         m.width = info.width;
         m.height = info.height;
         m.MakeFrame();

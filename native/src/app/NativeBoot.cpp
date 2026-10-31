@@ -18,6 +18,13 @@
 #include "sc4/App.h"
 #include "sc4/AppPlatform.h"
 
+static int g_gameW = 1024, g_gameH = 768;       // the game's (logical) resolution: the UI lays out in it
+static int g_screenW = 1440, g_screenH = 900;   // the display the window is on
+namespace native {
+void SetGameResolution(int width, int height, int screenWidth, int screenHeight) {
+    g_gameW = width; g_gameH = height; g_screenW = screenWidth; g_screenH = screenHeight;
+}
+}  // namespace native
 namespace {
 struct Object final : cIGZUnknown {
     bool QueryInterface(std::uint32_t, void** out) override { *out = this; return true; }
@@ -27,7 +34,7 @@ struct Object final : cIGZUnknown {
 };
 struct Graphics final : IGraphicSystemControl {
     gd::cIGZGDriver* driver = nullptr;   // the native Metal driver the application window made
-    DisplayMetrics GetScreenMetrics() override { return {1440, 900, 32}; }
+    DisplayMetrics GetScreenMetrics() override { return {std::uint32_t(g_screenW), std::uint32_t(g_screenH), 32}; }
     void PreInitSetDesiredGameResolution(const DisplayMetrics&) override {}
     void PreInitSetWindowedMode(bool) override {}
     void DisableScreenBuffer() override {}
@@ -36,7 +43,7 @@ struct Graphics final : IGraphicSystemControl {
     bool IsPageFlippingEnabled() override { return false; }
     void SetDefaultDriverClassID(std::uint32_t) override {}
     bool CanvasReady() override { return true; }
-    DisplayMetrics GetGameMetrics() override { return {1024, 768, 32}; }
+    DisplayMetrics GetGameMetrics() override { return {std::uint32_t(g_gameW), std::uint32_t(g_gameH), 32}; }
     gd::cIGZGDriver* GetGDriver() override { return driver; }
     int GetGDriverCount() override { return driver ? 1 : 0; }
     gd::cIGZGDriver* GetGDriverByIndex(int) override { return driver; }

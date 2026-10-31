@@ -6,6 +6,8 @@ class cGZFramework;
 namespace gd { class cIGZGDriver; }
 class cSC4App;
 namespace native {
+// The game's (logical) resolution and the display's, before RunBoot (the application reads them as its metrics).
+void SetGameResolution(int width, int height, int screenWidth, int screenHeight);
 // Runs PreFrameWorkInit -> Init -> PostFrameWorkInit (-> shutdown unless keepAlive) of the recovered cSC4App against
 // the real game data.
 // `beforeInit` runs after the framework and the application object exist and before PreFrameWorkInit: the place to register the window

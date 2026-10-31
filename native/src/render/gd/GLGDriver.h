@@ -19,13 +19,19 @@ constexpr std::uint32_t kClearColor = 0x4000, kClearDepth = 0x1000, kClearStenci
 
 class cGLGDriver final : public cGDriverBase {
 public:
-    // Needs a current OpenGL 3.3 core context. Size is the frame target's size in pixels.
-    static std::unique_ptr<cGLGDriver> Create(std::uint32_t width, std::uint32_t height, IModeSource* modes = nullptr);
+    // Needs a current OpenGL 3.3 core context. `width` x `height` is the game's (logical) resolution, the one every
+    // rectangle the game passes is in; the frame target is `pixelWidth` x `pixelHeight` (0: the same), and the driver
+    // scales viewports, scissors, clears and backing-store copies onto it, so geometry renders at the full pixel size.
+    static std::unique_ptr<cGLGDriver> Create(std::uint32_t width, std::uint32_t height, std::uint32_t pixelWidth = 0,
+                                              std::uint32_t pixelHeight = 0, IModeSource* modes = nullptr);
+    std::uint32_t PixelWidth() const;
+    std::uint32_t PixelHeight() const;
     ~cGLGDriver() override;
 
     // ---- presentation / test hooks (not part of cIGZGDriver) ----
-    void Present(int windowWidth, int windowHeight);                  // frame target -> default framebuffer (the caller swaps)
-    bool ReadBack(std::vector<std::uint8_t>& bgra, std::uint32_t& width, std::uint32_t& height);   // top-left origin
+    // frame target -> the default framebuffer's rectangle (x, y from its bottom-left, in pixels); the caller swaps
+    void Present(int x, int y, int width, int height);
+    bool ReadBack(std::vector<std::uint8_t>& bgra, std::uint32_t& width, std::uint32_t& height);   // top-left origin, pixels
     IBackingStore* BackingStore();
     std::uint32_t DrawCalls() const;
     std::uint32_t PipelineCount() const;
