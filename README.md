@@ -1,5 +1,7 @@
 # Open City Builder
 
+![Open City Builder](art/banner.jpg)
+
 A decompilation of a classic 2003 city-building game, rebuilt function by function in C++ from its last PC release
 (version 1.1.641), with the aim of running natively on Linux at any resolution and making the game easy to mod.
 
