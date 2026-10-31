@@ -259,7 +259,7 @@ done
   # the function after it (a 4-byte getter's hook broke the setter behind it, s17)
   awk -F'\t' 'FILENAME != ARGV[ARGC - 1] { size[sprintf("%x", strtonum("0x" $1))] = strtonum("0x" $2); next }
     { a = sprintf("%x", strtonum($1)); hook = $4; if ((a in size) && size[a] < 5) hook = 0
-      printf "    { %s, (void*)&obhook_%d, \"%s\", %d },\n", $1, NR, $3, hook }' "$sizes" "$entries"
+      printf "    { %s, (void*)&obhook_%d, \"%s\", %d },\n", $1, FNR, $3, hook }' "$sizes" "$entries"
   echo '    { 0, 0, 0, 0 },  // keeps the array non-empty; never installed'
   echo '};'
   echo
