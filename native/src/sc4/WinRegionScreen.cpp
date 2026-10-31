@@ -1212,6 +1212,9 @@ bool cSC4WinRegionScreen::GZOnCommand(std::uint32_t command, std::uint64_t param
     case 0x4a560001:
         RestoreSignposts();
         return true;
+    case 0x0a5510a9:   // the options menu's game options button
+        if (host) host->RunGameOptionsDialog();
+        return true;
     case kRegionScreenPanelButtonIds[0]:
         ShowPanel(0);
         return true;
@@ -1269,6 +1272,7 @@ bool cSC4WinRegionScreen::GZOnCommand(std::uint32_t command, std::uint64_t param
         return true;
     }
     default:
+        if (getenv("SC4_DEBUG")) fprintf(stderr, "region screen: button %#llx not wired\n", static_cast<unsigned long long>(param));
         break;
     }
     // PARTIAL: the new/load/delete region dialogs, the import/export city dialogs, the video / audio / game

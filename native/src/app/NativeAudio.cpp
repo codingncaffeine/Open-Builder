@@ -7,22 +7,27 @@
 #include "audio/AudioServices.h"
 #include "audio/interfaces/cIGZSnd.h"
 #include "gz/WinBtn.h"
+#include "gz/WinFont.h"
 
 namespace native {
 namespace {
 GameAudio* g_audio = nullptr;
 
-// RZ::SS() / RZ::WCM for the window buttons: the sounds play, the colour manager's fonts and images stay with the window
-// code's own fallbacks (HasWindowColorManager answers false).
+// RZ::SS() / RZ::WCM for the window buttons: the sounds play; the captions take the game's font styles (the same source the
+// text windows use), so the colour manager counts as present once that source is up. Its images stay with the window code's
+// own fallbacks.
 class ButtonHost final : public gz::IWinButtonHost {
 public:
-    gz::IWinButtonFont* Font(std::uint32_t) override { return nullptr; }
+    gz::IWinButtonFont* Font(std::uint32_t style) override {
+        gz::IWinFontSource* fonts = gz::WinFontSource();
+        return fonts && fonts->Available() ? fonts->Font(style) : nullptr;
+    }
     cIGZBuffer* Image(std::uint32_t) override { return nullptr; }
     std::uint32_t DefaultSoundId(int) override { return 0; }
     void PlaySound(std::uint32_t soundId) override { PlayGameSound(soundId); }
     void ShowTip(const gz::BtnTipRequest&) override {}
     void HideTip() override {}
-    bool HasWindowColorManager() override { return false; }
+    bool HasWindowColorManager() override { gz::IWinFontSource* fonts = gz::WinFontSource(); return fonts && fonts->Available(); }
 };
 ButtonHost g_buttons;
 }  // namespace

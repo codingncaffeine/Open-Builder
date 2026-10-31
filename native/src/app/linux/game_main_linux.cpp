@@ -383,7 +383,7 @@ bool InvalidateTreeCallback(cIGZWin*, std::uint32_t, void* child, void*) { Inval
 // Debug: prints the window tree below `window` (id, visibility, area) to a depth.
 void DumpTree(cIGZWin* window, int depth, int maxDepth) {
     const cRZRect a = window->GetArea();
-    std::printf("%*s id=%08x vis=%d area=%d,%d,%d,%d kids=%u\n", depth * 2, "", window->GetID(), window->IsVisible(), a.left, a.top, a.right, a.bottom, window->GetChildCount());
+    std::printf("%*s id=%08x vis=%d area=%d,%d,%d,%d kids=%u caption=\"%s\"\n", depth * 2, "", window->GetID(), window->IsVisible(), a.left, a.top, a.right, a.bottom, window->GetChildCount(), window->GetCaption().ToChar());
     if (depth >= maxDepth) return;
     struct Ctx { int depth, max; };
     Ctx ctx{depth + 1, maxDepth};
@@ -470,6 +470,7 @@ bool Boot() {
     gMgr->GetMainWindow()->SetArea(0, 0, kW, kH);
     if (!InitFont()) std::printf("font: FAILED to initialise\n");
     gz::SetWinFontSource(&gFontSource);
+    native::InstallButtonSounds();   // the window buttons' host: caption fonts (and sounds, once there is audio output)
 
     const bool ok = native::RunBoot(true, true, gDriver.get(), [&](cGZFramework& framework, cSC4App& app) {
         SL::SetFramework(&framework);             // the locator's RZGetFramework(): without it every SL:: service stays null
@@ -861,6 +862,8 @@ int main(int argc, char** argv) {
         Present();
         if (!interactive && ++frame >= 30) {
             frame = 0;
+            if (const char* tree = std::getenv("SC4_MODALTREE"))   // debug: the window tree under the dialog's window id (hex)
+                if (cIGZWin* w = gMgr->GetMainWindow()->GetChildWindowFromIDRecursive(std::uint32_t(std::strtoul(tree, nullptr, 16)))) DumpTree(w, 0, 6);
             WritePng("work/shots/modal" + std::to_string(dialog++) + ".png");
             gMgr->PostWinMessage(gz::kWinMgrMsgEndModal, 0, 0x80000001u, 0x80000001u);
         }

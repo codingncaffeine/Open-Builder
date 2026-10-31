@@ -4,6 +4,7 @@
 // recovered classes reach through seams: class makers for GZCOM, the vocabulary / control / interpreter hosts and the
 // image loader.
 #pragma once
+#include <functional>
 #include <cstdint>
 #include <vector>
 
@@ -30,4 +31,6 @@ PngDecoder DecodeFunction();
 bool InitUiScripts(WinMgr* mgr);
 // SC4CreateWindowFromScript: the window of script `key` (control id `id`) inside `parent`, one reference, or null.
 cIGZWin* CreateWindowFromScript(const cGZPersistResourceKey& key, cIGZWin* parent, std::uint32_t id);
+// The modal "Game Options" dialog (cSC4GamePreferencesWinProc); `preferences` is the blob its check boxes mirror.
+void RunGameOptionsDialog(std::function<std::uint8_t*()> preferences);
 }  // namespace native

@@ -847,11 +847,13 @@ void cGZWin::SetAreaToDrawTo() {
         }
         drawArea_ = local;
         if (WinGraphics() && WinGraphics()->DrawSystemActive()) {
-            // Original quirk: the top edge is cleared before the bottom is rebased, so bottom keeps its value.
-            const int left = drawArea_.left;
+            // The rectangle moves to (0, 0) keeping its size (cRZRect::MoveTo, PC 0x0082ae40: dx/dy applied to all four
+            // edges). The earlier "bottom keeps its value" reading stretched every 9-slice button and text box by its y.
+            const int left = drawArea_.left, top = drawArea_.top;
             drawArea_.left = 0;
             drawArea_.top = 0;
             drawArea_.right -= left;
+            drawArea_.bottom -= top;
         }
     } else {
         drawArea_ = {0, 0, area_.right - area_.left, area_.bottom - area_.top};

@@ -6,6 +6,7 @@
 #include <map>
 #include <memory>
 
+#include "app/NativeBoot.h"
 #include "app/NativeUi.h"
 #include "dbpf/DBPFReader.h"
 #include "gz/RZServices.h"
@@ -414,6 +415,9 @@ public:
         cSC4Region::sBaseTerrainTypeHeight[1] = other;
     }
     void ActivatePanelButton(cIGZWin*, cIGZWin*) override {}
+    void RunGameOptionsDialog() override {
+        native::RunGameOptionsDialog([] { return BootApplication() ? BootApplication()->GetPreferences() : nullptr; });
+    }
     void FormatNumber(int value, cRZString& out) override {
         // thousands separated by commas, as the English language utility makes them
         std::string digits = std::to_string(value < 0 ? -value : value);

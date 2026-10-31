@@ -3,6 +3,7 @@
 // is the recovered cSC4ViewInputControlCityScroll, and AddGUI builds its windows through the UI-script service and
 // nSC4UI's window-set helpers. Everything else is still neutral.
 #include <cstring>
+#include <functional>
 #include <string>
 #include <vector>
 #include "sc4/View3DWin.h"
@@ -252,30 +253,7 @@ struct StubView3DWin final : IView3DWinHost {
     // new cSC4GamePreferencesWinProc; AddRef; ShowDialog(kGameOptions) (vslot 0x28); DoModalWin; the view takes the focus back
     void RunPreferencesDialog(int which) override {
         if (which != 0) { SC4_UNWIRED("IView3DWinHost::RunPreferencesDialog (video / audio preferences not recovered)"); return; }
-        if (!ActiveWinMgr() || !ActiveWinMgr()->modalDialogs) return;
-        GamePreferencesServices& services = GetGamePreferencesServices();
-        if (!services.windowManager) {
-            services.windowManager = [] { return static_cast<cIGZWinMgr*>(ActiveWinMgr()); };
-            services.preferences = [this] { return Preferences(); };
-            services.cityLoaded = [] { return LoadedCity() != nullptr; };
-            services.appPresent = [] { return BootApplication() != nullptr; };
-            services.postMessage = [](std::uint32_t type) {
-                if (!SL::spMS2) return;
-                auto* message = new cRZMessage2Standard();
-                message->AddRef();
-                message->SetType(type);
-                SL::spMS2->MessagePost(message, false);
-                message->Release();
-            };
-        }
-        auto* proc = new cSC4GamePreferencesWinProc();
-        proc->AddRef();
-        const bool alreadyShowing = cSC4GamePreferencesWinProc::Displayed();
-        proc->ShowDialog(cSC4GamePreferencesWinProc::kGameOptions);
-        // DoModalWin dereferences the dialog: run it only when this ShowDialog built one (the script loaded, no other copy is up)
-        if (!alreadyShowing && cSC4GamePreferencesWinProc::Displayed()) proc->DoModalWin();
-        else SC4_UNWIRED("IView3DWinHost::RunPreferencesDialog: the game options dialog was not built");
-        proc->Release();
+        RunGameOptionsDialog([this] { return Preferences(); });
         if (sc4::cSC4View3DWin* view = CityView3DWin()) view->SetFocus();
     }
     void ShowSnapshotAlbum(cIGZWin*) override { SC4_UNWIRED("IView3DWinHost::ShowSnapshotAlbum (cSC4WinSnapshotAlbum not recovered)"); }
@@ -364,6 +342,36 @@ struct StubView3DWin final : IView3DWinHost {
     void ShutdownBuildingSelectWinProc(cIGZUnknown* proc) override {}
 };
 }  // namespace
+
+// new cSC4GamePreferencesWinProc; AddRef; ShowDialog(kGameOptions); DoModalWin: the "Game Options" dialog, from the city view's
+// options menu and the region screen's (`preferences` is the blob its check boxes mirror, bound per call).
+void RunGameOptionsDialog(std::function<std::uint8_t*()> preferences) {
+    using sc4::cSC4GamePreferencesWinProc;
+    if (!ActiveWinMgr() || !ActiveWinMgr()->modalDialogs) return;
+    sc4::GamePreferencesServices& services = sc4::GetGamePreferencesServices();
+    services.preferences = std::move(preferences);
+    if (!services.windowManager) {
+        services.windowManager = [] { return static_cast<cIGZWinMgr*>(ActiveWinMgr()); };
+        services.cityLoaded = [] { return LoadedCity() != nullptr; };
+        services.appPresent = [] { return BootApplication() != nullptr; };
+        services.postMessage = [](std::uint32_t type) {
+            if (!SL::spMS2) return;
+            auto* message = new cRZMessage2Standard();
+            message->AddRef();
+            message->SetType(type);
+            SL::spMS2->MessagePost(message, false);
+            message->Release();
+        };
+    }
+    auto* proc = new cSC4GamePreferencesWinProc();
+    proc->AddRef();
+    const bool alreadyShowing = cSC4GamePreferencesWinProc::Displayed();
+    proc->ShowDialog(cSC4GamePreferencesWinProc::kGameOptions);
+    // DoModalWin dereferences the dialog: run it only when this ShowDialog built one (the script loaded, no other copy is up)
+    if (!alreadyShowing && cSC4GamePreferencesWinProc::Displayed()) proc->DoModalWin();
+    else SC4_UNWIRED("RunGameOptionsDialog: the game options dialog was not built");
+    proc->Release();
+}
 
 void InstallView3DWinStub() { static StubView3DWin s; sc4::SetView3DWinHost(&s); }
 
