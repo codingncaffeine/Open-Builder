@@ -1,16 +1,16 @@
 #!/bin/bash
-# Builds build/sc4_game_linux: the game on Linux (SDL3 window, OpenGL 3.3 core through cGLGDriver, no audio yet).
+# Builds build/sc4_game_linux: the game on Linux (SDL3 window and audio, OpenGL 3.3 core through cGLGDriver).
 # Incremental: one object per source of scripts/linux_game_link_list.txt under build/linux_obj (debug: build/linux_obj_debug).
 #   scripts/build_linux_game.sh [debug]      debug: -O0 + AddressSanitizer
 #   SC4_GAME_CONTENTS=<folder with GameData/> build/sc4_game_linux [--shot out.png [--frames N] | --script scenario.txt]
-# Needs clang, libc++, SDL3, libepoxy, FreeType and libpng (the Mac-derived classes assert libc++'s layouts).
+# Needs clang, libc++, SDL3, libepoxy, FreeType, libpng and libmpg123 (the Mac-derived classes assert libc++'s layouts).
 set -e
 cd "$(dirname "$0")/.."
 MODE=${1:-fast}
 if [ "$MODE" = debug ]; then OBJ=build/linux_obj_debug; OUT=build/sc4_game_linux_debug; OPT="-O0 -g -fno-omit-frame-pointer -fsanitize=address"; LD="-fsanitize=address"
 else OBJ=build/linux_obj; OUT=build/sc4_game_linux; OPT="-O1 -g"; LD=""; fi
 mkdir -p $OBJ
-PKG="$(pkg-config --cflags sdl3 epoxy freetype2 libpng)"
+PKG="$(pkg-config --cflags sdl3 epoxy freetype2 libpng libmpg123)"
 CF="-std=c++20 -stdlib=libc++ -include cstdlib -include cmath -include platform/linux_char_traits.h -Dst_atimespec=st_atim -Dst_mtimespec=st_mtim -Dst_ctimespec=st_ctim -D_CS_DARWIN_USER_TEMP_DIR=_CS_PATH $OPT -Wno-overloaded-virtual -w -Isrc -Iscripts/tests/stubs $PKG"
 LIST=scripts/linux_game_link_list.txt
 OBJS=""
@@ -26,5 +26,5 @@ if [ -s "$FAILED" ]; then
   rm -f "$FAILED"; exit 1
 fi
 rm -f "$FAILED"
-clang++ -stdlib=libc++ $LD $OBJS $(pkg-config --libs sdl3 epoxy freetype2 libpng) -o $OUT
+clang++ -stdlib=libc++ $LD $OBJS $(pkg-config --libs sdl3 epoxy freetype2 libpng libmpg123) -o $OUT
 echo "built $OUT"

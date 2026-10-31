@@ -689,6 +689,7 @@ src/app/NativeCityViewQueries.cpp
 src/sc4/GamePreferencesWinProc.cpp
 src/tools/city_probe_hostglobals.cpp
 src/render/gd/GLGDriver.cpp
-src/app/linux/GameAudioSilent.cpp
+src/app/GameAudio.cpp
+src/app/linux/GameAudioSDL.cpp
 src/app/linux/StubClock.cpp
 src/app/linux/game_main_linux.cpp

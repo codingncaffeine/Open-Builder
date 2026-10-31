@@ -6,6 +6,10 @@
 #include <string>
 #include <vector>
 
+namespace AudioPlatform { class IBackend; }
+// The platform's audio output (GameAudioAV.mm, linux/GameAudioSDL.cpp); null when there is none. The caller owns it.
+AudioPlatform::IBackend* CreatePlatformAudioBackend();
+
 class GameAudio {
 public:
     ~GameAudio();
