@@ -3,6 +3,9 @@
 #include <cstdlib>
 #include <unistd.h>
 
+#ifdef __linux__
+#include <sys/sysinfo.h>
+#endif
 #ifdef __APPLE__
 #include <mach/mach.h>
 #include <sys/sysctl.h>
@@ -15,6 +18,16 @@ public:
     bool BundleName(std::string&) override { return false; }
     bool BundleShortVersion(std::string&) override { return false; }
     bool AppPath(std::string& out) override {
+#ifdef __linux__
+        // the executable's folder and the original's name: the preferences are "<user data>/SimCity 4.cfg" as on the PC
+        char buffer[4096];
+        const ssize_t length = ::readlink("/proc/self/exe", buffer, sizeof buffer - 1);
+        if (length > 0) {
+            std::string exe(buffer, std::size_t(length));
+            out = exe.substr(0, exe.rfind('/') + 1) + "SimCity 4";
+            return true;
+        }
+#endif
         const char* path = std::getenv("PWD");
         if (path == nullptr) return false;
         out = path;
@@ -44,6 +57,12 @@ public:
         physical = info.max_mem >> 20;
         available = static_cast<std::uint32_t>((static_cast<std::uint64_t>(stats.free_count) * pageSize) >> 20)
                   + static_cast<std::uint32_t>((static_cast<std::uint64_t>(stats.inactive_count) * pageSize) >> 20);
+        return true;
+#elif defined(__linux__)
+        struct sysinfo info{};
+        if (::sysinfo(&info) != 0) return false;
+        physical = (std::uint64_t(info.totalram) * info.mem_unit) >> 20;
+        available = static_cast<std::uint32_t>(((std::uint64_t(info.freeram) + info.bufferram) * info.mem_unit) >> 20);
         return true;
 #else
         (void)physical; (void)available;

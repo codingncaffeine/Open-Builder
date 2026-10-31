@@ -177,9 +177,11 @@ public:
     }
     void InvalidateAllTiles() override { for (auto& tile : tiles_) tile.second = true; dirty_ = true; }
 
-    // Re-renders the dirty tiles and blits every tile onto the screen. Returns false when nothing changed.
+    // Re-renders the dirty tiles and blits every tile onto the screen, every frame: the drifting clouds draw translucently
+    // over the map each frame, so the map under them must be fresh (blitting only after a change let the clouds stack
+    // up into solid white blocks). Returns false when there is nothing to draw.
     bool Draw() {
-        if (!dirty_ || !source_) return false;
+        if (!source_) return false;
         dirty_ = false;
         gz::cIGZDrawContext* screen = static_cast<gz::cIGZDrawContext*>(g_services.graphics->Primary()->GetDrawContext());
         for (int r = 0; r < rows_; ++r)
