@@ -308,6 +308,14 @@ else
   done
 fi
 
+# Every row's size from the corrected list: where the analysis split a function (a loop's head cut from its body),
+# the raw list's size leaves a listing that stops at a jump into the missing rest, and agents took such functions
+# (1,500 still to do) for fragments.
+for name in "${packets[@]}"; do
+  awk -F'\t' -v OFS='\t' 'FILENAME == ARGV[1] { s[sprintf("%08x", strtonum("0x" $1))] = strtonum("0x" $2); next }
+       { a = $1; sub(/^0x/, "", a); a = sprintf("%08x", strtonum("0x" a)); if ((a in s) && s[a] > $2 + 0) $2 = s[a]; print }' \
+    "$sizes" "$out/$name/functions.tsv" >"$work/sized" && cat "$work/sized" >"$out/$name/functions.tsv"
+done
 # The listings of every packet: the original's instructions with names, Ghidra's drafts (one run for all), the Mac
 # reference build's version where known.
 for name in "${packets[@]}"; do

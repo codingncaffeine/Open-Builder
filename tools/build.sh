@@ -79,7 +79,9 @@ sources+=("$out/hooks.gen.cpp" "$out/stubs.gen.cpp")
 objs=()
 for s in "${sources[@]}"; do objs+=("$out/obj/$(basename "${s%.cpp}").obj"); done
 objs+=("$out/obj/globals.gen.obj")
-link /nologo /dll /nodefaultlib /entry:DllMain /def:hook/version.def "/map:$out/version.map" \
+# Based where no constant of the game falls (not the default 0x10000000: flag words like 0x10000001 read as addresses
+# inside our DLL to obcmp), and above the game image; as a float, 0x5d000000 is ~5.8e17.
+link /nologo /dll /nodefaultlib /entry:DllMain /base:0x5d000000 /def:hook/version.def "/map:$out/version.map" \
   "/out:$out/version.dll" "${objs[@]}" "$out/sdk/kernel32.lib" "$out/sdk/wininet.lib" OpenGL32.Lib Gdi32.Lib User32.Lib 2>&1 | quiet
 
 [[ -f "$out/version.dll" ]] || { echo "build failed" >&2; exit 1; }

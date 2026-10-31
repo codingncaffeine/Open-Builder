@@ -14,7 +14,7 @@ exe="scratch/testbed/game/Apps/SimCity 4.exe"
 obsig=scratch/build/obcmp/obsig
 mkdir -p "$out/src"
 # One object can hold only so many sections: 40 instantiations per source.
-stl=(/I"${OB_STL_INCLUDE:-third_party/stlport-4.6/stlport}" /D_STLP_DONT_FORCE_MSVC_LIB_NAME /D_STLP_USE_NEWALLOC
+stl=(/I"${OB_STL_INCLUDE:-third_party/stlport-4.6/stlport}" /Isrc /D_STLP_DONT_FORCE_MSVC_LIB_NAME /D_STLP_USE_NEWALLOC
   /D_STLP_OUT_OF_LINE_STL_NEW /D_STLP_RESIZE_BY_REFERENCE /D_STLP_TREE_ITERATOR_WALKS /D_STLP_INSERT_UNIQUE_BY_X /W0)
 # A variant is built again only when the catalogue, the options or the headers changed (or its last run did not finish).
 python3 tools/stl/catalogue.py >"$out/catalogue.cpp"
@@ -26,6 +26,9 @@ rm -f "$out"/src/*.cpp
 awk -v dir="$out/src" '/^template class/ { n++; if (n % 40 == 1) { k++; f = sprintf("%s/c%02d.cpp", dir, k); printf "%s", head > f }
                                            print > f; next }
                        { head = head $0 "\n" }' "$out/catalogue.cpp"
+# what the allocator header leaves to the framework (STUB lines in the game's sources), so the library links
+printf '%s\n' '#include "gzcom/cGZAllocatorServiceSTLAllocator.h"' 'cIGZFrameWork_Services* RZGetFramework() { return 0; }' \
+  'void cGZAllocatorServiceRef::Release() { mpService = 0; }' >"$out/src/zz_framework.cpp"
 variant() {  # name, flags
   local d="$out/$1"
   [[ -s "$d/matches.tsv" ]] && return
