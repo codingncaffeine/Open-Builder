@@ -15,7 +15,17 @@ public:
     virtual bool Slot06_ace69c();
     virtual bool OnStart(uint32_t);
     virtual uint32_t Slot13_ace6f8();
-    char unknown38[0x34];
+    // STUB: 0x004ec710
+    void* Fn004ec710();
+    char unknown38[0x14];
+    void* mpUnk4c;
+    void* mpUnk50;
+    void* mpUnk54;
+    void* mpUnk58;
+    void* mpUnk5c;
+    void* mpUnk60;
+    void* mpUnk64;
+    void* mpUnk68;
 };
 
 // SYNTHETIC: 0x004ec680

@@ -11,12 +11,17 @@ class cGZMessage2CommandDispatcher {
 public:
     virtual bool QueryInterface(uint32_t, uint32_t);
     virtual uint32_t AddRef();
-    virtual void Release();
+    virtual uint32_t Release();
     virtual bool Init();
     virtual bool Shutdown();
-    virtual uint32_t ExecuteCommand(uint32_t, uint32_t, uint32_t);
+    virtual uint32_t ExecuteCommand(uint32_t, void*, void*);
     virtual ~cGZMessage2CommandDispatcher();
-    char unknown4[0x18];
+    uint32_t mnRefCount;
+    void* mpServer;
+    void* mpMessage;
+    void* mpInput;
+    void* mpOutput;
+    void* mpGenerator;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZMessage2CommandDispatcher[sizeof(cGZMessage2CommandDispatcher) == 0x1c ? 1 : -1];

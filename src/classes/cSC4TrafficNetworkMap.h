@@ -17,40 +17,40 @@ struct OB_NOVTABLE cSC4TrafficNetworkMap_0 {
     virtual bool ChooseWeightedEdge(uint32_t, uint32_t) = 0;
     virtual void FindNetworkOccupant(uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t FindNetworkOccupant_2(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void FindNetworkOccupant_3(uint32_t) = 0;
-    virtual uint32_t FindNetworkOccupant_4(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual uint32_t FindNetworkOccupant_5(uint32_t, uint32_t) = 0;
-    virtual uint32_t FindNetworkTile(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual uint32_t GetTileInfoAtCell(uint32_t, uint32_t) = 0;
-    virtual void SafeGetTileInfoAtCell(uint32_t, uint32_t) = 0;
+    virtual void* FindNetworkOccupant_3(void*) = 0;
+    virtual void* FindNetworkOccupant_4(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void* FindNetworkOccupant_5(int32_t, int32_t) = 0;
+    virtual void* FindNetworkTile(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
+    virtual void* GetTileInfoAtCell(uint32_t, uint32_t) = 0;
+    virtual void* SafeGetTileInfoAtCell(int32_t, int32_t) = 0;
     virtual uint32_t Slot15_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void GetTileInfoByNetwork(uint32_t) = 0;
+    virtual void* GetTileInfoByNetwork(void*) = 0;
     virtual void* GetVisibleCellRect() = 0;
     virtual void GetRoadAltitude(uint32_t, uint32_t) = 0;
     virtual uint32_t Slot19_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot20_a8fed8(uint32_t, uint32_t) = 0;
+    virtual void* Slot20_a8fed8(void*, uint32_t) = 0;
     virtual uint32_t Slot21_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot22_a8fed8(uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot23_a8fed8(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void* Slot22_a8fed8(void*, uint32_t) = 0;
+    virtual void* Slot23_a8fed8(void*, uint32_t, uint32_t) = 0;
     virtual void Slot24_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool GetSurroundingRoads(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual bool GetSurroundingRoads_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual uint32_t GetAutomataCountForLane(uint32_t, uint32_t) = 0;
-    virtual bool Slot28_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot29_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual bool EnterNetwork(uint32_t, uint32_t) = 0;
-    virtual bool ExitNetwork(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void TickIntersections(uint32_t) = 0;
+    virtual int16_t GetAutomataCountForLane(void*, uint32_t) = 0;
+    virtual bool Slot28_a8fed8(void*, uint32_t, uint32_t, uint32_t) = 0;
+    virtual bool Slot29_a8fed8(int32_t, int32_t, void*, uint32_t, uint32_t) = 0;
+    virtual bool EnterNetwork(void*, void*) = 0;
+    virtual bool ExitNetwork(void*, void*, uint32_t) = 0;
+    virtual void TickIntersections(float) = 0;
     virtual uint32_t CheckIntersection(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual bool IsIntersection(uint32_t) = 0;
+    virtual bool IsIntersection(void*) = 0;
     virtual void* GetIntersectionMap() = 0;
-    virtual void UpdateIntersection(uint32_t) = 0;
+    virtual void UpdateIntersection(void*) = 0;
     virtual void SwitchStoplightStates(uint32_t) = 0;
     virtual void Slot38_a8fed8() = 0;
-    virtual void UnmarkTrainInCell(uint32_t, uint32_t, uint32_t) = 0;
-    virtual uint32_t GetTrainJunctionPath(uint32_t, uint32_t) = 0;
-    virtual uint32_t GetTrainJunctionKeys(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual bool ToggleTrainJunction(uint32_t) = 0;
+    virtual void UnmarkTrainInCell(void*, int32_t, int32_t) = 0;
+    virtual uint32_t GetTrainJunctionPath(void*, uint32_t) = 0;
+    virtual uint32_t GetTrainJunctionKeys(void*, uint32_t, void*, void*) = 0;
+    virtual bool ToggleTrainJunction(void*) = 0;
     virtual bool ConstrainPointToNetworkTile(uint32_t, uint32_t) = 0;
     virtual void ConstrainVectorToNetworkTile(uint32_t, uint32_t, uint32_t) = 0;
     virtual ~cSC4TrafficNetworkMap_0() {}
@@ -59,7 +59,7 @@ struct OB_NOVTABLE cSC4TrafficNetworkMap_0 {
     virtual bool HandleNetworkOccupantUsable(uint32_t, uint32_t) = 0;
     virtual bool HandleRemoveNetworkOccupant(uint32_t) = 0;
     virtual void Slot50_a8fed8() = 0;
-    virtual void DoAnimationTick(uint32_t, uint32_t) = 0;
+    virtual void DoAnimationTick(uint32_t, float) = 0;
 };
 
 // The subobject at +0x8 (vtable 0x00a8feb8): an interface or base the class map has no class for.
@@ -98,40 +98,40 @@ public:
     virtual bool ChooseWeightedEdge(uint32_t, uint32_t);
     virtual void FindNetworkOccupant(uint32_t, uint32_t, uint32_t);
     virtual uint32_t FindNetworkOccupant_2(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void FindNetworkOccupant_3(uint32_t);
-    virtual uint32_t FindNetworkOccupant_4(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual uint32_t FindNetworkOccupant_5(uint32_t, uint32_t);
-    virtual uint32_t FindNetworkTile(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual uint32_t GetTileInfoAtCell(uint32_t, uint32_t);
-    virtual void SafeGetTileInfoAtCell(uint32_t, uint32_t);
+    virtual void* FindNetworkOccupant_3(void*);
+    virtual void* FindNetworkOccupant_4(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void* FindNetworkOccupant_5(int32_t, int32_t);
+    virtual void* FindNetworkTile(uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual void* GetTileInfoAtCell(uint32_t, uint32_t);
+    virtual void* SafeGetTileInfoAtCell(int32_t, int32_t);
     virtual uint32_t Slot15_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void GetTileInfoByNetwork(uint32_t);
+    virtual void* GetTileInfoByNetwork(void*);
     virtual void* GetVisibleCellRect();
     virtual void GetRoadAltitude(uint32_t, uint32_t);
     virtual uint32_t Slot19_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual uint32_t Slot20_a8fed8(uint32_t, uint32_t);
+    virtual void* Slot20_a8fed8(void*, uint32_t);
     virtual uint32_t Slot21_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual uint32_t Slot22_a8fed8(uint32_t, uint32_t);
-    virtual uint32_t Slot23_a8fed8(uint32_t, uint32_t, uint32_t);
+    virtual void* Slot22_a8fed8(void*, uint32_t);
+    virtual void* Slot23_a8fed8(void*, uint32_t, uint32_t);
     virtual void Slot24_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool GetSurroundingRoads(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
     virtual bool GetSurroundingRoads_2(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual uint32_t GetAutomataCountForLane(uint32_t, uint32_t);
-    virtual bool Slot28_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot29_a8fed8(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool EnterNetwork(uint32_t, uint32_t);
-    virtual bool ExitNetwork(uint32_t, uint32_t, uint32_t);
-    virtual void TickIntersections(uint32_t);
+    virtual int16_t GetAutomataCountForLane(void*, uint32_t);
+    virtual bool Slot28_a8fed8(void*, uint32_t, uint32_t, uint32_t);
+    virtual bool Slot29_a8fed8(int32_t, int32_t, void*, uint32_t, uint32_t);
+    virtual bool EnterNetwork(void*, void*);
+    virtual bool ExitNetwork(void*, void*, uint32_t);
+    virtual void TickIntersections(float);
     virtual uint32_t CheckIntersection(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool IsIntersection(uint32_t);
+    virtual bool IsIntersection(void*);
     virtual void* GetIntersectionMap();
-    virtual void UpdateIntersection(uint32_t);
+    virtual void UpdateIntersection(void*);
     virtual void SwitchStoplightStates(uint32_t);
     virtual void Slot38_a8fed8();
-    virtual void UnmarkTrainInCell(uint32_t, uint32_t, uint32_t);
-    virtual uint32_t GetTrainJunctionPath(uint32_t, uint32_t);
-    virtual uint32_t GetTrainJunctionKeys(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool ToggleTrainJunction(uint32_t);
+    virtual void UnmarkTrainInCell(void*, int32_t, int32_t);
+    virtual uint32_t GetTrainJunctionPath(void*, uint32_t);
+    virtual uint32_t GetTrainJunctionKeys(void*, uint32_t, void*, void*);
+    virtual bool ToggleTrainJunction(void*);
     virtual bool ConstrainPointToNetworkTile(uint32_t, uint32_t);
     virtual void ConstrainVectorToNetworkTile(uint32_t, uint32_t, uint32_t);
     virtual void Slot46_a8fed8();
@@ -139,11 +139,42 @@ public:
     virtual bool HandleNetworkOccupantUsable(uint32_t, uint32_t);
     virtual bool HandleRemoveNetworkOccupant(uint32_t);
     virtual void Slot50_a8fed8();
-    virtual void DoAnimationTick(uint32_t, uint32_t);
+    virtual void DoAnimationTick(uint32_t, float);
     // STUB: 0x004b3eb0
     cSC4TrafficNetworkMap();
     explicit cSC4TrafficNetworkMap(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknown10[0x18];
+    // STUB: 0x004b2640
+    uint32_t Fn004b2640(void*, void*);
+    // STUB: 0x004b19a0
+    void Fn004b19a0(void*);
+    // STUB: 0x004afc20
+    void Fn004afc20(void*, void*, void*);
+    // STUB: 0x004b3c80
+    uint32_t Fn004b3c80(void*);
+    // STUB: 0x004b2830
+    void Fn004b2830();
+    // STUB: 0x004afb80
+    void Fn004afb80(void*, void*, float);
+    // STUB: 0x004ae850
+    void Fn004ae850(void*, void*, uint32_t);
+    // STUB: 0x004ae9e0
+    void Fn004ae9e0(void*, void*, void*, void*, uint32_t);
+    // STUB: 0x004adf50
+    void Fn004adf50();
+    // STUB: 0x004ae6d0
+    void Fn004ae6d0();
+    // STUB: 0x004afce0
+    void Fn004afce0(void*, void*);
+    // STUB: 0x004afe50
+    void Fn004afe50(void*, void*);
+    uint8_t mbActive;
+    char unknown11[0x3];
+    uint32_t mnRefCount;
+    void** mpTileInfo;
+    int32_t mnWidth;
+    int32_t mnHeight;
+    uint8_t mnShift;
+    char unknown25[0x3];
     char field28[0x38];
     char field60[0xa30];
 };

@@ -15,7 +15,12 @@ public:
     virtual bool Slot03_a93bd8();
     virtual bool Slot04_a93bd8();
     virtual bool Slot05_a93bd8(uint32_t, uint32_t);
-    char unknown4[0x10];
+    cUnk00a93bd8() : mnUnk4(0xffffffff), mnUnk8(0xffffffff), mbUnkC(0), mnRefs(0) {}
+    uint32_t mnUnk4;
+    uint32_t mnUnk8;
+    uint8_t mbUnkC;
+    char unknownd[0x3];
+    uint32_t mnRefs;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a93bd8[sizeof(cUnk00a93bd8) == 0x14 ? 1 : -1];

@@ -9,14 +9,14 @@
 struct OB_NOVTABLE cSC4ResidentialSimulator_0 {
     virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab2c10() = 0;
-    virtual void Init() = 0;
+    virtual uint32_t Init() = 0;
     virtual void Slot03_ab2c10() = 0;
     virtual void Slot04_ab2c10() = 0;
     virtual uint32_t Slot05_ab2c10(uint32_t) = 0;
     virtual bool SchoolIsOnStrike() = 0;
     virtual bool HealthIsOnStrike() = 0;
-    virtual void EndSchoolStrike() = 0;
-    virtual void EndHealthStrike() = 0;
+    virtual bool EndSchoolStrike() = 0;
+    virtual bool EndHealthStrike() = 0;
     virtual void Slot10_ab2c10(uint32_t) = 0;
     virtual void Slot11_ab2c10(uint32_t) = 0;
     virtual void Slot12_ab2c10() = 0;
@@ -27,7 +27,7 @@ struct OB_NOVTABLE cSC4ResidentialSimulator_0 {
     virtual uint32_t GetTotalCityEducationUpkeepCost() = 0;
     virtual uint32_t GetTotalCityHealthUpkeepCost() = 0;
     virtual void SetOccupantFundingPercentages(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void Slot20_ab2c10() = 0;
+    virtual void Slot20_ab2c10(void*, void*, void*, bool) = 0;
     virtual void GetAverageEQGrid(uint32_t, uint32_t, uint32_t) = 0;
     virtual void GetAverageHQGrid(uint32_t, uint32_t, uint32_t) = 0;
     virtual void GetEQGrids(uint32_t, uint32_t, uint32_t) = 0;
@@ -42,8 +42,8 @@ struct OB_NOVTABLE cSC4ResidentialSimulator_0 {
     virtual float GetGlobalEQ() = 0;
     virtual float GetGlobalHQ() = 0;
     virtual bool GetGlobalLE() = 0;
-    virtual void GetCellEQ(uint32_t, uint32_t) = 0;
-    virtual void GetCellHQ(uint32_t, uint32_t) = 0;
+    virtual float GetCellEQ(uint32_t, uint32_t) = 0;
+    virtual float GetCellHQ(uint32_t, uint32_t) = 0;
     virtual void Slot37_ab2c10(uint32_t, uint32_t, uint32_t) = 0;
     virtual void Slot38_ab2c10(uint32_t, uint32_t, uint32_t) = 0;
     virtual uint32_t GetSchoolAverageGradeMap() = 0;
@@ -77,7 +77,7 @@ struct OB_NOVTABLE cSC4ResidentialSimulator_0 {
 struct OB_NOVTABLE cSC4ResidentialSimulator_4 {
     virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab2c10() = 0;
-    virtual void Init() = 0;
+    virtual uint32_t Init() = 0;
     virtual void Slot03_ab2c10_4(uint32_t);
 };
 
@@ -85,7 +85,7 @@ struct OB_NOVTABLE cSC4ResidentialSimulator_4 {
 struct OB_NOVTABLE cSC4ResidentialSimulator_8 {
     virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab2c10() = 0;
-    virtual void Init() = 0;
+    virtual uint32_t Init() = 0;
     virtual void Slot03_ab2c10_8();
     virtual void Slot04_ab2c10_8();
     virtual uint32_t GetGZCLSID();
@@ -100,14 +100,14 @@ public:
     virtual ~cSC4ResidentialSimulator();
     virtual bool QueryInterface(uint32_t, uint32_t);
     virtual void Slot01_ab2c10();
-    virtual void Init();
+    virtual uint32_t Init();
     virtual void Slot03_ab2c10();
     virtual void Slot04_ab2c10();
     virtual uint32_t Slot05_ab2c10(uint32_t);
     virtual bool SchoolIsOnStrike();
     virtual bool HealthIsOnStrike();
-    virtual void EndSchoolStrike();
-    virtual void EndHealthStrike();
+    virtual bool EndSchoolStrike();
+    virtual bool EndHealthStrike();
     virtual void Slot10_ab2c10(uint32_t);
     virtual void Slot11_ab2c10(uint32_t);
     virtual void Slot12_ab2c10();
@@ -118,7 +118,7 @@ public:
     virtual uint32_t GetTotalCityEducationUpkeepCost();
     virtual uint32_t GetTotalCityHealthUpkeepCost();
     virtual void SetOccupantFundingPercentages(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void Slot20_ab2c10();
+    virtual void Slot20_ab2c10(void*, void*, void*, bool);
     virtual void GetAverageEQGrid(uint32_t, uint32_t, uint32_t);
     virtual void GetAverageHQGrid(uint32_t, uint32_t, uint32_t);
     virtual void GetEQGrids(uint32_t, uint32_t, uint32_t);
@@ -133,8 +133,8 @@ public:
     virtual float GetGlobalEQ();
     virtual float GetGlobalHQ();
     virtual bool GetGlobalLE();
-    virtual void GetCellEQ(uint32_t, uint32_t);
-    virtual void GetCellHQ(uint32_t, uint32_t);
+    virtual float GetCellEQ(uint32_t, uint32_t);
+    virtual float GetCellHQ(uint32_t, uint32_t);
     virtual void Slot37_ab2c10(uint32_t, uint32_t, uint32_t);
     virtual void Slot38_ab2c10(uint32_t, uint32_t, uint32_t);
     virtual uint32_t GetSchoolAverageGradeMap();
@@ -164,6 +164,28 @@ public:
     // STUB: 0x00700510
     cSC4ResidentialSimulator();
     explicit cSC4ResidentialSimulator(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
+    // STUB: 0x006f6fc0
+    float GetTractQuotient(void*, void*, uint32_t, uint32_t);
+    // STUB: 0x006f7e00
+    void GetCoveredTractList(void*, float, float, uint32_t, uint32_t, void*);
+    // STUB: 0x006f7ff0
+    uint32_t GetPollutionTractValue(uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x006f8570
+    bool EndStrike(void*, uint32_t);
+    // STUB: 0x006f9340
+    void GetOrdinanceModifiers(void*, void*, void*, void*, void*);
+    // STUB: 0x006fa070
+    uint32_t GetSystemTotals(void*, void*, bool, void*);
+    // STUB: 0x006face0
+    void GetBuildings(void*, uint32_t, uint32_t);
+    // STUB: 0x006f84c0
+    bool StartStrike(void*, uint32_t);
+    // STUB: 0x006f6f30
+    bool IsBuildingOnStrike(void*);
+    // STUB: 0x006f85f0
+    void GetOccupantEfficiency(void*, void*, bool);
+    // STUB: 0x006f8710
+    void GetOccupantEfficiencyRatings(void*, void*, void*, bool, bool);
     char unknownc[0x48];
     uint32_t field54;
     char unknown58[0x18];

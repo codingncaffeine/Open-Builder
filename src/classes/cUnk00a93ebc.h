@@ -15,7 +15,8 @@ public:
     virtual bool Slot03_a93ebc();
     virtual bool Slot04_a93ebc();
     virtual bool Slot05_a93ebc();
-    char unknown4[0x4];
+    cUnk00a93ebc() : mnRefs(0) {}
+    uint32_t mnRefs;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a93ebc[sizeof(cUnk00a93ebc) == 0x8 ? 1 : -1];

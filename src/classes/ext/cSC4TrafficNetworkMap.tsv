@@ -1,0 +1,42 @@
+field 14 uint32_t mnRefCount
+field 18 void** mpTileInfo
+field 1c int32_t mnWidth
+field 20 int32_t mnHeight
+field 24 uint8_t mnShift
+slot SafeGetTileInfoAtCell void* int32_t int32_t
+slot GetTileInfoAtCell void* uint32_t uint32_t
+slot FindNetworkOccupant void uint32_t uint32_t uint32_t
+slot FindNetworkOccupant_4 void* uint32_t uint32_t uint32_t uint32_t
+slot FindNetworkOccupant_5 void* int32_t int32_t
+slot FindNetworkTile void* uint32_t uint32_t uint32_t uint32_t
+method 0x004b2640 uint32_t Fn004b2640(void*, void*)
+method 0x004b19a0 void Fn004b19a0(void*)
+slot IsIntersection bool void*
+slot Slot28_a8fed8 bool void* uint32_t uint32_t uint32_t
+slot GetTileInfoByNetwork void* void*
+slot UpdateIntersection void void*
+slot GetTrainJunctionPath uint32_t void* uint32_t
+slot ToggleTrainJunction bool void*
+slot GetAutomataCountForLane int16_t void* uint32_t
+slot Slot29_a8fed8 bool int32_t int32_t void* uint32_t uint32_t
+slot Slot20_a8fed8 void* void* uint32_t
+slot Slot22_a8fed8 void* void* uint32_t
+slot FindNetworkOccupant_3 void* void*
+method 0x004afc20 void Fn004afc20(void*, void*, void*)
+field 10 uint8_t mbActive
+method 0x004b3c80 uint32_t Fn004b3c80(void*)
+method 0x004b2830 void Fn004b2830()
+method 0x004afb80 void Fn004afb80(void*, void*, float)
+method 0x004ae850 void Fn004ae850(void*, void*, uint32_t)
+method 0x004ae9e0 void Fn004ae9e0(void*, void*, void*, void*, uint32_t)
+method 0x004adf50 void Fn004adf50()
+method 0x004ae6d0 void Fn004ae6d0()
+slot GetTrainJunctionKeys uint32_t void* uint32_t void* void*
+slot DoAnimationTick void uint32_t float
+slot TickIntersections void float
+method 0x004afce0 void Fn004afce0(void*, void*)
+method 0x004afe50 void Fn004afe50(void*, void*)
+slot EnterNetwork bool void* void*
+slot Slot23_a8fed8 void* void* uint32_t uint32_t
+slot ExitNetwork bool void* void* uint32_t
+slot UnmarkTrainInCell void void* int32_t int32_t

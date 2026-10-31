@@ -225,7 +225,7 @@ void GeneratedClasses_gzcom()
     (void)new cRZExceptionNotification;
     (void)new cGZFontSys(ob_emit());
     (void)new cGZFont(ob_emit());
-    (void)new cRZDiskRadioStation(ob_emit());
+    (void)new cRZDiskRadioStation;
     (void)new cRZRadio;
     (void)new cRZCookieManager;
     (void)new cGZWinHTML;

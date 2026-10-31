@@ -11,7 +11,6 @@
 #include "classes/cGZLuaScriptServer.h"
 #include "classes/cGZWinLuaScriptView.h"
 #include "classes/cGZWinLuaScriptViewGeneral.h"
-#include "classes/cRZDiskRadioStation.h"
 #include "classes/cS3DTextureBindingFactory.h"
 #include "classes/cSC424HourClock.h"
 #include "classes/cSC43DRender.h"
@@ -78,8 +77,6 @@
 #include "classes/cSTESurfaceWater.h"
 #include "classes/cSTETerrain.h"
 #include "classes/cUnk00a8edf8.h"
-#include "classes/cUnk00a9378c.h"
-#include "classes/cUnk00a94164.h"
 #include "classes/cUnk00a94b38.h"
 #include "classes/cUnk00a94fb0.h"
 #include "classes/cUnk00a95f00.h"
@@ -1217,24 +1214,6 @@ cSC4TrafficNetworkMap* Fn004b42e0()
 cSC4ZoneManager* Fn004dd3e0()
 {
     return new cSC4ZoneManager;
-}
-
-// FUNCTION: 0x004eb0a0
-cUnk00a94164* Fn004eb0a0()
-{
-    return new cUnk00a94164;
-}
-
-// FUNCTION: 0x004eb0c0
-cUnk00a9378c* Fn004eb0c0()
-{
-    return new cUnk00a9378c;
-}
-
-// FUNCTION: 0x004eb180
-cRZDiskRadioStation* Fn004eb180()
-{
-    return new cRZDiskRadioStation;
 }
 
 // FUNCTION: 0x00514660

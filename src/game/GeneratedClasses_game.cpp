@@ -1082,7 +1082,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a932ec;
     (void)new cSC4AudioAmbienceLayer;
     (void)new cSC4AudioAmbienceManagerOccupantFilter;
-    (void)new cUnk00a9378c(ob_emit());
+    (void)new cUnk00a9378c;
     (void)new cUnk00a937d0;
     (void)new cUnk00a937e8;
     (void)new cUnk00a93800;
@@ -1171,7 +1171,7 @@ void GeneratedClasses_game()
     (void)new cUnk00a94068;
     (void)new cUnk00a940a4;
     (void)new cUnk00a940e4;
-    (void)new cUnk00a94164(ob_emit());
+    (void)new cUnk00a94164;
     (void)new cUnk00a941e8;
     (void)new cUnk00a94200;
     (void)new cSC4AudioListener;

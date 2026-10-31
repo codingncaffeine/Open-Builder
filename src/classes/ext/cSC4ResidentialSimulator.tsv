@@ -1,0 +1,17 @@
+method 0x006f6fc0 float GetTractQuotient(void*, void*, uint32_t, uint32_t)
+method 0x006f7e00 void GetCoveredTractList(void*, float, float, uint32_t, uint32_t, void*)
+method 0x006f7ff0 uint32_t GetPollutionTractValue(uint32_t, uint32_t, uint32_t, uint32_t)
+slot GetCellEQ float uint32_t uint32_t
+slot GetCellHQ float uint32_t uint32_t
+slot Init uint32_t
+slot EndSchoolStrike bool
+slot EndHealthStrike bool
+method 0x006f8570 bool EndStrike(void*, uint32_t)
+method 0x006f9340 void GetOrdinanceModifiers(void*, void*, void*, void*, void*)
+method 0x006fa070 uint32_t GetSystemTotals(void*, void*, bool, void*)
+method 0x006face0 void GetBuildings(void*, uint32_t, uint32_t)
+method 0x006f84c0 bool StartStrike(void*, uint32_t)
+slot Slot20_ab2c10 void void* void* void* bool
+method 0x006f6f30 bool IsBuildingOnStrike(void*)
+method 0x006f85f0 void GetOccupantEfficiency(void*, void*, bool)
+method 0x006f8710 void GetOccupantEfficiencyRatings(void*, void*, void*, bool, bool)

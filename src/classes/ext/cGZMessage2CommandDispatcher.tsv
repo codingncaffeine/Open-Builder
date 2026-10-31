@@ -1,0 +1,8 @@
+field 4 uint32_t mnRefCount
+field 8 void* mpServer
+field c void* mpMessage
+field 10 void* mpInput
+field 14 void* mpOutput
+field 18 void* mpGenerator
+slot Release uint32_t
+slot ExecuteCommand uint32_t uint32_t void* void*

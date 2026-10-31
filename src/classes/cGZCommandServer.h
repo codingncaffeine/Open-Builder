@@ -39,9 +39,18 @@ public:
     virtual bool Slot24_ad1660(uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknown20[0x10];
-    uint32_t field30;
-    char unknown34[0x18];
+    uint32_t mnReserved;
+    void* mpCommandHeader;
+    uint32_t mnCommandCount;
+    uint32_t mCommandCompare;
+    void* mpDispatcher;
+    void* mpDefaultDispatcher;
+    void* mpGenerator;
+    void* mpCharHeader;
+    uint32_t mnCharCount;
+    uint32_t mCharCompare;
+    bool mbFlag;
+    char unknown49[0x3];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZCommandServer[sizeof(cGZCommandServer) == 0x4c ? 1 : -1];

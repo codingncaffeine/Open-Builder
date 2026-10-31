@@ -14,4 +14,7 @@ uint32_t cUnk0090da1e::Release() {
 }
 
 // FUNCTION: 0x0090da1e
-cUnk0090da1e::cUnk0090da1e() : refCount(0) {}
+cUnk0090da1e::cUnk0090da1e()
+    : refCount(0)
+{
+}

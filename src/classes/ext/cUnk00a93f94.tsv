@@ -1,0 +1,2 @@
+field 4 uint32_t mnRefs
+method - cUnk00a93f94() : mnRefs(0) {}

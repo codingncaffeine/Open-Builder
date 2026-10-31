@@ -11,11 +11,12 @@ class cUnk00a93ff4 {
 public:
     virtual bool Slot00_a93ff4(uint32_t, uint32_t);
     virtual void Slot01_a93ff4();
-    virtual void Slot02_a93ff4();
+    virtual uint32_t Slot02_a93ff4();
     virtual bool Slot03_a93ff4();
     virtual bool Slot04_a93ff4();
     virtual uint32_t Slot05_a93ff4();
-    char unknown4[0x4];
+    cUnk00a93ff4() : mnRefs(0) {}
+    uint32_t mnRefs;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a93ff4[sizeof(cUnk00a93ff4) == 0x8 ? 1 : -1];

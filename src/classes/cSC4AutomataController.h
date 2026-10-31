@@ -24,7 +24,7 @@ struct OB_NOVTABLE cSC4AutomataController_0 {
     virtual void Slot13_a95d90(uint32_t, bool) = 0;
     virtual void SetOccupant(void*) = 0;
     virtual void SetTemplate(void*) = 0;
-    virtual void Slot16_a95d90(uint32_t) = 0;
+    virtual void Slot16_a95d90(void*) = 0;
     virtual void SetPosition(void*) = 0;
     virtual void Activate(bool) = 0;
     virtual void SetLifetime(uint32_t) = 0;

@@ -43,3 +43,4 @@ method 0x00517f80 void Fn00517f80()
 method 0x00514e70 bool Fn00514e70(void*, void*, void*)
 slot DoAnimationTick void float uint32_t void*
 slot IsTickable bool
+slot Slot16_a95d90 void void*

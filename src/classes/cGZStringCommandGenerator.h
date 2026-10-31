@@ -11,17 +11,24 @@ class cGZStringCommandGenerator {
 public:
     virtual bool QueryInterface(uint32_t, uint32_t);
     virtual uint32_t AddRef();
-    virtual void Release();
+    virtual uint32_t Release();
     virtual bool Init();
     virtual bool Shutdown();
-    virtual bool CommandRegistered(uint32_t, uint32_t, uint32_t);
-    virtual bool CommandUnregistered(uint32_t, uint32_t, uint32_t);
+    virtual bool CommandRegistered(uint32_t, void*, void*);
+    virtual bool CommandUnregistered(uint32_t, void*, void*);
     virtual ~cGZStringCommandGenerator();
-    virtual uint32_t ExecuteCommand(uint32_t, uint32_t, uint32_t);
-    virtual bool ConvertStringToCommand(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool ConvertCommandToString(uint32_t, uint32_t, uint32_t);
-    virtual bool ConvertCommandOutputToString(uint32_t, uint32_t);
-    char unknown4[0x18];
+    virtual uint32_t ExecuteCommand(const char*, uint32_t, void*);
+    virtual bool ConvertStringToCommand(const char*, uint32_t, void*, void*);
+    virtual bool ConvertCommandToString(uint32_t, void*, void*);
+    virtual bool ConvertCommandOutputToString(void*, void*);
+    // STUB: 0x00929740
+    void ConvertStringToArgumentString(const void*, void*);
+    uint32_t mnRefCount;
+    void* mpObjA;
+    void* mpVecBegin;
+    void* mpVecEnd;
+    void* mpVecCap;
+    void* mpParamSet;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZStringCommandGenerator[sizeof(cGZStringCommandGenerator) == 0x1c ? 1 : -1];

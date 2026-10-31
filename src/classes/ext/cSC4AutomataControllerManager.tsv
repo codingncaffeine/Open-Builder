@@ -1,0 +1,29 @@
+field 14 uint32_t mnRefCount
+field 44 void* mpTemplateMgr
+slot GetController void* void* void*
+slot GetController_2 void* void* void*
+slot AddControllerFromTemplateName void* void* void* void*
+slot AddControllerFromTemplate void* void* void* void*
+slot RemoveControllersFromOccupantGroup bool void* void*
+slot RemoveControllersFromOccupantGroup_2 bool void* void*
+slot AddControllersFromOccupantGroup bool void* void* void*
+slot AddControllersFromOccupantGroup_2 bool void* void* void*
+slot MoveController bool void*
+method 0x005163d0 bool Fn005163d0(void*, void*, void*)
+method 0x0051a350 bool Fn0051a350(void*, void*)
+method 0x0051b9d0 void* Fn0051b9d0(void*, bool)
+method 0x0051a280 void Fn0051a280()
+slot MoveControllers bool void*
+slot RemoveControllers bool void*
+field 58 uint32_t mnTableA00
+field 5c void* mpTableABegin
+field 60 void* mpTableAEnd
+slot ReleaseControllerList void void*
+slot AddControllers bool void*
+method 0x00518950 void UpdateControllers()
+slot RemoveController bool void*
+slot GetRelevantControllersByWorldPos bool float float uint32_t void*
+field 10 bool mbInitialised
+field 18 void* mpObj18
+method 0x0051a6f0 void ClearControllerQInfo()
+method 0x0051ac10 void ClearControllers()

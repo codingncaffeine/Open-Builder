@@ -1,0 +1,4 @@
+field 4 uint32_t mnUnk4
+field 8 uint8_t mbUnk8
+field c uint32_t mnRefs
+method - cUnk00a93980() : mnUnk4(0), mbUnk8(0), mnRefs(0) {}

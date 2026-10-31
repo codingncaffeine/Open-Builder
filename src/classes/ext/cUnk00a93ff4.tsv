@@ -1,0 +1,3 @@
+slot Slot02_a93ff4 uint32_t
+field 4 uint32_t mnRefs
+method - cUnk00a93ff4() : mnRefs(0) {}

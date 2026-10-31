@@ -1,0 +1,5 @@
+method 0x00980a41 bool GetToken(void*, int8_t)
+method 0x00980b19 bool ReadULong(void*, int8_t)
+method 0x00980dd5 bool ReadLong(void*, int8_t)
+method 0x0097f5b7 bool WriteToSerialRecord(void*)
+method 0x0097ef35 bool ReadByte(void*)

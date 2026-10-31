@@ -13,23 +13,23 @@ struct OB_NOVTABLE cSC4AutomataControllerManager_0 {
     virtual unsigned int Release() = 0;
     virtual void Init() = 0;
     virtual bool Shutdown() = 0;
-    virtual void AddControllerFromTemplateName(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void AddControllerFromTemplate() = 0;
-    virtual bool RemoveController(uint32_t) = 0;
+    virtual void* AddControllerFromTemplateName(void*, void*, void*) = 0;
+    virtual void* AddControllerFromTemplate(void*, void*, void*) = 0;
+    virtual bool RemoveController(void*) = 0;
     virtual void Slot08_a96058() = 0;
-    virtual void AddControllersFromOccupantGroup(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void AddControllersFromOccupantGroup_2(uint32_t, uint32_t, uint32_t) = 0;
-    virtual void RemoveControllersFromOccupantGroup(uint32_t, uint32_t) = 0;
-    virtual void RemoveControllersFromOccupantGroup_2(uint32_t, uint32_t) = 0;
-    virtual bool AddControllers(uint32_t) = 0;
-    virtual void RemoveControllers(uint32_t) = 0;
-    virtual bool MoveControllers(uint32_t) = 0;
-    virtual bool MoveController(uint32_t) = 0;
+    virtual bool AddControllersFromOccupantGroup(void*, void*, void*) = 0;
+    virtual bool AddControllersFromOccupantGroup_2(void*, void*, void*) = 0;
+    virtual bool RemoveControllersFromOccupantGroup(void*, void*) = 0;
+    virtual bool RemoveControllersFromOccupantGroup_2(void*, void*) = 0;
+    virtual bool AddControllers(void*) = 0;
+    virtual bool RemoveControllers(void*) = 0;
+    virtual bool MoveControllers(void*) = 0;
+    virtual bool MoveController(void*) = 0;
     virtual void Slot17_a96058() = 0;
-    virtual uint32_t GetController(uint32_t, uint32_t) = 0;
-    virtual void GetController_2(uint32_t, uint32_t) = 0;
-    virtual bool GetRelevantControllersByWorldPos(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
-    virtual void ReleaseControllerList(uint32_t) = 0;
+    virtual void* GetController(void*, void*) = 0;
+    virtual void* GetController_2(void*, void*) = 0;
+    virtual bool GetRelevantControllersByWorldPos(float, float, uint32_t, void*) = 0;
+    virtual void ReleaseControllerList(void*) = 0;
     virtual uint32_t GetCompositeAttractionEffect(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
     virtual float GetCompositeAttractionCommotion(uint32_t) = 0;
     virtual void* GetControllerTime() = 0;
@@ -66,31 +66,55 @@ public:
     virtual bool Slot03_a8298c(uint32_t);
     virtual void Init();
     virtual bool Shutdown();
-    virtual void AddControllerFromTemplateName(uint32_t, uint32_t, uint32_t);
-    virtual void AddControllerFromTemplate();
-    virtual bool RemoveController(uint32_t);
+    virtual void* AddControllerFromTemplateName(void*, void*, void*);
+    virtual void* AddControllerFromTemplate(void*, void*, void*);
+    virtual bool RemoveController(void*);
     virtual void Slot08_a96058();
-    virtual void AddControllersFromOccupantGroup(uint32_t, uint32_t, uint32_t);
-    virtual void AddControllersFromOccupantGroup_2(uint32_t, uint32_t, uint32_t);
-    virtual void RemoveControllersFromOccupantGroup(uint32_t, uint32_t);
-    virtual void RemoveControllersFromOccupantGroup_2(uint32_t, uint32_t);
-    virtual bool AddControllers(uint32_t);
-    virtual void RemoveControllers(uint32_t);
-    virtual bool MoveControllers(uint32_t);
-    virtual bool MoveController(uint32_t);
+    virtual bool AddControllersFromOccupantGroup(void*, void*, void*);
+    virtual bool AddControllersFromOccupantGroup_2(void*, void*, void*);
+    virtual bool RemoveControllersFromOccupantGroup(void*, void*);
+    virtual bool RemoveControllersFromOccupantGroup_2(void*, void*);
+    virtual bool AddControllers(void*);
+    virtual bool RemoveControllers(void*);
+    virtual bool MoveControllers(void*);
+    virtual bool MoveController(void*);
     virtual void Slot17_a96058();
-    virtual uint32_t GetController(uint32_t, uint32_t);
-    virtual void GetController_2(uint32_t, uint32_t);
-    virtual bool GetRelevantControllersByWorldPos(uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual void ReleaseControllerList(uint32_t);
+    virtual void* GetController(void*, void*);
+    virtual void* GetController_2(void*, void*);
+    virtual bool GetRelevantControllersByWorldPos(float, float, uint32_t, void*);
+    virtual void ReleaseControllerList(void*);
     virtual uint32_t GetCompositeAttractionEffect(uint32_t, uint32_t, uint32_t, uint32_t);
     virtual float GetCompositeAttractionCommotion(uint32_t);
     virtual void* GetControllerTime();
     // STUB: 0x0051aa50
     cSC4AutomataControllerManager();
     explicit cSC4AutomataControllerManager(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknown10[0x24];
-    char field34[0x4c];
+    // STUB: 0x005163d0
+    bool Fn005163d0(void*, void*, void*);
+    // STUB: 0x0051a350
+    bool Fn0051a350(void*, void*);
+    // STUB: 0x0051b9d0
+    void* Fn0051b9d0(void*, bool);
+    // STUB: 0x0051a280
+    void Fn0051a280();
+    // STUB: 0x00518950
+    void UpdateControllers();
+    // STUB: 0x0051a6f0
+    void ClearControllerQInfo();
+    // STUB: 0x0051ac10
+    void ClearControllers();
+    bool mbInitialised;
+    char unknown11[0x3];
+    uint32_t mnRefCount;
+    void* mpObj18;
+    char unknown1c[0x18];
+    char field34[0x10];
+    void* mpTemplateMgr;
+    char unknown48[0x10];
+    uint32_t mnTableA00;
+    void* mpTableABegin;
+    void* mpTableAEnd;
+    char unknown64[0x1c];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4AutomataControllerManager[sizeof(cSC4AutomataControllerManager) == 0x80 ? 1 : -1];

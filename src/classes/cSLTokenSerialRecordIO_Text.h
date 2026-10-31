@@ -34,6 +34,16 @@ public:
     virtual bool Slot24_ad9978(uint32_t);
     virtual bool Slot25_ad9978(uint32_t);
     virtual bool Slot26_ad9978(uint32_t);
+    // STUB: 0x00980a41
+    bool GetToken(void*, int8_t);
+    // STUB: 0x00980b19
+    bool ReadULong(void*, int8_t);
+    // STUB: 0x00980dd5
+    bool ReadLong(void*, int8_t);
+    // STUB: 0x0097f5b7
+    bool WriteToSerialRecord(void*);
+    // STUB: 0x0097ef35
+    bool ReadByte(void*);
 };
 
 #endif

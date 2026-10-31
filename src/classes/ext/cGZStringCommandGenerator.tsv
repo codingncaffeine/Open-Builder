@@ -1,0 +1,14 @@
+field 4 uint32_t mnRefCount
+field 8 void* mpObjA
+field c void* mpVecBegin
+field 10 void* mpVecEnd
+field 14 void* mpVecCap
+field 18 void* mpParamSet
+slot Release uint32_t
+slot ExecuteCommand uint32_t const char* uint32_t void*
+slot ConvertStringToCommand bool const char* uint32_t void* void*
+slot ConvertCommandToString bool uint32_t void* void*
+slot ConvertCommandOutputToString bool void* void*
+slot CommandRegistered bool uint32_t void* void*
+slot CommandUnregistered bool uint32_t void* void*
+method 0x00929740 void ConvertStringToArgumentString(const void*, void*)

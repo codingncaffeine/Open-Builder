@@ -22,7 +22,7 @@ public:
     virtual uint32_t Slot05_a95d90();
     virtual float GetRadius();
     virtual void SetTemplate(void*);
-    virtual void Slot16_a95d90(uint32_t);
+    virtual void Slot16_a95d90(void*);
     virtual void Activate(bool);
     virtual void CheckTimeOfDay(uint32_t, uint32_t);
     virtual uint32_t IsExpired();
@@ -30,9 +30,23 @@ public:
     // STUB: 0x005182b0
     cUnk00a95f00();
     explicit cUnk00a95f00(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknown5c[0x30];
-    uint32_t field8c;
-    char unknown90[0x10];
+    // STUB: 0x00515220
+    uint32_t Fn00515220(void*);
+    // STUB: 0x00516010
+    void Fn00516010();
+    char unknown5c[0x1c];
+    float mfF78;
+    uint16_t mwW7c;
+    char unknown7e[0x2];
+    float mfF80;
+    uint16_t mwW84;
+    char unknown86[0x2];
+    uint32_t mnCount88;
+    uint32_t mnV8c;
+    uint32_t mnV90;
+    uint32_t mnV94;
+    uint32_t mnRoll98;
+    char unknown9c[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00a95f00[sizeof(cUnk00a95f00) == 0xa0 ? 1 : -1];

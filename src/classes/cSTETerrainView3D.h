@@ -59,9 +59,78 @@ public:
     virtual bool Slot19_ab4380(uint32_t);
     virtual bool Slot20_ab4380();
     virtual void Slot21_ab4380(uint32_t);
-    char unknown18[0x31];
+    // STUB: 0x00752820
+    void GetCullingInfo(void*, void*, void*, void*);
+    // STUB: 0x00755fb0
+    void Fn00755fb0();
+    // STUB: 0x007567c0
+    void* Fn007567c0();
+    // STUB: 0x00752af0
+    void SetTriangleIndicesForCell(int32_t, int32_t);
+    // STUB: 0x007572a0
+    void DrawWaterLayers(void*, void*);
+    // STUB: 0x00756d20
+    void SetColorOfWaterSurface();
+    // STUB: 0x007551c0
+    void DrawWaterBox(void*);
+    // STUB: 0x00752240
+    bool DrawWaterSurface(void*, void*);
+    // STUB: 0x00752e80
+    void ComputeDrawRectsForDrawFrustum(void*);
+    // STUB: 0x00756000
+    void SetWaterColorUpdateRect(void*);
+    // STUB: 0x007535a0
+    void ComputeHeightBasedCullingInfoForDrawFrustum(void*);
+    // STUB: 0x00756750
+    void ComputeDrawFrustumOptimizationInfo(void*);
+    // STUB: 0x007574d0
+    void ChangeZoomLevel(void*);
+    // STUB: 0x00751c80
+    void Fn00751c80(void*);
+    // STUB: 0x00752100
+    bool DrawTextureLessTerrainSurface(void*);
+    // STUB: 0x007521c0
+    bool Fn007521c0(void*);
+    // STUB: 0x007566c0
+    void Fn007566c0(void*);
+    // STUB: 0x00751ee0
+    void ComputeMinimumVisibleHtAtDrawRows(void*, void*);
+    // STUB: 0x00751ff0
+    void ComputeMinimumVisibleHtAtViewRows(void*, void*);
+    // STUB: 0x00756b00
+    void ObtainWaterSurfaceInfo(void*);
+    // STUB: 0x007569f0
+    void Fn007569f0(void*);
+    char unknown18[0x8];
+    void* mpTerrain;
+    char unknown24[0x10];
+    uint32_t mnMessageValue;
+    char unknown38[0x10];
+    bool mbWaterColorReady;
     bool field49;
-    char unknown4a[0x9e];
+    char unknown4a[0x12];
+    int32_t mnEdgeA;
+    int32_t mnEdgeB;
+    char unknown64[0x8];
+    void* mpDelegate;
+    char unknown70[0x8];
+    uint32_t mnTexSlot[4];
+    char unknown88[0x4];
+    int32_t mnCullFirst;
+    int32_t mnCullSecond;
+    char unknown94[0x4];
+    int32_t mnFirstRow;
+    char unknown9c[0x4];
+    int32_t mnEndRow;
+    int32_t mnWaterFirstRow;
+    char unknowna8[0x4];
+    int32_t mnWaterEndRow;
+    char unknownb0[0x8];
+    bool mbRectDirty;
+    char unknownb9[0x3];
+    int32_t mnViewFirstRow;
+    int32_t mnViewEndRow;
+    char unknownc4[0x24];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSTETerrainView3D[sizeof(cSTETerrainView3D) == 0xe8 ? 1 : -1];

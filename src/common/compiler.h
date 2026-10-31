@@ -27,4 +27,11 @@ struct ob_emit {
 #define OB_PTR(Type, value) reinterpret_cast<Type*>(static_cast<uintptr_t>(value))
 #define OB_ADDR(p) static_cast<uint32_t>(reinterpret_cast<uintptr_t>(p))
 
+// The scanf conversion of a 64-bit integer (a long long): the 2003 runtime spells it its own way.
+#ifdef _MSC_VER
+#define OB_SCN_INT64 "%I64d"
+#else
+#define OB_SCN_INT64 "%lld"
+#endif
+
 #endif

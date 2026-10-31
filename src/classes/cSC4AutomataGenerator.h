@@ -17,13 +17,15 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual bool Init();
     virtual uint32_t Slot05_a95d90();
-    virtual void Slot16_a95d90(uint32_t);
+    virtual void Slot16_a95d90(void*);
     virtual bool HandleEnterState(void*, uint32_t);
     virtual bool HandleExitState(void*, uint32_t);
     virtual void FinalRelease();
     // STUB: 0x005181f0
     cSC4AutomataGenerator();
     explicit cSC4AutomataGenerator(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
+    // STUB: 0x005192e0
+    void Fn005192e0();
     char unknown5c[0x10];
 };
 #ifdef _MSC_VER

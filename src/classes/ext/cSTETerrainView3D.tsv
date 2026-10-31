@@ -1,0 +1,37 @@
+field 6c void* mpDelegate
+field 78 uint32_t mnTexSlot[4]
+field 8c int32_t mnCullFirst
+field 90 int32_t mnCullSecond
+method 0x00752820 void GetCullingInfo(void*, void*, void*, void*)
+method 0x00755fb0 void Fn00755fb0()
+method 0x007567c0 void* Fn007567c0()
+method 0x00752af0 void SetTriangleIndicesForCell(int32_t, int32_t)
+field 20 void* mpTerrain
+field 48 bool mbWaterColorReady
+method 0x007572a0 void DrawWaterLayers(void*, void*)
+method 0x00756d20 void SetColorOfWaterSurface()
+method 0x007551c0 void DrawWaterBox(void*)
+method 0x00752240 bool DrawWaterSurface(void*, void*)
+method 0x00752e80 void ComputeDrawRectsForDrawFrustum(void*)
+method 0x00756000 void SetWaterColorUpdateRect(void*)
+method 0x007535a0 void ComputeHeightBasedCullingInfoForDrawFrustum(void*)
+method 0x00756750 void ComputeDrawFrustumOptimizationInfo(void*)
+method 0x007574d0 void ChangeZoomLevel(void*)
+method 0x00751c80 void Fn00751c80(void*)
+method 0x00752100 bool DrawTextureLessTerrainSurface(void*)
+field 5c int32_t mnEdgeA
+field 60 int32_t mnEdgeB
+field 98 int32_t mnFirstRow
+field a0 int32_t mnEndRow
+method 0x007521c0 bool Fn007521c0(void*)
+method 0x007566c0 void Fn007566c0(void*)
+field a4 int32_t mnWaterFirstRow
+field ac int32_t mnWaterEndRow
+field bc int32_t mnViewFirstRow
+field c0 int32_t mnViewEndRow
+method 0x00751ee0 void ComputeMinimumVisibleHtAtDrawRows(void*, void*)
+method 0x00751ff0 void ComputeMinimumVisibleHtAtViewRows(void*, void*)
+field b8 bool mbRectDirty
+field 34 uint32_t mnMessageValue
+method 0x00756b00 void ObtainWaterSurfaceInfo(void*)
+method 0x007569f0 void Fn007569f0(void*)

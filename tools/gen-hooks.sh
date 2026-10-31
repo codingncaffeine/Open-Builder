@@ -40,6 +40,17 @@ function canontype(t,   n, w, i, j, k, out, keep, tmp) {
   for (i = 1; i <= k; i++) out = out (i > 1 ? " " : "") keep[i]
   return out
 }
+# a key'"'"'s name with its parameter count ("cX::F/2"): the name alone stands for a function only among overloads
+# of the same count (a default constructor never takes the copy constructor'"'"'s symbol)
+function byarity(k,   inner, i, c, depth, n) {
+  inner = substr(k, index(k, "(") + 1); sub(/\)[^)]*$/, "", inner)
+  n = inner == "" ? 0 : 1
+  for (i = 1; i <= length(inner); i++) {  # separators inside template arguments do not count
+    c = substr(inner, i, 1)
+    if (c == "<") depth++; else if (c == ">") depth--; else if (c == ";" && depth == 0) n++
+  }
+  return substr(k, 1, index(k, "(") - 1) "/" n
+}
 function key(qualified, params, isconst,   n, p, i, out) {
   params = trim(params)
   if (params == "void") params = ""
@@ -85,9 +96,11 @@ paste "$symbols.kind" <(llvm-undname <"$symbols.raw" 2>/dev/null | awk 'BEGIN { 
     kind = $1; undefined = kind == "U"; $1 = $2; $2 = $3
     gsub(anon, "", $2)
     if (kind == "UD" || kind == "DD") {
-      # a variable: its name is the last word, or the one in "(*name)" of a function pointer
-      d = $2
-      if (match(d, /\*[A-Za-z_][A-Za-z0-9_:]*\)/)) name = substr(d, RSTART + 1, RLENGTH - 2)
+      # a variable: its name is the last word, or the one in "(*name)" of a function pointer, or a template'"'"'s static
+      # member spelled without class keys and spaces ("cX<cY*>::spZ")
+      d = $2; t = d; gsub(/(class|struct|union|enum) /, "", t)
+      if (match(t, /[A-Za-z_][A-Za-z0-9_:]*<.*>::[A-Za-z_][A-Za-z0-9_]*$/)) { name = substr(t, RSTART, RLENGTH); gsub(/ /, "", name) }
+      else if (match(d, /\*[A-Za-z_][A-Za-z0-9_:]*\)/)) name = substr(d, RSTART + 1, RLENGTH - 2)
       else { n = split(d, w, /[ *&]+/); name = w[n] }
       print (kind == "UD" ? "UDATA:" : "DATA:") name "\t" $1
       next
@@ -124,7 +137,7 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       # one key (name and parameters) can stand for several symbols: declarations of one original function that
       # differ only in the return type (two views of what it returns); each gets the stub
       k = substr($1, 3); if (!((k, $2) in ukseen)) { ukseen[k, $2] = 1; usym[k] = (k in usym ? usym[k] " " : "") $2 }
-      name = substr(k, 1, index(k, "(") - 1)
+      name = byarity(k)
       if (!(name SUBSEP $2 in useen)) { useen[name, $2] = 1; unamed[name]++; ubyname[name] = $2 }
       next
     }
@@ -132,7 +145,7 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       if (($1 in sym) && sym[$1] != $2) { ambiguous[$1] = sym[$1] " and " $2 }
       sym[$1] = $2
       # by name alone too, for parameter types written through a typedef this script cannot see through
-      name = substr($1, 1, index($1, "(") - 1)
+      name = byarity($1)
       if (!(name SUBSEP $2 in seen)) { seen[name, $2] = 1; named[name]++; byname[name] = $2 }
       next
     }
@@ -160,6 +173,12 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
     /^namespace[ \t]+[A-Za-z_][A-Za-z0-9_]*[ \t]*\{/ { ns = $0; sub(/^namespace[ \t]+/, "", ns); sub(/[ \t{].*/, "", ns); nsname = ns; nsdepth = depth - 1 }
     # the class a member declaration (an indented one) belongs to, up to its closing "};" (not a forward declaration)
     /^(class|struct)[ \t]/ && !/;[ \t]*$/ { c = $0; sub(/^(class|struct)[ \t]+(OB_NOVTABLE[ \t]+)?/, "", c); sub(/[ \t:{;].*/, "", c); cls = (nsname != "" ? nsname "::" : "") c }
+    # an explicit specialization of a class template ("template <> struct cX<cY*> {"): its name spelled as the
+    # variables'"'"' names are (no spaces), so a static member'"'"'s GLOBAL finds it
+    /^template[ \t]*<>[ \t]*(class|struct)[ \t]/ && !/;[ \t]*$/ {
+      c = $0; sub(/^template[ \t]*<>[ \t]*(class|struct)[ \t]+/, "", c); sub(/[ \t]*(:[^:].*|\{.*)$/, "", c); gsub(/[ \t]/, "", c)
+      cls = (nsname != "" ? nsname "::" : "") c
+    }
     /^};/ { cls = "" }
     global {
       global = 0; line = $0; sub(/\/\/.*/, "", line)
@@ -180,7 +199,7 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       next
     }
     stub {
-      text = text " " $0
+      l = $0; sub(/\/\/.*/, "", l); text = text " " l  # a comment after the declaration is not part of it
       if (text !~ /\)/) next
       stub = 0
       open = index(text, "("); rparen = 0
@@ -191,12 +210,14 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       if (qualified !~ /::/ && text ~ /^ [ \t]/ && cls != "") qualified = cls "::" qualified
       else if (qualified !~ /::/ && nsname != "") qualified = nsname "::" qualified
       k = key(qualified, params, isconst)
-      if (!(k in usym) && unamed[qualified] == 1) usym[k] = ubyname[qualified]
-      if (k in usym) { n = split(usym[k], w, " "); for (i = 1; i <= n; i++) print address "\t" w[i] >> stubsOut }  # not called: no stub
-      next
+      if (k in usym) { n = split(usym[k], w, " "); for (i = 1; i <= n; i++) { print address "\t" w[i] >> stubsOut; exact[w[i]] = 1 } }
+      # by name and count alone (a typedef this script cannot see through), decided at the end: never a symbol
+      # another declaration of the file names exactly (an uncalled overload must not take the called one'"'"'s)
+      else if (unamed[byarity(k)] == 1) fallback[address] = ubyname[byarity(k)]
+      next  # not called: no stub
     }
     pending {
-      text = text " " $0
+      l = $0; sub(/\/\/.*/, "", l); text = text " " l
       if (text !~ /\)/) next
       pending = 0
       open = index(text, "("); rparen = 0
@@ -207,12 +228,15 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       if (qualified !~ /::/ && text ~ /^ [ \t]/ && cls != "") qualified = cls "::" qualified
       else if (qualified !~ /::/ && nsname != "") qualified = nsname "::" qualified
       k = key(qualified, params, isconst)
-      if (!(k in sym) && named[qualified] == 1) sym[k] = byname[qualified]
+      if (!(k in sym) && named[byarity(k)] == 1) sym[k] = byname[byarity(k)]
       if (!(k in sym)) { printf "gen-hooks: %s: no compiled function for %s (%s)\n", src, k, address > "/dev/stderr"; bad = 1; pending = 0; next }
       if (k in ambiguous) { printf "gen-hooks: %s: %s (%s) is %s\n", src, k, address, ambiguous[k] > "/dev/stderr"; bad = 1; pending = 0; next }
       print address "\t" sym[k] "\t" qualified "\t" hook
     }
-    END { exit bad }' FS='\t' "$symbols" FS=' ' "$src" >>"$entries" || failed=1
+    END {
+      for (a in fallback) if (!(fallback[a] in exact)) print a "\t" fallback[a] >> stubsOut
+      exit bad
+    }' FS='\t' "$symbols" FS=' ' "$src" >>"$entries" || failed=1
 done
 # Every unresolved annotation is reported above before the build stops.
 [[ -z "${failed:-}" ]] || exit 1
