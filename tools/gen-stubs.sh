@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # Writes the stubs for functions decompiled code calls but that are not decompiled yet (hook/stubs.txt, and
-# src/classes/stubs.txt for the methods tools/obcmp/obdecl declares): one bare
-# jump per original address, and a /alternatename per symbol, so the linker takes the stub only while nothing in
-# our sources defines that symbol. Decompiling a function retires its stub without touching this list.
+# src/classes/stubs.txt for the methods tools/obcmp/obdecl declares): one bare jump per original address, and a
+# /alternatename per symbol, so the linker takes the stub only while nothing in our sources defines that symbol.
+# The jump is push + ret, so every register and flag reaches the original as the caller left it: some callees take
+# an argument in a register (__chkstk takes the frame size in eax). Decompiling a function retires its stub without
+# touching this list.
 #   tools/gen-stubs.sh <out.cpp> [more lists...]   (tools/gen-hooks.sh writes one from the STUB annotations)
 # hook/stubs.txt: "0x<original address> <decorated symbol>" per line; '#' starts a comment.
 set -euo pipefail
@@ -20,7 +22,7 @@ for l in "$@"; do [[ -f "$l" ]] && lists+=("$l"); done
       address = tolower($1); sub(/^0x/, "", address); address = sprintf("%08s", address); gsub(/ /, "0", address)
       if (!(address in seen)) {
         seen[address] = 1
-        printf "extern \"C\" __declspec(naked) void ob_stub_%s() { __asm mov eax, 0x%s __asm jmp eax }\n", address, address
+        printf "extern \"C\" __declspec(naked) void ob_stub_%s() { __asm push 0x%s __asm ret }\n", address, address
       }
       if (!($2 in named)) { named[$2] = 1; printf "#pragma comment(linker, \"/alternatename:%s=_ob_stub_%s\")\n", $2, address }
     }' "${lists[@]}"
