@@ -1,0 +1,2 @@
+field 4 int32_t mnRefCount
+slot CreateInstance bool uint32_t uint32_t void* uint32_t uint32_t

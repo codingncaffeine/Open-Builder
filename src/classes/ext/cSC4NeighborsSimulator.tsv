@@ -1,0 +1,10 @@
+slot Slot02_ab1ee0 uint32_t
+field 10 int32_t mnRefCount
+field 3c bool mbDealsDirty
+field 20 uint8_t mDeals[8]
+slot Slot14_ab1ee0 void* uint32_t uint32_t uint32_t
+slot Slot15_ab1ee0 void* uint32_t uint32_t
+slot FindCityOnOtherSideOfConnection void* uint32_t uint32_t
+field 1c void* mpConnectionsHead
+slot Slot11_ab1ee0 void* uint32_t uint32_t uint32_t
+method 0x006d17b0 void Fn006d17b0(void*, uint32_t)

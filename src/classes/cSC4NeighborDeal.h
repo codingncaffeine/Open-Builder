@@ -44,7 +44,7 @@ public:
     virtual void Slot21_ab1cb0(uint32_t);
     virtual void Slot22_ab1cb0();
     virtual void Slot23_ab1cb0();
-    virtual void Slot24_ab1cb0();
+    virtual void Slot24_ab1cb0(void*);
     virtual void Slot25_ab1cb0(uint32_t);
     virtual void Slot26_ab1cb0();
     virtual void Slot27_ab1cb0(uint32_t);
@@ -64,16 +64,27 @@ public:
     // STUB: 0x006cf270
     cSC4NeighborDeal();
     explicit cSC4NeighborDeal(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknown1c[0x4];
-    uint32_t field20;
-    char unknown24[0x14];
+    // STUB: 0x006cf5c0
+    void Fn006cf5c0(uint32_t, uint32_t);
+    uint32_t mnRefCount;
+    uint32_t mnType;
+    int32_t mnOtherCellX;
+    int32_t mnOtherCellY;
+    int32_t mnCityCellX;
+    int32_t mnCityCellY;
+    int32_t mnAmount;
     uint32_t field38;
     uint32_t field3c;
     uint32_t field40;
     uint32_t field44;
     uint32_t field48;
-    char unknown4c[0x2c];
-    uint32_t field78;
+    char unknown4c[0x4];
+    int64_t mnCost;
+    uint8_t mStartDate[8];
+    uint8_t mExpirationDate[8];
+    uint8_t mCurrentDate[8];
+    uint8_t mSuspensionDate[8];
+    uint32_t mnFlags;
     char unknown7c[0x4];
 };
 #ifdef _MSC_VER

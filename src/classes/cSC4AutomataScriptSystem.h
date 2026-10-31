@@ -77,7 +77,12 @@ public:
     // STUB: 0x005207a0
     cSC4AutomataScriptSystem();
     explicit cSC4AutomataScriptSystem(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknown10[0x3c];
+    // STUB: 0x0051ff70
+    void Fn0051ff70();
+    char unknown10[0x4];
+    uint32_t mnRefCount;
+    void* mpLua;
+    char unknown1c[0x30];
     char field4c[0x14];
     char field60[0x14];
     char field74[0x14];

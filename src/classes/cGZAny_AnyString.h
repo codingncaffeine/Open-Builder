@@ -18,7 +18,7 @@ public:
     virtual uint32_t Slot06_ad251c();
     virtual void Slot07_ad251c(uint32_t);
     virtual void Slot08_ad251c(uint32_t);
-    char unknown4[0x4];
+    void* mpString;
 };
 
 // SYNTHETIC: 0x0094065e

@@ -53,13 +53,16 @@ public:
     virtual bool Slot37_ab3be8(uint32_t, uint32_t);
     virtual bool Slot38_ab3be8(uint32_t, uint32_t);
     virtual bool Slot39_ab3be8(uint32_t);
-    float fieldc;
+    cSC4RegionalTerrainMap(int32_t, int32_t);
+    cSC4RegionalTerrainMap() {}
+    float mfAltitude;
     float field10;
-    uint32_t field14;
-    uint32_t field18;
-    char unknown1c[0x4];
-    float field20;
-    char unknown24[0x4];
+    int32_t mnCellsX;
+    int32_t mnCellsZ;
+    int32_t mnVertsPerRow;
+    float mfCellWidth;
+    uint8_t mbInitialized;
+    char unknown25[0x3];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4RegionalTerrainMap[sizeof(cSC4RegionalTerrainMap) == 0x28 ? 1 : -1];

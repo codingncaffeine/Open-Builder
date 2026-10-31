@@ -22,4 +22,7 @@ int __stdcall FreeLibrary(HMODULE) { return 0; }
 HMODULE __stdcall GetModuleHandleA(LPCSTR) { return 0; }
 DWORD __stdcall GetUserDefaultLCID() { return 0; }
 BOOL __stdcall SetEnvironmentVariableA(LPCSTR, LPCSTR) { return 0; }
+DWORD __stdcall GetLastError() { return 0; }
+DWORD __stdcall GetFileSize(HANDLE, DWORD*) { return 0; }
+DWORD __stdcall SetFilePointer(HANDLE, long, long*, DWORD) { return 0; }
 }

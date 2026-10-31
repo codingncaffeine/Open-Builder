@@ -1,0 +1,6 @@
+field 4 uint8_t mList[4]
+field 8 uint8_t mLock[8]
+field 10 uint8_t mSignal[8]
+field 18 uint32_t mnRefs
+slot Release uint32_t
+method - cGZMessageQueue2()

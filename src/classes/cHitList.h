@@ -33,8 +33,12 @@ public:
     // STUB: 0x009439cf
     cHitList();
     explicit cHitList(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    uint32_t field4;
-    char unknown8[0x10];
+    int32_t mnRefCount;
+    void* mpListA;
+    void* mpListB;
+    int32_t mnCriterion;
+    uint8_t mbCriterionSet;
+    char unknown15[0x3];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cHitList[sizeof(cHitList) == 0x18 ? 1 : -1];

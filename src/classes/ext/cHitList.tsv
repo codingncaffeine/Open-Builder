@@ -1,0 +1,5 @@
+field 4 int32_t mnRefCount
+field 8 void* mpListA
+field c void* mpListB
+field 10 int32_t mnCriterion
+field 14 uint8_t mbCriterionSet

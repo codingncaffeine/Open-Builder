@@ -1,0 +1,43 @@
+field 4 cRZString mPath
+field 18 bool mbOpen
+field 1c void* mhFile
+field 20 uint32_t mnAccess
+field 24 uint32_t mnCreation
+field 28 uint32_t mnShare
+field 2c uint32_t mnRefCount
+field 30 uint32_t mnLastError
+field 34 cRZString mAltPath
+field 48 uint32_t mnPosition
+field 4c uint32_t mnFilePosition
+field 50 uint32_t mnReadBufferSize
+field 54 uint8_t* mpReadBegin
+field 58 uint8_t* mpReadEnd
+field 5c uint8_t* mpReadCap
+field 60 uint32_t mnReadWindowOffset
+field 64 uint32_t mnReadWindowCount
+field 68 uint32_t mnWriteBufferSize
+field 6c uint8_t* mpWriteBegin
+field 70 uint8_t* mpWriteEnd
+field 74 uint8_t* mpWriteCap
+field 78 uint32_t mnWriteFileOffset
+field 7c uint32_t mnWriteFill
+slot Read bool void* uint32_t
+slot ReadWithCount bool void* void*
+slot Write bool const void* uint32_t
+slot WriteWithCount bool const void* void*
+slot GetOpenModes bool void* void* void*
+slot GetBuffering void void* void*
+slot SetPath void const char*
+slot SetPath_2 void void*
+slot Rename bool void*
+slot Copy bool void* bool
+slot Copy_2 bool void* bool
+slot Release uint32_t
+method 0x00918b96 cRZFile()
+method - cRZFile(const void* path)
+method - cRZFile(const char* path)
+method 0x00918577 void SetErrorFromOS()
+method 0x009187b1 bool FlushWriteBuffer()
+method 0x00918f67 bool FillReadBuffer()
+method 0x00918fd8 bool FillWriteBuffer(const void*, int32_t)
+slot SeekToPosition uint32_t uint32_t

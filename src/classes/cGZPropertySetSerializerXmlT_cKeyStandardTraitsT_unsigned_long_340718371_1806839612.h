@@ -36,7 +36,8 @@ public:
     virtual uint32_t Slot02_ad442c();
     virtual bool Read(uint32_t, uint32_t);
     virtual void Write(uint32_t, uint32_t, uint32_t);
-    char unknown8[0x4c];
+    int32_t mnRefCount;
+    char unknownc[0x48];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612[sizeof(cGZPropertySetSerializerXmlT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612) == 0x54 ? 1 : -1];

@@ -1,0 +1,3 @@
+field 14 uint32_t mnRefCount
+field 18 void* mpLua
+method 0x0051ff70 void Fn0051ff70()

@@ -9,7 +9,7 @@
 struct OB_NOVTABLE cSC4NeighborsSimulator_0 {
     virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab1ee0() = 0;
-    virtual void Slot02_ab1ee0() = 0;
+    virtual uint32_t Slot02_ab1ee0() = 0;
     virtual bool Init() = 0;
     virtual bool Shutdown() = 0;
     virtual bool RequestCreateConnection(uint32_t, uint32_t, uint32_t, uint32_t) = 0;
@@ -18,11 +18,11 @@ struct OB_NOVTABLE cSC4NeighborsSimulator_0 {
     virtual void DeleteOccupantConnection(uint32_t) = 0;
     virtual void Slot09_ab1ee0(uint32_t) = 0;
     virtual uint32_t Slot10_ab1ee0(uint32_t, uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot11_ab1ee0(uint32_t, uint32_t, uint32_t) = 0;
-    virtual uint32_t FindCityOnOtherSideOfConnection(uint32_t, uint32_t) = 0;
+    virtual void* Slot11_ab1ee0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void* FindCityOnOtherSideOfConnection(uint32_t, uint32_t) = 0;
     virtual void FindConnectionOnOtherSide(uint32_t) = 0;
-    virtual void Slot14_ab1ee0(uint32_t, uint32_t, uint32_t) = 0;
-    virtual uint32_t Slot15_ab1ee0(uint32_t, uint32_t) = 0;
+    virtual void* Slot14_ab1ee0(uint32_t, uint32_t, uint32_t) = 0;
+    virtual void* Slot15_ab1ee0(uint32_t, uint32_t) = 0;
     virtual void GetAllConnections(uint32_t) = 0;
     virtual void Slot17_ab1ee0(uint32_t, uint32_t) = 0;
     virtual void Slot18_ab1ee0(uint32_t, uint32_t, uint32_t) = 0;
@@ -52,7 +52,7 @@ struct OB_NOVTABLE cSC4NeighborsSimulator_0 {
 struct OB_NOVTABLE cSC4NeighborsSimulator_4 {
     virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab1ee0() = 0;
-    virtual void Slot02_ab1ee0() = 0;
+    virtual uint32_t Slot02_ab1ee0() = 0;
     virtual bool Slot03_ab1ee0_4(uint32_t);
 };
 
@@ -60,7 +60,7 @@ struct OB_NOVTABLE cSC4NeighborsSimulator_4 {
 struct OB_NOVTABLE cSC4NeighborsSimulator_8 {
     virtual bool QueryInterface(uint32_t, uint32_t) = 0;
     virtual void Slot01_ab1ee0() = 0;
-    virtual void Slot02_ab1ee0() = 0;
+    virtual uint32_t Slot02_ab1ee0() = 0;
     virtual uint32_t Write(uint32_t);
     virtual void Read(uint32_t);
     virtual uint32_t GetGZCLSID();
@@ -75,7 +75,7 @@ public:
     virtual ~cSC4NeighborsSimulator() {}
     virtual bool QueryInterface(uint32_t, uint32_t);
     virtual void Slot01_ab1ee0();
-    virtual void Slot02_ab1ee0();
+    virtual uint32_t Slot02_ab1ee0();
     virtual bool Init();
     virtual bool Shutdown();
     virtual bool RequestCreateConnection(uint32_t, uint32_t, uint32_t, uint32_t);
@@ -84,11 +84,11 @@ public:
     virtual void DeleteOccupantConnection(uint32_t);
     virtual void Slot09_ab1ee0(uint32_t);
     virtual uint32_t Slot10_ab1ee0(uint32_t, uint32_t, uint32_t);
-    virtual uint32_t Slot11_ab1ee0(uint32_t, uint32_t, uint32_t);
-    virtual uint32_t FindCityOnOtherSideOfConnection(uint32_t, uint32_t);
+    virtual void* Slot11_ab1ee0(uint32_t, uint32_t, uint32_t);
+    virtual void* FindCityOnOtherSideOfConnection(uint32_t, uint32_t);
     virtual void FindConnectionOnOtherSide(uint32_t);
-    virtual void Slot14_ab1ee0(uint32_t, uint32_t, uint32_t);
-    virtual uint32_t Slot15_ab1ee0(uint32_t, uint32_t);
+    virtual void* Slot14_ab1ee0(uint32_t, uint32_t, uint32_t);
+    virtual void* Slot15_ab1ee0(uint32_t, uint32_t);
     virtual void GetAllConnections(uint32_t);
     virtual void Slot17_ab1ee0(uint32_t, uint32_t);
     virtual void Slot18_ab1ee0(uint32_t, uint32_t, uint32_t);
@@ -114,9 +114,17 @@ public:
     // STUB: 0x006d0930
     cSC4NeighborsSimulator();
     explicit cSC4NeighborsSimulator(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknownc[0x1c];
+    // STUB: 0x006d17b0
+    void Fn006d17b0(void*, uint32_t);
+    char unknownc[0x4];
+    int32_t mnRefCount;
+    char unknown14[0x8];
+    void* mpConnectionsHead;
+    uint8_t mDeals[8];
     uint32_t field28;
-    char unknown2c[0x12];
+    char unknown2c[0x10];
+    bool mbDealsDirty;
+    char unknown3d[0x1];
     bool field3e;
     char unknown3f[0x1];
 };

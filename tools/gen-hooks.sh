@@ -45,9 +45,9 @@ function canontype(t,   n, w, i, j, k, out, keep, tmp) {
 function byarity(k,   inner, i, c, depth, n) {
   inner = substr(k, index(k, "(") + 1); sub(/\)[^)]*$/, "", inner)
   n = inner == "" ? 0 : 1
-  for (i = 1; i <= length(inner); i++) {  # separators inside template arguments do not count
+  for (i = 1; i <= length(inner); i++) {  # separators inside template arguments or a function type do not count
     c = substr(inner, i, 1)
-    if (c == "<") depth++; else if (c == ">") depth--; else if (c == ";" && depth == 0) n++
+    if (c == "<" || c == "(") depth++; else if (c == ">" || c == ")") depth--; else if (c == ";" && depth == 0) n++
   }
   return substr(k, 1, index(k, "(") - 1) "/" n
 }
@@ -109,7 +109,8 @@ paste "$symbols.kind" <(llvm-undname <"$symbols.raw" 2>/dev/null | awk 'BEGIN { 
       d = $2; isconst = (d ~ /\) const$/); sub(/\) const$/, ")", d)
       open = index(d, "("); if (!open) next
       head = substr(d, 1, open - 1); params = substr(d, open + 1); sub(/\)$/, "", params)
-      n = split(head, w, " "); print "U:" key(w[n], params, isconst) "\t" $1
+      # "operator delete" is one name (the space would split it), on both sides: symbols and annotations
+      gsub(/operator +/, "operator", head); n = split(head, w, " "); print "U:" key(w[n], params, isconst) "\t" $1
       next
     }
     d = $2
@@ -123,7 +124,7 @@ paste "$symbols.kind" <(llvm-undname <"$symbols.raw" 2>/dev/null | awk 'BEGIN { 
     }
     isconst = (d ~ /\) const$/); sub(/\) const$/, ")", d)
     open = index(d, "("); head = substr(d, 1, open - 1); params = substr(d, open + 1); sub(/\)$/, "", params)
-    n = split(head, w, " "); qualified = w[n]
+    gsub(/operator +/, "operator", head); n = split(head, w, " "); qualified = w[n]
     print key(qualified, params, isconst) "\t" $1
   }' >"$symbols"
 : >"$stubsOut"
@@ -206,7 +207,7 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       for (i = length(text); i > open; i--) if (substr(text, i, 1) == ")") { rparen = i; break }
       head = substr(text, 1, open - 1); params = substr(text, open + 1, rparen - open - 1)
       isconst = (substr(text, rparen + 1) ~ /^[ \t]*const/)
-      n = split(trim(head), w, " "); qualified = w[n]; sub(/^[*&]+/, "", qualified)
+      gsub(/operator +/, "operator", head); n = split(trim(head), w, " "); qualified = w[n]; sub(/^[*&]+/, "", qualified)
       if (qualified !~ /::/ && text ~ /^ [ \t]/ && cls != "") qualified = cls "::" qualified
       else if (qualified !~ /::/ && nsname != "") qualified = nsname "::" qualified
       k = key(qualified, params, isconst)
@@ -224,7 +225,7 @@ for src in $(find src -name '*.cpp' -o -name '*.h' | sort); do
       for (i = length(text); i > open; i--) if (substr(text, i, 1) == ")") { rparen = i; break }
       head = substr(text, 1, open - 1); params = substr(text, open + 1, rparen - open - 1)
       isconst = (substr(text, rparen + 1) ~ /^[ \t]*const/)
-      n = split(trim(head), w, " "); qualified = w[n]; sub(/^[*&]+/, "", qualified)
+      gsub(/operator +/, "operator", head); n = split(trim(head), w, " "); qualified = w[n]; sub(/^[*&]+/, "", qualified)
       if (qualified !~ /::/ && text ~ /^ [ \t]/ && cls != "") qualified = cls "::" qualified
       else if (qualified !~ /::/ && nsname != "") qualified = nsname "::" qualified
       k = key(qualified, params, isconst)

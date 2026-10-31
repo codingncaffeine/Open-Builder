@@ -45,3 +45,5 @@ method 0x009725fb uint32_t Fn009725fb()
 method 0x00972761 bool Fn00972761()
 field 184 bool mbFlag184
 method 0x00971617 bool Fn00971617(void*, void*)
+method 0x009700e5 void Fn009700e5()
+method 0x0097212d void* Fn0097212d()

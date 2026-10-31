@@ -17,7 +17,31 @@ public:
     virtual bool GZOnMouseMove(uint32_t, uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknownd8[0x60];
+    // STUB: 0x007ac620
+    void SetMouseScroll(int32_t, int32_t);
+    // STUB: 0x007aae10
+    cUnk00ab8cd0();
+    uint32_t mnCursorId;
+    uint32_t mnZeroDC;
+    uint32_t mnZeroE0;
+    uint32_t mnZeroE4;
+    uint32_t mnZeroE8;
+    uint32_t mnZeroEC;
+    uint32_t mnZeroF0;
+    float mfMouseX;
+    float mfMouseZ;
+    uint32_t mnZeroFC;
+    uint32_t mnZero100;
+    float mfLimit;
+    uint8_t mbFlag108;
+    uint8_t mbMouseScroll;
+    char unknown10a[0x2];
+    void* mpOriginImage;
+    int32_t mnCount110;
+    int32_t mnCount114;
+    float mfSpeed;
+    float mfAccel;
+    uint8_t mUnk120[0x18];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab8cd0[sizeof(cUnk00ab8cd0) == 0x138 ? 1 : -1];

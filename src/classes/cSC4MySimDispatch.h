@@ -37,7 +37,96 @@ public:
     virtual bool QueryInterface(unsigned int, void **);
     virtual uint32_t AddRef();
     virtual unsigned int Release();
-    char unknown10[0x17c];
+    // STUB: 0x00431270
+    bool Fn00431270(uint32_t);
+    // STUB: 0x004312c0
+    int32_t GetTransitSwitchWaitTimeMunutes();
+    // STUB: 0x00433a60
+    void* Fn00433a60(uint32_t);
+    // STUB: 0x00431bc0
+    bool SetFlag(uint32_t, bool);
+    // STUB: 0x00431fe0
+    void Fn00431fe0();
+    // STUB: 0x00431c10
+    bool SetState(uint32_t);
+    // STUB: 0x00431a30
+    void Notify(uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00431c70
+    void Fn00431c70();
+    // STUB: 0x00431780
+    void* Fn00431780();
+    // STUB: 0x004320d0
+    void Fn004320d0();
+    // STUB: 0x00432030
+    bool Fn00432030(void*);
+    // STUB: 0x00432860
+    bool Fn00432860(int32_t, uint32_t, bool);
+    // STUB: 0x00432900
+    void Fn00432900(void*, int32_t);
+    // STUB: 0x00432960
+    int32_t Fn00432960(int32_t);
+    // STUB: 0x00434ff0
+    bool Fn00434ff0(int32_t, const void*, uint32_t);
+    // STUB: 0x00432ee0
+    void ResetPath();
+    // STUB: 0x00431f70
+    bool Fn00431f70();
+    // STUB: 0x00434df0
+    bool Fn00434df0();
+    // STUB: 0x00434230
+    void Fn00434230();
+    // STUB: 0x00433200
+    bool Fn00433200();
+    // STUB: 0x00434080
+    bool Fn00434080();
+    // STUB: 0x00433eb0
+    bool Init();
+    // STUB: 0x00433d70
+    void Fn00433d70();
+    // STUB: 0x004350d0
+    bool SetCurrentCommuteDestination(void*, bool);
+    // STUB: 0x00432f50
+    bool Fn00432f50(void*);
+    // STUB: 0x00435030
+    bool Fn00435030(void*);
+    // STUB: 0x00434670
+    bool Fn00434670();
+    // STUB: 0x00435780
+    bool Fn00435780();
+    // STUB: 0x00435610
+    uint32_t StartTracking(int32_t, void*);
+    // STUB: 0x00431880
+    void* Fn00431880(void*, const void*);
+    // STUB: 0x00434e30
+    bool Fn00434e30(void*, bool);
+    bool mbFollowCamera;
+    char unknown11[0x1b];
+    int32_t mnPathCount;
+    int32_t mnPathIndex;
+    uint32_t mnChangeCount;
+    uint32_t mnSeenChangeCount;
+    int32_t mnTrackHandle;
+    uint32_t mnState;
+    uint32_t mnPrevState;
+    uint32_t mnFlags;
+    int32_t mnClock;
+    uint32_t mnFn50;
+    int32_t mnTransitSwitchStart;
+    char unknown58[0x4];
+    uint8_t mLoc5c[0x28];
+    uint8_t mLoc84[0x28];
+    char unknownac[0x28];
+    uint8_t mLocD4[0x28];
+    void* mpFc;
+    int32_t mnTrackedId;
+    char unknown104[0x14];
+    void* mpAutomaton;
+    void* mpTarget;
+    void* mpClock;
+    void* mpPathFinder;
+    char unknown128[0x60];
+    bool mbInitPending;
+    char unknown189[0x3];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4MySimDispatch[sizeof(cSC4MySimDispatch) == 0x18c ? 1 : -1];

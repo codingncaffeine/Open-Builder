@@ -47,7 +47,102 @@ public:
     virtual uint32_t Slot25_ab3930(uint32_t);
     virtual uint32_t Slot26_ab3930(uint32_t);
     virtual void Slot27_ab3930(uint32_t);
-    char unknown14[0xe8];
+    // STUB: 0x0073af80
+    uint32_t Fn0073af80(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    // STUB: 0x00738a50
+    void Fn00738a50(uint32_t);
+    // STUB: 0x00737d40
+    void RedisplayStaticOverlay(uint32_t);
+    // STUB: 0x007356d0
+    void Fn007356d0(void*, uint32_t);
+    // STUB: 0x0073a1b0
+    void Fn0073a1b0(void*, bool);
+    // STUB: 0x00738230
+    void Fn00738230(uint32_t, void*);
+    // STUB: 0x00738a10
+    void Fn00738a10(uint32_t);
+    // STUB: 0x0073cb10
+    void Fn0073cb10();
+    // STUB: 0x007382e0
+    void Fn007382e0(uint32_t, void*);
+    // STUB: 0x0073cb60
+    void Init(void*, bool, bool);
+    // STUB: 0x0073ba10
+    void InitDrawStates();
+    // STUB: 0x0073b8a0
+    uint32_t Fn0073b8a0(void*, void*, void*, uint32_t);
+    bool mbInitialized;
+    bool mbDynamic;
+    bool mbFlag16;
+    char unknown17[0x1];
+    uint32_t mnQuality;
+    uint32_t mnProp1c;
+    char unknown20[0x4];
+    void* mpRenderStates;
+    void* mpRenderStatesEnd;
+    void* mpRenderStatesCap;
+    char unknown30[0x8];
+    uint8_t mbComb38;
+    uint8_t mbComb39;
+    char unknown3a[0x2];
+    uint8_t mbComb3c;
+    uint8_t mbComb3d;
+    uint8_t mbComb3e;
+    char unknown3f[0x5];
+    uint8_t mbComb44;
+    uint8_t mbComb45;
+    char unknown46[0x2];
+    uint8_t mbComb48;
+    uint8_t mbComb49;
+    uint8_t mbComb4a;
+    char unknown4b[0x5];
+    uint8_t mbComb50;
+    uint8_t mbComb51;
+    char unknown52[0x2];
+    uint8_t mbComb54;
+    uint8_t mbComb55;
+    char unknown56[0x6];
+    int32_t mnCellsX;
+    int32_t mnCellsZ;
+    float mfCellSize;
+    float mfInvCellSize;
+    float mfExtentX;
+    float mfExtentX2;
+    float mfExtentZ;
+    int32_t mnRectLeft;
+    int32_t mnRectTop;
+    int32_t mnRectRight;
+    int32_t mnRectBottom;
+    void* mpTerrain;
+    void* mpView;
+    void* mpTextureFactory;
+    uint32_t mnField94;
+    void* mpOverlays;
+    void* mpOverlaysEnd;
+    void* mpOverlaysCap;
+    uint32_t mnOverlaysHead;
+    uint32_t mnOverlaysTail;
+    void* mpDecals;
+    void* mpDecalsEnd;
+    void* mpDecalsCap;
+    uint32_t mnDecalsHead;
+    uint32_t mnDecalsTail;
+    void* mpRings;
+    void* mpRingsEnd;
+    void* mpRingsCap;
+    uint32_t mnRingsHead;
+    uint32_t mnRingsTail;
+    void* mpTexBinding;
+    uint32_t mnDecalsDrawn;
+    uint32_t mnShadowsDrawn;
+    uint16_t mnGridFlags;
+    char unknowne2[0x2];
+    int32_t mnGridOrigin;
+    int32_t mnGridWidth;
+    int32_t mnGridHeight;
+    void* mpGrid;
+    void* mpGridEnd;
+    void* mpGridCap;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSTEOverlayManager[sizeof(cSTEOverlayManager) == 0xfc ? 1 : -1];

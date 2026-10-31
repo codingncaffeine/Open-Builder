@@ -13,7 +13,7 @@ public:
     virtual uint32_t AddRef();
     virtual uint32_t Release();
     virtual bool Slot03_ad40d0(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
-    virtual bool CreateInstance(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t);
+    virtual bool CreateInstance(uint32_t, uint32_t, void*, uint32_t, uint32_t);
     virtual bool Read(uint32_t, uint32_t);
     virtual bool Write(uint32_t, uint32_t);
     virtual ~cHitResourceFactory() {}
@@ -22,7 +22,7 @@ public:
     // STUB: 0x00940294
     cHitResourceFactory();
     explicit cHitResourceFactory(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknown4[0x4];
+    int32_t mnRefCount;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cHitResourceFactory[sizeof(cHitResourceFactory) == 0x8 ? 1 : -1];

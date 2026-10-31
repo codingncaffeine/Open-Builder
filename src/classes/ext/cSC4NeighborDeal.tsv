@@ -1,0 +1,14 @@
+field 1c uint32_t mnRefCount
+field 24 int32_t mnOtherCellX
+field 28 int32_t mnOtherCellY
+field 2c int32_t mnCityCellX
+field 30 int32_t mnCityCellY
+field 58 uint8_t mStartDate[8]
+field 60 uint8_t mExpirationDate[8]
+field 68 uint8_t mCurrentDate[8]
+field 70 uint8_t mSuspensionDate[8]
+field 78 uint32_t mnFlags
+field 34 int32_t mnAmount
+method 0x006cf5c0 void Fn006cf5c0(uint32_t, uint32_t)
+field 20 uint32_t mnType
+field 50 int64_t mnCost

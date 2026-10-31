@@ -56,3 +56,9 @@
 0x009efb9f _rand
 0x009ef059 _atexit
 0x00a044f0 __strnicmp
+0x009ef890 __chkstk
+0x009f0d10 __allmul
+0x009efc60 __CIpow
+0x009f13a0 _strstr
+0x009ef56a _isalpha
+0x00a6e307 __stat

@@ -3,9 +3,9 @@
 # decompilation of the Mac build writes it (DeSCAi4, C++20 from the Mac x86_64 binary, GPLv3), found by the Mac name
 # the packet's pairs.tsv gives the function. Its names, types and logic are what the agent reads; its text is never
 # copied into src/ (another compiler and pointer size: our code is written against the original's own bytes).
-#   tools/packet-refs.py <DeSCAi4 checkout> <packet dir> [...]
+#   tools/packet-refs.py <DeSCAi4 checkout> <packet dir> [...]      (from the project folder)
 # Writes <packet>/<address>.ref.cpp per function found (every overload of the name, the one whose parameters match
-# first) and prints how many functions of each packet have one.
+# first), and <packet>/drafted.txt: the packet's functions that already have a CLOSE draft in src/, and where.
 import os
 import re
 import sys
@@ -66,9 +66,24 @@ def norm(params):
     return [x for x in out if x not in ("", "void")]
 
 
+def drafted():
+    """address -> the src/ file that already holds a CLOSE draft of it (an agent of an earlier packet wrote it)."""
+    out = {}
+    for base, _, files in os.walk("src"):
+        for name in files:
+            if name.endswith(".cpp"):
+                path = os.path.join(base, name)
+                for line in open(path, encoding="utf-8", errors="replace"):
+                    m = re.match(r"// CLOSE: 0x([0-9a-fA-F]+)", line)
+                    if m:
+                        out.setdefault(int(m.group(1), 16), path)
+    return out
+
+
 def main():
     root, packets = sys.argv[1], sys.argv[2:]
     defs = definitions(root)
+    drafts = drafted()
     for packet in packets:
         pairs = os.path.join(packet, "pairs.tsv")
         if not os.path.exists(pairs):
@@ -92,7 +107,14 @@ def main():
                 for rel, ln, _, body in cands[:4]:
                     o.write(HEADER.format(name=name, where="%s:%d" % (rel, ln)))
                     o.write(body + "\n\n")
-        print("%s: %d of %d named functions have a reference" % (os.path.basename(packet.rstrip("/")), have, rows))
+        # the packet's functions somebody already drafted: improve that draft in its own file, never copy it
+        listed = [int(l.split("\t")[0], 16) for l in open(os.path.join(packet, "functions.tsv")) if l.startswith("0x")]
+        with open(os.path.join(packet, "drafted.txt"), "w") as o:
+            for a in listed:
+                if a in drafts:
+                    o.write("0x%08x\t%s\n" % (a, drafts[a]))
+        print("%s: %d of %d named functions have a reference, %d drafted elsewhere" % (
+            os.path.basename(packet.rstrip("/")), have, rows, sum(1 for a in listed if a in drafts)))
 
 
 if __name__ == "__main__":

@@ -39,11 +39,75 @@ public:
     // STUB: 0x005912b0
     cSC4EffectsManager();
     explicit cSC4EffectsManager(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknown1ac[0xbec];
-    uint32_t fieldd98;
+    // STUB: 0x0058e4a0
+    void Fn0058e4a0();
+    // STUB: 0x005919d0
+    void Fn005919d0(void*, uint32_t);
+    // STUB: 0x005921b0
+    void Fn005921b0();
+    // STUB: 0x0058dd30
+    void Fn0058dd30();
+    // STUB: 0x0058dce0
+    void Fn0058dce0();
+    // STUB: 0x0058fe70
+    void Fn0058fe70(void*);
+    // STUB: 0x0058e800
+    void SetSnowlineState(bool);
+    // STUB: 0x0058d870
+    void Fn0058d870();
+    // STUB: 0x00593b90
+    void Fn00593b90();
+    // STUB: 0x00590540
+    void Fn00590540(void*, uint32_t*, uint32_t);
+    // STUB: 0x0058e4e0
+    void Fn0058e4e0();
+    // STUB: 0x0058e340
+    void Fn0058e340(void*);
+    // STUB: 0x0058dc50
+    void Fn0058dc50(void*, void*);
+    // STUB: 0x0058f160
+    bool DoSnowCheat(void*);
+    char unknown1ac[0x1];
+    uint8_t mbActive;
+    char unknown1ae[0x2];
+    uint32_t mnRefCount;
+    uint8_t mbFlag1b4;
+    char unknown1b5[0x9df];
+    void* mpEffects;
+    char unknownb98[0x14];
+    uint32_t* mpActiveBegin;
+    uint32_t* mpActiveEnd;
+    char unknownbb4[0xd0];
+    int32_t mnC84;
+    char unknownc88[0xc];
+    uint32_t mnC94;
+    char unknownc98[0x90];
+    uint8_t mLightA[0x18];
+    float mfLightATime;
+    uint32_t mnLightA44;
+    float mfLightAInv;
+    uint8_t mbLightA4c;
+    char unknownd4d[0x3];
+    uint32_t mnLightA50;
+    uint32_t mnLightA54;
+    uint32_t mnLightA58;
+    uint8_t mPackedA[8];
+    uint8_t mPackedB[8];
+    uint8_t mLightB[0x18];
+    float mfLightBTime;
+    uint32_t mnLightB88;
+    float mfLightBInv;
+    char unknownd90[0x8];
+    void* mpDelegate_d98;
     char unknownd9c[0x4];
     float fieldda0;
-    char unknownda4[0x50];
+    char unknownda4[0x18];
+    int32_t mnSnowlineId;
+    uint32_t mnDc0;
+    float mfSnowDc4;
+    float mfSnowDc8;
+    float mfSnowDcc;
+    char unknowndd0[0x24];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4EffectsManager[sizeof(cSC4EffectsManager) == 0xdf4 ? 1 : -1];

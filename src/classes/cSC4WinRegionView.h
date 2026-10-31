@@ -22,7 +22,27 @@ public:
     virtual void Slot03_ab95e0(uint32_t, uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknowndc[0x4c];
+    // STUB: 0x007b5dd0
+    void SelectCity(int32_t, int32_t);
+    // STUB: 0x007b5db0
+    void ClearSelection();
+    // STUB: 0x007b2430
+    void EnableTutorialArrow(bool);
+    // STUB: 0x007b2410
+    void SetSignpostMode(bool, bool);
+    // STUB: 0x007b5e20
+    void SetSignpostType(uint32_t, uint32_t);
+    // STUB: 0x007b30b0
+    void EnableLabels(bool, bool);
+    // STUB: 0x007b3a80
+    void* GetCityAtPoint(int32_t, int32_t);
+    // STUB: 0x0074c6e0
+    void* GetSelectedCity();
+    // STUB: 0x007b3110
+    void GetPlayfieldRect(void*, void*);
+    char unknowndc[0x34];
+    uint8_t mbScrolling;
+    char unknown111[0x17];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4WinRegionView[sizeof(cSC4WinRegionView) == 0x128 ? 1 : -1];

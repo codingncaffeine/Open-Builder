@@ -1,0 +1,74 @@
+field 14 bool mbInitialized
+field 15 bool mbDynamic
+field 16 bool mbFlag16
+field 18 uint32_t mnQuality
+field 1c uint32_t mnProp1c
+field 5c int32_t mnCellsX
+field 60 int32_t mnCellsZ
+field 64 float mfCellSize
+field 68 float mfInvCellSize
+field 6c float mfExtentX
+field 70 float mfExtentX2
+field 74 float mfExtentZ
+field 78 int32_t mnRectLeft
+field 7c int32_t mnRectTop
+field 80 int32_t mnRectRight
+field 84 int32_t mnRectBottom
+field 88 void* mpTerrain
+field 8c void* mpView
+field 90 void* mpTextureFactory
+field 94 uint32_t mnField94
+field 98 void* mpOverlays
+field 9c void* mpOverlaysEnd
+field a0 void* mpOverlaysCap
+field a4 uint32_t mnOverlaysHead
+field a8 uint32_t mnOverlaysTail
+field ac void* mpDecals
+field b0 void* mpDecalsEnd
+field b4 void* mpDecalsCap
+field b8 uint32_t mnDecalsHead
+field bc uint32_t mnDecalsTail
+field c0 void* mpRings
+field c4 void* mpRingsEnd
+field c8 void* mpRingsCap
+field cc uint32_t mnRingsHead
+field d0 uint32_t mnRingsTail
+field d4 void* mpTexBinding
+field d8 uint32_t mnDecalsDrawn
+field dc uint32_t mnShadowsDrawn
+field e0 uint16_t mnGridFlags
+field e4 int32_t mnGridOrigin
+field e8 int32_t mnGridWidth
+field ec int32_t mnGridHeight
+field f0 void* mpGrid
+method 0x0073af80 uint32_t Fn0073af80(uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)
+method 0x00738a50 void Fn00738a50(uint32_t)
+method 0x00737d40 void RedisplayStaticOverlay(uint32_t)
+method 0x007356d0 void Fn007356d0(void*, uint32_t)
+method 0x0073a1b0 void Fn0073a1b0(void*, bool)
+method 0x00738230 void Fn00738230(uint32_t, void*)
+method 0x00738a10 void Fn00738a10(uint32_t)
+method 0x0073cb10 void Fn0073cb10()
+field f4 void* mpGridEnd
+field f8 void* mpGridCap
+method 0x007382e0 void Fn007382e0(uint32_t, void*)
+method 0x0073cb60 void Init(void*, bool, bool)
+method 0x0073ba10 void InitDrawStates()
+field 24 void* mpRenderStates
+field 28 void* mpRenderStatesEnd
+field 2c void* mpRenderStatesCap
+field 38 uint8_t mbComb38
+field 39 uint8_t mbComb39
+field 3c uint8_t mbComb3c
+field 3d uint8_t mbComb3d
+field 3e uint8_t mbComb3e
+field 44 uint8_t mbComb44
+field 45 uint8_t mbComb45
+field 48 uint8_t mbComb48
+field 49 uint8_t mbComb49
+field 4a uint8_t mbComb4a
+field 50 uint8_t mbComb50
+field 51 uint8_t mbComb51
+field 54 uint8_t mbComb54
+field 55 uint8_t mbComb55
+method 0x0073b8a0 uint32_t Fn0073b8a0(void*, void*, void*, uint32_t)

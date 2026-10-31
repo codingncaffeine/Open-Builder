@@ -19,6 +19,8 @@
 #   tools/packet.sh --tu SC4Automata.cpp [...]     by translation unit (a Mac source path or its unique suffix):
 #                                                packet tu_SC4Automata
 #   tools/packet.sh --pick-tu N [MAXSIZE]          the N translation units with the most functions to do
+#   tools/packet.sh --list NAME FILE               the functions still to do whose addresses FILE lists (one per line,
+#                                                hex), from any unit: packet NAME (e.g. a family of one shape)
 # A class's helpers: the non-virtual functions still to do that (nearly) only its pending methods call, directly or
 # through another such helper (the "c" edges of re/names/win/feat.tsv, tools/obcmp/obfeat), two levels deep; a
 # function with more than one caller outside the class is a shared utility and stays a STUB.
@@ -92,6 +94,7 @@ mode=class
 case "${1:-}" in
   --tu) mode=tu; shift; tus=("$@") ;;
   --pick-tu) mode=tu; n="${2:?how many}" max="${3:-1024}" ;;
+  --list) mode=tu; listname="${2:?a packet name}"; listfile="$(realpath "${3:?an address file}")"; tus=("$listname") ;;
 esac
 
 if [[ $mode == tu ]]; then
@@ -195,14 +198,29 @@ if [[ $mode == tu ]]; then
   fi
   ((${#tus[@]})) || { echo "no translation units" >&2; exit 2; }
   for t in "${tus[@]}"; do
-    # the unit: an exact path, or the unique path ending in the argument
-    full="$(cut -f1 "$work/tu-all" | sort -u | awk -v t="$t" '$0 == t || substr($0, length($0) - length(t) + 1) == t || substr($0, length($0) - length(t)) == "/" t')"
-    [[ -n "$full" && "$(wc -l <<<"$full")" -eq 1 ]] || { echo "no unique translation unit for '$t'" >&2; continue; }
-    name="tu_$(basename "${full%.*}")"
+    if [[ -n "${listfile:-}" ]]; then
+      name="$listname"
+    else
+      # the unit: an exact path, or the unique path ending in the argument
+      full="$(cut -f1 "$work/tu-all" | sort -u | awk -v t="$t" '$0 == t || substr($0, length($0) - length(t) + 1) == t || substr($0, length($0) - length(t)) == "/" t')"
+      [[ -n "$full" && "$(wc -l <<<"$full")" -eq 1 ]] || { echo "no unique translation unit for '$t'" >&2; continue; }
+      name="tu_$(basename "${full%.*}")"
+    fi
     dir="$out/$name"
     mkdir -p "$dir"
     rm -f "$dir"/*.asm "$dir"/*.c
-    awk -F'\t' -v t="$full" '$1 == t' "$work/tu-all" >"$work/$name.rows"
+    if [[ -n "${listfile:-}" ]]; then
+      # a listed function no unit claims (no Mac function around it) still gets its row: kind, size and declaration
+      awk -F'\t' 'FILENAME == ARGV[1] { want[sprintf("%08x", strtonum("0x" $1))] = 1; next }
+                  FILENAME == ARGV[2] { if ($2 in want) { print; have[$2] = 1 } next }
+                  FILENAME == ARGV[3] { virt[$1] = 1; next }
+                  FILENAME == ARGV[4] { a = $1; sub(/^0x/, "", a); decl[sprintf("%08x", strtonum("0x" a))] = $2; next }
+                  { split($0, q, / +/); a = sprintf("%08x", strtonum("0x" q[1]))
+                    if ((a in want) && !(a in have)) print "-\t" a "\t" strtonum("0x" q[2]) "\t" ((a in virt) ? "virtual" : "helper") "\t-\t-\t-\t" ((a in decl) ? decl[a] : "-") }' \
+        "$listfile" "$work/tu-all" "$work/virtual" "$work/stubs" re/map/functions.tsv >"$work/$name.rows"
+    else
+      awk -F'\t' -v t="$full" '$1 == t' "$work/tu-all" >"$work/$name.rows"
+    fi
     folder=$(awk -F'\t' '{ n++; if (strtonum("0x" $2) % 16) u++ } END { print (u * 2 > n ? "gzcom" : "game") }' "$work/$name.rows")
     : >"$dir/pairs.tsv"  # "<address>\t<mac address>\t<name>\t<how>"
     while IFS=$'\t' read -r _ a size kind nm how mac decl; do
@@ -223,7 +241,7 @@ if [[ $mode == tu ]]; then
       [[ "$mac" != - ]] && printf '%s\t%s\t%s\t%s\n' "$a" "$mac" "$nm" "$how" >>"$dir/pairs.tsv"
     done <"$work/$name.rows" >"$dir/functions.tsv"
     cut -f2 "$work/$name.rows" >>"$work/all-addresses"
-    echo "# $full: $(cut -f8 "$work/$name.rows" | sed -E 's/^\?[^@]*@//; s/@@.*//' | grep -v '^-$' | sort | uniq -c | sort -rn | head -8 | awk '{printf "%s x%d, ", $2, $1}')" >"$dir/layout.txt"
+    echo "# ${full:-$name}: $(cut -f8 "$work/$name.rows" | sed -E 's/^\?[^@]*@//; s/@@.*//' | grep -v '^-$' | sort | uniq -c | sort -rn | head -8 | awk '{printf "%s x%d, ", $2, $1}')" >"$dir/layout.txt"
     packets+=("$name")
   done
 else

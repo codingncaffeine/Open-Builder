@@ -21,10 +21,11 @@ public:
     virtual bool HasValue(uint32_t);
     virtual uint32_t NumValues();
     virtual ~cGZPropertySetT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612();
-    uint32_t field4;
-    char unknown8[0x4];
-    uint32_t fieldc;
-    char unknown10[0x8];
+    uint32_t mnRefCount;
+    void* mpTreeHeader;
+    uint32_t mnTreeCount;
+    char unknown10[0x4];
+    void* mpCursor;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZPropertySetT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612[sizeof(cGZPropertySetT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612) == 0x18 ? 1 : -1];

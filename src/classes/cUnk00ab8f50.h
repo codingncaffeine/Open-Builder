@@ -14,7 +14,7 @@ public:
     virtual bool GZPaint();
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknownd8[0x4];
+    void* mpRenderer;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cUnk00ab8f50[sizeof(cUnk00ab8f50) == 0xdc ? 1 : -1];

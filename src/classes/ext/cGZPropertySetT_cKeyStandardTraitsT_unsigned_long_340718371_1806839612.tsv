@@ -1,0 +1,4 @@
+field 4 uint32_t mnRefCount
+field 8 void* mpTreeHeader
+field c uint32_t mnTreeCount
+field 14 void* mpCursor

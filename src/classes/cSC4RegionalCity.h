@@ -4,6 +4,7 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "gzcom/cRZString.h"
 
 // The subobject at +0x0 (vtable 0x00a8fb20): an interface or base the class map has no class for.
 struct OB_NOVTABLE cSC4RegionalCity_0 {
@@ -184,23 +185,75 @@ public:
     // STUB: 0x004ac040
     cSC4RegionalCity();
     explicit cSC4RegionalCity(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknownc[0x18];
+    // STUB: 0x004a8ec0
+    void ExtractLocalDeals(void*, void*, bool);
+    // STUB: 0x004a9720
+    void Fn004a9720();
+    // STUB: 0x004aa0e0
+    void UpdateImportExportDeal(void*);
+    // STUB: 0x004a9970
+    void Fn004a9970(uint32_t);
+    // STUB: 0x004a9890
+    void Fn004a9890();
+    uint8_t mbInitialized;
+    char unknownd[0x3];
+    int32_t mnRefCount;
+    int32_t mnPosX;
+    int32_t mnPosY;
+    int32_t mnSizeX;
+    int32_t mnSizeY;
     uint32_t field24;
     uint32_t field28;
     uint32_t field2c;
     char field30[0x4];
     bool field34;
     char unknown35[0x3];
-    uint32_t field38;
-    char unknown3c[0x68];
+    uint32_t mnDifficulty;
+    uint8_t mTree3c[0xc];
+    uint8_t mTree48[0xc];
+    uint8_t mTree54[0xc];
+    float mfTax60;
+    float mfTax64;
+    float mfTax68;
+    float mfTax6c;
+    float mfTax70;
+    float mfTax74;
+    float mfTax78;
+    float mfTax7c;
+    float mfTax80;
+    float mfTax84;
+    float mfTax88;
+    float mfTax8c;
+    uint32_t mpConnections90;
+    char unknown94[0xc];
+    uint8_t mbConnectionsChanged;
+    char unknowna1[0x3];
     uint32_t fielda4;
-    char unknowna8[0x10];
+    int32_t mnOrigLanguage;
+    int32_t mnOrigCountry;
+    int32_t mnLastLanguage;
+    int32_t mnLastCountry;
     uint32_t fieldb8;
-    char unknownbc[0xac];
-    bool field168;
+    cRZString mStrBc;
+    cRZString mStrD0;
+    char unknowne4[0x14];
+    cRZString mStrF8;
+    char unknown10c[0x14];
+    cRZString mStr120;
+    char unknown134[0x14];
+    float mfWorldX;
+    float mfWorldY;
+    char unknown150[0x4];
+    cRZString mStr154;
+    uint8_t mbEstablished;
     char unknown169[0x3];
     uint32_t field16c;
-    char unknown170[0x30];
+    double mdBudget;
+    double mdIncome;
+    uint8_t mTree180[0xc];
+    uint32_t mpDeals18c;
+    uint32_t mpDeals190;
+    uint8_t mTree194[0xc];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4RegionalCity[sizeof(cSC4RegionalCity) == 0x1a0 ? 1 : -1];

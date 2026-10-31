@@ -127,6 +127,10 @@ public:
     bool Fn00972761();
     // STUB: 0x00971617
     bool Fn00971617(void*, void*);
+    // STUB: 0x009700e5
+    void Fn009700e5();
+    // STUB: 0x0097212d
+    void* Fn0097212d();
     bool mbOpen;
     char unknown15[0x3];
     uint32_t mn18;

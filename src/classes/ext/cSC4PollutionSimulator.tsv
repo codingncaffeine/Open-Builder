@@ -1,0 +1,35 @@
+slot Slot05_ab2630 void* uint32_t
+slot Slot06_ab2630 int16_t uint32_t uint32_t uint32_t
+slot SetIsRadioactive void uint32_t uint32_t bool
+slot SetIsActiveLandfill void uint32_t uint32_t bool
+slot GetAirValue void uint32_t uint32_t void*
+slot GetWaterValue void uint32_t uint32_t void*
+slot GetGarbageValue void uint32_t uint32_t void*
+slot GetWorstAirTract void void* void* void*
+slot GetWorstWaterTract void void* void* void*
+slot GetWorstGarbageTract void void* void* void*
+slot GetGarbageAbductedPrevMonth uint64_t
+slot GetGarbageProducedPrevMonth uint64_t
+slot GetGarbageImportedPrevMonth uint64_t
+slot GetGarbageExportedPrevMonth uint64_t
+slot Slot38_ab2630 uint64_t
+slot GetGarbageIncineratedPrevMonth uint64_t
+slot GetGarbageConvertedToEnergyPrevMonth uint64_t
+slot GetGarbageLandfilledPrevMonth uint64_t
+slot GetMaxCapacity bool uint32_t void* void*
+slot GetCurrentCapacity bool uint32_t void* void*
+slot GetRecyclingCenterMaxCapacity bool void* void*
+slot GetRecyclingCenterCurrentCapacity bool void* void*
+slot GetCurrentOccupantCondition bool void* void*
+slot GetCurrentOccupantEfficiency bool void* void*
+slot GetIncineratorUsedCapacity bool void* void*
+slot GetWasteToEnergyUsedCapacity bool void* void*
+slot GetIncineratorCurrentCapacity bool void* void*
+slot GetWasteToEnergyCurrentCapacity bool void* void*
+slot GetWaterTreatmentMaxCapacity bool void* void*
+slot GetWaterTreatmentCurrentCapacity bool void* void*
+slot GetWaterTreatmentUsedCapacity bool void* void*
+method 0x006e4e20 void Fn006e4e20()
+slot CalcOccupantMaintenanceCost bool void* void*
+method 0x006e3f50 void Fn006e3f50()
+method 0x006e4100 void Fn006e4100(void* list)

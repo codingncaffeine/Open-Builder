@@ -32,7 +32,43 @@ public:
     virtual bool GZOnCommand(uint32_t, uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
-    char unknowne0[0x120];
+    // STUB: 0x007ac2d0
+    uint32_t Fn007ac2d0();
+    // STUB: 0x007ac380
+    void Fn007ac380();
+    // STUB: 0x007ac110
+    void RestoreSignposts();
+    // STUB: 0x007ac1a0
+    void UpdateRendererPosition();
+    // STUB: 0x007abb80
+    void Fn007abb80(void*);
+    // STUB: 0x007abdf0
+    void Fn007abdf0(int32_t);
+    // STUB: 0x007af720
+    bool ProcessCommand(uint32_t, void*, void*);
+    void* mpView;
+    void* mpWinE4;
+    void* mpWinE8;
+    char unknownec[0x1c];
+    void* mpHitTest;
+    char unknown10c[0x4c];
+    void* mpFrameService;
+    void* mpEffects;
+    void* mpCamera;
+    void* mpCameraControl;
+    void* mpRenderer;
+    void* mpTerrainMap;
+    char unknown170[0x4];
+    void* mpScroll;
+    float mfScrollX;
+    float mfScrollZ;
+    char unknown180[0x20];
+    uint8_t mbBlocked;
+    char unknown1a1[0x7];
+    int32_t mnSignpostMode;
+    char unknown1ac[0x24];
+    uint8_t mDoubleClickTimer[0x18];
+    char unknown1e8[0x18];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cSC4WinRegionScreen[sizeof(cSC4WinRegionScreen) == 0x200 ? 1 : -1];

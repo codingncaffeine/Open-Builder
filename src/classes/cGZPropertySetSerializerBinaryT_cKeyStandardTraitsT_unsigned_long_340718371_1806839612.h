@@ -15,7 +15,8 @@ public:
     virtual bool Read(uint32_t, uint32_t);
     virtual bool Write(uint32_t, uint32_t, uint32_t);
     virtual ~cGZPropertySetSerializerBinaryT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612() {}
-    char unknown4[0x8];
+    int32_t mnRefCount;
+    char unknown8[0x4];
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZPropertySetSerializerBinaryT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612[sizeof(cGZPropertySetSerializerBinaryT_cKeyStandardTraitsT_unsigned_long_340718371_1806839612) == 0xc ? 1 : -1];

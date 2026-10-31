@@ -60,6 +60,10 @@ public:
     virtual uint32_t AsIGZFile();
     // STUB: 0x0096dc6e
     void Fn0096dc6e();
+    // STUB: 0x0096ec7c
+    uint32_t Fn0096ec7c(void*);
+    // STUB: 0x0096e93a
+    void Fn0096e93a();
     uint32_t mnRefCount;
     void* mpTarget;
 };

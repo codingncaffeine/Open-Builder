@@ -1,0 +1,7 @@
+field 20 uint32_t mnRefCount
+field 28 int32_t mnCellX
+field 2c int32_t mnCellY
+field 30 int32_t mnOtherCellX
+field 34 int32_t mnOtherCellY
+field 38 uint8_t mnFlags
+field 24 uint32_t mnType

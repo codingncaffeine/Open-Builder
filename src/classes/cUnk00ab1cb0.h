@@ -32,7 +32,7 @@ public:
     virtual void Slot21_ab1cb0(uint32_t) = 0;
     virtual void Slot22_ab1cb0() = 0;
     virtual void Slot23_ab1cb0() = 0;
-    virtual void Slot24_ab1cb0() = 0;
+    virtual void Slot24_ab1cb0(void*) = 0;
     virtual void Slot25_ab1cb0(uint32_t) = 0;
     virtual void Slot26_ab1cb0() = 0;
     virtual void Slot27_ab1cb0(uint32_t) = 0;

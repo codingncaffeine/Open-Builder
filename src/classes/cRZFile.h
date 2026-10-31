@@ -4,6 +4,7 @@
 
 #include "common/compiler.h"
 #include "common/types.h"
+#include "gzcom/cRZString.h"
 
 // VTABLE: 0x00abfed0
 // SIZE 0x80
@@ -11,7 +12,7 @@ class cRZFile {
 public:
     virtual bool QueryInterface(uint32_t, uint32_t);
     virtual uint32_t AddRef();
-    virtual void Release();
+    virtual uint32_t Release();
     virtual bool Open(uint32_t, uint32_t, uint32_t);
     virtual bool IsOpen();
     virtual bool Close();
@@ -21,32 +22,63 @@ public:
     virtual void SeekToBegin();
     virtual void SeekToEnd();
     virtual void SeekToRelativePosition(uint32_t);
-    virtual void SeekToPosition(uint32_t);
+    virtual uint32_t SeekToPosition(uint32_t);
     virtual uint32_t Seek(uint32_t, uint32_t);
-    virtual bool Read(uint32_t, uint32_t);
-    virtual bool ReadWithCount(uint32_t, uint32_t);
-    virtual bool Write(uint32_t, uint32_t);
-    virtual bool WriteWithCount(uint32_t, uint32_t);
+    virtual bool Read(void*, uint32_t);
+    virtual bool ReadWithCount(void*, void*);
+    virtual bool Write(const void*, uint32_t);
+    virtual bool WriteWithCount(const void*, void*);
     virtual bool Flush();
     virtual bool Remove();
-    virtual bool Rename(uint32_t);
+    virtual bool Rename(void*);
     virtual bool Exists();
-    virtual bool Copy(uint32_t, uint32_t);
-    virtual bool Copy_2(uint32_t, uint32_t);
+    virtual bool Copy(void*, bool);
+    virtual bool Copy_2(void*, bool);
     virtual void* GetPath();
     virtual void GetPath_2(uint32_t);
     virtual uint32_t GetPathCStr();
-    virtual void SetPath(uint32_t);
-    virtual void SetPath_2(uint32_t);
-    virtual bool GetOpenModes(uint32_t, uint32_t, uint32_t);
-    virtual void GetBuffering(uint32_t, uint32_t);
+    virtual void SetPath(const char*);
+    virtual void SetPath_2(void*);
+    virtual bool GetOpenModes(void*, void*, void*);
+    virtual void GetBuffering(void*, void*);
     virtual bool SetBuffering(uint32_t, uint32_t);
     virtual ~cRZFile();
-    char field4[0x4];
-    uint32_t field8;
-    char unknownc[0xc];
-    bool field18;
-    char unknown19[0x67];
+    // STUB: 0x00918b96
+    cRZFile();
+    cRZFile(const void* path);
+    cRZFile(const char* path);
+    // STUB: 0x00918577
+    void SetErrorFromOS();
+    // STUB: 0x009187b1
+    bool FlushWriteBuffer();
+    // STUB: 0x00918f67
+    bool FillReadBuffer();
+    // STUB: 0x00918fd8
+    bool FillWriteBuffer(const void*, int32_t);
+    cRZString mPath;
+    bool mbOpen;
+    char unknown19[0x3];
+    void* mhFile;
+    uint32_t mnAccess;
+    uint32_t mnCreation;
+    uint32_t mnShare;
+    uint32_t mnRefCount;
+    uint32_t mnLastError;
+    cRZString mAltPath;
+    uint32_t mnPosition;
+    uint32_t mnFilePosition;
+    uint32_t mnReadBufferSize;
+    uint8_t* mpReadBegin;
+    uint8_t* mpReadEnd;
+    uint8_t* mpReadCap;
+    uint32_t mnReadWindowOffset;
+    uint32_t mnReadWindowCount;
+    uint32_t mnWriteBufferSize;
+    uint8_t* mpWriteBegin;
+    uint8_t* mpWriteEnd;
+    uint8_t* mpWriteCap;
+    uint32_t mnWriteFileOffset;
+    uint32_t mnWriteFill;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cRZFile[sizeof(cRZFile) == 0x80 ? 1 : -1];

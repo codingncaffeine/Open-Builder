@@ -1,0 +1,73 @@
+slot GetTotalFunds int64_t
+slot GetMinAllowableFunds int64_t
+slot GetTaxIncome_2 int64_t
+slot GetFunding_2 int64_t uint32_t
+slot GetCurrentMaxOutstandingBondsLimit int64_t
+slot GetBondIncrement int64_t
+slot GetCurrentBondLimit int64_t
+slot GetCurrentBorrowingLimit int64_t
+slot GetTotalYearlyExpense int64_t
+slot GetTotalYearlyIncome int64_t
+slot GetTotalMonthlyBondPayments int64_t
+slot SetTaxRate void int32_t float
+slot SetTotalMonthlyExpense void int64_t
+slot SetTotalYearlyExpense void int64_t
+slot SetTotalMonthlyIncome void int64_t
+slot SetTotalYearlyIncome void int64_t
+slot SetTotalFunds void int64_t
+slot GetWeightedAssessedTaxValue int64_t int32_t
+slot GetFullCostOfLoan int64_t int64_t
+slot GetMonthlyPaymentForLoan int64_t int64_t
+slot GetTaxIncome int64_t int32_t
+slot GetDepartmentBudget_2 void* uint32_t
+slot GetLineItemFromBudgetItem void* void*
+field 28 int64_t mnTotalFunds
+field 30 int64_t mnPreviousFunds
+field 70 uint8_t mDeptRows[0x600]
+field 670 int64_t mnTaxIncome
+field 780 void* mpLoanList
+field 790 void* mpMonthFunds
+field 7a0 int64_t mnMinAllowableFunds
+field 7a8 int64_t mnBondIncrement
+field 7b0 int32_t mnMaxOutstandingBonds
+field 7b8 int64_t mnCurrentBondLimit
+field 7c4 uint32_t mnLoanTimeInMonths
+field 814 float* mpTaxFactors
+field 820 float* mpDifficultyTaxRates
+field 830 int64_t mnMonthlyIncome
+field 838 int64_t mnYearlyIncome
+field 840 int64_t mnMonthlyExpense
+field 848 int64_t mnYearlyExpense
+slot GetTaxRate float int32_t
+slot Slot02_ab0908 uint32_t
+slot GetDepartmentBudget void* void*
+slot FundingPercentageChanged void void*
+field 10 int32_t mnRefCount
+method 0x0068fe10 void PostFundsChangedMessage()
+method 0x00690e80 void DoBudgetGroupChanged(uint32_t)
+field 18 void* mpEnvironment
+field 1c void* mpMessageServer
+field 54 void* mpDeptTreeHeader
+field 7c0 float mfLoanInterest
+field 850 bool mbExpenseWindow
+method 0x0068fe80 void PostSimMessage(uint32_t)
+method 0x00690450 void ResetFundsToStartingLevel()
+method 0x00690490 void ReadDifficultyTaxRates()
+slot DepositFunds bool int64_t
+slot WithdrawFunds bool int64_t
+slot GetTaxIncome int64_t int32_t
+slot GetBudgetItemInfo bool void* void*
+slot GetBudgetItemForPurpose bool void* uint32_t void*
+slot AddBudgetItemToBudget void void* uint32_t
+slot RemoveBudgetItemFromBudget void void* uint32_t
+slot GetTotalMonthlyExpense int64_t
+field 24 void* mpOrdinanceSim
+slot ChangeBudgetItemCost void void* uint32_t int64_t
+slot ChangeBudgetItemLine void void* uint32_t uint32_t
+slot ChangeBudgetItemLocalFunding void void* uint32_t float
+slot GetAllLoans void void*
+slot CreateDepartmentBudget void* uint32_t uint32_t
+method 0x006950b0 void* GetBudgetGroup(uint32_t)
+field 60 void* mpGroupTreeHeader
+field 38 int64_t mnTotalBorrowed
+field 784 int32_t mnLoanCount

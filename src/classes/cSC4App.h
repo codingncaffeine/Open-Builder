@@ -7,13 +7,14 @@
 #include "classes/cUnk00a8298c.h"
 #include "classes/cUnk00a86878.h"
 #include "classes/cUnk00ac31e4.h"
+#include "gzcom/cRZString.h"
 
 // The subobject at +0x4 (vtable 0x00a86c1c): an interface or base the class map has no class for.
 struct OB_NOVTABLE cSC4App_4 {
     virtual bool QueryInterface(unsigned int, void **) = 0;
     virtual uint32_t AddRef() = 0;
     virtual unsigned int Release() = 0;
-    virtual bool Slot03_a86c2c_4(uint32_t);
+    virtual bool Slot03_a86c2c_4(void*);
 };
 
 // The subobject at +0x8 (vtable 0x00a86c0c): an interface or base the class map has no class for.
@@ -67,8 +68,8 @@ public:
     virtual bool Slot16_a86878(uint32_t);
     virtual void Slot17_a86878();
     virtual void Slot18_a86878(uint32_t);
-    virtual void Slot19_a86878(uint32_t);
-    virtual void Slot20_a86878(uint32_t);
+    virtual void Slot19_a86878(void*);
+    virtual void Slot20_a86878(void*);
     virtual bool Slot21_a86878();
     virtual void Slot22_a86878(bool);
     virtual bool Slot23_a86878();
@@ -76,10 +77,10 @@ public:
     virtual uint32_t Slot25_a86878();
     virtual uint32_t Slot26_a86878();
     virtual void Slot27_a86878();
-    virtual void Slot28_a86878(uint32_t);
+    virtual void Slot28_a86878(void*);
     virtual void Slot29_a86878(uint32_t);
-    virtual void Slot30_a86878(uint32_t);
-    virtual void Slot31_a86878(uint32_t);
+    virtual void Slot30_a86878(void*);
+    virtual void Slot31_a86878(void*);
     virtual uint32_t Slot32_a86878();
     virtual uint32_t Slot33_a86878();
     virtual uint32_t Slot34_a86878();
@@ -99,22 +100,22 @@ public:
     virtual void* Slot48_a86878();
     virtual void* Slot49_a86878();
     virtual bool Slot50_a86878();
-    virtual void Slot51_a86878();
-    virtual void Slot52_a86878();
-    virtual void Slot53_a86878(uint32_t, uint32_t);
+    virtual void Slot51_a86878(void*);
+    virtual void Slot52_a86878(void*);
+    virtual void Slot53_a86878(void*, int32_t);
     virtual void Slot54_a86878(uint32_t, uint32_t);
-    virtual void Slot55_a86878();
-    virtual void Slot56_a86878();
-    virtual void Slot57_a86878();
-    virtual void Slot58_a86878();
-    virtual void Slot59_a86878();
-    virtual void Slot60_a86878();
-    virtual void Slot61_a86878();
-    virtual void Slot62_a86878();
-    virtual void Slot63_a86878();
-    virtual void Slot64_a86878();
-    virtual void Slot65_a86878();
-    virtual void Slot66_a86878();
+    virtual void Slot55_a86878(void*);
+    virtual void Slot56_a86878(void*);
+    virtual void Slot57_a86878(void*);
+    virtual void Slot58_a86878(void*);
+    virtual void Slot59_a86878(void*);
+    virtual void Slot60_a86878(void*);
+    virtual void Slot61_a86878(void*);
+    virtual void Slot62_a86878(void*);
+    virtual void Slot63_a86878(void*);
+    virtual void Slot64_a86878(void*);
+    virtual void Slot65_a86878(void*);
+    virtual void Slot66_a86878(void*);
     virtual bool Slot67_a86878(uint32_t, uint32_t, uint32_t);
     virtual void Slot68_a86878(uint32_t, uint32_t);
     virtual bool Slot69_a86878(uint32_t, uint32_t);
@@ -126,35 +127,79 @@ public:
     virtual bool Slot09_ad1a98(uint32_t);
     virtual bool Slot03_ae1d24();
     virtual bool Slot04_ae1d24();
+    // STUB: 0x004493b0
+    void AddCOMDirectors();
+    // STUB: 0x0044d4d0
+    void SetFontStyle(void*, void*);
+    // STUB: 0x0044ce40
+    void DoPreferencesChanged(bool);
+    // STUB: 0x0044e980
+    void Fn0044e980();
+    // STUB: 0x00454e50
+    void DoCityObliteration();
+    // STUB: 0x00449ba0
+    void PostSC4AppMessage(uint32_t, bool);
     char unknown38[0xc];
-    uint32_t field44;
+    uint32_t mnMode;
     char unknown48[0x4];
-    uint32_t field4c;
-    char unknown50[0x4];
-    uint32_t field54;
-    char unknown58[0x4];
+    void* mpMainWindow;
+    void* mpWinSC4App;
+    void* mpField54;
+    void* mpField58;
     uint32_t field5c;
-    char unknown60[0x16c];
+    char unknown60[0x4];
+    cRZString mString64;
+    cRZString mString78;
+    cRZString mString8c;
+    char unknowna0[0x28];
+    cRZString mStringC8;
+    cRZString mStringDC;
+    char unknownf0[0x14];
+    cRZString mString104;
+    cRZString mString118;
+    cRZString mString12c;
+    cRZString mString140;
+    cRZString mString154;
+    cRZString mAlbumDirectory;
+    cRZString mHTTPCacheDirectory;
+    cRZString mTempDirectory;
+    cRZString mExceptionReportsDirectory;
+    cRZString mString1b8;
     char field1cc[0x1c];
     char field1e8[0x12c];
     uint32_t field314;
     uint32_t field318;
-    char unknown31c[0x94];
-    uint32_t field3b0;
+    char unknown31c[0x4];
+    uint8_t mTimer320[0x18];
+    uint32_t mnLimit338;
+    char unknown33c[0x4];
+    uint8_t mTimer340[0x18];
+    uint32_t mnLimit358;
+    char unknown35c[0x4];
+    uint8_t mTimer360[0x18];
+    uint8_t mTimer378[0x18];
+    uint8_t mTimer390[0x18];
+    uint32_t mnLimit3a8;
+    uint32_t mnLimit3ac;
+    void* mpPreferences;
     char field3b4[0x208];
     uint32_t field5bc;
     uint32_t field5c0;
     uint32_t field5c4;
     uint32_t field5c8;
-    char unknown5cc[0x64];
+    void* mpList5cc;
+    uint8_t mbPauseOnFocusLoss;
+    uint8_t mbGamePaused;
+    char unknown5d2[0x5e];
     uint32_t field630;
-    char unknown634[0x1c];
+    void* mpPreferences634;
+    char unknown638[0x18];
     bool field650;
     bool field651;
     char unknown652[0xe];
     uint32_t field660;
     uint32_t field664;
-    bool field668;
+    uint8_t mbFirstRunAfterInstall;
     char unknown669[0x7];
 };
 #ifdef _MSC_VER

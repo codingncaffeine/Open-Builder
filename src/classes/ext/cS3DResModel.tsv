@@ -1,0 +1,7 @@
+field 1c void* mpVertexArrays
+field 28 void* mpIndexArrays
+field 34 void* mpPrimitiveArrays
+field 40 void* mpMaterials
+field 4c uint16_t mnFrameCount
+field 58 uint16_t mnMeshCount
+field 70 void* mpMeshes

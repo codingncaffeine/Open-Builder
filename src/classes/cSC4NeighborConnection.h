@@ -43,9 +43,14 @@ public:
     // STUB: 0x006d4680
     cSC4NeighborConnection();
     explicit cSC4NeighborConnection(ob_emit) {}  // never called: emits the vtable (GeneratedClasses)
-    char unknown20[0x4];
-    uint32_t field24;
-    char unknown28[0x14];
+    uint32_t mnRefCount;
+    uint32_t mnType;
+    int32_t mnCellX;
+    int32_t mnCellY;
+    int32_t mnOtherCellX;
+    int32_t mnOtherCellY;
+    uint8_t mnFlags;
+    char unknown39[0x3];
     char field3c[0x8];
 };
 #ifdef _MSC_VER

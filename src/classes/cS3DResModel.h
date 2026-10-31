@@ -16,13 +16,24 @@ public:
     virtual uint32_t AddRef();
     virtual unsigned int Release();
     virtual void* Slot03_abd5d4();
-    virtual bool Slot04_abd5d4(uint32_t, uint32_t);
-    virtual bool Slot05_abd5d4(uint32_t, uint32_t);
-    virtual bool Slot06_abd5d4(uint32_t, uint32_t);
-    virtual void Slot07_abd5d4(uint32_t);
-    virtual bool Slot08_abd5d4(uint32_t, uint32_t);
-    char unknown1c[0x30];
-    char field4c[0x28];
+    virtual bool Slot04_abd5d4(uint32_t, void*);
+    virtual bool Slot05_abd5d4(uint32_t, void*);
+    virtual bool Slot06_abd5d4(uint32_t, void*);
+    virtual void Slot07_abd5d4(void*);
+    virtual bool Slot08_abd5d4(uint32_t, void*);
+    void* mpVertexArrays;
+    char unknown20[0x8];
+    void* mpIndexArrays;
+    char unknown2c[0x8];
+    void* mpPrimitiveArrays;
+    char unknown38[0x8];
+    void* mpMaterials;
+    char unknown44[0x8];
+    uint16_t mnFrameCount;
+    char unknown4e[0xa];
+    uint16_t mnMeshCount;
+    char unknown5a[0x16];
+    void* mpMeshes;
 };
 
 // SYNTHETIC: 0x00806210

@@ -11,7 +11,7 @@ class cGZMessageQueue2 {
 public:
     virtual bool QueryInterface(uint32_t, uint32_t);
     virtual uint32_t AddRef();
-    virtual void Release();
+    virtual uint32_t Release();
     virtual void PushBack(uint32_t);
     virtual void PushFront(uint32_t);
     virtual bool RemoveFirstFound(uint32_t);
@@ -34,7 +34,11 @@ public:
     virtual uint32_t GetMessageCount();
     virtual ~cGZMessageQueue2();
     virtual bool GetAnywhereMessage(uint32_t, uint32_t);
-    char unknown4[0x18];
+    cGZMessageQueue2();
+    uint8_t mList[4];
+    uint8_t mLock[8];
+    uint8_t mSignal[8];
+    uint32_t mnRefs;
 };
 #ifdef _MSC_VER
 typedef char ob_size_cGZMessageQueue2[sizeof(cGZMessageQueue2) == 0x1c ? 1 : -1];

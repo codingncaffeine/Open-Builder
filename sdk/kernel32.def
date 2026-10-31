@@ -17,3 +17,6 @@ EXPORTS
   GetModuleHandleA
   GetUserDefaultLCID
   SetEnvironmentVariableA
+  GetLastError
+  GetFileSize
+  SetFilePointer

@@ -1,0 +1,22 @@
+field d8 uint32_t mnCursorId
+field 10c void* mpOriginImage
+field f4 float mfMouseX
+field f8 float mfMouseZ
+field 109 uint8_t mbMouseScroll
+method 0x007ac620 void SetMouseScroll(int32_t, int32_t)
+field dc uint32_t mnZeroDC
+field e0 uint32_t mnZeroE0
+field e4 uint32_t mnZeroE4
+field e8 uint32_t mnZeroE8
+field ec uint32_t mnZeroEC
+field fc uint32_t mnZeroFC
+field 100 uint32_t mnZero100
+field 104 float mfLimit
+field 108 uint8_t mbFlag108
+field 110 int32_t mnCount110
+field 114 int32_t mnCount114
+field 118 float mfSpeed
+field 11c float mfAccel
+field 120 uint8_t mUnk120[0x18]
+method 0x007aae10 cUnk00ab8cd0()
+field f0 uint32_t mnZeroF0
