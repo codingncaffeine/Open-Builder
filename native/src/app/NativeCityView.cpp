@@ -32,7 +32,11 @@
 #include "sc4/ServiceLocator.h"
 #include "sc4/DBSegment.h"
 #include "sc4/ViewInputControlCityScroll.h"
+#if defined(__APPLE__)
 #include <CoreGraphics/CoreGraphics.h>
+#else
+#include "platform/PointerState.h"
+#endif
 #include <map>
 
 namespace native {
@@ -158,7 +162,11 @@ public:
     cIGZWinMgr* WindowManager() override { return adapter_.view->GetWindowManager(); }
     void PlaySound(int, std::uint32_t id) override { PlayGameSound(id); }
     bool RightButtonDown() override {
+#if defined(__APPLE__)
         return CGEventSourceButtonState(kCGEventSourceStateCombinedSessionState, kCGMouseButtonRight);
+#else
+        return platform::RightMouseButtonDown();
+#endif
     }
     bool ReadTunables(std::uint32_t&, std::uint32_t&) override { return false; }   // the constructor's 12 / 80 are the shipped values
     void SetScrolling(bool scrolling, float angle, float speed) override { adapter_.view->SetScrolling(scrolling, angle, speed); }

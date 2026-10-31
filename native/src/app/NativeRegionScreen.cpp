@@ -381,11 +381,17 @@ public:
     bool LoadCityThumbnails(int x, int z, IWinBuffer** image, IWinBuffer** mask) override {
         cISC4Region* region = ActiveRegion();
         cRZAutoRefCount<cISC4RegionalCity>* holder = region ? region->GetCity(x, z) : nullptr;
-        if (!holder || !holder->get() || !DecodeFunction()) return false;
+        if (!holder || !holder->get() || !DecodeFunction()) {
+            if (std::getenv("SC4_DEBUG")) std::printf("region: city %d,%d no thumbnail (region %d, city %d, decoder %d)\n", x, z, region != nullptr, holder && holder->get(), DecodeFunction() != nullptr);
+            return false;
+        }
         cRZString path;
         Concrete(holder->get())->GetCitySaveFilePath(path);
         dbpf::Package package;
-        if (!package.Open(path.ToChar())) return false;
+        if (!package.Open(path.ToChar())) {
+            if (std::getenv("SC4_DEBUG")) std::printf("region: city %d,%d cannot open %s\n", x, z, path.ToChar());
+            return false;
+        }
         auto load = [&](std::uint32_t instance) -> IWinBuffer* {
             const dbpf::Entry* entry = package.Find(0x8a2482b9, 0x4a2482bb, instance);
             std::vector<std::uint8_t> bytes;
@@ -395,6 +401,7 @@ public:
         };
         *image = load(0);
         *mask = load(2);
+        if (std::getenv("SC4_DEBUG")) std::printf("region: city %d,%d thumbnail %s from %s\n", x, z, *image ? "loaded" : "MISSING", path.ToChar());
         return *image != nullptr;
     }
 

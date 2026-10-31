@@ -477,7 +477,7 @@ bool cRZFile::Copy(const cIGZFile& source, bool overwrite) {
 // Static helpers
 
 bool cRZFile::FileCreate(const cIGZString& path, bool truncate) {
-    int fd = ::open(NativePath(path), truncate ? 0x602 : 0x202, kFilePermissions);
+    int fd = ::open(NativePath(path), kOpenReadWrite | kOpenCreate | (truncate ? kOpenTruncate : 0), kFilePermissions);   // macOS 0x602 / 0x202
     if (fd == -1) return false;
     ::close(fd);
     return true;
@@ -494,7 +494,7 @@ bool cRZFile::Copy(const cIGZString& source, const cIGZString& dest, bool overwr
     if (!overwrite && FileExists(source)) return false;  // (sic) checks the source, see header
     int in = ::open(NativePath(source), 0);
     if (in == -1) return false;
-    int out = ::open(NativePath(dest), 0x601, kFilePermissions);
+    int out = ::open(NativePath(dest), kOpenWriteOnly | kOpenCreate | kOpenTruncate, kFilePermissions);   // macOS 0x601
     bool ok = false;
     if (out != -1) {
         std::vector<std::uint8_t> chunk(0x40000);

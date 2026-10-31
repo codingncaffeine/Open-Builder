@@ -171,7 +171,7 @@ bool Buffer::Blt(IWinBuffer* source, const cRZRect& sourceRect, const cRZRect& d
     return onScreen_ ? asBuffer_->Blt(from, sourceRect, destRect, nullptr) : buffer_->Blt(from, sourceRect, destRect, nullptr);
 }
 
-Graphics::Graphics(gd::cMetalGDriver* driver, int width, int height) : driver_(driver), services_(driver) {
+Graphics::Graphics(gd::cIGZGDriver* driver, int width, int height) : driver_(driver), services_(driver) {
     SetWinGraphics(this);
     gz::SetDrawContextHost(this);
     SetBufferHost(this);

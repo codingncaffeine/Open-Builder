@@ -3,6 +3,7 @@
 
 #include <cstdlib>
 #include <filesystem>
+#include <vector>
 
 #if defined(__APPLE__)
 #include <mach-o/dyld.h>
@@ -26,6 +27,8 @@ std::string FindRepositoryCopy() {
     char buffer[4096];
     std::uint32_t size = sizeof(buffer);
     if (_NSGetExecutablePath(buffer, &size) == 0) starts.push_back(fs::path(buffer).parent_path());
+#elif defined(__linux__)
+    if (fs::path exe = fs::read_symlink("/proc/self/exe", error); !error) starts.push_back(exe.parent_path());
 #endif
     for (fs::path start : starts) {
         for (fs::path dir = start; !dir.empty(); dir = dir.parent_path()) {

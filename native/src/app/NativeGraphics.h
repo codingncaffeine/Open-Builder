@@ -17,7 +17,7 @@
 #include "gz/DrawContextRenderToHardware.h"
 #include "gz/DrawContextRenderToSimGL.h"
 #include "gz/Win.h"
-#include "render/gd/MetalGDriver.h"
+#include "render/gd/IGZGDriver.h"
 
 namespace native {
 
@@ -81,7 +81,7 @@ private:
 
 class Graphics final : public IWinGraphics, public gz::IDrawContextHost, public IBufferHost {
 public:
-    Graphics(gd::cMetalGDriver* driver, int width, int height);
+    Graphics(gd::cIGZGDriver* driver, int width, int height);
     ~Graphics();
 
     Buffer* Primary() { return primary_.get(); }
@@ -102,7 +102,7 @@ public:
     bool QueryTextureBitCount(std::uint32_t& bits) override { bits = 32; return true; }
 
 private:
-    gd::cMetalGDriver* driver_;
+    gd::cIGZGDriver* driver_;
     DriverServices services_;
     std::unique_ptr<Buffer> primary_;
 };

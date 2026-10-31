@@ -1,0 +1,30 @@
+#!/bin/bash
+# Builds build/sc4_game_linux: the game on Linux (SDL3 window, OpenGL 3.3 core through cGLGDriver, no audio yet).
+# Incremental: one object per source of scripts/linux_game_link_list.txt under build/linux_obj (debug: build/linux_obj_debug).
+#   scripts/build_linux_game.sh [debug]      debug: -O0 + AddressSanitizer
+#   SC4_GAME_CONTENTS=<folder with GameData/> build/sc4_game_linux [--shot out.png [--frames N] | --script scenario.txt]
+# Needs clang, libc++, SDL3, libepoxy, FreeType and libpng (the Mac-derived classes assert libc++'s layouts).
+set -e
+cd "$(dirname "$0")/.."
+MODE=${1:-fast}
+if [ "$MODE" = debug ]; then OBJ=build/linux_obj_debug; OUT=build/sc4_game_linux_debug; OPT="-O0 -g -fno-omit-frame-pointer -fsanitize=address"; LD="-fsanitize=address"
+else OBJ=build/linux_obj; OUT=build/sc4_game_linux; OPT="-O1 -g"; LD=""; fi
+mkdir -p $OBJ
+PKG="$(pkg-config --cflags sdl3 epoxy freetype2 libpng)"
+CF="-std=c++20 -stdlib=libc++ -include cstdlib -include cmath -include platform/linux_char_traits.h -Dst_atimespec=st_atim -Dst_mtimespec=st_mtim -Dst_ctimespec=st_ctim -D_CS_DARWIN_USER_TEMP_DIR=_CS_PATH $OPT -Wno-overloaded-virtual -w -Isrc -Iscripts/tests/stubs $PKG"
+LIST=scripts/linux_game_link_list.txt
+OBJS=""
+for s in $(grep -v '^#' $LIST); do OBJS="$OBJS $OBJ/$(echo "$s" | tr '/' '_').o"; done
+FAILED=$(mktemp)
+for s in $(grep -v '^#' $LIST); do
+  o=$OBJ/$(echo "$s" | tr '/' '_').o
+  if [ -f "$o" ] && [ "$o" -nt "$s" ] && [ -z "$(find src -name '*.h' -newer "$o" | head -1)" ]; then continue; fi
+  echo "$s $o"
+done | xargs -r -P "$(nproc)" -L 1 sh -c 'clang++ '"$CF"' -c "$0" -o "$1" 2>"$1.err" || echo "$0" >>'"$FAILED"
+if [ -s "$FAILED" ]; then
+  echo "COMPILE ERRORS:"; for s in $(cat "$FAILED"); do echo "--- $s"; grep -m5 error "$OBJ/$(echo "$s" | tr '/' '_').o.err"; done
+  rm -f "$FAILED"; exit 1
+fi
+rm -f "$FAILED"
+clang++ -stdlib=libc++ $LD $OBJS $(pkg-config --libs sdl3 epoxy freetype2 libpng) -o $OUT
+echo "built $OUT"
